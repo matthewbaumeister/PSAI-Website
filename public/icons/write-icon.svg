@@ -1,0 +1,22 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="writeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f7931e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Pen -->
+  <path d="M8 36 L36 8 L40 12 L12 40 L8 36 Z" fill="url(#writeGradient)"/>
+  <path d="M36 8 L40 12 L44 8 L40 4 L36 8 Z" fill="url(#writeGradient)" opacity="0.8"/>
+  <!-- Document -->
+  <rect x="12" y="16" width="20" height="24" rx="2" fill="url(#writeGradient)" opacity="0.3"/>
+  <line x1="16" y1="20" x1="28" y1="20" stroke="white" stroke-width="1"/>
+  <line x1="16" y1="24" x1="28" y1="24" stroke="white" stroke-width="1"/>
+  <line x1="16" y1="28" x1="28" y1="28" stroke="white" stroke-width="1"/>
+  <line x1="16" y1="32" x1="24" y1="32" stroke="white" stroke-width="1"/>
+  <!-- Writing lines -->
+  <path d="M16 20 L28 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M16 24 L28 24" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M16 28 L28 28" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M16 32 L24 32" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

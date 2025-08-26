@@ -1,0 +1,16 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="searchGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f7931e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Magnifying glass -->
+  <circle cx="20" cy="20" r="12" stroke="url(#searchGradient)" stroke-width="3" fill="none"/>
+  <line x1="28" y1="28" x1="38" y1="38" stroke="url(#searchGradient)" stroke-width="3" stroke-linecap="round"/>
+  <!-- Document/contract symbol -->
+  <rect x="32" y="8" width="8" height="10" rx="1" fill="url(#searchGradient)" opacity="0.8"/>
+  <line x1="34" y1="11" x1="38" y1="11" stroke="white" stroke-width="1"/>
+  <line x1="34" y1="13" x1="38" y1="13" stroke="white" stroke-width="1"/>
+  <line x1="34" y1="15" x1="36" y1="15" stroke="white" stroke-width="1"/>
+</svg>

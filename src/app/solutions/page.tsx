@@ -31,7 +31,9 @@ export default function SolutionsPage() {
 
         <div className="solutions-grid">
           <div className="solution-card">
-            <div className="solution-icon">🔍</div>
+            <div className="solution-icon">
+              <img src="/icons/search-icon.svg" alt="Search Icon" width="48" height="48" />
+            </div>
             <div className="solution-content">
               <h3>PS.AI Search</h3>
               <p>DoD-wide government contract search and opportunity discovery platform. Find new work opportunities across all defense agencies with our proprietary search algorithms.</p>
@@ -45,7 +47,9 @@ export default function SolutionsPage() {
           </div>
 
           <div className="solution-card">
-            <div className="solution-icon">🤖</div>
+            <div className="solution-icon">
+              <img src="/icons/compliance-icon.svg" alt="Compliance Icon" width="48" height="48" />
+            </div>
             <div className="solution-content">
               <h3>PS.AI Compliance</h3>
               <p>Custom tailored proposal templates powered by cutting-edge AI and PhD-level writers. Create winning proposals that meet all compliance requirements.</p>
@@ -59,7 +63,9 @@ export default function SolutionsPage() {
           </div>
 
           <div className="solution-card">
-            <div className="solution-icon">📊</div>
+            <div className="solution-icon">
+              <img src="/icons/market-research-icon.svg" alt="Market Research Icon" width="48" height="48" />
+            </div>
             <div className="solution-content">
               <h3>PS.AI Market Research</h3>
               <p>Proprietary data and search platform for creating and tracking opportunities and industries. Build market intelligence that drives strategic decisions.</p>
@@ -73,7 +79,9 @@ export default function SolutionsPage() {
           </div>
 
           <div className="solution-card">
-            <div className="solution-icon">✍️</div>
+            <div className="solution-icon">
+              <img src="/icons/write-icon.svg" alt="Write Icon" width="48" height="48" />
+            </div>
             <div className="solution-content">
               <h3>PS.AI Write</h3>
               <p>PhD-level in-house writing service for both AI-assisted and 100% manual writing. Professional proposal writing that wins contracts.</p>
@@ -87,7 +95,9 @@ export default function SolutionsPage() {
           </div>
 
           <div className="solution-card">
-            <div className="solution-icon">👥</div>
+            <div className="solution-icon">
+              <img src="/icons/crm-icon.svg" alt="CRM Icon" width="48" height="48" />
+            </div>
             <div className="solution-content">
               <h3>PS.AI CRM</h3>
               <p>Customer relationship management platform designed specifically for government contracting. Track opportunities, manage relationships, and close more deals.</p>
@@ -101,7 +111,9 @@ export default function SolutionsPage() {
           </div>
 
           <div className="solution-card">
-            <div className="solution-icon">🏢</div>
+            <div className="solution-icon">
+              <img src="/icons/small-business-icon.svg" alt="Small Business Icon" width="48" height="48" />
+            </div>
             <div className="solution-content">
               <h3>PS.AI Small Business</h3>
               <p>SBIR/SBA dedicated proprietary search and database platform for small business set-aside contracts. Find opportunities designed specifically for your business.</p>
