@@ -60,7 +60,7 @@ export function Footer() {
 
         <div className="footer-bottom">
           <div className="footer-copyright">
-            © 2025 Prop Shop AI. All rights reserved.
+            © 2025 Make Ready Consulting, dba. Prop Shop AI. All rights reserved.
           </div>
           <div className="footer-social">
             <a href="#" className="social-link">LinkedIn</a>
