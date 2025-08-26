@@ -133,6 +133,7 @@ export default function SearchPage() {
             </div>
             <div className="feature-item">
               <h3>Defense Market Analysis</h3>
+              <ul>
                 <li>DoD spending trends and analysis</li>
                 <li>Competitive intelligence for defense contractors</li>
                 <li>Market opportunity identification</li>
