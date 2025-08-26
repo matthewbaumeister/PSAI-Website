@@ -23,6 +23,7 @@ export default function RootLayout({
         <div className="animated-bg"></div>
         <div className="bg-grid-overlay"></div>
         <div className="bg-dots"></div>
+        <div className="floating-elements"></div>
         
         <Header />
         {children}

@@ -33,8 +33,8 @@ body::before {
   width: 100vw;
   height: 100vh;
   background: 
-    linear-gradient(90deg, rgba(45, 91, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(45, 91, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(45, 91, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(45, 91, 255, 0.05) 1px, transparent 1px);
   background-size: 80px 80px;
   animation: slow-drift 120s linear infinite;
   z-index: -1000;
@@ -89,6 +89,41 @@ body::after {
   background: 
     radial-gradient(circle at 50% 50%, rgba(45, 91, 255, 0.15) 0%, transparent 70%);
   animation: center-glow 150s ease-in-out infinite;
+}
+
+/* New subtle floating elements for modern movement */
+.floating-elements {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -995;
+}
+
+.floating-elements::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(45, 91, 255, 0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-slow 180s ease-in-out infinite;
+}
+
+.floating-elements::after {
+  content: '';
+  position: absolute;
+  top: 70%;
+  right: 20%;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(154, 242, 58, 0.03) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-slow 200s ease-in-out infinite reverse;
 }
 
 /* Enhanced Background Elements */
@@ -1059,6 +1094,25 @@ body::after {
   50% {
     opacity: 0.15;
     transform: scale(1.1) rotate(90deg);
+  }
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.03;
+  }
+  25% {
+    transform: translate(30px, -20px) scale(1.05);
+    opacity: 0.04;
+  }
+  50% {
+    transform: translate(-15px, 25px) scale(0.95);
+    opacity: 0.02;
+  }
+  75% {
+    transform: translate(20px, 15px) scale(1.02);
+    opacity: 0.05;
   }
 }
 
