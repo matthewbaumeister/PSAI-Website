@@ -31,7 +31,7 @@ export function Hero() {
       <div className="proof-row">
         <div className="container">
           <p className="proof-label">
-            Trusted by innovators, primes, and government agencies
+            TRUSTED BY INNOVATORS, PRIMES, AND GOVERNMENT AGENCIES
           </p>
           <div className="proof-scroll">
             <div className="proof-items">
@@ -69,7 +69,7 @@ export function Hero() {
       <div className="agencies-row">
         <div className="container">
           <p className="agencies-label">
-            We&apos;ve worked on proposals supporting:
+            WE&apos;VE WORKED ON PROPOSALS SUPPORTING:
           </p>
           <div className="agencies-scroll">
             <div className="agencies-items">
