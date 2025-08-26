@@ -10,7 +10,6 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('Form submission started')
     setIsSubmitting(true)
     setSubmitStatus('idle')
 
@@ -30,9 +29,6 @@ export default function ContactPage() {
         }
       })
 
-      console.log('Form data converted:', formObject)
-      console.log('Submitting to /api/contact')
-
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -41,9 +37,7 @@ export default function ContactPage() {
         body: JSON.stringify(formObject)
       })
 
-      console.log('Response received:', response.status, response.statusText)
       const result = await response.json()
-      console.log('Response body:', result)
 
       if (response.ok) {
         setSubmitStatus('success')
@@ -57,7 +51,6 @@ export default function ContactPage() {
         setSubmitMessage(result.error || 'Something went wrong. Please try again.')
       }
     } catch (error) {
-      console.error('Form submission error:', error)
       setSubmitStatus('error')
       setSubmitMessage('Network error. Please check your connection and try again.')
     } finally {

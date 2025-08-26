@@ -6,300 +6,181 @@ import sgMail from '@sendgrid/mail'
 sgMail.setApiKey(process.env.SENDGRID_API_KEY!)
 
 export async function POST(request: NextRequest) {
-  console.log('Contact API route called - starting processing')
-  
   try {
-    console.log('Attempting to parse request body')
     const body = await request.json()
-    console.log('Request body parsed successfully:', body)
     
-    const {
-      firstName,
-      lastName,
-      email,
-      phone,
-      company,
-      jobTitle,
-      companySize,
-      industry,
-      interests,
-      message,
-      newsletter
-    } = body
-
-    console.log('Extracted form data:', { firstName, lastName, email, company, interests })
-
-    // Validate required fields
-    if (!firstName || !lastName || !email || !company || !interests) {
-      console.log('Validation failed - missing required fields')
+    const { firstName, lastName, email, phone, company, jobTitle, companySize, industry, interests, message, newsletterSubscription } = body
+    
+    if (!firstName || !lastName || !email || !company || !interests || !Array.isArray(interests) || interests.length === 0) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
       )
     }
-
-    console.log('Validation passed - processing submission')
-
-    // Create Supabase client
+    
     const supabase = createAdminSupabaseClient()
-    console.log('Supabase client created')
-
-    // Insert submission into database
+    
     const { data, error } = await supabase
       .from('contact_submissions')
-      .insert({
-        first_name: firstName,
-        last_name: lastName,
-        email: email,
-        phone: phone || null,
-        company: company,
-        job_title: jobTitle || null,
-        company_size: companySize || null,
-        industry: industry || null,
-        interests: Array.isArray(interests) ? interests : [interests],
-        message: message || null,
-        newsletter_subscription: newsletter === 'yes',
-        status: 'new'
-      })
+      .insert([
+        {
+          first_name: firstName,
+          last_name: lastName,
+          email,
+          phone: phone || null,
+          company,
+          job_title: jobTitle || null,
+          company_size: companySize || null,
+          industry: industry || null,
+          interests,
+          message: message || null,
+          newsletter_subscription: newsletterSubscription || false,
+        }
+      ])
       .select()
-
+    
     if (error) {
-      console.error('Supabase insert error:', error)
       return NextResponse.json(
-        { error: 'Failed to save submission', details: error.message },
+        { error: 'Failed to save submission' },
         { status: 500 }
       )
     }
-
-    console.log('Submission saved to database:', data)
-
-    // Send email confirmation to the user
+    
+    const sgMail = require('@sendgrid/mail')
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+    
+    const userEmail = {
+      to: email,
+      from: {
+        email: process.env.SENDGRID_FROM_EMAIL || 'noreply@prop-shop.ai',
+        name: process.env.SENDGRID_FROM_NAME || 'Prop Shop AI'
+      },
+      replyTo: 'sales@prop-shop.ai',
+      subject: 'Thank you for contacting Prop Shop AI',
+      text: `Hi ${firstName},\n\nThank you for reaching out to Prop Shop AI. We've received your message and will get back to you within 24 hours.\n\nYour submission details:\n- Company: ${company}\n- Interests: ${interests.join(', ')}\n\nIf you have any urgent questions, please contact us directly at sales@prop-shop.ai.\n\nBest regards,\nThe Prop Shop AI Team`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
+          <div style="background: linear-gradient(135deg, #ff6b35, #f7931e); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <h1 style="color: white; margin: 0; font-size: 24px;">Thank You!</h1>
+          </div>
+          
+          <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <p style="font-size: 16px; color: #333; margin-bottom: 20px;">Hi ${firstName},</p>
+            
+            <p style="font-size: 16px; color: #333; margin-bottom: 20px;">Thank you for reaching out to <strong>Prop Shop AI</strong>. We've received your message and will get back to you within 24 hours.</p>
+            
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
+              <h3 style="color: #ff6b35; margin-top: 0;">Your Submission Details:</h3>
+              <p style="margin: 5px 0;"><strong>Company:</strong> ${company}</p>
+              <p style="margin: 5px 0;"><strong>Interests:</strong> ${interests.join(', ')}</p>
+              ${message ? `<p style="margin: 5px 0;"><strong>Message:</strong> ${message}</p>` : ''}
+            </div>
+            
+            <p style="font-size: 16px; color: #333; margin-bottom: 20px;">If you have any urgent questions, please contact us directly at <a href="mailto:sales@prop-shop.ai" style="color: #ff6b35;">sales@prop-shop.ai</a>.</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+              <a href="https://prop-shop.ai" style="background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">Visit Our Website</a>
+            </div>
+            
+            <p style="font-size: 14px; color: #666; margin-top: 30px; text-align: center;">Best regards,<br>The Prop Shop AI Team</p>
+          </div>
+        </div>
+      `
+    }
+    
     try {
-      const userEmail = {
-        to: email,
-        from: {
-          email: 'hello@prop-shop.ai',
-          name: 'Prop Shop AI'
-        },
-        replyTo: 'sales@prop-shop.ai',
-        subject: 'Thank you for contacting Prop Shop AI!',
-        text: `Hi ${firstName},
-
-Thank you for reaching out to Prop Shop AI! We've received your contact request and are excited to help you with your procurement needs.
-
-Our team will review your submission and get back to you within 24 hours.
-
-Your Submission Details:
-- Name: ${firstName} ${lastName}
-- Company: ${company}
-- Interests: ${Array.isArray(interests) ? interests.join(', ') : interests}
-${message ? `- Message: ${message}` : ''}
-
-In the meantime, you can explore our platform at https://prop-shop.ai to learn more about how Prop Shop AI can level the playing field for your procurement success.
-
-If you have any immediate questions, feel free to reach out to us at sales@prop-shop.ai
-
-Best regards,
-The Prop Shop AI Team
-
-© 2025 Make Ready Consulting, dba. Prop Shop AI. All rights reserved.`,
-        html: `
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Thank you for contacting Prop Shop AI!</title>
-          </head>
-          <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
-            <div style="max-width: 600px; margin: 0 auto; background-color: white;">
-              <!-- Header -->
-              <div style="background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 100%); padding: 30px; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 28px; font-weight: bold;">Prop Shop AI</h1>
-                <p style="color: #9AF23A; margin: 10px 0 0 0; font-size: 16px;">Procurement Intelligence Platform</p>
-              </div>
-              
-              <!-- Content -->
-              <div style="padding: 30px;">
-                <h2 style="color: #0B1220; margin-top: 0; font-size: 24px;">Thank you for reaching out!</h2>
-                
-                <p style="color: #333; line-height: 1.6; font-size: 16px;">
-                  Hi ${firstName},
-                </p>
-                
-                <p style="color: #333; line-height: 1.6; font-size: 16px;">
-                  We've received your contact request and are excited to help you with your procurement needs. 
-                  Our team will review your submission and get back to you within 24 hours.
-                </p>
-                
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2D5BFF;">
-                  <h3 style="color: #0B1220; margin-top: 0; font-size: 18px;">Your Submission Details:</h3>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Name:</strong> ${firstName} ${lastName}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Company:</strong> ${company}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Interests:</strong> ${Array.isArray(interests) ? interests.join(', ') : interests}</p>
-                  ${message ? `<p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Message:</strong> ${message}</p>` : ''}
-                </div>
-                
-                <p style="color: #333; line-height: 1.6; font-size: 16px;">
-                  In the meantime, you can explore our platform and learn more about how Prop Shop AI 
-                  can level the playing field for your procurement success.
-                </p>
-                
-                <div style="text-align: center; margin: 30px 0;">
-                  <a href="https://prop-shop.ai" style="background: linear-gradient(135deg, #2D5BFF 0%, #9AF23A 100%); color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 16px;">
-                    Visit Our Website
-                  </a>
-                </div>
-                
-                <p style="color: #666; font-size: 14px; line-height: 1.6; margin-top: 30px;">
-                  If you have any immediate questions, feel free to reach out to us at 
-                  <a href="mailto:sales@prop-shop.ai" style="color: #2D5BFF; text-decoration: none;">sales@prop-shop.ai</a>
-                </p>
-                
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                  Best regards,<br>
-                  <strong>The Prop Shop AI Team</strong>
-                </p>
-              </div>
-              
-              <!-- Footer -->
-              <div style="background: #0B1220; padding: 20px; text-align: center;">
-                <p style="color: #666; margin: 0; font-size: 12px;">
-                  © 2025 Make Ready Consulting, dba. Prop Shop AI. All rights reserved.
-                </p>
-              </div>
-            </div>
-          </body>
-          </html>
-        `
-      }
-
       await sgMail.send(userEmail)
-      console.log('Confirmation email sent to user:', email)
-
-      // Send notification email to your team
-      const teamEmail = {
-        to: 'sales@prop-shop.ai',
-        from: {
-          email: 'hello@prop-shop.ai',
-          name: 'Prop Shop AI Contact Form'
-        },
-        replyTo: email, // Allow team to reply directly to the contact
-        subject: `New Contact Form Submission: ${firstName} ${lastName} from ${company}`,
-        text: `New Contact Form Submission
-
-Contact Details:
-- Name: ${firstName} ${lastName}
-- Email: ${email}
-- Company: ${company}
-- Phone: ${phone || 'Not provided'}
-- Job Title: ${jobTitle || 'Not provided'}
-- Company Size: ${companySize || 'Not provided'}
-- Industry: ${industry || 'Not provided'}
-- Interests: ${Array.isArray(interests) ? interests.join(', ') : interests}
-- Newsletter: ${newsletter === 'yes' ? 'Yes' : 'No'}
-${message ? `- Message: ${message}` : ''}
-
-Submission ID: ${data[0]?.id}
-Timestamp: ${new Date().toLocaleString()}
-
-View in Supabase: https://supabase.com/dashboard/project/reprsoqodhmpdoiajhst/editor/contact_submissions
-
-Reply directly to this email to respond to ${firstName}.`,
-        html: `
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>New Contact Form Submission</title>
-          </head>
-          <body style="margin: 0; padding: 0; font-family: Arial, sans-serif; background-color: #f4f4f4;">
-            <div style="max-width: 600px; margin: 0 auto; background-color: white;">
-              <!-- Header -->
-              <div style="background: #2D5BFF; padding: 20px; text-align: center;">
-                <h1 style="color: white; margin: 0; font-size: 24px;">New Contact Form Submission</h1>
-              </div>
-              
-              <!-- Content -->
-              <div style="padding: 30px;">
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2D5BFF;">
-                  <h3 style="color: #0B1220; margin-top: 0; font-size: 18px;">Contact Details:</h3>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Name:</strong> ${firstName} ${lastName}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Email:</strong> <a href="mailto:${email}" style="color: #2D5BFF;">${email}</a></p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Company:</strong> ${company}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Job Title:</strong> ${jobTitle || 'Not provided'}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Company Size:</strong> ${companySize || 'Not provided'}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Industry:</strong> ${industry || 'Not provided'}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Interests:</strong> ${Array.isArray(interests) ? interests.join(', ') : interests}</p>
-                  <p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Newsletter:</strong> ${newsletter === 'yes' ? 'Yes' : 'No'}</p>
-                  ${message ? `<p style="color: #333; margin: 8px 0; font-size: 14px;"><strong>Message:</strong> ${message}</p>` : ''}
-                </div>
-                
-                <div style="background: #e8f4fd; padding: 15px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #2D5BFF;">
-                  <p style="color: #0B1220; margin: 8px 0; font-size: 14px;"><strong>Submission ID:</strong> ${data[0]?.id}</p>
-                  <p style="color: #0B1220; margin: 8px 0; font-size: 14px;"><strong>Timestamp:</strong> ${new Date().toLocaleString()}</p>
-                </div>
-                
-                <div style="text-align: center; margin: 30px 0;">
-                  <a href="https://supabase.com/dashboard/project/reprsoqodhmpdoiajhst/editor/contact_submissions" style="background: #2D5BFF; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-size: 14px;">
-                    View in Supabase
-                  </a>
-                </div>
-                
-                <p style="color: #666; font-size: 14px; line-height: 1.6;">
-                  <strong>Note:</strong> You can reply directly to this email to respond to ${firstName}.
-                </p>
-              </div>
-              
-              <!-- Footer -->
-              <div style="background: #0B1220; padding: 20px; text-align: center;">
-                <p style="color: #666; margin: 0; font-size: 12px;">
-                  © 2025 Make Ready Consulting, dba. Prop Shop AI. All rights reserved.
-                </p>
-              </div>
-            </div>
-          </body>
-          </html>
-        `
-      }
-
-      await sgMail.send(teamEmail)
-      console.log('Notification email sent to team')
-
     } catch (emailError) {
-      console.error('Email sending error:', emailError)
-      // Don't fail the whole request if email fails
-      // The form submission was successful, just the email failed
-    }
-
-    // Return success response
-    const response = {
-      success: true, 
-      message: 'Thank you for your submission! We\'ll be in touch soon.',
-      submission_id: data[0]?.id
+      return NextResponse.json(
+        { error: 'Failed to send confirmation email' },
+        { status: 500 }
+      )
     }
     
-    console.log('Returning success response:', response)
-    return NextResponse.json(response, { status: 200 })
-
-  } catch (error) {
-    console.error('Contact API error:', error)
+    const teamEmail = {
+      to: 'sales@prop-shop.ai',
+      from: {
+        email: process.env.SENDGRID_FROM_EMAIL || 'noreply@prop-shop.ai',
+        name: process.env.SENDGRID_FROM_NAME || 'Prop Shop AI'
+      },
+      replyTo: email,
+      subject: `New Contact Submission: ${firstName} ${lastName} from ${company}`,
+      text: `New contact submission received:\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nCompany: ${company}\nJob Title: ${jobTitle || 'Not specified'}\nCompany Size: ${companySize || 'Not specified'}\nIndustry: ${industry || 'Not specified'}\nInterests: ${interests.join(', ')}\nMessage: ${message || 'No message'}\nNewsletter Subscription: ${newsletterSubscription ? 'Yes' : 'No'}\n\nPlease follow up within 24 hours.`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
+          <div style="background: linear-gradient(135deg, #ff6b35, #f7931e); padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <h1 style="color: white; margin: 0; font-size: 24px;">New Contact Submission</h1>
+          </div>
+          
+          <div style="background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <h2 style="color: #333; margin-top: 0;">Contact Details</h2>
+            
+            <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Name:</td>
+                <td style="padding: 8px 0; color: #333;">${firstName} ${lastName}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Email:</td>
+                <td style="padding: 8px 0; color: #333;"><a href="mailto:${email}" style="color: #ff6b35;">${email}</a></td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Company:</td>
+                <td style="padding: 8px 0; color: #333;">${company}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Job Title:</td>
+                <td style="padding: 8px 0; color: #333;">${jobTitle || 'Not specified'}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Company Size:</td>
+                <td style="padding: 8px 0; color: #333;">${companySize || 'Not specified'}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Industry:</td>
+                <td style="padding: 8px 0; color: #333;">${industry || 'Not specified'}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Interests:</td>
+                <td style="padding: 8px 0; color: #333;">${interests.join(', ')}</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #eee;">
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Message:</td>
+                <td style="padding: 8px 0; color: #333;">${message || 'No message'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 0; font-weight: bold; color: #666;">Newsletter Subscription:</td>
+                <td style="padding: 8px 0; color: #333;">${newsletterSubscription ? 'Yes' : 'No'}</td>
+              </tr>
+            </table>
+            
+            <div style="text-align: center; margin-top: 30px;">
+              <a href="mailto:${email}" style="background: linear-gradient(135deg, #ff6b35, #f7931e); color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">Reply to Contact</a>
+            </div>
+            
+            <p style="font-size: 14px; color: #666; margin-top: 30px; text-align: center;">Please follow up within 24 hours.</p>
+          </div>
+        </div>
+      `
+    }
     
-    // Type-safe error handling
-    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-    const errorStack = error instanceof Error ? error.stack : 'No stack trace'
-    const errorName = error instanceof Error ? error.name : 'Unknown error type'
-    
-    console.error('Error details:', {
-      message: errorMessage,
-      stack: errorStack,
-      name: errorName
-    })
+    try {
+      await sgMail.send(teamEmail)
+    } catch (emailError) {
+      return NextResponse.json(
+        { error: 'Failed to send team notification' },
+        { status: 500 }
+      )
+    }
     
     return NextResponse.json(
-      { error: 'Internal server error', details: errorMessage },
+      { message: 'Contact submission received successfully' },
+      { status: 200 }
+    )
+    
+  } catch (error) {
+    return NextResponse.json(
+      { error: 'Internal server error' },
       { status: 500 }
     )
   }
