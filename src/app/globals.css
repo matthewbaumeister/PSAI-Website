@@ -623,76 +623,7 @@ body::after {
 
 
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
 
-/* Government Agencies Row */
-.agencies-row {
-  margin-top: 0.25rem;
-  padding: 0.375rem 0;
-  background: rgba(154, 242, 58, 0.05);
-  border-top: 1px solid rgba(154, 242, 58, 0.1);
-  border-bottom: 1px solid rgba(154, 242, 58, 0.1);
-  position: relative;
-  z-index: 10;
-}
-
-.agencies-label {
-  text-align: center;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-}
-
-.agencies-scroll {
-  overflow: hidden;
-  position: relative;
-}
-
-.agencies-items {
-  display: flex;
-  animation: scroll-right 25s linear infinite;
-  white-space: nowrap;
-  width: max-content;
-  transform: translateX(0);
-}
-
-.agencies-items:hover {
-  animation-play-state: paused;
-}
-
-.agency-item {
-  background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(247, 147, 30, 0.2) 100%);
-  color: #ff6b35;
-  padding: 1rem 2rem;
-  margin: 0 1rem;
-  border-radius: 8px;
-  font-weight: 700;
-  font-size: 1.25rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 1px solid rgba(255, 107, 53, 0.3);
-  backdrop-filter: blur(10px);
-  flex-shrink: 0;
-}
-
-@keyframes scroll-right {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 
 
 
@@ -3366,11 +3297,12 @@ body::after {
   white-space: nowrap;
   width: max-content;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
+  cursor: pointer;
 }
 
 .proof-items:hover {
-  transform: translateX(-20px);
+  transform: translateX(-50px);
 }
 
 .proof-item {
@@ -3386,6 +3318,13 @@ body::after {
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.proof-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
 }
 
 /* Agencies Section */
@@ -3410,11 +3349,12 @@ body::after {
   white-space: nowrap;
   width: max-content;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
+  cursor: pointer;
 }
 
 .agencies-items:hover {
-  transform: translateX(20px);
+  transform: translateX(50px);
 }
 
 .agency-item {
@@ -3430,6 +3370,13 @@ body::after {
   border: 1px solid rgba(255, 107, 53, 0.3);
   backdrop-filter: blur(10px);
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.agency-item:hover {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.3) 0%, rgba(247, 147, 30, 0.3) 100%);
+  border-color: rgba(255, 107, 53, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Solutions Page */
