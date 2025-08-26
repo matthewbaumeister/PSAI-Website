@@ -3297,12 +3297,10 @@ body::after {
   white-space: nowrap;
   width: max-content;
   overflow: hidden;
-  transition: transform 0.5s ease;
-  cursor: pointer;
 }
 
 .proof-items:hover {
-  transform: translateX(-50px);
+  animation-play-state: paused;
 }
 
 .proof-item {
@@ -3349,12 +3347,10 @@ body::after {
   white-space: nowrap;
   width: max-content;
   overflow: hidden;
-  transition: transform 0.5s ease;
-  cursor: pointer;
 }
 
 .agencies-items:hover {
-  transform: translateX(50px);
+  animation-play-state: paused;
 }
 
 .agency-item {
