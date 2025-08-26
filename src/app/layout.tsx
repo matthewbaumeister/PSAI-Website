@@ -19,6 +19,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        {/* Test Background - Very Visible */}
+        <div className="test-bg"></div>
+        
+        {/* Test Inline Background */}
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(45deg, rgba(154, 242, 58, 0.4) 25%, transparent 25%, transparent 50%, rgba(154, 242, 58, 0.4) 50%, rgba(154, 242, 58, 0.4) 75%, transparent 75%, transparent)',
+          backgroundSize: '50px 50px',
+          animation: 'test-move 5s linear infinite',
+          zIndex: -9,
+          pointerEvents: 'none'
+        }}></div>
+        
         {/* Enhanced Background Elements */}
         <div className="bg-grid-overlay"></div>
         <div className="bg-dots"></div>
