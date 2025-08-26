@@ -202,7 +202,7 @@ body::after {
   height: 3rem;
   background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
   background-size: 400% 400%;
-  animation: color-chain 8s ease infinite;
+  animation: color-chain 6s ease infinite;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
@@ -223,7 +223,7 @@ body::after {
   bottom: 0;
   background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
   background-size: 400% 400%;
-  animation: color-chain 8s ease infinite reverse;
+  animation: color-chain 6s ease infinite;
   opacity: 0.3;
   z-index: -1;
 }
@@ -354,6 +354,22 @@ body::after {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+/* Header Book Demo Button - Special styling */
+.header-actions .btn-outline {
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain 8s ease infinite;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.header-actions .btn-outline:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(45, 91, 255, 0.3);
+  animation: color-chain 4s ease infinite;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
 .btn-lg {
   padding: 1rem 2rem;
   font-size: 1.125rem;
@@ -437,7 +453,7 @@ body::after {
 .hero h1 span {
   background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
   background-size: 400% 400%;
-  animation: color-chain 8s ease infinite;
+  animation: color-chain 6s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -750,7 +766,7 @@ body::after {
   height: 2.5rem;
   background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
   background-size: 400% 400%;
-  animation: color-chain 8s ease infinite;
+  animation: color-chain 6s ease infinite;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
