@@ -3621,11 +3621,21 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 64px;
 }
 
 .solution-icon img {
   max-width: 100%;
   height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* Fallback for missing icons */
+.solution-icon img:not([src]), 
+.solution-icon img[src=""],
+.solution-icon img[src*="undefined"] {
+  display: none;
 }
 
 .solution-content {
