@@ -589,29 +589,15 @@ body::after {
   font-weight: 600;
 }
 
-.proof-scroll {
-  overflow: hidden;
-  position: relative;
-}
 
-.proof-items {
-  display: flex;
-  gap: 0.75rem;
-  animation: scroll-left 60s linear infinite;
-  white-space: nowrap;
-  width: max-content;
-}
 
-.proof-item {
-  padding: 0.75rem 1rem;
-  background: rgba(45, 91, 255, 0.1);
-  border: 1px solid rgba(45, 91, 255, 0.3);
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #2D5BFF;
-  white-space: nowrap;
-  flex-shrink: 0;
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
 }
 
 /* Government Agencies Row */
@@ -642,43 +628,40 @@ body::after {
 
 .agencies-items {
   display: flex;
-  gap: 0.75rem;
-  animation: scroll-right 180s linear infinite;
+  animation: scroll-right 25s linear infinite;
   white-space: nowrap;
   width: max-content;
 }
 
-.agency-item {
-  padding: 0.75rem 1rem;
-  background: rgba(154, 242, 58, 0.1);
-  border: 1px solid rgba(154, 242, 58, 0.3);
-  border-bottom: 1px solid rgba(154, 242, 58, 0.1);
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #9AF23A;
-  white-space: nowrap;
-  flex-shrink: 0;
+.agencies-items:hover {
+  animation-play-state: paused;
 }
 
-/* Animations */
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+.agency-item {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(247, 147, 30, 0.2) 100%);
+  color: #ff6b35;
+  padding: 1rem 2rem;
+  margin: 0 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  backdrop-filter: blur(10px);
+  flex-shrink: 0;
 }
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - 0.5rem));
   }
   100% {
     transform: translateX(0);
   }
 }
+
+
 
 /* Features Section */
 .features-section {
@@ -3352,6 +3335,11 @@ body::after {
   display: flex;
   animation: scroll-left 30s linear infinite;
   white-space: nowrap;
+  width: max-content;
+}
+
+.proof-items:hover {
+  animation-play-state: paused;
 }
 
 .proof-item {
@@ -3374,7 +3362,7 @@ body::after {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - 0.5rem));
   }
 }
 
@@ -3399,6 +3387,11 @@ body::after {
   display: flex;
   animation: scroll-right 25s linear infinite;
   white-space: nowrap;
+  width: max-content;
+}
+
+.agencies-items:hover {
+  animation-play-state: paused;
 }
 
 .agency-item {
@@ -3418,7 +3411,7 @@ body::after {
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-50% - 0.5rem));
   }
   100% {
     transform: translateX(0);
