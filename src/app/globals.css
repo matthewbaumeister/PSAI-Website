@@ -3566,9 +3566,11 @@ body::after {
 /* Solutions Grid */
 .solutions-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: 2rem;
   margin-bottom: 4rem;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .solution-card {
@@ -3578,6 +3580,11 @@ body::after {
   padding: 2rem;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
 }
 
 .solution-card:hover {
@@ -3590,6 +3597,13 @@ body::after {
   font-size: 3rem;
   margin-bottom: 1.5rem;
   text-align: center;
+  flex-shrink: 0;
+}
+
+.solution-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .solution-content h3 {
@@ -3597,12 +3611,14 @@ body::after {
   font-weight: 600;
   color: white;
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .solution-content p {
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.6;
   margin-bottom: 1.5rem;
+  flex: 1;
 }
 
 .solution-features {
@@ -3610,6 +3626,7 @@ body::after {
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  flex-shrink: 0;
 }
 
 .feature-tag {
@@ -3620,6 +3637,7 @@ body::after {
   font-size: 0.75rem;
   font-weight: 500;
   border: 1px solid rgba(255, 107, 53, 0.3);
+  white-space: nowrap;
 }
 
 .solution-card .btn {
@@ -3630,6 +3648,8 @@ body::after {
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 /* Integration Section */
@@ -3771,5 +3791,69 @@ body::after {
   .solutions-page .cta-buttons {
     flex-direction: column;
     align-items: center;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .solutions-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .solutions-page h1 {
+    font-size: 2.5rem;
+  }
+  
+  .solutions-page .hero-section h2 {
+    font-size: 2rem;
+  }
+  
+  .solutions-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .solution-card {
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  
+  .integration-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .solutions-page .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .solutions-page .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .solutions-page h1 {
+    font-size: 2rem;
+  }
+  
+  .solutions-page .hero-section h2 {
+    font-size: 1.75rem;
+  }
+  
+  .solution-card {
+    padding: 1rem;
+  }
+  
+  .solution-features {
+    gap: 0.25rem;
+  }
+  
+  .feature-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
   }
 }
