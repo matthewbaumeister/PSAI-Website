@@ -3333,10 +3333,9 @@ body::after {
 
 .proof-items {
   display: flex;
-  animation: scroll-left 30s linear infinite;
+  animation: scroll-left 40s linear infinite;
   white-space: nowrap;
   width: max-content;
-  transform: translateX(0);
 }
 
 .proof-items:hover {
@@ -3363,7 +3362,7 @@ body::after {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-66.666%);
   }
 }
 
@@ -3386,10 +3385,9 @@ body::after {
 
 .agencies-items {
   display: flex;
-  animation: scroll-right 25s linear infinite;
+  animation: scroll-right 35s linear infinite;
   white-space: nowrap;
   width: max-content;
-  transform: translateX(0);
 }
 
 .agencies-items:hover {
@@ -3413,7 +3411,7 @@ body::after {
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(-50%);
+    transform: translateX(-66.666%);
   }
   100% {
     transform: translateX(0);

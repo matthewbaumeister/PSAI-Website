@@ -51,12 +51,24 @@ export function Hero() {
           <div className="proof-item">WRITING</div>
           <div className="proof-item">CRM</div>
           <div className="proof-item">SMALL BUSINESS</div>
+          <div className="proof-item">COMPLIANCE</div>
+          <div className="proof-item">SEARCH</div>
+          <div className="proof-item">MARKET RESEARCH</div>
+          <div className="proof-item">WRITING</div>
+          <div className="proof-item">CRM</div>
+          <div className="proof-item">SMALL BUSINESS</div>
         </div>
       </div>
       
       <div className="agencies-section">
         <div className="section-label">WE'VE WORKED ON PROPOSALS SUPPORTING</div>
         <div className="agencies-items">
+          <div className="agency-item">DOD</div>
+          <div className="agency-item">DHS</div>
+          <div className="agency-item">VA</div>
+          <div className="agency-item">HHS</div>
+          <div className="agency-item">GSA</div>
+          <div className="agency-item">NASA</div>
           <div className="agency-item">DOD</div>
           <div className="agency-item">DHS</div>
           <div className="agency-item">VA</div>
