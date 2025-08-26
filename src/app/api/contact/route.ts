@@ -67,13 +67,20 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error('Contact API error:', error)
+    
+    // Type-safe error handling
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+    const errorStack = error instanceof Error ? error.stack : 'No stack trace'
+    const errorName = error instanceof Error ? error.name : 'Unknown error type'
+    
     console.error('Error details:', {
-      message: error.message,
-      stack: error.stack,
-      name: error.name
+      message: errorMessage,
+      stack: errorStack,
+      name: errorName
     })
+    
     return NextResponse.json(
-      { error: 'Internal server error', details: error.message },
+      { error: 'Internal server error', details: errorMessage },
       { status: 500 }
     )
   }
