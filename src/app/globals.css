@@ -2864,3 +2864,452 @@ body::after {
     gap: 0.5rem;
   }
 }
+
+/* About Page */
+.about-page {
+  padding: 2rem 0;
+  color: white;
+}
+
+.about-page .page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.about-page .page-header .badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.about-page .page-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 1rem 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-page .page-header .subtitle {
+  font-size: 1.25rem;
+  color: #B8B8B8;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.about-page .hero-section {
+  margin-bottom: 4rem;
+}
+
+.about-page .hero-content {
+  text-align: center;
+}
+
+.about-page .hero-content h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.about-page .hero-content p {
+  font-size: 1.125rem;
+  color: #B8B8B8;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.about-page .hero-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.about-page .hero-features .feature {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.about-page .hero-features .feature:hover {
+  transform: translateY(-5px);
+}
+
+.about-page .hero-features .feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-page .hero-features h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-page .hero-features p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.about-page .content-section {
+  margin-bottom: 4rem;
+}
+
+.about-page .content-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
+}
+
+/* Problem Description */
+.about-page .problem-description {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-page .problem-text p {
+  font-size: 1.125rem;
+  color: #B8B8B8;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.about-page .problem-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-page .stat {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.about-page .stat:hover {
+  transform: translateY(-3px);
+}
+
+.about-page .stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.about-page .stat-label {
+  color: #B8B8B8;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+/* Mission Content */
+.about-page .mission-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-page .mission-text h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.about-page .mission-text p {
+  font-size: 1.125rem;
+  color: #B8B8B8;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.about-page .mission-principles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.about-page .principle {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.about-page .principle:hover {
+  transform: translateY(-3px);
+}
+
+.about-page .principle h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: white;
+}
+
+.about-page .principle p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Fighting Methods */
+.about-page .fighting-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.about-page .method {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.about-page .method:hover {
+  transform: translateY(-3px);
+}
+
+.about-page .method-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.about-page .method h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-page .method p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Underdog Categories */
+.about-page .underdog-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.about-page .underdog-category {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.about-page .underdog-category:hover {
+  transform: translateY(-3px);
+}
+
+.about-page .underdog-category h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-page .underdog-category p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Team Section */
+.about-page .team-section {
+  text-align: center;
+}
+
+.about-page .team-intro p {
+  font-size: 1.125rem;
+  color: #B8B8B8;
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.about-page .team-values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.about-page .value {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.about-page .value:hover {
+  transform: translateY(-3px);
+}
+
+.about-page .value h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-page .value p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Join Rebellion */
+.about-page .join-rebellion {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-page .rebellion-text h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.about-page .rebellion-text p {
+  font-size: 1.125rem;
+  color: #B8B8B8;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.about-page .rebellion-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.about-page .action {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.about-page .action:hover {
+  transform: translateY(-3px);
+}
+
+.about-page .action h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-page .action p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* CTA Section */
+.about-page .cta-section {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  margin-top: 4rem;
+}
+
+.about-page .cta-section h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-page .cta-section p {
+  font-size: 1.125rem;
+  color: #B8B8B8;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.about-page .cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-page .page-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .about-page .hero-content h2 {
+    font-size: 2rem;
+  }
+  
+  .about-page .content-section h2 {
+    font-size: 1.75rem;
+  }
+  
+  .about-page .hero-features,
+  .about-page .fighting-methods,
+  .about-page .underdog-categories,
+  .about-page .team-values {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-page .problem-description,
+  .about-page .mission-content,
+  .about-page .join-rebellion {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-page .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
