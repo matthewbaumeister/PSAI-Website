@@ -32,7 +32,7 @@ export default function RootLayout({
           background: 'linear-gradient(45deg, rgba(154, 242, 58, 0.4) 25%, transparent 25%, transparent 50%, rgba(154, 242, 58, 0.4) 50%, rgba(154, 242, 58, 0.4) 75%, transparent 75%, transparent)',
           backgroundSize: '50px 50px',
           animation: 'test-move 5s linear infinite',
-          zIndex: -9,
+          zIndex: -50,
           pointerEvents: 'none'
         }}></div>
         
