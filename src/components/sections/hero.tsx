@@ -3,7 +3,7 @@ export function Hero() {
     <section className="hero">
       <div className="container">
         <div className="hero-content">
-          <div className="badge">Government Contracting Intelligence</div>
+          <div className="badge">The Procurement Intelligence Platform</div>
           <h1>
             Level the Playing Field with
             <span className="gradient-text"> AI-Powered</span> Government Contracting
@@ -37,6 +37,7 @@ export function Hero() {
       </div>
       
       <div className="proof-section">
+        <div className="section-label">TRUSTED BY INNOVATORS, PRIMES, AND GOVERNMENT AGENCIES</div>
         <div className="proof-items">
           <div className="proof-item">COMPLIANCE</div>
           <div className="proof-item">SEARCH</div>
@@ -54,6 +55,7 @@ export function Hero() {
       </div>
       
       <div className="agencies-section">
+        <div className="section-label">WE'VE WORKED ON PROPOSALS SUPPORTING</div>
         <div className="agencies-items">
           <div className="agency-item">DOD</div>
           <div className="agency-item">DHS</div>
