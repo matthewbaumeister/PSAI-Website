@@ -2,104 +2,71 @@ export function Hero() {
   return (
     <section className="hero">
       <div className="container">
-        <div className="badge">
-          The Procurement Intelligence and Compliance Platform
-        </div>
-
-        <h1>
-          Where innovation meets
-          <br />
-          <span>compliance.</span>
-        </h1>
-
-        <p>
-          Find, win, and deliver government contracts — without the gatekeepers. 
-          The procurement intelligence platform that levels the playing field for challengers and incumbents alike.
-        </p>
-
-        <div className="hero-buttons">
-          <a href="/book-demo" className="btn btn-primary btn-lg">
-            Book a Demo →
-          </a>
-          <a href="/how-it-works" className="btn btn-outline btn-lg">
-            See How It Works
-          </a>
-        </div>
-      </div>
-
-      {/* Proof Row */}
-      <div className="proof-row">
-        <div className="container">
-          <p className="proof-label">
-            TRUSTED BY INNOVATORS, PRIMES, AND GOVERNMENT AGENCIES
+        <div className="hero-content">
+          <div className="badge">Government Contracting Intelligence</div>
+          <h1>
+            Level the Playing Field with
+            <span className="gradient-text"> AI-Powered</span> Government Contracting
+          </h1>
+          <p className="hero-description">
+            Access the same intelligence, tools, and opportunities that big companies use to win government contracts. 
+            No more losing to companies with better connections - win with superior capabilities.
           </p>
-          <div className="proof-scroll">
-            <div className="proof-items">
-              <div className="proof-item">SDVOSB</div>
-              <div className="proof-item">8(a)</div>
-              <div className="proof-item">WOSB</div>
-              <div className="proof-item">HUBZone</div>
-              <div className="proof-item">VOSB</div>
-              <div className="proof-item">EDWOSB</div>
-              <div className="proof-item">SBA</div>
-              <div className="proof-item">Primes</div>
-              <div className="proof-item">Startups</div>
-              <div className="proof-item">Fortune 500</div>
-              <div className="proof-item">DoD</div>
-              <div className="proof-item">Federal</div>
-              {/* Duplicate items for seamless scrolling */}
-              <div className="proof-item">SDVOSB</div>
-              <div className="proof-item">8(a)</div>
-              <div className="proof-item">WOSB</div>
-              <div className="proof-item">HUBZone</div>
-              <div className="proof-item">VOSB</div>
-              <div className="proof-item">EDWOSB</div>
-              <div className="proof-item">SBA</div>
-              <div className="proof-item">Primes</div>
-              <div className="proof-item">Startups</div>
-              <div className="proof-item">Fortune 500</div>
-              <div className="proof-item">DoD</div>
-              <div className="proof-item">Federal</div>
-            </div>
+          
+          <div className="mission-statement">
+            <h2>Our Mission</h2>
+            <p>
+              <strong>"We provide capabilities based on quality and merit, not connections."</strong>
+            </p>
+            <p>
+              In government contracting, success should be determined by what you can deliver, not who you know. 
+              We're democratizing access to the tools and intelligence that level the playing field for innovative 
+              companies competing against established giants.
+            </p>
+          </div>
+          
+          <div className="cta-buttons">
+            <a href="/book-demo" className="btn btn-primary btn-lg">
+              Book Demo
+            </a>
+            <a href="/contact" className="btn btn-outline btn-lg">
+              Get Started
+            </a>
           </div>
         </div>
       </div>
-
-      {/* Government Agencies Row */}
-      <div className="agencies-row">
-        <div className="container">
-          <p className="agencies-label">
-            WE&apos;VE WORKED ON PROPOSALS SUPPORTING:
-          </p>
-          <div className="agencies-scroll">
-            <div className="agencies-items">
-              <div className="agency-item">U.S. Army</div>
-              <div className="agency-item">U.S. Navy</div>
-              <div className="agency-item">U.S. Air Force</div>
-              <div className="agency-item">U.S. Marine Corps</div>
-              <div className="agency-item">U.S. Coast Guard</div>
-              <div className="agency-item">Department of Defense</div>
-              <div className="agency-item">National Security Agency</div>
-              <div className="agency-item">Central Intelligence Agency</div>
-              <div className="agency-item">Department of Homeland Security</div>
-              <div className="agency-item">Department of Energy</div>
-              <div className="agency-item">Department of Transportation</div>
-              <div className="agency-item">Department of Veterans Affairs</div>
-              {/* Duplicate items for seamless scrolling */}
-              <div className="agency-item">U.S. Army</div>
-              <div className="agency-item">U.S. Navy</div>
-              <div className="agency-item">U.S. Air Force</div>
-              <div className="agency-item">U.S. Marine Corps</div>
-              <div className="agency-item">U.S. Coast Guard</div>
-              <div className="agency-item">Department of Defense</div>
-              <div className="agency-item">National Security Agency</div>
-              <div className="agency-item">Central Intelligence Agency</div>
-              <div className="agency-item">Department of Homeland Security</div>
-              <div className="agency-item">Department of Energy</div>
-              <div className="agency-item">Department of Transportation</div>
-              <div className="agency-item">Department of Veterans Affairs</div>
-            </div>
-          </div>
+      
+      <div className="proof-section">
+        <div className="proof-items">
+          <div className="proof-item">COMPLIANCE</div>
+          <div className="proof-item">SEARCH</div>
+          <div className="proof-item">MARKET RESEARCH</div>
+          <div className="proof-item">WRITING</div>
+          <div className="proof-item">CRM</div>
+          <div className="proof-item">SMALL BUSINESS</div>
+          <div className="proof-item">COMPLIANCE</div>
+          <div className="proof-item">SEARCH</div>
+          <div className="proof-item">MARKET RESEARCH</div>
+          <div className="proof-item">WRITING</div>
+          <div className="proof-item">CRM</div>
+          <div className="proof-item">SMALL BUSINESS</div>
+        </div>
+      </div>
+      
+      <div className="agencies-section">
+        <div className="agencies-items">
+          <div className="agency-item">DOD</div>
+          <div className="agency-item">DHS</div>
+          <div className="agency-item">VA</div>
+          <div className="agency-item">HHS</div>
+          <div className="agency-item">GSA</div>
+          <div className="agency-item">NASA</div>
+          <div className="agency-item">DOD</div>
+          <div className="agency-item">DHS</div>
+          <div className="agency-item">VA</div>
+          <div className="agency-item">HHS</div>
+          <div className="agency-item">GSA</div>
+          <div className="agency-item">NASA</div>
         </div>
       </div>
     </section>
