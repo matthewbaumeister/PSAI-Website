@@ -1,31 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-
 export function Hero() {
-  const proofRef = useRef<HTMLDivElement>(null)
-  const agenciesRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const proofItems = proofRef.current
-    const agenciesItems = agenciesRef.current
-
-    if (!proofItems || !agenciesItems) return
-
-    // Clone items for seamless infinite scroll
-    const proofClone = proofItems.cloneNode(true) as HTMLElement
-    const agenciesClone = agenciesItems.cloneNode(true) as HTMLElement
-
-    // Append clones
-    proofItems.appendChild(proofClone)
-    agenciesItems.appendChild(agenciesClone)
-
-    // Cleanup function
-    return () => {
-      // Cleanup if needed
-    }
-  }, [])
-
   return (
     <section className="hero">
       <div className="container">
@@ -65,7 +40,7 @@ export function Hero() {
       
       <div className="proof-section">
         <div className="section-label">TRUSTED BY INNOVATORS, PRIMES, AND GOVERNMENT AGENCIES</div>
-        <div className="proof-items" ref={proofRef}>
+        <div className="proof-items">
           <div className="proof-item">COMPLIANCE</div>
           <div className="proof-item">SEARCH</div>
           <div className="proof-item">MARKET RESEARCH</div>
@@ -77,7 +52,7 @@ export function Hero() {
       
       <div className="agencies-section">
         <div className="section-label">WE'VE WORKED ON PROPOSALS SUPPORTING</div>
-        <div className="agencies-items" ref={agenciesRef}>
+        <div className="agencies-items">
           <div className="agency-item">DOD</div>
           <div className="agency-item">DHS</div>
           <div className="agency-item">VA</div>
