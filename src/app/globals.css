@@ -1525,3 +1525,456 @@ body::after {
     padding: 1.5rem;
   }
 }
+
+/* Solution Pages */
+.solution-page {
+  padding: 2rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.solution-page .page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.solution-page .page-header .badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #2D5BFF, #9AF23A);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.solution-page .page-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.solution-page .page-header .subtitle {
+  font-size: 1.25rem;
+  color: #B8B8B8;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.solution-page .hero-section {
+  margin-bottom: 4rem;
+}
+
+.solution-page .hero-content {
+  text-align: center;
+}
+
+.solution-page .hero-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+.solution-page .hero-content > p {
+  font-size: 1.125rem;
+  color: #B8B8B8;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+  line-height: 1.6;
+}
+
+.solution-page .hero-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.solution-page .hero-features .feature {
+  text-align: center;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.solution-page .hero-features .feature-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.solution-page .hero-features h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.75rem 0;
+}
+
+.solution-page .hero-features p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.solution-page .content-section {
+  margin-bottom: 4rem;
+}
+
+.solution-page .content-section h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  margin: 0 0 3rem 0;
+  line-height: 1.2;
+}
+
+.solution-page .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.solution-page .benefit-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-page .benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.solution-page .benefit-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 1rem 0;
+}
+
+.solution-page .benefit-card p {
+  color: #B8B8B8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.solution-page .features-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.solution-page .feature-item {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.solution-page .feature-item h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 1rem 0;
+}
+
+.solution-page .feature-item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.solution-page .feature-item li {
+  color: #B8B8B8;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.solution-page .feature-item li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #9AF23A;
+  font-weight: bold;
+}
+
+.solution-page .feature-item li:last-child {
+  border-bottom: none;
+}
+
+/* Specific capability grids */
+.solution-page .search-capabilities,
+.solution-page .compliance-areas,
+.solution-page .research-capabilities,
+.solution-page .document-types,
+.solution-page .workflows,
+.solution-page .industries,
+.solution-page .programs,
+.solution-page .solutions,
+.solution-page .strategies,
+.solution-page .success-stories,
+.solution-page .data-sources,
+.solution-page .use-cases,
+.solution-page .integration-benefits,
+.solution-page .capabilities {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.solution-page .search-capabilities .capability,
+.solution-page .compliance-areas .area,
+.solution-page .research-capabilities .capability,
+.solution-page .document-types .doc-type,
+.solution-page .workflows .workflow,
+.solution-page .industries .industry,
+.solution-page .programs .program,
+.solution-page .solutions .solution,
+.solution-page .strategies .strategy,
+.solution-page .success-stories .story,
+.solution-page .data-sources .source,
+.solution-page .use-cases .use-case,
+.solution-page .integration-benefits .benefit {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.solution-page .search-capabilities .capability:hover,
+.solution-page .compliance-areas .area:hover,
+.solution-page .research-capabilities .capability:hover,
+.solution-page .document-types .doc-type:hover,
+.solution-page .workflows .workflow:hover,
+.solution-page .industries .industry:hover,
+.solution-page .programs .program:hover,
+.solution-page .solutions .solution:hover,
+.solution-page .strategies .strategy:hover,
+.solution-page .success-stories .story:hover,
+.solution-page .data-sources .source:hover,
+.solution-page .use-cases .use-case:hover,
+.solution-page .integration-benefits .benefit:hover {
+  transform: translateY(-3px);
+}
+
+.solution-page .search-capabilities h4,
+.solution-page .compliance-areas h4,
+.solution-page .research-capabilities h4,
+.solution-page .document-types h4,
+.solution-page .workflows h4,
+.solution-page .industries h4,
+.solution-page .programs h4,
+.solution-page .solutions h4,
+.solution-page .strategies h4,
+.solution-page .success-stories h4,
+.solution-page .data-sources h4,
+.solution-page .use-cases h4,
+.solution-page .integration-benefits h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 0.75rem 0;
+}
+
+.solution-page .search-capabilities p,
+.solution-page .compliance-areas p,
+.solution-page .research-capabilities p,
+.solution-page .document-types p,
+.solution-page .workflows p,
+.solution-page .industries p,
+.solution-page .programs p,
+.solution-page .solutions p,
+.solution-page .strategies p,
+.solution-page .success-stories p,
+.solution-page .data-sources p,
+.solution-page .use-cases p,
+.solution-page .integration-benefits p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Pricing Section */
+.solution-page .pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.solution-page .pricing-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solution-page .pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.solution-page .pricing-card.featured {
+  border: 2px solid #9AF23A;
+  transform: scale(1.05);
+}
+
+.solution-page .pricing-card.featured:hover {
+  transform: scale(1.05) translateY(-5px);
+}
+
+.solution-page .featured-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #9AF23A;
+  color: #0B1220;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.solution-page .pricing-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 1rem 0;
+}
+
+.solution-page .pricing-card .price {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #9AF23A;
+  margin: 0 0 1rem 0;
+}
+
+.solution-page .pricing-card .price span {
+  font-size: 1rem;
+  color: #B8B8B8;
+  font-weight: 400;
+}
+
+.solution-page .pricing-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+  text-align: left;
+}
+
+.solution-page .pricing-card li {
+  color: #B8B8B8;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.solution-page .pricing-card li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #9AF23A;
+  font-weight: bold;
+}
+
+.solution-page .pricing-card li:last-child {
+  border-bottom: none;
+}
+
+/* CTA Section */
+.solution-page .cta-section {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  margin-top: 4rem;
+}
+
+.solution-page .cta-section h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: white;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+}
+
+.solution-page .cta-section p {
+  font-size: 1.125rem;
+  color: #B8B8B8;
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+}
+
+.solution-page .cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .solution-page .page-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .solution-page .hero-content h2 {
+    font-size: 2rem;
+  }
+  
+  .solution-page .content-section h2 {
+    font-size: 1.875rem;
+  }
+  
+  .solution-page .hero-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .solution-page .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .solution-page .features-list {
+    grid-template-columns: 1fr;
+  }
+  
+  .solution-page .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .solution-page .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .solution-page .cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}

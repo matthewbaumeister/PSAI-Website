@@ -47,6 +47,7 @@ export function Header() {
               <li><Link href="/compliance" className="dropdown-link">PS.AI Compliance</Link></li>
               <li><Link href="/market-research" className="dropdown-link">PS.AI Market Research</Link></li>
               <li><Link href="/write" className="dropdown-link">PS.AI Write</Link></li>
+              <li><Link href="/crm" className="dropdown-link">PS.AI CRM</Link></li>
             </ul>
           </div>
           <Link href="/publications" className="nav-link">Publications</Link>
