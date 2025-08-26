@@ -30,14 +30,14 @@ body::before {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: 
     linear-gradient(90deg, rgba(45, 91, 255, 0.15) 1px, transparent 1px),
     linear-gradient(rgba(45, 91, 255, 0.15) 1px, transparent 1px);
   background-size: 80px 80px;
   animation: slow-drift 120s linear infinite;
-  z-index: -200;
+  z-index: -1000;
   pointer-events: none;
 }
 
@@ -46,12 +46,12 @@ body::after {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background: 
     radial-gradient(circle at 60% 40%, rgba(255, 122, 41, 0.12) 0%, transparent 60%);
   animation: subtle-pulse 80s ease-in-out infinite;
-  z-index: -150;
+  z-index: -999;
   pointer-events: none;
 }
 
@@ -60,10 +60,10 @@ body::after {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
-  z-index: -300;
+  z-index: -998;
 }
 
 .animated-bg::before {
@@ -96,10 +96,10 @@ body::after {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
-  z-index: -400;
+  z-index: -997;
   background: 
     radial-gradient(circle at 25% 75%, rgba(154, 242, 58, 0.15) 0%, transparent 50%);
   animation: corner-glow 200s ease-in-out infinite;
@@ -109,10 +109,10 @@ body::after {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
-  z-index: -500;
+  z-index: -996;
   background: 
     radial-gradient(circle, rgba(255, 122, 41, 0.25) 1px, transparent 1px);
   background-size: 150px 150px;
@@ -1032,17 +1032,17 @@ body::after {
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(200px, 200px);
+    transform: translate(80px, 80px);
   }
 }
 
 @keyframes subtle-pulse {
   0%, 100% {
-    opacity: 0.2;
+    opacity: 0.12;
     transform: scale(1);
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.24;
     transform: scale(1.1);
   }
 }
@@ -1050,15 +1050,15 @@ body::after {
 @keyframes gentle-float {
   0%, 100% {
     transform: translate(0, 0) scale(1);
-    opacity: 0.4;
+    opacity: 0.2;
   }
   33% {
     transform: translate(15px, -10px) scale(1.02);
-    opacity: 0.6;
+    opacity: 0.3;
   }
   66% {
     transform: translate(-10px, 15px) scale(0.98);
-    opacity: 0.5;
+    opacity: 0.25;
   }
 }
 
@@ -1075,11 +1075,11 @@ body::after {
 
 @keyframes corner-glow {
   0%, 100% {
-    opacity: 0.2;
+    opacity: 0.15;
     transform: scale(1) rotate(0deg);
   }
   50% {
-    opacity: 0.4;
+    opacity: 0.3;
     transform: scale(1.1) rotate(90deg);
   }
 }
@@ -1089,7 +1089,7 @@ body::after {
     transform: translate(0, 0);
   }
   100% {
-    transform: translate(300px, -300px);
+    transform: translate(150px, -150px);
   }
 }
 
@@ -1221,4 +1221,14 @@ body::after {
   .legal-page .content-section h3 {
     font-size: 1.2rem;
   }
+}
+
+/* Ensure content doesn't cover background */
+.header,
+.hero,
+.features-section,
+.footer,
+.legal-page {
+  position: relative;
+  z-index: 1;
 }
