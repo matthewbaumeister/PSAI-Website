@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Solutions - Prop Shop AI Government Contracting Tools & Services',
@@ -33,7 +32,7 @@ export default function SolutionsPage() {
         <div className="solutions-grid">
           <div className="solution-card">
             <div className="solution-icon">
-              <Image src="/icons/search-icon.svg" alt="Search Icon" width={48} height={48} />
+              <img src="/icons/search-icon.svg" alt="Search Icon" width="48" height="48" />
             </div>
             <div className="solution-content">
               <h3>PS.AI Search</h3>
@@ -49,7 +48,7 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <Image src="/icons/compliance-icon.svg" alt="Compliance Icon" width={48} height={48} />
+              <img src="/icons/compliance-icon.svg" alt="Compliance Icon" width="48" height="48" />
             </div>
             <div className="solution-content">
               <h3>PS.AI Compliance</h3>
@@ -65,7 +64,7 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <Image src="/icons/market-research-icon.svg" alt="Market Research Icon" width={48} height={48} />
+              <img src="/icons/market-research-icon.svg" alt="Market Research Icon" width="48" height="48" />
             </div>
             <div className="solution-content">
               <h3>PS.AI Market Research</h3>
@@ -81,7 +80,7 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <Image src="/icons/write-icon.svg" alt="Write Icon" width={48} height={48} />
+              <img src="/icons/write-icon.svg" alt="Write Icon" width="48" height="48" />
             </div>
             <div className="solution-content">
               <h3>PS.AI Write</h3>
@@ -97,7 +96,7 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <Image src="/icons/crm-icon.svg" alt="CRM Icon" width={48} height={48} />
+              <img src="/icons/crm-icon.svg" alt="CRM Icon" width="48" height="48" />
             </div>
             <div className="solution-content">
               <h3>PS.AI CRM</h3>
@@ -113,7 +112,7 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <Image src="/icons/small-business-icon.svg" alt="Small Business Icon" width={48} height={48} />
+              <img src="/icons/small-business-icon.svg" alt="Small Business Icon" width="48" height="48" />
             </div>
             <div className="solution-content">
               <h3>PS.AI Small Business</h3>
