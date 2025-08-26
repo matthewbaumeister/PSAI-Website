@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabaseClient'
+import { createClient } from '@/lib/supabase'
 import { useAuth } from '@/contexts/AuthContext'
 
 function VerifyEmailContent() {
@@ -27,6 +27,7 @@ function VerifyEmailContent() {
         }
 
         // Verify the email with Supabase
+        const supabase = createClient()
         const { error } = await supabase.auth.verifyOtp({
           token_hash: token,
           type: 'signup'
@@ -74,6 +75,7 @@ function VerifyEmailContent() {
         if (!email) return
       }
 
+      const supabase = createClient()
       const { error } = await supabase.auth.resend({
         type: 'signup',
         email: email

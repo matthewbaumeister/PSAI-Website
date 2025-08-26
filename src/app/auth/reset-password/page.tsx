@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabaseClient'
+import { createClient } from '@/lib/supabase'
 
 function ResetPasswordContent() {
   const router = useRouter()
@@ -55,6 +55,7 @@ function ResetPasswordContent() {
 
     try {
       const token = searchParams.get('token')
+      const supabase = createClient()
       const { error } = await supabase.auth.updateUser({
         password: password
       })

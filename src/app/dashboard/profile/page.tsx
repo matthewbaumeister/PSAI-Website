@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabaseClient'
+import { createClient } from '@/lib/supabase'
 
 interface ProfileData {
   id?: string
@@ -38,6 +38,7 @@ export default function ProfilePage() {
 
   const fetchProfile = async () => {
     try {
+      const supabase = createClient()
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
@@ -59,6 +60,7 @@ export default function ProfilePage() {
 
   const checkAdminStatus = async () => {
     try {
+      const supabase = createClient()
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
@@ -81,6 +83,7 @@ export default function ProfilePage() {
     setSaveMessage('')
 
     try {
+      const supabase = createClient()
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) {
         setSaveMessage('Not authenticated')

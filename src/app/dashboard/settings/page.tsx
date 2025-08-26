@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabaseClient'
+import { createClient } from '@/lib/supabase'
 
 interface ProfileData {
   first_name?: string
@@ -88,6 +88,7 @@ export default function SettingsPage() {
 
   const clearOldDeletedRecords = async () => {
     try {
+      const supabase = createClient()
       const { data: { session } } = await supabase.auth.getSession()
       if (!session?.user) return
 
@@ -121,6 +122,7 @@ export default function SettingsPage() {
 
   const loadProfile = async () => {
     try {
+      const supabase = createClient()
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 

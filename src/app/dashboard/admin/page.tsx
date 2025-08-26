@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import Link from 'next/link'
-import { supabase } from '@/lib/supabaseClient'
+import { createClient } from '@/lib/supabase'
 
 interface MeetingRequest {
   id: string
@@ -42,6 +42,7 @@ export default function AdminPage() {
 
   const checkAdminStatus = async () => {
     try {
+      const supabase = createClient()
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
@@ -66,6 +67,7 @@ export default function AdminPage() {
 
   const loadAdminData = async () => {
     try {
+      const supabase = createClient()
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
@@ -97,6 +99,7 @@ export default function AdminPage() {
 
   const handleMeetingStatusChange = async (requestId: string, status: 'approved' | 'rejected') => {
     try {
+      const supabase = createClient()
       const { data: { session } } = await supabase.auth.getSession()
       if (!session) return
 
