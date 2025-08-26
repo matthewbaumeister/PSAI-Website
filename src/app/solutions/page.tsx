@@ -151,17 +151,15 @@ export default function SolutionsPage() {
                     <stop offset="100%" style={{stopColor:"#f7931e",stopOpacity:1}} />
                   </linearGradient>
                 </defs>
-                <circle cx="16" cy="20" r="6" fill="url(#crmGradient)"/>
-                <circle cx="32" cy="20" r="6" fill="url(#crmGradient)"/>
-                <circle cx="24" cy="36" r="6" fill="url(#crmGradient)"/>
-                <line x1="16" y1="20" x2="24" y2="36" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="32" y1="20" x2="24" y2="36" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="24" y1="24" x2="16" y2="32" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="24" y1="24" x2="32" y2="32" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
-                <circle cx="24" cy="36" r="2" fill="white"/>
-                <path d="M8 8 L16 8 L16 16 L8 16 Z" fill="url(#crmGradient)" opacity="0.8"/>
-                <path d="M32 8 L40 8 L40 16 L32 16 Z" fill="url(#crmGradient)" opacity="0.8"/>
-                <line x1="12" y1="12" x2="36" y2="12" stroke="white" strokeWidth="1" strokeDasharray="2,2"/>
+                <rect x="8" y="8" width="32" height="32" rx="4" fill="url(#crmGradient)" opacity="0.9"/>
+                <circle cx="16" cy="20" r="3" fill="white"/>
+                <circle cx="32" cy="20" r="3" fill="white"/>
+                <circle cx="24" cy="36" r="3" fill="white"/>
+                <line x1="16" y1="20" x2="24" y2="36" stroke="white" strokeWidth="2" opacity="0.8"/>
+                <line x1="32" y1="20" x2="24" y2="36" stroke="white" strokeWidth="2" opacity="0.8"/>
+                <path d="M12 16 L20 16 L20 24 L12 24 Z" fill="white" opacity="0.7"/>
+                <path d="M28 16 L36 16 L36 24 L28 24 Z" fill="white" opacity="0.7"/>
+                <path d="M20 32 L28 32 L28 40 L20 40 Z" fill="white" opacity="0.7"/>
               </svg>
             </div>
             <div className="solution-content">
