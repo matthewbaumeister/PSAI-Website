@@ -16,6 +16,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        {/* Floating Particles Background */}
+        <div className="floating-particles">
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+          <div className="particle"></div>
+        </div>
+        
         <Header />
         {children}
         <Footer />
