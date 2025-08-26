@@ -53,7 +53,6 @@ export function Header() {
           <Link href="/publications" className="nav-link">Publications</Link>
           <Link href="/resources" className="nav-link">Resources</Link>
           <Link href="/about" className="nav-link">About</Link>
-          <Link href="/contact" className="nav-link">Contact</Link>
         </nav>
 
         <div className="header-actions">
