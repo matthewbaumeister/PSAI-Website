@@ -31,10 +31,10 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(45, 91, 255, 0.08) 1px, transparent 1px),
-              linear-gradient(rgba(45, 91, 255, 0.08) 1px, transparent 1px);
-  background-size: 80px 80px;
-  animation: subtle-grid 30s linear infinite;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(45, 91, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(154, 242, 58, 0.03) 0%, transparent 50%);
+  animation: gentle-drift 60s ease-in-out infinite;
   z-index: -100;
   pointer-events: none;
 }
@@ -47,9 +47,11 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 25% 25%, rgba(45, 91, 255, 0.06) 0%, transparent 50%),
-              radial-gradient(circle at 75% 75%, rgba(154, 242, 58, 0.06) 0%, transparent 50%);
-  animation: starburst 40s ease-in-out infinite;
+  background: 
+    linear-gradient(90deg, rgba(45, 91, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(45, 91, 255, 0.02) 1px, transparent 1px);
+  background-size: 200px 200px;
+  animation: slow-drift 120s linear infinite;
   z-index: -200;
   pointer-events: none;
 }
@@ -61,8 +63,9 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 80% 20%, rgba(255, 122, 41, 0.05) 0%, transparent 50%);
-  animation: starburst-reverse 50s ease-in-out infinite;
+  background: 
+    radial-gradient(circle at 60% 40%, rgba(255, 122, 41, 0.02) 0%, transparent 60%);
+  animation: subtle-pulse 80s ease-in-out infinite;
   z-index: -150;
   pointer-events: none;
 }
@@ -86,9 +89,9 @@ body::after {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(45, 91, 255, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(154, 242, 58, 0.08) 0%, transparent 40%);
-  animation: gentle-pulse 20s ease-in-out infinite;
+    radial-gradient(circle at 10% 20%, rgba(45, 91, 255, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(154, 242, 58, 0.04) 0%, transparent 40%);
+  animation: gentle-float 100s ease-in-out infinite;
 }
 
 .animated-bg::after {
@@ -98,11 +101,9 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: 
-    linear-gradient(90deg, rgba(45, 91, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(rgba(45, 91, 255, 0.04) 1px, transparent 1px);
-  background-size: 120px 120px;
-  animation: subtle-grid 60s linear infinite;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(45, 91, 255, 0.015) 0%, transparent 70%);
+  animation: center-glow 150s ease-in-out infinite;
 }
 
 /* Enhanced Background Elements */
@@ -114,11 +115,9 @@ body::after {
   height: 100%;
   pointer-events: none;
   z-index: -400;
-  background-image: 
-    linear-gradient(90deg, rgba(45, 91, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(45, 91, 255, 0.03) 1px, transparent 1px);
-  background-size: 150px 150px;
-  animation: slow-grid 80s linear infinite;
+  background: 
+    radial-gradient(circle at 25% 75%, rgba(154, 242, 58, 0.02) 0%, transparent 50%);
+  animation: corner-glow 200s ease-in-out infinite;
 }
 
 .bg-dots {
@@ -129,9 +128,10 @@ body::after {
   height: 100%;
   pointer-events: none;
   z-index: -500;
-  background-image: radial-gradient(circle, rgba(154, 242, 58, 0.15) 1px, transparent 1px);
-  background-size: 200px 200px;
-  animation: dots-float 100s linear infinite;
+  background: 
+    radial-gradient(circle, rgba(255, 122, 41, 0.08) 1px, transparent 1px);
+  background-size: 300px 300px;
+  animation: dots-drift 300s linear infinite;
 }
 
 /* Floating Particles Animation */
@@ -1027,5 +1027,83 @@ body::after {
   }
   100% {
     transform: translate(100px, -100px);
+  }
+}
+
+/* Modern Animation Keyframes */
+@keyframes gentle-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translate(20px, -20px) scale(1.05);
+    opacity: 0.6;
+  }
+}
+
+@keyframes slow-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(200px, 200px);
+  }
+}
+
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes gentle-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translate(15px, -10px) scale(1.02);
+    opacity: 0.6;
+  }
+  66% {
+    transform: translate(-10px, 15px) scale(0.98);
+    opacity: 0.5;
+  }
+}
+
+@keyframes center-glow {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes corner-glow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1) rotate(90deg);
+  }
+}
+
+@keyframes dots-drift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(300px, -300px);
   }
 }
