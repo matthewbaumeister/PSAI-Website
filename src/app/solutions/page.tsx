@@ -32,7 +32,20 @@ export default function SolutionsPage() {
         <div className="solutions-grid">
           <div className="solution-card">
             <div className="solution-icon">
-              <img src="/icons/search-icon.svg" alt="Search Icon" width="64" height="64" />
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+                <defs>
+                  <linearGradient id="searchGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor:"#ff6b35",stopOpacity:1}} />
+                    <stop offset="100%" style={{stopColor:"#f7931e",stopOpacity:1}} />
+                  </linearGradient>
+                </defs>
+                <circle cx="20" cy="20" r="12" stroke="url(#searchGradient)" strokeWidth="3" fill="none"/>
+                <line x1="28" y1="28" x1="38" y1="38" stroke="url(#searchGradient)" strokeWidth="3" strokeLinecap="round"/>
+                <rect x="32" y="8" width="8" height="10" rx="1" fill="url(#searchGradient)" opacity="0.8"/>
+                <line x1="34" y1="11" x1="38" y1="11" stroke="white" strokeWidth="1"/>
+                <line x1="34" y1="13" x1="38" y1="13" stroke="white" strokeWidth="1"/>
+                <line x1="34" y1="15" x1="36" y1="15" stroke="white" strokeWidth="1"/>
+              </svg>
             </div>
             <div className="solution-content">
               <h3>PS.AI Search</h3>
@@ -48,7 +61,24 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <img src="/icons/compliance-icon.svg" alt="Compliance Icon" width="64" height="64" />
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+                <defs>
+                  <linearGradient id="complianceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor:"#ff6b35",stopOpacity:1}} />
+                    <stop offset="100%" style={{stopColor:"#f7931e",stopOpacity:1}} />
+                  </linearGradient>
+                </defs>
+                <circle cx="16" cy="16" r="3" fill="url(#complianceGradient)"/>
+                <circle cx="32" cy="16" r="3" fill="url(#complianceGradient)"/>
+                <circle cx="24" cy="24" r="3" fill="url(#complianceGradient)"/>
+                <circle cx="16" cy="32" r="3" fill="url(#complianceGradient)"/>
+                <circle cx="32" cy="32" r="3" fill="url(#complianceGradient)"/>
+                <line x1="16" y1="16" x1="24" y1="24" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="32" y1="16" x1="24" y1="24" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="24" y1="24" x1="16" y1="32" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="24" y1="24" x1="32" y1="32" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
+                <path d="M8 24 L12 28 L20 20" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </div>
             <div className="solution-content">
               <h3>PS.AI Compliance</h3>
@@ -80,7 +110,25 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <img src="/icons/write-icon.svg" alt="Write Icon" width="64" height="64" />
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+                <defs>
+                  <linearGradient id="writeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor:"#ff6b35",stopOpacity:1}} />
+                    <stop offset="100%" style={{stopColor:"#f7931e",stopOpacity:1}} />
+                  </linearGradient>
+                </defs>
+                <path d="M8 36 L36 8 L40 12 L12 40 L8 36 Z" fill="url(#writeGradient)"/>
+                <path d="M36 8 L40 12 L44 8 L40 4 L36 8 Z" fill="url(#writeGradient)" opacity="0.8"/>
+                <rect x="12" y="16" width="20" height="24" rx="2" fill="url(#writeGradient)" opacity="0.3"/>
+                <line x1="16" y1="20" x1="28" y1="20" stroke="white" strokeWidth="1"/>
+                <line x1="16" y1="24" x1="28" y1="24" stroke="white" strokeWidth="1"/>
+                <line x1="16" y1="28" x1="28" y1="28" stroke="white" strokeWidth="1"/>
+                <line x1="16" y1="32" x1="24" y1="32" stroke="white" strokeWidth="1"/>
+                <path d="M16 20 L28 20" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M16 24 L28 24" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M16 28 L28 28" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M16 32 L24 32" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
             </div>
             <div className="solution-content">
               <h3>PS.AI Write</h3>
@@ -96,7 +144,25 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <img src="/icons/crm-icon.svg" alt="CRM Icon" width="64" height="64" />
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+                <defs>
+                  <linearGradient id="crmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor:"#ff6b35",stopOpacity:1}} />
+                    <stop offset="100%" style={{stopColor:"#f7931e",stopOpacity:1}} />
+                  </linearGradient>
+                </defs>
+                <circle cx="16" cy="20" r="6" fill="url(#crmGradient)"/>
+                <circle cx="32" cy="20" r="6" fill="url(#crmGradient)"/>
+                <circle cx="24" cy="36" r="6" fill="url(#crmGradient)"/>
+                <line x1="16" y1="20" x1="24" y1="36" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="32" y1="20" x1="24" y1="36" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="24" y1="24" x1="16" y1="32" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="24" y1="24" x1="32" y1="32" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
+                <circle cx="24" cy="36" r="2" fill="white"/>
+                <path d="M8 8 L16 8 L16 16 L8 16 Z" fill="url(#crmGradient)" opacity="0.8"/>
+                <path d="M32 8 L40 8 L40 16 L32 16 Z" fill="url(#crmGradient)" opacity="0.8"/>
+                <line x1="12" y1="12" x1="36" y1="12" stroke="white" strokeWidth="1" strokeDasharray="2,2"/>
+              </svg>
             </div>
             <div className="solution-content">
               <h3>PS.AI CRM</h3>
