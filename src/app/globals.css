@@ -33,8 +33,8 @@ body::before {
   width: 100vw;
   height: 100vh;
   background: 
-    linear-gradient(90deg, rgba(45, 91, 255, 0.15) 1px, transparent 1px),
-    linear-gradient(rgba(45, 91, 255, 0.15) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(45, 91, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(45, 91, 255, 0.08) 1px, transparent 1px);
   background-size: 80px 80px;
   animation: slow-drift 120s linear infinite;
   z-index: -1000;
@@ -74,8 +74,8 @@ body::after {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(45, 91, 255, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(154, 242, 58, 0.15) 0%, transparent 40%);
+    radial-gradient(circle at 10% 20%, rgba(45, 91, 255, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(154, 242, 58, 0.08) 0%, transparent 40%);
   animation: gentle-float 100s ease-in-out infinite;
 }
 
@@ -87,7 +87,7 @@ body::after {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 50% 50%, rgba(45, 91, 255, 0.3) 0%, transparent 70%);
+    radial-gradient(circle at 50% 50%, rgba(45, 91, 255, 0.15) 0%, transparent 70%);
   animation: center-glow 150s ease-in-out infinite;
 }
 
