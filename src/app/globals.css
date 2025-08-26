@@ -564,7 +564,7 @@ body::after {
 
 .proof-label {
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -586,11 +586,11 @@ body::after {
 }
 
 .proof-item {
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
   background: rgba(45, 91, 255, 0.1);
   border: 1px solid rgba(45, 91, 255, 0.3);
   border-radius: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #2D5BFF;
   white-space: nowrap;
@@ -610,7 +610,7 @@ body::after {
 
 .agencies-label {
   text-align: center;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 0.5rem;
   text-transform: uppercase;
@@ -632,12 +632,12 @@ body::after {
 }
 
 .agency-item {
-  padding: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
   background: rgba(154, 242, 58, 0.1);
   border: 1px solid rgba(154, 242, 58, 0.3);
   border-bottom: 1px solid rgba(154, 242, 58, 0.1);
   border-radius: 0.5rem;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #9AF23A;
   white-space: nowrap;
