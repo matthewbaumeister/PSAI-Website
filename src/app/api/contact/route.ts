@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { createAdminSupabaseClient } from '@/lib/supabase'
 
 export async function POST(request: NextRequest) {
   console.log('Contact API route called - starting processing')
@@ -35,31 +36,44 @@ export async function POST(request: NextRequest) {
 
     console.log('Validation passed - processing submission')
 
-    // For now, just log the submission and return success
-    // We'll implement Supabase integration once the connection is properly configured
-    const submissionData = {
-      name: `${firstName} ${lastName}`,
-      email,
-      company,
-      interests,
-      message: message || 'No message provided',
-      newsletter: newsletter === 'yes' ? 'Yes' : 'No',
-      timestamp: new Date().toISOString()
+    // Create Supabase client
+    const supabase = createAdminSupabaseClient()
+    console.log('Supabase client created')
+
+    // Insert submission into database
+    const { data, error } = await supabase
+      .from('contact_submissions')
+      .insert({
+        first_name: firstName,
+        last_name: lastName,
+        email: email,
+        phone: phone || null,
+        company: company,
+        job_title: jobTitle || null,
+        company_size: companySize || null,
+        industry: industry || null,
+        interests: Array.isArray(interests) ? interests : [interests],
+        message: message || null,
+        newsletter_subscription: newsletter === 'yes',
+        status: 'new'
+      })
+      .select()
+
+    if (error) {
+      console.error('Supabase insert error:', error)
+      return NextResponse.json(
+        { error: 'Failed to save submission', details: error.message },
+        { status: 500 }
+      )
     }
-    
-    console.log('New contact submission received:', submissionData)
+
+    console.log('Submission saved to database:', data)
 
     // Return success response
     const response = {
       success: true, 
       message: 'Thank you for your submission! We\'ll be in touch soon.',
-      note: 'Your submission has been received and logged. We\'ll contact you shortly.',
-      submission_data: {
-        name: `${firstName} ${lastName}`,
-        email,
-        company,
-        interests: Array.isArray(interests) ? interests : [interests]
-      }
+      submission_id: data[0]?.id
     }
     
     console.log('Returning success response:', response)
