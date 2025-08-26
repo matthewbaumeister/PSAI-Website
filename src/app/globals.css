@@ -3604,6 +3604,7 @@ body::after {
   min-height: 400px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .solution-card:hover {
@@ -3613,16 +3614,25 @@ body::after {
 }
 
 .solution-icon {
-  font-size: 3rem;
   margin-bottom: 1.5rem;
   text-align: center;
   flex-shrink: 0;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.solution-icon img {
+  max-width: 100%;
+  height: auto;
 }
 
 .solution-content {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-height: 0;
 }
 
 .solution-content h3 {
@@ -3638,6 +3648,7 @@ body::after {
   line-height: 1.6;
   margin-bottom: 1.5rem;
   flex: 1;
+  overflow: hidden;
 }
 
 .solution-features {
@@ -3669,6 +3680,8 @@ body::after {
   transition: all 0.3s ease;
   flex-shrink: 0;
   margin-top: auto;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 /* Integration Section */
