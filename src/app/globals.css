@@ -727,6 +727,13 @@ body::after {
   margin-bottom: 2rem;
   position: relative;
   z-index: 1;
+  align-items: start;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .footer-section h3 {
@@ -734,12 +741,14 @@ body::after {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.75rem;
+  margin-top: 0;
 }
 
 .footer-section ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  flex: 1;
 }
 
 .footer-section ul li {
@@ -750,6 +759,7 @@ body::after {
   color: #9CA3AF;
   text-decoration: none;
   transition: color 0.2s ease;
+  font-size: 0.875rem;
 }
 
 .footer-section ul li a:hover {
@@ -776,6 +786,7 @@ body::after {
   font-weight: bold;
   color: white;
   font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .brand-name {
@@ -789,6 +800,7 @@ body::after {
   line-height: 1.5;
   max-width: 250px;
   font-size: 0.875rem;
+  margin: 0;
 }
 
 .footer-divider {
@@ -851,10 +863,36 @@ body::after {
   
   .footer-content {
     grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .footer-section {
+    text-align: center;
+  }
+  
+  .footer-brand {
+    justify-content: center;
+  }
+  
+  .footer-description {
+    max-width: 100%;
+    text-align: center;
   }
   
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .footer-content {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .footer-section:nth-child(4),
+  .footer-section:nth-child(5) {
+    grid-column: span 1.5;
   }
 }
