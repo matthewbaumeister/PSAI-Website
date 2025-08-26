@@ -7,11 +7,7 @@ export const metadata: Metadata = {
   title: 'Prop Shop AI - Procurement Intelligence Platform',
   description: 'Where innovation meets compliance. Find, win, and deliver government contracts without the gatekeepers.',
   icons: {
-    icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico', sizes: 'any' }
-    ],
-    apple: '/apple-touch-icon.png',
+    icon: '/favicon.svg',
   },
 }
 
@@ -22,11 +18,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-      </head>
       <body className="antialiased">
         {/* Animated Background */}
         <div className="animated-bg"></div>

@@ -15,6 +15,13 @@ const nextConfig = {
       ...config.resolve.alias,
       '@': require('path').resolve(__dirname, 'src'),
     }
+    
+    // Exclude favicon.svg from SVG processing
+    config.module.rules.push({
+      test: /favicon\.svg$/,
+      type: 'asset/resource',
+    })
+    
     return config
   },
 }
