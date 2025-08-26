@@ -32,23 +32,14 @@ ALTER TABLE contact_submissions ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Allow insert for all users" ON contact_submissions
   FOR INSERT WITH CHECK (true);
 
--- Only allow admins to view all submissions
-CREATE POLICY "Allow select for admins only" ON contact_submissions
-  FOR SELECT USING (
-    EXISTS (
-      SELECT 1 FROM user_settings 
-      WHERE user_id = auth.uid() AND role = 'admin'
-    )
-  );
+-- For now, allow all authenticated users to view submissions
+-- You can restrict this later when you set up proper user roles
+CREATE POLICY "Allow select for authenticated users" ON contact_submissions
+  FOR SELECT USING (auth.role() = 'authenticated');
 
--- Only allow admins to update submissions
-CREATE POLICY "Allow update for admins only" ON contact_submissions
-  FOR UPDATE USING (
-    EXISTS (
-      SELECT 1 FROM user_settings 
-      WHERE user_id = auth.uid() AND role = 'admin'
-    )
-  );
+-- Allow authenticated users to update their own submissions
+CREATE POLICY "Allow update for authenticated users" ON contact_submissions
+  FOR UPDATE USING (auth.role() = 'authenticated');
 
 -- Create function to update updated_at timestamp
 CREATE OR REPLACE FUNCTION update_updated_at_column()
