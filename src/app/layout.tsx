@@ -28,6 +28,9 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className="antialiased">
+        {/* Animated Background */}
+        <div className="animated-bg"></div>
+        
         {/* Floating Particles Background */}
         <div className="floating-particles">
           <div className="particle"></div>
