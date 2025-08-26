@@ -38,7 +38,7 @@ export function Hero() {
     // Infinite scroll animation for agencies (right to left, opposite direction)
     let agenciesPosition = 0
     const agenciesScroll = () => {
-      agenciesPosition += 0.5 // Move right (opposite direction from proof) - Updated for Vercel deployment
+      agenciesPosition += 0.5 // Move right (opposite direction from proof) - Vercel deployment trigger
       if (agenciesPosition >= agenciesItems.scrollWidth / 2) {
         agenciesPosition = 0
       }
