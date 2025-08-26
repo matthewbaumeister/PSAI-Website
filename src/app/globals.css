@@ -113,10 +113,7 @@ body::after {
   height: 100vh;
   pointer-events: none;
   z-index: -996;
-  background: 
-    radial-gradient(circle, rgba(255, 122, 41, 0.4) 1px, transparent 1px);
-  background-size: 150px 150px;
-  animation: dots-drift 300s linear infinite;
+  background: none;
 }
 
 
@@ -3333,9 +3330,9 @@ body::after {
 
 .proof-items {
   display: flex;
-  animation: scroll-left 40s linear infinite;
   white-space: nowrap;
   width: max-content;
+  transition: transform 0.1s linear;
 }
 
 .proof-items:hover {
@@ -3357,15 +3354,6 @@ body::after {
   flex-shrink: 0;
 }
 
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-66.666%);
-  }
-}
-
 /* Agencies Section */
 .agencies-section {
   margin: 4rem 0;
@@ -3385,9 +3373,9 @@ body::after {
 
 .agencies-items {
   display: flex;
-  animation: scroll-right 35s linear infinite;
   white-space: nowrap;
   width: max-content;
+  transition: transform 0.1s linear;
 }
 
 .agencies-items:hover {
@@ -3407,15 +3395,6 @@ body::after {
   border: 1px solid rgba(255, 107, 53, 0.3);
   backdrop-filter: blur(10px);
   flex-shrink: 0;
-}
-
-@keyframes scroll-right {
-  0% {
-    transform: translateX(-66.666%);
-  }
-  100% {
-    transform: translateX(0);
-  }
 }
 
 /* Solutions Page */
