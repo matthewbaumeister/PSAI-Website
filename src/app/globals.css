@@ -15,6 +15,14 @@ body {
   overflow-x: hidden;
 }
 
+/* CSS Custom Properties for synchronized animations */
+:root {
+  --gradient-colors: #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%;
+  --animation-duration: 6s;
+  --animation-timing: ease;
+  --animation-iteration: infinite;
+}
+
 /* Global Background Grid and Animations */
 body::before {
   content: '';
@@ -200,9 +208,9 @@ body::after {
 .logo-icon {
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain 6s ease infinite;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
@@ -221,9 +229,9 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain 6s ease infinite;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
   opacity: 0.3;
   z-index: -1;
 }
@@ -356,9 +364,9 @@ body::after {
 
 /* Header Book Demo Button - Special styling */
 .header-actions .btn-outline {
-  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain 8s ease infinite;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -366,7 +374,7 @@ body::after {
 .header-actions .btn-outline:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(45, 91, 255, 0.3);
-  animation: color-chain 4s ease infinite;
+  animation: color-chain 3s ease infinite;
   border-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -451,9 +459,9 @@ body::after {
 }
 
 .hero h1 span {
-  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain 6s ease infinite;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -776,9 +784,9 @@ body::after {
 .footer-brand .logo-placeholder {
   width: 2.5rem;
   height: 2.5rem;
-  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain 6s ease infinite;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
