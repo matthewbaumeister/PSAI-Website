@@ -1,4 +1,7 @@
+"use client"
+
 import type { Metadata } from 'next'
+import { useState } from 'react'
 
 export const metadata: Metadata = {
   title: 'Contact Us - Prop Shop AI',
@@ -6,6 +9,58 @@ export const metadata: Metadata = {
 }
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitMessage, setSubmitMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+
+    try {
+      const formData = new FormData(e.currentTarget)
+      const formObject: any = {}
+      
+      // Convert FormData to object
+      formData.forEach((value, key) => {
+        if (key === 'interests') {
+          if (!formObject[key]) {
+            formObject[key] = []
+          }
+          formObject[key].push(value)
+        } else {
+          formObject[key] = value
+        }
+      })
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formObject)
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setSubmitMessage(result.message)
+        // Reset form
+        e.currentTarget.reset()
+      } else {
+        setSubmitStatus('error')
+        setSubmitMessage(result.error || 'Something went wrong. Please try again.')
+      }
+    } catch (error) {
+      setSubmitStatus('error')
+      setSubmitMessage('Network error. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <main className="contact-page">
       <div className="container">
@@ -24,7 +79,19 @@ export default function ContactPage() {
               <p>Tell us about your procurement needs and we'll show you how Prop Shop AI can help.</p>
             </div>
 
-            <form className="contact-form" action="/api/contact" method="POST">
+            {submitStatus === 'success' && (
+              <div className="success-message">
+                {submitMessage}
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="error-message">
+                {submitMessage}
+              </div>
+            )}
+
+            <form className="contact-form" onSubmit={handleSubmit}>
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="firstName">First Name *</label>
@@ -173,8 +240,8 @@ export default function ContactPage() {
                 </label>
               </div>
 
-              <button type="submit" className="submit-btn">
-                Submit →
+              <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit →'}
               </button>
             </form>
           </div>

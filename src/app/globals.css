@@ -1396,6 +1396,37 @@ body::after {
   box-shadow: 0 10px 25px rgba(45, 91, 255, 0.3);
 }
 
+/* Contact Form Messages */
+.success-message {
+  background: rgba(154, 242, 58, 0.1);
+  border: 1px solid rgba(154, 242, 58, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #9AF23A;
+  text-align: center;
+  font-weight: 500;
+}
+
+.error-message {
+  background: rgba(255, 122, 41, 0.1);
+  border: 1px solid rgba(255, 122, 41, 0.3);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #FF7A29;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Disabled submit button */
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
 .contact-info-section {
   display: flex;
   flex-direction: column;
