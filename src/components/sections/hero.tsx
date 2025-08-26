@@ -34,11 +34,11 @@ export function Hero() {
       proofAnimationId = requestAnimationFrame(proofScroll)
     }
 
-    // Infinite scroll animation for agencies (left to right, same direction as proof)
+    // Infinite scroll animation for agencies (right to left, opposite direction of proof)
     let agenciesPosition = 0
     const agenciesScroll = () => {
-      agenciesPosition -= 1 // Changed from += to -= to scroll left like proof items
-      if (agenciesPosition <= -agenciesItems.scrollWidth / 2) {
+      agenciesPosition += 1 // Changed back to += to scroll right to left (opposite of proof)
+      if (agenciesPosition >= agenciesItems.scrollWidth / 2) {
         agenciesPosition = 0
       }
       agenciesItems.style.transform = `translateX(${agenciesPosition}px)`
