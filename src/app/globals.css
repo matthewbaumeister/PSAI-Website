@@ -32,11 +32,11 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(45deg, 
-    rgba(45, 91, 255, 0.3) 25%, 
+    rgba(45, 91, 255, 0.4) 25%, 
     transparent 25%, 
     transparent 50%, 
-    rgba(45, 91, 255, 0.3) 50%, 
-    rgba(45, 91, 255, 0.3) 75%, 
+    rgba(45, 91, 255, 0.4) 50%, 
+    rgba(45, 91, 255, 0.4) 75%, 
     transparent 75%, 
     transparent);
   background-size: 100px 100px;
@@ -63,8 +63,8 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(90deg, rgba(45, 91, 255, 0.15) 1px, transparent 1px),
-    linear-gradient(rgba(45, 91, 255, 0.15) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(45, 91, 255, 0.25) 1px, transparent 1px),
+    linear-gradient(rgba(45, 91, 255, 0.25) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: grid-move 20s linear infinite;
   z-index: -200;
@@ -78,9 +78,9 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 80%, rgba(45, 91, 255, 0.25) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(154, 242, 58, 0.25) 0%, transparent 50%),
-              radial-gradient(circle at 40% 40%, rgba(255, 122, 41, 0.2) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 80%, rgba(45, 91, 255, 0.4) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(154, 242, 58, 0.4) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(255, 122, 41, 0.3) 0%, transparent 50%);
   animation: background-shift 30s ease-in-out infinite;
   z-index: -150;
   pointer-events: none;
@@ -105,9 +105,9 @@ body::after {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(45, 91, 255, 0.3) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(154, 242, 58, 0.3) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(255, 122, 41, 0.25) 0%, transparent 40%);
+    radial-gradient(circle at 10% 20%, rgba(45, 91, 255, 0.5) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(154, 242, 58, 0.5) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 122, 41, 0.4) 0%, transparent 40%);
   animation: bg-pulse 8s ease-in-out infinite;
 }
 
@@ -119,8 +119,8 @@ body::after {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(45deg, rgba(45, 91, 255, 0.12) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(154, 242, 58, 0.12) 1px, transparent 1px);
+    linear-gradient(45deg, rgba(45, 91, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(154, 242, 58, 0.2) 1px, transparent 1px);
   background-size: 100px 100px;
   animation: diagonal-grid 25s linear infinite;
 }
@@ -278,7 +278,7 @@ body::after {
 
 /* Header */
 .header {
-  background: rgba(11, 18, 32, 0.95);
+  background: rgba(11, 18, 32, 0.85);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
@@ -506,7 +506,7 @@ body::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(135deg, #0B1220 0%, #1E293B 100%);
+  background: linear-gradient(135deg, rgba(11, 18, 32, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
   position: relative;
   overflow: hidden;
 }
@@ -718,7 +718,7 @@ body::after {
 /* Features Section */
 .features-section {
   padding: 2rem 0;
-  background: #0B1220;
+  background: rgba(11, 18, 32, 0.8);
   position: relative;
 }
 
@@ -814,7 +814,7 @@ body::after {
 
 /* Footer */
 .footer {
-  background: #0B1220;
+  background: rgba(11, 18, 32, 0.85);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 3rem 0 1.5rem;
   position: relative;
@@ -1020,8 +1020,8 @@ body::after {
   pointer-events: none;
   z-index: -400;
   background-image: 
-    linear-gradient(90deg, rgba(45, 91, 255, 0.2) 2px, transparent 2px),
-    linear-gradient(rgba(45, 91, 255, 0.2) 2px, transparent 2px);
+    linear-gradient(90deg, rgba(45, 91, 255, 0.3) 2px, transparent 2px),
+    linear-gradient(rgba(45, 91, 255, 0.3) 2px, transparent 2px);
   background-size: 100px 100px;
   animation: grid-overlay 40s linear infinite;
 }
@@ -1034,7 +1034,7 @@ body::after {
   height: 100%;
   pointer-events: none;
   z-index: -500;
-  background-image: radial-gradient(circle, rgba(154, 242, 58, 0.4) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(154, 242, 58, 0.6) 1px, transparent 1px);
   background-size: 150px 150px;
   animation: dots-move 60s linear infinite;
 }
