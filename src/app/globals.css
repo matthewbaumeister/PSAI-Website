@@ -369,7 +369,9 @@ body::after {
 
 /* Primary CTA Button (Book Demo) */
 .header .header-actions .btn-primary {
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  background: linear-gradient(135deg, var(--gradient-colors));
+  background-size: 400% 400%;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   border: none;
   color: white;
   font-weight: 600;
@@ -378,11 +380,14 @@ body::after {
   text-decoration: none;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
 .header .header-actions .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+  animation: color-chain calc(var(--animation-duration) / 2) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
 }
 
 /* Secondary CTA Button (Contact Us) */
