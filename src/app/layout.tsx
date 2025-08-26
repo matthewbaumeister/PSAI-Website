@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
+import { Header } from '@/components/layout/header'
+import { Footer } from '@/components/layout/footer'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Prop Shop AI',
-  description: 'AI-powered platform for proposal management and business growth',
+  title: 'Prop Shop AI - Procurement Intelligence Platform',
+  description: 'Where innovation meets compliance. Find, win, and deliver government contracts without the gatekeepers.',
 }
 
 export default function RootLayout({
@@ -14,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   )
