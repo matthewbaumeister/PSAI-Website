@@ -16,48 +16,13 @@ export function Hero() {
     const proofClone = proofItems.cloneNode(true) as HTMLElement
     const agenciesClone = agenciesItems.cloneNode(true) as HTMLElement
 
+    // Append clones
     proofItems.appendChild(proofClone)
     agenciesItems.appendChild(agenciesClone)
 
-    // Animation frame IDs for cleanup
-    let proofAnimationId: number
-    let agenciesAnimationId: number
-
-    // Infinite scroll animation for proof items (left to right)
-    let proofPosition = 0
-    const proofScroll = () => {
-      proofPosition -= 1
-      if (proofPosition <= -proofItems.scrollWidth / 2) {
-        proofPosition = 0
-      }
-      proofItems.style.transform = `translateX(${proofPosition}px)`
-      proofAnimationId = requestAnimationFrame(proofScroll)
-    }
-
-    // Infinite scroll animation for agencies (right to left, opposite direction of proof)
-    let agenciesPosition = 0
-    const agenciesScroll = () => {
-      agenciesPosition += 1 // Changed back to += to scroll right to left (opposite of proof)
-      if (agenciesPosition >= agenciesItems.scrollWidth / 2) {
-        agenciesPosition = 0
-      }
-      agenciesItems.style.transform = `translateX(${agenciesPosition}px)`
-      agenciesAnimationId = requestAnimationFrame(agenciesScroll)
-    }
-
-    // Start animations
-    proofScroll()
-    agenciesScroll()
-
-    // Cleanup function to stop animations
+    // Cleanup function
     return () => {
-      // Cancel any pending animation frames
-      if (proofAnimationId) {
-        cancelAnimationFrame(proofAnimationId)
-      }
-      if (agenciesAnimationId) {
-        cancelAnimationFrame(agenciesAnimationId)
-      }
+      // Cleanup if needed
     }
   }, [])
 

@@ -1062,6 +1062,24 @@ body::after {
   }
 }
 
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @keyframes dots-drift {
   0% {
     transform: translate(0, 0);
@@ -3309,7 +3327,7 @@ body::after {
   display: flex;
   white-space: nowrap;
   width: max-content;
-  transition: transform 0.1s linear;
+  animation: scroll-left 30s linear infinite;
 }
 
 .proof-items:hover {
@@ -3352,7 +3370,7 @@ body::after {
   display: flex;
   white-space: nowrap;
   width: max-content;
-  transition: transform 0.1s linear;
+  animation: scroll-right 30s linear infinite;
 }
 
 .agencies-items:hover {
