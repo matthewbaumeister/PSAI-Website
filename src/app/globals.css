@@ -459,11 +459,29 @@ body::after {
 
 /* Header Book Demo Button - Special styling */
 .header .header-actions .btn-outline {
-  background: linear-gradient(135deg, var(--gradient-colors)) !important;
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%) !important;
   background-size: 400% 400% !important;
   animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay) !important;
   color: white !important;
   border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.header .header-actions .btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
 .header .header-actions .btn-outline:hover {
@@ -471,6 +489,10 @@ body::after {
   box-shadow: 0 10px 25px rgba(45, 91, 255, 0.3) !important;
   animation: color-chain calc(var(--animation-duration) / 2) var(--animation-timing) var(--animation-iteration) var(--animation-delay) !important;
   border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.header .header-actions .btn-outline:hover::before {
+  opacity: 0.1;
 }
 
 .btn-lg {
