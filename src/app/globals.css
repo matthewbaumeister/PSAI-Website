@@ -3617,7 +3617,7 @@ body::after {
   margin-bottom: 1.5rem;
   text-align: center;
   flex-shrink: 0;
-  height: 48px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
