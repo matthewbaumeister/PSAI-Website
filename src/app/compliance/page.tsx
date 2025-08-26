@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'PS.AI Compliance - Automated Government Contract Compliance Platform',
-  description: 'Ensure your government contracts meet all compliance requirements with AI-powered automation. Stay compliant and avoid costly penalties.',
+  title: 'PS.AI Compliance - Custom Tailored Proposal Templates with AI & PhD Writers',
+  description: 'Custom tailored templates for proposal writing powered by cutting-edge AI and PhD-level writers. Ensure compliance and win more contracts.',
 }
 
 export default function CompliancePage() {
@@ -10,36 +10,37 @@ export default function CompliancePage() {
     <main className="solution-page">
       <div className="container">
         <div className="page-header">
-          <div className="badge">Compliance Automation</div>
+          <div className="badge">AI + PhD Writer Templates</div>
           <h1>PS.AI Compliance</h1>
           <p className="subtitle">
-            Automate government contract compliance with AI-powered tools. Stay compliant with 
-            federal regulations, track requirements, and avoid costly penalties.
+            Custom tailored templates for proposal writing powered by cutting-edge AI and PhD-level writers. 
+            Ensure your proposals meet all compliance requirements while maximizing win potential.
           </p>
         </div>
 
         <div className="hero-section">
           <div className="hero-content">
-            <h2>Stay Compliant, Stay Competitive</h2>
+            <h2>AI + Human Expertise = Winning Proposals</h2>
             <p>
-              Government contract compliance is complex and constantly changing. PS.AI Compliance 
-              automates the process, ensuring you meet all requirements while focusing on winning contracts.
+              PS.AI Compliance combines the power of cutting-edge artificial intelligence with the expertise 
+              of PhD-level writers to create custom tailored proposal templates that ensure compliance 
+              and maximize your chances of winning government contracts.
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">✅</div>
-                <h3>Automated Checks</h3>
-                <p>AI-powered compliance validation and requirement tracking</p>
+                <div className="feature-icon">🤖</div>
+                <h3>Cutting-Edge AI</h3>
+                <p>Advanced AI technology for compliance checking and template generation</p>
+              </div>
+              <div className="feature">
+                <div className="feature-icon">👨‍🎓</div>
+                <h3>PhD-Level Writers</h3>
+                <p>Expert writers with advanced degrees in relevant fields</p>
               </div>
               <div className="feature">
                 <div className="feature-icon">📋</div>
-                <h3>Requirement Management</h3>
-                <p>Centralized tracking of all compliance obligations</p>
-              </div>
-              <div className="feature">
-                <div className="feature-icon">🔔</div>
-                <h3>Smart Alerts</h3>
-                <p>Proactive notifications for upcoming deadlines and changes</p>
+                <h3>Custom Templates</h3>
+                <p>Tailored templates designed specifically for your industry and needs</p>
               </div>
             </div>
           </div>
@@ -49,32 +50,114 @@ export default function CompliancePage() {
           <h2>Why PS.AI Compliance?</h2>
           <div className="benefits-grid">
             <div className="benefit-card">
-              <h3>Automated Compliance</h3>
+              <h3>AI + Human Intelligence</h3>
               <p>
-                Reduce manual compliance work by 80% with AI-powered automation that 
-                continuously monitors and validates your compliance status.
+                Combine the speed and accuracy of cutting-edge AI with the creativity and expertise 
+                of PhD-level writers for the best of both worlds.
               </p>
             </div>
             <div className="benefit-card">
-              <h3>Real-Time Monitoring</h3>
+              <h3>Custom Tailored Templates</h3>
               <p>
-                Get instant alerts when compliance requirements change, deadlines approach, 
-                or new regulations affect your contracts.
+                Templates specifically designed for your industry, company size, and target agencies, 
+                not generic one-size-fits-all solutions.
               </p>
             </div>
             <div className="benefit-card">
-              <h3>Risk Mitigation</h3>
+              <h3>Advanced Compliance Checking</h3>
               <p>
-                Identify compliance risks before they become problems and maintain 
-                a clean compliance record for future contract opportunities.
+                AI-powered compliance validation that catches issues human reviewers might miss, 
+                ensuring your proposals meet all requirements.
               </p>
             </div>
             <div className="benefit-card">
-              <h3>Cost Savings</h3>
+              <h3>PhD-Level Expertise</h3>
               <p>
-                Avoid costly penalties, contract terminations, and legal fees by 
-                maintaining proactive compliance management.
+                Access to writers with advanced degrees in relevant fields who understand the technical 
+                and business aspects of your proposals.
               </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="content-section">
+          <h2>Our Expert Team</h2>
+          <div className="expert-team">
+            <div className="expert">
+              <h4>PhD Writers</h4>
+              <p>Advanced degree holders in engineering, business, and technical fields</p>
+            </div>
+            <div className="expert">
+              <h4>AI Specialists</h4>
+              <p>Experts in artificial intelligence and machine learning for compliance</p>
+            </div>
+            <div className="expert">
+              <h4>Government Contracting Experts</h4>
+              <p>Professionals with deep knowledge of federal contracting requirements</p>
+            </div>
+            <div className="expert">
+              <h4>Industry Specialists</h4>
+              <p>Writers with specific expertise in your industry and technical domain</p>
+            </div>
+            <div className="expert">
+              <h4>Compliance Analysts</h4>
+              <p>Experts in regulatory compliance and proposal requirements</p>
+            </div>
+            <div className="expert">
+              <h4>Quality Assurance</h4>
+              <p>Dedicated QA team ensuring proposal excellence and compliance</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="content-section">
+          <h2>AI-Powered Features</h2>
+          <div className="ai-features">
+            <div className="ai-feature">
+              <h4>Compliance Validation</h4>
+              <p>AI-powered checking against RFP requirements and compliance standards</p>
+            </div>
+            <div className="ai-feature">
+              <h4>Template Generation</h4>
+              <p>Intelligent template creation based on your company profile and requirements</p>
+            </div>
+            <div className="ai-feature">
+              <h4>Content Optimization</h4>
+              <p>AI-driven suggestions for improving proposal content and structure</p>
+            </div>
+            <div className="ai-feature">
+              <h4>Risk Assessment</h4>
+              <p>Automated identification of compliance risks and mitigation strategies</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="content-section">
+          <h2>Custom Template Services</h2>
+          <div className="template-services">
+            <div className="service">
+              <h4>Industry-Specific Templates</h4>
+              <p>Templates designed for your specific industry and technical requirements</p>
+            </div>
+            <div className="service">
+              <h4>Company Profile Integration</h4>
+              <p>Templates that incorporate your company's strengths and past performance</p>
+            </div>
+            <div className="service">
+              <h4>Agency-Specific Formats</h4>
+              <p>Templates tailored to specific agency requirements and preferences</p>
+            </div>
+            <div className="service">
+              <h4>Set-Aside Optimization</h4>
+              <p>Templates designed to maximize your set-aside advantages</p>
+            </div>
+            <div className="service">
+              <h4>Technical Approach Templates</h4>
+              <p>Specialized templates for technical and management approaches</p>
+            </div>
+            <div className="service">
+              <h4>Past Performance Templates</h4>
+              <p>Templates for showcasing your relevant experience and capabilities</p>
             </div>
           </div>
         </div>
@@ -83,92 +166,28 @@ export default function CompliancePage() {
           <h2>Compliance Areas Covered</h2>
           <div className="compliance-areas">
             <div className="area">
+              <h4>RFP Requirements</h4>
+              <p>Ensure all RFP requirements are addressed and compliant</p>
+            </div>
+            <div className="area">
+              <h4>Technical Specifications</h4>
+              <p>Compliance with technical requirements and standards</p>
+            </div>
+            <div className="area">
+              <h4>Past Performance</h4>
+              <p>Compliance with past performance and experience requirements</p>
+            </div>
+            <div className="area">
               <h4>Small Business Programs</h4>
-              <p>SDVOSB, 8(a), WOSB, HUBZone, and other set-aside compliance</p>
+              <p>Compliance with SDVOSB, 8(a), WOSB, and HUBZone requirements</p>
             </div>
             <div className="area">
-              <h4>Labor Standards</h4>
-              <p>Davis-Bacon Act, Service Contract Act, and prevailing wage requirements</p>
+              <h4>Cost and Pricing</h4>
+              <p>Compliance with cost and pricing requirements and regulations</p>
             </div>
             <div className="area">
-              <h4>Contractor Qualifications</h4>
-              <p>Past performance, financial capacity, and technical capability requirements</p>
-            </div>
-            <div className="area">
-              <h4>Reporting Requirements</h4>
-              <p>Subcontracting plans, utilization reports, and compliance certifications</p>
-            </div>
-            <div className="area">
-              <h4>Security Clearances</h4>
-              <p>Facility clearances, personnel clearances, and security requirements</p>
-            </div>
-            <div className="area">
-              <h4>Environmental Compliance</h4>
-              <p>Environmental impact assessments and sustainability requirements</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="content-section">
-          <h2>Key Features</h2>
-          <div className="features-list">
-            <div className="feature-item">
-              <h3>Compliance Dashboard</h3>
-              <ul>
-                <li>Real-time compliance status overview</li>
-                <li>Risk assessment and scoring</li>
-                <li>Compliance trend analysis</li>
-                <li>Custom compliance metrics</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <h3>Requirement Tracking</h3>
-              <ul>
-                <li>Automated requirement identification</li>
-                <li>Deadline tracking and reminders</li>
-                <li>Compliance validation workflows</li>
-                <li>Document management and storage</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <h3>Automated Monitoring</h3>
-              <ul>
-                <li>Regulatory change detection</li>
-                <li>Compliance gap analysis</li>
-                <li>Automated compliance checks</li>
-                <li>Real-time status updates</li>
-              </ul>
-            </div>
-            <div className="feature-item">
-              <h3>Reporting & Analytics</h3>
-              <ul>
-                <li>Compliance audit reports</li>
-                <li>Performance analytics</li>
-                <li>Risk assessment reports</li>
-                <li>Executive dashboards</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="content-section">
-          <h2>Integration Benefits</h2>
-          <div className="integration-benefits">
-            <div className="benefit">
-              <h4>PS.AI Search</h4>
-              <p>Automatically validate compliance requirements for new opportunities</p>
-            </div>
-            <div className="benefit">
-              <h4>PS.AI CRM</h4>
-              <p>Track compliance status alongside customer relationships</p>
-            </div>
-            <div className="benefit">
-              <h4>PS.AI Write</h4>
-              <p>Generate compliance documentation and reports automatically</p>
-            </div>
-            <div className="benefit">
-              <h4>Government Systems</h4>
-              <p>Direct integration with SAM.gov and other federal databases</p>
+              <h4>Security Requirements</h4>
+              <p>Compliance with security clearance and facility requirements</p>
             </div>
           </div>
         </div>
@@ -177,41 +196,40 @@ export default function CompliancePage() {
           <h2>Pricing & Plans</h2>
           <div className="pricing-grid">
             <div className="pricing-card">
-              <h3>Basic</h3>
-              <div className="price">$39<span>/month</span></div>
+              <h3>Basic Templates</h3>
+              <div className="price">$99<span>/month</span></div>
               <ul>
-                <li>Up to 5 active contracts</li>
-                <li>Basic compliance tracking</li>
-                <li>Email alerts</li>
-                <li>Standard reporting</li>
+                <li>Standard compliance templates</li>
+                <li>Basic AI compliance checking</li>
                 <li>Email support</li>
+                <li>Perfect for small businesses</li>
               </ul>
               <a href="/contact" className="btn btn-primary">Get Started</a>
             </div>
             <div className="pricing-card featured">
               <div className="featured-badge">Most Popular</div>
-              <h3>Professional</h3>
-              <div className="price">$89<span>/month</span></div>
+              <h3>Custom Templates</h3>
+              <div className="price">$299<span>/month</span></div>
               <ul>
-                <li>Up to 25 active contracts</li>
-                <li>AI-powered compliance automation</li>
-                <li>Advanced risk assessment</li>
-                <li>Custom workflows</li>
+                <li>Custom tailored templates</li>
+                <li>Advanced AI compliance checking</li>
+                <li>PhD-level writer support</li>
+                <li>Industry-specific optimization</li>
                 <li>Priority support</li>
-                <li>API access</li>
+                <li>Template customization</li>
               </ul>
               <a href="/contact" className="btn btn-primary">Get Started</a>
             </div>
             <div className="pricing-card">
-              <h3>Enterprise</h3>
+              <h3>Enterprise Solutions</h3>
               <div className="price">Custom</div>
               <ul>
-                <li>Unlimited contracts</li>
-                <li>Custom compliance rules</li>
-                <li>Dedicated compliance manager</li>
+                <li>Full custom template development</li>
+                <li>Dedicated PhD writer team</li>
+                <li>Advanced AI integration</li>
                 <li>Training and onboarding</li>
                 <li>SLA guarantees</li>
-                <li>Custom integrations</li>
+                <li>White-label options</li>
               </ul>
               <a href="/contact" className="btn btn-primary">Contact Sales</a>
             </div>
@@ -219,10 +237,10 @@ export default function CompliancePage() {
         </div>
 
         <div className="cta-section">
-          <h2>Protect Your Business with Smart Compliance</h2>
+          <h2>Ready for AI + Human Expertise?</h2>
           <p>
-            Join government contractors who trust PS.AI Compliance to keep them 
-            compliant and competitive in the federal marketplace.
+            Join government contractors who are already using our AI-powered compliance templates 
+            and PhD-level writers to win more contracts.
           </p>
           <div className="cta-buttons">
             <a href="/contact" className="btn btn-primary btn-lg">Get Started Today</a>

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'PS.AI Search - Intelligent Government Contract Search Platform',
-  description: 'Find and track government contract opportunities with AI-powered search. Discover hidden opportunities and stay ahead of the competition.',
+  title: 'PS.AI Search - DoD-Wide Government Contract Search Platform',
+  description: 'Comprehensive DoD-wide search tool for government contracting opportunities. Find new work across all Department of Defense agencies and commands.',
 }
 
 export default function SearchPage() {
@@ -10,71 +10,102 @@ export default function SearchPage() {
     <main className="solution-page">
       <div className="container">
         <div className="page-header">
-          <div className="badge">Intelligent Search Platform</div>
+          <div className="badge">DoD-Wide Search Platform</div>
           <h1>PS.AI Search</h1>
           <p className="subtitle">
-            Discover government contract opportunities that match your capabilities with AI-powered search. 
-            Find hidden opportunities, track competitors, and never miss a relevant contract again.
+            Our comprehensive DoD-wide search tool for government contracting opportunities. 
+            Find new work across all Department of Defense agencies, commands, and contracting activities.
           </p>
         </div>
 
         <div className="hero-section">
           <div className="hero-content">
-            <h2>Find Opportunities Others Miss</h2>
+            <h2>DoD-Wide Contract Intelligence</h2>
             <p>
-              Traditional government contract databases are overwhelming and often miss the best opportunities. 
-              PS.AI Search uses artificial intelligence to surface the most relevant contracts for your business.
+              PS.AI Search is our Department of Defense focused search platform, designed to help 
+              contractors find new work across all DoD agencies, commands, and contracting activities. 
+              Similar to Procurement Sciences' government contracting platform, but specialized for DoD opportunities.
             </p>
             <div className="hero-features">
               <div className="feature">
+                <div className="feature-icon">🛡️</div>
+                <h3>DoD-Focused Search</h3>
+                <p>Comprehensive coverage of all Department of Defense contracting opportunities</p>
+              </div>
+              <div className="feature">
                 <div className="feature-icon">🔍</div>
-                <h3>AI-Powered Search</h3>
-                <p>Intelligent matching based on your capabilities and past performance</p>
+                <h3>Multi-Agency Coverage</h3>
+                <p>Search across Army, Navy, Air Force, Marines, and all DoD agencies</p>
               </div>
               <div className="feature">
                 <div className="feature-icon">📊</div>
-                <h3>Real-Time Alerts</h3>
-                <p>Instant notifications when new opportunities match your criteria</p>
-              </div>
-              <div className="feature">
-                <div className="feature-icon">🎯</div>
-                <h3>Smart Filtering</h3>
-                <p>Advanced filters for NAICS codes, set-asides, and contract values</p>
+                <h3>Contract Intelligence</h3>
+                <p>Real-time tracking and analysis of DoD contracting activities</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="content-section">
-          <h2>Why PS.AI Search?</h2>
+          <h2>Why PS.AI Search for DoD?</h2>
           <div className="benefits-grid">
             <div className="benefit-card">
-              <h3>AI-Powered Matching</h3>
+              <h3>DoD Specialization</h3>
               <p>
-                Our machine learning algorithms analyze your business profile and automatically 
-                identify the most relevant contract opportunities.
+                Built specifically for Department of Defense contracting, with deep understanding 
+                of military requirements, regulations, and contracting processes.
               </p>
             </div>
             <div className="benefit-card">
               <h3>Comprehensive Coverage</h3>
               <p>
-                Search across multiple databases including SAM.gov, FedBizOpps, and state/local 
-                procurement portals in one unified interface.
+                Search across all DoD agencies including Army, Navy, Air Force, Marines, 
+                Space Force, and all major commands and contracting activities.
               </p>
             </div>
             <div className="benefit-card">
-              <h3>Competitive Intelligence</h3>
+              <h3>Military Contract Intelligence</h3>
               <p>
-                Track competitors, analyze their bidding patterns, and identify opportunities 
-                where you have a competitive advantage.
+                Specialized tracking of military contracts, IDIQs, task orders, and 
+                other DoD-specific contracting vehicles and opportunities.
               </p>
             </div>
             <div className="benefit-card">
-              <h3>Automated Workflows</h3>
+              <h3>Defense Industry Focus</h3>
               <p>
-                Set up automated searches, receive daily digests, and integrate with your 
-                existing business processes.
+                Designed for defense contractors, aerospace companies, and businesses 
+                serving the military and defense markets.
               </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="content-section">
+          <h2>DoD Agency Coverage</h2>
+          <div className="dod-agencies">
+            <div className="agency">
+              <h4>U.S. Army</h4>
+              <p>All Army commands, installations, and contracting activities</p>
+            </div>
+            <div className="agency">
+              <h4>U.S. Navy</h4>
+              <p>Navy commands, shipyards, and maritime contracting</p>
+            </div>
+            <div className="agency">
+              <h4>U.S. Air Force</h4>
+              <p>Air Force bases, commands, and aerospace contracting</p>
+            </div>
+            <div className="agency">
+              <h4>U.S. Marine Corps</h4>
+              <p>Marine Corps installations and expeditionary contracting</p>
+            </div>
+            <div className="agency">
+              <h4>U.S. Space Force</h4>
+              <p>Space operations and space-related contracting</p>
+            </div>
+            <div className="agency">
+              <h4>Defense Agencies</h4>
+              <p>DLA, DARPA, DTRA, and other defense agencies</p>
             </div>
           </div>
         </div>
@@ -83,30 +114,29 @@ export default function SearchPage() {
           <h2>Key Features</h2>
           <div className="features-list">
             <div className="feature-item">
-              <h3>Intelligent Search</h3>
+              <h3>DoD Opportunity Search</h3>
               <ul>
-                <li>AI-powered opportunity matching</li>
-                <li>Natural language search queries</li>
-                <li>Smart filtering and sorting</li>
-                <li>Saved searches and alerts</li>
+                <li>Comprehensive DoD contract opportunity database</li>
+                <li>Real-time updates and notifications</li>
+                <li>Advanced filtering by agency, command, and contract type</li>
+                <li>Historical contract data and analysis</li>
               </ul>
             </div>
             <div className="feature-item">
-              <h3>Opportunity Tracking</h3>
+              <h3>Military Contract Intelligence</h3>
               <ul>
-                <li>Real-time opportunity updates</li>
-                <li>Contract modification tracking</li>
-                <li>Deadline reminders and alerts</li>
-                <li>Historical opportunity data</li>
+                <li>IDIQ and task order tracking</li>
+                <li>Contract vehicle analysis and optimization</li>
+                <li>Past performance and incumbent tracking</li>
+                <li>Contract modification and recompete alerts</li>
               </ul>
             </div>
             <div className="feature-item">
-              <h3>Market Analysis</h3>
-              <ul>
-                <li>Industry trend analysis</li>
-                <li>Contract value forecasting</li>
-                <li>Geographic opportunity mapping</li>
-                <li>Set-aside opportunity analysis</li>
+              <h3>Defense Market Analysis</h3>
+                <li>DoD spending trends and analysis</li>
+                <li>Competitive intelligence for defense contractors</li>
+                <li>Market opportunity identification</li>
+                <li>Strategic planning and forecasting</li>
               </ul>
             </div>
             <div className="feature-item">
@@ -122,31 +152,31 @@ export default function SearchPage() {
         </div>
 
         <div className="content-section">
-          <h2>Search Capabilities</h2>
-          <div className="search-capabilities">
-            <div className="capability">
-              <h4>Contract Types</h4>
-              <p>Fixed-price, cost-plus, time-and-materials, and IDIQ contracts</p>
+          <h2>Contract Types Covered</h2>
+          <div className="contract-types">
+            <div className="contract-type">
+              <h4>IDIQs & Task Orders</h4>
+              <p>Indefinite Delivery, Indefinite Quantity contracts and task order opportunities</p>
             </div>
-            <div className="capability">
-              <h4>Set-Asides</h4>
-              <p>SDVOSB, 8(a), WOSB, HUBZone, and other small business programs</p>
+            <div className="contract-type">
+              <h4>Fixed-Price Contracts</h4>
+              <p>Firm fixed-price, fixed-price with economic price adjustment</p>
             </div>
-            <div className="capability">
-              <h4>NAICS Codes</h4>
-              <p>Industry-specific opportunity matching and classification</p>
+            <div className="contract-type">
+              <h4>Cost-Reimbursement</h4>
+              <p>Cost-plus-fixed-fee, cost-plus-incentive-fee contracts</p>
             </div>
-            <div className="capability">
-              <h4>Geographic Scope</h4>
-              <p>Local, regional, national, and international opportunities</p>
+            <div className="contract-type">
+              <h4>Time & Materials</h4>
+              <p>Labor hour and time and materials contracts</p>
             </div>
-            <div className="capability">
-              <h4>Contract Values</h4>
-              <p>Filter by contract size and value ranges</p>
+            <div className="contract-type">
+              <h4>GSA Schedules</h4>
+              <p>GSA Schedule opportunities and task orders</p>
             </div>
-            <div className="capability">
-              <h4>Agency Focus</h4>
-              <p>Department of Defense, civilian agencies, and state/local governments</p>
+            <div className="contract-type">
+              <h4>Set-Aside Opportunities</h4>
+              <p>Small business, veteran-owned, and other set-aside contracts</p>
             </div>
           </div>
         </div>
@@ -156,11 +186,11 @@ export default function SearchPage() {
           <div className="pricing-grid">
             <div className="pricing-card">
               <h3>Basic</h3>
-              <div className="price">$29<span>/month</span></div>
+              <div className="price">$79<span>/month</span></div>
               <ul>
-                <li>Up to 100 searches/month</li>
-                <li>Basic opportunity alerts</li>
-                <li>Standard filtering</li>
+                <li>Basic DoD opportunity search</li>
+                <li>Limited agency coverage</li>
+                <li>Standard filtering options</li>
                 <li>Email support</li>
               </ul>
               <a href="/contact" className="btn btn-primary">Get Started</a>
@@ -168,12 +198,12 @@ export default function SearchPage() {
             <div className="pricing-card featured">
               <div className="featured-badge">Most Popular</div>
               <h3>Professional</h3>
-              <div className="price">$79<span>/month</span></div>
+              <div className="price">$149<span>/month</span></div>
               <ul>
-                <li>Unlimited searches</li>
-                <li>AI-powered matching</li>
-                <li>Advanced analytics</li>
-                <li>Competitive intelligence</li>
+                <li>Full DoD-wide search access</li>
+                <li>All agencies and commands</li>
+                <li>Advanced filtering and analytics</li>
+                <li>Contract intelligence features</li>
                 <li>Priority support</li>
                 <li>API access</li>
               </ul>
@@ -183,12 +213,12 @@ export default function SearchPage() {
               <h3>Enterprise</h3>
               <div className="price">Custom</div>
               <ul>
-                <li>Team collaboration tools</li>
-                <li>Custom integrations</li>
-                <li>Dedicated support</li>
+                <li>Custom DoD search solutions</li>
+                <li>Dedicated support team</li>
                 <li>Training and onboarding</li>
-                <li>Custom reporting</li>
+                <li>Custom integrations</li>
                 <li>SLA guarantees</li>
+                <li>White-label options</li>
               </ul>
               <a href="/contact" className="btn btn-primary">Contact Sales</a>
             </div>
@@ -196,10 +226,10 @@ export default function SearchPage() {
         </div>
 
         <div className="cta-section">
-          <h2>Start Finding Better Opportunities Today</h2>
+          <h2>Ready to Dominate DoD Contracting?</h2>
           <p>
-            Join thousands of government contractors who are already using PS.AI Search 
-            to discover and win more contracts.
+            Join defense contractors who are already using PS.AI Search to find and win 
+            Department of Defense contracts across all agencies and commands.
           </p>
           <div className="cta-buttons">
             <a href="/contact" className="btn btn-primary btn-lg">Get Started Today</a>

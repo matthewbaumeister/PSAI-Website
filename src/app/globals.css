@@ -1735,7 +1735,20 @@ body::after {
 .solution-page .data-sources,
 .solution-page .use-cases,
 .solution-page .integration-benefits,
-.solution-page .capabilities {
+.solution-page .capabilities,
+.solution-page .dod-agencies,
+.solution-page .contract-types,
+.solution-page .expert-team,
+.solution-page .ai-features,
+.solution-page .template-services,
+.solution-page .writing-team,
+.solution-page .service-options,
+.solution-page .writing-services,
+.solution-page .manual-writing,
+.solution-page .platform-features,
+.solution-page .tooling-capabilities,
+.solution-page .tech-features,
+.solution-page .markets {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
@@ -1754,7 +1767,20 @@ body::after {
 .solution-page .success-stories .story,
 .solution-page .data-sources .source,
 .solution-page .use-cases .use-case,
-.solution-page .integration-benefits .benefit {
+.solution-page .integration-benefits .benefit,
+.solution-page .dod-agencies .agency,
+.solution-page .contract-types .contract-type,
+.solution-page .expert-team .expert,
+.solution-page .ai-features .ai-feature,
+.solution-page .template-services .service,
+.solution-page .writing-team .writer,
+.solution-page .service-options .option,
+.solution-page .writing-services .service,
+.solution-page .manual-writing .excellence,
+.solution-page .platform-features .feature,
+.solution-page .tooling-capabilities .capability,
+.solution-page .tech-features .tech-feature,
+.solution-page .markets .market {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
@@ -1774,7 +1800,20 @@ body::after {
 .solution-page .success-stories .story:hover,
 .solution-page .data-sources .source:hover,
 .solution-page .use-cases .use-case:hover,
-.solution-page .integration-benefits .benefit:hover {
+.solution-page .integration-benefits .benefit:hover,
+.solution-page .dod-agencies .agency:hover,
+.solution-page .contract-types .contract-type:hover,
+.solution-page .expert-team .expert:hover,
+.solution-page .ai-features .ai-feature:hover,
+.solution-page .template-services .service:hover,
+.solution-page .writing-team .writer:hover,
+.solution-page .service-options .option:hover,
+.solution-page .writing-services .service:hover,
+.solution-page .manual-writing .excellence:hover,
+.solution-page .platform-features .feature:hover,
+.solution-page .tooling-capabilities .capability:hover,
+.solution-page .tech-features .tech-feature:hover,
+.solution-page .markets .market:hover {
   transform: translateY(-3px);
 }
 
@@ -1790,7 +1829,20 @@ body::after {
 .solution-page .success-stories h4,
 .solution-page .data-sources h4,
 .solution-page .use-cases h4,
-.solution-page .integration-benefits h4 {
+.solution-page .integration-benefits h4,
+.solution-page .dod-agencies h4,
+.solution-page .contract-types h4,
+.solution-page .expert-team h4,
+.solution-page .ai-features h4,
+.solution-page .template-services h4,
+.solution-page .writing-team h4,
+.solution-page .service-options h4,
+.solution-page .writing-services h4,
+.solution-page .manual-writing h4,
+.solution-page .platform-features h4,
+.solution-page .tooling-capabilities h4,
+.solution-page .tech-features h4,
+.solution-page .markets h4 {
   font-size: 1.125rem;
   font-weight: 600;
   color: white;
@@ -1809,7 +1861,20 @@ body::after {
 .solution-page .success-stories p,
 .solution-page .data-sources p,
 .solution-page .use-cases p,
-.solution-page .integration-benefits p {
+.solution-page .integration-benefits p,
+.solution-page .dod-agencies p,
+.solution-page .contract-types p,
+.solution-page .expert-team p,
+.solution-page .ai-features p,
+.solution-page .template-services p,
+.solution-page .writing-team p,
+.solution-page .service-options p,
+.solution-page .writing-services p,
+.solution-page .manual-writing p,
+.solution-page .platform-features p,
+.solution-page .tooling-capabilities p,
+.solution-page .tech-features p,
+.solution-page .markets p {
   color: #B8B8B8;
   line-height: 1.5;
   margin: 0;

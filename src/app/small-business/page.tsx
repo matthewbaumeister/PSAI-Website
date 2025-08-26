@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Small Business Solutions - Prop Shop AI for Small Business Contractors',
-  description: 'Specialized solutions for small businesses competing in government contracting. Level the playing field with AI-powered tools and expertise.',
+  title: 'PS.AI Small Business - SBIR/SBA Dedicated Search & Database Platform',
+  description: 'Proprietary search and database function specifically designed for SBIR, SBA programs, and small business set-aside contracts.',
 }
 
 export default function SmallBusinessPage() {
@@ -10,184 +10,154 @@ export default function SmallBusinessPage() {
     <main className="solution-page">
       <div className="container">
         <div className="page-header">
-          <div className="badge">Small Business Focus</div>
-          <h1>Small Business Solutions</h1>
+          <div className="badge">SBIR/SBA Dedicated Platform</div>
+          <h1>PS.AI Small Business</h1>
           <p className="subtitle">
-            Level the playing field with specialized solutions designed for small businesses 
-            competing in government contracting. Win contracts against larger competitors.
+            Our proprietary search and database function specifically designed for SBIR, SBA programs, 
+            and small business set-aside contracts. Find opportunities others miss.
           </p>
         </div>
 
         <div className="hero-section">
           <div className="hero-content">
-            <h2>Small Business, Big Opportunities</h2>
+            <h2>SBIR & SBA Contract Intelligence</h2>
             <p>
-              Government contracting shouldn't be dominated by large corporations. Small businesses 
-              bring innovation, agility, and local expertise that agencies need. We're here to help 
-              you compete and win.
+              PS.AI Small Business is our dedicated platform for small business contractors. 
+              We've built proprietary search algorithms and databases specifically for SBIR opportunities, 
+              SBA programs, and set-aside contracts that traditional tools can't find.
             </p>
             <div className="hero-features">
               <div className="feature">
+                <div className="feature-icon">🔍</div>
+                <h3>Proprietary Search</h3>
+                <p>Custom-built algorithms for SBIR and SBA opportunity discovery</p>
+              </div>
+              <div className="feature">
+                <div className="feature-icon">📊</div>
+                <h3>Dedicated Database</h3>
+                <p>Specialized database tracking small business set-aside contracts</p>
+              </div>
+              <div className="feature">
                 <div className="feature-icon">🎯</div>
-                <h3>Set-Aside Expertise</h3>
-                <p>Navigate SDVOSB, 8(a), WOSB, and HUBZone programs</p>
-              </div>
-              <div className="feature">
-                <div className="feature-icon">🤝</div>
-                <h3>Partnership Support</h3>
-                <p>Build strategic partnerships and joint ventures</p>
-              </div>
-              <div className="feature">
-                <div className="feature-icon">📈</div>
-                <h3>Growth Strategy</h3>
-                <p>Scale from small contracts to major opportunities</p>
+                <h3>Set-Aside Focus</h3>
+                <p>Targeted tracking of SDVOSB, 8(a), WOSB, and HUBZone opportunities</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="content-section">
-          <h2>Why Small Businesses Choose Prop Shop AI</h2>
+          <h2>Why PS.AI Small Business?</h2>
           <div className="benefits-grid">
             <div className="benefit-card">
-              <h3>Level the Playing Field</h3>
+              <h3>Proprietary Technology</h3>
               <p>
-                Access the same intelligence, tools, and insights that large contractors use, 
-                but designed specifically for small business needs and budgets.
+                Our custom-built search algorithms and databases are specifically designed for 
+                small business contracting, not adapted from general-purpose tools.
               </p>
             </div>
             <div className="benefit-card">
-              <h3>Set-Aside Mastery</h3>
+              <h3>SBIR Specialization</h3>
               <p>
-                Expert guidance on navigating small business programs, maintaining eligibility, 
-                and maximizing your competitive advantages.
+                Deep expertise in Small Business Innovation Research programs with dedicated 
+                tracking and analysis tools built specifically for this market.
               </p>
             </div>
             <div className="benefit-card">
-              <h3>Cost-Effective Solutions</h3>
+              <h3>SBA Program Focus</h3>
               <p>
-                Affordable pricing plans designed for small business budgets, with scalable 
-                options that grow with your business.
+                Comprehensive coverage of all SBA programs including 8(a), SDVOSB, WOSB, 
+                HUBZone, and other set-aside opportunities.
               </p>
             </div>
             <div className="benefit-card">
-              <h3>Personalized Support</h3>
+              <h3>Set-Aside Intelligence</h3>
               <p>
-                Dedicated support from experts who understand small business challenges 
-                and are committed to your success.
+                Proprietary data and tracking for small business set-aside contracts 
+                that gives you a competitive advantage in these specialized markets.
               </p>
             </div>
           </div>
         </div>
 
         <div className="content-section">
-          <h2>Small Business Programs We Support</h2>
-          <div className="programs">
-            <div className="program">
-              <h4>SDVOSB</h4>
-              <p>Service-Disabled Veteran-Owned Small Business program support and compliance</p>
+          <h2>Core Capabilities</h2>
+          <div className="capabilities">
+            <div className="capability">
+              <h4>SBIR Opportunity Tracking</h4>
+              <p>Comprehensive tracking of SBIR/STTR opportunities across all agencies and phases</p>
             </div>
-            <div className="program">
-              <h4>8(a) Business Development</h4>
-              <p>Comprehensive support for socially and economically disadvantaged businesses</p>
+            <div className="capability">
+              <h4>SBA Program Database</h4>
+              <p>Dedicated database for 8(a), SDVOSB, WOSB, HUBZone, and other SBA programs</p>
             </div>
-            <div className="program">
-              <h4>WOSB/EDWOSB</h4>
-              <p>Women-Owned Small Business and Economically Disadvantaged WOSB programs</p>
+            <div className="capability">
+              <h4>Set-Aside Contract Search</h4>
+              <p>Proprietary search algorithms for small business set-aside opportunities</p>
             </div>
-            <div className="program">
-              <h4>HUBZone</h4>
-              <p>Historically Underutilized Business Zone program certification and compliance</p>
+            <div className="capability">
+              <h4>Proprietary Data Sources</h4>
+              <p>Custom data feeds and sources not available in standard government databases</p>
             </div>
-            <div className="program">
-              <h4>VOSB</h4>
-              <p>Veteran-Owned Small Business program support and verification</p>
+            <div className="capability">
+              <h4>Small Business Intelligence</h4>
+              <p>Market analysis and competitive intelligence specifically for small business contractors</p>
             </div>
-            <div className="program">
-              <h4>Small Business Innovation Research (SBIR)</h4>
-              <p>Research and development funding opportunities for innovative small businesses</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="content-section">
-          <h2>Solutions Tailored for Small Business</h2>
-          <div className="solutions">
-            <div className="solution">
-              <h4>PS.AI Search - Small Business Edition</h4>
-              <p>Find set-aside opportunities and contracts specifically reserved for small businesses</p>
-            </div>
-            <div className="solution">
-              <h4>PS.AI Compliance - Small Business Focus</h4>
-              <p>Maintain eligibility and compliance for all small business programs</p>
-            </div>
-            <div className="solution">
-              <h4>PS.AI Write - Small Business Templates</h4>
-              <p>Proposal templates and content specifically designed for small business advantages</p>
-            </div>
-            <div className="solution">
-              <h4>PS.AI CRM - Small Business Edition</h4>
-              <p>Manage relationships with agencies, prime contractors, and partners</p>
-            </div>
-            <div className="solution">
-              <h4>PS.AI Market Research - Small Business Insights</h4>
-              <p>Market intelligence focused on small business opportunities and competitive landscape</p>
-            </div>
-            <div className="solution">
-              <h4>Partnership Development</h4>
-              <p>Build strategic partnerships and joint ventures to compete for larger contracts</p>
+            <div className="capability">
+              <h4>Opportunity Forecasting</h4>
+              <p>Predictive analytics for upcoming small business opportunities</p>
             </div>
           </div>
         </div>
 
         <div className="content-section">
-          <h2>Success Strategies for Small Businesses</h2>
-          <div className="strategies">
-            <div className="strategy">
-              <h4>Start Small, Scale Smart</h4>
-              <p>Begin with smaller contracts to build experience and past performance</p>
+          <h2>Proprietary Technology</h2>
+          <div className="tech-features">
+            <div className="tech-feature">
+              <h4>Custom Search Algorithms</h4>
+              <p>Built specifically for small business contracting, not adapted from general tools</p>
             </div>
-            <div className="strategy">
-              <h4>Leverage Set-Asides</h4>
-              <p>Maximize your competitive advantages in set-aside competitions</p>
+            <div className="tech-feature">
+              <h4>Dedicated Database Architecture</h4>
+              <p>Specialized data structure optimized for SBIR and SBA opportunity tracking</p>
             </div>
-            <div className="strategy">
-              <h4>Build Relationships</h4>
-              <p>Develop strong relationships with contracting officers and agency personnel</p>
+            <div className="tech-feature">
+              <h4>Proprietary Data Feeds</h4>
+              <p>Custom data sources and feeds exclusive to our platform</p>
             </div>
-            <div className="strategy">
-              <h4>Partner Strategically</h4>
-              <p>Form partnerships to compete for larger opportunities</p>
-            </div>
-            <div className="strategy">
-              <h4>Focus on Quality</h4>
-              <p>Deliver exceptional performance to build your reputation</p>
-            </div>
-            <div className="strategy">
-              <h4>Continuous Learning</h4>
-              <p>Stay updated on regulations, opportunities, and best practices</p>
+            <div className="tech-feature">
+              <h4>Small Business Intelligence Engine</h4>
+              <p>AI-powered analysis specifically designed for small business market dynamics</p>
             </div>
           </div>
         </div>
 
         <div className="content-section">
-          <h2>Small Business Success Stories</h2>
-          <div className="success-stories">
-            <div className="story">
-              <h4>TechStart Solutions</h4>
-              <p>Went from $50K to $2M in government contracts in 18 months using our tools</p>
+          <h2>Target Markets</h2>
+          <div className="markets">
+            <div className="market">
+              <h4>SBIR/STTR Programs</h4>
+              <p>All phases of Small Business Innovation Research and Small Business Technology Transfer</p>
             </div>
-            <div className="story">
-              <h4>Veteran Build Co.</h4>
-              <p>Successfully navigated SDVOSB certification and won multiple construction contracts</p>
+            <div className="market">
+              <h4>SBA 8(a) Business Development</h4>
+              <p>Comprehensive tracking for socially and economically disadvantaged businesses</p>
             </div>
-            <div className="story">
-              <h4>InnovateIT</h4>
-              <p>Used our market research to identify and win SBIR funding opportunities</p>
+            <div className="market">
+              <h4>Veteran-Owned Businesses</h4>
+              <p>SDVOSB and VOSB opportunities across all federal agencies</p>
             </div>
-            <div className="story">
-              <h4>Local Services Inc.</h4>
-              <p>Leveraged HUBZone status to win local government contracts</p>
+            <div className="market">
+              <h4>Women-Owned Businesses</h4>
+              <p>WOSB and EDWOSB program opportunities and set-asides</p>
+            </div>
+            <div className="market">
+              <h4>HUBZone Companies</h4>
+              <p>Historically Underutilized Business Zone opportunities and compliance</p>
+            </div>
+            <div className="market">
+              <h4>Small Business Set-Asides</h4>
+              <p>All federal contracting opportunities specifically reserved for small businesses</p>
             </div>
           </div>
         </div>
@@ -197,11 +167,11 @@ export default function SmallBusinessPage() {
           <div className="pricing-grid">
             <div className="pricing-card">
               <h3>Small Business Starter</h3>
-              <div className="price">$29<span>/month</span></div>
+              <div className="price">$49<span>/month</span></div>
               <ul>
-                <li>Basic opportunity search</li>
+                <li>Basic SBIR opportunity search</li>
+                <li>SBA program tracking</li>
                 <li>Set-aside opportunity alerts</li>
-                <li>Basic compliance tracking</li>
                 <li>Email support</li>
                 <li>Perfect for businesses under $1M</li>
               </ul>
@@ -210,27 +180,27 @@ export default function SmallBusinessPage() {
             <div className="pricing-card featured">
               <div className="featured-badge">Most Popular</div>
               <h3>Small Business Professional</h3>
-              <div className="price">$69<span>/month</span></div>
+              <div className="price">$99<span>/month</span></div>
               <ul>
-                <li>Full platform access</li>
-                <li>Advanced set-aside tracking</li>
-                <li>Compliance automation</li>
-                <li>Proposal assistance</li>
+                <li>Full proprietary search access</li>
+                <li>Advanced SBIR tracking</li>
+                <li>Comprehensive SBA database</li>
+                <li>Set-aside intelligence</li>
                 <li>Priority support</li>
-                <li>Perfect for growing businesses</li>
+                <li>API access</li>
               </ul>
               <a href="/contact" className="btn btn-primary">Get Started</a>
             </div>
             <div className="pricing-card">
               <h3>Small Business Enterprise</h3>
-              <div className="price">$149<span>/month</span></div>
+              <div className="price">$199<span>/month</span></div>
               <ul>
                 <li>Everything in Professional</li>
                 <li>Dedicated small business advisor</li>
                 <li>Custom training and onboarding</li>
-                <li>Partnership development support</li>
-                <li>Growth strategy consulting</li>
-                <li>Perfect for established small businesses</li>
+                <li>White-label options</li>
+                <li>SLA guarantees</li>
+                <li>Custom integrations</li>
               </ul>
               <a href="/contact" className="btn btn-primary">Contact Sales</a>
             </div>
@@ -238,10 +208,10 @@ export default function SmallBusinessPage() {
         </div>
 
         <div className="cta-section">
-          <h2>Ready to Level the Playing Field?</h2>
+          <h2>Ready to Access Our Proprietary Small Business Platform?</h2>
           <p>
-            Join thousands of small businesses who are already using Prop Shop AI to compete 
-            and win in government contracting.
+            Join small business contractors who are already using our proprietary SBIR/SBA 
+            search and database to find opportunities others miss.
           </p>
           <div className="cta-buttons">
             <a href="/contact" className="btn btn-primary btn-lg">Get Started Today</a>
