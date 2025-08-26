@@ -33,8 +33,8 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(90deg, rgba(45, 91, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(45, 91, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(45, 91, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(rgba(45, 91, 255, 0.15) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: grid-move 20s linear infinite;
   z-index: -2;
@@ -48,9 +48,9 @@ body::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 20% 80%, rgba(45, 91, 255, 0.12) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(154, 242, 58, 0.12) 0%, transparent 50%),
-              radial-gradient(circle at 40% 40%, rgba(255, 122, 41, 0.08) 0%, transparent 50%);
+  background: radial-gradient(circle at 20% 80%, rgba(45, 91, 255, 0.25) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(154, 242, 58, 0.25) 0%, transparent 50%),
+              radial-gradient(circle at 40% 40%, rgba(255, 122, 41, 0.2) 0%, transparent 50%);
   animation: background-shift 30s ease-in-out infinite;
   z-index: -1;
   pointer-events: none;
@@ -75,9 +75,9 @@ body::after {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 10% 20%, rgba(45, 91, 255, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(154, 242, 58, 0.15) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(255, 122, 41, 0.1) 0%, transparent 40%);
+    radial-gradient(circle at 10% 20%, rgba(45, 91, 255, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(154, 242, 58, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(255, 122, 41, 0.25) 0%, transparent 40%);
   animation: bg-pulse 8s ease-in-out infinite;
 }
 
@@ -89,8 +89,8 @@ body::after {
   width: 100%;
   height: 100%;
   background-image: 
-    linear-gradient(45deg, rgba(45, 91, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(154, 242, 58, 0.05) 1px, transparent 1px);
+    linear-gradient(45deg, rgba(45, 91, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(154, 242, 58, 0.12) 1px, transparent 1px);
   background-size: 100px 100px;
   animation: diagonal-grid 25s linear infinite;
 }
@@ -985,5 +985,52 @@ body::after {
   .footer-section:nth-child(4),
   .footer-section:nth-child(5) {
     grid-column: span 1.5;
+  }
+}
+
+/* Enhanced Background Elements */
+.bg-grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -4;
+  background-image: 
+    linear-gradient(90deg, rgba(45, 91, 255, 0.2) 2px, transparent 2px),
+    linear-gradient(rgba(45, 91, 255, 0.2) 2px, transparent 2px);
+  background-size: 100px 100px;
+  animation: grid-overlay 40s linear infinite;
+}
+
+.bg-dots {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -5;
+  background-image: radial-gradient(circle, rgba(154, 242, 58, 0.4) 1px, transparent 1px);
+  background-size: 150px 150px;
+  animation: dots-move 60s linear infinite;
+}
+
+@keyframes grid-overlay {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100px, 100px);
+  }
+}
+
+@keyframes dots-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-150px, -150px);
   }
 }

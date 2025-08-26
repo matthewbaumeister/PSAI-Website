@@ -19,6 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
+        {/* Enhanced Background Elements */}
+        <div className="bg-grid-overlay"></div>
+        <div className="bg-dots"></div>
+        
         {/* Animated Background */}
         <div className="animated-bg"></div>
         
