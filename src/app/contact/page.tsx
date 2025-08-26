@@ -1,12 +1,6 @@
 "use client"
 
-import type { Metadata } from 'next'
 import { useState } from 'react'
-
-export const metadata: Metadata = {
-  title: 'Contact Us - Prop Shop AI',
-  description: 'Get in touch with Prop Shop AI. Book a demo, ask questions, or learn how we can help your procurement needs.',
-}
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
