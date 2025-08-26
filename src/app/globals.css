@@ -3680,26 +3680,33 @@ body::after {
   white-space: nowrap;
 }
 
+/* Solutions Page Button Styling */
 .solution-card .btn {
-  width: 100%;
-  text-align: center;
-  padding: 0.75rem 1.5rem;
-  font-weight: 600;
+  background: linear-gradient(135deg, #9AF23A, #7DD32A);
+  color: #1a1a1a;
+  border: none;
+  padding: 12px 24px;
   border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
+  display: inline-block;
   transition: all 0.3s ease;
-  flex-shrink: 0;
-  margin-top: auto;
+  box-shadow: 0 4px 12px rgba(154, 242, 58, 0.3);
+  min-height: 0;
   box-sizing: border-box;
   max-width: 100%;
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-  color: white;
-  border: none;
 }
 
 .solution-card .btn:hover {
+  background: linear-gradient(135deg, #8AE32A, #6CC21A);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+  box-shadow: 0 6px 16px rgba(154, 242, 58, 0.4);
+  color: #1a1a1a;
+}
+
+.solution-card .btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(154, 242, 58, 0.3);
 }
 
 /* Integration Section */

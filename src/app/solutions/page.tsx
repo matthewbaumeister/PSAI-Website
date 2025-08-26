@@ -40,11 +40,11 @@ export default function SolutionsPage() {
                   </linearGradient>
                 </defs>
                 <circle cx="20" cy="20" r="12" stroke="url(#searchGradient)" strokeWidth="3" fill="none"/>
-                <line x1="28" y1="28" x1="38" y1="38" stroke="url(#searchGradient)" strokeWidth="3" strokeLinecap="round"/>
+                <line x1="28" y1="28" x2="38" y2="38" stroke="url(#searchGradient)" strokeWidth="3" strokeLinecap="round"/>
                 <rect x="32" y="8" width="8" height="10" rx="1" fill="url(#searchGradient)" opacity="0.8"/>
-                <line x1="34" y1="11" x1="38" y1="11" stroke="white" strokeWidth="1"/>
-                <line x1="34" y1="13" x1="38" y1="13" stroke="white" strokeWidth="1"/>
-                <line x1="34" y1="15" x1="36" y1="15" stroke="white" strokeWidth="1"/>
+                <line x1="34" y1="11" x2="38" y2="11" stroke="white" strokeWidth="1"/>
+                <line x1="34" y1="13" x2="38" y2="13" stroke="white" strokeWidth="1"/>
+                <line x1="34" y1="15" x2="36" y2="15" stroke="white" strokeWidth="1"/>
               </svg>
             </div>
             <div className="solution-content">
@@ -73,10 +73,10 @@ export default function SolutionsPage() {
                 <circle cx="24" cy="24" r="3" fill="url(#complianceGradient)"/>
                 <circle cx="16" cy="32" r="3" fill="url(#complianceGradient)"/>
                 <circle cx="32" cy="32" r="3" fill="url(#complianceGradient)"/>
-                <line x1="16" y1="16" x1="24" y1="24" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="32" y1="16" x1="24" y1="24" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="24" y1="24" x1="16" y1="32" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="24" y1="24" x1="32" y1="32" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="16" y1="16" x2="24" y2="24" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="32" y1="16" x2="24" y2="24" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="24" y1="24" x2="16" y2="32" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="24" y1="24" x2="32" y2="32" stroke="url(#complianceGradient)" strokeWidth="2" opacity="0.6"/>
                 <path d="M8 24 L12 28 L20 20" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
@@ -120,10 +120,10 @@ export default function SolutionsPage() {
                 <path d="M8 36 L36 8 L40 12 L12 40 L8 36 Z" fill="url(#writeGradient)"/>
                 <path d="M36 8 L40 12 L44 8 L40 4 L36 8 Z" fill="url(#writeGradient)" opacity="0.8"/>
                 <rect x="12" y="16" width="20" height="24" rx="2" fill="url(#writeGradient)" opacity="0.3"/>
-                <line x1="16" y1="20" x1="28" y1="20" stroke="white" strokeWidth="1"/>
-                <line x1="16" y1="24" x1="28" y1="24" stroke="white" strokeWidth="1"/>
-                <line x1="16" y1="28" x1="28" y1="28" stroke="white" strokeWidth="1"/>
-                <line x1="16" y1="32" x1="24" y1="32" stroke="white" strokeWidth="1"/>
+                <line x1="16" y1="20" x2="28" y2="20" stroke="white" strokeWidth="1"/>
+                <line x1="16" y1="24" x2="28" y2="24" stroke="white" strokeWidth="1"/>
+                <line x1="16" y1="28" x2="28" y2="28" stroke="white" strokeWidth="1"/>
+                <line x1="16" y1="32" x2="24" y2="32" stroke="white" strokeWidth="1"/>
                 <path d="M16 20 L28 20" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
                 <path d="M16 24 L28 24" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
                 <path d="M16 28 L28 28" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
@@ -154,14 +154,14 @@ export default function SolutionsPage() {
                 <circle cx="16" cy="20" r="6" fill="url(#crmGradient)"/>
                 <circle cx="32" cy="20" r="6" fill="url(#crmGradient)"/>
                 <circle cx="24" cy="36" r="6" fill="url(#crmGradient)"/>
-                <line x1="16" y1="20" x1="24" y1="36" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="32" y1="20" x1="24" y1="36" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="24" y1="24" x1="16" y1="32" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
-                <line x1="24" y1="24" x1="32" y1="32" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="16" y1="20" x2="24" y2="36" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="32" y1="20" x2="24" y2="36" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="24" y1="24" x2="16" y2="32" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
+                <line x1="24" y1="24" x2="32" y2="32" stroke="url(#crmGradient)" strokeWidth="2" opacity="0.6"/>
                 <circle cx="24" cy="36" r="2" fill="white"/>
                 <path d="M8 8 L16 8 L16 16 L8 16 Z" fill="url(#crmGradient)" opacity="0.8"/>
                 <path d="M32 8 L40 8 L40 16 L32 16 Z" fill="url(#crmGradient)" opacity="0.8"/>
-                <line x1="12" y1="12" x1="36" y1="12" stroke="white" strokeWidth="1" strokeDasharray="2,2"/>
+                <line x1="12" y1="12" x2="36" y2="12" stroke="white" strokeWidth="1" strokeDasharray="2,2"/>
               </svg>
             </div>
             <div className="solution-content">
