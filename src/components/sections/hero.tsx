@@ -19,7 +19,11 @@ export function Hero() {
     proofItems.appendChild(proofClone)
     agenciesItems.appendChild(agenciesClone)
 
-    // Infinite scroll animation for proof items
+    // Animation frame IDs for cleanup
+    let proofAnimationId: number
+    let agenciesAnimationId: number
+
+    // Infinite scroll animation for proof items (left to right)
     let proofPosition = 0
     const proofScroll = () => {
       proofPosition -= 1
@@ -27,27 +31,33 @@ export function Hero() {
         proofPosition = 0
       }
       proofItems.style.transform = `translateX(${proofPosition}px)`
-      requestAnimationFrame(proofScroll)
+      proofAnimationId = requestAnimationFrame(proofScroll)
     }
 
-    // Infinite scroll animation for agencies
+    // Infinite scroll animation for agencies (left to right, same direction as proof)
     let agenciesPosition = 0
     const agenciesScroll = () => {
-      agenciesPosition += 1
-      if (agenciesPosition >= agenciesItems.scrollWidth / 2) {
+      agenciesPosition -= 1 // Changed from += to -= to scroll left like proof items
+      if (agenciesPosition <= -agenciesItems.scrollWidth / 2) {
         agenciesPosition = 0
       }
       agenciesItems.style.transform = `translateX(${agenciesPosition}px)`
-      requestAnimationFrame(agenciesScroll)
+      agenciesAnimationId = requestAnimationFrame(agenciesScroll)
     }
 
     // Start animations
     proofScroll()
     agenciesScroll()
 
-    // Cleanup
+    // Cleanup function to stop animations
     return () => {
-      // Cleanup if needed
+      // Cancel any pending animation frames
+      if (proofAnimationId) {
+        cancelAnimationFrame(proofAnimationId)
+      }
+      if (agenciesAnimationId) {
+        cancelAnimationFrame(agenciesAnimationId)
+      }
     }
   }, [])
 
