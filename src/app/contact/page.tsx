@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
+  const formRef = useRef<HTMLFormElement>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -47,8 +48,10 @@ export default function ContactPage() {
       if (response.ok) {
         setSubmitStatus('success')
         setSubmitMessage(result.message)
-        // Reset form
-        e.currentTarget.reset()
+        // Reset form using ref instead of e.currentTarget
+        if (formRef.current) {
+          formRef.current.reset()
+        }
       } else {
         setSubmitStatus('error')
         setSubmitMessage(result.error || 'Something went wrong. Please try again.')
@@ -92,7 +95,7 @@ export default function ContactPage() {
               </div>
             )}
 
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" onSubmit={handleSubmit} ref={formRef}>
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="firstName">First Name *</label>
