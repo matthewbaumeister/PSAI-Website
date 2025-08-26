@@ -34,7 +34,7 @@ export default function MarketResearchPage() {
               </div>
               <div className="feature">
                 <div className="feature-icon">🔍</div>
-                <h3>Advanced Search</h4>
+                <h3>Advanced Search</h3>
                 <p>Custom-built search algorithms and intelligence tools</p>
               </div>
               <div className="feature">
