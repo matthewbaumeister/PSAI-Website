@@ -19,8 +19,9 @@ body {
 :root {
   --gradient-colors: #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%;
   --animation-duration: 6s;
-  --animation-timing: ease;
+  --animation-timing: linear;
   --animation-iteration: infinite;
+  --animation-delay: 0s;
 }
 
 /* Global Background Grid and Animations */
@@ -274,7 +275,7 @@ body::after {
   height: 3rem;
   background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
@@ -295,7 +296,7 @@ body::after {
   bottom: 0;
   background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   opacity: 0.3;
   z-index: -1;
 }
@@ -403,16 +404,16 @@ body::after {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain 6s ease infinite;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(45, 91, 255, 0.3);
-  animation: color-chain 3s ease infinite;
+  animation: color-chain calc(var(--animation-duration) / 2) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
 }
 
 .btn-outline {
@@ -430,7 +431,7 @@ body::after {
 .header-actions .btn-outline {
   background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -438,7 +439,7 @@ body::after {
 .header-actions .btn-outline:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(45, 91, 255, 0.3);
-  animation: color-chain 3s ease infinite;
+  animation: color-chain calc(var(--animation-duration) / 2) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -525,7 +526,7 @@ body::after {
 .hero h1 span {
   background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -866,7 +867,7 @@ body::after {
   height: 2.5rem;
   background: linear-gradient(135deg, var(--gradient-colors));
   background-size: 400% 400%;
-  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration);
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
