@@ -596,7 +596,7 @@ body::after {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-50% - 0.5rem));
+    transform: translateX(-50%);
   }
 }
 
@@ -631,6 +631,7 @@ body::after {
   animation: scroll-right 25s linear infinite;
   white-space: nowrap;
   width: max-content;
+  transform: translateX(0);
 }
 
 .agencies-items:hover {
@@ -654,7 +655,7 @@ body::after {
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(calc(-50% - 0.5rem));
+    transform: translateX(-50%);
   }
   100% {
     transform: translateX(0);
@@ -3336,6 +3337,7 @@ body::after {
   animation: scroll-left 30s linear infinite;
   white-space: nowrap;
   width: max-content;
+  transform: translateX(0);
 }
 
 .proof-items:hover {
@@ -3362,7 +3364,7 @@ body::after {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-50% - 0.5rem));
+    transform: translateX(-50%);
   }
 }
 
@@ -3388,6 +3390,7 @@ body::after {
   animation: scroll-right 25s linear infinite;
   white-space: nowrap;
   width: max-content;
+  transform: translateX(0);
 }
 
 .agencies-items:hover {
@@ -3411,7 +3414,7 @@ body::after {
 
 @keyframes scroll-right {
   0% {
-    transform: translateX(calc(-50% - 0.5rem));
+    transform: translateX(-50%);
   }
   100% {
     transform: translateX(0);
