@@ -162,51 +162,6 @@ export default function SmallBusinessPage() {
           </div>
         </div>
 
-        <div className="content-section">
-          <h2>Pricing & Plans</h2>
-          <div className="pricing-grid">
-            <div className="pricing-card">
-              <h3>Small Business Starter</h3>
-              <div className="price">$49<span>/month</span></div>
-              <ul>
-                <li>Basic SBIR opportunity search</li>
-                <li>SBA program tracking</li>
-                <li>Set-aside opportunity alerts</li>
-                <li>Email support</li>
-                <li>Perfect for businesses under $1M</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card featured">
-              <div className="featured-badge">Most Popular</div>
-              <h3>Small Business Professional</h3>
-              <div className="price">$99<span>/month</span></div>
-              <ul>
-                <li>Full proprietary search access</li>
-                <li>Advanced SBIR tracking</li>
-                <li>Comprehensive SBA database</li>
-                <li>Set-aside intelligence</li>
-                <li>Priority support</li>
-                <li>API access</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card">
-              <h3>Small Business Enterprise</h3>
-              <div className="price">$199<span>/month</span></div>
-              <ul>
-                <li>Everything in Professional</li>
-                <li>Dedicated small business advisor</li>
-                <li>Custom training and onboarding</li>
-                <li>White-label options</li>
-                <li>SLA guarantees</li>
-                <li>Custom integrations</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Contact Sales</a>
-            </div>
-          </div>
-        </div>
-
         <div className="cta-section">
           <h2>Ready to Access Our Proprietary Small Business Platform?</h2>
           <p>

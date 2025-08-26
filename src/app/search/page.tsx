@@ -182,50 +182,6 @@ export default function SearchPage() {
           </div>
         </div>
 
-        <div className="content-section">
-          <h2>Pricing & Plans</h2>
-          <div className="pricing-grid">
-            <div className="pricing-card">
-              <h3>Basic</h3>
-              <div className="price">$79<span>/month</span></div>
-              <ul>
-                <li>Basic DoD opportunity search</li>
-                <li>Limited agency coverage</li>
-                <li>Standard filtering options</li>
-                <li>Email support</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card featured">
-              <div className="featured-badge">Most Popular</div>
-              <h3>Professional</h3>
-              <div className="price">$149<span>/month</span></div>
-              <ul>
-                <li>Full DoD-wide search access</li>
-                <li>All agencies and commands</li>
-                <li>Advanced filtering and analytics</li>
-                <li>Contract intelligence features</li>
-                <li>Priority support</li>
-                <li>API access</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card">
-              <h3>Enterprise</h3>
-              <div className="price">Custom</div>
-              <ul>
-                <li>Custom DoD search solutions</li>
-                <li>Dedicated support team</li>
-                <li>Training and onboarding</li>
-                <li>Custom integrations</li>
-                <li>SLA guarantees</li>
-                <li>White-label options</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Contact Sales</a>
-            </div>
-          </div>
-        </div>
-
         <div className="cta-section">
           <h2>Ready to Dominate DoD Contracting?</h2>
           <p>

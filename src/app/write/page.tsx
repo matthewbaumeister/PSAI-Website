@@ -236,50 +236,6 @@ export default function WritePage() {
           </div>
         </div>
 
-        <div className="content-section">
-          <h2>Pricing & Plans</h2>
-          <div className="pricing-grid">
-            <div className="pricing-card">
-              <h3>AI-Assisted Writing</h3>
-              <div className="price">$149<span>/month</span></div>
-              <ul>
-                <li>AI-enhanced content generation</li>
-                <li>Human oversight and editing</li>
-                <li>Basic compliance checking</li>
-                <li>Email support</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card featured">
-              <div className="featured-badge">Most Popular</div>
-              <h3>Manual Writing Service</h3>
-              <div className="price">$399<span>/month</span></div>
-              <ul>
-                <li>100% manual writing by PhD writers</li>
-                <li>Custom content creation</li>
-                <li>Multiple review rounds</li>
-                <li>Direct writer communication</li>
-                <li>Priority support</li>
-                <li>Quality guarantee</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card">
-              <h3>Enterprise Solutions</h3>
-              <div className="price">Custom</div>
-              <ul>
-                <li>Dedicated writing team</li>
-                <li>Custom service packages</li>
-                <li>Training and onboarding</li>
-                <li>SLA guarantees</li>
-                <li>White-label options</li>
-                <li>Custom integrations</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Contact Sales</a>
-            </div>
-          </div>
-        </div>
-
         <div className="cta-section">
           <h2>Ready for PhD-Level Writing Excellence?</h2>
           <p>

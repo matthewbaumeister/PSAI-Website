@@ -200,50 +200,6 @@ export default function MarketResearchPage() {
           </div>
         </div>
 
-        <div className="content-section">
-          <h2>Pricing & Plans</h2>
-          <div className="pricing-grid">
-            <div className="pricing-card">
-              <h3>Basic Access</h3>
-              <div className="price">$99<span>/month</span></div>
-              <ul>
-                <li>Basic proprietary data access</li>
-                <li>Standard search capabilities</li>
-                <li>Industry tracking tools</li>
-                <li>Email support</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card featured">
-              <div className="featured-badge">Most Popular</div>
-              <h3>Professional Platform</h3>
-              <div className="price">$199<span>/month</span></div>
-              <ul>
-                <li>Full proprietary data access</li>
-                <li>Advanced search and analysis</li>
-                <li>Industry creation tools</li>
-                <li>Competitive intelligence</li>
-                <li>Priority support</li>
-                <li>API access</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card">
-              <h3>Enterprise Solutions</h3>
-              <div className="price">Custom</div>
-              <ul>
-                <li>Custom data solutions</li>
-                <li>Dedicated research team</li>
-                <li>White-label platform</li>
-                <li>Training and onboarding</li>
-                <li>SLA guarantees</li>
-                <li>Custom integrations</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Contact Sales</a>
-            </div>
-          </div>
-        </div>
-
         <div className="cta-section">
           <h2>Ready for Proprietary Market Intelligence?</h2>
           <p>

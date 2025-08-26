@@ -155,55 +155,40 @@ export default function CRMPage() {
         </div>
 
         <div className="content-section">
-          <h2>Pricing & Plans</h2>
-          <div className="pricing-grid">
-            <div className="pricing-card">
-              <h3>Starter</h3>
-              <div className="price">$49<span>/month</span></div>
-              <ul>
-                <li>Up to 1,000 contacts</li>
-                <li>Basic lead management</li>
-                <li>Email automation</li>
-                <li>Standard reporting</li>
-                <li>Email support</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
+          <h2>Industries We Serve</h2>
+          <div className="industries">
+            <div className="industry">
+              <h4>Information Technology</h4>
+              <p>Software development, cloud services, cybersecurity, and IT consulting</p>
             </div>
-            <div className="pricing-card featured">
-              <div className="featured-badge">Most Popular</div>
-              <h3>Professional</h3>
-              <div className="price">$99<span>/month</span></div>
-              <ul>
-                <li>Up to 10,000 contacts</li>
-                <li>Advanced lead scoring</li>
-                <li>Pipeline management</li>
-                <li>AI-powered insights</li>
-                <li>Priority support</li>
-                <li>Custom integrations</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
+            <div className="industry">
+              <h4>Defense & Aerospace</h4>
+              <p>Military contracts, defense systems, aerospace technology, and security</p>
             </div>
-            <div className="pricing-card">
-              <h3>Enterprise</h3>
-              <div className="price">Custom</div>
-              <ul>
-                <li>Unlimited contacts</li>
-                <li>Advanced analytics</li>
-                <li>Custom workflows</li>
-                <li>Dedicated support</li>
-                <li>On-premise options</li>
-                <li>Custom development</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Contact Sales</a>
+            <div className="industry">
+              <h4>Healthcare</h4>
+              <p>Medical services, healthcare IT, research, and clinical support</p>
+            </div>
+            <div className="industry">
+              <h4>Construction</h4>
+              <p>Infrastructure, building construction, renovation, and maintenance</p>
+            </div>
+            <div className="industry">
+              <h4>Professional Services</h4>
+              <p>Consulting, training, research, and administrative support</p>
+            </div>
+            <div className="industry">
+              <h4>Manufacturing</h4>
+              <p>Product manufacturing, supply chain, and industrial services</p>
             </div>
           </div>
         </div>
 
         <div className="cta-section">
-          <h2>Ready to Transform Your Customer Relationships?</h2>
+          <h2>Ready to Transform Your Government Contracting?</h2>
           <p>
-            Join procurement professionals who are already using PS.AI CRM to win more contracts 
-            and build stronger customer relationships.
+            Join government contractors who are already using PS.AI CRM to manage relationships, 
+            track opportunities, and win more contracts.
           </p>
           <div className="cta-buttons">
             <a href="/contact" className="btn btn-primary btn-lg">Get Started Today</a>

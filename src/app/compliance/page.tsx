@@ -192,50 +192,6 @@ export default function CompliancePage() {
           </div>
         </div>
 
-        <div className="content-section">
-          <h2>Pricing & Plans</h2>
-          <div className="pricing-grid">
-            <div className="pricing-card">
-              <h3>Basic Templates</h3>
-              <div className="price">$99<span>/month</span></div>
-              <ul>
-                <li>Standard compliance templates</li>
-                <li>Basic AI compliance checking</li>
-                <li>Email support</li>
-                <li>Perfect for small businesses</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card featured">
-              <div className="featured-badge">Most Popular</div>
-              <h3>Custom Templates</h3>
-              <div className="price">$299<span>/month</span></div>
-              <ul>
-                <li>Custom tailored templates</li>
-                <li>Advanced AI compliance checking</li>
-                <li>PhD-level writer support</li>
-                <li>Industry-specific optimization</li>
-                <li>Priority support</li>
-                <li>Template customization</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Get Started</a>
-            </div>
-            <div className="pricing-card">
-              <h3>Enterprise Solutions</h3>
-              <div className="price">Custom</div>
-              <ul>
-                <li>Full custom template development</li>
-                <li>Dedicated PhD writer team</li>
-                <li>Advanced AI integration</li>
-                <li>Training and onboarding</li>
-                <li>SLA guarantees</li>
-                <li>White-label options</li>
-              </ul>
-              <a href="/contact" className="btn btn-primary">Contact Sales</a>
-            </div>
-          </div>
-        </div>
-
         <div className="cta-section">
           <h2>Ready for AI + Human Expertise?</h2>
           <p>
