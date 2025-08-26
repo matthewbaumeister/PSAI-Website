@@ -26,23 +26,53 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // For now, just log the submission and return success
-    // TODO: Implement Supabase storage once table is created
-    console.log('New contact submission:', {
+    // Create Supabase client
+    const supabase = createAdminSupabaseClient()
+
+    // Insert contact submission into database
+    const { data, error } = await supabase
+      .from('contact_submissions')
+      .insert([
+        {
+          first_name: firstName,
+          last_name: lastName,
+          email: email.toLowerCase(),
+          phone: phone || null,
+          company: company,
+          job_title: jobTitle || null,
+          company_size: companySize || null,
+          industry: industry || null,
+          interests: Array.isArray(interests) ? interests : [interests],
+          message: message || null,
+          newsletter_subscription: newsletter === 'yes',
+          status: 'new',
+          created_at: new Date().toISOString()
+        }
+      ])
+      .select()
+
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json(
+        { error: 'Failed to save contact submission' },
+        { status: 500 }
+      )
+    }
+
+    // Log the successful submission
+    console.log('New contact submission saved to database:', {
+      id: data[0].id,
       name: `${firstName} ${lastName}`,
       email,
       company,
-      interests,
-      message,
-      newsletter
+      interests
     })
 
-    // Return success response
     return NextResponse.json(
       { 
         success: true, 
         message: 'Thank you for your submission! We\'ll be in touch soon.',
-        note: 'Your submission has been received and logged. Database storage will be enabled soon.'
+        submission_id: data[0].id
       },
       { status: 200 }
     )
