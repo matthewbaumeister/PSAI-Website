@@ -47,7 +47,9 @@ body {
 .logo-icon {
   width: 3rem;
   height: 3rem;
-  background: linear-gradient(135deg, #2D5BFF, #9AF23A);
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain 8s ease infinite;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
@@ -55,6 +57,40 @@ body {
   font-weight: bold;
   color: white;
   font-size: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain 8s ease infinite reverse;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+@keyframes color-chain {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .logo-text {
@@ -137,16 +173,21 @@ body {
   transition: all 0.2s ease;
   border: none;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #2D5BFF, #9AF23A);
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain 6s ease infinite;
   color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(45, 91, 255, 0.3);
+  animation: color-chain 3s ease infinite;
 }
 
 .btn-outline {
@@ -219,10 +260,13 @@ body {
 }
 
 .hero h1 span {
-  background: linear-gradient(135deg, #2D5BFF, #9AF23A);
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain 8s ease infinite;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
 }
 
 .hero p {
@@ -453,7 +497,9 @@ body {
 .footer-brand .logo-placeholder {
   width: 2.5rem;
   height: 2.5rem;
-  background: linear-gradient(135deg, #2D5BFF, #9AF23A);
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain 8s ease infinite;
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
