@@ -57,6 +57,9 @@ export function Header() {
         </nav>
 
         <div className="header-actions">
+          <Link href="/contact" className="btn btn-outline">
+            Contact Us
+          </Link>
           <Link href="/book-demo" className="btn btn-outline">
             Book Demo
           </Link>

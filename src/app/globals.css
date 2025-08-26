@@ -357,10 +357,14 @@ body::after {
 }
 
 /* Header Actions */
-.header-actions {
+.header .header-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.header .header-actions .btn {
+  white-space: nowrap;
 }
 
 /* Buttons */
