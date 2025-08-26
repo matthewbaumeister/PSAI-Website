@@ -89,7 +89,6 @@ export default function PrivacyPage() {
           <p>If you have questions about this Privacy Policy or our privacy practices, please contact us at:</p>
           <div className="contact-info">
             <p><strong>Email:</strong> privacy@prop-shop.ai</p>
-            <p><strong>Address:</strong> Make Ready Consulting, dba. Prop Shop AI</p>
           </div>
         </div>
       </div>

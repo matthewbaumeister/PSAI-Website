@@ -116,7 +116,6 @@ export default function SecurityPage() {
           <div className="contact-info">
             <p><strong>Security Email:</strong> security@prop-shop.ai</p>
             <p><strong>Security Hotline:</strong> Available to enterprise customers</p>
-            <p><strong>Address:</strong> Make Ready Consulting, dba. Prop Shop AI</p>
           </div>
         </div>
       </div>

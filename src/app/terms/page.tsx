@@ -103,7 +103,6 @@ export default function TermsPage() {
           <p>For questions about these Terms, please contact us at:</p>
           <div className="contact-info">
             <p><strong>Email:</strong> legal@prop-shop.ai</p>
-            <p><strong>Address:</strong> Make Ready Consulting, dba. Prop Shop AI</p>
           </div>
         </div>
       </div>
