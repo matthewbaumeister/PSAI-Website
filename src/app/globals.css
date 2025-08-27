@@ -175,6 +175,7 @@ body::after {
   z-index: 999999 !important;
   isolation: isolate !important;
   contain: layout style paint !important;
+  overflow: visible !important;
 }
 
 .header .container {
@@ -273,6 +274,7 @@ body::after {
 .dropdown {
   position: relative;
   z-index: 999999 !important;
+  overflow: visible !important;
 }
 
 .dropdown-toggle {
@@ -339,25 +341,18 @@ body::after {
   visibility: visible !important;
   transform: translateY(0) !important;
   pointer-events: auto !important;
-  position: fixed !important;
+  position: absolute !important;
   z-index: 999999 !important;
   isolation: isolate !important;
   contain: layout style paint !important;
-  top: 80px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  background: rgba(11, 18, 32, 1) !important;
+  background: rgba(11, 18, 32, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0.5rem !important;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* DEBUG: Force dropdown visibility for testing */
-.dropdown-menu {
-  display: block !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  background: red !important;
-  border: 3px solid yellow !important;
-}
+
 
 /* Ensure dropdown stability */
 .dropdown-menu li {
