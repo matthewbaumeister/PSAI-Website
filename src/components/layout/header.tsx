@@ -12,6 +12,8 @@ export function Header() {
   // Debug dropdown state
   useEffect(() => {
     console.log('Solutions dropdown state:', showSolutionsDropdown)
+    console.log('Current page pathname:', window.location.pathname)
+    console.log('Header component mounted')
   }, [showSolutionsDropdown])
 
   // Close user menu when clicking outside
@@ -66,8 +68,14 @@ export function Header() {
           <div className="dropdown" ref={solutionsDropdownRef}>
             <button 
               className="nav-link dropdown-toggle"
-              onClick={() => setShowSolutionsDropdown(!showSolutionsDropdown)}
-              onMouseEnter={() => setShowSolutionsDropdown(true)}
+              onClick={() => {
+                console.log('Dropdown toggle clicked, current state:', showSolutionsDropdown)
+                setShowSolutionsDropdown(!showSolutionsDropdown)
+              }}
+              onMouseEnter={() => {
+                console.log('Dropdown mouse enter')
+                setShowSolutionsDropdown(true)
+              }}
             >
               Solutions
             </button>
