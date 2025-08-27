@@ -264,6 +264,7 @@ body::after {
 
 .dropdown {
   position: relative;
+  z-index: 1000;
 }
 
 .dropdown-toggle {
@@ -303,13 +304,14 @@ body::after {
   border-radius: 0.5rem;
   padding: 0.5rem 0;
   min-width: 200px;
-  z-index: 200;
+  z-index: 1001;
   list-style: none;
   margin: 0;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.2s ease;
+  pointer-events: auto;
 }
 
 .dropdown-menu.show {
@@ -317,6 +319,23 @@ body::after {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Ensure dropdown stability */
+.dropdown-menu li {
+  position: relative;
+  z-index: 1002;
+}
+
+.dropdown-link {
+  position: relative;
+  z-index: 1003;
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #9CA3AF;
+  text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 .dropdown-link {
@@ -330,6 +349,7 @@ body::after {
 .dropdown-link:hover {
   color: white;
   background: rgba(255, 255, 255, 0.06);
+  z-index: 1004;
 }
 
 /* Header Actions */
