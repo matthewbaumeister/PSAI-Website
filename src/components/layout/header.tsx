@@ -1,44 +1,8 @@
 "use client"
 
 import Link from 'next/link'
-import { useState, useRef, useEffect } from 'react'
 
 export function Header() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false)
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
-
-  // Close dropdown when pressing Escape
-  useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsDropdownOpen(false)
-      }
-    }
-
-    document.addEventListener('keydown', handleEscape)
-    return () => document.removeEventListener('keydown', handleEscape)
-  }, [])
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen)
-  }
-
-  const closeDropdown = () => {
-    setIsDropdownOpen(false)
-  }
-
   return (
     <header className="header">
       <div className="container">
@@ -54,41 +18,18 @@ export function Header() {
         </Link>
 
         <nav className="nav">
-          <div className="dropdown-container" ref={dropdownRef}>
-            <button 
-              className="dropdown-trigger"
-              onClick={toggleDropdown}
-              aria-expanded={isDropdownOpen}
-              aria-haspopup="true"
-            >
+          <div className="simple-dropdown">
+            <button className="dropdown-btn">
               Solutions
-              <span className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}>
-                ▼
-              </span>
+              <span className="arrow">▼</span>
             </button>
-            
-            {/* DEBUG: Always render dropdown for testing */}
-            <div className={`dropdown-menu-new ${isDropdownOpen ? 'open' : 'closed'}`}>
-              <div className="dropdown-content">
-                <Link href="/small-business" className="dropdown-item" onClick={closeDropdown}>
-                  Small Business
-                </Link>
-                <Link href="/search" className="dropdown-item" onClick={closeDropdown}>
-                  PS.AI Search
-                </Link>
-                <Link href="/compliance" className="dropdown-item" onClick={closeDropdown}>
-                  PS.AI Compliance
-                </Link>
-                <Link href="/market-research" className="dropdown-item" onClick={closeDropdown}>
-                  PS.AI Market Research
-                </Link>
-                <Link href="/write" className="dropdown-item" onClick={closeDropdown}>
-                  PS.AI Write
-                </Link>
-                <Link href="/crm" className="dropdown-item" onClick={closeDropdown}>
-                  PS.AI CRM
-                </Link>
-              </div>
+            <div className="dropdown-panel">
+              <Link href="/small-business" className="dropdown-link">Small Business</Link>
+              <Link href="/search" className="dropdown-link">PS.AI Search</Link>
+              <Link href="/compliance" className="dropdown-link">PS.AI Compliance</Link>
+              <Link href="/market-research" className="dropdown-link">PS.AI Market Research</Link>
+              <Link href="/write" className="dropdown-link">PS.AI Write</Link>
+              <Link href="/crm" className="dropdown-link">PS.AI CRM</Link>
             </div>
           </div>
           
