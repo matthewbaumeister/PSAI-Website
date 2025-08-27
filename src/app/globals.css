@@ -286,13 +286,13 @@ body::after {
 
 
 
-/* SIMPLE DROPDOWN - Fresh start, no complexity */
-.simple-dropdown {
+/* NEW DROPDOWN DESIGN - Simple and logical */
+.dropdown-wrapper {
   position: relative;
   display: inline-block;
 }
 
-.dropdown-btn {
+.dropdown-button {
   background: none;
   border: none;
   color: #9CA3AF;
@@ -304,61 +304,40 @@ body::after {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   border-radius: 0.375rem;
 }
 
-.dropdown-btn:hover {
+.dropdown-button:hover {
   color: white;
   background: rgba(255, 255, 255, 0.05);
 }
 
-.arrow {
+.dropdown-icon {
   font-size: 0.75rem;
   transition: transform 0.2s ease;
 }
 
-.simple-dropdown:hover .arrow {
+.dropdown-icon.open {
   transform: rotate(180deg);
 }
 
-.dropdown-panel {
-  position: fixed;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
   min-width: 220px;
   background: rgba(11, 18, 32, 0.98);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  z-index: 2147483647;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(-50%) translateY(-10px);
-  transition: all 0.2s ease;
-  pointer-events: none;
+  z-index: 999999;
+  padding: 0.5rem 0;
+  animation: dropdownFadeIn 0.2s ease-out;
 }
 
-.simple-dropdown:hover .dropdown-panel {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
-}
-
-/* Force dropdown to be above everything */
-.dropdown-panel {
-  position: fixed !important;
-  z-index: 2147483647 !important;
-  isolation: isolate !important;
-  contain: layout style paint !important;
-  overflow: visible !important;
-  clip-path: none !important;
-}
-
-.dropdown-link {
+.dropdown-item {
   display: block;
   padding: 0.75rem 1.25rem;
   color: #9CA3AF;
@@ -368,11 +347,22 @@ body::after {
   border-left: 3px solid transparent;
 }
 
-.dropdown-link:hover {
+.dropdown-item:hover {
   color: white;
   background: rgba(255, 255, 255, 0.08);
   border-left-color: #10B981;
   transform: translateX(4px);
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 
