@@ -9,6 +9,11 @@ export function Header() {
   const userMenuRef = useRef<HTMLDivElement>(null)
   const solutionsDropdownRef = useRef<HTMLDivElement>(null)
 
+  // Debug dropdown state
+  useEffect(() => {
+    console.log('Solutions dropdown state:', showSolutionsDropdown)
+  }, [showSolutionsDropdown])
+
   // Close user menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -67,12 +72,12 @@ export function Header() {
               Solutions
             </button>
             <ul className={`dropdown-menu ${showSolutionsDropdown ? 'show' : ''}`}>
-              <li><Link href="/small-business" className="dropdown-link">Small Business</Link></li>
-              <li><Link href="/search" className="dropdown-link">PS.AI Search</Link></li>
-              <li><Link href="/compliance" className="dropdown-link">PS.AI Compliance</Link></li>
-              <li><Link href="/market-research" className="dropdown-link">PS.AI Market Research</Link></li>
-              <li><Link href="/write" className="dropdown-link">PS.AI Write</Link></li>
-              <li><Link href="/crm" className="dropdown-link">PS.AI CRM</Link></li>
+              <li><Link href="/small-business" className="dropdown-link" onClick={() => setShowSolutionsDropdown(false)}>Small Business</Link></li>
+              <li><Link href="/search" className="dropdown-link" onClick={() => setShowSolutionsDropdown(false)}>PS.AI Search</Link></li>
+              <li><Link href="/compliance" className="dropdown-link" onClick={() => setShowSolutionsDropdown(false)}>PS.AI Compliance</Link></li>
+              <li><Link href="/market-research" className="dropdown-link" onClick={() => setShowSolutionsDropdown(false)}>PS.AI Market Research</Link></li>
+              <li><Link href="/write" className="dropdown-link" onClick={() => setShowSolutionsDropdown(false)}>PS.AI Write</Link></li>
+              <li><Link href="/crm" className="dropdown-link" onClick={() => setShowSolutionsDropdown(false)}>PS.AI CRM</Link></li>
             </ul>
           </div>
           <Link href="/publications" className="nav-link">Publications</Link>
