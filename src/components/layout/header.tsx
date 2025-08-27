@@ -67,30 +67,29 @@ export function Header() {
               </span>
             </button>
             
-            {isDropdownOpen && (
-              <div className="dropdown-menu-new">
-                <div className="dropdown-content">
-                  <Link href="/small-business" className="dropdown-item" onClick={closeDropdown}>
-                    Small Business
-                  </Link>
-                  <Link href="/search" className="dropdown-item" onClick={closeDropdown}>
-                    PS.AI Search
-                  </Link>
-                  <Link href="/compliance" className="dropdown-item" onClick={closeDropdown}>
-                    PS.AI Compliance
-                  </Link>
-                  <Link href="/market-research" className="dropdown-item" onClick={closeDropdown}>
-                    PS.AI Market Research
-                  </Link>
-                  <Link href="/write" className="dropdown-item" onClick={closeDropdown}>
-                    PS.AI Write
-                  </Link>
-                  <Link href="/crm" className="dropdown-item" onClick={closeDropdown}>
-                    PS.AI CRM
-                  </Link>
-                </div>
+            {/* DEBUG: Always render dropdown for testing */}
+            <div className={`dropdown-menu-new ${isDropdownOpen ? 'open' : 'closed'}`}>
+              <div className="dropdown-content">
+                <Link href="/small-business" className="dropdown-item" onClick={closeDropdown}>
+                  Small Business
+                </Link>
+                <Link href="/search" className="dropdown-item" onClick={closeDropdown}>
+                  PS.AI Search
+                </Link>
+                <Link href="/compliance" className="dropdown-item" onClick={closeDropdown}>
+                  PS.AI Compliance
+                </Link>
+                <Link href="/market-research" className="dropdown-item" onClick={closeDropdown}>
+                  PS.AI Market Research
+                </Link>
+                <Link href="/write" className="dropdown-item" onClick={closeDropdown}>
+                  PS.AI Write
+                </Link>
+                <Link href="/crm" className="dropdown-item" onClick={closeDropdown}>
+                  PS.AI CRM
+                </Link>
               </div>
-            )}
+            </div>
           </div>
           
           <Link href="/publications" className="nav-link">Publications</Link>

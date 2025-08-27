@@ -417,6 +417,17 @@ body::after {
   z-index: 2147483647 !important;
 }
 
+/* Dropdown state management */
+.dropdown-menu-new.closed {
+  opacity: 0.3 !important;
+  pointer-events: none !important;
+}
+
+.dropdown-menu-new.open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
 
 
 
