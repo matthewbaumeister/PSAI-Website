@@ -180,6 +180,8 @@ body::after {
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1rem;
+  position: relative;
+  z-index: 1000;
 }
 
 .brand {
@@ -249,6 +251,8 @@ body::after {
   display: flex;
   align-items: center;
   gap: 2rem;
+  position: relative;
+  z-index: 1000;
 }
 
 .nav-link {
