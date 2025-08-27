@@ -5,7 +5,9 @@ import { useState, useEffect, useRef } from 'react'
 
 export function Header() {
   const [showUserMenu, setShowUserMenu] = useState(false)
+  const [showSolutionsDropdown, setShowSolutionsDropdown] = useState(false)
   const userMenuRef = useRef<HTMLDivElement>(null)
+  const solutionsDropdownRef = useRef<HTMLDivElement>(null)
 
   // Close user menu when clicking outside
   useEffect(() => {
@@ -24,6 +26,23 @@ export function Header() {
     }
   }, [showUserMenu])
 
+  // Close solutions dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (solutionsDropdownRef.current && !solutionsDropdownRef.current.contains(event.target as Node)) {
+        setShowSolutionsDropdown(false)
+      }
+    }
+
+    if (showSolutionsDropdown) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [showSolutionsDropdown])
+
   return (
     <header className="header">
       <div className="container">
@@ -39,9 +58,15 @@ export function Header() {
         </Link>
 
         <nav className="nav">
-          <div className="dropdown">
-            <Link href="/solutions" className="nav-link">Solutions</Link>
-            <ul className="dropdown-menu">
+          <div className="dropdown" ref={solutionsDropdownRef}>
+            <button 
+              className="nav-link dropdown-toggle"
+              onClick={() => setShowSolutionsDropdown(!showSolutionsDropdown)}
+              onMouseEnter={() => setShowSolutionsDropdown(true)}
+            >
+              Solutions
+            </button>
+            <ul className={`dropdown-menu ${showSolutionsDropdown ? 'show' : ''}`}>
               <li><Link href="/small-business" className="dropdown-link">Small Business</Link></li>
               <li><Link href="/search" className="dropdown-link">PS.AI Search</Link></li>
               <li><Link href="/compliance" className="dropdown-link">PS.AI Compliance</Link></li>
