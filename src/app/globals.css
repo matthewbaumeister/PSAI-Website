@@ -172,7 +172,9 @@ body::after {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 999999 !important;
+  isolation: isolate !important;
+  contain: layout style paint !important;
 }
 
 .header .container {
@@ -181,7 +183,8 @@ body::after {
   justify-content: space-between;
   padding: 0.75rem 1rem;
   position: relative;
-  z-index: 1000;
+  z-index: 999999 !important;
+  isolation: isolate !important;
 }
 
 .brand {
@@ -252,7 +255,8 @@ body::after {
   align-items: center;
   gap: 2rem;
   position: relative;
-  z-index: 1000;
+  z-index: 999999 !important;
+  isolation: isolate !important;
 }
 
 .nav-link {
@@ -268,7 +272,7 @@ body::after {
 
 .dropdown {
   position: relative;
-  z-index: 9999;
+  z-index: 999999 !important;
 }
 
 .dropdown-toggle {
@@ -302,13 +306,13 @@ body::after {
   position: absolute;
   top: 100%;
   left: 0;
-  background: rgba(11, 18, 32, 0.95);
+  background: rgba(11, 18, 32, 0.95) !important;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
   padding: 0.5rem 0;
   min-width: 200px;
-  z-index: 10000;
+  z-index: 999999 !important;
   list-style: none;
   margin: 0;
   opacity: 0;
@@ -324,6 +328,35 @@ body::after {
   visibility: visible !important;
   transform: translateY(0) !important;
   pointer-events: auto !important;
+  position: fixed !important;
+  z-index: 999999 !important;
+}
+
+/* Nuclear dropdown visibility - bypasses all stacking context issues */
+.dropdown-menu.show {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
+  position: fixed !important;
+  z-index: 999999 !important;
+  isolation: isolate !important;
+  contain: layout style paint !important;
+  top: 80px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: rgba(11, 18, 32, 1) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* DEBUG: Force dropdown visibility for testing */
+.dropdown-menu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: red !important;
+  border: 3px solid yellow !important;
 }
 
 /* Ensure dropdown stability */
