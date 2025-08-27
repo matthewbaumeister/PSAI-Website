@@ -14,7 +14,7 @@ export function Hero() {
 
     console.log('Hero component mounted - infinite scroll initialized') // Vercel deployment trigger
 
-    // Clone items for seamless infinite scroll
+    // Clone items for seamless infinite scroll - Ready for production deployment
     const proofClone = proofItems.cloneNode(true) as HTMLElement
     const agenciesClone = agenciesItems.cloneNode(true) as HTMLElement
 
