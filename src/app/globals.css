@@ -268,7 +268,7 @@ body::after {
 
 .dropdown {
   position: relative;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .dropdown-toggle {
@@ -308,7 +308,7 @@ body::after {
   border-radius: 0.5rem;
   padding: 0.5rem 0;
   min-width: 200px;
-  z-index: 1001;
+  z-index: 10000;
   list-style: none;
   margin: 0;
   opacity: 0;
@@ -319,11 +319,11 @@ body::after {
 }
 
 .dropdown-menu.show {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
 }
 
 /* Ensure dropdown stability */
