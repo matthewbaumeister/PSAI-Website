@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -42,6 +43,53 @@ export function Header() {
     console.log('Dropdown state changed to:', isDropdownOpen)
   }, [isDropdownOpen])
 
+  // Render dropdown using portal to bypass stacking context issues
+  const renderDropdown = () => {
+    if (!isDropdownOpen) return null
+
+    const dropdownContent = (
+      <div 
+        className="dropdown-content-portal"
+        style={{
+          position: 'fixed',
+          top: `${dropdownPosition.top}px`,
+          left: `${dropdownPosition.left}px`,
+          zIndex: 999999,
+          minWidth: '220px',
+          border: '2px solid red',
+          background: 'rgba(255, 0, 0, 0.9)',
+          borderRadius: '0.75rem',
+          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)',
+          padding: '0.5rem 0',
+          animation: 'dropdownSlideIn 0.2s ease-out'
+        }}
+        ref={dropdownRef}
+      >
+        <Link href="/small-business" className="dropdown-link" onClick={closeDropdown}>
+          Small Business
+        </Link>
+        <Link href="/search" className="dropdown-link" onClick={closeDropdown}>
+          PS.AI Search
+        </Link>
+        <Link href="/compliance" className="dropdown-link" onClick={closeDropdown}>
+          PS.AI Compliance
+        </Link>
+        <Link href="/market-research" className="dropdown-link" onClick={closeDropdown}>
+          PS.AI Market Research
+        </Link>
+        <Link href="/write" className="dropdown-link" onClick={closeDropdown}>
+          PS.AI Write
+        </Link>
+        <Link href="/crm" className="dropdown-link" onClick={closeDropdown}>
+          PS.AI CRM
+        </Link>
+      </div>
+    )
+
+    // Use portal to render outside normal DOM flow
+    return createPortal(dropdownContent, document.body)
+  }
+
   return (
     <header className="header">
       <div className="container">
@@ -57,7 +105,7 @@ export function Header() {
         </Link>
 
         <nav className="nav">
-          <div className="dropdown-container" ref={dropdownRef}>
+          <div className="dropdown-container">
             <button 
               ref={buttonRef}
               className="dropdown-trigger"
@@ -69,37 +117,6 @@ export function Header() {
                 ▼
               </span>
             </button>
-            
-            {isDropdownOpen && (
-              <div 
-                className="dropdown-content"
-                style={{
-                  position: 'fixed',
-                  top: `${dropdownPosition.top}px`,
-                  left: `${dropdownPosition.left}px`,
-                  zIndex: 100000
-                }}
-              >
-                <Link href="/small-business" className="dropdown-link" onClick={closeDropdown}>
-                  Small Business
-                </Link>
-                <Link href="/search" className="dropdown-link" onClick={closeDropdown}>
-                  PS.AI Search
-                </Link>
-                <Link href="/compliance" className="dropdown-link" onClick={closeDropdown}>
-                  PS.AI Compliance
-                </Link>
-                <Link href="/market-research" className="dropdown-link" onClick={closeDropdown}>
-                  PS.AI Market Research
-                </Link>
-                <Link href="/write" className="dropdown-link" onClick={closeDropdown}>
-                  PS.AI Write
-                </Link>
-                <Link href="/crm" className="dropdown-link" onClick={closeDropdown}>
-                  PS.AI CRM
-                </Link>
-              </div>
-            )}
           </div>
           
           <Link href="/publications" className="nav-link">Publications</Link>
@@ -116,6 +133,9 @@ export function Header() {
           </Link>
         </div>
       </div>
+      
+      {/* Render dropdown using portal */}
+      {renderDropdown()}
     </header>
   )
 }

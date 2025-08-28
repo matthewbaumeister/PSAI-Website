@@ -284,8 +284,13 @@ body::after {
   position: relative;
   display: inline-block;
   z-index: 10000;
-  /* Debug styles */
-  border: 1px solid blue !important;
+}
+
+/* Portal dropdown styles */
+.dropdown-content-portal {
+  position: fixed !important;
+  z-index: 999999 !important;
+  pointer-events: auto !important;
 }
 
 .dropdown-trigger {
