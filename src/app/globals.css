@@ -187,6 +187,8 @@ body::after {
   position: relative;
   z-index: 2147483647 !important;
   isolation: isolate !important;
+  overflow: visible !important;
+  clip-path: none !important;
 }
 
 .brand {
@@ -263,6 +265,12 @@ body::after {
   clip-path: none !important;
 }
 
+/* Ensure dropdown is above everything */
+.nav .dropdown-wrapper {
+  position: relative;
+  z-index: 2147483647 !important;
+}
+
 .nav-link {
   color: #9CA3AF;
   text-decoration: none;
@@ -290,6 +298,7 @@ body::after {
 .dropdown-wrapper {
   position: relative;
   display: inline-block;
+  z-index: 2147483647 !important;
 }
 
 .dropdown-button {
@@ -332,9 +341,14 @@ body::after {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  z-index: 999999;
+  z-index: 2147483647 !important;
   padding: 0.5rem 0;
   animation: dropdownFadeIn 0.2s ease-out;
+  margin-top: 0.5rem;
+  /* Ensure dropdown is not clipped */
+  overflow: visible !important;
+  clip-path: none !important;
+  isolation: isolate !important;
 }
 
 .dropdown-item {
