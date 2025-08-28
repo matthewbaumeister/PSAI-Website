@@ -1250,6 +1250,304 @@ body::after {
   position: relative;
 }
 
+/* Landing Pages Styling */
+.guides-page,
+.careers-page,
+.documentation-page,
+.faq-page,
+.blog-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(11, 18, 32, 0.95) 0%, rgba(30, 41, 59, 0.95) 100%);
+  padding: 2rem 0;
+  position: relative;
+  color: white;
+}
+
+.guides-page .page-header,
+.careers-page .page-header,
+.documentation-page .page-header,
+.faq-page .page-header,
+.blog-page .page-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+.guides-page .page-header h1,
+.careers-page .page-header h1,
+.documentation-page .page-header h1,
+.faq-page .page-header h1,
+.blog-page .page-header h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--gradient-colors));
+  background-size: 400% 400%;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.guides-page .page-header .subtitle,
+.careers-page .page-header .subtitle,
+.documentation-page .page-header .subtitle,
+.faq-page .page-header .subtitle,
+.blog-page .page-header .subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.guides-page .content-section,
+.careers-page .content-section,
+.documentation-page .content-section,
+.faq-page .content-section,
+.blog-page .content-section {
+  margin-bottom: 4rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.guides-page .content-section h2,
+.careers-page .content-section h2,
+.documentation-page .content-section h2,
+.faq-page .content-section h2,
+.blog-page .content-section h2 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(45, 91, 255, 0.3);
+}
+
+.guides-page .content-section p,
+.careers-page .content-section p,
+.documentation-page .content-section p,
+.faq-page .content-section p,
+.blog-page .content-section p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+/* Grid Layouts */
+.guides-grid,
+.faq-grid,
+.docs-grid,
+.product-docs-grid,
+.dev-resources-grid,
+.values-grid,
+.positions-grid,
+.benefits-grid,
+.featured-articles-grid,
+.insights-grid,
+.guides-grid,
+.subscription-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Card Styling */
+.guide-card,
+.faq-card,
+.doc-card,
+.product-doc-card,
+.dev-resource-card,
+.value-card,
+.position-card,
+.benefit-card,
+.featured-article-card,
+.insight-card,
+.guide-card,
+.subscription-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.guide-card:hover,
+.faq-card:hover,
+.doc-card:hover,
+.product-doc-card:hover,
+.dev-resource-card:hover,
+.value-card:hover,
+.position-card:hover,
+.benefit-card:hover,
+.featured-article-card:hover,
+.insight-card:hover,
+.guide-card:hover,
+.subscription-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: rgba(45, 91, 255, 0.3);
+}
+
+.guide-card h3,
+.faq-card h3,
+.doc-card h3,
+.product-doc-card h3,
+.dev-resource-card h3,
+.value-card h3,
+.position-card h3,
+.benefit-card h3,
+.featured-article-card h3,
+.insight-card h3,
+.guide-card h3,
+.subscription-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.guide-card p,
+.faq-card p,
+.doc-card p,
+.product-doc-card p,
+.dev-resource-card p,
+.value-card p,
+.position-card p,
+.benefit-card p,
+.featured-article-card p,
+.insight-card p,
+.guide-card p,
+.subscription-card p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Coming Soon Badge */
+.coming-soon-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: linear-gradient(135deg, #9AF23A, #7DD32A);
+  color: #0B1220;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Support Grid */
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.support-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-3px);
+}
+
+.support-card h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.support-card p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Contact Options */
+.contact-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-option {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.contact-option:hover {
+  transform: translateY(-3px);
+}
+
+.contact-option h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.contact-option p {
+  color: #B8B8B8;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .guides-page .page-header h1,
+  .careers-page .page-header h1,
+  .documentation-page .page-header h1,
+  .faq-page .page-header h1,
+  .blog-page .page-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .guides-page .content-section h2,
+  .careers-page .content-section h2,
+  .documentation-page .content-section h2,
+  .faq-page .content-section h2,
+  .blog-page .content-section h2 {
+    font-size: 1.875rem;
+  }
+  
+  .guides-grid,
+  .faq-grid,
+  .docs-grid,
+  .product-docs-grid,
+  .dev-resources-grid,
+  .values-grid,
+  .positions-grid,
+  .benefits-grid,
+  .featured-articles-grid,
+  .insights-grid,
+  .guides-grid,
+  .subscription-options {
+    grid-template-columns: 1fr;
+  }
+}
+
 .contact-page .container {
   max-width: 1200px;
   margin: 0 auto;
