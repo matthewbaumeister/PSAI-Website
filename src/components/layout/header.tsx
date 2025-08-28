@@ -5,7 +5,9 @@ import { useState, useRef, useEffect } from 'react'
 
 export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 })
   const dropdownRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -20,6 +22,13 @@ export function Header() {
 
   const toggleDropdown = () => {
     console.log('Toggle dropdown clicked, current state:', isDropdownOpen)
+    if (!isDropdownOpen && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect()
+      setDropdownPosition({
+        top: rect.bottom + 8,
+        left: rect.left
+      })
+    }
     setIsDropdownOpen(!isDropdownOpen)
   }
 
@@ -50,6 +59,7 @@ export function Header() {
         <nav className="nav">
           <div className="dropdown-container" ref={dropdownRef}>
             <button 
+              ref={buttonRef}
               className="dropdown-trigger"
               onClick={toggleDropdown}
               aria-expanded={isDropdownOpen}
@@ -61,7 +71,15 @@ export function Header() {
             </button>
             
             {isDropdownOpen && (
-              <div className="dropdown-content">
+              <div 
+                className="dropdown-content"
+                style={{
+                  position: 'fixed',
+                  top: `${dropdownPosition.top}px`,
+                  left: `${dropdownPosition.left}px`,
+                  zIndex: 100000
+                }}
+              >
                 <Link href="/small-business" className="dropdown-link" onClick={closeDropdown}>
                   Small Business
                 </Link>
