@@ -19,12 +19,19 @@ export function Header() {
   }, [])
 
   const toggleDropdown = () => {
+    console.log('Toggle dropdown clicked, current state:', isDropdownOpen)
     setIsDropdownOpen(!isDropdownOpen)
   }
 
   const closeDropdown = () => {
+    console.log('Closing dropdown')
     setIsDropdownOpen(false)
   }
+
+  // Log dropdown state changes
+  useEffect(() => {
+    console.log('Dropdown state changed to:', isDropdownOpen)
+  }, [isDropdownOpen])
 
   return (
     <header className="header">
