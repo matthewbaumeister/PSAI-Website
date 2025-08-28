@@ -4,30 +4,27 @@ import Link from 'next/link'
 import { useState, useRef, useEffect } from 'react'
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen)
-  }
-
-  const closeDropdown = () => {
-    setIsOpen(false)
-  }
-
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
+        setIsDropdownOpen(false)
       }
     }
 
     document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
+
+  const closeDropdown = () => {
+    setIsDropdownOpen(false)
+  }
 
   return (
     <header className="header">
@@ -44,40 +41,36 @@ export function Header() {
         </Link>
 
         <nav className="nav">
-          <div className="dropdown-wrapper" ref={dropdownRef}>
+          <div className="dropdown-container" ref={dropdownRef}>
             <button 
-              className="dropdown-button"
+              className="dropdown-trigger"
               onClick={toggleDropdown}
-              onMouseEnter={() => setIsOpen(true)}
+              aria-expanded={isDropdownOpen}
             >
               Solutions
-              <span className={`dropdown-icon ${isOpen ? 'open' : ''}`}>
+              <span className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}>
                 ▼
               </span>
             </button>
             
-            {isOpen && (
-              <div 
-                className="dropdown-menu"
-                onMouseEnter={() => setIsOpen(true)}
-                onMouseLeave={() => setTimeout(() => setIsOpen(false), 100)}
-              >
-                <Link href="/small-business" className="dropdown-item" onClick={closeDropdown}>
+            {isDropdownOpen && (
+              <div className="dropdown-content">
+                <Link href="/small-business" className="dropdown-link" onClick={closeDropdown}>
                   Small Business
                 </Link>
-                <Link href="/search" className="dropdown-item" onClick={closeDropdown}>
+                <Link href="/search" className="dropdown-link" onClick={closeDropdown}>
                   PS.AI Search
                 </Link>
-                <Link href="/compliance" className="dropdown-item" onClick={closeDropdown}>
+                <Link href="/compliance" className="dropdown-link" onClick={closeDropdown}>
                   PS.AI Compliance
                 </Link>
-                <Link href="/market-research" className="dropdown-item" onClick={closeDropdown}>
+                <Link href="/market-research" className="dropdown-link" onClick={closeDropdown}>
                   PS.AI Market Research
                 </Link>
-                <Link href="/write" className="dropdown-item" onClick={closeDropdown}>
+                <Link href="/write" className="dropdown-link" onClick={closeDropdown}>
                   PS.AI Write
                 </Link>
-                <Link href="/crm" className="dropdown-item" onClick={closeDropdown}>
+                <Link href="/crm" className="dropdown-link" onClick={closeDropdown}>
                   PS.AI CRM
                 </Link>
               </div>

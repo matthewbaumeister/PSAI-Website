@@ -172,11 +172,7 @@ body::after {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
-  z-index: 2147483647 !important;
-  isolation: isolate !important;
-  contain: layout style paint !important;
-  overflow: visible !important;
-  clip-path: none !important;
+  z-index: 1000;
 }
 
 .header .container {
@@ -185,10 +181,6 @@ body::after {
   justify-content: space-between;
   padding: 0.75rem 1rem;
   position: relative;
-  z-index: 2147483647 !important;
-  isolation: isolate !important;
-  overflow: visible !important;
-  clip-path: none !important;
 }
 
 .brand {
@@ -259,17 +251,9 @@ body::after {
   align-items: center;
   gap: 2rem;
   position: relative;
-  z-index: 2147483647 !important;
-  isolation: isolate !important;
-  overflow: visible !important;
-  clip-path: none !important;
 }
 
-/* Ensure dropdown is above everything */
-.nav .dropdown-wrapper {
-  position: relative;
-  z-index: 2147483647 !important;
-}
+
 
 .nav-link {
   color: #9CA3AF;
@@ -294,14 +278,13 @@ body::after {
 
 
 
-/* NEW DROPDOWN DESIGN - Simple and logical */
-.dropdown-wrapper {
+/* Clean Dropdown Design */
+.dropdown-container {
   position: relative;
   display: inline-block;
-  z-index: 2147483647 !important;
 }
 
-.dropdown-button {
+.dropdown-trigger {
   background: none;
   border: none;
   color: #9CA3AF;
@@ -317,41 +300,36 @@ body::after {
   border-radius: 0.375rem;
 }
 
-.dropdown-button:hover {
+.dropdown-trigger:hover {
   color: white;
   background: rgba(255, 255, 255, 0.05);
 }
 
-.dropdown-icon {
+.dropdown-arrow {
   font-size: 0.75rem;
   transition: transform 0.2s ease;
 }
 
-.dropdown-icon.open {
+.dropdown-arrow.open {
   transform: rotate(180deg);
 }
 
-.dropdown-menu {
+.dropdown-content {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.5rem);
   left: 0;
   min-width: 220px;
-  background: rgba(11, 18, 32, 0.98);
+  background: rgba(11, 18, 32, 0.95);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 0.75rem;
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-  z-index: 2147483647 !important;
+  z-index: 9999;
   padding: 0.5rem 0;
-  animation: dropdownFadeIn 0.2s ease-out;
-  margin-top: 0.5rem;
-  /* Ensure dropdown is not clipped */
-  overflow: visible !important;
-  clip-path: none !important;
-  isolation: isolate !important;
+  animation: dropdownSlideIn 0.2s ease-out;
 }
 
-.dropdown-item {
+.dropdown-link {
   display: block;
   padding: 0.75rem 1.25rem;
   color: #9CA3AF;
@@ -361,17 +339,17 @@ body::after {
   border-left: 3px solid transparent;
 }
 
-.dropdown-item:hover {
+.dropdown-link:hover {
   color: white;
   background: rgba(255, 255, 255, 0.08);
   border-left-color: #10B981;
   transform: translateX(4px);
 }
 
-@keyframes dropdownFadeIn {
+@keyframes dropdownSlideIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   to {
     opacity: 1;
