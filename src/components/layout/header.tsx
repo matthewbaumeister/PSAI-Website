@@ -22,7 +22,6 @@ export function Header() {
   }, [])
 
   const toggleDropdown = () => {
-    console.log('Toggle dropdown clicked, current state:', isDropdownOpen)
     if (!isDropdownOpen && buttonRef.current) {
       const rect = buttonRef.current.getBoundingClientRect()
       setDropdownPosition({
@@ -34,16 +33,9 @@ export function Header() {
   }
 
   const closeDropdown = () => {
-    console.log('Closing dropdown')
     setIsDropdownOpen(false)
   }
 
-  // Log dropdown state changes
-  useEffect(() => {
-    console.log('Dropdown state changed to:', isDropdownOpen)
-  }, [isDropdownOpen])
-
-  // Render dropdown using portal to bypass stacking context issues
   const renderDropdown = () => {
     if (!isDropdownOpen) return null
 
@@ -56,8 +48,8 @@ export function Header() {
           left: `${dropdownPosition.left}px`,
           zIndex: 999999,
           minWidth: '220px',
-          border: '2px solid red',
-          background: 'rgba(255, 0, 0, 0.9)',
+          background: 'rgba(11, 18, 32, 0.95)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
           borderRadius: '0.75rem',
           boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)',
           padding: '0.5rem 0',
@@ -86,7 +78,6 @@ export function Header() {
       </div>
     )
 
-    // Use portal to render outside normal DOM flow
     return createPortal(dropdownContent, document.body)
   }
 
@@ -134,7 +125,6 @@ export function Header() {
         </div>
       </div>
       
-      {/* Render dropdown using portal */}
       {renderDropdown()}
     </header>
   )
