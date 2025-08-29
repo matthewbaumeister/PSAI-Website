@@ -3375,11 +3375,13 @@ a {
 }
 
 .about-page .stat-number {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #667eea;
   margin-bottom: 0.5rem;
   display: block;
+  position: relative;
+  z-index: 1;
 }
 
 .about-page .stat-label {
@@ -3462,8 +3464,10 @@ a {
 }
 
 .about-page .method-icon {
-  font-size: 2.5rem;
+  font-size: 1.25rem;
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .about-page .method h3 {
@@ -4374,6 +4378,33 @@ a {
 .profile-page *,
 .settings-page * {
   color: inherit;
+}
+
+/* ===== PREVENT CONTENT OVERFLOW AND POSITIONING ISSUES ===== */
+/* Ensure all page content stays within bounds and doesn't leak to footer */
+.about-page .stat-number,
+.about-page .method-icon,
+.about-page * {
+  position: relative !important;
+  z-index: auto !important;
+}
+
+/* Prevent any elements from appearing outside their containers */
+body > * {
+  overflow: hidden;
+}
+
+/* Ensure footer area is clean */
+.footer {
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Fix any potential positioning issues */
+.stat-number {
+  position: relative !important;
+  display: inline-block !important;
+  z-index: auto !important;
 }
 
 /* ===== AUTH PAGE ISOLATION ===== */
