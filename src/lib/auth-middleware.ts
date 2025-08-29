@@ -14,13 +14,17 @@ export async function authenticateRequest(
   request: NextRequest
 ): Promise<{ user: any; error: null } | { user: null; error: string }> {
   try {
-    // Get authorization header
-    const authHeader = request.headers.get('authorization')
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return { user: null, error: 'No authorization token provided' }
+    // Try to get token from cookies first
+    let token = request.cookies.get('access_token')?.value
+    
+    // Fall back to authorization header if no cookie
+    if (!token) {
+      const authHeader = request.headers.get('authorization')
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return { user: null, error: 'No authorization token provided' }
+      }
+      token = authHeader.substring(7) // Remove 'Bearer ' prefix
     }
-
-    const token = authHeader.substring(7) // Remove 'Bearer ' prefix
 
     // Verify JWT token
     const payload = verifyToken(token)
