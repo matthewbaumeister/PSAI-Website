@@ -62,6 +62,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return
       }
 
+      console.log('✅ Auth cookies found, checking auth status...')
+      console.log('🔍 Cookies being sent with request:', document.cookie)
+      
       const response = await fetch('/api/auth/me', {
         credentials: 'include' // Include cookies
       })
@@ -72,6 +75,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setUser(userData.user)
       } else {
         console.log('Auth check failed:', response.status, response.statusText)
+        console.log('🔍 Response headers:', Object.fromEntries(response.headers.entries()))
         setUser(null)
         // Clear any invalid cookies
         document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
