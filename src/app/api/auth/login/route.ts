@@ -141,7 +141,8 @@ export async function POST(request: NextRequest) {
       httpOnly: false, // Changed to false so JavaScript can read them
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax' as const,
-      path: '/'
+      path: '/',
+      domain: process.env.NODE_ENV === 'production' ? '.prop-shop.ai' : undefined
     }
 
     // Access token cookie (short-lived)
@@ -168,6 +169,7 @@ export async function POST(request: NextRequest) {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax' as const,
       path: '/',
+      domain: process.env.NODE_ENV === 'production' ? '.prop-shop.ai' : undefined,
       maxAge: rememberMe ? 7 * 24 * 60 * 60 : 30 * 60 // 7 days or 30 minutes
     })
 
