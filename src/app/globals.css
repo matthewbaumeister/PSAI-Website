@@ -4282,3 +4282,42 @@ body::after {
   }
 }
 
+/* ===== AUTH PAGE ISOLATION ===== */
+/* Ensure auth pages are completely isolated from global styling */
+.auth-page-isolated {
+  isolation: isolate;
+  position: relative;
+  z-index: 9999;
+}
+
+.auth-page-isolated * {
+  box-sizing: border-box;
+}
+
+/* Override any global form styles for auth pages */
+.auth-page-isolated .auth-container input,
+.auth-page-isolated .auth-container button,
+.auth-page-isolated .auth-container label,
+.auth-page-isolated .auth-container a {
+  font-family: inherit;
+  line-height: inherit;
+}
+
+/* Ensure auth pages don't inherit global animations */
+.auth-page-isolated .animated-bg,
+.auth-page-isolated .bg-grid-overlay,
+.auth-page-isolated .bg-dots,
+.auth-page-isolated .floating-elements {
+  display: none !important;
+}
+
+/* Force auth page styling to take precedence */
+.auth-page-isolated .auth-container {
+  background: white !important;
+  color: #111827 !important;
+}
+
+.auth-page-isolated .auth-container * {
+  color: inherit;
+}
+
