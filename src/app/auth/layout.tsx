@@ -2,11 +2,12 @@ import { ReactNode } from 'react'
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Simple, clean background - Updated for Scale AI style */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white"></div>
+    <div className="min-h-screen bg-white relative">
+      {/* Override global background animations for auth pages */}
+      <div className="absolute inset-0 bg-white z-0"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white z-10"></div>
       
-      <div className="relative z-10 container mx-auto px-4 py-8">
+      <div className="relative z-20 container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
             {/* Clean logo */}
