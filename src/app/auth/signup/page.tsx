@@ -30,7 +30,7 @@ export default function SignupPage() {
     acceptTerms: false
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [errors, setErrors] = useState<Partial<SignupForm>>({})
+  const [errors, setErrors] = useState<Partial<Record<keyof SignupForm, string>>>({})
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
 
@@ -59,7 +59,7 @@ export default function SignupPage() {
   }
 
   const validateForm = (): boolean => {
-    const newErrors: Partial<SignupForm> = {}
+    const newErrors: Partial<Record<keyof SignupForm, string>> = {}
 
     if (!formData.firstName.trim()) newErrors.firstName = 'First name is required'
     if (!formData.lastName.trim()) newErrors.lastName = 'Last name is required'

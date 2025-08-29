@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
@@ -9,7 +9,7 @@ interface ResetPasswordForm {
   confirmPassword: string
 }
 
-export default function ResetPasswordPage() {
+function ResetPasswordPageContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const token = searchParams.get('token')
@@ -22,6 +22,7 @@ export default function ResetPasswordPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [tokenStatus, setTokenStatus] = useState<'validating' | 'valid' | 'invalid'>('validating')
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [submitMessage, setSubmitMessage] = useState('')
   const [message, setMessage] = useState('')
 
   useEffect(() => {
@@ -104,7 +105,7 @@ export default function ResetPasswordPage() {
 
       if (response.ok) {
         setSubmitStatus('success')
-        setMessage('Password reset successfully! You can now log in with your new password.')
+        setSubmitMessage('Password reset successfully! You can now log in with your new password.')
         // Redirect to login after 3 seconds
         setTimeout(() => router.push('/auth/login'), 3000)
       } else {
@@ -231,5 +232,20 @@ export default function ResetPasswordPage() {
         </p>
       </div>
     </div>
+  )
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={
+      <div className="bg-white rounded-lg shadow-lg p-8">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    }>
+      <ResetPasswordPageContent />
+    </Suspense>
   )
 }
