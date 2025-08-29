@@ -76,6 +76,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       } else {
         console.log('Auth check failed:', response.status, response.statusText)
         console.log('🔍 Response headers:', Object.fromEntries(response.headers.entries()))
+        
+        // Try to get the error response body
+        try {
+          const errorData = await response.text()
+          console.log('🔍 Error response body:', errorData)
+        } catch (e) {
+          console.log('🔍 Could not read error response body')
+        }
+        
         setUser(null)
         // Clear any invalid cookies
         document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
