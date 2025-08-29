@@ -4,19 +4,18 @@ import { requireAdmin } from '@/lib/auth-middleware'
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     // Check if user is admin
     const authResult = await requireAdmin(request)
-    if (!authResult.success) {
-      return NextResponse.json(
-        { error: 'Unauthorized', message: 'Admin access required' },
-        { status: 401 }
-      )
+    
+    // Check if authResult is a NextResponse (error) or user object
+    if ('status' in authResult) {
+      return authResult // Return the error response
     }
 
-    const { id } = params
+    const { id } = await params
     if (!id) {
       return NextResponse.json(
         { error: 'Missing invitation ID', message: 'Invitation ID is required' },

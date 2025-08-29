@@ -6,11 +6,10 @@ export async function GET(request: NextRequest) {
   try {
     // Check if user is admin
     const authResult = await requireAdmin(request)
-    if (!authResult.success) {
-      return NextResponse.json(
-        { error: 'Unauthorized', message: 'Admin access required' },
-        { status: 401 }
-      )
+    
+    // Check if authResult is a NextResponse (error) or user object
+    if ('status' in authResult) {
+      return authResult // Return the error response
     }
 
     const supabase = createAdminSupabaseClient()
