@@ -15,6 +15,12 @@ body {
   overflow-x: hidden;
 }
 
+/* Global link styles */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* CSS Custom Properties for synchronized animations */
 :root {
   --gradient-colors: #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%;
@@ -192,6 +198,7 @@ body::after {
   gap: 0.75rem;
   height: 100%;
   flex-shrink: 0;
+  text-decoration: none !important;
 }
 
 .logo-icon {
@@ -249,6 +256,7 @@ body::after {
   color: white;
   white-space: nowrap;
   line-height: 1;
+  text-decoration: none !important;
 }
 
 /* Navigation */
