@@ -214,7 +214,9 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #2563eb;
+  background: linear-gradient(135deg, var(--gradient-colors));
+  background-size: 400% 400%;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   opacity: 0.3;
   z-index: -1;
 }
@@ -379,7 +381,9 @@ body::after {
 
 /* Primary CTA Button (Book Demo) */
 .header .header-actions .btn-primary {
-  background: #2563eb;
+  background: linear-gradient(135deg, var(--gradient-colors));
+  background-size: 400% 400%;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   border: none;
   color: white;
   font-weight: 600;
@@ -387,15 +391,15 @@ body::after {
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
   position: relative;
   overflow: hidden;
 }
 
 .header .header-actions .btn-primary:hover {
-  background: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+  animation: color-chain calc(var(--animation-duration) / 2) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
 }
 
 /* Secondary CTA Button (Contact Us) */
@@ -435,14 +439,16 @@ body::after {
 }
 
 .btn-primary {
-  background: #2563eb;
+  background: linear-gradient(135deg, var(--gradient-colors));
+  background-size: 400% 400%;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   color: white;
 }
 
 .btn-primary:hover {
-  background: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 25px rgba(45, 91, 255, 0.3);
+  animation: color-chain calc(var(--animation-duration) / 2) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
 }
 
 .btn-outline {
@@ -517,9 +523,9 @@ body::after {
 
 .hero .badge {
   display: inline-block;
-  background: rgba(37, 99, 235, 0.1);
-  border: 1px solid rgba(37, 99, 235, 0.3);
-  color: #60a5fa;
+  background: rgba(154, 242, 58, 0.1);
+  border: 1px solid rgba(154, 242, 58, 0.3);
+  color: #9AF23A;
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
   font-size: 0.875rem;
@@ -527,6 +533,16 @@ body::after {
   margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  animation: badge-glow 3s ease-in-out infinite;
+}
+
+@keyframes badge-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(154, 242, 58, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(154, 242, 58, 0.6);
+  }
 }
 
 
@@ -539,9 +555,13 @@ body::after {
   line-height: 1.2;
 }
 
-.hero .highlight-text {
-  color: #2563eb;
-  font-weight: 700;
+.hero .gradient-text {
+  background: linear-gradient(135deg, var(--gradient-colors));
+  background-size: 400% 400%;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   display: inline-block;
 }
 
@@ -585,7 +605,7 @@ body::after {
 }
 
 .mission-statement strong {
-  color: #2563eb;
+  color: #ff6b35;
   font-weight: 600;
 }
 
@@ -609,15 +629,16 @@ body::after {
 }
 
 .cta-buttons .btn-primary {
-  background: #2563eb;
+  background: linear-gradient(135deg, var(--gradient-colors));
+  background-size: 400% 400%;
+  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
   color: white;
   border: none;
 }
 
 .cta-buttons .btn-primary:hover {
-  background: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
 }
 
 .cta-buttons .btn-outline {
@@ -4157,7 +4178,7 @@ body::after {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: #2563eb;
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
   display: flex;
   align-items: center;
   justify-content: center;
