@@ -2,12 +2,36 @@ import { ReactNode } from 'react'
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-white relative">
-      {/* Override global background animations for auth pages */}
-      <div className="absolute inset-0 bg-white z-0"></div>
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white z-10"></div>
+    <div 
+      className="min-h-screen relative overflow-hidden"
+      style={{
+        backgroundColor: 'white',
+        position: 'relative',
+        zIndex: 1000
+      }}
+    >
+      {/* Force white background with inline styles */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          backgroundColor: 'white',
+          zIndex: 1001
+        }}
+      ></div>
       
-      <div className="relative z-20 container mx-auto px-4 py-8">
+      {/* Subtle gradient overlay */}
+      <div 
+        className="absolute inset-0"
+        style={{
+          background: 'linear-gradient(135deg, #f9fafb 0%, #ffffff 100%)',
+          zIndex: 1002
+        }}
+      ></div>
+      
+      <div 
+        className="relative container mx-auto px-4 py-8"
+        style={{ zIndex: 1003 }}
+      >
         <div className="max-w-md mx-auto">
           <div className="text-center mb-8">
             {/* Clean logo */}
@@ -16,10 +40,16 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             </div>
             
             {/* Clean typography */}
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 
+              className="text-3xl font-bold mb-2"
+              style={{ color: '#111827' }}
+            >
               Prop Shop AI
             </h1>
-            <p className="text-gray-600 text-base">
+            <p 
+              className="text-base"
+              style={{ color: '#4b5563' }}
+            >
               The procurement intelligence platform
             </p>
           </div>
