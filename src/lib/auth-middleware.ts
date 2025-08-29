@@ -39,8 +39,14 @@ export async function authenticateRequest(
       return { user: null, error: 'Invalid or expired token' }
     }
 
-    // Validate session in database
-    const session = await validateUserSession(token)
+    // Get session token from cookies for database validation
+    const sessionToken = request.cookies.get('session_token')?.value
+    if (!sessionToken) {
+      return { user: null, error: 'Session token missing' }
+    }
+    
+    // Validate session in database using session token (not JWT token)
+    const session = await validateUserSession(sessionToken)
     if (!session) {
       return { user: null, error: 'Session expired or invalid' }
     }
