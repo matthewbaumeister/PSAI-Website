@@ -7,6 +7,11 @@ const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-key-change-in-prod
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '30m'
 const JWT_REFRESH_EXPIRES_IN = process.env.JWT_REFRESH_EXPIRES_IN || '7d'
 
+// Ensure JWT_SECRET is always a string
+if (!JWT_SECRET || JWT_SECRET === 'fallback-secret-key-change-in-production') {
+  throw new Error('JWT_SECRET environment variable must be set in production')
+}
+
 // Session Configuration
 const SESSION_TIMEOUT_MINUTES = parseInt(process.env.SESSION_TIMEOUT_MINUTES || '30')
 
@@ -40,6 +45,10 @@ export interface AuthUser {
   is_admin: boolean
   email_verified_at?: Date
   is_active: boolean
+  password_hash?: string
+  last_login_at?: Date
+  created_at?: Date
+  updated_at?: Date
 }
 
 // Password hashing utilities
@@ -54,16 +63,22 @@ export async function verifyPassword(password: string, hashedPassword: string): 
 
 // JWT token utilities
 export function generateAccessToken(payload: Omit<JWTPayload, 'iat' | 'exp'>): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN })
+  const now = Math.floor(Date.now() / 1000)
+  const exp = now + (parseInt(JWT_EXPIRES_IN) * 60) // Convert minutes to seconds
+  const tokenPayload = { ...payload, iat: now, exp }
+  return jwt.sign(tokenPayload, JWT_SECRET as string)
 }
 
 export function generateRefreshToken(payload: Omit<JWTPayload, 'iat' | 'exp'>): string {
-  return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_REFRESH_EXPIRES_IN })
+  const now = Math.floor(Date.now() / 1000)
+  const exp = now + (parseInt(JWT_REFRESH_EXPIRES_IN) * 24 * 60 * 60) // Convert days to seconds
+  const tokenPayload = { ...payload, iat: now, exp }
+  return jwt.sign(tokenPayload, JWT_SECRET as string)
 }
 
 export function verifyToken(token: string): JWTPayload | null {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET) as JWTPayload
+    const decoded = jwt.verify(token, JWT_SECRET as string) as JWTPayload
     return decoded
   } catch (error) {
     return null
@@ -104,7 +119,7 @@ export async function validateUserSession(sessionToken: string): Promise<UserSes
     .from('user_sessions')
     .select('*')
     .eq('session_token', sessionToken)
-    .eq('expires_at', 'gt', new Date().toISOString())
+          .gt('expires_at', new Date().toISOString())
     .single()
 
   if (error || !data) {

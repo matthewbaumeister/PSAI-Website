@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createAdminSupabaseClient } from '@/lib/supabase'
 import { hashPassword, validatePassword, getUserByEmail } from '@/lib/auth'
+import crypto from 'crypto'
 
+// Handle password reset request (generate reset token)
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const { email } = body
 
-    // Validate required fields
     if (!email) {
       return NextResponse.json(
         { error: 'Missing email', message: 'Email address is required' },
@@ -30,54 +31,56 @@ export async function POST(request: NextRequest) {
     // Generate reset token
     const resetToken = crypto.randomUUID()
     const expiresAt = new Date()
-    expiresAt.setHours(expiresAt.getHours() + 1) // 1 hour expiration
+    expiresAt.setHours(expiresAt.getHours() + 24) // 24 hours
 
-    // Create password reset record
-    const { error: resetError } = await supabase
+    // Store reset token in database
+    const { error: insertError } = await supabase
       .from('password_resets')
       .insert({
         user_id: user.id,
         reset_token: resetToken,
-        expires_at: expiresAt.toISOString()
+        expires_at: expiresAt.toISOString(),
+        created_at: new Date().toISOString()
       })
 
-    if (resetError) {
-      console.error('Failed to create password reset:', resetError)
+    if (insertError) {
+      console.error('Failed to create reset token:', insertError)
       return NextResponse.json(
-        { error: 'Reset request failed', message: 'Failed to process password reset request' },
+        { error: 'Reset token creation failed', message: 'Failed to create password reset token' },
         { status: 500 }
       )
     }
 
-    // TODO: Send password reset email with resetToken
-    // For now, we'll just return success
+    // TODO: Send email with reset link
+    // For now, just return the token (remove this in production)
+    const resetLink = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/reset-password?token=${resetToken}`
 
     return NextResponse.json({
       success: true,
-      message: 'If an account with this email exists, a password reset link has been sent',
+      message: 'Password reset link sent to your email',
+      resetLink: process.env.NODE_ENV === 'development' ? resetLink : undefined,
       nextSteps: [
-        'Check your email for password reset instructions',
-        'The reset link will expire in 1 hour',
-        'If you don\'t receive an email, check your spam folder'
+        'Check your email for a password reset link',
+        'The link will expire in 24 hours',
+        'If you don\'t see the email, check your spam folder'
       ]
     })
 
   } catch (error) {
     console.error('Password reset request error:', error)
     return NextResponse.json(
-      { error: 'Internal server error', message: 'An unexpected error occurred while processing password reset request' },
+      { error: 'Internal server error', message: 'An unexpected error occurred while processing your request' },
       { status: 500 }
     )
   }
 }
 
-// Handle password reset with token
+// Handle password reset with token and new password
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json()
     const { token, newPassword } = body
 
-    // Validate required fields
     if (!token || !newPassword) {
       return NextResponse.json(
         { error: 'Missing required fields', message: 'Reset token and new password are required' },
@@ -85,13 +88,13 @@ export async function PUT(request: NextRequest) {
       )
     }
 
-    // Validate new password strength
+    // Validate new password
     const passwordValidation = validatePassword(newPassword)
     if (!passwordValidation.isValid) {
       return NextResponse.json(
         { 
-          error: 'Password validation failed', 
-          message: 'New password does not meet requirements',
+          error: 'Invalid password', 
+          message: 'Password does not meet requirements',
           details: passwordValidation.errors
         },
         { status: 400 }
@@ -105,7 +108,7 @@ export async function PUT(request: NextRequest) {
       .from('password_resets')
       .select('*')
       .eq('reset_token', token)
-      .eq('expires_at', 'gt', new Date().toISOString())
+      .gt('expires_at', new Date().toISOString())
       .is('used_at', null)
       .single()
 
@@ -199,7 +202,7 @@ export async function GET(request: NextRequest) {
       .from('password_resets')
       .select('*')
       .eq('reset_token', token)
-      .eq('expires_at', 'gt', new Date().toISOString())
+      .gt('expires_at', new Date().toISOString())
       .is('used_at', null)
       .single()
 

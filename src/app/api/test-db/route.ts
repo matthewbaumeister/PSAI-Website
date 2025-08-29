@@ -25,7 +25,7 @@ export async function GET() {
       'user_settings'
     ]
 
-    const tableResults = {}
+    const tableResults: Record<string, { exists: boolean; error?: string; count?: number }> = {}
     
     for (const table of tables) {
       try {
@@ -39,7 +39,8 @@ export async function GET() {
           tableResults[table] = { exists: true, count: count || 0 }
         }
       } catch (err) {
-        tableResults[table] = { exists: false, error: err.message }
+        const errorMessage = err instanceof Error ? err.message : 'Unknown error'
+        tableResults[table] = { exists: false, error: errorMessage }
       }
     }
 
@@ -51,9 +52,15 @@ export async function GET() {
       .single()
 
     // Test RLS policies
-    const { data: rlsStatus, error: rlsError } = await supabase
-      .rpc('get_rls_status', {})
-      .catch(() => ({ data: null, error: 'RPC function not available' }))
+    let rlsStatus = null
+    let rlsError = null
+    try {
+      const rlsResult = await supabase.rpc('get_rls_status', {})
+      rlsStatus = rlsResult.data
+      rlsError = rlsResult.error
+    } catch (err) {
+      rlsError = 'RPC function not available'
+    }
 
     return NextResponse.json({
       success: true,
@@ -66,7 +73,7 @@ export async function GET() {
       },
       tables: tableResults,
       adminUser: adminUser || { error: adminError?.message },
-      rlsStatus: rlsStatus || { error: rlsError?.message },
+      rlsStatus: rlsStatus || { error: rlsError },
       environment: {
         nodeEnv: process.env.NODE_ENV,
         hasSupabaseUrl: !!process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -77,10 +84,11 @@ export async function GET() {
   } catch (error) {
     console.error('Database test error:', error)
     
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error'
     return NextResponse.json({
       success: false,
       message: 'Database connection test failed',
-      error: error.message,
+      error: errorMessage,
       timestamp: new Date().toISOString(),
       environment: {
         nodeEnv: process.env.NODE_ENV,

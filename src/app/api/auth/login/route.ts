@@ -8,10 +8,9 @@ import {
   getUserByEmail,
   checkRateLimit,
   recordLoginAttempt,
-  clearLoginAttempts,
-  getClientIP,
-  getUserAgent
+  clearLoginAttempts
 } from '@/lib/auth'
+import { getClientIP, getUserAgent } from '@/lib/auth-middleware'
 
 export async function POST(request: NextRequest) {
   try {
@@ -92,7 +91,7 @@ export async function POST(request: NextRequest) {
     const clientIP = getClientIP(request)
     const userAgent = getUserAgent(request)
     
-    await createUserSession(sessionToken, user.id, clientIP, userAgent)
+    await createUserSession(user.id, sessionToken, clientIP, userAgent)
 
     // Generate JWT tokens
     const accessToken = generateAccessToken({

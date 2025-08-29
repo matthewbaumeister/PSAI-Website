@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAuth, deleteUserSession } from '@/lib/auth-middleware'
+import { requireAuth } from '@/lib/auth-middleware'
+import { deleteUserSession } from '@/lib/auth'
 
 export async function POST(request: NextRequest) {
   try {
