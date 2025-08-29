@@ -7,15 +7,19 @@ import { useRouter } from 'next/navigation'
 interface User {
   id: string
   email: string
-  first_name: string
-  last_name: string
-  company_name: string
-  company_size: string
-  email_verified_at: string | null
-  is_admin: boolean
-  is_active: boolean
-  last_login_at: string | null
-  created_at: string
+  firstName: string
+  lastName: string
+  companyName: string
+  companySize: string
+  jobTitle?: string
+  phone?: string
+  website?: string
+  bio?: string
+  emailVerifiedAt: string | null
+  isAdmin: boolean
+  isActive: boolean
+  lastLoginAt: string | null
+  createdAt: string
 }
 
 interface AdminInvitation {
@@ -534,31 +538,31 @@ export default function AdminDashboard() {
                         <div className="flex items-center space-x-3">
                           <div className="w-10 h-10 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-full flex items-center justify-center">
                             <span className="text-white font-semibold text-sm">
-                              {user.first_name.charAt(0)}{user.last_name.charAt(0)}
+                              {user.firstName.charAt(0)}{user.lastName.charAt(0)}
                             </span>
                           </div>
                           <div>
-                            <p className="text-white font-medium">{user.first_name} {user.last_name}</p>
+                            <p className="text-white font-medium">{user.firstName} {user.lastName}</p>
                             <p className="text-slate-400 text-sm">{user.email}</p>
                           </div>
                         </div>
                       </td>
                       <td className="py-4">
                         <div className="text-slate-300">
-                          {user.company_name || 'N/A'}
-                          {user.company_size && (
-                            <span className="text-slate-500 text-sm ml-2">({user.company_size})</span>
+                          {user.companyName || 'N/A'}
+                          {user.companySize && (
+                            <span className="text-slate-500 text-sm ml-2">({user.companySize})</span>
                           )}
                         </div>
                       </td>
                       <td className="py-4">
                         <div className="flex flex-wrap gap-2">
                           <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                            user.is_active ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-red-500/20 text-red-300 border border-red-500/30'
+                            user.isActive ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-red-500/20 text-red-300 border border-red-500/30'
                           }`}>
-                            {user.is_active ? 'Active' : 'Inactive'}
+                            {user.isActive ? 'Active' : 'Inactive'}
                           </span>
-                          {!user.email_verified_at && (
+                          {!user.emailVerifiedAt && (
                             <span className="px-3 py-1 rounded-full text-xs font-medium bg-amber-500/20 text-amber-300 border border-amber-500/30">
                               Unverified
                             </span>
@@ -567,38 +571,38 @@ export default function AdminDashboard() {
                       </td>
                       <td className="py-4">
                         <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                          user.is_admin ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'bg-slate-600/20 text-slate-300 border border-slate-600/30'
+                          user.isAdmin ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'bg-slate-600/20 text-slate-300 border border-slate-600/30'
                         }`}>
-                          {user.is_admin ? 'Admin' : 'User'}
+                          {user.isAdmin ? 'Admin' : 'User'}
                         </span>
                       </td>
                       <td className="py-4 text-slate-300">
-                        {user.last_login_at 
-                          ? new Date(user.last_login_at).toLocaleDateString()
+                        {user.lastLoginAt 
+                          ? new Date(user.lastLoginAt).toLocaleDateString()
                           : 'Never'
                         }
                       </td>
                       <td className="py-4">
                         <div className="flex gap-2">
                           <button
-                            onClick={() => toggleUserRole(user.id, user.is_admin)}
+                            onClick={() => toggleUserRole(user.id, user.isAdmin)}
                             className={`px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 transform hover:scale-105 ${
-                              user.is_admin 
+                              user.isAdmin 
                                 ? 'bg-red-500/20 text-red-300 border border-red-500/30 hover:bg-red-500/30' 
                                 : 'bg-blue-500/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500/30'
                             }`}
                           >
-                            {user.is_admin ? 'Remove Admin' : 'Make Admin'}
+                            {user.isAdmin ? 'Remove Admin' : 'Make Admin'}
                           </button>
                           <button
-                            onClick={() => toggleUserStatus(user.id, user.is_active)}
+                            onClick={() => toggleUserStatus(user.id, user.isActive)}
                             className={`px-3 py-2 rounded-lg text-xs font-medium transition-all duration-200 transform hover:scale-105 ${
-                              user.is_active 
+                              user.isActive 
                                 ? 'bg-red-500/20 text-red-300 border border-red-500/30 hover:bg-red-500/30' 
                                 : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/30'
                             }`}
                           >
-                            {user.is_active ? 'Deactivate' : 'Activate'}
+                            {user.isActive ? 'Deactivate' : 'Activate'}
                           </button>
                         </div>
                       </td>
