@@ -51,15 +51,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const checkAuth = async () => {
     try {
+      // Check if we have any auth cookies before making the API call
+      const hasCookies = document.cookie.includes('access_token') || 
+                        document.cookie.includes('session_token')
+      
+      if (!hasCookies) {
+        setUser(null)
+        setIsLoading(false)
+        return
+      }
+
       const response = await fetch('/api/auth/me', {
         credentials: 'include' // Include cookies
       })
       
       if (response.ok) {
         const userData = await response.json()
+        console.log('Auth check successful:', userData.user)
         setUser(userData.user)
       } else {
+        console.log('Auth check failed:', response.status, response.statusText)
         setUser(null)
+        // Clear any invalid cookies
+        document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
+        document.cookie = 'session_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
       }
     } catch (error) {
       console.error('Auth check failed:', error)
@@ -81,6 +96,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (response.ok) {
         const data = await response.json()
+        console.log('Login successful:', data.user)
+        console.log('Cookies after login:', document.cookie)
         setUser(data.user)
         return true
       } else {
