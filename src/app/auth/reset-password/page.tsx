@@ -122,10 +122,15 @@ function ResetPasswordPageContent() {
 
   if (tokenStatus === 'validating') {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
+      <div className="contact-form-section">
+        <div className="form-header">
+          <h2>Validating Reset Token</h2>
+          <p>Please wait while we verify your reset link...</p>
+        </div>
+        
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Validating reset token...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-white">Validating reset token...</p>
         </div>
       </div>
     )
@@ -133,19 +138,20 @@ function ResetPasswordPageContent() {
 
   if (tokenStatus === 'invalid') {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-8">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Invalid Reset Link</h2>
-          <p className="text-red-600">{message}</p>
+      <div className="contact-form-section">
+        <div className="form-header">
+          <h2>Invalid Reset Link</h2>
+          <p>The password reset link may have expired or is invalid.</p>
         </div>
         
         <div className="text-center space-y-4">
-          <p className="text-gray-600">
-            The password reset link may have expired or is invalid.
+          <p className="text-white opacity-80 mb-6">
+            {message}
           </p>
+          
           <Link 
             href="/auth/forgot-password" 
-            className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 transition-all duration-200"
+            className="submit-btn inline-block"
           >
             Request New Reset Link
           </Link>
@@ -155,81 +161,78 @@ function ResetPasswordPageContent() {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Reset Your Password</h2>
-        <p className="text-gray-600">{message}</p>
+    <div className="contact-form-section">
+      <div className="form-header">
+        <h2>Reset Your Password</h2>
+        <p>Enter your new password below</p>
       </div>
 
       {submitStatus === 'success' && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <p className="text-green-800">{submitMessage}</p>
+        <div className="success-message">
+          {submitMessage}
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-red-800">{submitMessage}</p>
+        <div className="error-message">
+          {submitMessage}
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-            New Password *
-          </label>
+      <form className="contact-form" onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="password">New Password *</label>
           <input
             type="password"
             id="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-              errors.password ? 'border-red-300' : 'border-gray-300'
-            }`}
+            required
             placeholder="••••••••"
           />
           {errors.password && (
-            <p className="mt-1 text-sm text-red-600">{errors.password}</p>
+            <p className="error-message">
+              {errors.password}
+            </p>
           )}
         </div>
 
-        <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
-            Confirm New Password *
-          </label>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirm New Password *</label>
           <input
             type="password"
             id="confirmPassword"
             name="confirmPassword"
             value={formData.confirmPassword}
             onChange={handleInputChange}
-            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-              errors.confirmPassword ? 'border-red-300' : 'border-gray-300'
-            }`}
+            required
             placeholder="••••••••"
           />
           {errors.confirmPassword && (
-            <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>
+            <p className="error-message">
+              {errors.confirmPassword}
+            </p>
           )}
         </div>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
-        >
-          {isSubmitting ? 'Resetting Password...' : 'Reset Password'}
+        <button type="submit" className="submit-btn" disabled={isSubmitting}>
+          {isSubmitting ? (
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+              Resetting Password...
+            </div>
+          ) : (
+            'Reset Password'
+          )}
         </button>
       </form>
 
-      <div className="mt-6 text-center">
-        <p className="text-gray-600">
-          Remember your password?{' '}
-          <Link href="/auth/login" className="text-orange-600 hover:text-orange-500 font-medium">
-            Sign in here
-          </Link>
-        </p>
+      <div className="signup-section">
+        <p>Remember your password?</p>
+        <Link href="/auth/login" className="signup-link">
+          Sign in here
+        </Link>
       </div>
     </div>
   )
@@ -238,10 +241,15 @@ function ResetPasswordPageContent() {
 export default function ResetPasswordPage() {
   return (
     <Suspense fallback={
-      <div className="bg-white rounded-lg shadow-lg p-8">
+      <div className="contact-form-section">
+        <div className="form-header">
+          <h2>Loading...</h2>
+          <p>Please wait while we load the reset password page...</p>
+        </div>
+        
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
+          <p className="text-white">Loading...</p>
         </div>
       </div>
     }>
