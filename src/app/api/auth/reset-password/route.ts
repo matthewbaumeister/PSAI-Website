@@ -51,14 +51,40 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // TODO: Send email with reset link
-    // For now, just return the token (remove this in production)
-    const resetLink = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/reset-password?token=${resetToken}`
+    // Send password reset email
+    try {
+      const { sendPasswordResetEmail } = await import('@/lib/email')
+      
+      const resetUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'https://prop-shop.ai'}/auth/reset-password?token=${resetToken}`
+      
+      const emailSent = await sendPasswordResetEmail({
+        email: user.email,
+        firstName: user.first_name || 'User',
+        lastName: user.last_name || '',
+        resetToken,
+        resetUrl
+      })
+
+      if (!emailSent) {
+        console.error('Failed to send password reset email to', user.email)
+        return NextResponse.json(
+          { error: 'Email sending failed', message: 'Failed to send password reset email. Please try again later.' },
+          { status: 500 }
+        )
+      }
+
+      console.log('Password reset email sent successfully to', user.email)
+    } catch (emailError) {
+      console.error('Error sending password reset email:', emailError)
+      return NextResponse.json(
+        { error: 'Email sending failed', message: 'Failed to send password reset email. Please try again later.' },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json({
       success: true,
       message: 'Password reset link sent to your email',
-      resetLink: process.env.NODE_ENV === 'development' ? resetLink : undefined,
       nextSteps: [
         'Check your email for a password reset link',
         'The link will expire in 24 hours',

@@ -109,12 +109,12 @@ export async function POST(request: NextRequest) {
       // Don't fail the signup if settings fail, just log it
     }
 
-    // TODO: Send email verification email
-    // For now, we'll create a placeholder verification record
+    // Create verification token and send verification email
     const verificationToken = crypto.randomUUID()
     const expiresAt = new Date()
     expiresAt.setHours(expiresAt.getHours() + 24) // 24 hour expiration
 
+    // Create verification record in database
     const { error: verificationError } = await supabase
       .from('email_verifications')
       .insert({
@@ -125,8 +125,33 @@ export async function POST(request: NextRequest) {
       })
 
     if (verificationError) {
-      console.error('Failed to create email verification:', verificationError)
-      // Don't fail the signup if verification fails, just log it
+      console.error('Failed to create email verification record:', verificationError)
+      // Don't fail the signup if verification record fails, just log it
+    }
+
+    // Send verification email
+    try {
+      const { sendVerificationEmail } = await import('@/lib/email')
+      
+      const verificationUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'https://prop-shop.ai'}/auth/verify-email?token=${verificationToken}`
+      
+      const emailSent = await sendVerificationEmail({
+        email: user.email,
+        firstName: user.first_name,
+        lastName: user.last_name,
+        verificationToken,
+        verificationUrl
+      })
+
+      if (!emailSent) {
+        console.error('Failed to send verification email to', user.email)
+        // Don't fail the signup if email fails, just log it
+      } else {
+        console.log('Verification email sent successfully to', user.email)
+      }
+    } catch (emailError) {
+      console.error('Error sending verification email:', emailError)
+      // Don't fail the signup if email fails, just log it
     }
 
     // Return success response (without sensitive data)

@@ -62,6 +62,33 @@ export async function POST(request: NextRequest) {
       // Don't fail verification if token update fails
     }
 
+    // Send welcome email after successful verification
+    try {
+      const { sendWelcomeEmail } = await import('@/lib/email')
+      
+      const loginUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'https://prop-shop.ai'}/auth/login`
+      
+      // Get user details for welcome email
+      const { data: userDetails, error: userError } = await supabase
+        .from('users')
+        .select('first_name, last_name')
+        .eq('id', verificationRecord.user_id)
+        .single()
+
+      if (!userError && userDetails) {
+        await sendWelcomeEmail({
+          email: verificationRecord.email,
+          firstName: userDetails.first_name,
+          lastName: userDetails.last_name,
+          loginUrl
+        })
+        console.log('Welcome email sent after verification to', verificationRecord.email)
+      }
+    } catch (emailError) {
+      console.error('Error sending welcome email:', emailError)
+      // Don't fail verification if welcome email fails, just log it
+    }
+
     return NextResponse.json({
       success: true,
       message: 'Email verified successfully',
