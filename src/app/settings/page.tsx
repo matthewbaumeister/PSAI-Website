@@ -249,11 +249,11 @@ export default function SettingsPage() {
         )}
 
         {/* Settings Navigation */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-2 mb-8">
-          <div className="flex space-x-2">
+        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-xl p-1.5 mb-6">
+          <div className="flex space-x-1">
             <button
               onClick={() => setActiveTab('password')}
-              className={`flex-1 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'password'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
@@ -268,7 +268,7 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => setActiveTab('email')}
-              className={`flex-1 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'email'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
@@ -283,7 +283,7 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => setActiveTab('account')}
-              className={`flex-1 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
+              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'account'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
