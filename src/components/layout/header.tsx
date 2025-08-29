@@ -172,7 +172,7 @@ export function Header() {
           Settings
         </Link>
         <div className="dropdown-divider"></div>
-        <button onClick={handleLogout} className="dropdown-link logout-button">
+        <button onClick={handleLogout} className="logout-button">
           Sign Out
         </button>
       </div>
