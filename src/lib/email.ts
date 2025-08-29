@@ -82,6 +82,9 @@ export async function sendVerificationEmail(data: EmailVerificationData): Promis
             <div class="footer">
               <p>&copy; 2025 Prop Shop AI. All rights reserved.</p>
               <p>This email was sent to ${data.email}</p>
+              <p style="font-size: 12px; color: #999; margin-top: 10px;">
+                This is an automated email. Please do not reply to this address.
+              </p>
             </div>
           </div>
         </body>
@@ -169,6 +172,9 @@ export async function sendPasswordResetEmail(data: PasswordResetData): Promise<b
             <div class="footer">
               <p>&copy; 2025 Prop Shop AI. All rights reserved.</p>
               <p>This email was sent to ${data.email}</p>
+              <p style="font-size: 12px; color: #999; margin-top: 10px;">
+                This is an automated email. Please do not reply to this address.
+              </p>
             </div>
           </div>
         </body>
@@ -259,6 +265,9 @@ export async function sendWelcomeEmail(data: WelcomeEmailData): Promise<boolean>
             <div class="footer">
               <p>&copy; 2025 Prop Shop AI. All rights reserved.</p>
               <p>This email was sent to ${data.email}</p>
+              <p style="font-size: 12px; color: #999; margin-top: 10px;">
+                This is an automated email. Please do not reply to this address.
+              </p>
             </div>
           </div>
         </body>
