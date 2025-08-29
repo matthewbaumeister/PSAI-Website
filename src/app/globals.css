@@ -383,16 +383,26 @@ body::after {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  white-space: nowrap;
 }
 
 .action-buttons {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  white-space: nowrap;
 }
 
 .header .header-actions .btn {
   white-space: nowrap;
+  line-height: 1;
+}
+
+.header .header-actions .btn span,
+.header .header-actions .btn {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Primary CTA Button (Book Demo) */
@@ -410,6 +420,8 @@ body::after {
   box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
+  line-height: 1;
 }
 
 .header .header-actions .btn-primary:hover {
@@ -4273,3 +4285,4 @@ body::after {
     gap: 0.5rem;
   }
 }
+
