@@ -35,7 +35,7 @@ export default function ProfilePage() {
     }
   }, [user, isLoading, router])
 
-  // Initialize form data when user loads
+  // Load user data when component mounts
   useEffect(() => {
     if (user) {
       setFormData({
@@ -52,8 +52,8 @@ export default function ProfilePage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-purple-200 text-lg">Loading Profile...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent mx-auto mb-4"></div>
+          <p className="text-purple-200 text-base">Loading Profile...</p>
         </div>
       </div>
     )
@@ -72,12 +72,6 @@ export default function ProfilePage() {
   }
 
   const handleSave = async () => {
-    if (!formData.firstName.trim() || !formData.lastName.trim()) {
-      setMessage('First name and last name are required')
-      setMessageType('error')
-      return
-    }
-
     setIsSaving(true)
     setMessage('')
 
@@ -94,8 +88,8 @@ export default function ProfilePage() {
         setMessage('Profile updated successfully!')
         setMessageType('success')
         setIsEditing(false)
-        // Refresh user data
-        window.location.reload()
+        // Update the user context with new data
+        // This would typically be handled by the auth context
       } else {
         const data = await response.json()
         setMessage(data.message || 'Failed to update profile')
@@ -110,7 +104,7 @@ export default function ProfilePage() {
   }
 
   const handleCancel = () => {
-    // Reset form data to current user data
+    // Reset form data to original user data
     setFormData({
       firstName: user.firstName || '',
       lastName: user.lastName || '',
@@ -126,18 +120,18 @@ export default function ProfilePage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/50 backdrop-blur-sm border-b border-slate-700/50">
-        <div className="container mx-auto px-6 py-6">
+        <div className="container mx-auto px-6 py-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                 Profile
               </h1>
-              <p className="text-slate-300 mt-2 text-lg">Manage your personal information</p>
+              <p className="text-slate-300 mt-2 text-base">Manage your personal and company information</p>
             </div>
             <div className="flex items-center space-x-4">
               <div className="bg-slate-800/50 rounded-full px-4 py-2 border border-slate-600/50">
                 <span className="text-slate-300 text-sm">Logged in as: </span>
-                <span className="text-white font-semibold">{user.email}</span>
+                <span className="text-white font-semibold text-sm">{user.email}</span>
               </div>
             </div>
           </div>
@@ -163,7 +157,7 @@ export default function ProfilePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                   </svg>
                 )}
-                <span className="font-medium">{message}</span>
+                <span className="font-medium text-sm">{message}</span>
               </div>
               <button 
                 onClick={() => setMessage('')}
@@ -177,203 +171,223 @@ export default function ProfilePage() {
           </div>
         )}
 
-        {/* Profile Form */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-300">
-          <div className="flex items-center space-x-3 mb-6">
-            <div className="w-10 h-10 bg-purple-500/30 rounded-xl flex items-center justify-center">
-              <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold text-white">Personal Information</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* First Name */}
-            <div>
-              <label htmlFor="firstName" className="block text-slate-300 text-sm font-medium mb-2">
-                First Name *
-              </label>
-              <input
-                type="text"
-                id="firstName"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                placeholder="Enter your first name"
-                required
-              />
-            </div>
-
-            {/* Last Name */}
-            <div>
-              <label htmlFor="lastName" className="block text-slate-300 text-sm font-medium mb-2">
-                Last Name *
-              </label>
-              <input
-                type="text"
-                id="lastName"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                placeholder="Enter your last name"
-                required
-              />
-            </div>
-
-            {/* Company Name */}
-            <div>
-              <label htmlFor="companyName" className="block text-slate-300 text-sm font-medium mb-2">
-                Company Name
-              </label>
-              <input
-                type="text"
-                id="companyName"
-                name="companyName"
-                value={formData.companyName}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                placeholder="Enter your company name"
-              />
-            </div>
-
-            {/* Company Size */}
-            <div>
-              <label htmlFor="companySize" className="block text-slate-300 text-sm font-medium mb-2">
-                Company Size
-              </label>
-              <select
-                id="companySize"
-                name="companySize"
-                value={formData.companySize}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <option value="">Select company size</option>
-                <option value="1-10">1-10 employees</option>
-                <option value="11-50">11-50 employees</option>
-                <option value="51-200">51-200 employees</option>
-                <option value="201-500">201-500 employees</option>
-                <option value="501-1000">501-1000 employees</option>
-                <option value="1000+">1000+ employees</option>
-              </select>
-            </div>
-
-            {/* Phone */}
-            <div className="md:col-span-2">
-              <label htmlFor="phone" className="block text-slate-300 text-sm font-medium mb-2">
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                placeholder="Enter your phone number"
-              />
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex justify-end space-x-4 mt-8">
-            {!isEditing ? (
-              <button
-                onClick={() => setIsEditing(true)}
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-purple-500/25"
-              >
-                <div className="flex items-center space-x-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                  <span>Edit Profile</span>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Profile Information */}
+          <div className="lg:col-span-2">
+            <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-purple-500/30 rounded-lg flex items-center justify-center">
+                    <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <h2 className="text-xl font-bold text-white">Personal Information</h2>
                 </div>
-              </button>
-            ) : (
-              <>
-                <button
-                  onClick={handleCancel}
-                  className="px-6 py-3 bg-slate-600 text-white rounded-xl hover:bg-slate-700 font-semibold transition-all duration-300"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleSave}
-                  disabled={isSaving}
-                  className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl hover:from-emerald-700 hover:to-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-emerald-500/25"
-                >
-                  {isSaving ? (
-                    <div className="flex items-center space-x-2">
-                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                      <span>Saving...</span>
+                {!isEditing && (
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm"
+                  >
+                    Edit Profile
+                  </button>
+                )}
+              </div>
+
+              {isEditing ? (
+                <form className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="firstName" className="block text-slate-300 text-sm font-medium mb-2">
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
+                        placeholder="Enter your first name"
+                      />
                     </div>
-                  ) : (
-                    <div className="flex items-center space-x-2">
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span>Save Changes</span>
+                    <div>
+                      <label htmlFor="lastName" className="block text-slate-300 text-sm font-medium mb-2">
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
+                        placeholder="Enter your last name"
+                      />
                     </div>
-                  )}
-                </button>
-              </>
-            )}
+                  </div>
+
+                  <div>
+                    <label htmlFor="companyName" className="block text-slate-300 text-sm font-medium mb-2">
+                      Company Name
+                    </label>
+                    <input
+                      type="text"
+                      id="companyName"
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleInputChange}
+                      className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
+                      placeholder="Enter your company name"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="companySize" className="block text-slate-300 text-sm font-medium mb-2">
+                        Company Size
+                      </label>
+                      <select
+                        id="companySize"
+                        name="companySize"
+                        value={formData.companySize}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
+                      >
+                        <option value="">Select company size</option>
+                        <option value="1-10">1-10 employees</option>
+                        <option value="11-50">11-50 employees</option>
+                        <option value="51-200">51-200 employees</option>
+                        <option value="201-500">201-500 employees</option>
+                        <option value="501-1000">501-1000 employees</option>
+                        <option value="1000+">1000+ employees</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="phone" className="block text-slate-300 text-sm font-medium mb-2">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
+                        placeholder="Enter your phone number"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex space-x-3 pt-4">
+                    <button
+                      type="button"
+                      onClick={handleSave}
+                      disabled={isSaving}
+                      className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 text-sm"
+                    >
+                      {isSaving ? 'Saving...' : 'Save Changes'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleCancel}
+                      className="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors duration-200 text-sm"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              ) : (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-slate-300 text-sm font-medium mb-2">First Name</label>
+                      <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
+                        {formData.firstName || 'Not provided'}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-slate-300 text-sm font-medium mb-2">Last Name</label>
+                      <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
+                        {formData.lastName || 'Not provided'}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-slate-300 text-sm font-medium mb-2">Company Name</label>
+                    <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
+                      {formData.companyName || 'Not provided'}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-slate-300 text-sm font-medium mb-2">Company Size</label>
+                      <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
+                        {formData.companySize || 'Not specified'}
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-slate-300 text-sm font-medium mb-2">Phone Number</label>
+                      <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
+                        {formData.phone || 'Not provided'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
 
-        {/* Account Information */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 mt-8 hover:border-blue-500/30 transition-all duration-300">
-          <div className="flex items-center space-x-3 mb-6">
-            <div className="w-10 h-10 bg-blue-500/30 rounded-xl flex items-center justify-center">
-              <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-            </div>
-            <h2 className="text-2xl font-bold text-white">Account Information</h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">Email Address</label>
-              <div className="px-4 py-3 bg-slate-700/30 border border-slate-600/30 rounded-xl text-white">
-                {user.email}
+          {/* Account Information */}
+          <div className="lg:col-span-1">
+            <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-8 h-8 bg-emerald-500/30 rounded-lg flex items-center justify-center">
+                  <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h2 className="text-xl font-bold text-white">Account Status</h2>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">Account Status</label>
-              <div className="px-4 py-3 bg-slate-700/30 border border-slate-600/30 rounded-xl">
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  user.isAdmin ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'bg-slate-600/20 text-slate-300 border border-slate-600/30'
-                }`}>
-                  {user.isAdmin ? 'Admin' : 'User'}
-                </span>
-              </div>
-            </div>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <span className="text-slate-300 text-sm">Account Status</span>
+                  <span className="px-2 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-full border border-emerald-500/30">
+                    Active
+                  </span>
+                </div>
 
-            <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">Email Verification</label>
-              <div className="px-4 py-3 bg-slate-700/30 border border-slate-600/30 rounded-xl">
-                <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  user.emailVerified ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
-                }`}>
-                  {user.emailVerified ? 'Verified' : 'Pending Verification'}
-                </span>
-              </div>
-            </div>
+                <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <span className="text-slate-300 text-sm">Email Status</span>
+                  <span className={`px-2 py-1 text-xs rounded-full border ${
+                    user.emailVerified 
+                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
+                      : 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30'
+                  }`}>
+                    {user.emailVerified ? 'Verified' : 'Pending'}
+                  </span>
+                </div>
 
-            <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">Member Since</label>
-              <div className="px-4 py-3 bg-slate-700/30 border border-slate-600/30 rounded-xl text-white">
-                {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
+                <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <span className="text-slate-300 text-sm">Account Type</span>
+                  <span className={`px-2 py-1 text-xs rounded-full border ${
+                    user.isAdmin 
+                      ? 'bg-purple-500/20 text-purple-300 border-purple-500/30' 
+                      : 'bg-slate-600/20 text-slate-300 border-slate-600/30'
+                  }`}>
+                    {user.isAdmin ? 'Admin' : 'User'}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <span className="text-slate-300 text-sm">Member Since</span>
+                  <span className="text-white text-xs">
+                    {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'Unknown'}
+                  </span>
+                </div>
               </div>
             </div>
           </div>

@@ -51,8 +51,8 @@ export default function SettingsPage() {
     return (
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-purple-200 text-lg">Loading Settings...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-purple-500 border-t-transparent mx-auto mb-4"></div>
+          <p className="text-purple-200 text-base">Loading Settings...</p>
         </div>
       </div>
     )
@@ -197,18 +197,18 @@ export default function SettingsPage() {
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/50 backdrop-blur-sm border-b border-slate-700/50">
-        <div className="container mx-auto px-6 py-6">
+        <div className="container mx-auto px-6 py-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
                 Settings
               </h1>
-              <p className="text-slate-300 mt-2 text-lg">Manage your account preferences and security</p>
+              <p className="text-slate-300 mt-2 text-base">Manage your account preferences and security</p>
             </div>
             <div className="flex items-center space-x-4">
               <div className="bg-slate-800/50 rounded-full px-4 py-2 border border-slate-600/50">
                 <span className="text-slate-300 text-sm">Logged in as: </span>
-                <span className="text-white font-semibold">{user.email}</span>
+                <span className="text-white font-semibold text-sm">{user.email}</span>
               </div>
             </div>
           </div>
@@ -234,7 +234,7 @@ export default function SettingsPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                   </svg>
                 )}
-                <span className="font-medium">{message}</span>
+                <span className="font-medium text-sm">{message}</span>
               </div>
               <button 
                 onClick={() => setMessage('')}
@@ -260,10 +260,10 @@ export default function SettingsPage() {
               }`}
             >
               <div className="flex items-center justify-center space-x-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-                <span>Password</span>
+                <span className="text-sm">Password</span>
               </div>
             </button>
             <button
@@ -275,10 +275,10 @@ export default function SettingsPage() {
               }`}
             >
               <div className="flex items-center justify-center space-x-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span>Email</span>
+                <span className="text-sm">Email</span>
               </div>
             </button>
             <button
@@ -290,10 +290,10 @@ export default function SettingsPage() {
               }`}
             >
               <div className="flex items-center justify-center space-x-2">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
-                <span>Account</span>
+                <span className="text-sm">Account</span>
               </div>
             </button>
           </div>
@@ -301,17 +301,17 @@ export default function SettingsPage() {
 
         {/* Password Settings */}
         {activeTab === 'password' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-300">
+          <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-purple-500/30 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-8 h-8 bg-purple-500/30 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-white">Change Password</h2>
+              <h2 className="text-xl font-bold text-white">Change Password</h2>
             </div>
 
-            <form onSubmit={handlePasswordChange} className="space-y-6">
+            <form onSubmit={handlePasswordChange} className="space-y-4">
               <div>
                 <label htmlFor="currentPassword" className="block text-slate-300 text-sm font-medium mb-2">
                   Current Password
@@ -323,7 +323,7 @@ export default function SettingsPage() {
                   value={passwordData.currentPassword}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                  className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
                   placeholder="Enter your current password"
                 />
               </div>
@@ -339,10 +339,10 @@ export default function SettingsPage() {
                   value={passwordData.newPassword}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                  className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
                   placeholder="Enter your new password"
                 />
-                <p className="text-slate-400 text-sm mt-1">Password must be at least 8 characters long</p>
+                <p className="text-slate-400 text-xs mt-1">Password must be at least 8 characters long</p>
               </div>
 
               <div>
@@ -356,7 +356,7 @@ export default function SettingsPage() {
                   value={passwordData.confirmPassword}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                  className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
                   placeholder="Confirm your new password"
                 />
               </div>
@@ -364,7 +364,7 @@ export default function SettingsPage() {
               <button
                 type="submit"
                 disabled={isChangingPassword}
-                className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-purple-500/25"
+                className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-purple-500/25 text-sm"
               >
                 {isChangingPassword ? (
                   <div className="flex items-center justify-center space-x-2">
@@ -381,21 +381,21 @@ export default function SettingsPage() {
 
         {/* Email Preferences */}
         {activeTab === 'email' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300">
+          <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-emerald-500/30 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-8 h-8 bg-emerald-500/30 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-white">Email Preferences</h2>
+              <h2 className="text-xl font-bold text-white">Email Preferences</h2>
             </div>
 
-            <div className="space-y-6">
-              <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                 <div>
-                  <h3 className="text-white font-medium">Marketing Emails</h3>
-                  <p className="text-slate-400 text-sm">Receive emails about new features and promotions</p>
+                  <h3 className="text-white font-medium text-sm">Marketing Emails</h3>
+                  <p className="text-slate-400 text-xs">Receive emails about new features and promotions</p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
@@ -405,14 +405,14 @@ export default function SettingsPage() {
                     onChange={handleInputChange}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  <div className="w-10 h-5 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
                 </label>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
+              <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                 <div>
-                  <h3 className="text-white font-medium">Product Updates</h3>
-                  <p className="text-slate-400 text-sm">Get notified about new features and improvements</p>
+                  <h3 className="text-white font-medium text-sm">Product Updates</h3>
+                  <p className="text-slate-400 text-xs">Get notified about new features and improvements</p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
@@ -422,14 +422,14 @@ export default function SettingsPage() {
                     onChange={handleInputChange}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  <div className="w-10 h-5 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
                 </label>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
+              <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                 <div>
-                  <h3 className="text-white font-medium">Security Alerts</h3>
-                  <p className="text-slate-400 text-sm">Important security notifications and account alerts</p>
+                  <h3 className="text-white font-medium text-sm">Security Alerts</h3>
+                  <p className="text-slate-400 text-xs">Important security notifications and account alerts</p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
@@ -439,14 +439,14 @@ export default function SettingsPage() {
                     onChange={handleInputChange}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  <div className="w-10 h-5 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
                 </label>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-xl border border-slate-600/30">
+              <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
                 <div>
-                  <h3 className="text-white font-medium">Weekly Digest</h3>
-                  <p className="text-slate-400 text-sm">Weekly summary of your activity and insights</p>
+                  <h3 className="text-white font-medium text-sm">Weekly Digest</h3>
+                  <p className="text-slate-400 text-xs">Weekly summary of your activity and insights</p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
@@ -456,14 +456,14 @@ export default function SettingsPage() {
                     onChange={handleInputChange}
                     className="sr-only peer"
                   />
-                  <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  <div className="w-10 h-5 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
                 </label>
               </div>
 
               <button
                 onClick={handleEmailPreferencesUpdate}
                 disabled={isUpdatingPreferences}
-                className="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl hover:from-emerald-700 hover:to-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-emerald-500/25"
+                className="w-full px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-emerald-500/25 text-sm"
               >
                 {isUpdatingPreferences ? (
                   <div className="flex items-center justify-center space-x-2">
@@ -480,31 +480,31 @@ export default function SettingsPage() {
 
         {/* Account Settings */}
         {activeTab === 'account' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-red-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-red-500/30 transition-all duration-300">
+          <div className="bg-gradient-to-br from-slate-800/50 to-red-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-red-500/30 transition-all duration-300">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-red-500/30 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-8 h-8 bg-red-500/30 rounded-lg flex items-center justify-center">
+                <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-white">Account Management</h2>
+              <h2 className="text-xl font-bold text-white">Account Management</h2>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Account Information */}
-              <div className="bg-slate-700/30 rounded-xl p-6 border border-slate-600/30">
-                <h3 className="text-white font-medium mb-4">Account Information</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600/30">
+                <h3 className="text-white font-medium mb-3 text-sm">Account Information</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-slate-300 text-sm font-medium mb-2">Email Address</label>
-                    <div className="px-4 py-3 bg-slate-600/30 border border-slate-500/30 rounded-lg text-white">
+                    <label className="block text-slate-300 text-xs font-medium mb-1">Email Address</label>
+                    <div className="px-3 py-2 bg-slate-600/30 border border-slate-500/30 rounded-md text-white text-sm">
                       {user.email}
                     </div>
                   </div>
                   <div>
-                    <label className="block text-slate-300 text-sm font-medium mb-2">Account Type</label>
-                    <div className="px-4 py-3 bg-slate-600/30 border border-slate-500/30 rounded-lg">
-                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <label className="block text-slate-300 text-xs font-medium mb-1">Account Type</label>
+                    <div className="px-3 py-2 bg-slate-600/30 border border-slate-500/30 rounded-md">
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                         user.isAdmin ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'bg-slate-600/20 text-slate-300 border border-slate-600/30'
                       }`}>
                         {user.isAdmin ? 'Admin' : 'User'}
@@ -515,22 +515,22 @@ export default function SettingsPage() {
               </div>
 
               {/* Danger Zone */}
-              <div className="bg-red-500/10 rounded-xl p-6 border border-red-500/30">
-                <h3 className="text-red-400 font-medium mb-4">Danger Zone</h3>
-                <p className="text-slate-300 text-sm mb-6">
+              <div className="bg-red-500/10 rounded-lg p-4 border border-red-500/30">
+                <h3 className="text-red-400 font-medium mb-3 text-sm">Danger Zone</h3>
+                <p className="text-slate-300 text-xs mb-4">
                   These actions are irreversible. Please proceed with caution.
                 </p>
 
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between p-4 bg-red-500/20 rounded-lg border border-red-500/30">
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3 bg-red-500/20 rounded-md border border-red-500/30">
                     <div>
-                      <h4 className="text-red-300 font-medium">Delete Account</h4>
-                      <p className="text-red-200 text-sm">Permanently delete your account and all data</p>
+                      <h4 className="text-red-300 font-medium text-sm">Delete Account</h4>
+                      <p className="text-red-200 text-xs">Permanently delete your account and all data</p>
                     </div>
                     <button
                       onClick={handleAccountDeletion}
                       disabled={isDeletingAccount}
-                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
+                      className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 text-sm"
                     >
                       {isDeletingAccount ? 'Deleting...' : 'Delete Account'}
                     </button>
