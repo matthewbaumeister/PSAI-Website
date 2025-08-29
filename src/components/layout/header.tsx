@@ -204,30 +204,17 @@ export function Header() {
             <Link href="/book-demo" className="btn btn-primary">Book Demo</Link>
           </div>
           
-          <div className="header-divider"></div>
-
-          {user ? (
-            <div className="user-dropdown-container">
-              <button 
-                ref={userButtonRef}
-                className="user-dropdown-trigger"
-                onClick={toggleUserDropdown}
-                aria-expanded={isUserDropdownOpen}
-              >
-                <div className="user-avatar">
-                  {user.firstName?.charAt(0) || user.email.charAt(0).toUpperCase()}
-                </div>
-                <span className="user-name-text">
-                  {user.firstName || 'User'}
-                </span>
-                <span className="dropdown-arrow">▼</span>
-              </button>
-            </div>
-          ) : (
-            <div className="auth-buttons">
-              <Link href="/auth/login" className="btn btn-secondary">Sign In</Link>
-              <Link href="/auth/signup" className="btn btn-secondary">Sign Up</Link>
-            </div>
+          {user && (
+            <>
+              <div className="header-divider"></div>
+              <div className="user-dropdown-container">
+                <button ref={userButtonRef} className="user-dropdown-trigger" onClick={toggleUserDropdown} aria-expanded={isUserDropdownOpen}>
+                  <div className="user-avatar">{user.firstName?.charAt(0) || user.email.charAt(0).toUpperCase()}</div>
+                  <span className="user-name-text">{user.firstName || 'User'}</span>
+                  <span className="dropdown-arrow">▼</span>
+                </button>
+              </div>
+            </>
           )}
         </div>
       </div>

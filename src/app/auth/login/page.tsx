@@ -172,14 +172,15 @@ export default function LoginPage() {
           </div>
         )}
 
-        {/* Sign Up Link */}
-        <div className="text-center">
-          <p className="text-gray-600">
-            Don't have an account?{' '}
-            <Link href="/auth/signup" className="text-blue-600 hover:text-blue-500 font-medium underline">
-              Sign up here
-            </Link>
-          </p>
+        {/* Sign Up Section */}
+        <div className="text-center pt-4 border-t border-gray-200">
+          <p className="text-gray-600 mb-4">Don't have an account?</p>
+          <Link 
+            href="/auth/signup" 
+            className="inline-block bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2.5 px-6 rounded-md transition-colors duration-200"
+          >
+            Create Account
+          </Link>
         </div>
       </form>
     </div>
