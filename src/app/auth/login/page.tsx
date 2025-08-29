@@ -2,29 +2,26 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 
-interface LoginForm {
-  email: string
-  password: string
-  rememberMe: boolean
-}
-
 export default function LoginPage() {
-  const router = useRouter()
-  const [formData, setFormData] = useState<LoginForm>({
+  const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false
   })
+  
+  const [errors, setErrors] = useState<Partial<typeof formData>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [errors, setErrors] = useState<Partial<LoginForm>>({})
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
   const [submitMessage, setSubmitMessage] = useState('')
+  
+  const { login } = useAuth()
+  const router = useRouter()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type } = e.target
-    const checked = type === 'checkbox' ? e.target.checked : undefined
+    const { name, value, type, checked } = e.target
     
     setFormData(prev => ({
       ...prev,
@@ -32,18 +29,17 @@ export default function LoginPage() {
     }))
     
     // Clear error when user starts typing
-    if (errors[name as keyof LoginForm]) {
-      setErrors(prev => ({ ...prev, [name]: undefined }))
+    if (errors[name as keyof typeof formData]) {
+      setErrors(prev => ({ ...prev, [name]: '' }))
     }
   }
 
   const validateForm = (): boolean => {
-    const newErrors: Partial<LoginForm> = {}
+    const newErrors: Partial<typeof formData> = {}
 
     if (!formData.email.trim()) newErrors.email = 'Email is required'
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address'
-    }
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Please enter a valid email'
+    
     if (!formData.password) newErrors.password = 'Password is required'
 
     setErrors(newErrors)
@@ -54,71 +50,40 @@ export default function LoginPage() {
     e.preventDefault()
     
     if (!validateForm()) return
-
+    
     setIsSubmitting(true)
     setSubmitStatus('idle')
-    setSubmitMessage('')
-
+    
     try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-          rememberMe: formData.rememberMe
-        }),
-      })
-
-      const data = await response.json()
-
-      if (response.ok) {
+      const success = await login(formData.email, formData.password, formData.rememberMe)
+      
+      if (success) {
         setSubmitStatus('success')
-        setSubmitMessage('Login successful! Redirecting to dashboard...')
-        // Redirect to dashboard after 2 seconds
-        setTimeout(() => router.push('/dashboard'), 2000)
+        setSubmitMessage('Login successful! Redirecting...')
+        setTimeout(() => router.push('/'), 1500)
       } else {
         setSubmitStatus('error')
-        if (data.requiresVerification) {
-          setSubmitMessage('Please verify your email address before logging in. Check your inbox for a verification link.')
-        } else {
-          setSubmitMessage(data.message || 'Invalid email or password. Please try again.')
-        }
+        setSubmitMessage('Invalid email or password. Please try again.')
       }
     } catch (error) {
       setSubmitStatus('error')
-      setSubmitMessage('An unexpected error occurred. Please try again.')
+      setSubmitMessage('An error occurred during login. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-8">
-      <div className="text-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Back</h2>
-        <p className="text-gray-600">
-          Sign in to your Prop Shop AI account
-        </p>
+    <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/10">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
+        <p className="text-gray-300">Sign in to your Prop Shop AI account</p>
       </div>
 
-      {submitStatus === 'success' && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <p className="text-green-800">{submitMessage}</p>
-        </div>
-      )}
-
-      {submitStatus === 'error' && (
-        <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-red-800">{submitMessage}</p>
-        </div>
-      )}
-
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Email Field */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
             Email Address *
           </label>
           <input
@@ -127,18 +92,17 @@ export default function LoginPage() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-              errors.email ? 'border-red-300' : 'border-gray-300'
+            className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
+              errors.email ? 'border-red-500/50' : 'border-white/20'
             }`}
             placeholder="john@company.com"
           />
-          {errors.email && (
-            <p className="mt-1 text-sm text-red-600">{errors.email}</p>
-          )}
+          {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
         </div>
 
+        {/* Password Field */}
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
             Password *
           </label>
           <input
@@ -147,52 +111,77 @@ export default function LoginPage() {
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-            className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 ${
-              errors.password ? 'border-red-300' : 'border-gray-300'
+            className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
+              errors.password ? 'border-red-500/50' : 'border-white/20'
             }`}
             placeholder="••••••••"
           />
-          {errors.password && (
-            <p className="mt-1 text-sm text-red-600">{errors.password}</p>
-          )}
+          {errors.password && <p className="mt-1 text-sm text-red-400">{errors.password}</p>}
         </div>
 
+        {/* Remember Me & Forgot Password */}
         <div className="flex items-center justify-between">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
             <input
               type="checkbox"
               id="rememberMe"
               name="rememberMe"
               checked={formData.rememberMe}
               onChange={handleInputChange}
-              className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
+              className="w-4 h-4 text-orange-500 bg-white/10 border-white/20 rounded focus:ring-orange-500/50 focus:ring-2"
             />
-            <label htmlFor="rememberMe" className="ml-2 block text-sm text-gray-700">
+            <label htmlFor="rememberMe" className="text-sm text-gray-300">
               Remember me for 7 days
             </label>
           </div>
-          <Link href="/auth/forgot-password" className="text-sm text-orange-600 hover:text-orange-500">
+          
+          <Link 
+            href="/auth/forgot-password" 
+            className="text-sm text-orange-400 hover:text-orange-300 underline transition-colors duration-200"
+          >
             Forgot password?
           </Link>
         </div>
 
+        {/* Submit Button */}
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 px-6 rounded-lg font-medium hover:from-orange-600 hover:to-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
         >
-          {isSubmitting ? 'Signing In...' : 'Sign In'}
+          {isSubmitting ? (
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+              Signing In...
+            </div>
+          ) : (
+            'Sign In'
+          )}
         </button>
-      </form>
 
-      <div className="mt-6 text-center">
-        <p className="text-gray-600">
-          Don't have an account?{' '}
-          <Link href="/auth/signup" className="text-orange-600 hover:text-orange-500 font-medium">
-            Sign up here
-          </Link>
-        </p>
-      </div>
+        {/* Status Messages */}
+        {submitStatus === 'success' && (
+          <div className="p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-300 text-center">
+            {submitMessage}
+          </div>
+        )}
+        
+        {submitStatus === 'error' && (
+          <div className="p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-300 text-center">
+            {submitMessage}
+          </div>
+        )}
+
+        {/* Sign Up Link */}
+        <div className="text-center">
+          <p className="text-gray-300">
+            Don't have an account?{' '}
+            <Link href="/auth/signup" className="text-orange-400 hover:text-orange-300 font-semibold underline">
+              Sign up here
+            </Link>
+          </p>
+        </div>
+      </form>
     </div>
   )
 }
