@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
+import { AuthProvider } from '@/contexts/AuthContext'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -19,15 +20,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {/* Clean, Subtle Background Animations */}
-        <div className="animated-bg"></div>
-        <div className="bg-grid-overlay"></div>
-        <div className="bg-dots"></div>
-        <div className="floating-elements"></div>
-        
-        <Header />
-        {children}
-        <Footer />
+        <AuthProvider>
+          {/* Clean, Subtle Background Animations */}
+          <div className="animated-bg"></div>
+          <div className="bg-grid-overlay"></div>
+          <div className="bg-dots"></div>
+          <div className="floating-elements"></div>
+          
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   )
