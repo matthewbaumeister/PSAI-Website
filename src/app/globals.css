@@ -4321,3 +4321,50 @@ body::after {
   color: inherit;
 }
 
+/* HIGH SPECIFICITY OVERRIDES FOR AUTH PAGES */
+/* Override global form-group input styles with maximum specificity */
+.auth-page-isolated .auth-container input[type="email"],
+.auth-page-isolated .auth-container input[type="password"],
+.auth-page-isolated .auth-container input[type="text"],
+.auth-page-isolated .auth-container input[type="checkbox"] {
+  background: white !important;
+  background-color: white !important;
+  border: 2px solid #d1d5db !important;
+  border-radius: 12px !important;
+  padding: 1rem 1.25rem !important;
+  font-size: 1rem !important;
+  color: #111827 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Focus states */
+.auth-page-isolated .auth-container input[type="email"]:focus,
+.auth-page-isolated .auth-container input[type="password"]:focus,
+.auth-page-isolated .auth-container input[type="text"]:focus {
+  outline: none !important;
+  border-color: #FF7A29 !important;
+  box-shadow: 0 0 0 3px rgba(255, 122, 41, 0.1) !important;
+  background: white !important;
+  background-color: white !important;
+}
+
+/* Checkbox specific styling */
+.auth-page-isolated .auth-container input[type="checkbox"] {
+  width: 20px !important;
+  height: 20px !important;
+  padding: 0 !important;
+  border-radius: 6px !important;
+  accent-color: #FF7A29 !important;
+}
+
+/* Force white backgrounds on all auth inputs */
+.auth-page-isolated input,
+.auth-page-isolated input[type="email"],
+.auth-page-isolated input[type="password"],
+.auth-page-isolated input[type="text"],
+.auth-page-isolated input[type="checkbox"] {
+  background: white !important;
+  background-color: white !important;
+}
+
