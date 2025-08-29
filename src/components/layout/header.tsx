@@ -198,6 +198,8 @@ export function Header() {
         </nav>
 
         <div className="header-actions">
+          <div className="header-divider"></div>
+          
           {user ? (
             // User is logged in - show user dropdown
             <div className="user-dropdown-container">
@@ -218,22 +220,26 @@ export function Header() {
             </div>
           ) : (
             // User is not logged in - show auth buttons
-            <>
+            <div className="auth-buttons">
               <Link href="/auth/login" className="btn btn-secondary">
                 Sign In
               </Link>
               <Link href="/auth/signup" className="btn btn-primary">
                 Sign Up
               </Link>
-            </>
+            </div>
           )}
           
-          <Link href="/contact" className="btn btn-secondary">
-            Contact Us
-          </Link>
-          <Link href="/book-demo" className="btn btn-primary">
-            Book Demo
-          </Link>
+          <div className="header-divider"></div>
+          
+          <div className="action-buttons">
+            <Link href="/contact" className="btn btn-secondary">
+              Contact Us
+            </Link>
+            <Link href="/book-demo" className="btn btn-primary">
+              Book Demo
+            </Link>
+          </div>
         </div>
       </div>
       
