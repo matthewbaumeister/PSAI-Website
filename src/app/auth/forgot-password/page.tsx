@@ -54,16 +54,16 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/10">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-8">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-white mb-2">Reset Your Password</h2>
-        <p className="text-gray-300">Enter your email address and we'll send you a link to reset your password</p>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-2">Reset Your Password</h2>
+        <p className="text-gray-600">Enter your email address and we'll send you a link to reset your password</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Email Field */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
             Email Address *
           </label>
           <input
@@ -71,23 +71,23 @@ export default function ForgotPasswordPage() {
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-              errors.email ? 'border-red-500/50' : 'border-white/20'
+            className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+              errors.email ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="john@company.com"
           />
-          {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
         </div>
 
         {/* Submit Button */}
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-md shadow-sm transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               Sending Reset Link...
             </div>
           ) : (
@@ -97,22 +97,22 @@ export default function ForgotPasswordPage() {
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
-          <div className="p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-300 text-center">
+          <div className="p-4 bg-green-50 border border-green-200 rounded-md text-green-800 text-center">
             {submitMessage}
           </div>
         )}
         
         {submitStatus === 'error' && (
-          <div className="p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-300 text-center">
+          <div className="p-4 bg-red-50 border border-red-200 rounded-md text-red-800 text-center">
             {submitMessage}
           </div>
         )}
 
         {/* Back to Login */}
         <div className="text-center">
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             Remember your password?{' '}
-            <Link href="/auth/login" className="text-orange-400 hover:text-orange-300 font-semibold underline">
+            <Link href="/auth/login" className="text-blue-600 hover:text-blue-500 font-medium underline">
               Sign in here
             </Link>
           </p>

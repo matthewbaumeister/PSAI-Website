@@ -74,16 +74,16 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/10">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-8">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
-        <p className="text-gray-300">Sign in to your Prop Shop AI account</p>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-2">Welcome Back</h2>
+        <p className="text-gray-600">Sign in to your Prop Shop AI account</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Email Field */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
             Email Address *
           </label>
           <input
@@ -92,17 +92,17 @@ export default function LoginPage() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-              errors.email ? 'border-red-500/50' : 'border-white/20'
+            className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+              errors.email ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="john@company.com"
           />
-          {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
         </div>
 
         {/* Password Field */}
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
+          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
             Password *
           </label>
           <input
@@ -111,12 +111,12 @@ export default function LoginPage() {
             name="password"
             value={formData.password}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-              errors.password ? 'border-red-500/50' : 'border-white/20'
+            className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+              errors.password ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="••••••••"
           />
-          {errors.password && <p className="mt-1 text-sm text-red-400">{errors.password}</p>}
+          {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
         </div>
 
         {/* Remember Me & Forgot Password */}
@@ -128,16 +128,16 @@ export default function LoginPage() {
               name="rememberMe"
               checked={formData.rememberMe}
               onChange={handleInputChange}
-              className="w-4 h-4 text-orange-500 bg-white/10 border-white/20 rounded focus:ring-orange-500/50 focus:ring-2"
+              className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
             />
-            <label htmlFor="rememberMe" className="text-sm text-gray-300">
+            <label htmlFor="rememberMe" className="text-sm text-gray-700">
               Remember me for 7 days
             </label>
           </div>
           
           <Link 
             href="/auth/forgot-password" 
-            className="text-sm text-orange-400 hover:text-orange-300 underline transition-colors duration-200"
+            className="text-sm text-blue-600 hover:text-blue-500 underline transition-colors duration-200"
           >
             Forgot password?
           </Link>
@@ -147,11 +147,11 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-md shadow-sm transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               Signing In...
             </div>
           ) : (
@@ -161,22 +161,22 @@ export default function LoginPage() {
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
-          <div className="p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-300 text-center">
+          <div className="p-4 bg-green-50 border border-green-200 rounded-md text-green-800 text-center">
             {submitMessage}
           </div>
         )}
         
         {submitStatus === 'error' && (
-          <div className="p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-300 text-center">
+          <div className="p-4 bg-red-50 border border-red-200 rounded-md text-red-800 text-center">
             {submitMessage}
           </div>
         )}
 
         {/* Sign Up Link */}
         <div className="text-center">
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             Don't have an account?{' '}
-            <Link href="/auth/signup" className="text-orange-400 hover:text-orange-300 font-semibold underline">
+            <Link href="/auth/signup" className="text-blue-600 hover:text-blue-500 font-medium underline">
               Sign up here
             </Link>
           </p>

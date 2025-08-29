@@ -115,17 +115,17 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/10">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-8">
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-white mb-2">Create Your Account</h2>
-        <p className="text-gray-300">Join Prop Shop AI and level the playing field in government contracting</p>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-2">Create Your Account</h2>
+        <p className="text-gray-600">Join Prop Shop AI and level the playing field in government contracting</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Name Fields */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="firstName" className="block text-sm font-medium text-gray-200 mb-2">
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
               First Name *
             </label>
             <input
@@ -134,16 +134,16 @@ export default function SignupPage() {
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-                errors.firstName ? 'border-red-500/50' : 'border-white/20'
+              className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+                errors.firstName ? 'border-red-300' : 'border-gray-300'
               }`}
               placeholder="John"
             />
-            {errors.firstName && <p className="mt-1 text-sm text-red-400">{errors.firstName}</p>}
+            {errors.firstName && <p className="mt-1 text-sm text-red-600">{errors.firstName}</p>}
           </div>
           
           <div>
-            <label htmlFor="lastName" className="block text-sm font-medium text-gray-200 mb-2">
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
               Last Name *
             </label>
             <input
@@ -152,18 +152,18 @@ export default function SignupPage() {
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-                errors.lastName ? 'border-red-500/50' : 'border-white/20'
+              className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+                errors.lastName ? 'border-red-300' : 'border-gray-300'
               }`}
               placeholder="Doe"
             />
-            {errors.lastName && <p className="mt-1 text-sm text-red-400">{errors.lastName}</p>}
+            {errors.lastName && <p className="mt-1 text-sm text-red-600">{errors.lastName}</p>}
           </div>
         </div>
 
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
             Email Address *
           </label>
           <input
@@ -172,18 +172,18 @@ export default function SignupPage() {
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-              errors.email ? 'border-red-500/50' : 'border-white/20'
+            className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+              errors.email ? 'border-red-300' : 'border-gray-300'
             }`}
             placeholder="john@company.com"
           />
-          {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email}</p>}
+          {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
         </div>
 
         {/* Password Fields */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
               Password *
             </label>
             <input
@@ -192,16 +192,16 @@ export default function SignupPage() {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-                errors.password ? 'border-red-500/50' : 'border-white/20'
+              className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+                errors.password ? 'border-red-300' : 'border-gray-300'
               }`}
               placeholder="••••••••"
             />
-            {errors.password && <p className="mt-1 text-sm text-red-400">{errors.password}</p>}
+            {errors.password && <p className="mt-1 text-sm text-red-600">{errors.password}</p>}
           </div>
           
           <div>
-            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-200 mb-2">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
               Confirm Password *
             </label>
             <input
@@ -210,19 +210,19 @@ export default function SignupPage() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-                errors.confirmPassword ? 'border-red-500/50' : 'border-white/20'
+              className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+                errors.confirmPassword ? 'border-red-300' : 'border-gray-300'
               }`}
               placeholder="••••••••"
             />
-            {errors.confirmPassword && <p className="mt-1 text-sm text-red-400">{errors.confirmPassword}</p>}
+            {errors.confirmPassword && <p className="mt-1 text-sm text-red-600">{errors.confirmPassword}</p>}
           </div>
         </div>
 
         {/* Company Fields */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label htmlFor="companyName" className="block text-sm font-medium text-gray-200 mb-2">
+            <label htmlFor="companyName" className="block text-sm font-medium text-gray-700 mb-2">
               Company Name *
             </label>
             <input
@@ -231,16 +231,16 @@ export default function SignupPage() {
               name="companyName"
               value={formData.companyName}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-                errors.companyName ? 'border-red-500/50' : 'border-white/20'
+              className={`w-full px-3 py-2 border rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+                errors.companyName ? 'border-red-300' : 'border-gray-300'
               }`}
               placeholder="Your Company Inc."
             />
-            {errors.companyName && <p className="mt-1 text-sm text-red-400">{errors.companyName}</p>}
+            {errors.companyName && <p className="mt-1 text-sm text-red-600">{errors.companyName}</p>}
           </div>
           
           <div>
-            <label htmlFor="companySize" className="block text-sm font-medium text-gray-200 mb-2">
+            <label htmlFor="companySize" className="block text-sm font-medium text-gray-700 mb-2">
               Company Size *
             </label>
             <select
@@ -248,8 +248,8 @@ export default function SignupPage() {
               name="companySize"
               value={formData.companySize}
               onChange={handleInputChange}
-              className={`w-full px-4 py-3 bg-white/10 border rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200 ${
-                errors.companySize ? 'border-red-500/50' : 'border-white/20'
+              className={`w-full px-3 py-2 border rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 ${
+                errors.companySize ? 'border-red-300' : 'border-gray-300'
               }`}
             >
               <option value="">Select size</option>
@@ -259,13 +259,13 @@ export default function SignupPage() {
               <option value="201-500">201-500 employees</option>
               <option value="500+">500+ employees</option>
             </select>
-            {errors.companySize && <p className="mt-1 text-sm text-red-400">{errors.companySize}</p>}
+            {errors.companySize && <p className="mt-1 text-sm text-red-600">{errors.companySize}</p>}
           </div>
         </div>
 
         {/* Phone */}
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-200 mb-2">
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
             Phone Number
           </label>
           <input
@@ -274,7 +274,7 @@ export default function SignupPage() {
             name="phone"
             value={formData.phone}
             onChange={handleInputChange}
-            className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500/50 focus:border-orange-500/50 transition-all duration-200"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
             placeholder="(555) 123-4567"
           />
         </div>
@@ -287,30 +287,30 @@ export default function SignupPage() {
             name="acceptTerms"
             checked={formData.acceptTerms}
             onChange={handleInputChange}
-            className="mt-1 w-4 h-4 text-orange-500 bg-white/10 border-white/20 rounded focus:ring-orange-500/50 focus:ring-2"
+            className="mt-1 w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
           />
-          <label htmlFor="acceptTerms" className="text-sm text-gray-300">
+          <label htmlFor="acceptTerms" className="text-sm text-gray-700">
             I agree to the{' '}
-            <Link href="/terms" className="text-orange-400 hover:text-orange-300 underline">
+            <Link href="/terms" className="text-blue-600 hover:text-blue-500 underline">
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link href="/privacy" className="text-orange-400 hover:text-orange-300 underline">
+            <Link href="/privacy" className="text-blue-600 hover:text-blue-500 underline">
               Privacy Policy
             </Link> *
           </label>
         </div>
-        {errors.acceptTerms && <p className="text-sm text-red-400">{errors.acceptTerms}</p>}
+        {errors.acceptTerms && <p className="text-sm text-red-600">{errors.acceptTerms}</p>}
 
         {/* Submit Button */}
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-semibold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-md shadow-sm transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? (
             <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
               Creating Account...
             </div>
           ) : (
@@ -320,22 +320,22 @@ export default function SignupPage() {
 
         {/* Status Messages */}
         {submitStatus === 'success' && (
-          <div className="p-4 bg-green-500/20 border border-green-500/50 rounded-xl text-green-300 text-center">
+          <div className="p-4 bg-green-50 border border-green-200 rounded-md text-green-800 text-center">
             {submitMessage}
           </div>
         )}
         
         {submitStatus === 'error' && (
-          <div className="p-4 bg-red-500/20 border border-red-500/50 rounded-xl text-red-300 text-center">
+          <div className="p-4 bg-red-50 border border-red-200 rounded-md text-red-800 text-center">
             {submitMessage}
           </div>
         )}
 
         {/* Sign In Link */}
         <div className="text-center">
-          <p className="text-gray-300">
+          <p className="text-gray-600">
             Already have an account?{' '}
-            <Link href="/auth/login" className="text-orange-400 hover:text-orange-300 font-semibold underline">
+            <Link href="/auth/login" className="text-blue-600 hover:text-blue-500 font-medium underline">
               Sign in here
             </Link>
           </p>
