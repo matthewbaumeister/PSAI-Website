@@ -173,15 +173,17 @@ body::after {
   position: sticky;
   top: 0;
   z-index: 9999;
+  padding-bottom: 0.5rem;
 }
 
 .header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 4rem;
-  min-height: 4rem;
+  height: 5rem;
+  min-height: 5rem;
   gap: 2rem;
+  padding: 1rem 0;
 }
 
 .brand {
@@ -267,8 +269,8 @@ body::after {
   transition: color 0.2s ease;
   display: flex;
   align-items: center;
-  height: 2.5rem;
-  padding: 0 0.5rem;
+  height: 3rem;
+  padding: 0 0.75rem;
 }
 
 .nav-link:hover {
@@ -300,7 +302,7 @@ body::after {
   font-family: inherit;
   font-size: inherit;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -308,7 +310,7 @@ body::after {
   gap: 0.5rem;
   transition: all 0.2s ease;
   border-radius: 0.375rem;
-  height: 2.5rem;
+  height: 3rem;
   line-height: 1;
 }
 
@@ -370,7 +372,7 @@ body::after {
 
 .header-divider {
   width: 1px;
-  height: 2rem;
+  height: 2.5rem;
   background: rgba(255, 255, 255, 0.2);
   flex-shrink: 0;
 }
@@ -409,7 +411,7 @@ body::after {
   border: none;
   color: white;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 1.75rem;
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -432,7 +434,7 @@ body::after {
   border: 2px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
-  padding: 0.75rem 1.5rem;
+  padding: 0.875rem 1.75rem;
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
@@ -4182,7 +4184,7 @@ body::after {
   font-family: inherit;
   font-size: inherit;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -4199,8 +4201,8 @@ body::after {
 }
 
 .user-avatar {
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 50%;
   background: linear-gradient(135deg, #ff6b35, #f7931e);
   display: flex;
@@ -4208,7 +4210,7 @@ body::after {
   justify-content: center;
   font-weight: bold;
   color: white;
-  font-size: 0.875rem;
+  font-size: 1rem;
   flex-shrink: 0;
 }
 
@@ -4295,7 +4297,7 @@ body::after {
   font-family: inherit;
   font-size: inherit;
   font-weight: 500;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -4314,7 +4316,7 @@ body::after {
 }
 
 .admin-icon {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
 }
 
