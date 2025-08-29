@@ -9,8 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #111827;
+  background-color: #0B1220;
+  color: #ffffff;
   position: relative;
   overflow-x: hidden;
 }
@@ -4361,6 +4361,21 @@ a {
   .admin-icon {
     font-size: 1rem;
   }
+}
+
+/* ===== ACCOUNT PAGES - WHITE THEME OVERRIDE ===== */
+/* Override global dark theme for account pages only */
+.dashboard-page,
+.profile-page,
+.settings-page {
+  background-color: #f9fafb !important;
+  color: #111827 !important;
+}
+
+.dashboard-page *,
+.profile-page *,
+.settings-page * {
+  color: inherit;
 }
 
 /* ===== AUTH PAGE ISOLATION ===== */
