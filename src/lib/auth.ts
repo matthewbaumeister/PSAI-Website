@@ -7,9 +7,23 @@ const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-key-change-in-prod
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '30m'
 const JWT_REFRESH_EXPIRES_IN = process.env.JWT_REFRESH_EXPIRES_IN || '7d'
 
-// Ensure JWT_SECRET is always a string
-if (!JWT_SECRET || JWT_SECRET === 'fallback-secret-key-change-in-production') {
-  throw new Error('JWT_SECRET environment variable must be set in production')
+// Build-time safe environment variable check
+if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
+  // Only log warnings in production, don't throw errors
+  if (!process.env.JWT_SECRET || process.env.JWT_SECRET === 'fallback-secret-key-change-in-production') {
+    console.warn('⚠️  JWT_SECRET environment variable is not set. Authentication will not work.')
+  }
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    console.warn('⚠️  SUPABASE_SERVICE_ROLE_KEY environment variable is not set. Database operations will fail.')
+  }
+}
+
+// JWT_SECRET validation function (called at runtime)
+function validateJWTSecret(): string {
+  if (!JWT_SECRET || JWT_SECRET === 'fallback-secret-key-change-in-production') {
+    throw new Error('JWT_SECRET environment variable must be set in production')
+  }
+  return JWT_SECRET
 }
 
 // Session Configuration
@@ -66,19 +80,19 @@ export function generateAccessToken(payload: Omit<JWTPayload, 'iat' | 'exp'>): s
   const now = Math.floor(Date.now() / 1000)
   const exp = now + (parseInt(JWT_EXPIRES_IN) * 60) // Convert minutes to seconds
   const tokenPayload = { ...payload, iat: now, exp }
-  return jwt.sign(tokenPayload, JWT_SECRET as string)
+  return jwt.sign(tokenPayload, validateJWTSecret())
 }
 
 export function generateRefreshToken(payload: Omit<JWTPayload, 'iat' | 'exp'>): string {
   const now = Math.floor(Date.now() / 1000)
   const exp = now + (parseInt(JWT_REFRESH_EXPIRES_IN) * 24 * 60 * 60) // Convert days to seconds
   const tokenPayload = { ...payload, iat: now, exp }
-  return jwt.sign(tokenPayload, JWT_SECRET as string)
+  return jwt.sign(tokenPayload, validateJWTSecret())
 }
 
 export function verifyToken(token: string): JWTPayload | null {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET as string) as JWTPayload
+    const decoded = jwt.verify(token, validateJWTSecret()) as JWTPayload
     return decoded
   } catch (error) {
     return null
