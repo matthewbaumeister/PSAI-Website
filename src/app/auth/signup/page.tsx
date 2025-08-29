@@ -90,7 +90,7 @@ export default function SignupPage() {
       
       if (response.ok) {
         setSubmitStatus('success')
-        setSubmitMessage('Account created successfully! Please check your email to verify your account.')
+        setSubmitMessage('Account created successfully! Please check your email to verify your account. Redirecting to login page in 3 seconds...')
         setFormData({
           firstName: '',
           lastName: '',
@@ -102,6 +102,11 @@ export default function SignupPage() {
           phone: '',
           acceptTerms: false
         })
+        
+        // Redirect to login page after 3 seconds
+        setTimeout(() => {
+          window.location.href = '/auth/login'
+        }, 3000)
       } else {
         setSubmitStatus('error')
         setSubmitMessage(result.error || 'Failed to create account. Please try again.')
