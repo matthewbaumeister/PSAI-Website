@@ -197,6 +197,8 @@ export function Header() {
           <Link href="/about" className="nav-link">About</Link>
         </nav>
 
+        <div className="header-divider"></div>
+
         <div className="header-actions">
           <div className="action-buttons">
             <Link href="/contact" className="btn btn-secondary">
@@ -233,7 +235,7 @@ export function Header() {
               <Link href="/auth/login" className="btn btn-secondary">
                 Sign In
               </Link>
-              <Link href="/auth/signup" className="btn btn-primary">
+              <Link href="/auth/signup" className="btn-primary">
                 Sign Up
               </Link>
             </div>
