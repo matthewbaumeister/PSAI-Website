@@ -61,7 +61,7 @@ export async function PUT(request: NextRequest) {
         )
       }
 
-      if (adminCount <= 1) {
+      if (!adminCount || adminCount <= 1) {
         return NextResponse.json(
           { error: 'Cannot remove last admin', message: 'At least one admin must remain in the system' },
           { status: 400 }

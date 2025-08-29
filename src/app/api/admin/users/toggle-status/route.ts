@@ -62,7 +62,7 @@ export async function PUT(request: NextRequest) {
         )
       }
 
-      if (adminCount <= 1) {
+      if (!adminCount || adminCount <= 1) {
         return NextResponse.json(
           { error: 'Cannot deactivate last admin', message: 'At least one admin must remain active in the system' },
           { status: 400 }
