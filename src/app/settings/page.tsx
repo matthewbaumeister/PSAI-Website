@@ -194,7 +194,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 settings-page">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/50 backdrop-blur-sm border-b border-slate-700/50">
         <div className="container mx-auto px-6 py-8">
@@ -249,11 +249,11 @@ export default function SettingsPage() {
         )}
 
         {/* Settings Navigation */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-xl p-1.5 mb-6 settings-tabs">
+        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-xl p-1.5 mb-8">
           <div className="flex space-x-1">
             <button
               onClick={() => setActiveTab('password')}
-              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 tab-button ${
+              className={`flex-1 px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'password'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
@@ -268,7 +268,7 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => setActiveTab('email')}
-              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 tab-button ${
+              className={`flex-1 px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'email'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
@@ -283,7 +283,7 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => setActiveTab('account')}
-              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 tab-button ${
+              className={`flex-1 px-4 py-3 rounded-lg font-medium transition-all duration-300 ${
                 activeTab === 'account'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
@@ -301,169 +301,165 @@ export default function SettingsPage() {
 
         {/* Password Settings */}
         {activeTab === 'password' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-8 h-8 bg-purple-500/30 rounded-lg flex items-center justify-center">
-                <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-300">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-white mb-2">Security & Password</h2>
+                <p className="text-slate-400 text-sm">Keep your account secure with a strong password</p>
               </div>
-              <h2 className="text-xl font-bold text-white">Change Password</h2>
+
+              <form onSubmit={handlePasswordChange} className="space-y-6">
+                <div>
+                  <label htmlFor="currentPassword" className="block text-slate-300 text-sm font-medium mb-2">
+                    Current Password
+                  </label>
+                  <input
+                    type="password"
+                    id="currentPassword"
+                    name="currentPassword"
+                    value={passwordData.currentPassword}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                    placeholder="Enter your current password"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="newPassword" className="block text-slate-300 text-sm font-medium mb-2">
+                    New Password
+                  </label>
+                  <input
+                    type="password"
+                    id="newPassword"
+                    name="newPassword"
+                    value={passwordData.newPassword}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                    placeholder="Enter your new password"
+                  />
+                  <p className="text-slate-400 text-xs mt-2">Password must be at least 8 characters long</p>
+                </div>
+
+                <div>
+                  <label htmlFor="confirmPassword" className="block text-slate-300 text-sm font-medium mb-2">
+                    Confirm New Password
+                  </label>
+                  <input
+                    type="password"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    value={passwordData.confirmPassword}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300"
+                    placeholder="Confirm your new password"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isChangingPassword}
+                  className="w-full px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-purple-500/25"
+                >
+                  {isChangingPassword ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                      <span>Changing Password...</span>
+                    </div>
+                  ) : (
+                    <span>Update Password</span>
+                  )}
+                </button>
+              </form>
             </div>
-
-            <form onSubmit={handlePasswordChange} className="space-y-4">
-              <div>
-                <label htmlFor="currentPassword" className="block text-slate-300 text-sm font-medium mb-2">
-                  Current Password
-                </label>
-                <input
-                  type="password"
-                  id="currentPassword"
-                  name="currentPassword"
-                  value={passwordData.currentPassword}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
-                  placeholder="Enter your current password"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="newPassword" className="block text-slate-300 text-sm font-medium mb-2">
-                  New Password
-                </label>
-                <input
-                  type="password"
-                  id="newPassword"
-                  name="newPassword"
-                  value={passwordData.newPassword}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
-                  placeholder="Enter your new password"
-                />
-                <p className="text-slate-400 text-xs mt-1">Password must be at least 8 characters long</p>
-              </div>
-
-              <div>
-                <label htmlFor="confirmPassword" className="block text-slate-300 text-sm font-medium mb-2">
-                  Confirm New Password
-                </label>
-                <input
-                  type="password"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  value={passwordData.confirmPassword}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
-                  placeholder="Confirm your new password"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isChangingPassword}
-                className="w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-purple-500/25 text-sm"
-              >
-                {isChangingPassword ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                    <span>Changing Password...</span>
-                  </div>
-                ) : (
-                  <span>Change Password</span>
-                )}
-              </button>
-            </form>
           </div>
         )}
 
         {/* Email Preferences */}
         {activeTab === 'email' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-8 h-8 bg-emerald-500/30 rounded-lg flex items-center justify-center">
-                <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h2 className="text-xl font-bold text-white">Email Preferences</h2>
-            </div>
-
-            <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                <div>
-                  <h3 className="text-white font-medium text-sm">Marketing Emails</h3>
-                  <p className="text-slate-400 text-xs">Receive emails about new features and promotions</p>
-                </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="marketingEmails"
-                    checked={emailPreferences.marketingEmails}
-                    onChange={handleInputChange}
-                    className="sr-only peer"
-                  />
-                  <div className="w-10 h-5 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
-                </label>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-white mb-2">Communication Preferences</h2>
+                <p className="text-slate-400 text-sm">Control how and when we communicate with you</p>
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                <div>
-                  <h3 className="text-white font-medium text-sm">Product Updates</h3>
-                  <p className="text-slate-400 text-xs">Get notified about new features and improvements</p>
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <div>
+                    <h3 className="text-white font-medium text-sm">Marketing Emails</h3>
+                    <p className="text-slate-400 text-xs">Receive emails about new features and promotions</p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="marketingEmails"
+                      checked={emailPreferences.marketingEmails}
+                      onChange={handleInputChange}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  </label>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="productUpdates"
-                    checked={emailPreferences.productUpdates}
-                    onChange={handleInputChange}
-                    className="sr-only peer"
-                  />
-                  <div className="w-10 h-5 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
-                </label>
-              </div>
 
-              <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                <div>
-                  <h3 className="text-white font-medium text-sm">Security Alerts</h3>
-                  <p className="text-slate-400 text-xs">Important security notifications and account alerts</p>
+                <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <div>
+                    <h3 className="text-white font-medium text-sm">Product Updates</h3>
+                    <p className="text-slate-400 text-xs">Get notified about new features and improvements</p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="productUpdates"
+                      checked={emailPreferences.productUpdates}
+                      onChange={handleInputChange}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  </label>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="securityAlerts"
-                    checked={emailPreferences.securityAlerts}
-                    onChange={handleInputChange}
-                    className="sr-only peer"
-                  />
-                  <div className="w-10 h-5 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
-                </label>
-              </div>
 
-              <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                <div>
-                  <h3 className="text-white font-medium text-sm">Weekly Digest</h3>
-                  <p className="text-slate-400 text-xs">Weekly summary of your activity and insights</p>
+                <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <div>
+                    <h3 className="text-white font-medium text-sm">Security Alerts</h3>
+                    <p className="text-slate-400 text-xs">Important security notifications and account alerts</p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="securityAlerts"
+                      checked={emailPreferences.securityAlerts}
+                      onChange={handleInputChange}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  </label>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    name="weeklyDigest"
-                    checked={emailPreferences.weeklyDigest}
-                    onChange={handleInputChange}
-                    className="sr-only peer"
-                  />
-                  <div className="w-10 h-5 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-purple-600"></div>
-                </label>
+
+                <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+                  <div>
+                    <h3 className="text-white font-medium text-sm">Weekly Digest</h3>
+                    <p className="text-slate-400 text-xs">Weekly summary of your activity and insights</p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="weeklyDigest"
+                      checked={emailPreferences.weeklyDigest}
+                      onChange={handleInputChange}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-purple-800 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-purple-600"></div>
+                  </label>
+                </div>
               </div>
 
               <button
                 onClick={handleEmailPreferencesUpdate}
                 disabled={isUpdatingPreferences}
-                className="w-full px-4 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-emerald-500/25 text-sm"
+                className="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-emerald-500/25"
               >
                 {isUpdatingPreferences ? (
                   <div className="flex items-center justify-center space-x-2">
@@ -471,7 +467,7 @@ export default function SettingsPage() {
                     <span>Updating Preferences...</span>
                   </div>
                 ) : (
-                  <span>Save Email Preferences</span>
+                  <span>Save Preferences</span>
                 )}
               </button>
             </div>
@@ -480,49 +476,45 @@ export default function SettingsPage() {
 
         {/* Account Settings */}
         {activeTab === 'account' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-red-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-red-500/30 transition-all duration-300">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-8 h-8 bg-red-500/30 rounded-lg flex items-center justify-center">
-                <svg className="w-4 h-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-gradient-to-br from-slate-800/50 to-red-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-red-500/30 transition-all duration-300">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-white mb-2">Account Management</h2>
+                <p className="text-slate-400 text-sm">Manage your account settings and preferences</p>
               </div>
-              <h2 className="text-xl font-bold text-white">Account Management</h2>
-            </div>
 
-            <div className="space-y-4">
-              {/* Account Information */}
-              <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600/30">
-                <h3 className="text-white font-medium mb-3 text-sm">Account Information</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-slate-300 text-xs font-medium mb-1">Email Address</label>
-                    <div className="px-3 py-2 bg-slate-600/30 border border-slate-500/30 rounded-md text-white text-sm">
-                      {user.email}
+              <div className="space-y-6">
+                {/* Account Information */}
+                <div className="bg-slate-700/30 rounded-lg p-6 border border-slate-600/30">
+                  <h3 className="text-white font-medium mb-4 text-sm">Account Information</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-slate-300 text-xs font-medium mb-2">Email Address</label>
+                      <div className="px-4 py-3 bg-slate-600/30 border border-slate-500/30 rounded-lg text-white text-sm">
+                        {user.email}
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <label className="block text-slate-300 text-xs font-medium mb-1">Account Type</label>
-                    <div className="px-3 py-2 bg-slate-600/30 border border-slate-500/30 rounded-md">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        user.isAdmin ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'bg-slate-600/20 text-slate-300 border border-slate-600/30'
-                      }`}>
-                        {user.isAdmin ? 'Admin' : 'User'}
-                      </span>
+                    <div>
+                      <label className="block text-slate-300 text-xs font-medium mb-2">Account Type</label>
+                      <div className="px-4 py-3 bg-slate-600/30 border border-slate-500/30 rounded-lg">
+                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                          user.isAdmin ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' : 'bg-slate-600/20 text-slate-300 border border-slate-600/30'
+                        }`}>
+                          {user.isAdmin ? 'Admin' : 'User'}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              {/* Danger Zone */}
-              <div className="bg-red-500/10 rounded-lg p-4 border border-red-500/30">
-                <h3 className="text-red-400 font-medium mb-3 text-sm">Danger Zone</h3>
-                <p className="text-slate-300 text-xs mb-4">
-                  These actions are irreversible. Please proceed with caution.
-                </p>
+                {/* Danger Zone */}
+                <div className="bg-red-500/10 rounded-lg p-6 border border-red-500/30">
+                  <h3 className="text-red-400 font-medium mb-3 text-sm">Danger Zone</h3>
+                  <p className="text-slate-300 text-sm mb-4">
+                    These actions are irreversible. Please proceed with caution.
+                  </p>
 
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between p-3 bg-red-500/20 rounded-md border border-red-500/30">
+                  <div className="flex items-center justify-between p-4 bg-red-500/20 rounded-lg border border-red-500/30">
                     <div>
                       <h4 className="text-red-300 font-medium text-sm">Delete Account</h4>
                       <p className="text-red-200 text-xs">Permanently delete your account and all data</p>
@@ -530,7 +522,7 @@ export default function SettingsPage() {
                     <button
                       onClick={handleAccountDeletion}
                       disabled={isDeletingAccount}
-                      className="px-3 py-1 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 text-sm"
+                      className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200 text-sm"
                     >
                       {isDeletingAccount ? 'Deleting...' : 'Delete Account'}
                     </button>

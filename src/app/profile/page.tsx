@@ -4,12 +4,14 @@ import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
-interface ProfileFormData {
+interface ProfileData {
   firstName: string
   lastName: string
   companyName: string
-  companySize: string
+  jobTitle: string
   phone: string
+  website: string
+  bio: string
 }
 
 export default function ProfilePage() {
@@ -20,12 +22,14 @@ export default function ProfilePage() {
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState<'success' | 'error'>('success')
   
-  const [formData, setFormData] = useState<ProfileFormData>({
-    firstName: '',
-    lastName: '',
-    companyName: '',
-    companySize: '',
-    phone: ''
+  const [profileData, setProfileData] = useState<ProfileData>({
+    firstName: user?.firstName || '',
+    lastName: user?.lastName || '',
+    companyName: user?.companyName || '',
+    jobTitle: user?.jobTitle || '',
+    phone: user?.phone || '',
+    website: user?.website || '',
+    bio: user?.bio || ''
   })
 
   // Check if user is authenticated
@@ -35,15 +39,17 @@ export default function ProfilePage() {
     }
   }, [user, isLoading, router])
 
-  // Load user data when component mounts
+  // Update profile data when user changes
   useEffect(() => {
     if (user) {
-      setFormData({
+      setProfileData({
         firstName: user.firstName || '',
         lastName: user.lastName || '',
         companyName: user.companyName || '',
-        companySize: user.companySize || '',
-        phone: user.phone || ''
+        jobTitle: user.jobTitle || '',
+        phone: user.phone || '',
+        website: user.website || '',
+        bio: user.bio || ''
       })
     }
   }, [user])
@@ -63,9 +69,9 @@ export default function ProfilePage() {
     return null // Will redirect to login
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setProfileData(prev => ({
       ...prev,
       [name]: value
     }))
@@ -81,15 +87,13 @@ export default function ProfilePage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(profileData),
       })
 
       if (response.ok) {
         setMessage('Profile updated successfully!')
         setMessageType('success')
         setIsEditing(false)
-        // Update the user context with new data
-        // This would typically be handled by the auth context
       } else {
         const data = await response.json()
         setMessage(data.message || 'Failed to update profile')
@@ -104,13 +108,14 @@ export default function ProfilePage() {
   }
 
   const handleCancel = () => {
-    // Reset form data to original user data
-    setFormData({
+    setProfileData({
       firstName: user.firstName || '',
       lastName: user.lastName || '',
       companyName: user.companyName || '',
-      companySize: user.companySize || '',
-      phone: user.phone || ''
+      jobTitle: user.jobTitle || '',
+      phone: user.phone || '',
+      website: user.website || '',
+      bio: user.bio || ''
     })
     setIsEditing(false)
     setMessage('')
@@ -171,222 +176,193 @@ export default function ProfilePage() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Profile Information */}
-          <div className="lg:col-span-2">
-            <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300">
-              <div className="flex items-center justify-between mb-6">
-                <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-purple-500/30 rounded-lg flex items-center justify-center">
-                    <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <h2 className="text-xl font-bold text-white">Personal Information</h2>
-                </div>
-                {!isEditing && (
+        <div className="max-w-4xl mx-auto">
+          {/* Profile Card */}
+          <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-purple-500/30 transition-all duration-300">
+            <div className="flex items-center justify-between mb-8">
+              <div className="text-center md:text-left">
+                <h2 className="text-2xl font-bold text-white mb-2">Personal Information</h2>
+                <p className="text-slate-400 text-sm">Update your profile details and company information</p>
+              </div>
+              <div className="flex space-x-3">
+                {!isEditing ? (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm"
+                    className="px-6 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-purple-500/25"
                   >
                     Edit Profile
                   </button>
-                )}
-              </div>
-
-              {isEditing ? (
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="firstName" className="block text-slate-300 text-sm font-medium mb-2">
-                        First Name
-                      </label>
-                      <input
-                        type="text"
-                        id="firstName"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
-                        placeholder="Enter your first name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="lastName" className="block text-slate-300 text-sm font-medium mb-2">
-                        Last Name
-                      </label>
-                      <input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
-                        placeholder="Enter your last name"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="companyName" className="block text-slate-300 text-sm font-medium mb-2">
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      id="companyName"
-                      name="companyName"
-                      value={formData.companyName}
-                      onChange={handleInputChange}
-                      className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
-                      placeholder="Enter your company name"
-                    />
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="companySize" className="block text-slate-300 text-sm font-medium mb-2">
-                        Company Size
-                      </label>
-                      <select
-                        id="companySize"
-                        name="companySize"
-                        value={formData.companySize}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
-                      >
-                        <option value="">Select company size</option>
-                        <option value="1-10">1-10 employees</option>
-                        <option value="11-50">11-50 employees</option>
-                        <option value="51-200">51-200 employees</option>
-                        <option value="201-500">201-500 employees</option>
-                        <option value="501-1000">501-1000 employees</option>
-                        <option value="1000+">1000+ employees</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="phone" className="block text-slate-300 text-sm font-medium mb-2">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 text-sm"
-                        placeholder="Enter your phone number"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex space-x-3 pt-4">
+                ) : (
+                  <>
                     <button
-                      type="button"
-                      onClick={handleSave}
-                      disabled={isSaving}
-                      className="px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-lg hover:from-purple-700 hover:to-purple-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 text-sm"
-                    >
-                      {isSaving ? 'Saving...' : 'Save Changes'}
-                    </button>
-                    <button
-                      type="button"
                       onClick={handleCancel}
-                      className="px-4 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors duration-200 text-sm"
+                      className="px-6 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 font-medium transition-all duration-300"
                     >
                       Cancel
                     </button>
-                  </div>
-                </form>
-              ) : (
-                <div className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-slate-300 text-sm font-medium mb-2">First Name</label>
-                      <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
-                        {formData.firstName || 'Not provided'}
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-slate-300 text-sm font-medium mb-2">Last Name</label>
-                      <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
-                        {formData.lastName || 'Not provided'}
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-slate-300 text-sm font-medium mb-2">Company Name</label>
-                    <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
-                      {formData.companyName || 'Not provided'}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-slate-300 text-sm font-medium mb-2">Company Size</label>
-                      <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
-                        {formData.companySize || 'Not specified'}
-                      </div>
-                    </div>
-                    <div>
-                      <label className="block text-slate-300 text-sm font-medium mb-2">Phone Number</label>
-                      <div className="px-3 py-2 bg-slate-700/30 border border-slate-600/30 rounded-lg text-white text-sm">
-                        {formData.phone || 'Not provided'}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+                    <button
+                      onClick={handleSave}
+                      disabled={isSaving}
+                      className="px-6 py-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-lg hover:from-emerald-700 hover:to-emerald-800 disabled:opacity-50 disabled:cursor-not-allowed font-medium transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-emerald-500/25"
+                    >
+                      {isSaving ? 'Saving...' : 'Save Changes'}
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Account Information */}
-          <div className="lg:col-span-1">
-            <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="w-8 h-8 bg-emerald-500/30 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Personal Information */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-white mb-4">Personal Details</h3>
+                
+                <div>
+                  <label className="block text-slate-300 text-sm font-medium mb-2">First Name</label>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={profileData.firstName}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    placeholder="Enter your first name"
+                  />
                 </div>
-                <h2 className="text-xl font-bold text-white">Account Status</h2>
+
+                <div>
+                  <label className="block text-slate-300 text-sm font-medium mb-2">Last Name</label>
+                  <input
+                    type="text"
+                    name="lastName"
+                    value={profileData.lastName}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    placeholder="Enter your last name"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-slate-300 text-sm font-medium mb-2">Job Title</label>
+                  <input
+                    type="text"
+                    name="jobTitle"
+                    value={profileData.jobTitle}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    placeholder="Enter your job title"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-slate-300 text-sm font-medium mb-2">Phone Number</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={profileData.phone}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
               </div>
 
+              {/* Company Information */}
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                  <span className="text-slate-300 text-sm">Account Status</span>
-                  <span className="px-2 py-1 bg-emerald-500/20 text-emerald-300 text-xs rounded-full border border-emerald-500/30">
-                    Active
-                  </span>
+                <h3 className="text-lg font-semibold text-white mb-4">Company Information</h3>
+                
+                <div>
+                  <label className="block text-slate-300 text-sm font-medium mb-2">Company Name</label>
+                  <input
+                    type="text"
+                    name="companyName"
+                    value={profileData.companyName}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    placeholder="Enter your company name"
+                  />
                 </div>
 
-                <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                  <span className="text-slate-300 text-sm">Email Status</span>
-                  <span className={`px-2 py-1 text-xs rounded-full border ${
-                    user.emailVerified 
-                      ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30' 
-                      : 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30'
-                  }`}>
-                    {user.emailVerified ? 'Verified' : 'Pending'}
-                  </span>
+                <div>
+                  <label className="block text-slate-300 text-sm font-medium mb-2">Website</label>
+                  <input
+                    type="url"
+                    name="website"
+                    value={profileData.website}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    placeholder="https://yourcompany.com"
+                  />
                 </div>
 
-                <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                  <span className="text-slate-300 text-sm">Account Type</span>
-                  <span className={`px-2 py-1 text-xs rounded-full border ${
-                    user.isAdmin 
-                      ? 'bg-purple-500/20 text-purple-300 border-purple-500/30' 
-                      : 'bg-slate-600/20 text-slate-300 border-slate-600/30'
-                  }`}>
-                    {user.isAdmin ? 'Admin' : 'User'}
-                  </span>
+                <div>
+                  <label className="block text-slate-300 text-sm font-medium mb-2">Bio</label>
+                  <textarea
+                    name="bio"
+                    value={profileData.bio}
+                    onChange={handleInputChange}
+                    disabled={!isEditing}
+                    rows={4}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed resize-none"
+                    placeholder="Tell us about yourself and your role..."
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Account Status */}
+            <div className="mt-8 pt-6 border-t border-slate-600/30">
+              <h3 className="text-lg font-semibold text-white mb-4">Account Status</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600/30">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-emerald-500/30 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-slate-400 text-xs">Account Status</p>
+                      <p className="text-white font-semibold text-sm">Active</p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30">
-                  <span className="text-slate-300 text-sm">Member Since</span>
-                  <span className="text-white text-xs">
-                    {user.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'Unknown'}
-                  </span>
+                <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600/30">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-blue-500/30 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-slate-400 text-xs">Email Status</p>
+                      <p className={`font-semibold text-sm ${
+                        user.emailVerified ? 'text-emerald-300' : 'text-yellow-300'
+                      }`}>
+                        {user.emailVerified ? 'Verified' : 'Pending'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-slate-700/30 rounded-lg p-4 border border-slate-600/30">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-8 h-8 bg-purple-500/30 rounded-lg flex items-center justify-center">
+                      <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="text-slate-400 text-xs">Account Type</p>
+                      <p className="text-white font-semibold text-sm">{user.isAdmin ? 'Admin' : 'User'}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
