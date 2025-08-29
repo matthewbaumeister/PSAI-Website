@@ -8,7 +8,7 @@ export function Hero() {
           <div className="badge">The Procurement Intelligence Platform</div>
           <h1>
             Level the Playing Field with{' '}
-            <span className="gradient-text">AI-Powered</span> Government Contracting
+            <span className="highlight-text">AI-Powered</span> Government Contracting
           </h1>
           <p className="hero-description">
             Access the same intelligence, tools, and opportunities that big companies use to win government contracts. 
