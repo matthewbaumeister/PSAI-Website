@@ -23,10 +23,10 @@ export default function RootLayout({
       <body className="antialiased">
         <AuthProvider>
           {/* Clean, Subtle Background Animations */}
-          <div className="animated-bg"></div>
-          <div className="bg-grid-overlay"></div>
-          <div className="bg-dots"></div>
-          <div className="floating-elements"></div>
+          {/* <div className="animated-bg"></div> */}
+          {/* <div className="bg-grid-overlay"></div> */}
+          {/* <div className="bg-dots"></div> */}
+          {/* <div className="floating-elements"></div> */}
           
           <Header />
           {children}
