@@ -4,10 +4,6 @@ import { getUserById } from '@/lib/auth'
 
 export async function GET(request: NextRequest) {
   try {
-    // Debug: Log all cookies received
-    console.log('🔍 /api/auth/me - All cookies received:', request.cookies.getAll())
-    console.log('🔍 /api/auth/me - access_token cookie:', request.cookies.get('access_token')?.value ? 'EXISTS' : 'MISSING')
-    
     // Authenticate the request
     const authResult = await requireAuth(request)
     if (authResult instanceof NextResponse) {

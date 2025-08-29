@@ -62,29 +62,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return
       }
 
-      console.log('✅ Auth cookies found, checking auth status...')
-      console.log('🔍 Cookies being sent with request:', document.cookie)
-      
       const response = await fetch('/api/auth/me', {
         credentials: 'include' // Include cookies
       })
       
       if (response.ok) {
         const userData = await response.json()
-        console.log('Auth check successful:', userData.user)
         setUser(userData.user)
       } else {
         console.log('Auth check failed:', response.status, response.statusText)
-        console.log('🔍 Response headers:', Object.fromEntries(response.headers.entries()))
-        
-        // Try to get the error response body
-        try {
-          const errorData = await response.text()
-          console.log('🔍 Error response body:', errorData)
-        } catch (e) {
-          console.log('🔍 Could not read error response body')
-        }
-        
         setUser(null)
         // Clear any invalid cookies
         document.cookie = 'access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;'
@@ -110,8 +96,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       if (response.ok) {
         const data = await response.json()
-        console.log('Login successful:', data.user)
-        console.log('Cookies after login:', document.cookie)
         setUser(data.user)
         return true
       } else {
