@@ -9,12 +9,16 @@ export function Header() {
   const { user, logout } = useAuth()
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
+  const [isAdminDropdownOpen, setIsAdminDropdownOpen] = useState(false)
   const [solutionsDropdownPosition, setSolutionsDropdownPosition] = useState({ top: 0, left: 0 })
   const [userDropdownPosition, setUserDropdownPosition] = useState({ top: 0, left: 0 })
+  const [adminDropdownPosition, setAdminDropdownPosition] = useState({ top: 0, left: 0 })
   const solutionsDropdownRef = useRef<HTMLDivElement>(null)
   const userDropdownRef = useRef<HTMLDivElement>(null)
+  const adminDropdownRef = useRef<HTMLDivElement>(null)
   const solutionsButtonRef = useRef<HTMLButtonElement>(null)
   const userButtonRef = useRef<HTMLButtonElement>(null)
+  const adminButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -23,6 +27,9 @@ export function Header() {
       }
       if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
         setIsUserDropdownOpen(false)
+      }
+      if (adminDropdownRef.current && !adminDropdownRef.current.contains(event.target as Node)) {
+        setIsAdminDropdownOpen(false)
       }
     }
 
@@ -40,6 +47,7 @@ export function Header() {
     }
     setIsSolutionsDropdownOpen(!isSolutionsDropdownOpen)
     setIsUserDropdownOpen(false) // Close user dropdown when opening solutions
+    setIsAdminDropdownOpen(false) // Close admin dropdown when opening solutions
   }
 
   const toggleUserDropdown = () => {
@@ -52,11 +60,26 @@ export function Header() {
     }
     setIsUserDropdownOpen(!isUserDropdownOpen)
     setIsSolutionsDropdownOpen(false) // Close solutions dropdown when opening user
+    setIsAdminDropdownOpen(false) // Close admin dropdown when opening user
+  }
+
+  const toggleAdminDropdown = () => {
+    if (!isAdminDropdownOpen && adminButtonRef.current) {
+      const rect = adminButtonRef.current.getBoundingClientRect()
+      setAdminDropdownPosition({
+        top: rect.bottom + 8,
+        left: rect.left
+      })
+    }
+    setIsAdminDropdownOpen(!isAdminDropdownOpen)
+    setIsSolutionsDropdownOpen(false) // Close solutions dropdown when opening admin
+    setIsUserDropdownOpen(false) // Close user dropdown when opening admin
   }
 
   const closeDropdowns = () => {
     setIsSolutionsDropdownOpen(false)
     setIsUserDropdownOpen(false)
+    setIsAdminDropdownOpen(false)
   }
 
   const handleLogout = async () => {
@@ -148,15 +171,60 @@ export function Header() {
         <Link href="/settings" className="dropdown-link" onClick={closeDropdowns}>
           Settings
         </Link>
-        {user.isAdmin && (
-          <Link href="/admin" className="dropdown-link" onClick={closeDropdowns}>
-            Admin Panel
-          </Link>
-        )}
         <div className="dropdown-divider"></div>
         <button onClick={handleLogout} className="dropdown-link logout-button">
           Sign Out
         </button>
+      </div>
+    )
+
+    return createPortal(dropdownContent, document.body)
+  }
+
+  const renderAdminDropdown = () => {
+    if (!isAdminDropdownOpen || !user?.isAdmin) return null
+
+    const dropdownContent = (
+      <div 
+        className="dropdown-content-portal"
+        style={{
+          position: 'fixed',
+          top: `${adminDropdownPosition.top}px`,
+          left: `${adminDropdownPosition.left}px`,
+          zIndex: 999999,
+          minWidth: '200px',
+          background: 'rgba(11, 18, 32, 0.95)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+          borderRadius: '0.75rem',
+          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)',
+          padding: '0.5rem 0',
+          animation: 'dropdownSlideIn 0.2s ease-out'
+        }}
+        ref={adminDropdownRef}
+      >
+        <div className="dropdown-header">
+          <div className="user-info">
+            <div className="user-name">Admin Panel</div>
+            <div className="user-email">System Administration</div>
+          </div>
+        </div>
+        <div className="dropdown-divider"></div>
+        <Link href="/admin" className="dropdown-link" onClick={closeDropdowns}>
+          Dashboard
+        </Link>
+        <Link href="/admin/users" className="dropdown-link" onClick={closeDropdowns}>
+          User Management
+        </Link>
+        <Link href="/admin/invitations" className="dropdown-link" onClick={closeDropdowns}>
+          Admin Invitations
+        </Link>
+        <Link href="/admin/settings" className="dropdown-link" onClick={closeDropdowns}>
+          System Settings
+        </Link>
+        <div className="dropdown-divider"></div>
+        <Link href="/admin/logs" className="dropdown-link" onClick={closeDropdowns}>
+          System Logs
+        </Link>
       </div>
     )
 
@@ -218,6 +286,19 @@ export function Header() {
                   <span className="dropdown-arrow">▼</span>
                 </button>
               </div>
+              
+              {user.isAdmin && (
+                <>
+                  <div className="header-divider"></div>
+                  <div className="admin-dropdown-container">
+                    <button ref={adminButtonRef} className="admin-dropdown-trigger" onClick={toggleAdminDropdown} aria-expanded={isAdminDropdownOpen}>
+                      <div className="admin-icon">⚙️</div>
+                      <span className="admin-text">Admin</span>
+                      <span className="dropdown-arrow">▼</span>
+                    </button>
+                  </div>
+                </>
+              )}
             </>
           )}
         </div>
@@ -225,6 +306,7 @@ export function Header() {
       
       {renderSolutionsDropdown()}
       {renderUserDropdown()}
+      {renderAdminDropdown()}
     </header>
   )
 }

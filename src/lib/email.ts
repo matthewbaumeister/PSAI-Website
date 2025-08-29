@@ -28,6 +28,12 @@ export interface WelcomeEmailData {
   loginUrl: string
 }
 
+export interface AdminInvitationData {
+  email: string
+  invitedBy: string
+  invitationUrl: string
+}
+
 /**
  * Send email verification email
  */
@@ -301,6 +307,117 @@ export async function sendWelcomeEmail(data: WelcomeEmailData): Promise<boolean>
 
   } catch (error) {
     console.error('Failed to send welcome email:', error)
+    return false
+  }
+}
+
+/**
+ * Send admin invitation email
+ */
+export async function sendAdminInvitationEmail(data: AdminInvitationData): Promise<boolean> {
+  try {
+    if (!process.env.SENDGRID_API_KEY || !process.env.SENDGRID_FROM_EMAIL) {
+      console.error('SendGrid not configured')
+      return false
+    }
+
+    const msg = {
+      to: data.email,
+      from: process.env.SENDGRID_FROM_EMAIL,
+      subject: 'You\'ve Been Invited to Join Prop Shop AI as an Admin',
+      html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Admin Invitation</title>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
+            .content { background: #f9f9f9; padding: 30px; border-radius: 0 0 10px 10px; }
+            .button { display: inline-block; background: #667eea; color: white; padding: 15px 30px; text-decoration: none; border-radius: 5px; margin: 20px 0; }
+            .footer { text-align: center; margin-top: 30px; color: #666; font-size: 14px; }
+            .highlight { background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1>Prop Shop AI</h1>
+              <p>Admin Invitation</p>
+            </div>
+            <div class="content">
+              <h2>You've Been Invited!</h2>
+              <p>You have been invited by <strong>${data.invitedBy}</strong> to join Prop Shop AI as an administrator.</p>
+              
+              <div class="highlight">
+                <p><strong>As an admin, you'll have access to:</strong></p>
+                <ul>
+                  <li>User management and oversight</li>
+                  <li>System administration tools</li>
+                  <li>Analytics and reporting</li>
+                  <li>Platform configuration</li>
+                </ul>
+              </div>
+
+              <p>To accept this invitation and set up your admin account, click the button below:</p>
+
+              <div style="text-align: center;">
+                <a href="${data.invitationUrl}" class="button">Accept Admin Invitation</a>
+              </div>
+
+              <p>Or copy and paste this link into your browser:</p>
+              <p style="word-break: break-all; color: #667eea;">${data.invitationUrl}</p>
+
+              <p><strong>This invitation will expire in 72 hours.</strong></p>
+
+              <p>If you have any questions about this invitation, please contact the person who invited you.</p>
+            </div>
+            <div class="footer">
+              <p>&copy; 2025 Prop Shop AI. All rights reserved.</p>
+              <p>This email was sent to ${data.email}</p>
+              <p style="font-size: 12px; color: #999; margin-top: 10px;">
+                This is an automated email. Please do not reply to this address.
+              </p>
+            </div>
+          </div>
+        </body>
+        </html>
+      `,
+      text: `
+        Admin Invitation - Prop Shop AI
+
+        You've Been Invited!
+
+        You have been invited by ${data.invitedBy} to join Prop Shop AI as an administrator.
+
+        As an admin, you'll have access to:
+        - User management and oversight
+        - System administration tools
+        - Analytics and reporting
+        - Platform configuration
+
+        To accept this invitation and set up your admin account, visit this link:
+
+        ${data.invitationUrl}
+
+        This invitation will expire in 72 hours.
+
+        If you have any questions about this invitation, please contact the person who invited you.
+
+        Best regards,
+        The Prop Shop AI Team
+      `
+    }
+
+    await sgMail.send(msg)
+    console.log(`Admin invitation email sent to ${data.email}`)
+    return true
+
+  } catch (error) {
+    console.error('Failed to send admin invitation email:', error)
     return false
   }
 }
