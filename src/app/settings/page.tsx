@@ -194,7 +194,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 settings-page">
       {/* Header */}
       <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/50 backdrop-blur-sm border-b border-slate-700/50">
         <div className="container mx-auto px-6 py-8">
@@ -249,11 +249,11 @@ export default function SettingsPage() {
         )}
 
         {/* Settings Navigation */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-xl p-1.5 mb-6">
+        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-xl p-1.5 mb-6 settings-tabs">
           <div className="flex space-x-1">
             <button
               onClick={() => setActiveTab('password')}
-              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
+              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 tab-button ${
                 activeTab === 'password'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
@@ -268,7 +268,7 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => setActiveTab('email')}
-              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
+              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 tab-button ${
                 activeTab === 'email'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
@@ -283,7 +283,7 @@ export default function SettingsPage() {
             </button>
             <button
               onClick={() => setActiveTab('account')}
-              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 ${
+              className={`flex-1 px-3 py-2 rounded-lg font-medium transition-all duration-300 tab-button ${
                 activeTab === 'account'
                   ? 'bg-purple-600 text-white shadow-lg'
                   : 'text-slate-300 hover:text-white hover:bg-slate-700/30'
