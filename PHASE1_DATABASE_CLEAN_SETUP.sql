@@ -1,6 +1,7 @@
 -- =====================================================
--- PropShop AI - Phase 1 Database Setup
--- Authentication and User Management System
+-- PropShop AI - Phase 1 Database Clean Setup
+-- Drops all existing objects and creates fresh database
+-- WARNING: This will delete all existing data!
 -- =====================================================
 
 -- Enable necessary extensions
@@ -8,9 +9,27 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 -- =====================================================
--- 1. USERS TABLE
+-- CLEAN SLATE: DROP ALL EXISTING OBJECTS
 -- =====================================================
-CREATE TABLE IF NOT EXISTS users (
+
+-- Drop existing tables (in reverse dependency order)
+DROP TABLE IF EXISTS user_settings CASCADE;
+DROP TABLE IF EXISTS admin_invitations CASCADE;
+DROP TABLE IF EXISTS password_resets CASCADE;
+DROP TABLE IF EXISTS email_verifications CASCADE;
+DROP TABLE IF EXISTS user_sessions CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+
+-- Drop existing functions
+DROP FUNCTION IF EXISTS update_updated_at_column() CASCADE;
+DROP FUNCTION IF EXISTS cleanup_expired_sessions() CASCADE;
+
+-- =====================================================
+-- CREATE FRESH TABLES
+-- =====================================================
+
+-- 1. USERS TABLE
+CREATE TABLE users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   email VARCHAR(255) UNIQUE NOT NULL,
   email_verified_at TIMESTAMP WITH TIME ZONE,
@@ -30,10 +49,8 @@ CREATE TABLE IF NOT EXISTS users (
   session_timeout_minutes INTEGER DEFAULT 30
 );
 
--- =====================================================
 -- 2. USER SESSIONS TABLE
--- =====================================================
-CREATE TABLE IF NOT EXISTS user_sessions (
+CREATE TABLE user_sessions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
   session_token VARCHAR(255) UNIQUE NOT NULL,
@@ -44,10 +61,8 @@ CREATE TABLE IF NOT EXISTS user_sessions (
   user_agent TEXT
 );
 
--- =====================================================
 -- 3. EMAIL VERIFICATIONS TABLE
--- =====================================================
-CREATE TABLE IF NOT EXISTS email_verifications (
+CREATE TABLE email_verifications (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
   email VARCHAR(255) NOT NULL,
@@ -57,10 +72,8 @@ CREATE TABLE IF NOT EXISTS email_verifications (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- =====================================================
 -- 4. PASSWORD RESETS TABLE
--- =====================================================
-CREATE TABLE IF NOT EXISTS password_resets (
+CREATE TABLE password_resets (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
   reset_token VARCHAR(255) UNIQUE NOT NULL,
@@ -69,10 +82,8 @@ CREATE TABLE IF NOT EXISTS password_resets (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- =====================================================
 -- 5. ADMIN INVITATIONS TABLE
--- =====================================================
-CREATE TABLE IF NOT EXISTS admin_invitations (
+CREATE TABLE admin_invitations (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   invited_by UUID REFERENCES users(id),
   email VARCHAR(255) NOT NULL,
@@ -82,10 +93,8 @@ CREATE TABLE IF NOT EXISTS admin_invitations (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- =====================================================
 -- 6. USER SETTINGS TABLE
--- =====================================================
-CREATE TABLE IF NOT EXISTS user_settings (
+CREATE TABLE user_settings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
   setting_key VARCHAR(100) NOT NULL,
@@ -96,21 +105,9 @@ CREATE TABLE IF NOT EXISTS user_settings (
 );
 
 -- =====================================================
--- INDEXES FOR PERFORMANCE
+-- CREATE INDEXES
 -- =====================================================
 
--- Drop existing indexes if they exist
-DROP INDEX IF EXISTS idx_users_email;
-DROP INDEX IF EXISTS idx_users_email_verified;
-DROP INDEX IF EXISTS idx_user_sessions_user_id;
-DROP INDEX IF EXISTS idx_user_sessions_token;
-DROP INDEX IF EXISTS idx_user_sessions_expires;
-DROP INDEX IF EXISTS idx_email_verifications_token;
-DROP INDEX IF EXISTS idx_password_resets_token;
-DROP INDEX IF EXISTS idx_admin_invitations_token;
-DROP INDEX IF EXISTS idx_users_is_admin;
-
--- Create indexes
 CREATE INDEX idx_users_email ON users(email);
 CREATE INDEX idx_users_email_verified ON users(email_verified_at);
 CREATE INDEX idx_user_sessions_user_id ON user_sessions(user_id);
@@ -122,15 +119,11 @@ CREATE INDEX idx_admin_invitations_token ON admin_invitations(invitation_token);
 CREATE INDEX idx_users_is_admin ON users(is_admin);
 
 -- =====================================================
--- FUNCTIONS AND TRIGGERS
+-- CREATE FUNCTIONS AND TRIGGERS
 -- =====================================================
 
--- Drop existing triggers if they exist
-DROP TRIGGER IF EXISTS update_users_updated_at ON users;
-DROP TRIGGER IF EXISTS update_user_settings_updated_at ON user_settings;
-
 -- Update timestamp trigger function
-CREATE OR REPLACE FUNCTION update_updated_at_column()
+CREATE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$
 BEGIN
   NEW.updated_at = NOW();
@@ -138,7 +131,7 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
--- Create triggers for updated_at columns
+-- Create triggers
 CREATE TRIGGER update_users_updated_at 
   BEFORE UPDATE ON users 
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
@@ -148,7 +141,7 @@ CREATE TRIGGER update_user_settings_updated_at
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
 -- Session cleanup function
-CREATE OR REPLACE FUNCTION cleanup_expired_sessions()
+CREATE FUNCTION cleanup_expired_sessions()
 RETURNS void AS $$
 BEGIN
   DELETE FROM user_sessions 
@@ -157,10 +150,9 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- =====================================================
--- ROW LEVEL SECURITY (RLS) POLICIES
+-- ENABLE ROW LEVEL SECURITY
 -- =====================================================
 
--- Enable RLS on all tables
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_sessions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE email_verifications ENABLE ROW LEVEL SECURITY;
@@ -168,28 +160,9 @@ ALTER TABLE password_resets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE admin_invitations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_settings ENABLE ROW LEVEL SECURITY;
 
--- Drop existing policies if they exist
-DROP POLICY IF EXISTS "Users can view own profile" ON users;
-DROP POLICY IF EXISTS "Users can update own profile" ON users;
-DROP POLICY IF EXISTS "Admins can view all users" ON users;
-DROP POLICY IF EXISTS "Admins can update all users" ON users;
-
-DROP POLICY IF EXISTS "Users can view own sessions" ON user_sessions;
-DROP POLICY IF EXISTS "Users can delete own sessions" ON user_sessions;
-DROP POLICY IF EXISTS "Users can insert own sessions" ON user_sessions;
-
-DROP POLICY IF EXISTS "Users can view own verifications" ON email_verifications;
-DROP POLICY IF EXISTS "Users can insert own verifications" ON email_verifications;
-
-DROP POLICY IF EXISTS "Users can view own resets" ON password_resets;
-DROP POLICY IF EXISTS "Users can insert own resets" ON password_resets;
-
-DROP POLICY IF EXISTS "Admins can view all invitations" ON admin_invitations;
-DROP POLICY IF EXISTS "Admins can insert invitations" ON admin_invitations;
-
-DROP POLICY IF EXISTS "Users can view own settings" ON user_settings;
-DROP POLICY IF EXISTS "Users can update own settings" ON user_settings;
-DROP POLICY IF EXISTS "Users can insert own settings" ON user_settings;
+-- =====================================================
+-- CREATE RLS POLICIES
+-- =====================================================
 
 -- Users table policies
 CREATE POLICY "Users can view own profile" ON users
@@ -266,10 +239,10 @@ CREATE POLICY "Users can insert own settings" ON user_settings
   FOR INSERT WITH CHECK (auth.uid()::text = user_id::text);
 
 -- =====================================================
--- INITIAL DATA SETUP
+-- INSERT INITIAL DATA
 -- =====================================================
 
--- Insert default admin user (password will be set via application)
+-- Insert default admin user
 INSERT INTO users (
   email, 
   first_name, 
@@ -284,7 +257,7 @@ INSERT INTO users (
   true,
   NOW(),
   '$2b$10$dummy.hash.for.admin.user.placeholder'
-) ON CONFLICT (email) DO NOTHING;
+);
 
 -- Insert default settings for admin user
 INSERT INTO user_settings (user_id, setting_key, setting_value)
@@ -293,8 +266,7 @@ SELECT
   'theme',
   'light'
 FROM users 
-WHERE email = 'admin@propshop.ai'
-ON CONFLICT (user_id, setting_key) DO NOTHING;
+WHERE email = 'admin@propshop.ai';
 
 INSERT INTO user_settings (user_id, setting_key, setting_value)
 SELECT 
@@ -302,14 +274,13 @@ SELECT
   'notifications_enabled',
   'true'
 FROM users 
-WHERE email = 'admin@propshop.ai'
-ON CONFLICT (user_id, setting_key) DO NOTHING;
+WHERE email = 'admin@propshop.ai';
 
 -- =====================================================
--- GRANTS AND PERMISSIONS
+-- SET PERMISSIONS
 -- =====================================================
 
--- Grant necessary permissions to authenticated users
+-- Grant permissions to authenticated users
 GRANT USAGE ON SCHEMA public TO authenticated;
 GRANT SELECT, UPDATE ON users TO authenticated;
 GRANT SELECT, INSERT, DELETE ON user_sessions TO authenticated;
@@ -318,25 +289,28 @@ GRANT SELECT, INSERT ON password_resets TO authenticated;
 GRANT SELECT, INSERT ON user_settings TO authenticated;
 GRANT SELECT, INSERT ON admin_invitations TO authenticated;
 
--- Grant all permissions to service role (for API operations)
+-- Grant all permissions to service role
 GRANT ALL ON ALL TABLES IN SCHEMA public TO service_role;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO service_role;
 
 -- =====================================================
--- VERIFICATION QUERIES
+-- VERIFICATION
 -- =====================================================
 
 -- Verify tables were created
+SELECT 'Tables created:' as info;
 SELECT table_name FROM information_schema.tables 
 WHERE table_schema = 'public' 
 AND table_name IN ('users', 'user_sessions', 'email_verifications', 'password_resets', 'admin_invitations', 'user_settings');
 
 -- Verify RLS is enabled
+SELECT 'RLS Status:' as info;
 SELECT schemaname, tablename, rowsecurity 
 FROM pg_tables 
 WHERE tablename IN ('users', 'user_sessions', 'email_verifications', 'password_resets', 'admin_invitations', 'user_settings');
 
 -- Verify admin user was created
+SELECT 'Admin user:' as info;
 SELECT id, email, first_name, last_name, is_admin, email_verified_at 
 FROM users 
 WHERE email = 'admin@propshop.ai';
@@ -348,12 +322,13 @@ WHERE email = 'admin@propshop.ai';
 DO $$
 BEGIN
   RAISE NOTICE '=====================================================';
-  RAISE NOTICE 'PropShop AI Phase 1 Database Setup Complete!';
+  RAISE NOTICE 'PropShop AI Phase 1 Database Clean Setup Complete!';
   RAISE NOTICE '=====================================================';
+  RAISE NOTICE 'All existing objects dropped and recreated';
   RAISE NOTICE 'Tables created: 6';
   RAISE NOTICE 'Indexes created: 8';
   RAISE NOTICE 'RLS policies: 20+';
   RAISE NOTICE 'Default admin user: admin@propshop.ai';
-  RAISE NOTICE 'Next step: Update environment variables and test connection';
+  RAISE NOTICE 'Next step: Test database connection';
   RAISE NOTICE '=====================================================';
 END $$;

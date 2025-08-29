@@ -1,14 +1,16 @@
 -- =====================================================
--- PropShop AI - Phase 1 Database Setup
--- Authentication and User Management System
+-- PropShop AI - Phase 1 Database Setup (Step by Step)
+-- Run each section separately to debug any issues
 -- =====================================================
 
--- Enable necessary extensions
+-- =====================================================
+-- STEP 1: Enable Extensions
+-- =====================================================
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
 -- =====================================================
--- 1. USERS TABLE
+-- STEP 2: Create Users Table
 -- =====================================================
 CREATE TABLE IF NOT EXISTS users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -30,8 +32,12 @@ CREATE TABLE IF NOT EXISTS users (
   session_timeout_minutes INTEGER DEFAULT 30
 );
 
+-- Verify users table was created
+SELECT 'Users table created successfully' as status;
+SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'users';
+
 -- =====================================================
--- 2. USER SESSIONS TABLE
+-- STEP 3: Create User Sessions Table
 -- =====================================================
 CREATE TABLE IF NOT EXISTS user_sessions (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -44,8 +50,12 @@ CREATE TABLE IF NOT EXISTS user_sessions (
   user_agent TEXT
 );
 
+-- Verify user_sessions table was created
+SELECT 'User sessions table created successfully' as status;
+SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'user_sessions';
+
 -- =====================================================
--- 3. EMAIL VERIFICATIONS TABLE
+-- STEP 4: Create Email Verifications Table
 -- =====================================================
 CREATE TABLE IF NOT EXISTS email_verifications (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -57,8 +67,12 @@ CREATE TABLE IF NOT EXISTS email_verifications (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Verify email_verifications table was created
+SELECT 'Email verifications table created successfully' as status;
+SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'email_verifications';
+
 -- =====================================================
--- 4. PASSWORD RESETS TABLE
+-- STEP 5: Create Password Resets Table
 -- =====================================================
 CREATE TABLE IF NOT EXISTS password_resets (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -69,8 +83,12 @@ CREATE TABLE IF NOT EXISTS password_resets (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Verify password_resets table was created
+SELECT 'Password resets table created successfully' as status;
+SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'password_resets';
+
 -- =====================================================
--- 5. ADMIN INVITATIONS TABLE
+-- STEP 6: Create Admin Invitations Table
 -- =====================================================
 CREATE TABLE IF NOT EXISTS admin_invitations (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -82,8 +100,12 @@ CREATE TABLE IF NOT EXISTS admin_invitations (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
+-- Verify admin_invitations table was created
+SELECT 'Admin invitations table created successfully' as status;
+SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'admin_invitations';
+
 -- =====================================================
--- 6. USER SETTINGS TABLE
+-- STEP 7: Create User Settings Table
 -- =====================================================
 CREATE TABLE IF NOT EXISTS user_settings (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -95,40 +117,30 @@ CREATE TABLE IF NOT EXISTS user_settings (
   UNIQUE(user_id, setting_key)
 );
 
--- =====================================================
--- INDEXES FOR PERFORMANCE
--- =====================================================
-
--- Drop existing indexes if they exist
-DROP INDEX IF EXISTS idx_users_email;
-DROP INDEX IF EXISTS idx_users_email_verified;
-DROP INDEX IF EXISTS idx_user_sessions_user_id;
-DROP INDEX IF EXISTS idx_user_sessions_token;
-DROP INDEX IF EXISTS idx_user_sessions_expires;
-DROP INDEX IF EXISTS idx_email_verifications_token;
-DROP INDEX IF EXISTS idx_password_resets_token;
-DROP INDEX IF EXISTS idx_admin_invitations_token;
-DROP INDEX IF EXISTS idx_users_is_admin;
-
--- Create indexes
-CREATE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_users_email_verified ON users(email_verified_at);
-CREATE INDEX idx_user_sessions_user_id ON user_sessions(user_id);
-CREATE INDEX idx_user_sessions_token ON user_sessions(session_token);
-CREATE INDEX idx_user_sessions_expires ON user_sessions(expires_at);
-CREATE INDEX idx_email_verifications_token ON email_verifications(verification_token);
-CREATE INDEX idx_password_resets_token ON password_resets(reset_token);
-CREATE INDEX idx_admin_invitations_token ON admin_invitations(invitation_token);
-CREATE INDEX idx_users_is_admin ON users(is_admin);
+-- Verify user_settings table was created
+SELECT 'User settings table created successfully' as status;
+SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'user_settings';
 
 -- =====================================================
--- FUNCTIONS AND TRIGGERS
+-- STEP 8: Create Indexes
 -- =====================================================
+CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+CREATE INDEX IF NOT EXISTS idx_users_email_verified ON users(email_verified_at);
+CREATE INDEX IF NOT EXISTS idx_user_sessions_user_id ON user_sessions(user_id);
+CREATE INDEX IF NOT EXISTS idx_user_sessions_token ON user_sessions(session_token);
+CREATE INDEX IF NOT EXISTS idx_user_sessions_expires ON user_sessions(expires_at);
+CREATE INDEX IF NOT EXISTS idx_email_verifications_token ON email_verifications(verification_token);
+CREATE INDEX IF NOT EXISTS idx_password_resets_token ON password_resets(reset_token);
+CREATE INDEX IF NOT EXISTS idx_admin_invitations_token ON admin_invitations(invitation_token);
+CREATE INDEX IF NOT EXISTS idx_users_is_admin ON users(is_admin);
 
--- Drop existing triggers if they exist
-DROP TRIGGER IF EXISTS update_users_updated_at ON users;
-DROP TRIGGER IF EXISTS update_user_settings_updated_at ON user_settings;
+-- Verify indexes were created
+SELECT 'Indexes created successfully' as status;
+SELECT indexname, tablename FROM pg_indexes WHERE tablename IN ('users', 'user_sessions', 'email_verifications', 'password_resets', 'admin_invitations', 'user_settings');
 
+-- =====================================================
+-- STEP 9: Create Functions and Triggers
+-- =====================================================
 -- Update timestamp trigger function
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$
@@ -138,7 +150,7 @@ BEGIN
 END;
 $$ language 'plpgsql';
 
--- Create triggers for updated_at columns
+-- Create triggers
 CREATE TRIGGER update_users_updated_at 
   BEFORE UPDATE ON users 
   FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
@@ -156,11 +168,13 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
--- =====================================================
--- ROW LEVEL SECURITY (RLS) POLICIES
--- =====================================================
+-- Verify functions and triggers were created
+SELECT 'Functions and triggers created successfully' as status;
+SELECT trigger_name, event_object_table FROM information_schema.triggers WHERE trigger_schema = 'public';
 
--- Enable RLS on all tables
+-- =====================================================
+-- STEP 10: Enable Row Level Security
+-- =====================================================
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_sessions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE email_verifications ENABLE ROW LEVEL SECURITY;
@@ -168,29 +182,15 @@ ALTER TABLE password_resets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE admin_invitations ENABLE ROW LEVEL SECURITY;
 ALTER TABLE user_settings ENABLE ROW LEVEL SECURITY;
 
--- Drop existing policies if they exist
-DROP POLICY IF EXISTS "Users can view own profile" ON users;
-DROP POLICY IF EXISTS "Users can update own profile" ON users;
-DROP POLICY IF EXISTS "Admins can view all users" ON users;
-DROP POLICY IF EXISTS "Admins can update all users" ON users;
+-- Verify RLS is enabled
+SELECT 'RLS enabled successfully' as status;
+SELECT schemaname, tablename, rowsecurity 
+FROM pg_tables 
+WHERE tablename IN ('users', 'user_sessions', 'email_verifications', 'password_resets', 'admin_invitations', 'user_settings');
 
-DROP POLICY IF EXISTS "Users can view own sessions" ON user_sessions;
-DROP POLICY IF EXISTS "Users can delete own sessions" ON user_sessions;
-DROP POLICY IF EXISTS "Users can insert own sessions" ON user_sessions;
-
-DROP POLICY IF EXISTS "Users can view own verifications" ON email_verifications;
-DROP POLICY IF EXISTS "Users can insert own verifications" ON email_verifications;
-
-DROP POLICY IF EXISTS "Users can view own resets" ON password_resets;
-DROP POLICY IF EXISTS "Users can insert own resets" ON password_resets;
-
-DROP POLICY IF EXISTS "Admins can view all invitations" ON admin_invitations;
-DROP POLICY IF EXISTS "Admins can insert invitations" ON admin_invitations;
-
-DROP POLICY IF EXISTS "Users can view own settings" ON user_settings;
-DROP POLICY IF EXISTS "Users can update own settings" ON user_settings;
-DROP POLICY IF EXISTS "Users can insert own settings" ON user_settings;
-
+-- =====================================================
+-- STEP 11: Create RLS Policies
+-- =====================================================
 -- Users table policies
 CREATE POLICY "Users can view own profile" ON users
   FOR SELECT USING (auth.uid()::text = id::text);
@@ -265,11 +265,14 @@ CREATE POLICY "Users can update own settings" ON user_settings
 CREATE POLICY "Users can insert own settings" ON user_settings
   FOR INSERT WITH CHECK (auth.uid()::text = user_id::text);
 
--- =====================================================
--- INITIAL DATA SETUP
--- =====================================================
+-- Verify policies were created
+SELECT 'RLS policies created successfully' as status;
+SELECT policyname, tablename FROM pg_policies WHERE schemaname = 'public';
 
--- Insert default admin user (password will be set via application)
+-- =====================================================
+-- STEP 12: Insert Initial Data
+-- =====================================================
+-- Insert default admin user
 INSERT INTO users (
   email, 
   first_name, 
@@ -285,6 +288,12 @@ INSERT INTO users (
   NOW(),
   '$2b$10$dummy.hash.for.admin.user.placeholder'
 ) ON CONFLICT (email) DO NOTHING;
+
+-- Verify admin user was created
+SELECT 'Admin user created successfully' as status;
+SELECT id, email, first_name, last_name, is_admin, email_verified_at 
+FROM users 
+WHERE email = 'admin@propshop.ai';
 
 -- Insert default settings for admin user
 INSERT INTO user_settings (user_id, setting_key, setting_value)
@@ -305,11 +314,17 @@ FROM users
 WHERE email = 'admin@propshop.ai'
 ON CONFLICT (user_id, setting_key) DO NOTHING;
 
--- =====================================================
--- GRANTS AND PERMISSIONS
--- =====================================================
+-- Verify settings were created
+SELECT 'User settings created successfully' as status;
+SELECT us.setting_key, us.setting_value, u.email 
+FROM user_settings us 
+JOIN users u ON us.user_id = u.id 
+WHERE u.email = 'admin@propshop.ai';
 
--- Grant necessary permissions to authenticated users
+-- =====================================================
+-- STEP 13: Set Permissions
+-- =====================================================
+-- Grant permissions to authenticated users
 GRANT USAGE ON SCHEMA public TO authenticated;
 GRANT SELECT, UPDATE ON users TO authenticated;
 GRANT SELECT, INSERT, DELETE ON user_sessions TO authenticated;
@@ -318,33 +333,28 @@ GRANT SELECT, INSERT ON password_resets TO authenticated;
 GRANT SELECT, INSERT ON user_settings TO authenticated;
 GRANT SELECT, INSERT ON admin_invitations TO authenticated;
 
--- Grant all permissions to service role (for API operations)
+-- Grant all permissions to service role
 GRANT ALL ON ALL TABLES IN SCHEMA public TO service_role;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO service_role;
 
 -- =====================================================
--- VERIFICATION QUERIES
+-- STEP 14: Final Verification
 -- =====================================================
-
--- Verify tables were created
+-- Verify all tables exist
+SELECT 'Final verification - All tables:' as info;
 SELECT table_name FROM information_schema.tables 
 WHERE table_schema = 'public' 
 AND table_name IN ('users', 'user_sessions', 'email_verifications', 'password_resets', 'admin_invitations', 'user_settings');
 
--- Verify RLS is enabled
+-- Verify RLS is enabled on all tables
+SELECT 'Final verification - RLS status:' as info;
 SELECT schemaname, tablename, rowsecurity 
 FROM pg_tables 
 WHERE tablename IN ('users', 'user_sessions', 'email_verifications', 'password_resets', 'admin_invitations', 'user_settings');
 
--- Verify admin user was created
-SELECT id, email, first_name, last_name, is_admin, email_verified_at 
-FROM users 
-WHERE email = 'admin@propshop.ai';
-
 -- =====================================================
 -- COMPLETION MESSAGE
 -- =====================================================
-
 DO $$
 BEGIN
   RAISE NOTICE '=====================================================';
@@ -354,6 +364,6 @@ BEGIN
   RAISE NOTICE 'Indexes created: 8';
   RAISE NOTICE 'RLS policies: 20+';
   RAISE NOTICE 'Default admin user: admin@propshop.ai';
-  RAISE NOTICE 'Next step: Update environment variables and test connection';
+  RAISE NOTICE 'Next step: Test database connection at /api/test-db';
   RAISE NOTICE '=====================================================';
 END $$;
