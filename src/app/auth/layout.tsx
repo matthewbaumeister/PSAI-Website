@@ -25,7 +25,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           padding: '2rem 1rem'
         }}
       >
-        {/* Beautiful background with subtle patterns */}
+        {/* Clean white background - no overlapping boxes */}
         <div 
           className="auth-background"
           style={{
@@ -34,12 +34,12 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
+            background: 'white',
             zIndex: -1
           }}
         />
         
-        {/* Subtle pattern overlay */}
+        {/* Very subtle pattern overlay - barely visible */}
         <div 
           className="auth-pattern"
           style={{
@@ -49,8 +49,8 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             right: 0,
             bottom: 0,
             backgroundImage: `
-              radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%)
+              radial-gradient(circle at 20% 20%, rgba(255, 122, 41, 0.02) 0%, transparent 50%),
+              radial-gradient(circle at 80% 80%, rgba(154, 242, 58, 0.02) 0%, transparent 50%)
             `,
             zIndex: -1
           }}
@@ -73,7 +73,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
               marginBottom: '2.5rem'
             }}
           >
-            {/* Premium logo */}
+            {/* Brand-consistent orange logo matching header */}
             <div 
               className="auth-logo"
               style={{
@@ -82,10 +82,10 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
                 justifyContent: 'center',
                 width: '3rem',
                 height: '3rem',
-                background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+                background: 'linear-gradient(135deg, #FF7A29 0%, #FF6B1A 100%)',
                 borderRadius: '12px',
                 marginBottom: '1.5rem',
-                boxShadow: '0 10px 25px rgba(37, 99, 235, 0.2)'
+                boxShadow: '0 10px 25px rgba(255, 122, 41, 0.2)'
               }}
             >
               <span 

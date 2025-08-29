@@ -85,16 +85,13 @@ export default function LoginPage() {
         position: 'relative'
       }}
     >
-      {/* Subtle background pattern */}
+      {/* Clean white background - no patterns */}
       <div 
-        className="absolute inset-0 opacity-5"
+        className="relative z-10"
         style={{
-          backgroundImage: 'radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%), radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 50%) !important',
-          zIndex: 0
+          backgroundColor: 'white !important'
         }}
-      ></div>
-      
-      <div className="relative z-10">
+      >
         <div className="text-center mb-10">
           <h2 
             className="text-4xl font-bold mb-4"
@@ -141,9 +138,9 @@ export default function LoginPage() {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+              className="w-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
               style={{
-                border: errors.email ? '2px solid #fca5a5 !important' : '2px solid #e5e7eb !important',
+                border: errors.email ? '2px solid #fca5a5 !important' : '2px solid #d1d5db !important',
                 borderRadius: '12px !important',
                 padding: '1rem 1.25rem !important',
                 fontSize: '1rem !important',
@@ -182,9 +179,9 @@ export default function LoginPage() {
               name="password"
               value={formData.password}
               onChange={handleInputChange}
-              className="w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+              className="w-full focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-300"
               style={{
-                border: errors.password ? '2px solid #fca5a5 !important' : '2px solid #e5e7eb !important',
+                border: errors.password ? '2px solid #fca5a5 !important' : '2px solid #d1d5db !important',
                 borderRadius: '12px !important',
                 padding: '1rem 1.25rem !important',
                 fontSize: '1rem !important',
@@ -211,7 +208,7 @@ export default function LoginPage() {
                 name="rememberMe"
                 checked={formData.rememberMe}
                 onChange={handleInputChange}
-                className="w-5 h-5 text-blue-600 bg-white border-2 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                className="w-5 h-5 text-orange-600 bg-white border-2 border-gray-300 rounded focus:ring-orange-500 focus:ring-2"
                 style={{ 
                   borderRadius: '6px !important',
                   backgroundColor: 'white !important',
@@ -231,7 +228,7 @@ export default function LoginPage() {
               href="/auth/forgot-password" 
               className="text-sm font-medium underline transition-all duration-200 hover:no-underline"
               style={{ 
-                color: '#2563eb !important',
+                color: '#FF7A29 !important',
                 textDecoration: 'underline !important',
                 textUnderlineOffset: '2px !important'
               }}
@@ -240,19 +237,19 @@ export default function LoginPage() {
             </Link>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit Button - Brand orange */}
           <button
             type="submit"
             disabled={isSubmitting}
             className="w-full font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-xl transform hover:scale-105"
             style={{
-              background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important',
+              background: 'linear-gradient(135deg, #FF7A29 0%, #FF6B1A 100%) !important',
               color: 'white !important',
               fontSize: '1.125rem !important',
               fontWeight: '600 !important',
               padding: '1rem 1.5rem !important',
               borderRadius: '12px !important',
-              boxShadow: '0 10px 25px rgba(37, 99, 235, 0.3) !important',
+              boxShadow: '0 10px 25px rgba(255, 122, 41, 0.3) !important',
               border: 'none !important'
             }}
           >
@@ -307,9 +304,9 @@ export default function LoginPage() {
               href="/auth/signup" 
               className="inline-block font-semibold py-3 px-8 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:scale-105"
               style={{
-                backgroundColor: '#f8fafc !important',
-                color: '#374151 !important',
-                border: '2px solid #e2e8f0 !important',
+                backgroundColor: 'white !important',
+                color: '#FF7A29 !important',
+                border: '2px solid #FF7A29 !important',
                 padding: '0.75rem 2rem !important',
                 borderRadius: '12px !important',
                 fontWeight: '600 !important'
