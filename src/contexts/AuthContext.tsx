@@ -52,7 +52,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const checkAuth = async () => {
     try {
       // Check if we have any auth cookies before making the API call
-      const hasCookies = document.cookie.includes('access_token') || 
+      const hasCookies = document.cookie.includes('auth_status=authenticated') || 
+                        document.cookie.includes('access_token') || 
                         document.cookie.includes('session_token')
       
       if (!hasCookies) {

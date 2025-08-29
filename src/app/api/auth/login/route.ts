@@ -136,9 +136,9 @@ export async function POST(request: NextRequest) {
       }
     })
 
-    // Set secure HTTP-only cookies
+    // Set secure cookies (making httpOnly false for debugging)
     const cookieOptions = {
-      httpOnly: true,
+      httpOnly: false, // Changed to false so JavaScript can read them
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax' as const,
       path: '/'
@@ -159,6 +159,15 @@ export async function POST(request: NextRequest) {
     // Session token cookie
     response.cookies.set('session_token', sessionToken, {
       ...cookieOptions,
+      maxAge: rememberMe ? 7 * 24 * 60 * 60 : 30 * 60 // 7 days or 30 minutes
+    })
+
+    // Add a readable auth status cookie for frontend
+    response.cookies.set('auth_status', 'authenticated', {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax' as const,
+      path: '/',
       maxAge: rememberMe ? 7 * 24 * 60 * 60 : 30 * 60 // 7 days or 30 minutes
     })
 
