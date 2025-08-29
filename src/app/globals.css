@@ -4368,3 +4368,39 @@ body::after {
   background-color: white !important;
 }
 
+/* NEW: Override global form styles for auth pages */
+/* Target the specific auth page container */
+.min-h-screen.bg-white input[type="email"],
+.min-h-screen.bg-white input[type="password"],
+.min-h-screen.bg-white input[type="text"],
+.min-h-screen.bg-white input[type="checkbox"] {
+  background: white !important;
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  font-size: 16px !important;
+  color: #111827 !important;
+}
+
+/* Focus states for auth page inputs */
+.min-h-screen.bg-white input[type="email"]:focus,
+.min-h-screen.bg-white input[type="password"]:focus,
+.min-h-screen.bg-white input[type="text"]:focus {
+  outline: none !important;
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1) !important;
+  background: white !important;
+  background-color: white !important;
+}
+
+/* Override any remaining global form styles */
+.min-h-screen.bg-white .form-group input,
+.min-h-screen.bg-white .form-group input[type="email"],
+.min-h-screen.bg-white .form-group input[type="password"] {
+  background: white !important;
+  background-color: white !important;
+  border: 1px solid #d1d5db !important;
+  color: #111827 !important;
+}
+
