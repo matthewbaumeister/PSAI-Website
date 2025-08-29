@@ -878,18 +878,16 @@ a {
 }
 
 .footer-brand .logo-placeholder {
-  width: 2.5rem;
-  height: 2.5rem;
-  background: linear-gradient(135deg, var(--gradient-colors));
-  background-size: 400% 400%;
-  animation: color-chain var(--animation-duration) var(--animation-timing) var(--animation-iteration) var(--animation-delay);
-  border-radius: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: linear-gradient(135deg, #2D5BFF, #9AF23A);
+  border-radius: 0.375rem;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
   color: white;
-  font-size: 1rem;
+  font-size: 0.75rem;
   flex-shrink: 0;
 }
 
