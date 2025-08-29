@@ -152,6 +152,28 @@ export default function DashboardPage() {
             </a>
           </div>
         </div>
+
+        {/* Recent Activity */}
+        <div className="bg-gradient-to-br from-slate-800/50 to-slate-700/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 mt-8">
+          <h3 className="text-lg font-semibold text-white mb-4">Recent Activity</h3>
+          <div className="space-y-3">
+            <div className="flex items-center space-x-3 p-3 bg-slate-700/30 rounded-lg">
+              <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+              <span className="text-slate-300 text-sm">Profile updated successfully</span>
+              <span className="text-slate-500 text-xs ml-auto">2 hours ago</span>
+            </div>
+            <div className="flex items-center space-x-3 p-3 bg-slate-700/30 rounded-lg">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+              <span className="text-slate-300 text-sm">Email preferences updated</span>
+              <span className="text-slate-500 text-xs ml-auto">1 day ago</span>
+            </div>
+            <div className="flex items-center space-x-3 p-3 bg-slate-700/30 rounded-lg">
+              <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+              <span className="text-slate-300 text-sm">Account created</span>
+              <span className="text-slate-500 text-xs ml-auto">3 days ago</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )
