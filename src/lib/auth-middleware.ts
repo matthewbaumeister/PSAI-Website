@@ -14,12 +14,17 @@ export async function authenticateRequest(
   request: NextRequest
 ): Promise<{ user: any; error: null } | { user: null; error: string }> {
   try {
+    // Debug: Log all cookies
+    console.log('🔍 Auth Middleware - All cookies:', request.cookies.getAll())
+    
     // Try to get token from cookies first
     let token = request.cookies.get('access_token')?.value
+    console.log('🔍 Auth Middleware - access_token cookie:', token ? 'EXISTS' : 'MISSING')
     
     // Fall back to authorization header if no cookie
     if (!token) {
       const authHeader = request.headers.get('authorization')
+      console.log('🔍 Auth Middleware - Authorization header:', authHeader || 'MISSING')
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
         return { user: null, error: 'No authorization token provided' }
       }
@@ -27,7 +32,9 @@ export async function authenticateRequest(
     }
 
     // Verify JWT token
+    console.log('🔍 Auth Middleware - Token to verify:', token ? `${token.substring(0, 20)}...` : 'NULL')
     const payload = verifyToken(token)
+    console.log('🔍 Auth Middleware - Token verification result:', payload ? 'SUCCESS' : 'FAILED')
     if (!payload) {
       return { user: null, error: 'Invalid or expired token' }
     }
