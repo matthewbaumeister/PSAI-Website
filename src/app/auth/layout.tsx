@@ -11,7 +11,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
           </p>
         </div>
         
-        <div className="contact-content">
+        <div className="auth-content">
           {children}
         </div>
       </div>
