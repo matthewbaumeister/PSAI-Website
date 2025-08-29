@@ -75,198 +75,247 @@ export default function LoginPage() {
 
   return (
     <div 
-      className="bg-white border border-gray-200 rounded-xl shadow-lg p-8"
+      className="bg-white relative overflow-hidden"
       style={{
         backgroundColor: 'white',
         border: '1px solid #e5e7eb',
-        borderRadius: '12px',
-        boxShadow: '0 10px 25px rgba(0, 0, 0, 0.1)',
-        padding: '2rem'
+        borderRadius: '16px',
+        boxShadow: '0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.06)',
+        padding: '2.5rem',
+        position: 'relative'
       }}
     >
-      <div className="text-center mb-8">
-        <h2 
-          className="text-3xl font-bold mb-3"
-          style={{ color: '#111827', fontSize: '1.875rem', fontWeight: '700' }}
-        >
-          Welcome Back
-        </h2>
-        <p 
-          className="text-lg"
-          style={{ color: '#6b7280', fontSize: '1.125rem' }}
-        >
-          Sign in to your Prop Shop AI account
-        </p>
-      </div>
-
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Email Field */}
-        <div>
-          <label 
-            htmlFor="email" 
-            className="block text-sm font-medium mb-2"
-            style={{ color: '#374151', fontSize: '0.875rem', fontWeight: '500' }}
-          >
-            Email Address *
-          </label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-            style={{
-              border: errors.email ? '1px solid #fca5a5' : '1px solid #d1d5db',
-              borderRadius: '8px',
-              padding: '0.75rem 1rem',
-              fontSize: '1rem',
-              color: '#111827',
-              backgroundColor: 'white'
-            }}
-            placeholder="john@company.com"
-          />
-          {errors.email && (
-            <p className="mt-2 text-sm" style={{ color: '#dc2626' }}>
-              {errors.email}
-            </p>
-          )}
-        </div>
-
-        {/* Password Field */}
-        <div>
-          <label 
-            htmlFor="password" 
-            className="block text-sm font-medium mb-2"
-            style={{ color: '#374151', fontSize: '0.875rem', fontWeight: '500' }}
-          >
-            Password *
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
-            style={{
-              border: errors.password ? '1px solid #fca5a5' : '1px solid #d1d5db',
-              borderRadius: '8px',
-              padding: '0.75rem 1rem',
-              fontSize: '1rem',
-              color: '#111827',
-              backgroundColor: 'white'
-            }}
-            placeholder="••••••••"
-          />
-          {errors.password && (
-            <p className="mt-2 text-sm" style={{ color: '#dc2626' }}>
-              {errors.password}
-            </p>
-          )}
-        </div>
-
-        {/* Remember Me & Forgot Password */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <input
-              type="checkbox"
-              id="rememberMe"
-              name="rememberMe"
-              checked={formData.rememberMe}
-              onChange={handleInputChange}
-              className="w-4 h-4 text-blue-600 bg-white border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-            />
-            <label 
-              htmlFor="rememberMe" 
-              className="text-sm"
-              style={{ color: '#374151' }}
-            >
-              Remember me for 7 days
-            </label>
-          </div>
-          
-          <Link 
-            href="/auth/forgot-password" 
-            className="text-sm underline transition-colors duration-200"
-            style={{ color: '#2563eb' }}
-          >
-            Forgot password?
-          </Link>
-        </div>
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full font-medium py-3 px-4 rounded-lg shadow-sm transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-          style={{
-            backgroundColor: '#2563eb',
-            color: 'white',
-            fontSize: '1rem',
-            fontWeight: '500',
-            padding: '0.75rem 1rem',
-            borderRadius: '8px'
-          }}
-        >
-          {isSubmitting ? (
-            <div className="flex items-center justify-center">
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-              Signing In...
-            </div>
-          ) : (
-            'Sign In'
-          )}
-        </button>
-
-        {/* Status Messages */}
-        {submitStatus === 'success' && (
-          <div 
-            className="p-4 border rounded-lg text-center"
-            style={{
-              backgroundColor: '#f0fdf4',
-              border: '1px solid #bbf7d0',
-              color: '#166534'
+      {/* Subtle background pattern */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 25% 25%, #3b82f6 0%, transparent 50%), radial-gradient(circle at 75% 75%, #8b5cf6 0%, transparent 50%)',
+          zIndex: 0
+        }}
+      ></div>
+      
+      <div className="relative z-10">
+        <div className="text-center mb-10">
+          <h2 
+            className="text-4xl font-bold mb-4"
+            style={{ 
+              color: '#111827', 
+              fontSize: '2.25rem', 
+              fontWeight: '800',
+              letterSpacing: '-0.025em'
             }}
           >
-            {submitMessage}
-          </div>
-        )}
-        
-        {submitStatus === 'error' && (
-          <div 
-            className="p-4 border rounded-lg text-center"
-            style={{
-              backgroundColor: '#fef2f2',
-              border: '1px solid #fecaca',
-              color: '#dc2626'
-            }}
-          >
-            {submitMessage}
-          </div>
-        )}
-
-        {/* Sign Up Section */}
-        <div className="text-center pt-4 border-t border-gray-200">
+            Welcome Back
+          </h2>
           <p 
-            className="text-gray-600 mb-4"
-            style={{ color: '#6b7280' }}
-          >
-            Don't have an account?
-          </p>
-          <Link 
-            href="/auth/signup" 
-            className="inline-block font-medium py-2.5 px-6 rounded-lg transition-colors duration-200"
-            style={{
-              backgroundColor: '#f3f4f6',
-              color: '#374151',
-              border: '1px solid #d1d5db'
+            className="text-xl"
+            style={{ 
+              color: '#6b7280', 
+              fontSize: '1.25rem',
+              fontWeight: '400'
             }}
           >
-            Create Account
-          </Link>
+            Sign in to your Prop Shop AI account
+          </p>
         </div>
-      </form>
+
+        <form onSubmit={handleSubmit} className="space-y-8">
+          {/* Email Field */}
+          <div>
+            <label 
+              htmlFor="email" 
+              className="block font-medium mb-3"
+              style={{ 
+                color: '#374151', 
+                fontSize: '0.875rem', 
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}
+            >
+              Email Address *
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              className="w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+              style={{
+                border: errors.email ? '2px solid #fca5a5' : '2px solid #e5e7eb',
+                borderRadius: '12px',
+                padding: '1rem 1.25rem',
+                fontSize: '1rem',
+                color: '#111827',
+                backgroundColor: 'white',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease'
+              }}
+              placeholder="john@company.com"
+            />
+            {errors.email && (
+              <p className="mt-3 text-sm font-medium" style={{ color: '#dc2626' }}>
+                {errors.email}
+              </p>
+            )}
+          </div>
+
+          {/* Password Field */}
+          <div>
+            <label 
+              htmlFor="password" 
+              className="block font-medium mb-3"
+              style={{ 
+                color: '#374151', 
+                fontSize: '0.875rem', 
+                fontWeight: '600',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}
+            >
+              Password *
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              className="w-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+              style={{
+                border: errors.password ? '2px solid #fca5a5' : '2px solid #e5e7eb',
+                borderRadius: '12px',
+                padding: '1rem 1.25rem',
+                fontSize: '1rem',
+                color: '#111827',
+                backgroundColor: 'white',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+                transition: 'all 0.3s ease'
+              }}
+              placeholder="••••••••"
+            />
+            {errors.password && (
+              <p className="mt-3 text-sm font-medium" style={{ color: '#dc2626' }}>
+                {errors.password}
+              </p>
+            )}
+          </div>
+
+          {/* Remember Me & Forgot Password */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <input
+                type="checkbox"
+                id="rememberMe"
+                name="rememberMe"
+                checked={formData.rememberMe}
+                onChange={handleInputChange}
+                className="w-5 h-5 text-blue-600 bg-white border-2 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                style={{ borderRadius: '6px' }}
+              />
+              <label 
+                htmlFor="rememberMe" 
+                className="text-sm font-medium"
+                style={{ color: '#374151' }}
+              >
+                Remember me for 7 days
+              </label>
+            </div>
+            
+            <Link 
+              href="/auth/forgot-password" 
+              className="text-sm font-medium underline transition-all duration-200 hover:no-underline"
+              style={{ 
+                color: '#2563eb',
+                textDecoration: 'underline',
+                textUnderlineOffset: '2px'
+              }}
+            >
+              Forgot password?
+            </Link>
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full font-semibold py-4 px-6 rounded-xl shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-xl transform hover:scale-105"
+            style={{
+              background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)',
+              color: 'white',
+              fontSize: '1.125rem',
+              fontWeight: '600',
+              padding: '1rem 1.5rem',
+              borderRadius: '12px',
+              boxShadow: '0 10px 25px rgba(37, 99, 235, 0.3)',
+              border: 'none'
+            }}
+          >
+            {isSubmitting ? (
+              <div className="flex items-center justify-center">
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                Signing In...
+              </div>
+            ) : (
+              'Sign In'
+            )}
+          </button>
+
+          {/* Status Messages */}
+          {submitStatus === 'success' && (
+            <div 
+              className="p-5 border rounded-xl text-center font-medium"
+              style={{
+                backgroundColor: '#f0fdf4',
+                border: '2px solid #bbf7d0',
+                color: '#166534',
+                borderRadius: '12px'
+              }}
+            >
+              {submitMessage}
+            </div>
+          )}
+          
+          {submitStatus === 'error' && (
+            <div 
+              className="p-5 border rounded-xl text-center font-medium"
+              style={{
+                backgroundColor: '#fef2f2',
+                border: '2px solid #fecaca',
+                color: '#dc2626',
+                borderRadius: '12px'
+              }}
+            >
+              {submitMessage}
+            </div>
+          )}
+
+          {/* Sign Up Section */}
+          <div className="text-center pt-6 border-t border-gray-200">
+            <p 
+              className="text-gray-600 mb-5 text-lg"
+              style={{ color: '#6b7280', fontSize: '1.125rem' }}
+            >
+              Don't have an account?
+            </p>
+            <Link 
+              href="/auth/signup" 
+              className="inline-block font-semibold py-3 px-8 rounded-xl transition-all duration-300 hover:shadow-lg transform hover:scale-105"
+              style={{
+                backgroundColor: '#f8fafc',
+                color: '#374151',
+                border: '2px solid #e2e8f0',
+                padding: '0.75rem 2rem',
+                borderRadius: '12px',
+                fontWeight: '600'
+              }}
+            >
+              Create Account
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
