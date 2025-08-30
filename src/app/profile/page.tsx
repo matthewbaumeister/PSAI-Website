@@ -50,10 +50,24 @@ export default function ProfilePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-purple-200 text-lg">Loading Profile...</p>
+      <div style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{
+            width: '64px',
+            height: '64px',
+            border: '4px solid #8b5cf6',
+            borderTop: '4px solid transparent',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto 16px'
+          }}></div>
+          <p style={{ color: '#c4b5fd', fontSize: '18px' }}>Loading Profile...</p>
         </div>
       </div>
     )
@@ -100,7 +114,7 @@ export default function ProfilePage() {
         setMessageType('error')
       }
     } catch (error) {
-      setMessage('An unexpected error occurred')
+      setMessage('An error occurred while updating profile')
       setMessageType('error')
     } finally {
       setIsSaving(false)
@@ -108,7 +122,6 @@ export default function ProfilePage() {
   }
 
   const handleCancel = () => {
-    // Reset form data to original user data
     setFormData({
       firstName: user.firstName || '',
       lastName: user.lastName || '',
@@ -121,124 +134,166 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+      color: '#f8fafc'
+    }}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/50 backdrop-blur-sm border-b border-slate-700/50 sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
+      <div style={{
+        background: 'rgba(30, 41, 59, 0.8)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(148, 163, 184, 0.2)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 10
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '32px 24px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}>
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              <h1 style={{
+                fontSize: '48px',
+                fontWeight: '800',
+                background: 'linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                margin: 0
+              }}>
                 Profile
               </h1>
-              <p className="text-slate-300 mt-2 text-lg">Manage your personal information</p>
+              <p style={{
+                color: '#cbd5e1',
+                marginTop: '8px',
+                fontSize: '18px'
+              }}>
+                Manage your personal information and account details.
+              </p>
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="bg-slate-800/50 rounded-full px-4 py-2 border border-slate-600/50">
-                <span className="text-slate-300 text-sm">Signed in as </span>
-                <span className="text-white font-semibold">{user.email}</span>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px'
+            }}>
+              <div style={{
+                background: 'rgba(139, 92, 246, 0.2)',
+                borderRadius: '12px',
+                padding: '12px 20px',
+                border: '1px solid rgba(139, 92, 246, 0.3)',
+                backdropFilter: 'blur(10px)'
+              }}>
+                <span style={{ color: '#c4b5fd', fontSize: '14px' }}>Signed in as </span>
+                <span style={{ color: '#ffffff', fontWeight: '600' }}>{user.email}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-8">
-        {/* Message Display */}
+      <div style={{
+        maxWidth: '800px',
+        margin: '0 auto',
+        padding: '32px 24px'
+      }}>
+        {/* Message */}
         {message && (
-          <div className={`mb-8 p-4 rounded-xl border backdrop-blur-sm transition-all duration-300 ${
-            messageType === 'success' 
-              ? 'bg-emerald-500/20 border-emerald-500/30 text-emerald-200' 
-              : 'bg-red-500/20 border-red-500/30 text-red-200'
-          }`}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                {messageType === 'success' ? (
-                  <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-                  </svg>
-                )}
-                <span className="font-medium">{message}</span>
-              </div>
-              <button 
-                onClick={() => setMessage('')}
-                className="text-slate-400 hover:text-white transition-colors duration-200"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+          <div style={{
+            background: messageType === 'success' ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+            border: `1px solid ${messageType === 'success' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
+            borderRadius: '12px',
+            padding: '16px 20px',
+            marginBottom: '32px',
+            color: messageType === 'success' ? '#86efac' : '#fca5a5',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px'
+          }}>
+            <div style={{
+              width: '20px',
+              height: '20px',
+              borderRadius: '50%',
+              background: messageType === 'success' ? '#22c55e' : '#ef4444',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              {messageType === 'success' ? '✓' : '✕'}
             </div>
+            {message}
           </div>
         )}
 
-        {/* Profile Information */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8">
-          <div className="flex items-center justify-between mb-8">
-            <div className="flex items-center space-x-4">
-              <div className="w-20 h-20 bg-gradient-to-br from-blue-500/40 to-purple-600/40 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/20 border border-blue-400/30 hover:from-blue-500/50 hover:to-purple-600/50 hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300">
-                <span className="text-white font-bold text-2xl flex-shrink-0">
-                  {user.firstName?.charAt(0)}{user.lastName?.charAt(0)}
-                </span>
-              </div>
-              <div>
-                <h2 className="text-2xl font-bold text-white">{user.firstName} {user.lastName}</h2>
-                <p className="text-slate-300">{user.email}</p>
-              </div>
+        {/* Profile Card */}
+        <div style={{
+          background: 'rgba(30, 41, 59, 0.6)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(148, 163, 184, 0.2)',
+          borderRadius: '20px',
+          padding: '32px',
+          marginBottom: '32px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '24px',
+            marginBottom: '32px'
+          }}>
+            <div style={{
+              width: '80px',
+              height: '80px',
+              background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#ffffff',
+              fontWeight: '700',
+              fontSize: '32px',
+              boxShadow: '0 8px 32px rgba(139, 92, 246, 0.3)',
+              border: '2px solid rgba(139, 92, 246, 0.5)'
+            }}>
+              {user.firstName?.charAt(0) || user.email.charAt(0).toUpperCase()}
             </div>
-            <div className="flex space-x-3">
-              {!isEditing ? (
-                <button
-                  onClick={() => setIsEditing(true)}
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 font-semibold transition-all duration-300 transform hover:scale-105"
-                >
-                  <div className="flex items-center space-x-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                    </svg>
-                    <span>Edit Profile</span>
-                  </div>
-                </button>
-              ) : (
-                <>
-                  <button
-                    onClick={handleSave}
-                    disabled={isSaving}
-                    className="px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl hover:from-emerald-700 hover:to-emerald-800 font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSaving ? (
-                      <div className="flex items-center space-x-2">
-                        <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                        <span>Saving...</span>
-                      </div>
-                    ) : (
-                      <div className="flex items-center space-x-2">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        <span>Save Changes</span>
-                      </div>
-                    )}
-                  </button>
-                  <button
-                    onClick={handleCancel}
-                    className="px-6 py-3 bg-slate-600/50 text-slate-300 rounded-xl hover:bg-slate-600/70 font-semibold transition-all duration-300 border border-slate-600/50"
-                  >
-                    Cancel
-                  </button>
-                </>
-              )}
+            <div>
+              <h2 style={{
+                fontSize: '28px',
+                fontWeight: '700',
+                color: '#ffffff',
+                margin: '0 0 8px 0'
+              }}>
+                {user.firstName} {user.lastName}
+              </h2>
+              <p style={{
+                color: '#94a3b8',
+                fontSize: '16px',
+                margin: 0
+              }}>
+                {user.email}
+              </p>
             </div>
           </div>
 
-          {/* Profile Form */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '24px'
+          }}>
             <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">
-                First Name *
+              <label style={{
+                display: 'block',
+                color: '#cbd5e1',
+                fontWeight: '500',
+                marginBottom: '8px',
+                fontSize: '14px'
+              }}>
+                First Name
               </label>
               <input
                 type="text"
@@ -246,19 +301,41 @@ export default function ProfilePage() {
                 value={formData.firstName}
                 onChange={handleInputChange}
                 disabled={!isEditing}
-                className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
-                  isEditing 
-                    ? 'bg-slate-700/50 border-slate-600/50 text-white placeholder-slate-400 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20' 
-                    : 'bg-slate-800/30 border-slate-700/50 text-slate-300 cursor-not-allowed'
-                }`}
-                placeholder="Enter your first name"
-                required
+                style={{
+                  width: '100%',
+                  padding: '16px 20px',
+                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                  border: '1px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '12px',
+                  color: '#ffffff',
+                  fontSize: '16px',
+                  transition: 'all 0.2s ease',
+                  opacity: isEditing ? 1 : 0.7
+                }}
+                onFocus={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                  }
+                }}
+                onBlur={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                    e.target.style.boxShadow = 'none'
+                  }
+                }}
               />
             </div>
 
             <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">
-                Last Name *
+              <label style={{
+                display: 'block',
+                color: '#cbd5e1',
+                fontWeight: '500',
+                marginBottom: '8px',
+                fontSize: '14px'
+              }}>
+                Last Name
               </label>
               <input
                 type="text"
@@ -266,18 +343,40 @@ export default function ProfilePage() {
                 value={formData.lastName}
                 onChange={handleInputChange}
                 disabled={!isEditing}
-                className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
-                  isEditing 
-                    ? 'bg-slate-700/50 border-slate-600/50 text-white placeholder-slate-400 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20' 
-                    : 'bg-slate-800/30 border-slate-700/50 text-slate-300 cursor-not-allowed'
-                }`}
-                placeholder="Enter your last name"
-                required
+                style={{
+                  width: '100%',
+                  padding: '16px 20px',
+                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                  border: '1px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '12px',
+                  color: '#ffffff',
+                  fontSize: '16px',
+                  transition: 'all 0.2s ease',
+                  opacity: isEditing ? 1 : 0.7
+                }}
+                onFocus={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                  }
+                }}
+                onBlur={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                    e.target.style.boxShadow = 'none'
+                  }
+                }}
               />
             </div>
 
             <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">
+              <label style={{
+                display: 'block',
+                color: '#cbd5e1',
+                fontWeight: '500',
+                marginBottom: '8px',
+                fontSize: '14px'
+              }}>
                 Company Name
               </label>
               <input
@@ -286,17 +385,40 @@ export default function ProfilePage() {
                 value={formData.companyName}
                 onChange={handleInputChange}
                 disabled={!isEditing}
-                className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
-                  isEditing 
-                    ? 'bg-slate-700/50 border-slate-600/50 text-white placeholder-slate-400 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20' 
-                    : 'bg-slate-800/30 border-slate-700/50 text-slate-300 cursor-not-allowed'
-                }`}
-                placeholder="Enter your company name"
+                style={{
+                  width: '100%',
+                  padding: '16px 20px',
+                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                  border: '1px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '12px',
+                  color: '#ffffff',
+                  fontSize: '16px',
+                  transition: 'all 0.2s ease',
+                  opacity: isEditing ? 1 : 0.7
+                }}
+                onFocus={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                  }
+                }}
+                onBlur={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                    e.target.style.boxShadow = 'none'
+                  }
+                }}
               />
             </div>
 
             <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">
+              <label style={{
+                display: 'block',
+                color: '#cbd5e1',
+                fontWeight: '500',
+                marginBottom: '8px',
+                fontSize: '14px'
+              }}>
                 Company Size
               </label>
               <select
@@ -304,11 +426,29 @@ export default function ProfilePage() {
                 value={formData.companySize}
                 onChange={handleInputChange}
                 disabled={!isEditing}
-                className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
-                  isEditing 
-                    ? 'bg-slate-700/50 border-slate-600/50 text-white focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20' 
-                    : 'bg-slate-800/30 border-slate-700/50 text-slate-300 cursor-not-allowed'
-                }`}
+                style={{
+                  width: '100%',
+                  padding: '16px 20px',
+                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                  border: '1px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '12px',
+                  color: '#ffffff',
+                  fontSize: '16px',
+                  transition: 'all 0.2s ease',
+                  opacity: isEditing ? 1 : 0.7
+                }}
+                onFocus={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                  }
+                }}
+                onBlur={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                    e.target.style.boxShadow = 'none'
+                  }
+                }}
               >
                 <option value="">Select company size</option>
                 <option value="1-10">1-10 employees</option>
@@ -321,7 +461,13 @@ export default function ProfilePage() {
             </div>
 
             <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">
+              <label style={{
+                display: 'block',
+                color: '#cbd5e1',
+                fontWeight: '500',
+                marginBottom: '8px',
+                fontSize: '14px'
+              }}>
                 Phone Number
               </label>
               <input
@@ -330,64 +476,312 @@ export default function ProfilePage() {
                 value={formData.phone}
                 onChange={handleInputChange}
                 disabled={!isEditing}
-                className={`w-full px-4 py-3 rounded-xl border transition-all duration-300 ${
-                  isEditing 
-                    ? 'bg-slate-700/50 border-slate-600/50 text-white placeholder-slate-400 focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20' 
-                    : 'bg-slate-800/30 border-slate-700/50 text-slate-300 cursor-not-allowed'
-                }`}
-                placeholder="Enter your phone number"
+                style={{
+                  width: '100%',
+                  padding: '16px 20px',
+                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                  border: '1px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '12px',
+                  color: '#ffffff',
+                  fontSize: '16px',
+                  transition: 'all 0.2s ease',
+                  opacity: isEditing ? 1 : 0.7
+                }}
+                onFocus={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                  }
+                }}
+                onBlur={(e) => {
+                  if (isEditing) {
+                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                    e.target.style.boxShadow = 'none'
+                  }
+                }}
               />
-            </div>
-
-            <div>
-              <label className="block text-slate-300 text-sm font-medium mb-2">
-                Email Address
-              </label>
-              <input
-                type="email"
-                value={user.email}
-                disabled
-                className="w-full px-4 py-3 rounded-xl bg-slate-800/30 border border-slate-700/50 text-slate-400 cursor-not-allowed"
-              />
-              <p className="text-slate-500 text-xs mt-1">Email cannot be changed</p>
             </div>
           </div>
 
-          {/* Account Status */}
-          <div className="mt-8 pt-8 border-t border-slate-700/50">
-            <h3 className="text-lg font-semibold text-white mb-4">Account Status</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="bg-slate-700/30 rounded-lg p-4">
-                <div className="flex items-center space-x-3">
-                  <div className={`w-3 h-3 rounded-full ${user.emailVerified ? 'bg-emerald-500' : 'bg-amber-500'}`}></div>
-                  <span className="text-slate-300">Email Verification</span>
-                </div>
-                <p className="text-white font-medium mt-1">
-                  {user.emailVerified ? 'Verified' : 'Pending'}
-                </p>
+          <div style={{
+            display: 'flex',
+            gap: '16px',
+            marginTop: '32px'
+          }}>
+            {!isEditing ? (
+              <button
+                onClick={() => setIsEditing(true)}
+                style={{
+                  padding: '16px 32px',
+                  background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+                  border: 'none',
+                  borderRadius: '12px',
+                  color: '#ffffff',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)'
+                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.3)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = 'none'
+                }}
+              >
+                Edit Profile
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={handleSave}
+                  disabled={isSaving}
+                  style={{
+                    padding: '16px 32px',
+                    background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+                    border: 'none',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    cursor: isSaving ? 'not-allowed' : 'pointer',
+                    transition: 'all 0.2s ease',
+                    opacity: isSaving ? 0.6 : 1
+                  }}
+                  onMouseEnter={(e) => {
+                    if (!isSaving) {
+                      e.currentTarget.style.transform = 'translateY(-2px)'
+                      e.currentTarget.style.boxShadow = '0 8px 25px rgba(34, 197, 94, 0.3)'
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isSaving) {
+                      e.currentTarget.style.transform = 'translateY(0)'
+                      e.currentTarget.style.boxShadow = 'none'
+                    }
+                  }}
+                >
+                  {isSaving ? 'Saving...' : 'Save Changes'}
+                </button>
+                <button
+                  onClick={handleCancel}
+                  style={{
+                    padding: '16px 32px',
+                    background: 'rgba(148, 163, 184, 0.2)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '12px',
+                    color: '#94a3b8',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(148, 163, 184, 0.3)'
+                    e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.5)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(148, 163, 184, 0.2)'
+                    e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                  }}
+                >
+                  Cancel
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Account Status */}
+        <div style={{
+          background: 'rgba(30, 41, 59, 0.6)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(148, 163, 184, 0.2)',
+          borderRadius: '20px',
+          padding: '32px'
+        }}>
+          <h2 style={{
+            fontSize: '24px',
+            fontWeight: '700',
+            color: '#ffffff',
+            margin: '0 0 24px 0'
+          }}>
+            Account Status
+          </h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '16px'
+          }}>
+            <div style={{
+              padding: '20px',
+              background: 'rgba(34, 197, 94, 0.1)',
+              border: '1px solid rgba(34, 197, 94, 0.2)',
+              borderRadius: '16px',
+              textAlign: 'center'
+            }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                background: 'rgba(34, 197, 94, 0.2)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 12px'
+              }}>
+                <svg style={{ width: '24px', height: '24px', color: '#86efac' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
-              
-              <div className="bg-slate-700/30 rounded-lg p-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
-                  <span className="text-slate-300">Account Status</span>
-                </div>
-                <p className="text-white font-medium mt-1">Active</p>
-              </div>
-              
-              <div className="bg-slate-700/30 rounded-lg p-4">
-                <div className="flex items-center space-x-3">
-                  <div className={`w-3 h-3 rounded-full ${user.isAdmin ? 'bg-purple-500' : 'bg-blue-500'}`}></div>
-                  <span className="text-slate-300">Role</span>
-                </div>
-                <p className="text-white font-medium mt-1">
-                  {user.isAdmin ? 'Admin' : 'User'}
-                </p>
-              </div>
+              <p style={{
+                color: '#86efac',
+                fontSize: '14px',
+                fontWeight: '500',
+                margin: '0 0 4px 0'
+              }}>
+                Account Status
+              </p>
+              <p style={{
+                color: '#ffffff',
+                fontSize: '18px',
+                fontWeight: '600',
+                margin: 0
+              }}>
+                Active
+              </p>
             </div>
+
+            <div style={{
+              padding: '20px',
+              background: 'rgba(139, 92, 246, 0.1)',
+              border: '1px solid rgba(139, 92, 246, 0.2)',
+              borderRadius: '16px',
+              textAlign: 'center'
+            }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                background: 'rgba(139, 92, 246, 0.2)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 12px'
+              }}>
+                <svg style={{ width: '24px', height: '24px', color: '#c4b5fd' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a0 0 0 00-7-7z" />
+                </svg>
+              </div>
+              <p style={{
+                color: '#c4b5fd',
+                fontSize: '14px',
+                fontWeight: '500',
+                margin: '0 0 4px 0'
+              }}>
+                Member Since
+              </p>
+              <p style={{
+                color: '#ffffff',
+                fontSize: '18px',
+                fontWeight: '600',
+                margin: 0
+              }}>
+                2025
+              </p>
+            </div>
+
+            <div style={{
+              padding: '20px',
+              background: 'rgba(59, 130, 246, 0.1)',
+              border: '1px solid rgba(59, 130, 246, 0.2)',
+              borderRadius: '16px',
+              textAlign: 'center'
+            }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                background: 'rgba(59, 130, 246, 0.2)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 12px'
+              }}>
+                <svg style={{ width: '24px', height: '24px', color: '#93c5fd' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <p style={{
+                color: '#93c5fd',
+                fontSize: '14px',
+                fontWeight: '500',
+                margin: '0 0 4px 0'
+              }}>
+                Email Verified
+              </p>
+              <p style={{
+                color: '#ffffff',
+                fontSize: '18px',
+                fontWeight: '600',
+                margin: 0
+              }}>
+                                 {user.emailVerified ? 'Yes' : 'No'}
+              </p>
+            </div>
+
+            {user.isAdmin && (
+              <div style={{
+                padding: '20px',
+                background: 'rgba(245, 158, 11, 0.1)',
+                border: '1px solid rgba(245, 158, 11, 0.2)',
+                borderRadius: '16px',
+                textAlign: 'center'
+              }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  background: 'rgba(245, 158, 11, 0.2)',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 12px'
+                }}>
+                  <svg style={{ width: '24px', height: '24px', color: '#fcd34d' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <p style={{
+                  color: '#fcd34d',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  margin: '0 0 4px 0'
+                }}>
+                  Admin Access
+                </p>
+                <p style={{
+                  color: '#ffffff',
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  margin: 0
+                }}>
+                  Enabled
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   )
 }

@@ -17,10 +17,24 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent mx-auto mb-4"></div>
-          <p className="text-purple-200 text-lg">Loading Dashboard...</p>
+      <div style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{
+            width: '64px',
+            height: '64px',
+            border: '4px solid #8b5cf6',
+            borderTop: '4px solid transparent',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite',
+            margin: '0 auto 16px'
+          }}></div>
+          <p style={{ color: '#c4b5fd', fontSize: '18px' }}>Loading Dashboard...</p>
         </div>
       </div>
     )
@@ -31,137 +45,408 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+      color: '#f8fafc'
+    }}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/50 backdrop-blur-sm border-b border-slate-700/50 sticky top-0 z-10">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex items-center justify-between">
+      <div style={{
+        background: 'rgba(30, 41, 59, 0.8)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(148, 163, 184, 0.2)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 10
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '32px 24px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}>
             <div>
-              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+              <h1 style={{
+                fontSize: '48px',
+                fontWeight: '800',
+                background: 'linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                margin: 0
+              }}>
                 Dashboard
               </h1>
-              <p className="text-slate-300 mt-2 text-lg">Welcome back, {user.firstName}!</p>
+              <p style={{
+                color: '#cbd5e1',
+                marginTop: '8px',
+                fontSize: '18px'
+              }}>
+                Welcome back, {user.firstName}! Here's what's happening with your account.
+              </p>
             </div>
-            <div className="flex items-center space-x-4">
-              <div className="bg-slate-800/50 rounded-full px-4 py-2 border border-slate-600/50">
-                <span className="text-slate-300 text-sm">Signed in as </span>
-                <span className="text-white font-semibold">{user.email}</span>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '16px'
+            }}>
+              <div style={{
+                background: 'rgba(139, 92, 246, 0.2)',
+                borderRadius: '12px',
+                padding: '12px 20px',
+                border: '1px solid rgba(139, 92, 246, 0.3)',
+                backdropFilter: 'blur(10px)'
+              }}>
+                <span style={{ color: '#c4b5fd', fontSize: '14px' }}>Signed in as </span>
+                <span style={{ color: '#ffffff', fontWeight: '600' }}>{user.email}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 py-8">
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '32px 24px'
+      }}>
         {/* Quick Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 hover:scale-105 transition-all duration-300 group">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500/40 to-blue-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 border border-blue-400/30 group-hover:from-blue-500/50 group-hover:to-blue-600/50 group-hover:shadow-blue-500/30 group-hover:scale-110 transition-all duration-300">
-                <svg className="w-7 h-7 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '28px', height: '28px' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '24px',
+          marginBottom: '48px'
+        }}>
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05))',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(59, 130, 246, 0.2)',
+            borderRadius: '20px',
+            padding: '32px',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            cursor: 'pointer'
+          }} onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
+            e.currentTarget.style.boxShadow = '0 20px 40px rgba(59, 130, 246, 0.2)'
+          }} onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0) scale(1)'
+            e.currentTarget.style.boxShadow = 'none'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                width: '56px',
+                height: '56px',
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(59, 130, 246, 0.2))',
+                borderRadius: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 8px 32px rgba(59, 130, 246, 0.2)',
+                border: '1px solid rgba(59, 130, 246, 0.3)'
+              }}>
+                <svg style={{ width: '28px', height: '28px', color: '#93c5fd' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <div className="text-right">
-                <p className="text-blue-300 text-sm font-medium">Account Status</p>
-                <p className="text-xl font-bold text-white">Active</p>
+              <div style={{ textAlign: 'right' }}>
+                <p style={{ color: '#93c5fd', fontSize: '14px', fontWeight: '500', margin: 0 }}>Account Status</p>
+                <p style={{ fontSize: '32px', fontWeight: '800', color: '#ffffff', margin: 0 }}>Active</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 backdrop-blur-sm border border-emerald-500/30 rounded-2xl p-6 hover:scale-105 transition-all duration-300 group">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-emerald-500/40 to-emerald-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/20 border border-emerald-400/30 group-hover:from-emerald-500/50 group-hover:to-emerald-600/50 group-hover:shadow-emerald-500/30 group-hover:scale-110 transition-all duration-300">
-                <svg className="w-7 h-7 text-emerald-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '28px', height: '28px' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05))',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(34, 197, 94, 0.2)',
+            borderRadius: '20px',
+            padding: '32px',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            cursor: 'pointer'
+          }} onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
+            e.currentTarget.style.boxShadow = '0 20px 40px rgba(34, 197, 94, 0.2)'
+          }} onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0) scale(1)'
+            e.currentTarget.style.boxShadow = 'none'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                width: '56px',
+                height: '56px',
+                background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(34, 197, 94, 0.2))',
+                borderRadius: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 8px 32px rgba(34, 197, 94, 0.2)',
+                border: '1px solid rgba(34, 197, 94, 0.3)'
+              }}>
+                <svg style={{ width: '28px', height: '28px', color: '#86efac' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a0 0 0 00-7-7z" />
                 </svg>
               </div>
-              <div className="text-right">
-                <p className="text-emerald-300 text-sm font-medium">Member Since</p>
-                <p className="text-xl font-bold text-white">2025</p>
+              <div style={{ textAlign: 'right' }}>
+                <p style={{ color: '#86efac', fontSize: '14px', fontWeight: '500', margin: 0 }}>Member Since</p>
+                <p style={{ fontSize: '32px', fontWeight: '800', color: '#ffffff', margin: 0 }}>2025</p>
               </div>
             </div>
           </div>
 
-          <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6 hover:scale-105 transition-all duration-300 group">
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-500/40 to-purple-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/20 border border-purple-400/30 group-hover:from-purple-500/50 group-hover:to-purple-600/50 group-hover:shadow-purple-500/30 group-hover:scale-110 transition-all duration-300">
-                <svg className="w-7 h-7 text-purple-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '28px', height: '28px' }}>
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05))',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(139, 92, 246, 0.2)',
+            borderRadius: '20px',
+            padding: '32px',
+            transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+            cursor: 'pointer'
+          }} onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)'
+            e.currentTarget.style.boxShadow = '0 20px 40px rgba(139, 92, 246, 0.2)'
+          }} onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'translateY(0) scale(1)'
+            e.currentTarget.style.boxShadow = 'none'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '16px'
+            }}>
+              <div style={{
+                width: '56px',
+                height: '56px',
+                background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.2))',
+                borderRadius: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                boxShadow: '0 8px 32px rgba(139, 92, 246, 0.2)',
+                border: '1px solid rgba(139, 92, 246, 0.3)'
+              }}>
+                <svg style={{ width: '28px', height: '28px', color: '#c4b5fd' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                 </svg>
               </div>
-              <div className="text-right">
-                <p className="text-purple-300 text-sm font-medium">Company</p>
-                <p className="text-xl font-bold text-white">{user.companyName || 'N/A'}</p>
+              <div style={{ textAlign: 'right' }}>
+                <p style={{ color: '#c4b5fd', fontSize: '14px', fontWeight: '500', margin: 0 }}>Company</p>
+                <p style={{ fontSize: '32px', fontWeight: '800', color: '#ffffff', margin: 0 }}>{user.companyName || 'N/A'}</p>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Coming Soon Section */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-amber-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 text-center">
-          <div className="w-24 h-24 bg-gradient-to-br from-amber-500/40 to-amber-600/40 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-amber-500/20 border border-amber-400/30 hover:from-amber-500/50 hover:to-amber-600/50 hover:shadow-amber-500/30 hover:scale-105 transition-all duration-300">
-            <svg className="w-12 h-12 text-amber-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '48px', height: '48px' }}>
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <h2 className="text-3xl font-bold text-white mb-4">Dashboard Coming Soon</h2>
-          <p className="text-slate-300 text-lg mb-6 max-w-2xl mx-auto">
-            We're building an amazing dashboard experience for you. Soon you'll be able to track your procurement activities, 
-            view analytics, and manage your projects all in one place.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <div className="bg-slate-700/30 rounded-lg px-4 py-2 border border-slate-600/30">
-              <span className="text-slate-300">📊 Analytics</span>
-            </div>
-            <div className="bg-slate-700/30 rounded-lg px-4 py-2 border border-slate-600/30">
-              <span className="text-slate-300">📈 Reports</span>
-            </div>
-            <div className="bg-slate-700/30 rounded-lg px-4 py-2 border border-slate-600/30">
-              <span className="text-slate-300">🎯 Projects</span>
-            </div>
-            <div className="bg-slate-700/30 rounded-lg px-4 py-2 border border-slate-600/30">
-              <span className="text-slate-300">📋 Tasks</span>
             </div>
           </div>
         </div>
 
         {/* Quick Actions */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300">
-            <h3 className="text-xl font-bold text-white mb-4">Quick Actions</h3>
-            <div className="space-y-3">
-              <button className="w-full text-left p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-colors duration-200">
-                <span className="text-slate-300">📝 Create New Project</span>
-              </button>
-              <button className="w-full text-left p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-colors duration-200">
-                <span className="text-slate-300">🔍 Search Suppliers</span>
-              </button>
-              <button className="w-full text-left p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-colors duration-200">
-                <span className="text-slate-300">📊 View Reports</span>
-              </button>
-            </div>
-          </div>
+        <div style={{
+          background: 'rgba(30, 41, 59, 0.6)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(148, 163, 184, 0.2)',
+          borderRadius: '20px',
+          padding: '32px',
+          marginBottom: '48px'
+        }}>
+          <h2 style={{
+            fontSize: '28px',
+            fontWeight: '700',
+            color: '#ffffff',
+            margin: '0 0 24px 0'
+          }}>
+            Quick Actions
+          </h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '16px'
+          }}>
+            <button style={{
+              padding: '20px',
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1))',
+              border: '1px solid rgba(59, 130, 246, 0.3)',
+              borderRadius: '16px',
+              color: '#93c5fd',
+              fontSize: '16px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }} onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 12px 24px rgba(59, 130, 246, 0.2)'
+            }} onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }} onClick={() => router.push('/profile')}>
+              <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a0 0 0 00-7-7z" />
+              </svg>
+              Edit Profile
+            </button>
 
-          <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300">
-            <h3 className="text-xl font-bold text-white mb-4">Recent Activity</h3>
-            <div className="space-y-3">
-              <div className="p-3 bg-slate-700/30 rounded-lg">
-                <p className="text-slate-300 text-sm">🎉 Welcome to Prop Shop AI!</p>
-                <p className="text-slate-500 text-xs">Just now</p>
-              </div>
-              <div className="p-3 bg-slate-700/30 rounded-lg">
-                <p className="text-slate-300 text-sm">✅ Account verified successfully</p>
-                <p className="text-slate-500 text-xs">Recently</p>
-              </div>
-              <div className="p-3 bg-slate-700/30 rounded-lg">
-                <p className="text-slate-300 text-sm">🔐 Profile setup completed</p>
-                <p className="text-slate-500 text-xs">Recently</p>
-              </div>
+            <button style={{
+              padding: '20px',
+              background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.1))',
+              border: '1px solid rgba(139, 92, 246, 0.3)',
+              borderRadius: '16px',
+              color: '#c4b5fd',
+              fontSize: '16px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }} onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-4px)'
+              e.currentTarget.style.boxShadow = '0 12px 24px rgba(139, 92, 246, 0.2)'
+            }} onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)'
+              e.currentTarget.style.boxShadow = 'none'
+            }} onClick={() => router.push('/settings')}>
+              <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              Settings
+            </button>
+
+            {user.isAdmin && (
+              <button style={{
+                padding: '20px',
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1))',
+                border: '1px solid rgba(245, 158, 11, 0.3)',
+                borderRadius: '16px',
+                color: '#fcd34d',
+                fontSize: '16px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
+              }} onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)'
+                e.currentTarget.style.boxShadow = '0 12px 24px rgba(245, 158, 11, 0.2)'
+              }} onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = 'none'
+              }} onClick={() => router.push('/admin')}>
+                <svg style={{ width: '20px', height: '20px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Admin Panel
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Coming Soon Section */}
+        <div style={{
+          background: 'rgba(30, 41, 59, 0.6)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(148, 163, 184, 0.2)',
+          borderRadius: '20px',
+          padding: '48px',
+          textAlign: 'center'
+        }}>
+          <div style={{
+            width: '96px',
+            height: '96px',
+            background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.3), rgba(245, 158, 11, 0.2))',
+            borderRadius: '32px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            margin: '0 auto 24px',
+            boxShadow: '0 16px 48px rgba(245, 158, 11, 0.2)',
+            border: '1px solid rgba(245, 158, 11, 0.3)'
+          }}>
+            <svg style={{ width: '48px', height: '48px', color: '#fcd34d' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h2 style={{
+            fontSize: '32px',
+            fontWeight: '700',
+            color: '#ffffff',
+            margin: '0 0 16px 0'
+          }}>
+            More Features Coming Soon!
+          </h2>
+          <p style={{
+            color: '#cbd5e1',
+            fontSize: '18px',
+            margin: '0 0 32px 0',
+            maxWidth: '600px',
+            marginLeft: 'auto',
+            marginRight: 'auto'
+          }}>
+            We're working hard to bring you more powerful tools and insights. Stay tuned for updates on analytics, reporting, and advanced features.
+          </p>
+          <div style={{
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'center',
+            flexWrap: 'wrap'
+          }}>
+            <div style={{
+              padding: '12px 20px',
+              background: 'rgba(139, 92, 246, 0.2)',
+              border: '1px solid rgba(139, 92, 246, 0.3)',
+              borderRadius: '12px',
+              color: '#c4b5fd',
+              fontSize: '14px',
+              fontWeight: '500'
+            }}>
+              📊 Analytics Dashboard
+            </div>
+            <div style={{
+              padding: '12px 20px',
+              background: 'rgba(34, 197, 94, 0.2)',
+              border: '1px solid rgba(34, 197, 94, 0.3)',
+              borderRadius: '12px',
+              color: '#86efac',
+              fontSize: '14px',
+              fontWeight: '500'
+            }}>
+              📈 Performance Reports
+            </div>
+            <div style={{
+              padding: '12px 20px',
+              background: 'rgba(59, 130, 246, 0.2)',
+              border: '1px solid rgba(59, 130, 246, 0.3)',
+              borderRadius: '12px',
+              color: '#93c5fd',
+              fontSize: '14px',
+              fontWeight: '500'
+            }}>
+              🔔 Smart Notifications
             </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </div>
   )
 }
