@@ -237,6 +237,37 @@ export default function AdminDashboard() {
     }
   }
 
+  const handleRemoveUser = async (userId: string, userEmail: string) => {
+    try {
+      // Confirm deletion
+      if (!confirm(`Are you sure you want to remove user "${userEmail}"? This action cannot be undone.`)) {
+        return
+      }
+
+      const response = await fetch('/api/admin/users/remove', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId })
+      })
+
+      if (response.ok) {
+        loadUsers()
+        loadStats()
+        setMessage(`User "${userEmail}" removed successfully!`)
+        setMessageType('success')
+      } else {
+        const data = await response.json()
+        setMessage(data.message || 'Failed to remove user')
+        setMessageType('error')
+      }
+    } catch (error) {
+      setMessage('Error removing user')
+      setMessageType('error')
+    }
+  }
+
   const handleDeleteInvitation = async (invitationId: string) => {
     try {
       const response = await fetch(`/api/admin/invitations/${invitationId}`, {
@@ -1094,13 +1125,13 @@ export default function AdminDashboard() {
                           {user.is_admin ? 'Remove Admin' : 'Make Admin'}
                         </button>
                         <button
-                          onClick={() => handleToggleStatus(user.id)}
+                          onClick={() => handleRemoveUser(user.id, user.email)}
                           style={{
                             padding: '8px 16px',
-                            background: user.is_active ? 'rgba(239, 68, 68, 0.2)' : 'rgba(34, 197, 94, 0.2)',
-                            border: `1px solid ${user.is_active ? 'rgba(239, 68, 68, 0.3)' : 'rgba(34, 197, 94, 0.3)'}`,
+                            background: 'rgba(239, 68, 68, 0.2)',
+                            border: '1px solid rgba(239, 68, 68, 0.3)',
                             borderRadius: '8px',
-                            color: user.is_active ? '#fca5a5' : '#86efac',
+                            color: '#fca5a5',
                             fontSize: '12px',
                             fontWeight: '500',
                             cursor: 'pointer',
@@ -1115,7 +1146,7 @@ export default function AdminDashboard() {
                             e.currentTarget.style.boxShadow = 'none'
                           }}
                         >
-                          {user.is_active ? 'Deactivate' : 'Activate'}
+                          🗑️ Remove User
                         </button>
                       </div>
                     </td>
