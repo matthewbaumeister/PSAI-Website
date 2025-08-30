@@ -63,36 +63,43 @@ export async function GET(request: NextRequest) {
       usersTableExists = false;
     }
     
-    // Test 4: Try to insert a test record into dsip_opportunities
-    let canInsert = false;
-    let insertError = null;
-    try {
-      const testRecord = {
-        topic_id_topicid: `test_${Date.now()}`,
-        title: 'Test Opportunity',
-        component: 'TEST',
-        solicitation: 'Test Solicitation',
-        created_at: new Date().toISOString(),
-        last_scraped_sys_current_timestamp_eastern: new Date().toISOString()
-      };
-      
-      const { error } = await supabase
-        .from('dsip_opportunities')
-        .insert(testRecord);
-      
-      if (!error) {
-        canInsert = true;
-        // Clean up the test record
-        await supabase
+          // Test 4: Try to insert a test record into dsip_opportunities
+      let canInsert = false;
+      let insertError = null;
+      try {
+        // First, let's check what columns actually exist in the table
+        const { data: columns, error: columnsError } = await supabase
           .from('dsip_opportunities')
-          .delete()
-          .eq('topic_id_topicid', testRecord.topic_id_topicid);
-      } else {
-        insertError = error.message;
+          .select('*')
+          .limit(1);
+        
+        if (columnsError) {
+          insertError = `Schema error: ${columnsError.message}`;
+        } else {
+          // Create a minimal test record with only required fields
+          const testRecord = {
+            topic_id_topicid: `test_${Date.now()}`,
+            created_at: new Date().toISOString()
+          };
+          
+          const { error } = await supabase
+            .from('dsip_opportunities')
+            .insert(testRecord);
+          
+          if (!error) {
+            canInsert = true;
+            // Clean up the test record
+            await supabase
+              .from('dsip_opportunities')
+              .delete()
+              .eq('topic_id_topicid', testRecord.topic_id_topicid);
+          } else {
+            insertError = error.message;
+          }
+        }
+      } catch (e) {
+        insertError = e instanceof Error ? e.message : 'Unknown error';
       }
-    } catch (e) {
-      insertError = e instanceof Error ? e.message : 'Unknown error';
-    }
     
     return NextResponse.json({
       success: true,
