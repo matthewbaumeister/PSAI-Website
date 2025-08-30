@@ -66,6 +66,8 @@ export async function GET(request: NextRequest) {
           // Test 4: Try to insert a test record into dsip_opportunities
       let canInsert = false;
       let insertError = null;
+      let availableColumns: string[] = [];
+      
       try {
         // First, let's check what columns actually exist in the table
         const { data: columns, error: columnsError } = await supabase
@@ -77,21 +79,21 @@ export async function GET(request: NextRequest) {
           insertError = `Schema error: ${columnsError.message}`;
         } else {
           // Get the actual column names from the first record
-          const actualColumns = columns && columns.length > 0 ? Object.keys(columns[0]) : [];
+          availableColumns = columns && columns.length > 0 ? Object.keys(columns[0]) : [];
           
           // Create a minimal test record using only columns that actually exist
           const testRecord: any = {};
           
           // Try to use basic columns that should exist
-          if (actualColumns.includes('topic_id')) {
+          if (availableColumns.includes('topic_id')) {
             testRecord.topic_id = 999999;
           }
-          if (actualColumns.includes('id')) {
+          if (availableColumns.includes('id')) {
             // Skip id as it's auto-generated
           }
-          if (actualColumns.includes('created_at')) {
+          if (availableColumns.includes('created_at')) {
             testRecord.created_at = new Date().toISOString();
-          } else if (actualColumns.includes('created_date')) {
+          } else if (availableColumns.includes('created_date')) {
             testRecord.created_date = new Date().toISOString().split('T')[0];
           }
           
@@ -114,7 +116,7 @@ export async function GET(request: NextRequest) {
               insertError = `Insert failed: ${error.message}`;
             }
           } else {
-            insertError = `No valid columns found for test insert. Available columns: ${actualColumns.join(', ')}`;
+            insertError = `No valid columns found for test insert. Available columns: ${availableColumns.join(', ')}`;
           }
         }
       } catch (e) {
@@ -127,7 +129,7 @@ export async function GET(request: NextRequest) {
         opportunitiesTable: {
           exists: opportunitiesTableExists,
           count: opportunitiesCount,
-          columns: columns && columns.length > 0 ? Object.keys(columns[0]) : []
+          columns: availableColumns
         },
         scrapingJobsTable: {
           exists: scrapingJobsTableExists,
