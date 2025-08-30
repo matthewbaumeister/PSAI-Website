@@ -173,18 +173,32 @@ export default function AdminDashboard() {
 
   const handleToggleRole = async (userId: string) => {
     try {
+      // First, get the current user to determine their current admin status
+      const currentUser = users.find(u => u.id === userId)
+      if (!currentUser) {
+        setMessage('User not found')
+        setMessageType('error')
+        return
+      }
+
+      // Toggle the admin status
+      const newAdminStatus = !currentUser.is_admin
+
       const response = await fetch('/api/admin/users/toggle-role', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userId })
+        body: JSON.stringify({ 
+          userId,
+          isAdmin: newAdminStatus
+        })
       })
 
       if (response.ok) {
         loadUsers()
         loadStats()
-        setMessage('User role updated successfully!')
+        setMessage(`User ${newAdminStatus ? 'promoted to' : 'removed from'} admin successfully!`)
         setMessageType('success')
       } else {
         const data = await response.json()
