@@ -12,6 +12,7 @@ interface PasswordChangeData {
 
 interface EmailPreferences {
   marketingEmails: boolean
+  newsletter: boolean
   productUpdates: boolean
   securityAlerts: boolean
 }
@@ -31,6 +32,7 @@ export default function SettingsPage() {
 
   const [emailPreferences, setEmailPreferences] = useState<EmailPreferences>({
     marketingEmails: true,
+    newsletter: false,
     productUpdates: true,
     securityAlerts: true
   })
@@ -40,12 +42,27 @@ export default function SettingsPage() {
   const [isDeletingAccount, setIsDeletingAccount] = useState(false)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false)
 
-  // Check if user is authenticated
+  // Check if user is authenticated and load preferences
   useEffect(() => {
     if (!isLoading && !user) {
       router.push('/auth/login')
+    } else if (user) {
+      // Load user preferences
+      loadUserPreferences()
     }
   }, [user, isLoading, router])
+
+  const loadUserPreferences = async () => {
+    try {
+      const response = await fetch('/api/user/preferences')
+      if (response.ok) {
+        const preferences = await response.json()
+        setEmailPreferences(preferences)
+      }
+    } catch (error) {
+      console.error('Failed to load preferences:', error)
+    }
+  }
 
   if (isLoading) {
     return (
@@ -114,13 +131,24 @@ export default function SettingsPage() {
   const handleSavePreferences = async () => {
     setIsSavingPreferences(true)
     try {
-      // This would typically call an API to save preferences
-      // For now, we'll just simulate success
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      setMessage('Email preferences saved successfully!')
-      setMessageType('success')
+      const response = await fetch('/api/user/preferences', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailPreferences)
+      })
+
+      if (response.ok) {
+        setMessage('Email preferences saved successfully!')
+        setMessageType('success')
+      } else {
+        const errorData = await response.json()
+        setMessage(errorData.message || 'Failed to save preferences')
+        setMessageType('error')
+      }
     } catch (error) {
-      setMessage('Failed to save preferences')
+      setMessage('An error occurred while saving preferences')
       setMessageType('error')
     } finally {
       setIsSavingPreferences(false)
@@ -573,13 +601,25 @@ export default function SettingsPage() {
               }}>
                 <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white', margin: '0 0 16px 0' }}>Marketing Communications</h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                  <input type="checkbox" id="marketing" style={{ width: '18px', height: '18px' }} />
+                  <input 
+                    type="checkbox" 
+                    id="marketing" 
+                    checked={emailPreferences.marketingEmails}
+                    onChange={(e) => setEmailPreferences(prev => ({ ...prev, marketingEmails: e.target.checked }))}
+                    style={{ width: '18px', height: '18px' }} 
+                  />
                   <label htmlFor="marketing" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
                     Receive updates about new features and services
                   </label>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <input type="checkbox" id="newsletter" style={{ width: '18px', height: '18px' }} />
+                  <input 
+                    type="checkbox" 
+                    id="newsletter" 
+                    checked={emailPreferences.newsletter}
+                    onChange={(e) => setEmailPreferences(prev => ({ ...prev, newsletter: e.target.checked }))}
+                    style={{ width: '18px', height: '18px' }} 
+                  />
                   <label htmlFor="newsletter" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
                     Subscribe to our monthly newsletter
                   </label>
@@ -589,45 +629,78 @@ export default function SettingsPage() {
               <div style={{
                 padding: '20px',
                 background: 'rgba(51, 65, 85, 0.3)',
-                borderRadius: '12px',
-                border: '1px solid rgba(71, 85, 105, 0.3)'
+                border: '1px solid rgba(71, 85, 105, 0.3)',
+                borderRadius: '12px'
               }}>
                 <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white', margin: '0 0 16px 0' }}>System Notifications</h3>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                  <input type="checkbox" id="security" defaultChecked style={{ width: '18px', height: '18px' }} />
+                  <input 
+                    type="checkbox" 
+                    id="security" 
+                    checked={emailPreferences.securityAlerts}
+                    onChange={(e) => setEmailPreferences(prev => ({ ...prev, securityAlerts: e.target.checked }))}
+                    style={{ width: '18px', height: '18px' }} 
+                  />
                   <label htmlFor="security" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
                     Security alerts and login notifications
                   </label>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <input type="checkbox" id="updates" defaultChecked style={{ width: '18px', height: '18px' }} />
-                  <label htmlFor="updates" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
+                  <input 
+                    type="checkbox" 
+                    id="updates" 
+                    checked={emailPreferences.productUpdates}
+                    onChange={(e) => setEmailPreferences(prev => ({ ...prev, productUpdates: e.target.checked }))}
+                    style={{ width: '18px', height: '18px' }} 
+                  />
+                  <label htmlFor="newsletter" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
                     System updates and maintenance notices
                   </label>
                 </div>
               </div>
 
               <button
+                onClick={handleSavePreferences}
+                disabled={isSavingPreferences}
                 style={{
                   width: '100%',
                   padding: '12px 24px',
-                  background: '#059669',
+                  background: isSavingPreferences ? '#6b7280' : '#059669',
                   color: 'white',
                   borderRadius: '12px',
                   fontWeight: '600',
                   fontSize: '16px',
                   border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
+                  cursor: isSavingPreferences ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease',
+                  opacity: isSavingPreferences ? 0.7 : 1
                 }}
                 onMouseEnter={(e) => {
-                  (e.target as HTMLElement).style.background = '#047857';
+                  if (!isSavingPreferences) {
+                    (e.target as HTMLElement).style.background = '#047857';
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  (e.target as HTMLElement).style.background = '#059669';
+                  if (!isSavingPreferences) {
+                    (e.target as HTMLElement).style.background = '#059669';
+                  }
                 }}
               >
-                Save Preferences
+                {isSavingPreferences ? (
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                    <div style={{
+                      width: '16px',
+                      height: '16px',
+                      border: '2px solid white',
+                      borderTop: '2px solid transparent',
+                      borderRadius: '50%',
+                      animation: 'spin 1s linear infinite'
+                    }}></div>
+                    <span>Saving...</span>
+                  </div>
+                ) : (
+                  'Save Preferences'
+                )}
               </button>
             </div>
           </div>
