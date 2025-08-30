@@ -447,8 +447,8 @@ export default function SettingsPage() {
               </div>
             </div>
             
-            <form onSubmit={handlePasswordChange} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div>
+            <form onSubmit={handlePasswordChange} style={{ display: 'flex', flexDirection: 'column', gap: '24px', alignItems: 'center' }}>
+              <div style={{ width: '100%', maxWidth: '400px' }}>
                 <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>Current Password</label>
                 <input
                   type="password"
@@ -470,7 +470,7 @@ export default function SettingsPage() {
                 />
               </div>
 
-              <div>
+              <div style={{ width: '100%', maxWidth: '400px' }}>
                 <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>New Password</label>
                 <input
                   type="password"
@@ -492,7 +492,7 @@ export default function SettingsPage() {
                 />
               </div>
 
-              <div>
+              <div style={{ width: '100%', maxWidth: '400px' }}>
                 <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>Confirm New Password</label>
                 <input
                   type="password"
@@ -520,6 +520,7 @@ export default function SettingsPage() {
                 disabled={isChangingPassword}
                 style={{
                   width: '100%',
+                  maxWidth: '400px',
                   padding: '12px 24px',
                   background: '#2563eb',
                   color: 'white',
