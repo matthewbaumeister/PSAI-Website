@@ -48,6 +48,11 @@ export default function AdminDashboard() {
   const [isInviting, setIsInviting] = useState(false)
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState<'success' | 'error'>('success')
+  
+  // DSIP Scraper state
+  const [isScraperRunning, setIsScraperRunning] = useState(false)
+  const [scraperStatus, setScraperStatus] = useState<'idle' | 'running' | 'completed' | 'failed' | 'paused'>('idle')
+  const [currentScrapingJob, setCurrentScrapingJob] = useState<any>(null)
 
   // Check if user is admin
   useEffect(() => {
@@ -62,8 +67,25 @@ export default function AdminDashboard() {
       loadUsers()
       loadInvitations()
       loadStats()
+      // Initialize scraper status
+      checkScraperStatus()
     }
   }, [user])
+
+  // Check scraper status on mount
+  const checkScraperStatus = async () => {
+    try {
+      const response = await fetch('/api/dsip/scraper')
+      if (response.ok) {
+        const data = await response.json()
+        setIsScraperRunning(data.isRunning)
+        setScraperStatus(data.status)
+        setCurrentScrapingJob(data.currentJob)
+      }
+    } catch (error) {
+      console.error('Error checking scraper status:', error)
+    }
+  }
 
   const loadUsers = async () => {
     setIsLoadingUsers(true)
@@ -217,6 +239,193 @@ export default function AdminDashboard() {
       setMessage('Error deleting invitation')
       setMessageType('error')
     }
+  }
+
+  // DSIP Scraper functions
+  const startScraper = async (type: 'full' | 'quick') => {
+    try {
+      const response = await fetch('/api/dsip/scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action: 'start', type })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        setIsScraperRunning(true)
+        setScraperStatus('running')
+        setMessage(`Scraper started successfully! ${data.message}`)
+        setMessageType('success')
+        
+        // Start monitoring the scraper
+        monitorScraper()
+      } else {
+        const errorData = await response.json()
+        setMessage(`Failed to start scraper: ${errorData.error}`)
+        setMessageType('error')
+      }
+    } catch (error) {
+      setMessage('Error starting scraper')
+      setMessageType('error')
+    }
+  }
+
+  const stopScraper = async () => {
+    try {
+      const response = await fetch('/api/dsip/scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action: 'stop' })
+      })
+
+      if (response.ok) {
+        setIsScraperRunning(false)
+        setScraperStatus('paused')
+        setMessage('Scraper paused successfully')
+        setMessageType('success')
+      } else {
+        setMessage('Failed to pause scraper')
+        setMessageType('error')
+      }
+    } catch (error) {
+      setMessage('Error pausing scraper')
+      setMessageType('error')
+    }
+  }
+
+  const resumeScraper = async () => {
+    try {
+      const response = await fetch('/api/dsip/scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action: 'resume' })
+      })
+
+      if (response.ok) {
+        setIsScraperRunning(true)
+        setScraperStatus('running')
+        setMessage('Scraper resumed successfully')
+        setMessageType('success')
+        
+        // Start monitoring the scraper again
+        monitorScraper()
+      } else {
+        const errorData = await response.json()
+        setMessage(`Failed to resume scraper: ${errorData.error}`)
+        setMessageType('error')
+      }
+    } catch (error) {
+      setMessage('Error resuming scraper')
+      setMessageType('error')
+    }
+  }
+
+  const testScraperSystem = async () => {
+    try {
+      setMessage('🧪 Testing scraper system...')
+      setMessageType('success')
+      
+      // Test 1: Basic system status
+      const statusResponse = await fetch('/api/dsip/test-scraper')
+      if (statusResponse.ok) {
+        const statusData = await statusResponse.json()
+        console.log('System Status Test:', statusData)
+        
+        if (statusData.success) {
+          setMessage('✅ System status test passed! Check console for details.')
+          setMessageType('success')
+        } else {
+          setMessage('❌ System status test failed! Check console for details.')
+          setMessageType('error')
+        }
+      }
+      
+      // Test 2: Database operations
+      const dbResponse = await fetch('/api/dsip/test-scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action: 'test-database' })
+      })
+      
+      if (dbResponse.ok) {
+        const dbData = await dbResponse.json()
+        console.log('Database Test:', dbData)
+        
+        if (dbData.success) {
+          setMessage('✅ Database test passed! Check console for details.')
+          setMessageType('success')
+        } else {
+          setMessage('❌ Database test failed! Check console for details.')
+          setMessageType('error')
+        }
+      }
+      
+      // Test 3: Connection test
+      const connResponse = await fetch('/api/dsip/test-scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action: 'test-connection' })
+      })
+      
+      if (connResponse.ok) {
+        const connData = await connResponse.json()
+        console.log('Connection Test:', connData)
+        
+        if (connData.success) {
+          setMessage('✅ Connection test passed! Check console for details.')
+          setMessageType('success')
+        } else {
+          setMessage('❌ Connection test failed! Check console for details.')
+          setMessageType('error')
+        }
+      }
+      
+    } catch (error) {
+      setMessage('❌ Test failed with error. Check console for details.')
+      setMessageType('error')
+      console.error('Test error:', error)
+    }
+  }
+
+  const monitorScraper = async () => {
+    const interval = setInterval(async () => {
+      try {
+        const response = await fetch('/api/dsip/scraper')
+        if (response.ok) {
+          const data = await response.json()
+          setIsScraperRunning(data.isRunning)
+          setScraperStatus(data.status)
+          setCurrentScrapingJob(data.currentJob)
+          
+          if (data.status === 'completed' || data.status === 'failed') {
+            clearInterval(interval)
+            setIsScraperRunning(false)
+            if (data.status === 'completed') {
+              setMessage('Scraping completed successfully!')
+              setMessageType('success')
+            } else {
+              setMessage(`Scraping failed: ${data.currentJob?.error || 'Unknown error'}`)
+              setMessageType('error')
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error monitoring scraper:', error)
+      }
+    }, 2000) // Check every 2 seconds
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval)
   }
 
   if (isLoading) {
@@ -1178,6 +1387,19 @@ export default function AdminDashboard() {
                   <span style={{ color: '#94a3b8', fontSize: '14px' }}>Auto-Refresh:</span>
                   <span style={{ color: '#10b981', fontWeight: '600' }}>Active</span>
                 </div>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Scraper Status:</span>
+                  <span style={{ 
+                    color: scraperStatus === 'running' ? '#fbbf24' : scraperStatus === 'completed' ? '#10b981' : scraperStatus === 'failed' ? '#ef4444' : '#94a3b8', 
+                    fontWeight: '600' 
+                  }}>
+                    {scraperStatus === 'running' ? '🔄 Running' : scraperStatus === 'completed' ? '✅ Completed' : scraperStatus === 'failed' ? '❌ Failed' : '⏸️ Idle'}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -1193,13 +1415,109 @@ export default function AdminDashboard() {
                 color: '#ffffff',
                 margin: '0 0 16px 0'
               }}>
-                Quick Actions
+                Scraper Controls
               </h3>
               <div style={{
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '12px'
               }}>
+                {!isScraperRunning ? (
+                  <>
+                    <button
+                      onClick={() => startScraper('full')}
+                      style={{
+                        padding: '12px 16px',
+                        background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        color: '#ffffff',
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        width: '100%',
+                        textAlign: 'left',
+                        boxShadow: '0 4px 15px rgba(255, 107, 107, 0.3)'
+                      }}
+                    >
+                      🚀 Full Refresh (8-12 hours)
+                    </button>
+                    <div style={{
+                      background: 'rgba(255, 193, 7, 0.1)',
+                      border: '1px solid rgba(255, 193, 7, 0.3)',
+                      borderRadius: '6px',
+                      padding: '8px 12px',
+                      marginTop: '8px',
+                      fontSize: '12px',
+                      color: '#ffc107'
+                    }}>
+                      💡 <strong>Data Safe:</strong> Existing records are updated, not deleted
+                    </div>
+                    <button
+                      onClick={() => startScraper('quick')}
+                      style={{
+                        padding: '12px 16px',
+                        background: 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        color: '#ffffff',
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        width: '100%',
+                        textAlign: 'left',
+                        boxShadow: '0 4px 15px rgba(78, 205, 196, 0.3)'
+                      }}
+                    >
+                      ⚡ Quick Check Active
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={stopScraper}
+                      style={{
+                        padding: '12px 16px',
+                        background: 'linear-gradient(135deg, #ffa726 0%, #ff9800 100%)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        color: '#ffffff',
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        width: '100%',
+                        textAlign: 'left',
+                        boxShadow: '0 4px 15px rgba(255, 167, 38, 0.3)'
+                      }}
+                    >
+                      🛑 Pause Scraper
+                    </button>
+                    {currentScrapingJob?.status === 'paused' && (
+                      <button
+                        onClick={resumeScraper}
+                        style={{
+                          padding: '12px 16px',
+                          background: 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)',
+                          border: 'none',
+                          borderRadius: '8px',
+                          color: '#ffffff',
+                          fontSize: '14px',
+                          fontWeight: '600',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s ease',
+                          width: '100%',
+                          textAlign: 'left',
+                          boxShadow: '0 4px 15px rgba(76, 175, 80, 0.3)'
+                        }}
+                      >
+                        ▶️ Resume Scraper
+                      </button>
+                    )}
+                  </>
+                )}
                 <button
                   onClick={() => {
                     // Trigger DSIP refresh
@@ -1285,9 +1603,97 @@ export default function AdminDashboard() {
                 >
                   📊 View System Logs
                 </button>
+                <button
+                  onClick={testScraperSystem}
+                  style={{
+                    padding: '10px 16px',
+                    background: 'rgba(34, 197, 94, 0.2)',
+                    border: '1px solid rgba(34, 197, 94, 0.3)',
+                    borderRadius: '8px',
+                    color: '#86efac',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    width: '100%',
+                    textAlign: 'left'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(34, 197, 94, 0.3)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(34, 197, 94, 0.2)'
+                  }}
+                >
+                  🧪 Test Scraper System
+                </button>
               </div>
             </div>
           </div>
+
+          {/* Scraper Status */}
+          {isScraperRunning && currentScrapingJob && (
+            <div style={{
+              background: 'rgba(15, 23, 42, 0.6)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid rgba(148, 163, 184, 0.2)',
+              marginTop: '24px'
+            }}>
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#ffffff',
+                margin: '0 0 16px 0'
+              }}>
+                Scraping Progress - {currentScrapingJob.type === 'full' ? 'Full Refresh' : 'Quick Check'}
+              </h3>
+              <div style={{ marginBottom: '16px' }}>
+                <div style={{
+                  width: '100%',
+                  height: '12px',
+                  background: 'rgba(148, 163, 184, 0.2)',
+                  borderRadius: '6px',
+                  overflow: 'hidden'
+                }}>
+                  <div style={{
+                    width: `${currentScrapingJob.progress}%`,
+                    height: '100%',
+                    background: 'linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%)',
+                    transition: 'width 0.3s ease'
+                  }} />
+                </div>
+                <p style={{ color: '#94a3b8', margin: '8px 0 0 0', fontSize: '14px' }}>
+                  {currentScrapingJob.progress}% complete - {currentScrapingJob.processedTopics} of {currentScrapingJob.totalTopics} topics
+                </p>
+                {currentScrapingJob.estimatedCompletion && (
+                  <p style={{ color: '#94a3b8', margin: '4px 0 0 0', fontSize: '12px' }}>
+                    ⏰ Estimated completion: {new Date(currentScrapingJob.estimatedCompletion).toLocaleString()}
+                  </p>
+                )}
+              </div>
+              <div style={{ 
+                maxHeight: '200px', 
+                overflowY: 'auto',
+                background: 'rgba(0, 0, 0, 0.2)',
+                borderRadius: '8px',
+                padding: '12px'
+              }}>
+                <h4 style={{ color: '#ffffff', margin: '0 0 8px 0', fontSize: '14px' }}>Recent Logs:</h4>
+                {currentScrapingJob.logs.slice(-8).map((log: string, index: number) => (
+                  <p key={index} style={{ 
+                    color: '#cbd5e1', 
+                    margin: '4px 0', 
+                    fontSize: '12px',
+                    fontFamily: 'monospace',
+                    lineHeight: '1.4'
+                  }}>
+                    {log}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div style={{
             background: 'rgba(15, 23, 42, 0.4)',

@@ -1,0 +1,1001 @@
+id,topic_number_topiccode,topic_id_topicid,title_topictitle,short_title_derived_first_50_chars_of_topictitle,component_component,component_full_name_derived_expanded_from_component_abbreviatio,command_command,program_program,program_type_derived_extracted_from_program_field,solicitation_solicitationtitle,solicitation_number_solicitationnumber,cycle_name_cyclename,release_number_releasenumber,solicitation_phase_derived_extracted_from_cyclename_using_regex,status_topicstatus,topic_status_topicstatus_duplicate,proposal_window_status_calc_based_on_current_date_vs_start_end_,days_until_close_calc_topicenddate_current_date,days_since_open_calc_current_date_topicstartdate,urgency_level_calc_based_on_days_until_close_thresholds,open_date_topicstartdate_converted_to_mm_dd_yyyy,close_date_topicenddate_converted_to_mm_dd_yyyy,open_datetime_topicstartdate_duplicate,close_datetime_topicenddate_duplicate,duration_days_calc_topicenddate_topicstartdate,pre_release_start_topicprereleasestartdate,pre_release_end_topicprereleaseenddate,pre_release_duration_calc_prereleaseenddate_prereleasestartdate,created_date_createddate,updated_date_updateddate,modified_date_modifieddate,last_activity_date_calc_max_of_updateddate_modifieddate_topicqa,qanda_start_topicqastartdate,qanda_end_topicqaenddate,qanda_tpoc_start_topicqatpocstartdate,qanda_tpoc_end_topicqatpocenddate,qanda_status_topicqastatus,qanda_status_display_topicqastatusdisplay,qanda_open_topicqaopen_boolean,qanda_window_active_calc_current_date_within_qa_start_end_range,days_until_qanda_close_calc_topicqaenddate_current_date,total_questions_topicquestioncount,published_questions_noofpublishedquestions,unpublished_questions_calc_topicquestioncount_noofpublishedques,qanda_response_rate_calc_publishedquestions_totalquestions_perc,hasqa_derived_1_if_topicquestioncount_0,qa_data_topicquestioncount_duplicate,qanda_content_fetched_from_questions_endpoint_and_formatted,qanda_last_updated_ext_latest_answeredon_date_from_qanda_respon,technology_areas_details_technologyareas_array_joined,technology_areas_count_calc_count_of_comma_separated_values,primary_technology_area_derived_first_item_in_technologyareas,tech_modernization_details_focusareas_mapped,modernization_priorities_details_focusareas_array_joined,modernization_priority_count_calc_count_of_pipe_separated_value,keywords_details_keywords,keywords_count_calc_count_of_semicolon_separated_values,primary_keyword_derived_first_keyword_before_semicolon,itar_controlled_details_itar_boolean_to_yes_no,requiresitar_derived_1_if_itar_is_yes_else_0,security_export_details_itar_duplicate,security_clearance_required_analysis_keywords_in_description,objective_details_objective_with_html_removed,objective_word_count_calc_space_separated_word_count,key_requirements_details_objective_duplicate,description_details_description_with_html_removed,description_word_count_calc_space_separated_word_count,description_length_calc_character_count,has_technical_details_derived_1_if_description_500_chars,isxtech_analysis_xtech_mentioned_in_description,is_xtech_analysis_xtech_keyword_search_duplicate,prize_gating_derived_yes_if_xtech_detected,competition_type_derived_based_on_xtech_and_dp2_detection,phase_i_description_details_phase1description_with_html_removed,phase_ii_description_details_phase2description_with_html_remove,phase_iii_dual_use_details_phase3description_with_html_removed,has_commercial_potential_derived_1_if_phase3description_exists,references_details_referencedocuments_array_formatted,reference_docs_details_referencedocuments_duplicate,reference_count_calc_count_of_semicolon_separated_refs,has_references_derived_1_if_references_exist,phase_phasehierarchy_parsed_or_default_phase_i,phases_available_phasehierarchy_config_displayvalue_joined,phase_types_phasehierarchy_parsed_pipe_separated,phase_count_calc_count_of_phase_types,is_direct_to_phase_ii_analysis_dp2_or_direct_to_phase_ii_in_tex,phase_funding_text_extraction_dollar_amounts_from_phase_descrip,funding_max_text_extraction_maximum_dollar_amount_found,award_amount_phase_i_text_extraction_dollar_amount_from_phase1d,award_amount_phase_ii_text_extraction_dollar_amount_from_phase2,award_duration_phase_i_text_extraction_months_from_phase1descri,award_duration_phase_ii_text_extraction_months_from_phase2descr,total_potential_award_calc_sum_of_all_phase_amounts_found,funding_type_analysis_cost_plus_or_fixed_price_keywords,topic_pdf_download_gen_topics_api_public_topics_id_download_pdf,pdf_link_gen_topic_pdf_duplicate,solicitation_instructions_download_gen_submissions_api_public_d,solicitationinstructionsurl_gen_solicitation_download_duplicate,component_instructions_download_gen_component_specific_download,componentinstructionsurl_gen_component_download_duplicate,has_pdf_derived_1_if_pdf_link_exists,has_solicitation_instructions_derived_1_if_solicitation_link_ex,has_component_instructions_derived_1_if_component_link_exists,solicitation_instructions_version_baaprefaceuploadtitle,component_instructions_version_baainstructions_filename_match,tpoc_topicmanagers_where_assignmenttypetpoc_names_joined,tpoc_names_topicmanagers_name_array,tpoc_emails_topicmanagers_email_array,tpoc_centers_topicmanagers_center_array,tpoc_count_calc_number_of_tpocs,has_tpoc_derived_1_if_tpoc_exists,show_tpoc_showtpoc_boolean,tpoc_email_domain_ext_domain_from_first_tpoc_email,owner_owner_field,internal_lead_internallead_field,sponsor_component_sponsorcomponent_or_component_fallback,evaluation_weights_evaluationweights_or_evaluationcriteria,selection_criteria_selectioncriteria,has_evaluation_criteria_derived_1_if_evaluation_weights_exist,historical_awards_historicalawards,previous_awards_count_previousawardscount,success_rate_successrate,competition_level_est_based_on_historicalawards_thresholds,year_sys_current_year,solicitation_year_ext_year_from_cyclename_using_regex,program_year_programyear,fiscal_year_calc_based_on_oct_1_fiscal_year_start,quarter_calc_calendar_quarter_from_topicstartdate,baa_preface_upload_id_baaprefaceuploadid,baa_preface_title_baaprefaceuploadtitle,is_release_preface_isreleasepreface_boolean,baa_instruction_files_baainstructions_filename_array_joined,baa_files_count_calc_length_of_baainstructions_array,has_baa_instructions_derived_1_if_baainstructions_exists,applicable_actions_applicableactions_array_joined,actions_count_calc_length_of_applicableactions,is_active_isactive_boolean,is_archived_isarchived_boolean,is_draft_isdraft_boolean,is_published_ispublished_boolean,allow_proposal_submission_allowproposalsubmission_boolean,is_open_for_submission_derived_1_if_topicstatus_is_open,proposal_requirements_proposalrequirements,submission_instructions_submissioninstructions,eligibility_requirements_eligibilityrequirements,has_special_requirements_analysis_special_keywords_detected,information_quality_calc_based_on_key_field_lengths,data_completeness_score_calc_percentage_of_filled_fields,last_scraped_sys_current_timestamp_eastern,search_tags_gen_component_program_status_combined,category_tags_analysis_tech_categories_from_keywords,priority_score_calc_multi_factor_scoring_algorithm,relevance_score_user_empty_for_custom_scoring,record_id_gen_topiccode_topicid_first_8_chars,unique_id_gen_cyclename_topiccode,tracking_number_trackingnumber_if_exists,version_version_or_default_1,imported_at
+A: It depends for both components.&nbsp; The D2D can have internal batteries if it needs to support the design/implementation, however, the D2D is expected to be supported via external system power.&nbsp; With respect to an external antenna, its preferable&nbsp;to have an internal antenna, however, an external antenna most not hinder a dismounted solder&#39;s movement or increase the profile such that mission execution is compromised.
+
+Q3 (05/04/2021): The target budget is $500, what volume of production are you looking for?
+A: 1600 per Brigade Combat Team, however, theses number can vary depending on the Army&#39;s Basis-of-Issue Priorities (BOI).
+
+Q4 (05/04/2021): For the dimensions requirement of the node, does this include batteries and external antennaâs?
+A: It depends for both components.&nbsp; The D2D can have internal batteries if it needs to support the design/implementation, however, the D2D is expected to be supported via external system power.&nbsp; With respect to an external antenna, its preferable&nbsp;to have an internal antenna, however, an external antenna most not hinder a dismounted solder&#39;s movement or increase the profile such that mission execution is compromised.
+
+Q5 (05/04/2021): We understand that the solution must be able to use licensed and unlicensed spectrum, what about shared bands? Can we consider CBRS band for our solution?
+A: Yes.&nbsp; As long as CBRS supports an infrastructure-less&nbsp;implementation
+
+Q6 (05/04/2021): How many users on a channel? Should PTT run on a different operating frequency?
+A: The PTT functionality is your choice in terms of implementation, however, PTT ease of use and functionality should not be convoluted for the Soldier, it should be familiar&nbsp;and natural to use.
+
+Q7 (05/04/2021): Is there a preference for voice communications? Voice over LTE? Voice over 5G?
+A: This is the vendor&#39;s choice as long as an infrastructure-less solution is&nbsp; implemented.
+
+Q8 (05/03/2021): Given this is a DP2 topic, can someone please point to the Technical Volume details/requirements/format including page length?  The ASO announcement for this topic specifies a 5-page limit on Phase I proposals, but is unclear on the length of the Technical Volume (Vol 2) for DP2 proposals.  There is mention of a template, but the link that is included in the BAA & ASO simply says ""template coming soon.""
+A: I apologize for the confusion. For this DP2, the Technical Volume page limit is 15 pages. Please refer back to the overarching 21.4 BAA (see Appendix B) for what needs to be included in the technical volume. We do not have a template at this time but Appendix B has thorough instructions as to what needs to be included.
+
+Q9 (05/03/2021): The instructions for the D2P proposal specify that the format and length requirements for the DP2 or Phase II proposal will be specified in the ASO.  I could only find the specified length and format of the phase I proposal in the ASO announcement.  Could you you please specify the length and format of the D2P proposals for this topic?  Also what is the maximum funding allowed for this D2P proposal and are matching funds permitted for this topic?
+A: I apologize for the confusion. For this DP2, the Technical Volume page limit is 15 pages. Please refer back to the overarching 21.4 BAA (see Appendix B) for what needs to be included in the technical volume. We do not have a template at this time but Appendix B has thorough instructions as to what needs to be included. Max PoP is 18 months and $1,730,751.
+
+Q10 (04/26/2021): Is this a uniform/ Suit?
+A: No, this is hardware and software that protects your communications from electronic warfare attacks (e.g., jamming, etc.).
+
+Q11 (04/25/2021): Want this Worn?
+A: Can you please rephrase your question?
+
+Q12 (04/16/2021): This topic only appears to be available in the system as a Direct to Phase II topic. Is this by design or will the topic be loaded into the proposal system with availability to be submitted as a Phase I topic.
+A: We are only looking for Direct to Phase II&#39;s for this particular topic.
+
+Q13 (04/05/2021): Are you interested in having a complete solution proposal or alternatively, a proposal that deals with aspects of the problem such as management of the data in contested environments?
+A: We are looking for a complete solution.",,"Information Systems, Sensors",2,Information Systems,Network Command,Network Command,1,D2D; Jam Resistance; Frequency Agility; LTE,4,D2D,No,0,No,,Develop a Device-to-Device (D2D) squad-level communication platform that uses direct communications without network assistance of a radio access network (RAN). The D2D platform shall implement a cognitive agent controlling jamming mitigation strategies in contested electronic contested environments to provide increased resiliency and lethality for dismounted soldiers.,46,Develop a Device-to-Device (D2D) squad-level communication platform that uses direct communications without network assistance of a radio access network (RAN). The D2D platform shall implement a cognitive agent controlling jamming mitigation strategies in contested electronic contested environments to provide increased resiliency and lethality for dismounted soldiers.,"The current state of the art for dismounted soldier communications is the adoption of commercial wireless waveforms (e.g., IEEE 802.11x, LTE) or existing tactical radios. In the case of commercial wireless waveforms, the waveform provides high bandwidth throughput and scalability. However, commercial wireless waveforms are not developed to operate in electronic contested environments (i.e., Electronic Warfare). In the case of tactical radio waveforms, bandwidth throughput is minimal in comparison to commercial bandwidth speed. It does not support high bandwidth services or electronic warfare resiliency at the dismounted soldier level. In both cases, commercial and tactical radios, neither supports an evolving threat matrix or information-driven decision-making. Therefore, a solution is required that combines high-speed bandwidth throughput (i.e., commercial waveform) and resiliency in electronically contested environments.The offeror is required to provide an innovative solution that encompasses commercial high bandwidth and scalability. Some of these innovative solutions could be LTE-A, an intelligent cognitive agent, power-efficiency, and jamming mitigation electronics in a lightweight form-factor for dismounted operations. The following Key Performance Indicators (KPIs) for the said solution is below:The Dismounted D2D Node shall provide voice and data communications. Data communications are defined as Situational Awareness (SA), Command & Control (C2), and Video.The Dismounted D2D Node shall support Push-to-Talk (PTT) voice communicationsThe Dismounted D2D Node shall use direct communications without RAN coordinationThe Dismounted D2D Node shall use discovery without RAN coordinationThe Dismounted D2D Node shall use a UMTS Subscriber Identify Module (USIM) for provisioningThe Dismounted D2D Node shall use Cryptographic Algorithms for Bearer Channel SecurityThe Dismounted D2D Node shall use Secure Real-Time Transport Protocol (SRTP) for Media Channel SecurityThe Dismounted D2D Node shall use licensed or unlicensed frequency bandsThe Dismounted D2D Node shall support multicast for one-to-many (Group) communicationsThe Dismounted D2D Node shall support broadcast for one-to-many (Group) communicationsThe Dismounted D2D Node shall automatically establish direct communications up to 1000 D2D Nodes within rangeThe Dismounted D2D Node communication range shall be no less than 500 metersThe Dismounted D2D Node communication throughput shall be no less than 300 MbpsThe Dismounted D2D Node communications shall operate in degraded mode in contested environmentsThe Dismounted D2D Node shall be Low Probability of Intercept & Low Probability of Detection (LPI/LPD) The Dismounted D2D Node shall be Jam ResistantThe Dismounted D2D Node shall implement Frequency AgilityThe Dismounted D2D Node shall implement Machine Learning for Signal Feature ExtractionThe Dismounted D2D Node shall implement Machine Learning to direct and control Jammer Mitigation StrategiesThe Dismounted D2D Node shall implement Decoy Signal(s) outside of the frequency band of operation(s)The Dismounted D2D Node shall implement Adaptive Antenna TechnologyThe Dismounted D2D Node shall not exceed 6"" x 2"" x 3"" in volumeThe Dismounted D2D Node shall not exceed 0.5 lbsThe Dismounted D2D Node shall not exceed 2W budgetThe Dismounted D2D shall not exceed $500The Dismounted D2D Node shall use USB for external communications",466,3432,1,No,No,No,,"The offeror shall prepare and deliver a feasibility study at the end of phase 1. The feasibility study shall contain a proposed design concept, and implementation of a dismounted D2D communication platform based on system description and KPIs discussed and outlined in the description section. The proposed design concept and implementation shall be substantiated through modeling/simulation or other analytic means. When presenting modeling/simulation or analytic outcomes in the feasibility study, the offer shall include assumptions, caveats, and test data used substantiate conclusion(s) in the feasibility study.",The offeror shall provide 8-10 operational prototypes and demonstrate functionality at the end of phase 2. The network communication test scenarios shall consist of the following:8-10 node network where voice quality and data throughput rates will be scrutinized.Verification and Validation of the 1-26 KPIs outlined in the description section above.,"The offeror shall demonstrate the Dismounted D2D Communication Platform with a limited number of nodes that autonomously forms a network, processes Voice, C2, SA, and Video data traffic in support of dismounted soldiers. In terms of commercialization, the communications technology developed through this SBIR can be readily used in the IOT (Internet of Things) commercial market space. Several areas of the IOT include sensor networking and management, data off-loading for LTE (Long-Term Evolution) networks, and Smart Grid Communications.",1,"Liebhart, R. (2015). LTE for public safety. Chichester: Wiley-Blackwell.; Mumtaz, S., & Rodriguez, J. (2014). Smart Device to Smart Device Communication. Cham: Springer International Publishing.; [SPEC] 3GPP TR 22.803 - Feasibility study for Proximity Services (ProSe). (n.d.). Retrieved from https://itectec.com/archive/3gpp-specification-tr-22-803/.; Itectec.com. (2019). [SPEC] 3GPP TS 23.303 - Proximity-based services (ProSe); Stage 2 - iTecTec. [online] Available at: https://itectec.com/archive/3gpp-specification-ts-23-303/ [Accessed 2 Nov. 2019].; [SPEC] 3GPP TR 36.843 - Study on LTE device to device proximity services; Radio aspects - iTecTec. (2014). Retrieved November 2, 2019, fromhttps://itectec.com/archive/3gpp-specification-tr-36-843/","Liebhart, R. (2015). LTE for public safety. Chichester: Wiley-Blackwell.; Mumtaz, S., & Rodriguez, J. (2014). Smart Device to Smart Device Communication. Cham: Springer International Publishing.; [SPEC] 3GPP TR 22.803 - Feasibility study for Proximity Services (ProSe). (n.d.). Retrieved from https://itectec.com/archive/3gpp-specification-tr-22-803/.; Itectec.com. (2019). [SPEC] 3GPP TS 23.303 - Proximity-based services (ProSe); Stage 2 - iTecTec. [online] Available at: https://itectec.com/archive/3gpp-specification-ts-23-303/ [Accessed 2 Nov. 2019].; [SPEC] 3GPP TR 36.843 - Study on LTE device to device proximity services; Radio aspects - iTecTec. (2014). Retrieved November 2, 2019, fromhttps://itectec.com/archive/3gpp-specification-tr-36-843/",7,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/83819/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/83819/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:42,,,,,A214-034_83819,ARMY_SBIR_2021_P1_C4_A214-034,,1,2025-08-09 19:51:32.635591+00
+4205,A214-035,83974,Robotic Combat Vehicle (RCV) Sustainment,Robotic Combat Vehicle (RCV) Sustainment,ARMY,United States Army,AFC,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-06-03,2021-06-23,2021-06-03,2021-06-23,,,,,,,,,,,,,COMPLETED,Completed,No,,,6,6,0,,1,6,"Q1 (06/21/2021): Can you refer to the section in the solicitation where it talks about the 2 month option period? My team is trying to understand how to appropriately scope a possible extension. We were under the impression from the 4 page summary that this was a 12 week effort, only, with the goal to be an acceleration into a possible Phase II award.
+A: This question cannot be answered as it was received outside of the official Q&amp;A period.
+
+Q2 (06/16/2021): In the Proposed Approach, it states: &quot;Include a statement of work that provides an explicit description of your proposed work including proposed methods, timelines, contributions of any subcontractors, and delivery date of final products.&quot; Is the final product in reference to the concept design at the end of the 12-week PoP, or does this reference a final product at the end of a successful Phase II or Phase III?&nbsp;
+A: This question cannot be answered as it was received outside of the official Q&amp;A period.
+
+Q3 (06/09/2021): Regarding the two webinars on May 19 and May 25, the published topic states &quot;Links to video recordings of the webinars will be posted in the DSIP portal in the days following each.&quot;&nbsp;Where exactly will those links be posted?&nbsp;
+A: Please refer to &quot;<strong _ngcontent-c18="""">AVAILABLE DOCUMENTS/REFERENCES&quot;&nbsp;</strong>for additional links to webinar slides. Or visit&nbsp;aal.army/resources/# to watch the recorded videos of the webinars.&nbsp;
+
+Q4 (06/09/2021): The Period of Performance (POP) shows as three months with a two month Option Period. When populating the DISP POP field, should it be three or five months?
+A: Please show a work load for POP of 5&nbsp;months and break out what work will be performed in the 3 month base versus&nbsp;what work will be done if awarded a 2 month option period. In the Cost Volume section, please break down the budget for a $200k base award versus $50k option period.&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+Q5 (06/04/2021): <p style=""margin-left:8px"">The BAA SBO 21.4 Appendix B Section B.3- A proposal cover sheet states that it should include a brief technical abstract of no more than 200 word to describes anticipated benefits and potential commercial applications.
+
+<p style=""margin-left:8px"">The SBIR/STTR Innovation Portal (DSIP) states this technical abstract is Limited to 3000 characters.&nbsp;
+
+<p style=""margin-left:8px"">Can the govt please clarify whether we should follow the DSIP guidance or the BAA 21.4 &ndash; Appendix B &ndash; B.3 part A.
+A: Please follow the BAA requirements of keeping the technical abstract within 200 words.&nbsp;
+
+Q6 (06/04/2021): The instructions reference an optional guide for the format of the 10-slide deck as part of Volume 5.&nbsp; I can&#39;t seem to find that optional guide anywhere.&nbsp; Can you please specify exactly where to find it?
+A: You can find the optional slide deck and Phase I template at the bottom of the page on&nbsp;https://aal.army/spartn/#.&nbsp;",,Ground Sea,1,Ground Sea,Artificial Intelligence/ Machine Learning,Artificial Intelligence/ Machine Learning,1,"sustainment, robotics, logistics, artificial intelligence, intelligent health monitoring, predictive maintenance, smart fleet management, sensor data fusion, data management, data compression, data visualization",1,"sustainment, robotics, logistics, artificial intelligence, intelligent health monitoring, predictive maintenance, smart fleet management, sensor data fusion, data management, data compression, data visualization",Yes,1,Yes,,"Develop hardware/software components around sensors and sensor data to gather, fuse, and interpret Robotic Combat Vehicle (RCV) sustainment requirements and operational capabilities in order to deliver actionable information to decision makers, at echelon.",33,"Develop hardware/software components around sensors and sensor data to gather, fuse, and interpret Robotic Combat Vehicle (RCV) sustainment requirements and operational capabilities in order to deliver actionable information to decision makers, at echelon.","RCVs are currently being developed to augment combat power, increase situational awareness, and create opportunities for deception, while minimizing friendly force exposure to adversaries. The application of emerging RCV technology is only feasible if RCVs can stay operational with proper maintenance, sustainment, and logistics. Soldiers and leaders must have the ability to monitor and troubleshoot RCV sustainment problems and battlefield damage remotely. Soldiers inherently monitor manned vehicles by way of sensory and haptic feedback. They then take appropriate action based on training and experience to address systems health and status, conduct preventive maintenance, and perform battlefield repair. RCVs will be required to actively monitor themselves to support remote troubleshooting and inform decision makers of known, potential, and projected problems within systems and components. Example systems and components that will need to be monitored and remotely assessed include, but are not limited to: System maintenance (e.g., brakes, transmission, fluids, driveline) Automotive functions (e.g., engine, electrical, tracks, software, vibration, temperature) Mobility status Fuel and range status Weapon and ammunition status Sensor and other modular component statusRCVs currently track sensor data and provide basic vehicle status information and warning signals via a user interface. The Army is looking to develop best-in-breed technology that can translate sensor data to actionable facts, in real time, for logisticians, maneuver leaders, maintainers, and mechanics. Decision makers will use correlated data to inform operational use and service platforms or components based on conditions, projected conditions, and refined data trends. Any degraded health or projected degradation of an assembly/component, impending failure, and prescribed corrective action should be based on analytics of data. The Army is interested in systems or components of technologies with included features but are not limited to the following:Novel sensors that can be easily integrated into the RCV system that are relevant to the sustainment problem (e.g. visual, audio, vibration, fault, sonar, fused sensor arrays, ect.) Remotely and autonomously monitor and integrate with Modular Mission Payloads (MMPs) (e.g., Weapons, Sensors, Electronic Warfare, Surveillance, Targeting, Obscuration, Unmanned Aerial Systems, Obstacle Reduction/Construction) Optimize analysis to prioritize what information needs to be sent in real time vs post mission. Integrate with current or planned user interfaces to effectively display timely and accurate information Optimized for degraded communications or limited bandwidth Leverage existing and/or planned network transport options Ruggedize to work in various environments under austere conditions Process data onboard system and in cloud (if available)",396,2894,1,No,No,No,,"The objective of Phase I is to establish the technical merit, feasibility, and commercial potential of the proposed effort and to determine the quality of performance of the awarded companies prior to providing further support in Phase II. Awarded companies will develop a technical concept for and end-to-end system, or components of a system, that can support or execute remote troubleshooting of RCV problems by applying new/novel sensors, correlating sensors data, fusing data, and providing decision makers an accurate picture of the health of RCVs that supports rapid action, at echelon (from the user level to commanders, mechanics, sustainers and logisticians).Phase I deliverables include a design review including expected performance with supporting documentation and analysis, a final report including Phase II plans, and a concept demonstration of proposed technology. Examples of a suitable concept demonstration are: digital animations, a 3D printed or scalable model; simulations; physical demonstration of current technology adapted to the problem.Proposals will be evaluated on a holistic basis based on their relevance, total cost, developmental timeline,ability to integrate into a system of systems, modularity, compatibility with open architecture, and any additional features the proposer includes. Companies can voluntarily participate in the Army Applications Laboratory (AAL) 12-week cohort program. The AAL cohort program is designed to solve specific Army modernization challenges on a compressed timeline. The cohort program matches qualified companies with Army problems owners to speed capability development, accelerate transition, and de-risk or inform requirements. This program is designed for businesses that own unique, applicable technology and are interested in growing a new line of business into the DoD.The cohort program will enhance technology development through the rapid exposure to Army stakeholders and the sustainment, maneuver, and robotics acquisition communities. Planned activities include a problem topic deep dive, a field week with Army sustainment and maneuver leaders and soldiers, hands-on experience with currently fielded military equipment and weapon systems, and stakeholder engagement from the requirements writer to acquisition manager to the end-user. An example cohort program for this topic is: Week 1 – Orientation and problem deep dive (virtual) Week 2 – Soldier Touchpoint (in-person at an Army installation) Week 3-6 – Concept research and planning Week 7 – Mid-point concept design brief to Army Senior Leaders and SME roundtable discussion (in-person at an Army installation)Week 8-11 – Concept design refinementWeek 12 – Final concept design brief to Army Senior Leaders (in-person at an Army installation)Cohort programming will be provided free of charge. Proposers that plan to participate in the cohort (if awarded a Phase I) are encouraged to include travel costs for three cohort trips, within the continental US, of 4-5 days each for in-person programming. In-person events may be substituted for virtual events depending on COVID-19 travel restrictions. Details will be provided to awardees under this topic at Phase I award.","The objective of Phase II is to continue the development efforts initiated in Phase I. Awarded companies will execute prototype detailed design and develop a subsystem prototype based on the Phase I final report. They will conduct a formal risk assessment of the subsystem technology in an operational environment. Phase II deliverables include a demonstration and delivery of a Technology Readiness Level (TRL) 6 prototype for further Army evaluation, as well as quarterly and final reports detailing design and performance analysis of the prototype.Awardees may also be eligible for Phase IIb award after completion of Phase II period of performance . Phase IIb can extend the period of performance with additional funding and additional matching opportunities to finish building out solutions through the stakeholders discretion.","The objective of Phase III, where appropriate, is for the small business to pursue commercialization objectives through the effort. Companies may develop a manufacturing-ready product design, capable of integration with the existing or future platform, and demonstrate technology integration as part of a vehicle system. Low-rate production will occur as required. Companies will engage in laboratory or operational testing as required. Potential commercial uses include autonomous automotive platforms, transportation fleet management, warehouse distribution centers, agricultural, mining and construction equipment, and transportation logistics. Phase III deliverables include system-level integration technical data package, installation documentation, and system-level prototype for demonstration and government-sponsored testing The technology within this topic is restricted under the International Traffic in Arms Regulation (ITAR), which controls the export and import of defense-related material and services. Offerors must disclose any proposed use of foreign nationals, their country of origin, and what tasks each would accomplish in the statement of work in accordance with section 3.5.b(7) of the solicitation.",1,"https://www.dsp.dla.mil/Programs/MOSA/; https://www.defensenews.com/land/2019/05/23/players-surfacing-for-robotic-combat-vehicle-competition/; https://breakingdefense.com/2020/11/meet-the-armys-future-family-of-robot-tanks-rcv/; https://www.youtube.com/watch?v=TnOf4feD_2s; https://www.army.mil/article/237343/sustainment_revolution_implications_of_artificial_intelligence_for_army_sustainment; https://www.army.mil/article/238414/rapid_robotic_requirement_relay; https://www.youtube.com/watch?v=hH_gMatCB0U; Wednesday, May 19 2021 11:00 am CT Wednesday, 25 May 2021 11:00 am CT To register visit: https://rcv_sustainment_webinar.eventbrite.com; During the pre-release period (May 5, 2021 to June 2, 2021), proposing firms have an opportunity to contact topic authors through https://calendly.com/jessica-larson-civ/rcv-tpoc-call to schedule a time to ask technical questions about specific BAA topics.","https://www.dsp.dla.mil/Programs/MOSA/; https://www.defensenews.com/land/2019/05/23/players-surfacing-for-robotic-combat-vehicle-competition/; https://breakingdefense.com/2020/11/meet-the-armys-future-family-of-robot-tanks-rcv/; https://www.youtube.com/watch?v=TnOf4feD_2s; https://www.army.mil/article/237343/sustainment_revolution_implications_of_artificial_intelligence_for_army_sustainment; https://www.army.mil/article/238414/rapid_robotic_requirement_relay; https://www.youtube.com/watch?v=hH_gMatCB0U; Wednesday, May 19 2021 11:00 am CT Wednesday, 25 May 2021 11:00 am CT To register visit: https://rcv_sustainment_webinar.eventbrite.com; During the pre-release period (May 5, 2021 to June 2, 2021), proposing firms have an opportunity to contact topic authors through https://calendly.com/jessica-larson-civ/rcv-tpoc-call to schedule a time to ask technical questions about specific BAA topics.",9,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/83974/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/83974/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:42,,,,,A214-035_83974,ARMY_SBIR_2021_P1_C4_A214-035,,1,2025-08-09 19:51:32.635591+00
+4206,A214-036,83980,"Virtual Human Integration supporting Intelligent Tutoring / Adaptive Training (IT/AT) ",Virtual Human Integration supporting Intelligent T,ARMY,United States Army,AFC,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-06-16,2021-07-08,2021-06-16,2021-07-08,,,,,,,,,,,,,COMPLETED,Completed,No,,,11,11,0,,1,11,"Q1 (06/24/2021): <ul>
+	<li style=""margin-left:36px""><span style=""background:white""><span style=""tab-stops:list .5in"">Is there a preferred Virtual Reality platform for the Phase I prototype (VR Headset, MR Headset, desktop application), and should future prototypes demonstrate support for additional platforms?</span></span></li>
+	<li style=""margin-left:36px""><span style=""background:white""><span style=""tab-stops:list .5in"">Should the Phase I prototype demonstrate training for Multi-Domain Operations (MDO) environments?</span></span></li>
+	<li style=""margin-left:36px""><span style=""background:white""><span style=""tab-stops:list .5in"">Can the TPOC provide any examples of Patterns of Life (POL) activities, or specific examples of cultural activities?</span></span></li>
+	<li style=""margin-left:36px""><span style=""background:white""><span style=""tab-stops:list .5in"">Should the proposed solution enable full support in fully offline environments, or is it anticipated that constant or infrequent connections to Local Area Networks (LAN) or the cloud could be made?</span></span></li>
+	<li style=""margin-left:36px""><span style=""background:white""><span style=""tab-stops:list .5in"">Can the TPOC provide any examples of emotional reactions required by the Intelligent Tutor?</span></span></li>
+	<li style=""margin-left:36px""><span style=""background:white""><span style=""tab-stops:list .5in"">Should the Phase I prototype be designed to interact with a currently available training platform, or would a generic training simulator suffice?</span></span></li>
+	<li style=""margin-left:36px""><span style=""background:white""><span style=""tab-stops:list .5in"">Is there a preferred simulation or exercise that the Phase I prototype should demonstrate?</span></span></li>
+</ul>
+A: <p style=""margin-left:24px""><span style=""background:#d3ebf4"">Q1 - Is there a preferred Virtual Reality platform for the Phase I prototype (VR Headset, MR Headset, desktop application), and should future prototypes demonstrate support for additional platforms?</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">A1 - We are in the process of determining which HMD will be used for the RVCT. The STE will operate in an XR environment.</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">Q2 - Should the Phase I prototype demonstrate training for Multi-Domain Operations (MDO) environments?</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">A2 - If you have or can demonstrate training technology in an MDO environment then please do so.</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">Q3 - Can the TPOC provide any examples of Patterns of Life (POL) activities, or specific examples of cultural activities?</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">A3 - POL should conform to local customs or typical behaviors for a region which could be based on religion, location, or historical factors etc. An activity could be people shopping in an outdoor market in rural China or an explosion in downtown Tokyo.</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">Q4 - Should the proposed solution enable full support in fully offline environments, or is it anticipated that constant or infrequent connections to Local Area Networks (LAN) or the cloud could be made?</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">A4 - Solution should function in denied or disconnected environments as well as connected and in the cloud.</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">Q5 - Can the TPOC provide any examples of emotional reactions required by the Intelligent Tutor?</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">A5 - The more realistic, humanlike, and natural a system performs will elevate its effectiveness to the user. Natural gestures and voice tones should correlate to the activities in which the tutor is engaged. </span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">Q6 - Should the Phase I prototype be designed to interact with a currently available training platform, or would a generic training simulator suffice?</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">A6 - System should be built on an open service oriented architecture to the fullest extent possible. The game engine for this application will most likely be VBS4 so any system developed would need to integrate with that platform. We have a Sandbox tool called Haven that can be used for integration as well as GIFT.</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">Q7 - Is there a preferred simulation or exercise that the Phase I prototype should demonstrate?</span>
+
+<p style=""margin-left:24px""><span style=""background:#d3ebf4"">A7 - For Phase I you should describe your current technical capability and how it relates to the BAA topic. If you have fielded or developed technology in the areas for consideration then you should provide information on that prototype and how it relates to our technology requirements. </span>
+
+Q2 (06/24/2021): Hello AAL SPARTN Team,
+
+Is an MOU required for submission to this D2P2 Topic?
+
+Thank you,
+
+-AccuShoot Inc.
+A: No MOU is required for this topic.
+
+Q3 (06/22/2021): Hello I have a team of quantum technology engineers called Team Quantux and would like to work on these topics. I have experience developing Ai technologies and currently developing the FIREX ai<br />
+<br />
+www.firextoken.com<br />
+www.quantumdigisphere.com<br />
+<br />
+Thank you,
+
+Derek Geisler
+
+19496195480
+A: The due date for submitting proposals is 7 July at 12PM EST.
+
+Q4 (06/19/2021): What data sets are going to be provided for this endeavor to train adaptive models?
+A: <span style=""background:white"">Data sets may or may not be provided as the integration should be based on open systems architecture. Technology may be integrated using Generalized Intelligent Framework for Tutoring (GIFT) which can be accessed @ </span>
+
+<span style=""background:white""><a href=""https://www.gifttutoring.org/projects/gift/wiki/Overview"">https://www.gifttutoring.org/projects/gift/wiki/Overview</a></span>
+
+Q5 (06/14/2021): If not here, I am unclear where to&nbsp;technical proposal/cost proposal structure and page count - related questions should be submitted.&nbsp; I don&#39;t see instructions for this in the posting at&nbsp;<a href=""https://sam.gov/opp/1ffba3c889134628adba0d6858af6459/view"">https://sam.gov/opp/1ffba3c889134628adba0d6858af6459/view</a>&nbsp;.<u5:p></u5:p>
+
+&nbsp;
+A: <p style=""margin-bottom:11px"">Please consult the file &ldquo;Army+BAA+21.4+Rev+3&rdquo;&nbsp; located in the attachments/links portion of sam.gov &nbsp;for the IT/AT topic (notice id W50RAJ-20-S-0001_SBIR_BAA_A214-036).
+
+<p style=""margin-bottom:11px""><span style=""background:white"">Administrative, proposal preparation, and award questions should be emailed to usarmy.pentagon.hqda-asa-alt.mbx.army-applied-sbir-program@mail.mil and to usarmy.apg.ccdc.mbx.sbir-program-managers-helpdesk@mail.mil. All questions must be in English and must include the name, email address, and the telephone number of a point of contact</span>
+
+Q6 (06/14/2021): If both Phase 1 proposals and direct to Phase 2 proposals are being solicited for this topic, are Direct to Phase 2 proposals preferred?&nbsp;
+A: This is a Direct to Phase II topic. Only Phase II proposals will be accepted.
+
+Q7 (06/14/2021): Are Phase I proposals being accepted for this topic or is it just a direct to Phase II topic?&nbsp; If so, what is the format of the Phase I technical proposal (e.g. sections / sub-sections, content, font size, page limits)?
+A: This is a Direct to Phase II topic. Only Phase II proposals will be accepted.
+
+Q8 (06/14/2021): 1. Is this RFP accepting Phase I submissions as well?
+
+2. Is this requested solution strictly a plug-and-play for existing Army training systems? Or is this to also support and develop new and exisiting Army training scenarios?
+A: 1. No, this is a Direct to Phase 2 topic.
+
+2.&nbsp;The technology should address advancement of capability and not develop the scenarios which would be based on Army doctrine. The solution could be plug and play if it was fully developed and operational in its intended environment.
+
+Q9 (06/10/2021): If you wouldn&rsquo;t mind, I have a few questions regarding this proposal.
+
+<ol>
+	<li>It is not clear to me if this is a request for Phase 1 as well, or if this is a request for Phase II/Direct to Phase II only? (If allowing Phase 1, the contract specs were not listed in the RFP. I just noticed the Phase 2 contract details)</li>
+	<li>Is the desired solution a plug-in capability that can be used with any existing training scenario software? Or does this solution need to also have the capability of generating scenarios? (I ask because I worked on Patriot virtual trainers with Raytheon and we built scenarios for the Army to train the soldiers with our software. So basically, a game the soldier played and it taught how to maintain and interact with the Patriot system).</li>
+	<li>What type of database are you planning to store the performance data mentioned in the RFP? Is that something that you would like included in the Proposal? Or is there an already determined database system you are planning to use to store and extract the data?</li>
+</ol>
+A: 1. This is a Direct to Phase II topic.
+
+2.&nbsp;The technology should address advancement of capability and not develop the scenarios which would be based on Army doctrine. The solution could be plug and play if it was fully developed and operational in its intended environment.
+
+3. There is no specified or determined database.&nbsp;The Database could be a master database as part of the Training Management Tool which links the applications that are associated or it could be a standalone per application.&nbsp;
+
+Q10 (06/09/2021): The maximum&nbsp;length of the white paper is given as 15 pages in several places but the SPARTN document says 15 pages in the Introduction and 10 pages in the Technical Volume Formatting Instructions. Is the page limit 15 or 10? Thanks for clarifying!&nbsp;
+A: Phase II proposals shall not exceed 15 pages for the technical volume. Proposers can submit an optional slide deck of 10 slides in Volume 5: Supporting Documents. The slide deck can contain information on the technical approach, the team, commercialization plans, or relevant technology/research the proposers have developed, and it can contain additional/complementary information to the technical volume. If a proposer elects to submit a slide deck, its information will be used in the evaluation process. Please refer to Appendix A and Appendix B of BAA 21.4 for detailed instructions on proposal preparation.
+
+Q11 (06/08/2021): Hello, to better understand what is needed. I am asking if this is a software &quot;app like solution&quot; that will plug-in to an existing Army training software that houses the scenarios/TM&#39;S/Environments, etc.? Or is this an &quot;all inclusive&quot; solution that will not only provide the VR capability, but also support the development of the scenarios and environments needed for testing?
+A: <p style=""margin-bottom:11px"">You may use an open architecture. The software may be a plug-in solution that would ultimately interoperate with the STE Training Software Simulation (TSS) and Training Management Tool (TMT). The VR environment is already part of the TSS so that would not need to be developed.",,Information Systems,1,Information Systems,Artificial Intelligence/ Machine Learning | Autonomy,Artificial Intelligence/ Machine Learning | Autonomy,2,"Artificial Intelligence and Machine Learning (AI/ML), Intelligent Entities, Intelligent tutoring, Adaptive, STE, Synthetic Training Environment, Scenario based, Natural Language Processing",1,"Artificial Intelligence and Machine Learning (AI/ML), Intelligent Entities, Intelligent tutoring, Adaptive, STE, Synthetic Training Environment, Scenario based, Natural Language Processing",Yes,1,Yes,,"Develop, demonstrate, and deliver a solution for computer controlled virtual human entities as well as intelligent tutoring systems to simulate realistic behavior and scenarios, evaluate Soldier training performance, provide feedback, and tailor training scenarios to optimize Soldier performance.",38,"Develop, demonstrate, and deliver a solution for computer controlled virtual human entities as well as intelligent tutoring systems to simulate realistic behavior and scenarios, evaluate Soldier training performance, provide feedback, and tailor training scenarios to optimize Soldier performance.","Soldiers are constantly training, and the Army is always looking for ways to make them more effective. The creation of a synthetic training environment that will interact with users, and enhance live training, is a critical Army modernization priority. The goal is to create a system that can train skills to multiple Soldiers simultaneously, using realistic and dynamic virtual reality/augmented reality scenarios. This type of training will enable our Soldiers to train together, even when geographically separated, and help them make better decisions faster. The ultimate end state: improved outcomes on the battlefield. Current synthetic training environments are constrained by intelligent entities that are not as realistic or responsive as desired. The U.S. Army is looking for the implementation of virtual humans with natural behaviors as well as intelligent entities to act as Subject Matter Experts (SME) to tutor the Soldiers by providing feedback, guidance, and if necessary demonstrate a defined skill for the Soldier. Simulations should focus on interfacing synthetic entities with intelligent tutoring functionality to support coaching and feedback functions. Systems should provide dynamic simulation adjustments, reinforce decision making, identify performance gaps, and determine the appropriate level of interaction/challenge for the next training event based on previous interactions. The intelligent tutoring / adaptive training solution will occur in a Virtual Reality (VR) environment to use realistic training scenarios and will be accessible remotely to Soldiers. Improving intelligent entities to be more responsive, fluid and adaptable will enable identification of individualized end user performance struggles and learning gaps. This will allow the intelligent tutoring entities to adjust scenarios and modify the difficulty level as required for each training iteration. Capabilities of this solution could include (but are not limited to): Ability to interact with multi-user training audiences to provide realistic interactions in the way of standard speech patterns, defined work actions, emotional reactions, and reactivity Training scenarios should allow the Soldier to rehearse and run multiple engagements to prepare them for future activity in a Multi-Domain Operations (MDO) environment Dynamic behaviors that react to users' decision processes with fluidity and account for group behavior Customizable and scalable Patterns of Life (POL) activities to include cultural activities and norms Applicable with the Generalized Intelligent Framework for Tutoring (GIFT) Designed with an open architecture format to facilitate integration into the Army's Training Management Tool (TMT) and the Training Simulation System (TSS) Software solution that can be integrated with future hardware",399,2822,1,No,No,No,,"Design proof of concept solution for monitoring and providing feedback for Soldier performance, and modify training scenarios. Solutions will be evaluated based on a holistic view of factors including: the ability to integrate with existing government software such as STE TMT or TSS, cost of development, ability to adapt based on individual Soldiers needs or scenarios, and any additional factors proposed. Final deliverable will be a concept design presentation, proof of technology demonstration, and plans for follow-on Phase 2 work. DIRECT-TO-PHASE-II proposals must provide documentation to substantiate that the scientific and technical merit and feasibility described in the Phase I section of this topic has been met and describes the potential commercial applications of the solution. This could be accomplished through the use of GIFT or other intelligent tutoring system technology. Soldier touchpoint will be provided free of charge. Proposers that plan to participate in the Soldier touchpoint (if awarded a Phase II) are encouraged to include travel costs for three touchpoints, within the continental US, of 1-2 days each for in-person event. In-person events may be substituted for virtual events depending on COVID-19 travel restrictions. Details will be provided to awardees under this topic at Phase I award.","Design a prototype demonstration of virtual human entities simulation for future integration into the Army's Synthetic Training Environment. Solution shall contain all capabilities listed above, as well as any additional features proposed by the vendor, and will be evaluated on a holistic basis including: the ability to integrate with existing government software such as TMT or TSS, cost of development, ability to adapt based on individual Soldiers needs or scenarios, and any additional factors proposed. Confirmation of training effectiveness through product verification shall be demonstrated. Accurate models for measuring performance, valid feedback and scenario adaptation logic, and experiments to determine type of intervention shall confirm that technology is viable and meaningful within the environment. Phase II deliverables include a demonstration and delivery of a Technology Readiness Level (TRL) 6 prototype for further Army evaluation, as well as quarterly and final reports detailing design and performance analysis of the prototype.","The objective of Phase III, where appropriate, is for the small business to pursue commercialization objectives through the effort. Companies may develop a manufacturing-ready product design, capable of integration with the existing or future platform, and demonstrate technology integration. Companies will engage in laboratory or operational testing as required. Potential commercial uses include video game design, AR/VR industries, realistic video game environments.Phase III deliverables include system-level integration technical data package, installation documentation, and system-level prototype for demonstration and government-sponsored testing",1,"Intelligent Tutoring : https://en.wikipedia.org/wiki/Intelligent_tutoring_system#:~:text=An%20intelligent%20tutoring%20system%20(ITS,intervention%20from%20a%20human%20teacher; Patterns of Life (POL): https://en.wikipedia.org/wiki/Pattern-of-life_analysis; Multi-Domain Operations (MDO): https://adminpubs.tradoc.army.mil/pamphlets/TP525-3-1.pdf; Generalized Intelligent Framework for tutoring (GIFT): https://gifttutoring.org/projects/gift/wiki/Overview; Adaptive Tutoring: https://apps.dtic.mil/sti/pdfs/ADA612782.pdf; Synthetic Training Environment (STE) : https://www.peostri.army.mil/synthetic-training-environment-ste/; Training Management Tools (TMT): https://www.peostri.army.mil/tsis-2020-iitsec-update-pm-se; Training Simulation Software (TSS) : https://www.peostri.army.mil/tsis-2020-iitsec-update-pm-se; Webinar Date: June 2nd, 2021, (10:00am Central Time) - https://it_at_webinar.eventbrite.com; During the pre-release period (May 19, 2021 to June 15, 2021), proposing firms have an opportunity to contact topic authors through https://calendly.com/tpoc-itat/30min to schedule a time to ask technical questions about specific BAA topics.","Intelligent Tutoring : https://en.wikipedia.org/wiki/Intelligent_tutoring_system#:~:text=An%20intelligent%20tutoring%20system%20(ITS,intervention%20from%20a%20human%20teacher; Patterns of Life (POL): https://en.wikipedia.org/wiki/Pattern-of-life_analysis; Multi-Domain Operations (MDO): https://adminpubs.tradoc.army.mil/pamphlets/TP525-3-1.pdf; Generalized Intelligent Framework for tutoring (GIFT): https://gifttutoring.org/projects/gift/wiki/Overview; Adaptive Tutoring: https://apps.dtic.mil/sti/pdfs/ADA612782.pdf; Synthetic Training Environment (STE) : https://www.peostri.army.mil/synthetic-training-environment-ste/; Training Management Tools (TMT): https://www.peostri.army.mil/tsis-2020-iitsec-update-pm-se; Training Simulation Software (TSS) : https://www.peostri.army.mil/tsis-2020-iitsec-update-pm-se; Webinar Date: June 2nd, 2021, (10:00am Central Time) - https://it_at_webinar.eventbrite.com; During the pre-release period (May 19, 2021 to June 15, 2021), proposing firms have an opportunity to contact topic authors through https://calendly.com/tpoc-itat/30min to schedule a time to ask technical questions about specific BAA topics.",10,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/83980/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/83980/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:43,,,,,A214-036_83980,ARMY_SBIR_2021_P1_C4_A214-036,,1,2025-08-09 19:51:32.635591+00
+4207,A214-037,83981,Vision Based Inventory Management (VBIM),Vision Based Inventory Management (VBIM),ARMY,United States Army,AFC,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-06-16,2021-07-08,2021-06-16,2021-07-08,,,,,,,,,,,,,COMPLETED,Completed,No,,,10,10,0,,1,10,"Q1 (06/28/2021): We are applying for the Vision-Based Inventory Management SPARTN project and had a few questions.
+
+1.) With regards to imaging:<br />
+Are we looking at a single item?<br />
+Are we trying to read something on a box (SKU, label, etc)?<br />
+Are we seeing a single box and trying what&rsquo;s inside?<br />
+Are we seeing a field of boxes and trying understand guess what<br />
+2.) Who is doing the imaging, is it a machine, a person, both?<br />
+3.) Is this for in the field, where a platoon would be receiving a palette and then inventorying the items? Is this at a warehouse? Both? (Hub, Spoke, or both)<br />
+4.) Will there already be an existing product catalog and inventory we will reading/writing to or will we create and manage?<br />
+5.) From a user standpoint will we want views for the solider, leader, and then back at the inventory/warehouse?
+
+Thank you!
+A: The Q&amp;A period for this topic ended on 25 June 2020.
+
+Q2 (06/28/2021): For a company with standard commercial pricing for software, how do we insert that standard pricing into the cost volume proposal forms?&nbsp; The cost volume form input does not appear to be set up for inserting standard commercial pricing.&nbsp; Thank you.&nbsp;
+A: The Q&amp;A period for this topic ended on 25 June 2020.
+
+Q3 (06/28/2021): Is the inventory management system meant to do on-board inventory management on the CAT as well, e.g. disposition of ammunition in the racks. Is the&nbsp;system supposed to keep track of which shells were auto-loaded into artillery through the newer CAT systems? Or just those removed by crew manually and loaded into artillery. Is the proposal meant to enable vision based inventory management from the dispersement location prior to being loaded into transport, from the transport to the CAT at the point of hand-off, and as the munitions on the CAT are removed from the vehicle and used by artillery?
+A: The Q&amp;A period for this topic ended on 25 June 2020.
+
+Q4 (06/25/2021): The topic refers to munitions being inventoried, crated, palletized, and transported from what may be referred to as a munitions depot to the logistics release point.&nbsp; &nbsp;Should we describe how the solution can be used in the Munitions Depot or only focus on CAT loading and unloading of munitions?
+A: The proposed&nbsp;solution would be expected to function in a depot level setting.
+
+Q5 (06/23/2021): Is the materiel unpalletized as well as uncrated before it is loaded into the CAT?&nbsp; Is it loaded through the door or the top hatch?
+A: Ammunition is un-palletized prior to loading into the CAT and will be loaded through the back door. However, thie technology we are looking for will be able to conduct counts while still palletized and at various stages of transport prior to arriving at the CAT.
+
+Q6 (06/17/2021): Does the Commercialization Strategy section count against the 15-page limit of the Technical Volume?
+A: Yes.
+
+Q7 (06/15/2021): Is&nbsp; there a CONOP or vision of the current/future workflows where this VBIM would conduct the counts?
+A: There is no&nbsp;releasable CONOP for VBIM at this time.&nbsp;There is a rough vision of the future workflow, but the details depend on the selected VBIM technology, and the Army is open to suggested workflows that would increase accuracy, speed, and efficiency of the transfer of supply. Broadly speaking, the future workflow would do away with the hand counting and hand entry of data into existing systems of record (SOR). The future workflow would remove some intermediary paperwork and manual data entry steps and include a direct transfer of data from the soldier on the ground to the relevant SOR.
+
+Q8 (06/14/2021): Please clarify the due date (6 or 7 July) and Tech Volume page limit (10 or 15 pages). The SBO and attachments have conflicting information.&nbsp; Thank you.
+A: Proposals are due no later than 12:00 pm EST, on July 7th, 2021. The Technical Volume page limit is 15 pages.
+
+Q9 (06/08/2021): &quot;This is a direct to phase II SBIR topic. Proposals should document that the performer has developed and demonstrated feasibility of a component, sub-system, or system concept that addresses any or all of the subjects listed above to a technology readiness level of 4.&quot;&nbsp;&nbsp;
+
+Is this stating that&nbsp;Phase I proposals should have a working prototype prior to submitting for Phase I?&nbsp;
+A: No Phase I proposals will be accepted for this topic.
+
+Q10 (06/03/2021): The topic&nbsp;states that a TRL-4 solution is required as part of the proposal, and the SBIR will fund development beyond TRL-4. We have been informed that the BAA can only fund work up to TRL-6. Is this the case for VBIM? In other words, if we propose a project to achieve TRL-7 or higher will we have to scale it back as funding cannot be applied to work past TRL-6, or can this topic fund work past TRL-6?
+A: There is no limit to TRL-6 in the BAA for this topic. Please reference the latest documents posted on 19 May at sam.gov.",,Electronics,1,Electronics,General Warfighting Requirements (GWR),General Warfighting Requirements (GWR),1,"Machine Vision, Artificial Intelligence, Computer Vision, Unmanned Logistics, Field Artillery, Munitions, Prototype Development",1,"Machine Vision, Artificial Intelligence, Computer Vision, Unmanned Logistics, Field Artillery, Munitions, Prototype Development",Yes,1,Yes,,Streamline and accelerate the process of field artillery ammunition transfer through automation using computer vision and AI algorithms deployed on mobile devices.,22,Streamline and accelerate the process of field artillery ammunition transfer through automation using computer vision and AI algorithms deployed on mobile devices.,"Field artillery resupply is a multi-step process. Currently, munitions (projectiles, primers, propellant, and fuses) are inventoried, crated, palletized, and transported to the logistics release point, where they are unloaded, uncrated, inventoried, and transferred into a M992A3 Carrier Ammunition Tracked (CAT). The CAT then travels to a point behind the field artillery weapons system, situated far enough behind the gun line for safety, but near enough to maintain line of sight. Munitions are shuttled by hand from the CAT to the weapons system and loaded into the gun by hand. To stay on the cutting edge of resupply technology, the Army is interested in novel, hand-held solutions utilizing computer vision and artificial intelligence to automate and streamline the inventory process.",119,791,1,No,No,No,,"This is a direct to phase II SBIR topic. Proposals should document that the performer has developed and demonstrated feasibility of a component, sub-system, or system concept that addresses any or all of the subjects listed above to a technology readiness level of 4.","Develop and demonstrate a hand-held prototype system that identifies artillery munitions and extracts information from the its marking such as nomenclature, manufacturing lot, and square weight. The hand-held prototype should demonstrate the capability to export extracted data to future inventory systems, other hand-held devices equipped with the same machine vision software, and to digital DA Forms 581 and 5515.","Develop a deployment-ready product design that supports the integration of the technology with ATAK compatible devices. The Phase III capability will leverage an open systems architecture (as required) enabling rapid integration with emerging and legacy systems, and successfully demonstrate technology integration as part of an end-to-end munitions inventory system. Low-rate initial deployment will occur (as required).",1,"Paladin M109A6 155mm Artillery System: https://www.army-technology.com/projects/paladin/; Extended Range Cannon to get Autoloader within 5 years: https://www.defensenews.com/digital-show-dailies/global-force-symposium/2019/03/27/extended-range-cannon-to-get-autoloader-within-five-years/; Army developing safer, extended range rocket-assisted artillery round: https://www.army.mil/article/174013/army_developing_safer_extended_range_rocket_assisted_artillery_round; M1299: https://en.wikipedia.org/wiki/M1299; During the pre-release period (May 19, 2021 to June 15, 2021), proposing firms have an opportunity to contact topic authors through https://calendly.com/aal-tech-russ/vbim-tpoc to schedule a time to ask technical questions about specific BAA topics.","Paladin M109A6 155mm Artillery System: https://www.army-technology.com/projects/paladin/; Extended Range Cannon to get Autoloader within 5 years: https://www.defensenews.com/digital-show-dailies/global-force-symposium/2019/03/27/extended-range-cannon-to-get-autoloader-within-five-years/; Army developing safer, extended range rocket-assisted artillery round: https://www.army.mil/article/174013/army_developing_safer_extended_range_rocket_assisted_artillery_round; M1299: https://en.wikipedia.org/wiki/M1299; During the pre-release period (May 19, 2021 to June 15, 2021), proposing firms have an opportunity to contact topic authors through https://calendly.com/aal-tech-russ/vbim-tpoc to schedule a time to ask technical questions about specific BAA topics.",5,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/83981/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/83981/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:44,,,,,A214-037_83981,ARMY_SBIR_2021_P1_C4_A214-037,,1,2025-08-09 19:51:32.635591+00
+4208,A214-038,83982,Logistics Enterprise Enhancement Platform (LEEP),Logistics Enterprise Enhancement Platform (LEEP),ARMY,United States Army,ARMY,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-06-23,2021-07-21,2021-06-23,2021-07-21,,,,,,,,,,,,,COMPLETED,Completed,No,,,32,32,0,,1,32,"Q1 (07/08/2021): Could you please confirm the Phase I period of performance,&nbsp; Listening to your Webinar and the reviewing&nbsp;Army 214 BAA_SBO_A214-038 document it states that it is 3 months with option to extend by 2 more months.,&nbsp; However,&nbsp;Army BAA 21.4 Rev 3 document states that Phase I can last up to 12 months.&nbsp; &nbsp;This difference can significantly impact what we can include in our response.
+
+Thanks
+
+Vijay
+A: Past Q&amp;A period.
+
+Q2 (07/06/2021): Describe the access to the Commanders, officers, or Army personnel during Phase I.
+A: Soldier touch points are available during phase I.
+
+Q3 (07/06/2021): Please further describe Fleet Management. &nbsp;&nbsp;What specific needs/areas included?
+A: Fleet management can be found in Army and DoD&nbsp;doctrine. Provide an innovative and feasible solution in your proposal.
+
+Q4 (07/06/2021): How are Army personnel going to view UI/UX, smart phone, laptop, SAT phone?
+A: Solutions can be made for a range of end user devices.
+
+Q5 (07/06/2021): &nbsp;Is near real time&nbsp;<u>data capture</u>&nbsp;during a mission a requirement of this solution for Phase I?
+A: Not identified in topic documentation.
+
+Q6 (07/06/2021): What&nbsp;<u>data input</u>&nbsp;would be required in the field? Current Mission Metrics/Parameters (location, length of mission, miles, climate, number of personnel, etc.).
+A: Provide innovative and feasible solutions in your proposal.&nbsp;Additional system details may be provided to award selectees.
+
+Q7 (07/06/2021): &nbsp;How many years of historical data are available?
+A: <p style=""margin-bottom:11px"">TBD, there are multiple systems with different data requirements and sources.
+
+Q8 (07/06/2021): &nbsp;&nbsp;&nbsp;How would the historical data be accessed?
+A: <p style=""margin-bottom:11px"">Though the use of existing system, additional details may be provided to award selectees.
+
+Q9 (07/06/2021): How many data sources (systems)? Do Six ERP individual systems still exsist, or has project (EBS)<b>&nbsp;</b>Convergence consolidated them?
+A: EBS convergence is at a later date, LEEP system will be an intermediate measure.
+
+Q10 (07/06/2021): Where is the data stored today? (Cloud or On premise).
+A: Additional system details may be provided to award selectees.
+
+Q11 (07/06/2021): &nbsp;Is there a specific area of historical MBF you most interested in forecasting?
+A: <p style=""margin-bottom:11px"">Provide innovative and feasable solutions in your proposal.
+
+Q12 (07/06/2021): &nbsp;&nbsp;Does the fact that we have a commercial AI/ML forecasting platform for specific financial business applications, disqualify us from this solicitation?
+A: One SBIR grading category is based on soundness, technical merit, and innovation.
+
+Q13 (06/29/2021): Is the Webinar available for viewing, or can an attendee list be made available?&nbsp; I am interested in subcontracting but missed the webinar, so I do not have a list of other small businesses with whom I may partner.&nbsp; I specialize in applying artificial intelligence and advanced analytics to supply chain and logistics.
+
+Thank you in advance.
+
+Ralph Asher
+
+Data Driven Supply Chain LLC
+
+ralph@datadrivensupplychain.com
+
+www.datadrivensupplychain.com
+A: A link to the Webinar is available for view at the AAL resources page:&nbsp;&nbsp;https://aal.army/resources/#
+
+Q14 (06/29/2021): Can you supply a list of SAP modules, with versions, used in LEEP?&nbsp; Example: Did LEEP implement an &quot;Industry Solution&quot; such as &quot;Public Sector&quot; (IS_PS) for inventory or is only the baseline product used (SAP-MM)?
+A: <p style=""text-indent:18.75pt"">Additional system details may be provided to award selectees.
+
+Q15 (06/29/2021): Can you supply a list of API&#39;s available for the project?&nbsp; SAP has some out-of-the box API&#39;s, assuming the Army allows their use.&nbsp; It was also mentioned on the call that there are additional extension that have been built that might provide useful functionality.
+A: <p style=""text-indent:18.75pt"">Additional system details may be provided to award selectees.
+
+Q16 (06/29/2021): During the call both ECC and HANA were mentioned which are different versions of the SAP product.&nbsp; Is one version being used?&nbsp; Or is there some sort of hybrid architecture?&nbsp; Can you provide detail on the current architecture for LEEP?
+A: <p style=""margin-left:25px"">Additional details may be provided to award selectees.
+
+Q17 (06/28/2021): The 4-page SBO instructions (Army+214+BAA_SBO_A214-038.pdf) found at SAM.gov states on page Army PI 2, para. 6 that we should &quot;Please refer to Appendix A and Appendix B of BAA 21.4 for detailed instructions on proposal preparation. More detailed instructions for what information to include in your Phase I proposal and a sample Slide Deck template are attached to this SBO.&quot;&nbsp; The first of these two files&nbsp;is titled &quot;SPARTN Phase I SBIR Template&quot; and states the below in paragraph 3, i.e., that the instructions are for the SPARTN SBIR and not intended for other DoD components. So, are these, in fact, the templates for this topic that we are submitting against on the DSIP site because they are asking for different info than other Army topics have requested.
+
+Paragraph 3:&nbsp; &quot;Volume 2, the Technical Volume, is a 10-page white paper. It contains three parts, and is the main portion of the proposal that reviewers evaluate. The goal of this white paper is to describe your technological vision and a potential path for development, your team, and your commercialization plan. This document contains guidance on the information to include in your proposal --and can serve as an optional template. <u><strong>This document is specifically designed for SPARTN SBIR and is not intended for other Department of Defense components, phases, or topics.&quot;</strong></u>
+A: Q)&nbsp;are these, in fact, the templates for this topic that we are submitting against on the DSIP site because they are asking for different info than other Army topics have requested.
+
+A) Yes.&nbsp;
+
+Q18 (06/25/2021): <ol start=""1"" type=""1"">
+	<li>The solicitation lists 6 capabilities that the solution &lsquo;could&rsquo; include (e.g., &lsquo;cross-level inventory&hellip;&rsquo;, &lsquo;Capacity planning..&rsquo; etc) which implies proposed solutions do not need to include all of them (and could include others not listed).&nbsp; But, the solicitation later says under the Phase II description that &lsquo;Design a prototype system that will perform all required functions for fleet maintenance and supply chain management. Solution should contain all capabilities listed above&hellip;&rsquo;.&nbsp; Can you please clarify if all functions are required or if we can propose a mix of those listed (and/or others) in our proposal?</li>
+	<li>How many Phase I awards does the government anticipate?</li>
+	<li>Can you provide a link to the video recording of the June 16<sup>th</sup>&nbsp;webinar?</li>
+</ol>
+A: There are 7 phase I awards for the topic.
+
+&nbsp; A link to the Webinar is available for view at the AA resources page:&nbsp;&nbsp;https://aal.army/resources/#
+
+Q19 (06/23/2021): Is MOU required for a direct to phase 2.
+A: No MOU is required for this topic.
+
+Q20 (06/22/2021): <p style=""margin-bottom:11px; margin-left:8px"">To simplify the workflow process, have consolidated APIs been exposed at SAP level?
+A: <p style=""text-indent:18.75pt"">Additional system details may be provided to award selectees.
+
+Q21 (06/22/2021): Is an MOU required from an user on the direct to Phase 2?
+A: No MOU is required for this topic.
+
+Q22 (06/22/2021): Is any content (e.g., cover pages and table of contents) excluded from the page count limitations referenced on page 2, section b, of Army_214_BAA_SBO_A214-038?
+A: No. All required administrative data will be collected by the DSIP portal while you build your submission. Your proposal document will need to be a single PDF that meets the page limits as referenced.
+
+Q23 (06/22/2021): Appendix A, Section B.3,g on pg 27 of Army+BAA+21.4+Rev+3 states &quot;Foreign Ownership or Control Disclosure (BAA Attachment 2) (Proposers must review Attachment 2: Foreign Ownership or Control Disclosure to determine applicability)&quot; Will the government please provide Attachment 2?
+A: Attachment 2 is provided in the&nbsp; Army_BAA_21.4_Rev+3.pdf file found at the sam.gov LEEP topic documentation URL&nbsp;https://sam.gov/opp/075ae487f4ae4474b4340b4c89568938/view#attachments-links
+
+Q24 (06/22/2021): Will the government provide a demonstration of the legacy system?
+A: <p style=""text-indent:18.75pt"">Additional system details may be provided to award selectees.
+
+Q25 (06/22/2021): Will the Government provide the data model and dummy data during the Phase 1, so the Proof of Concept can be built around actual data?
+A: Depending on system and other factors, data may or may not be availble to award selectees.
+
+Q26 (06/22/2021): Do we propose to the SBO Announcement (BAA SBO A214-038) requirements, or do we also need to include all the requirements in the industry day presentation? &nbsp;And if there is a conflict between those documents, does one supercede the other? &nbsp;Can the Government please post the presentation slides and webinar recording too, or at least send to those who attended?
+A: A link to the Webinar is available for view at the AAL resources page:&nbsp;&nbsp;https://aal.army/resources/#
+
+Q27 (06/22/2021): How much of the backend data analytics is required to be in the PoC? &nbsp;In other words, is the initial focus on the collection of data or what can be done with the data with the chosen platform?
+A: &nbsp;Data analytics will be needed especially for AI and ML functions.
+
+Q28 (06/22/2021): Is there good baseline data on how long it takes to train a user and perform standard functions? &nbsp;Are there targets for improvement that can be shared?
+A: &nbsp;No metrics currently available. Collapsing process step and improving the user experience.
+
+Q29 (06/22/2021): Are there barcodes available on inventory items to read and accelerate data entry?
+A: &nbsp;Not all the time, some manual data entry may be required.
+
+Q30 (06/22/2021): Is there a target device for people to be using for this solution? (i.e. laptop, mobile device, etc.?)
+A: We are looking for a range of devices
+
+Q31 (06/22/2021): <span style=""color: black; font-family: &quot;Calibri&quot;,sans-serif; font-size: 12pt; mso-fareast-font-family: &quot;Times New Roman&quot;; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-language: AR-SA;"">At what Army command level does the end-user typically do the data entry for ERP? Brigade level?&quot;</span>
+A: Data entry is conducted at various levels.
+
+Q32 (06/17/2021): Hi Mr. Santos &amp; Mr. Julock,
+
+We just attended the webinar for the SBIR LEEP Solicitation W50RAJ-20-S-0001_SBIR_BAA_A214-038 we would really like to connect before the open discussion period runs out on June 22.<br />
+We attempted to schedule on the TPOC calendar however we received a message stating there were no appointments available.<br />
+<br />
+Could you direct us to where we can setup the 30 min call&nbsp; with the TPOC to discuss our solution?
+A: All TPOC calls were filled.&nbsp;",,Information Systems,1,Information Systems,Artificial Intelligence/ Machine Learning,Artificial Intelligence/ Machine Learning,1,<p>Mission performance based forecasting; User interface/experience (UI/UX); Automated Fleet management; RPA; Data Analytics; Data Science; Data Insights; Data Entry; Supervised Machine Learning; Artificial Intelligence and Machine Learning (AI/ML); Enterprise Resource Planning (ERP)</p>,11,<p>Mission performance based forecasting,No,0,No,,"Develop a software solution that provides an updated UI/UX for the tactical ERP, integrates the ERP data set to offer in depth data analytics, provides AI/ML analysis capabilities, and/or delivers Mission Based Forecasting (MBF) for Commanders to support operational planning requirements.",41,"Develop a software solution that provides an updated UI/UX for the tactical ERP, integrates the ERP data set to offer in depth data analytics, provides AI/ML analysis capabilities, and/or delivers Mission Based Forecasting (MBF) for Commanders to support operational planning requirements.","The current tactical Enterprise Resource Planning (ERP) system, Global Combat Support System –Army (GCSS-A), utilizes an ECC SAP foundational core that lacks the user interface and user experience necessary to improve accuracy and efficiency of data entry. Additionally, the system does not possess the AI/ML capabilities to provide robust analytics and COA recommendations. In order to remain competitive, Commanders need an enhanced ERP that is intuitive and responsive enough to maintain logistics operations and provide the actionable data needed to make timely decisions in a resource constrained environment. The Army has begun an effort to migrate datasets into a robust, converged enterprise business solution of the future. This effort will improve business processes and collapse our ERPs into a single solution that better supports the Army.However, we currently need a tool to bridge the gap between our existing and future enterprise solutions. This tool will leverage artificial intelligence and machine learning that will be extensible into an ERP solution. Additionally, this capability will reduce the number of steps for end-to-end business processes, and incorporate an intuitive user experience/user interface that improves data entry efficiency and accuracy. Capabilities of this solution could include (but are not limited to):User experience that is intuitive for Soldiers and reduces the amount of time per task;Automate management functions related to fleet management, including both scheduled and unscheduled maintenance requirements; manage maintenance plans, work-flow, skills identification, automated workload balance, data capture for predictive analysis;Optimize inventory management to support current and future operations;Cross-level inventory at the lowest levels;Capacity planning and performance metrics that can be used to optimize worker assignment to task;Provide Mission Based Forecasting (MBF) based on a set mission and element.",276,1973,1,No,No,No,,"Design proof of concept solution that updates and improves the tactical ERP UI/UX and integrates ERP data to provide analytics and predictions. Solutions will be evaluated based on a holistic view of factors including: the ability to perform automated tasks with accuracy that can be validated by the user without the input requirement, user interface/user experience, create reliable and accurate data for mission based forecasting and support Commanders decisions on the battlefield, and show the link between equipment readiness and supply performance. The final deliverable will be a concept design presentation, proof of technology demonstration, and plans for follow-on Phase 2 work.","Design a prototype system that will perform all required functions for fleet maintenance and supply chain management. Solution should contain all capabilities listed above, and will be evaluated on a holistic basis including quality at which the system captures operational relevant characteristics, the ability to input more accurate data, and clean historical data with extreme accuracy while maintaining auditability controls. Optional Soldier touchpoints will be provided free of charge. Proposers that plan to participate in the Soldier touchpoints (if awarded a Phase II) are encouraged to include travel costs for three touchpoints, within the continental US, of 1-2 days each for in-person event. In-person events may be substituted for virtual events depending on COVID-19 travel restrictions. Participating companies must travel and participate out of company internal operating budgets. Soldier touch-point details will be provided to awardee(s) under this topic at Phase II award.","Develop a manufacturing-ready (production system ready) product design. The system should provide the solution for predictive analysis, usability and functionality for Soldiers, and precision mission-based forecasting. Potential commercial applications of the technology exist within the automotive and supply chain management, gaming and technology, internet of things (IoT), and manufacturing industries where predictive insights are needed.",1,"""AI"" , Wikipedia, https://en.wikipedia.org/wiki/Artificial_intelligence, 17 May 2021; ""How Data Analytics Will Improve Logistics Planning"", www.army.mil, https://www.army.mil/article/223842/how_data_analytics_will_improve_logistics_planning; ""User Interface Design', Wikipedia, https://en.wikipedia.org/wiki/User_interface_design, 11 May 2021; ""EBS Convergence – Participate in the Transformation."" army.mil, https://www.army.mil/article/243447/ebs_convergence_participate_in_the_transformation; ""US Army's signature logistics system completes full-system deployment."" DefenseNews, https://www.defensenews.com/opinion/commentary/2018/06/25/us-armys-signature-logistics-system-completes-full-system-deployment/.; ""Follow the LMP road: Modernizing US Army logistics."" DefenseNews, https://www.defensenews.com/opinion/commentary/2018/06/25/follow-the-lmp-road-modernizing-us-army-logistics/.; Webinar Date: June 2nd, 2021, (10:00am Central Time) - https://it_at_webinar.eventbrite.com; During the pre-release period, proposing firms have an opportunity to contact topic authors through https://calendly.com/aal_leep/30min to schedule a time to ask technical questions about specific BAA topics.","""AI"" , Wikipedia, https://en.wikipedia.org/wiki/Artificial_intelligence, 17 May 2021; ""How Data Analytics Will Improve Logistics Planning"", www.army.mil, https://www.army.mil/article/223842/how_data_analytics_will_improve_logistics_planning; ""User Interface Design', Wikipedia, https://en.wikipedia.org/wiki/User_interface_design, 11 May 2021; ""EBS Convergence – Participate in the Transformation."" army.mil, https://www.army.mil/article/243447/ebs_convergence_participate_in_the_transformation; ""US Army's signature logistics system completes full-system deployment."" DefenseNews, https://www.defensenews.com/opinion/commentary/2018/06/25/us-armys-signature-logistics-system-completes-full-system-deployment/.; ""Follow the LMP road: Modernizing US Army logistics."" DefenseNews, https://www.defensenews.com/opinion/commentary/2018/06/25/follow-the-lmp-road-modernizing-us-army-logistics/.; Webinar Date: June 2nd, 2021, (10:00am Central Time) - https://it_at_webinar.eventbrite.com; During the pre-release period, proposing firms have an opportunity to contact topic authors through https://calendly.com/aal_leep/30min to schedule a time to ask technical questions about specific BAA topics.",8,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/83982/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/83982/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:44,,,,,A214-038_83982,ARMY_SBIR_2021_P1_C4_A214-038,,1,2025-08-09 19:51:32.635591+00
+4209,A214-039,83988,Holistic Wind Correction for Aviation Targeting,Holistic Wind Correction for Aviation Targeting,ARMY,United States Army,ARMY,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-07-21,2021-08-24,2021-07-21,2021-08-24,,2021-07-07,2021-07-21,,,,,,2021-07-07,2021-08-10,2021-07-07,2021-07-21,COMPLETED,Completed,No,,,11,11,0,,1,11,"Q1 (08/04/2021): Is a P1&nbsp;response allowed and what is the NTE limit for that?
+A: No, this topic is for a Phase II.
+
+Q2 (07/28/2021): &nbsp;
+
+Can the technical reports, patents, &nbsp;and test data be included in the attachment to the Technical Proposal ( Volume 2)? And 2) will these attached documents &nbsp;be count toward the page limit?&nbsp;&nbsp; The problem is that just one document, a final report we&#39;d like to share is 31 pages.&nbsp;The solicitation states:<em> Technical volume Is 15 pages maximum. &nbsp;The feasibility described in the Phase I section can be substantiated &nbsp;by technical reports , test data and prototype designs/models.&nbsp;</em>
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+A: 15 pages is the maximum for the Technical Volume.&nbsp;
+
+Q3 (07/20/2021): <p style=""margin-bottom:11px"">Where could we get the references?
+A: <table style=""border-collapse:collapse; width:431px"" width=""431"">
+	<colgroup>
+		<col style=""width:323pt"" width=""431"" />
+	</colgroup>
+	<tbody>
+		<tr>
+			<td class=""xl65"" style=""border-bottom:none; height:20px; width:431px; white-space:normal; padding-top:1px; padding-right:1px; padding-left:1px; vertical-align:bottom; border-top:none; border-right:none; border-left:none""><span style=""font-weight:400""><span style=""font-style:normal"">On-line.&nbsp; References are approved for public release.</span></span></td>
+		</tr>
+	</tbody>
+</table>
+
+Q4 (07/20/2021): <p style=""margin-bottom:11px"">Could you inform the specifications for the 3D wind sensor, such as accuracy of flowrate and pressure, sampling rate, SWaP, etc.?
+A: <table style=""border-collapse:collapse; width:431px"" width=""431"">
+	<colgroup>
+		<col style=""width:323pt"" width=""431"" />
+	</colgroup>
+	<tbody>
+		<tr>
+			<td class=""xl63"" style=""border-bottom:none; height:80px; width:431px; white-space:normal; padding-top:1px; padding-right:1px; padding-left:1px; vertical-align:bottom; border-top:none; border-right:none; border-left:none""><span style=""font-weight:400""><span style=""font-style:normal"">No threshold parameters have been specified for the system.&nbsp; Solution will need to be compatible with the operational and vibratory environment of Army Aviation.&nbsp;&nbsp; Sensor&#39;s product must result in a more accurate firing solution than currentlty available.</span></span></td>
+		</tr>
+	</tbody>
+</table>
+
+Q5 (07/09/2021): <span style=""tab-stops:list .5in"">Can you provide us with an assessment of the optical sensor OEM(s) willingness to integrate laser wind sensing into the existing system?</span>
+A: No
+
+Q6 (07/09/2021): <p style=""text-align:justify; margin-left:8px""><span style=""tab-stops:list .5in"">What is the production potential and time frame?</span>
+A: <table style=""border-collapse:collapse; width:421px"" width=""421"">
+	<colgroup>
+		<col style=""width:316pt"" width=""421"" />
+	</colgroup>
+	<tbody>
+		<tr>
+			<td class=""xl64"" style=""border-bottom:none; height:20px; width:421px; vertical-align:middle; white-space:normal; padding-top:1px; padding-right:1px; padding-left:1px; border-top:none; border-right:none; border-left:none""><span style=""font-weight:400""><span style=""font-style:normal"">To be Determined</span></span></td>
+		</tr>
+	</tbody>
+</table>
+
+Q7 (07/09/2021): <p style=""margin-left:8px""><span style=""tab-stops:list .5in"">Is there a desired target hit probability requirement for the round types?</span>
+A: <table style=""border-collapse:collapse; width:421px"" width=""421"">
+	<colgroup>
+		<col style=""width:316pt"" width=""421"" />
+	</colgroup>
+	<tbody>
+		<tr>
+			<td class=""xl66"" style=""border-bottom:none; height:80px; width:421px; vertical-align:middle; white-space:normal; padding-top:1px; padding-right:1px; padding-left:1px; border-top:none; border-right:none; border-left:none""><span style=""font-weight:400""><span style=""font-style:normal"">No minimum P(h) required. This effort is to demonstrate, in a form factor compatible with the aviation environment, the capability to holistically measure winds for inclusion in a targetting solution.&nbsp;</span></span></td>
+		</tr>
+	</tbody>
+</table>
+
+Q8 (07/09/2021): <p style=""margin-left:8px""><span style=""tab-stops:list .5in"">&nbsp;Is there a POM funding vehicle for this opportunity?</span>
+A: No
+
+Q9 (07/09/2021): <p style=""margin-left:8px""><span style=""tab-stops:list .5in"">Is there a specific tactical need and/or gap filled?</span>
+A: <table style=""border-collapse:collapse; width:421px"" width=""421"">
+	<colgroup>
+		<col style=""width:316pt"" width=""421"" />
+	</colgroup>
+	<tbody>
+		<tr>
+			<td class=""xl66"" style=""border-bottom:none; height:40px; width:421px; vertical-align:middle; white-space:normal; padding-top:1px; padding-right:1px; padding-left:1px; border-top:none; border-right:none; border-left:none""><span style=""font-weight:400""><span style=""font-style:normal"">Enhance lethalty and survivability of aviation assets operation in contested enviroments.</span></span></td>
+		</tr>
+	</tbody>
+</table>
+
+Q10 (07/09/2021): <ol>
+	<li><span style=""tab-stops:list .5in"">From the description, this appears to be an application for an attack helicopter. Can you confirm the aircraft type/model/series and the applicable specifications for the optical sensors and lasers on the aircraft?</span></li>
+</ol>
+A: <table style=""border-collapse:collapse; width:421px"" width=""421"">
+	<colgroup>
+		<col style=""width:316pt"" width=""421"" />
+	</colgroup>
+	<tbody>
+		<tr>
+			<td class=""xl66"" style=""border-width: initial; border-style: none; border-color: initial; height: 80px; width: 421px; vertical-align: middle; padding-top: 1px; padding-right: 1px; padding-left: 1px;"">This effort is not focused&nbsp;to a specific aircraft.&nbsp; Application seems most appropriate to aircraft platforms which need to minimize the quantity of ammunition on board, and maximize lethality during opportunistic enemy encouters.&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+Q11 (07/07/2021): Are solutions that are not integrated with the artillery shell of interest such as LIDAR systems or other external sensors that can directly measure 3D winds in realtime along the expected shell trajectory?
+A: <table style=""border-collapse:collapse; width:421px"" width=""421"">
+	<colgroup>
+		<col style=""width:316pt"" width=""421"" />
+	</colgroup>
+	<tbody>
+		<tr>
+			<td class=""xl66"" style=""border-bottom:none; height:60px; width:421px; vertical-align:middle; white-space:normal; padding-top:1px; padding-right:1px; padding-left:1px; border-top:none; border-right:none; border-left:none""><span style=""font-weight:400""><span style=""font-style:normal"">Yes, we believe the measurement/sensor solution will not be integrated into the round being fired, beyond that we have no comment on any specific recommended solution.</span></span></td>
+		</tr>
+	</tbody>
+</table>",,"Electronics, Sensors",2,Electronics,Space,Space,1,"Aviation, Weapon Systems, Targeting",1,"Aviation, Weapon Systems, Targeting",No,0,No,,"Develop/demonstrate the capability to measure multi-directional winds from the aviation platform to the target, and accommodating platform motion in real time. Successful application of this capability could foundationally change the employment of aviation weapon systems and associated Tactics, Techniques, and Procedures (TTP).",42,"Develop/demonstrate the capability to measure multi-directional winds from the aviation platform to the target, and accommodating platform motion in real time. Successful application of this capability could foundationally change the employment of aviation weapon systems and associated Tactics, Techniques, and Procedures (TTP).","The Army has implemented a holistic strategic synchronization and integration amongst the Army SBIR program and Army stakeholders including Program Executive Offices, Program Managers, Product Managers, and others, vectored on certain relevant technology ecosystemsb. Technology ecosystems emerge when startups develop a specific, more nascent technology as a product and other companies soon rise to compete in this space. As a technology ecosystem becomes more crowded, and key companies grow and/or are acquired, an ecosystem can develop into an industry sector. The Army SBIR program focuses on ecosystem-level technologies, the backbone of the future operating domain but technologies that have not yet evolved into fully developed industries. Technology ecosystem-focused Transition Broker Teams (TBT) focus on PEO-relevant capability gaps, technology insertion points, and milestone decision opportunities. The current topic is being released by the Army Sensors TBT.Novel technology that is capable of measuring path integrated 2D winds and range to target in real time in a small form factor. Initially, the system must be capable of being mounted within the firing platform sight/sensor supporting the attack/recon 20mm cannon with potential application to other weapons platforms in the future. When installed, the system must tolerate high relative airspeed, simultaneous movement along and rotation about all three axis’s, and the low, medium, and high frequency vibrations and shock associated with air vehicle weapon system operations. The solution must allow the Fire Control System (FCS) to validate the calculated offset aim point cannon position with respect to the target day or night, and must be covert allowing the user to have high confidence in cannon accuracy before rounds are fired at targets 500m to 2000m in typical combat environmental conditions.",275,1878,1,No,No,No,,"Develop operational concept and construct for theory, mathematics, and/or algorithms that inform Holistic Wind Correction for Aviation Targeting identification, recruitment, selection, development and deployment/distribution.","Develop a novel prototype system capable of measuring path integrated 2D winds and range to target in real time in a small form factor (Size, weight, power, and cost relevant to Aviation). Demonstrate the prototype system on a platform in relevant environment (TRL 6). Demonstration of the prototype system should allow the user to validate target hit improvements under typical wind conditions measured from a moving platform with the first round during day and night at ranges that support 7.62 to 30mm rounds. Solution package must be commensurate with aviation small size, light weight, and low power requirements, must tolerate weapons system shock and vibrations conditions, and must support barrel aim point validation.","Besides the use for FVL CFT modernization efforts, this technology could also be used to address the needs of Non-DoD aviation customers like FBI, Secret Service and Police. Similarly, the solution would likely find applicability on DoD platforms with less stringent requirements than aviation specifically systems which could accommodate greater weight, space, and power requirements, or which induced lesser shock and vibration conditions. A phase III would:Mature the manufacturing of the system to achieve TRL 7/8 and MRL 8,Establish a pilot line to realistically assess cost in volume production,Refine size, weight, and power projections from phase II, Fully document process parameters associated with producing the 2D wind sensing system, Produce a small quantity of systems based on Phase II designs, and Investigate Dual use applications",1,"AR 70-62: Airworthiness of Aircraft Systems; ADS-20F-HDBK: Armament and Fire Control System Survey for Army Aircraft; ADS-27A-SP: Requirements for Rotorcraft Vibration Specifications, Modeling and Testing; ADS-37A-PRF: Electromagnetic Environmental Effects (E3) Performance and Verification Requirements; ADS-44-HDBK: Armament Airworthiness Qualification for U.S. Army Aircraft; ADS-45-HDBK: Data and Test Procedures for Airworthiness Release for U.S. Army Helicopter Armament Testing (Guns, Rockets, Missiles); ADS-65A-HDBK: Data and Test Guidance for Qualification of Sensor Systems on Aircraft; ADS-71-SP Environmental Airworthiness and Qualification Requirements for Electronics, Avionics, and Mission Equipment Installed On Army Aircraft","AR 70-62: Airworthiness of Aircraft Systems; ADS-20F-HDBK: Armament and Fire Control System Survey for Army Aircraft; ADS-27A-SP: Requirements for Rotorcraft Vibration Specifications, Modeling and Testing; ADS-37A-PRF: Electromagnetic Environmental Effects (E3) Performance and Verification Requirements; ADS-44-HDBK: Armament Airworthiness Qualification for U.S. Army Aircraft; ADS-45-HDBK: Data and Test Procedures for Airworthiness Release for U.S. Army Helicopter Armament Testing (Guns, Rockets, Missiles); ADS-65A-HDBK: Data and Test Guidance for Qualification of Sensor Systems on Aircraft; ADS-71-SP Environmental Airworthiness and Qualification Requirements for Electronics, Avionics, and Mission Equipment Installed On Army Aircraft",8,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/83988/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/83988/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:45,,,,,A214-039_83988,ARMY_SBIR_2021_P1_C4_A214-039,,1,2025-08-09 19:51:32.635591+00
+4210,A214-041,83991,Tethered UAS (Te-UAS),Tethered UAS (Te-UAS),ARMY,United States Army,AFC,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-08-26,2021-09-22,2021-08-26,2021-09-22,,2021-07-29,2021-08-26,,,,,,2021-07-29,2021-08-25,2021-07-29,2021-08-25,COMPLETED,Completed,No,,,19,19,0,,1,19,"Q1 (08/24/2021): In the solicitation, an Army simulator&nbsp;was reference to be used/integrated. Is this Army simulation has a capability to simulate sensor input with obstacles? Or a contractor should find/develop an own simulation capability for the obstacle detection and avoidance? Any description of expectations on the simulation and T&amp;E would be appreciated.
+A: <p style=""margin-bottom:11px; margin-left:8px"">Please visit the references section for the FAQ document where&nbsp;&quot;<b>What is the expected Government Simulation Environment for Phase 2?</b>&quot; is discussed.&nbsp;
+
+Q2 (08/24/2021): <ol>
+	<li>The effort seems to be a primarily software effort working on algorithms and common operating pictures architectures, is that correct ?&nbsp; The &nbsp;sensor limitations&nbsp; criteria suggest we can choose additional hardware to support the algorithms, but not develop new sensors or select exquisite sensor that may be difficult to get or costly, is that correct ?</li>
+	<li>Is there a target air vehicle in mind ? For the effort it seems the aircraft must be a VTOL (not a fixed wing pulled like a kite), the solicitation seems concentrated on motion of the platform, but not launch and recovery of the aircraft. Is launch and recovery methodologies of interest ?</li>
+	<li>For the air vehicle, are there any assumptions we can make about size, propulsion style, the tether used or sensors available ? Is something like the &nbsp;FLIR SkyRaider with Tether kit an acceptable test platform for designing and testing algorithms ? &nbsp;Are the standard sensors on that platform a reasonable starting point to build algorithms around ?</li>
+	<li>Can we assume the tether reel itself is out of scope for this effort ?&nbsp; The reel control in and of itself is a very challenging problem, are there any assumptions we can make about the reel kit associated with the platform?</li>
+	<li>The effort seems focused just on coordinated motion and information sharing, are autonomous behaviors on the tethered aircraft to support advanced ISR of interest ?</li>
+	<li>The obstacles used for evaluation,&nbsp; is there a predetermined set of specific obstacles such as buildings, common structures like water towers and road signs, bridges and overpasses, &nbsp;and trees (leaves on and leaves off) ?&nbsp; Are the very challenging obstacles like clothes lines and power lines also part of the test set ?&nbsp; Are obstacles considered all static obstacles, or will there be moving obstacles like other drones or birds, thrown or launched items, &nbsp;etc. ?</li>
+	<li>Are there parameters for operational flight heights in addition to ground platform speed &nbsp;available? Are there mission CONOPS we can use to design algorithms around ?</li>
+</ol>
+
+&nbsp;
+A: 1. The effort seems to be a primarily software effort working on algorithms and common operating pictures architectures, is that correct ? The sensor limitations criteria suggest we can choose additional hardware to support the algorithms, but not develop new sensors or select exquisite sensor that may be difficult to get or costly, is that correct ?
+
+Answer: Yes to first question. For second question, the vendor is not constrained in its choice of hardware to support the algorithms. The focus is not on developing new sensors.
+
+2. Is there a target air vehicle in mind ? For the effort it seems the aircraft must be a VTOL (not a fixed wing pulled like a kite), the solicitation seems concentrated on motion of the platform, but not launch and recovery of the aircraft. Is launch and recovery methodologies of interest ?
+
+Answer: No to first question &ndash; see FAQ for information on air vehicle type. No to second question &ndash; the focus is on obstacle avoidance for UAS and tether.
+
+3. For the air vehicle, are there any assumptions we can make about size, propulsion style, the tether used or sensors available ? Is something like the FLIR SkyRaider with Tether kit an acceptable test platform for designing and testing algorithms ? Are the standard sensors on that platform a reasonable starting point to build algorithms around ?
+
+Answer: For the first question, see FAQ for additional information: the air vehicle should be less than 55 lbs. Regarding the second and third questions, participants in Phase 2 can design and test their algorithms however they see fit. Phase 1 requires that the participant state what sensors they would use and where they would be located at as part of the architecture.
+
+4. Can we assume the tether reel itself is out of scope for this effort ? The reel control in and of itself is a very challenging problem, are there any assumptions we can make about the reel kit associated with the platform?
+
+Answer: Yes to first question. For the second question, the tether reel challenges may be assumed away except for direct impacts to vehicle dynamics.
+
+5. The effort seems focused just on coordinated motion and information sharing, are autonomous behaviors on the tethered aircraft to support advanced ISR of interest ?
+
+Answer: No &ndash; the focus is on obstacle avoidance for UAS and tether.
+
+6. The obstacles used for evaluation, is there a predetermined set of specific obstacles such as buildings, common structures like water towers and road signs, bridges and overpasses, and trees (leaves on and leaves off) ? Are the very challenging obstacles like clothes lines and power lines also part of the test set ? Are obstacles considered all static obstacles, or will there be moving obstacles like other drones or birds, thrown or launched items, etc. ?
+
+Answer: No, there is not a predetermined set of specific obstacles for evaluation. Yes, power lines are within scope. The government is looking to focus this effort on avoiding general environment obstacles. Some may move, such as power lines, flags, or windmills.
+
+7. Are there parameters for operational flight heights in addition to ground platform speed available? Are there mission CONOPS we can use to design algorithms around ?
+
+Answer: For first question, see FAQ for additional details. No to the second question.
+
+Q3 (08/23/2021): Is developing a UGV a hard requirement? The topic says the Te-UAS shall function on a manned or UGV. Phase I goal includes obstacle avoidance of a UGV.
+A: No hardware is required to be developed in this Phase I effort.
+
+Q4 (08/23/2021): Is there a height requirement for the UAS?
+A: Tether height deployments could be as low as 20ft above the launch point on the vehicle up to 400 ft. Please visit the references section for the FAQ document for&nbsp;more information.&nbsp;
+
+Q5 (08/20/2021): Could you please provide a little more information for the following?
+
+<ul>
+	<li>Do you have any size weight requirements for the Te-UAS?</li>
+	<li>Would you like it to carry a payload?</li>
+	<li>Would you like it to operate at night?</li>
+	<li>Do you want other Night vision, thermal, IR etc?</li>
+	<li>Is there a tether length requirement?</li>
+</ul>
+
+&nbsp;
+A: Please visit the references section for the FAQ document where these questions will all&nbsp;be answered.&nbsp;
+
+Q6 (08/19/2021): What are the dynamics of the vehicle and the tethered UAV? (How far around the UAV must we be able to sense to be able to avoid obstacles)?
+A: Please visit the references section for the FAQ document where these questions have&nbsp;been answered.
+
+Q7 (08/19/2021): Are teams encouraged to develop subcomponents of this technology (for example sensors that enable better capabilities for the tethered UAS), or are you looking for a team to build the entire end-to-end solution (tethered UAS complete with sensor suite)?
+A: <i>No hardware is expected to be delivered during this effort.&nbsp; Phase II involves a simulation of obstacle avoidance system architecture.</i>
+
+Q8 (08/18/2021): Besides the common operating picture, what other information or capabilities would you like the Te-UAS to have/perform? For example, thermal, LIDAR, etc. Are there any size, weight, tether length requirements? Thank you.
+A: Please visit the references section for the FAQ document where these questions have been addressed.
+
+Q9 (08/16/2021): If the ground vehicle is a UGV, will communication between the systems be permitted?
+A: Please visit the references section for the FAQ document where this question has been answered.&nbsp;
+
+Q10 (08/16/2021): Will the UAV be deployed before or after the ground vehicle begins moving?
+A: <i>Both situations are possible.</i>
+
+Q11 (08/16/2021): What weather conditions and climates will it be expected to perform in?
+A: <i>Any conditions that a UAS can reasonably perform.</i>
+
+Q12 (08/16/2021): Will this be in GPS denied areas?
+A: <i>Architectures in Phase 1 should account for situations where GPS is unavailable.</i>
+
+Q13 (08/16/2021): Must all sensors for obstacle avoidance be mounted on the UAV or can they also be attached to the ground vehicle?
+A: <p style=""margin-left:25px""><i>Components for obstacle avoidance can be installed on the ground vehicle, UAV, tether (or any combination thereof).&nbsp; See FAQ for additional details.</i>
+
+Q14 (08/16/2021): Will there be someone available on the ground vehicle or at a deployment center that is able to occasionally interact with the UAV?
+A: <i>There may be instances in which there is a human in the loop to assist with virtual interaction. Systems are expected to be able to operate without physical assistance from a soldier.</i>
+
+Q15 (08/16/2021): What kind of obstacles is the UAV commonly expected to avoid? Are they generally static or will it also need to avoid moving objects such as thrown items or birds?
+A: <i>The government is looking to focus this effort on avoiding general environment obstacles.&nbsp; Some may move, such as power lines, flags, or windmills. Avoidance of thrown items, military targets or birds are not the focus here.</i>
+
+Q16 (08/16/2021): Are there specific jamming or data manipulation techniques in mind that the system will need to be resistant to?
+A: <p style=""margin-left:25px"">&nbsp;<i>There are no specific techniques in mind, but the architecture is expected to be robust to interference.</i>
+
+Q17 (08/16/2021): At what height will the UAV be flying at?
+A: Tether height deployments could be as low as 20ft above the launch point on the vehicle up to 400 ft. Please visit the references section for the FAQ document for&nbsp;more information.&nbsp;
+
+Q18 (08/16/2021): What kind of tasks would the UAV be conducting?
+A: <p style=""margin-left:25px""><i>This is not relevant to the scope of this effort.&nbsp; This effort is focused on providing capability for both the UAV and tether to avoid obstacles.</i>
+
+Q19 (08/13/2021): The requirement appears to be focused on the control system needed to allow for tethered drone operation from a moving ground vehicle in complex terrain.&nbsp; That said, there is frequent use of the word sensor in a more ambiguous form.&nbsp; Can you please confirm that the priority of the SBIR topic is the control system built to allow for drone operation tethered to moving vehicles and not the ISR sensors that the drone would carry?
+
+Also, can you provide some threshold and objective criteria regarding additional ISR payloads?&nbsp; This will clearly impact the SWaP on drones once the sensor built for obstacle avoidance is mounted on the drone itself.
+A: <p style=""margin-left:25px"">Q: The requirement appears to be focused on the control system needed to allow for tethered drone operation from a moving ground vehicle in complex terrain.&nbsp; That said, there is frequent use of the word sensor in a more ambiguous form.&nbsp; Can you please confirm that the priority of the SBIR topic is the control system built to allow for drone operation tethered to moving vehicles and not the ISR sensors that the drone would carry?
+
+<p style=""margin-left:25px"">A: <i>Neither.&nbsp; The phase 1 effort is focused on the development of an architecture to enable capability for the UAS and tether to avoid obstacles.&nbsp; </i>
+
+<p style=""margin-left:25px"">&nbsp;
+
+<p style=""margin-left:25px"">Q: Also, can you provide some threshold and objective criteria regarding additional ISR payloads?&nbsp; This will clearly impact the SWaP on drones once the sensor built for obstacle avoidance is mounted on the drone itself.
+
+<p style=""margin-left:25px"">A: <i>This is not relevant to the scope of this effort.</i>",,Battlespace,1,Battlespace,General Warfighting Requirements (GWR),General Warfighting Requirements (GWR),1,"Collaborative Autonomy, Robotics, Tethered UAS, Teaming, UAS, UGV, Next Generation Combat Vehicle",1,"Collaborative Autonomy, Robotics, Tethered UAS, Teaming, UAS, UGV, Next Generation Combat Vehicle",Yes,1,Yes,,Develop and advance Te-UAS enabling technologies that make the capability more suitable and capable to operate in combat.,18,Develop and advance Te-UAS enabling technologies that make the capability more suitable and capable to operate in combat.,"Tethered UAS provide unique capabilities over traditional Small Unmanned Aircraft System (UAS) in that they can provide persistent operation, increased resiliency, and improved sensor bandwidth. These three aspects are vital for future Army combat operations, especially when combined onto ground combat vehicles. Successful advancement of Te-UAS would enhance U.S. Army modernization priorities Soldier Lethality (SL), Network (N), and Next Generation Combat Vehicle (NGCV). NGCV is seeking to field multiple manned and unmanned vehicles which will need to increase their situational awareness to provide earlier detection and warning of incoming threats, expand their communication range, and enhance the navigability of the platforms in non-austere environments. Tethered UAS are Unmanned Air Vehicles (UAV) that are attached to a ground platform (stationary or mobile) by a tether link which provides power and data typically via physical cable. Tethered UAS are treated as modular mission payloads capable of supplementing a combat vehicle with a wide range of persistent sensors tailored to the mission objective. In order to achieve the operational suitability, Te-UAS need to be able to share and integrate their data with the operating picture of the attached ground vehicle (GV) and larger formation. This collaborative sharing will enable greater mobility for the paired team using coordinated maneuvers to avoid obstacles, prevent the tether from becoming entangled, and complete the mission. Currently demonstrated Te-UAS are lacking in this coordinated operation and rely on open environments or stationary operations for a successful mission. Primary obstacles to overcome for successful operation of Te-UAS is the need for appropriate sensor configurations on both the GV and UAS for safe flight through fusion and filtering of sensor data to create an accurate common operating picture for navigation and planning as well as the control algorithms to steer the Te-UAS to avoid potential hazards in the path. Since the GV may or may not be manned, this entire process needs to be automated and done at a level of trust acceptable to the operators. Additionally, the ability to share and integrate these common operating pictures to both warfighters and other robotic systems is needed to further enhance mission success.The design goals of this effort are the creation of sensor configuration concepts and software algorithms for generating a common operating picture as well as safe flight of the Te-UAS while the GV is in motion. These designs should be able to support the GV in urban, suburban, and rural environments traveling at speeds up to 45 mph with the Te-UAS airborne. The limitations for sensors are that they must be currently procurable, TRL 6 or greater when integrated to a UAS or GV and be feasible to mount on the designated platform. There is no guideline on the number of sensors, but cost should be considered in the SIBR proposals. Additional limitations of the Te-UAS and UGV performance will be provided to vendors to further constrain the problem. Proposals for the common operating picture should tolerate and/or exclude poor quality data (temporal or spatial), provide cyber resiliency, be scalable for additional sensor modalities.",504,3276,1,No,No,No,,"Design a preliminary architecture consisting of sensors and software that would enable on the move operation (<45mph) with obstacle avoidance (Urban/Rural areas) for an unmanned ground vehicle with a deployed tethered UAS by developing a common operating picture for navigation. The architecture should be developed with the intent to construct algorithms that can be ran real-time in a simulation environment or a real vehicle. Phase 1 deliverables include monthly progress reports describing challenges, technical risk, and progress against schedule, a final technical report, and proposed sensor specification sheets.","Refine the preliminary architecture selected in Phase 1, develop and deliver software that would meet the objectives in physical or virtual space. The architecture refinement should include adding capability to tolerate and or reject poor quality data without degradation, have persistent memory of an area, and collaboration with another vehicle pair. Required Phase 2 deliverables include all necessary components (hardware and software) to run the system in a government simulation environment, a final report, and monthly progress reports. The software will be tested in urban, rural, and suburban environments to evaluate performance with various obstacles and lighting conditions.","Demonstration of the approach which was best able to collaboratively navigate multiple Te-UAS/UGV teams through unknown, previously known but changed and known environments on actual NGCV vehicles such as the Robotic Combat Vehicle (RCV) surrogate systems and/or the Mission Enabling Technology Demonstrator operating with paired UAS operating with the GVSC managed Warfighter Machine Interface.Phase III goals will include: Demonstrated collaborative autonomy on a government test range. Performance measurement in a variety of different excursions where changes to the environment occur such as road blocks or simulated enemy vehicles are placed. Simulated jamming and data manipulation occur from an adversary. Test reports detailing solution performance. Product documentation detailing operation of prototype. Monthly progress reports describing all technical challenges, technical risk, and progress against the schedule. Final technical report.",1,"https://www.unmannedsystemstechnology.com/category/supplier-directory/platforms/tethered-drones-uavs/; https://www.forbes.com/sites/sebastienroblin/2020/11/17/drone-on-a-leash--orion-2-tethered-mini-drones-can-fly-24-hour-shifts/?sh=6a7052e258fa; https://www.reuters.com/article/us-tethered-drone/tethered-drone-could-fly-forever-idUSKCN10L1U1; https://www.militaryaerospace.com/communications/article/16709761/what-is-global-persistent-surveillance; https://fas.org/sgp/crs/intel/R46389.pdf; During the pre-release period, proposing firms have an opportunity to contact topic authors through https://calendly.com/aal-tech-russ/tuas-tpoc to schedule a time to ask technical questions about this topic.","https://www.unmannedsystemstechnology.com/category/supplier-directory/platforms/tethered-drones-uavs/; https://www.forbes.com/sites/sebastienroblin/2020/11/17/drone-on-a-leash--orion-2-tethered-mini-drones-can-fly-24-hour-shifts/?sh=6a7052e258fa; https://www.reuters.com/article/us-tethered-drone/tethered-drone-could-fly-forever-idUSKCN10L1U1; https://www.militaryaerospace.com/communications/article/16709761/what-is-global-persistent-surveillance; https://fas.org/sgp/crs/intel/R46389.pdf; During the pre-release period, proposing firms have an opportunity to contact topic authors through https://calendly.com/aal-tech-russ/tuas-tpoc to schedule a time to ask technical questions about this topic.",6,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/83991/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/83991/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:46,,,,,A214-041_83991,ARMY_SBIR_2021_P1_C4_A214-041,,1,2025-08-09 19:51:32.635591+00
+4211,A214-042,84090,Sensor Synthetic Data Generation,Sensor Synthetic Data Generation,ARMY,United States Army,ARMY,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-10-26,2021-11-30,2021-10-26,2021-11-30,,2021-10-12,2021-10-26,,,,,,2021-10-12,2021-11-16,2021-10-12,2021-10-26,NOT_STARTED,Not Started,No,,,33,21,12,,1,33,"Q1 (11/16/2021): a) When generating synthesized image outputs, what labels are specifically necessary to be included? Example - A commercial satellite imagery consists of a desert scene with one building, one radar installation and a few enemy tanks. Do you want the system to label individual objects or label the whole scene for the generated synthetic output?&nbsp;
+
+b) Using the same example above, do you want us to generate synthetic data of multiple variations of the same scene background and multiple variations of objects within the scene? ie different types of tanks, different radars? Or you would want the user to highlight &quot;high-value targets&quot; within a scene and the system automatically generates multiple variations of the desired &quot;high-value targets&quot;?
+
+c) Is a generation interface desirable? If so, what types of input labels would the Army have an interest in specifying to control the nature of the synthesized data including different atmospheric conditions, lighting etc?&nbsp;
+
+&nbsp;d) Do you have a specific format for the Commercialization slides (10 slides)?&nbsp;<br />
+&nbsp;
+A: Questions A through C: For PHII, the Army is interested in a solution that can leverage highly representative data - synthetics to build Machine Learning models to identify enemy equipment (e.g. radar, tank, logistics platform).<br />
+<br />
+d) please follow PM SBIR&#39;s preferred format.
+
+Q2 (11/10/2021): Is there a recommended Data Management Plan and strategy for an eventual deployment in Phase III?
+A: Not at this time.
+
+Q3 (11/10/2021): As a pathfinder initiative, what is the anticipated Sensor Synthetic Data Generation deployment strategy (cloud service, on-premise software, hybrid)?
+A: all our options, please leverage the deployment strategy best suited for your solution.
+
+Q4 (11/10/2021): Does the Phase II demonstration proof of concept form factor compatible with Army uniformed officer staffing and deployment decisions refer to end users? Does this mean end users are expected to be uniformed operators?&nbsp;&nbsp;
+A: for PhII, the intended user is a Data Scientist.
+
+Q5 (11/09/2021): &nbsp;
+
+<ol>
+	<li>Will Commercial Remote sensing imagery data (i.e.&nbsp; World View 1,2,3 (Imagery), Digital Globe, Blacksky) be provided GFI for validation testing of the synthetic data labels generated?&nbsp;</li>
+</ol>
+A: sample data can be provided during PHII
+
+Q6 (11/08/2021): In the image domain (e.g, SAR, EO), is the generation of small-area target-focused image chips sufficient, or is the desired output a set of large-area, natural scenes and clutter, with or without multiple targets in each scene?
+A: The endstate is to build performant machine learning models against synthetic data in support of large scale combat operations.
+
+Q7 (11/08/2021): 1) In the image domain (e.g, SAR or EO), is the generation of small-area target-focused image chips sufficient, or is the desired output a set of large-area, natural scenes and clutter, with or without multiple targets in each scene?
+A: The desired endstate is to build performant Machine Learning models against Synthetic Data.
+
+Q8 (11/08/2021): Is there a required file format for the synthetic data (e.g. MISB 0903)?
+A: No required format. &nbsp;However please use well known standards like 0903.
+
+Q9 (11/08/2021): Does the Government have a targeted environment for the tools, such as a cloud environment (i.e., AWS or equivalent)? If so, will the Government please provide a list of acceptable/expected environments?
+A: The government does not have a preference for the Phase II.
+
+Q10 (11/08/2021): The Direct-to-Phase II SBIR<i> </i>Army <i>A214-042 Sensor Synthetic Data Generation Objective</i> states<i>: &ldquo;The US Army requires large-scale, accurate and easily accessible training, test, and validation data to support AI model development for multiple security domains (e.g. SIPR, JWICS&hellip;).&rdquo;</i> The objective discusses multiple security domains to include SIPR &amp; JWICS, as a target for the proposed tools; however, the proposal must be unclassified. Does the government expect the work to be performed on&nbsp;secure networks? If so, will the Government provide a list of networks in priority order?
+A: The government does not expect the initial Phase II work to be on classified networks.
+
+Q11 (10/31/2021): Among the list of data types you have listed for which you need synthetic data, do you want the Phase 2 performer to show POC for each one of them or how much minimum you need for the POC? For Phase 1, do we need to show we have done prior work for all the data types?&nbsp; Just want to get some clarity and guidance from you.&nbsp;
+
+Data types:&nbsp; Commercial Satellites/Electro Optical (EO) - World View 1,2,3 (Imagery), Digital Globe, Blacksky // Synthetic Aperture Radar (SAR) - RADARSAT and Capella; Other Needs: 0903 Full Motion Video (FMV) // Electronic Intelligence (ELINT) spectrums/waveforms // Variable Message Format (VMF) and Chat;&nbsp;
+
+Is there a specific Program of Record for this topic?&nbsp;
+
+Are you open to mixing opensource and custom-built tools for Phase 2?&nbsp;
+
+Data types like chat data or VMF are quite different from other types listed. Do we have to show Phase 1 feasibility for these data types?&nbsp;
+
+Is time series data one of the required data types? Since the time series is missing from your list, we wanted to confirm.&nbsp;
+
+Do you have any evaluation metrics to determine whether the synthetic data generation tool is working as per your expectation?&nbsp;
+
+&nbsp;
+A: 
+
+Q12 (10/29/2021): Are all priority needs required to be met in Phase II, or will a partial solution be acceptable? If all priority needs must be met, does the feasibility documentation need to address all of the priority needs?
+A: 
+
+Q13 (10/28/2021): The topic states that the demonstrated prototype should be a &ldquo;form factor compatible with Army uniformed officer staffing and deployment decisions&rdquo;, can you clarify which specific form factors would be compatible?
+A: 
+
+Q14 (10/28/2021): What is the anticipated breakdown of classified and unclassified work?
+A: 
+
+Q15 (10/27/2021): Regarding the prototype deliverable, what types of data would be required for&nbsp;measurable success? Are there different measurements for different data types?&nbsp;Especially considering some data types are more difficult to produce than others (e.g. Full Motion Video).
+A: 
+
+Q16 (10/26/2021): <ol>
+	<li style=""margin-left:8px"">Does the government expect synthetic data generation under one contract for all of the sensor modalities mentioned?&nbsp; Or, will the government consider awards for subset sensor focuses (e.g., EO/IR or RF)?&nbsp; Is it sufficient to address multiple EO/IR sensor types or multiple RF sensor types but not all EO/IR sensors or not all RF sensors?</li>
+	<li style=""margin-left:8px"">Are multiple awards planned?</li>
+	<li style=""margin-left:8px"">The topic description lists &ldquo;Priority Needs&rdquo;, &ldquo;Other Needs&rdquo;, and &ldquo;Desired synthetic data to be used in AI/ML model development&rdquo;.&nbsp; Is the last category, &ldquo;Desired synthetic data&rdquo;, a list of example target types that should be represented in the synthetic sensor data?</li>
+	<li style=""margin-left:8px"">Does the government have a preference for how the data is generated, e.g., physics-based models or AI/ML generative models such as Generative Adversarial Networks (GANs)?</li>
+</ol>
+A: That has not been determined at this time. &nbsp;SAR and EO are the priority. &nbsp;and we do not have a preference.
+
+Q17 (10/25/2021): 1. Given the wide array of formats in which synthetic data is desired, what formats (e.g., imagery, radar, waveforms) would be most useful for a Phase II demonstration?
+
+2.&nbsp;Are Surface to Surface Radars, Surface to Air Missile Launchers, Tanks, and similar objects to be included in the synthetic data sets in relevant formats for the prototype demonstration?
+
+3.&nbsp;Is this technology envisioned as an independent system or as an adjunct to the Common Scene Generator?
+
+4.&nbsp;What is the envisioned latency for developing synthetic data for a specific object/waveform/discussion?
+A: Imagery! Yes &ndash; enemy equipment such as the ones you have listed below should be included in the synthetic data. &nbsp;The Synthetic Data will be used by Data Scientist to build ML models. &nbsp;Please provide a solution to meet the intended objective.
+
+Q18 (10/22/2021): Is it sufficient in Phase II to perform a prototype proof of concept for a single sensor data type (e.g., Capella Space SAR) with pathways to other modalities?
+A: Yes.
+
+Q19 (10/22/2021): Are there&nbsp;known data voids per sensor type and object type?&nbsp; If so, can that data be made available?
+A: Not enough data available to train models.
+
+Q20 (10/22/2021): Are the priority needs listed in the topic in priority order? Is&nbsp;there a goal or need for the&nbsp;sensor synthetic data generation tool capability to synthesize multiple modes of data (SAR, EO, ELINT, etc.)?&nbsp;
+A: EO and SAR are the priorities.
+
+Q21 (10/20/2021): <b data-stringify-type=""bold"">Does the Army have any existing, labeled data for objects of interest? If so, how many instances of labels exist for each object of interest? If not, would the Army be willing to support in labeling efforts to generate a datasets for training a baseline model to compare against models trained on synthetic data?</b>
+A: The Army is interested in synthetic data that resembles, Commercial Satellites Imagery &ndash; e.g. World View 1,2,3 and within that image a representative enemy tank.",,"Electronics, Sensors",2,Electronics,Artificial Intelligence/ Machine Learning,Artificial Intelligence/ Machine Learning,1,Sensors; Machine learning; synthetic data; AI/ML; data labeling; Artificial Intelligence,6,Sensors,No,0,No,,"US Army requires large-scale, accurate and easily accessible training, test, and validation data to support AI model development for multiple security domains (e.g. SIPR, JWICS....). Sensor data is critical to develop AI/ML models. Unfortunately there is not enough data yet to create highly performant models. Sensor Synthetic Data Generation will potentially serve to reduce bottleneck of training data supply that helps improve ML models by developing a synthetic data generation tool.",71,"US Army requires large-scale, accurate and easily accessible training, test, and validation data to support AI model development for multiple security domains (e.g. SIPR, JWICS....). Sensor data is critical to develop AI/ML models. Unfortunately there is not enough data yet to create highly performant models. Sensor Synthetic Data Generation will potentially serve to reduce bottleneck of training data supply that helps improve ML models by developing a synthetic data generation tool.","Currently, nearly all of the AI/ML models are developed using actual or representative data. There is not enough unique defense/intel data available to create performant models (e.g. it takes roughly 50M pieces of data to create a 60-70% performant model). Additionally, this data must be labeled; synthetically generated data has the ability to be labeled as it is generated, reducing human data labeling effort for real-world data and data generated from an external (e.g., vendor) source. Sensor Synthetic Data Generation topic encompasses the development of a synthetic data generation tool for sensors (e.g. radar, etc.) that can augment the limited, labeled, training data available to support Artificial Intelligence / Machine Learning model development. The purpose of this topic is to lead to the creation/integration of mission-focused synthetic data to include but not be limited to: Priority Needs: Commercial Satellites/Electro Optical (EO) - World View 1,2,3 (Imagery), Digital Globe, Blacksky // Synthetic Aperture Radar (SAR) - RADARSAT and Capella; Other Needs: 0903 Full Motion Video (FMV) // Electronic Intelligence (ELINT) spectrums/waveforms // Variable Message Format (VMF) and Chat; Desired synthetic data to be used in AI/ML model development: Surface to Surface Radars, Surface to Air Missile Launchers, Tanks, Etc. Please note: labeled data is a critical input to model training and model test & eval.",214,1427,1,No,No,No,,This is a Direct to Phase II effort. Please see Phase II Topic Description for further instruction.,Develop and demonstrate a technically feasible software prototype that showcases how the solution addresses the challenges described in the DESCRIPTION of this topic and meets or exceeds the OBJECTIVE of this topic. The demonstration shall show the prototype as a proof-of-concept in a form-factor compatible with Army uniformed officer staffing and deployment decisions.,This SBIR would integrate Artificial Intelligence and Machine Learning algorithms as a pathfinder initiative into developing new models to support sensor modalities across the Army and will significantly improve in performance; thus increasing the ability to identify high value targets.,1,"Alzantot, Moustafa, et al. ""SenseGen: A Deep Learning Architecture for Synthetic Sensor Data Generation."" 2017 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), 2017, https://doi.org/10.1109/percomw.2017.7917555; Nikolenko, Sergey. Synthetic Data for Deep Learning. https://arxiv.org/pdf/1909.11512.pdf.","Alzantot, Moustafa, et al. ""SenseGen: A Deep Learning Architecture for Synthetic Sensor Data Generation."" 2017 IEEE International Conference on Pervasive Computing and Communications Workshops (PerCom Workshops), 2017, https://doi.org/10.1109/percomw.2017.7917555; Nikolenko, Sergey. Synthetic Data for Deep Learning. https://arxiv.org/pdf/1909.11512.pdf.",2,1,,,,,1,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/84090/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/84090/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:46,,,,,A214-042_84090,ARMY_SBIR_2021_P1_C4_A214-042,,1,2025-08-09 19:51:32.635591+00
+4212,A214-043,84091,"Artificial Intelligence-in Automated Scrap Inspection ""MVM""",Artificial Intelligence-in Automated Scrap Inspect,ARMY,United States Army,ARMY,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-10-26,2021-11-30,2021-10-26,2021-11-30,,2021-10-12,2021-10-26,,,,,,2021-10-12,2021-11-16,2021-10-12,2021-10-26,NOT_STARTED,Not Started,No,,,27,21,6,,1,27,"Q1 (11/10/2021): What are the imaging characteristics of the existing three modalities?
+
+-X-ray backscatter: What is the image (digital, spatial, and radiometric) resolutions, X-ray frequency bands, standoff distance, dwell times and power/intensity, detector efficiency(quantum efficiency)?
+
+-X-ray transmission: What is the image (digital, spatial, and radiometric) resolutions, X-ray frequency bands, standoff distance, dwell times and power/intensity, detector efficiency(quantum efficiency)?
+
+-Camera: What type of camera, is this an EO/IR monochromatic sensor or more standard digital camera with RGB color output. What is the image (digital, spatial, and radiometric) resolutions, standoff distance, lighting conditions?
+
+Are the imagers fixed or can X-ray and visual images be taken of the target area from different/multiple positions?
+
+Thank you.
+A: 
+
+Q2 (11/10/2021): Do you&nbsp;have x-ray specifications that are rejectable or acceptable? Specifically, x-rays need to meet a certain pixel density, focal length, gamma level, etc. So, do you have a specific procedure for how they x-rays are taken and do the x-rays have to meet a pass/fail threshold based on some overseeing radiography regulation or standardization?
+A: The x-rays system is established and the x-rays and scintillators and signal conditioning are working; the imagery that results is available for use.&nbsp;
+
+Q3 (11/10/2021): Since there are multiple pieces of scrap per image, does the whole image get labelled as MPPEH/MDAS or do the individual pieces of scrap in the image need to be labelled as MPPEH/MDAS?
+A: The images will need to be &quot;copied&quot; and enumerated for the record. The judgment will be rendered and be a part of the record. We want to, additionally, know why it was judged &quot;bad&quot; with some probably standard phrases so we can backtrack why the system made that call.&nbsp;
+
+Q4 (11/10/2021): 1. In the labeled images that Army will provide, will each object be marked as a rectangle box or a pixel-level mask?
+
+2. Are 3 snapshots of each batch (in 3 modalities: vision (camera), transmission x-ray, backscatter x-ray) registered (aligned at pixel level) with each other or not?
+A: The images, taken to the next step, are now formed with a bounding box, and reoriented. Registration (aligning the 3 modality images) and time sequencing (since they are out of phase time-wise) will need to be done. While the bounding box has been done through edge recognition or similar, the proppsal should show how the process will be done.
+
+Q5 (11/09/2021): Is there a template available for Vol II Technical?
+A: No.
+
+Q6 (11/09/2021): Should proposed AI solutions be built on technologies with a DoD ATO? If an ATO is required, can the Army please provide a list of those authorized cloud technologies?
+A: There is an existing effort with the hardware mostly completed. The SBIR would take the input from the x-rays through the scintillators and signal conditioning. This is currently &quot;hard wired&quot; between sensing, signal conditioning, and the software/imagery.
+
+Q7 (11/09/2021): How many awards does the Army anticipate making towards this topic?
+A: Number of awards to be determined by proposals.
+
+Q8 (11/06/2021): The topic says &ldquo;Obtaining approval from the Department of Defense Explosive Safety Board (DDESB) will allow an alternate means of inspection, using advanced technology.&rdquo; Are contractors responsible for obtaining this approval?
+A: The SBIRs are intended to result in a usable technology for direct application. The policy to use such depends on DDESB approval for an alternate means. So it is crucial to be successful. The Army will work with the SBIR organization to achieve DDESB approval.&nbsp;
+
+Q9 (11/06/2021): Will the provided data be classified?
+A: The data on the current project is not classified.
+
+Q10 (11/06/2021): If a contract&nbsp;is awarded, will you provide&nbsp;access to human inspectors so we can interview them about how they classify?
+A: Contact, under contract, with th human inspectors can be provided.&nbsp;
+
+Q11 (11/05/2021): 1. Are the images for all modalities tagged with a human label, for example, with &quot;False&quot; labels (classification errors) or &ldquo;true&rdquo; labels (no errors) or something else?
+
+2. What is the metric used to evaluate current inspection process performance?
+
+3. What current combining methodology is used to determine &ldquo;good or bad&rdquo; scrap based on 3 modalities output?
+
+3a. Does the solution need to follow exactly the same methodology in combining the 3 models&rsquo; output, or can an ML meta-model be used for this task?
+
+4. If images (regions of interest) contain about 5 scrap pieces per image, does tagging information contain data per scrap piece or per image? (We would think it would be per image, but just want to clarify&hellip;)
+
+4a. Do the labels of the images contain geometric information?&nbsp; In other words, is the location of the true region(s) given, or are the labels applied to the entire image as a whole?
+
+5. Will workflows of the humans involved in the inspection process be provided as part of Phase 1?
+
+<span style=""background:#f8f8f8"">6. Based on the response to the process question dated 10/21/21, it appears that there are also sorting operations before&nbsp;the scrap goes into the incinerator. &nbsp;We assumed that the energetics inspection occurred after the scrap had been processed through the incinerator (to ensure that the scrap was free of energetic hazmat).&nbsp; Can you clarify if the ML scrap inspection should occur before, or after, it goes through the incinerator? Or both?</span>
+A: 1. The images are not currently labelled but will be. Thus learning sets would know what they are witnessing.
+
+2. Current metrics are the human eye and observer; of a trained QA person who has been given authority to do the inspection. It is the result of human judgment.
+
+3. &amp; 3a. The current combination of the 3 modalities is under development. A successful SBIR would provide their own creative techniques to do the registering, sequencing, bounding, orientation, examination of image, etc, to arrive at an accurate assessment.
+
+4 The tagging is per piece by necessity. Judgment is per piece. Once a piece has been judged a sorter downstream will divert that piece to the correct bin.
+
+4a. An image has a region of interest. There are 5 or 10 pieces in the ROI. Each piece needs to be labelled and judged. This data goes to storage and also to the downstream diverter for each piece. It is assumed that a &quot;bad&quot; piece is relatively rare so &quot;good&quot; continues on the conveyor and &quot;bad&quot; is picked or diverted out of the stream.&nbsp;
+
+5. As part of our current development, the accuracy of the human is taken into account. Record of this will be made available.&nbsp;
+
+6. The inspection only occurs after processing (currently with 2 human QAs). All incinerator input has energetics since it is live ammo that is being disposed of.&nbsp;
+
+Q12 (11/01/2021): <ol>
+	<li><span style=""tab-stops:list .5in"">What is the current process used to filter the hazardous from non-hazardous residue?</span></li>
+	<li><span style=""tab-stops:list .5in"">What infrastructure is in place to conduct the filtering?</span></li>
+	<li><span style=""tab-stops:list .5in"">What wave lengths are you capturing?</span></li>
+	<li><span style=""tab-stops:list .5in"">Where are you currently storing data?</span></li>
+	<li><span style=""tab-stops:list .5in"">What existing technology are you using to X-ray residue?</span></li>
+</ol>
+A: 1. Current method is 2 human QAs.
+
+2. Humans judging and picking from the sorting table.
+
+3. Wave lengths in the broad x-ray spectrum are being used and gathered via scintillators.
+
+4. At present, the x-ray system creates an image on the computer screen and this image is stored on a hard drive.
+
+5. Humans are the current practice, x-ray technology is being developed along with scintillators and the signal processed and managed into imagery.&nbsp;
+
+&nbsp;
+
+Q13 (11/01/2021): In the data sets that will be provided, are the transmission x-ray, backscatter x-ray, and visual images all taken from roughly the same position at the same time?
+A: The 3 modalities create their data on their own. The pieces are in front of each modality as the conveyor runs at a steady velocity from the first to the second to the third and then out to the sorter. So, with edge detection, the piece could be said to be in the same position, but they are out of time phase.
+
+Q14 (10/28/2021): 1. Will this software run independently, or will it be integrated with other software? If it will be integrated with other software, what is that, which company provides it?&nbsp;
+
+2. In each image, is there any overlap between&nbsp;scraps?&nbsp;&nbsp;
+A: 1. The software in this SBIR is to get more accurate judgment of energetics remaining in scrap, or not. Other software are the signal conditioning and image creation. Other software are that which run the conveyor and feeder. This SBIR should have also software to register and take into account the time phase of the 3 modalities and the subsequent sorting downstream of each particular piece. Data storage and also means to &quot;call back home&quot; should be part of the software.&nbsp;
+
+2. Each piece of scrap is in a stream of sequence of pieces. These should be close but not touching, thus availing the proposer to use edge detection for start/stop of each piece. As the development progresses, there will be a need to have up to 5 streams. So, if the region of interest has a stream 4 pieces long, then in the view could be 20 pieces, each needing to be labelled and judged and recorded.
+
+Q15 (10/28/2021): What is the &quot;ASI Project&quot; referenced here?&nbsp;
+A: ASI stands for Automated Scrap Inspection.
+
+Q16 (10/25/2021): Is the Commercialization Strategy be&nbsp;10 page slides as stated on SAM.gov <u><strong>or </strong></u>as described in Appendix A in the&nbsp;Phase I&nbsp;SBIR 21.4 Army Broad Agency Announcement (BAA).
+A: The limit for the commercialization strategy is 10 slides as stated in SAM.gov.<br />
+&nbsp;
+
+Q17 (10/22/2021): Will existing X-ray imagery with points of energetics be provided for phase 1 research? &nbsp;Is the x-ray imagery digital, or does a digital process of imagery need to be produced?
+A: The x-ray generator, sensor, some conditioning (analog through photomultiplier, &nbsp;and the A to D converter are already on line.. Images have been produced. Data can be obtained anywhere along the input data stream.
+
+Q18 (10/22/2021): The title of the proposal is Artificial Intelligence-in Automated Scrap Inspection &ldquo;MvM&rdquo;. &nbsp;What does &ldquo;MvM&rdquo; refer to?
+A: &quot;MVM&quot; is short for &quot;Man versus Machine.&quot; A goad is to meet or exceed the capabilities of visual inspection.
+
+Q19 (10/21/2021): <p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">&nbsp;
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Will data sets be provided?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">What is the nature of the data and what format is it in?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">How many data sets are there?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Are the images/data tagged?
+
+<p style=""text-align:justify; margin-bottom:8px"">Are there multiple views of each piece?&nbsp;
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Is the data 2d or 3d in nature (i.e. are cavities spatially resolved)?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Is chemical/elemental information provided?&nbsp; XRF can tell one what metals et al. are present. Is that information provided?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Is the meta data associated with the data provided (e.g. type of Xray tube used, power levels, detector used, type of munition being viewed)?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">At what speed does the process operate (e.g. images/second)?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Are images collected in a stream (continuous) or snapshots?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">What is the field of view of the imager?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Are the munitions imaged discretely or in groups?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Is the desired output of the analysis limited to two outcomes &ldquo;explosives found/not found&rdquo; or is more information desired? If so, what else is wanted?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Are there multiple instruments that require their own calibration and training data?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Can you describe how you see the system being used in the field?
+
+<p class=""Normal"" style=""text-align:justify; margin-bottom:8px"">Ultimately, is the process amiable to the addition of other sensors (e.g. visible camera, spectral imaging)?
+A: Imagery will be provided.<br />
+Images of scrap 50cal cases and projectiles via x-rays will be provided in jpg format<br />
+There will be around 10 &quot;groups&quot; of types of scrap, many images (data sets) will be generated.<br />
+Yes<br />
+This depends on the speed that the scrap goes past the image capture; this depends on resolution and ability to descern an accurate judgment of good or bad scrap.<br />
+Currently it is one 2d image; this depends on x-ray properties as necessary to image the scrap piece<br />
+This would be an important outcome of any system capability<br />
+This could be provided.&nbsp;<br />
+This could be provided.Currently about 1 image per second; depends on &quot;tuning&quot; for optimization for accurate output judgment.<br />
+Each piece of scrap can be considered a &quot;batch&quot; process (snapshot).<br />
+The region of interest is about 10x10 inches, depth is about 1 inch. May be 5 scrap pieces in the window.<br />
+A region of interest contains about 5 pieces of scrap, each piece should be incised and evaluated.<br />
+The final output should be binomial; an analog data collection is useful in seeing trends and if it is a &quot;near miss&quot; situation.&nbsp;<br />
+There are three &quot;modalities&quot; that are the source for data. Each must be evaluated and the combination provides an enhanced data sets for judging.<br />
+A fork truck dumps cooled scrap into a hopper and vibratory feeder, a conveyor runs scrap forward and the rich collection of imagery (3 modalities coming in as &quot;snapshots&quot; is combined to decised &quot;good or bad&quot; scrap and a diverter acts accordingly. The hardware is there, the AI &amp; ML removes human from the loop by deciding and controlling the hardware.<br />
+The three modalities consist of a vision (camera), a transmission x-ray, a backscatter x-ray.<br />
+&nbsp;
+
+Q20 (10/15/2021): Will any data be provided to support the Phase I research,&nbsp;development, and evaluation?&nbsp;
+
+If so, will&nbsp;the data be annotated?
+A: A goal is to provide a highly accurate means of assuring the level of energetics is low or non-existent. X-ray imagery may show small amounts of energetics. This AI and ML oriented for use in RD&amp;E with the x-ray imagery produced by other equipment.
+
+Q21 (10/13/2021): Is this a Phase I topic?&nbsp; (vs. a direct-to-Phase II topic).
+A: This is a Phase 1 topic.",,Materials,1,Materials,Artificial Intelligence/ Machine Learning,Artificial Intelligence/ Machine Learning,1,Artificial Intelligence; recycle; scrap; x-ray; automation; inspection; AI/ML; Machine learning; imaging,9,Artificial Intelligence,No,0,No,,"The Army demilitarizes non-usable ammunition in the rotary kiln incinerator (RKI) and tries to recycle the scrap through commercial dealers. The scrap must be safe to leave government custody, Success is meeting or exceeding the human 200% ability. Additional insight will be obtained since the x-rays can ""see through"" the ammo casing and projectile for energetics. Obtaining approval from the Department of Defense Explosive Safety Board (DDESB) will allow an alternate means of inspection, using advanced technology. Automation of the inspection process is another objective of the effort, and the better judgment produced by the AI & ML will increase the sorting effectiveness. Current and emerging requirements (such as the need for ""venting"" cavities and voids that can’t be ""seen"") increase benefits of x-ray penetration and imaging. The following are the topic objectives: detect and discriminate for energetics remaining in ammo scrap and sort as MDAS or MPPEH; create a system of systems that can judge energetic levels as good as or better than human inspection for scrap from the demilitarization (demil) furnace.",173,"The Army demilitarizes non-usable ammunition in the rotary kiln incinerator (RKI) and tries to recycle the scrap through commercial dealers. The scrap must be safe to leave government custody, Success is meeting or exceeding the human 200% ability. Additional insight will be obtained since the x-rays can ""see through"" the ammo casing and projectile for energetics. Obtaining approval from the Department of Defense Explosive Safety Board (DDESB) will allow an alternate means of inspection, using advanced technology. Automation of the inspection process is another objective of the effort, and the better judgment produced by the AI & ML will increase the sorting effectiveness. Current and emerging requirements (such as the need for ""venting"" cavities and voids that can’t be ""seen"") increase benefits of x-ray penetration and imaging. The following are the topic objectives: detect and discriminate for energetics remaining in ammo scrap and sort as MDAS or MPPEH; create a system of systems that can judge energetic levels as good as or better than human inspection for scrap from the demilitarization (demil) furnace.","The U.S. Army has a need for reliable, accurate, and repeatable detection of explosive hazard on metallic ammunition scrap. Current inspection methodologies utilize two independent inspectors, who conduct a '200%' visual inspection which poses costs, safety hazards, accuracy levels, and limits of vision. This also requires additional time with inspection results that are prone to human error. The program builds on the advances in x-ray technology, digital imaging, and advanced algorithms. The project will use artificial intelligence (AI), machine learning (ML), deep learning, and neural networks to interpret metallic scrap inspection images, that are produced by x-rays, for traces of explosive hazards. Success will significantly reduce operator workload and allow a more efficient and effective means of determining pure metal scrap. The results will be integrated into automated sorting for MDAS (Material Documented as Safe) from MPPEH (Material Potentially Possessing Explosive Hazard) Success, and advancement, will be the ability to inspect as good or better than humans reliably and repeatedly, and also ""see inside"" of questionable surfaces. If this is successful, it could mean a new alternative for inspections, less manpower to be expected, and better documentation for scrap output.",190,1303,1,No,No,No,,"Phase I will consist of demonstrating the feasibility of an advanced AI algorithm using (labeled or unlabeled) x-ray images taken from metallic scrap ammunition. This will take algorithms from training sets to create convolutional neural networks, regression models, and unsupervised learning. Phase I should increase effectiveness of the ASI project.","Phase II will further mature the AI/ML technology to meet all requirements in the system, with a final demonstration in a relevant environment.",Success of Phase II would allow transition to more ammo depots and larger sizes.,1,"Liu, Haibo, Yidong Wang, and Hongjuan Zhu. ""The Technology Method Research Of Scrap Ammunition Destruction."" 2015 3rd International Conference on Mechanical Engineering and Intelligent Systems. Atlantis Press, 2015.; Raftery, Brian W. Conventional Ammunition Demilitarization (Demil)-A Growing Challenge. ASSISTANT SECRETARY OF THE ARMY (ACQUISITION LOGISTICS AND TECHNOLOGY) FORT BELVOIR VA, 2008.","Liu, Haibo, Yidong Wang, and Hongjuan Zhu. ""The Technology Method Research Of Scrap Ammunition Destruction."" 2015 3rd International Conference on Mechanical Engineering and Intelligent Systems. Atlantis Press, 2015.; Raftery, Brian W. Conventional Ammunition Demilitarization (Demil)-A Growing Challenge. ASSISTANT SECRETARY OF THE ARMY (ACQUISITION LOGISTICS AND TECHNOLOGY) FORT BELVOIR VA, 2008.",2,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/84091/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/84091/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:47,,,,,A214-043_84091,ARMY_SBIR_2021_P1_C4_A214-043,,1,2025-08-09 19:51:32.635591+00
+4213,A214-044,84092,Datalink-Enabled AI for Fires Optimization,Datalink-Enabled AI for Fires Optimization,ARMY,United States Army,ARMY,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-10-26,2021-11-30,2021-10-26,2021-11-30,,2021-10-12,2021-10-26,,,,,,2021-10-12,2021-11-16,2021-10-12,2021-10-26,IN_PROGRESS,In Progress,No,,,2,2,0,,1,2,"Q1 (10/29/2021): This topic is listed as a Direct to Phase II effort. Could the Phase II effort be submitted without the Phase I submission?
+
+Thank you!
+
+May
+
+may.hlaing@omegaoptics.com
+A: 
+
+Q2 (10/26/2021): The technical proposal consists of the&nbsp;Feasibility Documentation and the Technical Proposal. Page 30 of Rev. 3 (under B.3 DP2 Proposal Instructions, para. b Format of Technical Volume) says the length for each of these parts will be specified by the corresponding opportunity.&quot; It also says (under para c, Content of the Technical Volume on page 30) , &quot;Detailed instructions on the format, page limits and information required for each section of the technical volume can be found in the SBO announcement.&quot; We&nbsp;cannot find this info in&nbsp;the ASO opportunity published October 12, in Revision 3, or in this&nbsp;topic description. It does say on page 2 of the ASO under item b, last paragraph that Phase II proposals (not necessarily DP2) shall not exceed 10 pages but goes on to say the commercialization strategy shall not exceed 10 slides which will not count again the 5 page?? limit.&nbsp; That doesn&#39;t make sense and nowhere is the max page count of the feasibility documentation for the DP2 addressed.
+A: The Feasubility Documentation and Technical proposal should not exceed 10 pages - the Technical Volume shouldn&#39;t account for more than 5 pages of this. &nbsp;The commercialization strategy is not included in those, and can account for up to 10 additional pages. &nbsp;For further clarification on the required format, please see the 21.4 BAA anouncement on SAM.gov.<br />
+&nbsp;",,"Electronics, Sensors",2,Electronics,Artificial Intelligence/ Machine Learning,Artificial Intelligence/ Machine Learning,1,datalink; optimization; machine learning; AI/ML; radar,5,datalink,No,0,No,,"It is projected in the future fight, the speed of battle will be imperative and every munition employed must be effective. AI/ML will be a great enabler for improved flexibility to changing battlefield conditions and rapid decision making. Armaments Fire Control Radar to Projectile Datalinks currently in development can provide the infrastructure to bring operational data back for algorithm training and also for optimization during tactical operations. AI/ML can be inserted at multiple points along the Kill Chain to optimize Fires and enhance performance. Datalink architecture enables round to round applications as well as ground to round. The topic objective is as follows: develop Machine learning architecture that can ingest battlefield data and optimize conditions based on new information on the threat picture. This architecture can be used with real data that is collected via ground radar to projectile datalinks and trained to develop algorithms for implementation in real time systems. This can exist at multiple points in the kill chain and use multiple types of ML optimization algorithms.",169,"It is projected in the future fight, the speed of battle will be imperative and every munition employed must be effective. AI/ML will be a great enabler for improved flexibility to changing battlefield conditions and rapid decision making. Armaments Fire Control Radar to Projectile Datalinks currently in development can provide the infrastructure to bring operational data back for algorithm training and also for optimization during tactical operations. AI/ML can be inserted at multiple points along the Kill Chain to optimize Fires and enhance performance. Datalink architecture enables round to round applications as well as ground to round. The topic objective is as follows: develop Machine learning architecture that can ingest battlefield data and optimize conditions based on new information on the threat picture. This architecture can be used with real data that is collected via ground radar to projectile datalinks and trained to develop algorithms for implementation in real time systems. This can exist at multiple points in the kill chain and use multiple types of ML optimization algorithms.","Currently, the only battlefield condition data at the edge is provided by forward observers. The FDC Commander does not have enough information to make rapid decisions and adjustment of fires or maneuver of projectiles in flight. Also, gun hardened Tactical Datalinks for munitions/radars are still in development to be exploited and utilized fully.Therefore, this topic aims to utilize Artificial Intelligence and Machine Learning (AI/ML) to produce Optimization networks and algorithms that can be inserted in the Fires kill chain for rapid and flexible mission adjustments in real time. It also aims to leverage Ground Radar to Projectile Datalink architecture that links projectiles in flight to Fire Control (FC) Radars and Fire Direction Center (FDC) to identify data that can be used to train ML algorithms along the kill chain. Some examples of ML in this context include but are not limited to: Optimization of Projectiles/Targets to maximize efficiency and minimize overkill while adapting to changing battlefield conditions; Use datalink to collect onboard sensor data from operational environments to train Aided Target Recognition algorithms; Use ML to quickly assess Gun errors based on first projectile in flight's initial trajectory and correct next rounds in real time; Training architecture that can quickly optimize and produce best courses of action with confidence levels to report back to Commander for action. The new approach will be to utilize new Radar to Round datalinks to bring back data from the front lines to update battlefield conditions. This can be anticipated to develop optimization algorithms that can provide alternate scenarios and choices to the commander with various confidence levels to enable faster decision making. If successful, it could have the following impact: enable rapid adjustments of fires, including projectiles in flight based on changing or new threat target information; enable efficient Fires and optimization of all resources (radar, datalink, rounds in flight); enable round to round communications and optimization algorithms for minimizing overkill.",317,2115,1,No,No,No,,This is a Direct to Phase II effort. Please see Phase II Topic Description for further instruction.,"Phase II will consist of the following: Develop techniques and initial simulation environment, produce initial optimization problem sets and demonstrate; Further develop multiple optimization algorithms and environments based on various AI/ML insertion points in the Fires Kill chain; Develop and train with multiple scenarios generated from User discussions.","Phase III will consist of the following: Implement real time algorithms to be inserted into Platform FC, FDC, Munition and Radar Programs of Record.",1,"Weapon Systems Handbook 2021-2021, https://www.army.mil/e2/downloads/rv7/2020-2021_Weapon_Systems_Handbook.pdf","Weapon Systems Handbook 2021-2021, https://www.army.mil/e2/downloads/rv7/2020-2021_Weapon_Systems_Handbook.pdf",1,1,,,,,1,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/84092/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/84092/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:47,,,,,A214-044_84092,ARMY_SBIR_2021_P1_C4_A214-044,,1,2025-08-09 19:51:32.635591+00
+4214,A214-045,84098,"Graph Neural Networks (GNN) for UxS Collaborative Agent Control ","Graph Neural Networks (GNN) for UxS Collaborative ",ARMY,United States Army,JPEO A&A,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-11-30,2022-01-04,2021-11-30,2022-01-04,,2021-11-16,2021-11-30,,,,,,2021-11-16,2021-12-21,2021-11-16,2021-11-30,NOT_STARTED,Not Started,No,,,16,13,3,,1,16,"Q1 (12/10/2021): Respected Sir,
+
+I am Ashok (Chimpalthradi R. Ashokkumar) representing the SMARTOOLS, LLC. We have been working on gain databases and&nbsp;control-structure&#39;s&nbsp;parameter optimization for collaborative autonomy for quite sometime.&nbsp;From stability of individual UxV&nbsp;points view, we have established the gain databases for manipulation with Artificial Intelligence techniques and accomplish a mission.. However, for a group of UxVs, from string and mesh stability viewpoints, segmentation of data within the databases of&nbsp;stability has been a challenging problem for us. Therefore, cooperative and&nbsp;collaborative UxVs in swarms from controls perspectives are yet to be tested with conventional control surfaces and thrust force. In your description, autonomous UxVs do seem to use these control inputs. Further, in the references you cited, mostly robots and underwater vehicles are referred. If I am not mistaken, are you referring&nbsp;the swarm technology for miniature aircraft that are fired from a gun barrel? I would appreciate it if you could please clarfiy this doubt. Further, can we develop our code using MATLAB scripts? Thanks.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A: No, but it could evolve into that in the future. You could use any language.&nbsp;
+
+Q2 (12/08/2021): Will swarms know the terrain/obstacles in advance, or will they be expected to learn these properties while deployed?
+A: Learn as they move, hence the GNN.&nbsp;
+
+Q3 (12/08/2021): What sensors will offerers be asked to utilize?
+A: Any cost effective sensors that you could &nbsp;add on to a uxv.
+
+Q4 (12/08/2021): How precisely will these drones know their own locations/velocities?
+A: Open to your ideas.
+
+Q5 (12/08/2021): Is communicative ability solely based on distance? If not, what other factors do we need to take into account?
+A: Depends on your design.
+
+Q6 (12/08/2021): What are the computational constraints associated with each member of the swarm?
+A: Should be a cost efective platform if you are planning to demo it in 20+ hardware.&nbsp;
+
+Q7 (12/08/2021): What are the anticipated communication capabilities for the individual members? What are the anticipated constraints on the network (bandwidth, latency, etc.)
+A: Low latency with small bandwidth.
+
+Q8 (12/08/2021): What anticipated tasks will the swarm be performing? What capabilities are expected from the swarm (formation flying, search patterns, etc.)?
+A: The swarm must be able to move from point A to B to C to D, while avoiding obstacles.
+
+Q9 (12/06/2021): Please clarify the statement &quot;collaboration must be demonstrated in Airsim due to its large adaptation; however, other game engines can also be utilized.&quot; Is Airsim required for Phase I, or is &quot;demoing of swarm control in a game engine of choice&quot; sufficient? More specifically, is Ignition Gazebo an acceptable simulation environment? We would like to use ROS as our networking infrastructure, and it looks like ROS support in Airsim is incomplete.
+A: 
+
+Q10 (12/06/2021): The NVIDA Jetson Platform is popular among UAS programs, but new development platforms (suited for any UxS) have recently emerged; would the Xilinx Kria SoM, be an acceptable substitute for the NVIDIA Jetson?
+A: 
+
+Q11 (12/06/2021): AirSim and &quot;other game engines&quot; are mentioned, but are other flight simulators acceptable (e.g., ArduPilot, or Trick/42 for UxS/smallsats)?
+A: 
+
+Q12 (12/06/2021): Many UAS technologies translate into small spacecraft flight formations (e.g., FAA/NASA UTM into USM) and vice-versa. Can SmallSats fit within this&nbsp;solicitation as a test UxS case (unmanned space vehcile)?
+A: 
+
+Q13 (11/23/2021): REI Test - Question - Rashika
+A: ",,"Electronics, Information Systems, Sensors",3,Electronics,Artificial Intelligence/ Machine Learning,Artificial Intelligence/ Machine Learning,1,Collaboration; swarming agents; coding; AI; Automated intelligence; Machine learning; C-UAS,7,Collaboration,No,0,No,,"The purpose of this topic is to use recent advancements in Artificial Intelligence, specifically, GNN to be able to collaborate between different AI agents, Unmanned Aerial/Ground Systems (UxS). Such collaboration must be demonstrated in Airsim due to its large adaptation; however, other game engines can also be utilized.",48,"The purpose of this topic is to use recent advancements in Artificial Intelligence, specifically, GNN to be able to collaborate between different AI agents, Unmanned Aerial/Ground Systems (UxS). Such collaboration must be demonstrated in Airsim due to its large adaptation; however, other game engines can also be utilized.","The purpose of this topic is to create an AI GNN framework for collaboration between swarming agents. Currently, collaboration is done using Laplacian matrices which can be used to find useful properties of a graph but it has to be hard coded and thus will be not be robust, since many lines of codes are need to program the behavior of each agent/graph. Current methods limit the behavior changes if a team member is added or lost. Since the hard coded method is used, when a new member is added, the user must account for it, which makes it harder to add new member, the same goes for losing a member, thus a new matrix will be needed to be added or the formation will not be robust. Having AI for each member will make the collaboration faster, more robust and will take the need for pre-determined behaviors. Communication, control and collaboration must be dynamic for large numbers of graph. Adjusting intelligently for unforeseen circumstances i.e adding/loosing members. Swarming for defensive and offensive fires will be able to utilize such Artificial Intelligence. This technology can also be utilized by Ballistic Low Drone Engagement (BLADE) and other C-UAS systems where they can communicate with each other and give suggestions to the user. C-swarming will also benefit from this research as it will give a testbed as to how the swarms of the future will look like and what it takes to counter them. If successful, the GNN will be easier to implement thus will make scaling up very easy and efficient thus will reduce the time it take for the user to pre-program each new agent. It will also reduce the communication time between agents thus making it faster. If successful, having this assessed will also help in defending against future swarms.",301,1761,1,No,No,No,,Phase I will consist of the demoing of communication for graphs/agents and creating the foundation of GNN in Python. It should also include the demoing of swarm control in a game engine of choice for UxVs where they dynamically change behaviors due to obstacles and/or mission goals.,"Phase II should consist of a continuation of Phase I as well as a GNN for large number of graphs (200+) in a game engine, approximately. This GNN should be implemented on NVIDIA Jetson platforms for a small number of graphs (20+); it could be a mix of UGV/UAVs.","Phase III will continue off of Phase I and Phase II work while proceeding into commercialization. This final software should be one that can be implemented to any device on edge where communication, control and collaboration between agents can be achieved for UxVs.",1,"Tolstaya, E., Gama, F., Paulos, J., Pappas, G., Kumar, V., & Ribeiro, A. (2021, March 24). Learning decentralized controllers for robot swarms with graph neural networks. arXiv.org. https://arxiv.org/abs/1903.10527.; Kallenborn, Z. (2018, October). The Era of the Drone Swarm Is Coming, and We Need to Be Ready for It. Modern War Institute at West Point. Retrieved from https://mwi.usma.edu/era-drone-swarm-coming-need-read; Anh-Duc Dang and Hung M. La and Thang Nguyen and Joachim Horn ""Distributed Formation Control for Autonomous Robots in Dynamic Environments"" arXiv preprint arXiv:1705.02017 (2017); T. Nguyen, and H. M. La. ""Distributed Formation Control of Nonlonolomic Mobile Robots by Bounded Feedback in the Presence of Obstacles."" arXiv preprint arXiv:1704.04566 (2017).; Makiko Okamoto and Maruthi R. Akella. Avoiding the local-minimum problem in multi-agent systems with limited sensing and communication. International Journal of Systems Science, pp 1-10, Oct. 2014.; H. Yang and F. Zhang, ""Geometric formation control for autonomous underwater vehicles"", IEEE Intl. Conf. on Robotics and Automation, pp. 4288-4293, May, 2010.","Tolstaya, E., Gama, F., Paulos, J., Pappas, G., Kumar, V., & Ribeiro, A. (2021, March 24). Learning decentralized controllers for robot swarms with graph neural networks. arXiv.org. https://arxiv.org/abs/1903.10527.; Kallenborn, Z. (2018, October). The Era of the Drone Swarm Is Coming, and We Need to Be Ready for It. Modern War Institute at West Point. Retrieved from https://mwi.usma.edu/era-drone-swarm-coming-need-read; Anh-Duc Dang and Hung M. La and Thang Nguyen and Joachim Horn ""Distributed Formation Control for Autonomous Robots in Dynamic Environments"" arXiv preprint arXiv:1705.02017 (2017); T. Nguyen, and H. M. La. ""Distributed Formation Control of Nonlonolomic Mobile Robots by Bounded Feedback in the Presence of Obstacles."" arXiv preprint arXiv:1704.04566 (2017).; Makiko Okamoto and Maruthi R. Akella. Avoiding the local-minimum problem in multi-agent systems with limited sensing and communication. International Journal of Systems Science, pp 1-10, Oct. 2014.; H. Yang and F. Zhang, ""Geometric formation control for autonomous underwater vehicles"", IEEE Intl. Conf. on Robotics and Automation, pp. 4288-4293, May, 2010.",6,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/84098/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/84098/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:48,,,,,A214-045_84098,ARMY_SBIR_2021_P1_C4_A214-045,,1,2025-08-09 19:51:32.635591+00
+4215,A214-046,84099,Synthetic RF Training Data Generation,Synthetic RF Training Data Generation,ARMY,United States Army,JPEO A&A,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-11-30,2022-01-04,2021-11-30,2022-01-04,,2021-11-16,2021-11-30,,,,,,2021-11-16,2021-12-21,2021-11-16,2021-11-30,NOT_STARTED,Not Started,No,,,25,17,8,,1,25,"Q1 (12/10/2021): Is this a Direct to Phase II or a Phase I topic? There is mention of Direct to Phase II in the topic description.
+A: This is a direct to Phase 2 topic.
+
+Q2 (12/10/2021): Can this be submitted at Phase 1? Is a commercialization plan needed?
+A: No, this is to be submitted as Phase 2 while simulatenously showing that Phase I was thought through and completed within your Phase II proposal. Please follow all guidelines for Phase 2 proposals and complete was is described in the BAA.&nbsp;
+
+Q3 (12/07/2021): Is this topic available for Phase I or only Direct to Phase II?
+A: This is a Direct to Phase 2 topic.
+
+Q4 (12/07/2021): The Phase I instructions describe D2P2 requirements for this proposal. Are only D2P2 proposals sought, or are Phase I proposals also ok?
+A: When submitting for this topic, please follow the guidance for Direct to Phase 2 and Phase 2 proposals. Phase I instruction must be shown as completed in your Phase 2 Proposal submission.&nbsp;
+
+Q5 (12/05/2021): Can the development/use of a prototype radar system be a component of the proposal as a real-world validation tool? If so, what is the most tolerable percentage of the proposal costs for this component?
+A: 
+
+Q6 (12/02/2021): <p style=""margin-left:8px"">For solicitation A214-046, are there particular size, weight, and power requirements for the seeker hardware upon which the proposed software solution must run?
+A: 
+
+Q7 (12/02/2021): <p style=""margin-left:8px"">For solicitation A214-046, are the RF seekers of interest passive, active, or both?
+A: 
+
+Q8 (12/02/2021): <p style=""margin-left:8px"">For solicitation A214-046, does the Government&rsquo;s desired solution consist of separate algorithms for processing seeker data and proximity fuse data?
+A: 
+
+Q9 (12/02/2021): <p style=""margin-left:8px"">For solicitation A214-046, does the Government have specific requirements for the deep learning model(s), e.g., maximum execution time, accuracy, etc.?
+A: 
+
+Q10 (12/02/2021): <p style=""margin-left:8px"">In the solicitation A214-046 description, can the Government clarify what is meant by the phrase &quot;modeling inputs utilizes Gaterrayed software&quot;?
+A: 
+
+Q11 (12/02/2021): <p style=""margin-left:8px"">For solicitation A214-046, will the Government consider providing as GFI an existing proximity fuse algorithm (non-ML based) or algorithm performance data to evaluate against bidders&rsquo; ML algorithms?
+A: 
+
+Q12 (12/02/2021): <p style=""margin-bottom:16px; margin-left:8px"">For solicitation A214-046, does the Government intend to provide as GFI access to existing real-world data from current or developmental systems?
+A: 
+
+Q13 (12/02/2021): <p style=""margin-bottom:16px; margin-left:8px"">For solicitation A214-046, can the Government clarify what is meant by &quot;variation algorithms&quot; in the Phase II phrase &quot;utilizing RF data to develop variation algorithms&quot;?
+A: 
+
+Q14 (12/02/2021): <p style=""margin-bottom:16px; margin-left:8px"">For solicitation A214-046, is the &quot;RF-based database&quot; a corpus of training and testing data?
+A: 
+
+Q15 (12/02/2021): <p style=""margin-bottom:16px; margin-left:8px"">For solicitation A214-046 Direct to Phase II, what are the parameters/performance criteria the Government will use to determine a successful capability demonstration, specifically regarding the following: &quot;this phase will also consist of training the RF deep learning algorithms with synthetic data and integrating into a proximity fuze. Must be able to demonstrate performance.&quot;?
+A: 
+
+Q16 (11/30/2021): Is the focus of this topic the synthetic data generation, or the deep learning for proximity fuze?
+A: The focus of the topic is primarily synthetic data generation. It is intended to generate data that could be used generate/train target detection models for FMCW proximity fuzes.
+
+Q17 (11/30/2021): Is Army interested in ISAR/SAR, or is it&nbsp;interested in a different form of RF data?
+A: The data associated with this topic would be to train FMCW proximity sensors used in typical gun launched prox sensor applications (which is not SAR/ISAR).",,Information Systems,1,Information Systems,Artificial Intelligence/ Machine Learning,Artificial Intelligence/ Machine Learning,1,RF Data; deep learning; algorithms; machine learning; automated intelligence;,6,RF Data,No,0,No,,The purpose of this topic is to establish a comprehensive RF-based database that will be used to train a deep learning computer vision algorithm for a target detection system. This data would be complementary to existing data and is required due to the Deep Learning approach.,46,The purpose of this topic is to establish a comprehensive RF-based database that will be used to train a deep learning computer vision algorithm for a target detection system. This data would be complementary to existing data and is required due to the Deep Learning approach.,"The purpose of this topic is to establish an RF-dataset to train deep learning algorithms for proximity and RF seeking target detection algorithms. Currently, we either collect real world data, which is very expensive and time consuming, or we utilize modeled inputs. The method of modeling inputs utilizes Gaterrayed software, which requires intensive labor hours of manual work. AI/ML deep learning approaches do not yet exist for our RF proximity fuze & seeker applications. However, research has show that datasets comprised of both real-data and synthetically generated data lead to superior performance of deep learning algorithms. This approach would allow us to create additional datasets based on the real datasets we already have. It will cost less and create enough variation to train the Proximity Target Detection algorithms. Target detection models allow proximity fuzes and RF seekers to distinguish targets from background clutter. AI/ML techniques show promise in achieving advanced capabilities, but require data with variable background and operating conditions. Large data sets with a wide range of variable backgrounds can be achieved through synthetic data generation methods. Establishing the large number of samples of data through testing and experimentation are both cost and time prohibitive. Instrumentation to capture all of the salient features in the data is also intricate and requires significant resources at testing sites. Generating variations on data would increase the RF dataset to the point that training an advanced AI algorithm is feasible.",237,1582,1,No,No,No,,"Direct to Phase 2 requires demonstration of AI/ML computer vision algorithms using synthetically generated data specific to target detection and recognition, including pertinent data and report(s). Any development with RF techniques is a plus but not required for Phase I.",Phase II should consist of utilizing RF data to develop variation algorithms pertaining to the future commercialization of this topic. This phase will also consist of training the RF deep learning algorithms with synthetic data and integrating into a proximity fuze. Must be able to demonstrate performance.,"Phase III, commercialization, must consist of generating large data sets for testing. Training algorithms with increased synthetic datasets & transition to other proximity fuzes (i.e. MOFA II or LR- PGK) must also occur.",1,"Press, Gil. ""Andrew Ng Launches a Campaign for Data-Centric AI"". 16 June, 2021. Forbes.com https://www.forbes.com/sites/gilpress/2021/06/16/andrew-ng-launches-a-campaign-for-data-centric-ai/?sh=7b78fe5574f5","Press, Gil. ""Andrew Ng Launches a Campaign for Data-Centric AI"". 16 June, 2021. Forbes.com https://www.forbes.com/sites/gilpress/2021/06/16/andrew-ng-launches-a-campaign-for-data-centric-ai/?sh=7b78fe5574f5",1,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/84099/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/84099/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:49,,,,,A214-046_84099,ARMY_SBIR_2021_P1_C4_A214-046,,1,2025-08-09 19:51:32.635591+00
+4216,A214-047,84100,Height of Burst scoring through Machine Learning,Height of Burst scoring through Machine Learning,ARMY,United States Army,JPEO A&A,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-11-30,2022-01-04,2021-11-30,2022-01-04,,2021-11-16,2021-11-30,,,,,,2021-11-16,2021-12-21,2021-11-16,2021-11-30,NOT_STARTED,Not Started,No,,,27,3,24,,1,27,"Q1 (12/14/2021): Does this application allow a Phase 1 application?&nbsp; &nbsp;Or is it Direct to Phase 2 only.&nbsp; &nbsp; We&#39;d like to apply for a Phase 1.&nbsp; &nbsp;Thanks
+
+&nbsp;
+
+&nbsp;
+A: This is a Direct to Phase 2 topic.
+
+Q2 (12/06/2021): Are there any example image or video datasets available that we could review before writing a full proposal?
+A: 
+
+Q3 (11/30/2021): Approximately how many pixels are available to score the blast (e.g., blast size is 2x2, 20x20, or 200x200)?
+A: I don&rsquo;t have the video in hand so this is an estimate. The blasts grow in time to a good sized area, most likely exceeding 20x20. Generally scoring the HOB requires identifying the source of the blast - initial burst point prior large visible blast.",,Information Systems,1,Information Systems,Artificial Intelligence/ Machine Learning,Artificial Intelligence/ Machine Learning,1,Automated intelligence; Machine learning; Height of burst; automatic operation; scoring,5,Automated intelligence,No,0,No,,"The purpose of this topic is to develop an AI/ML approach to score height of burst automatically, eliminating the man-power required by the current method. This is image processing to measure a distance on standard video files.",37,"The purpose of this topic is to develop an AI/ML approach to score height of burst automatically, eliminating the man-power required by the current method. This is image processing to measure a distance on standard video files.","The purpose of this topic is to create an automated, AI/ML-based technique to score height of burst testing for fuzes and use AI/ML to estimate parameters in standard video files. Today height of burst tests are scored by human experts pausing video feeds of tests and estimating the height on the screen. Height of Burst (HOB) scoring is fully manual operation requiring pausing of video and measuring by an operator relative to the screen. AI/ML based Computer Vision (CV) Algorithms have been demonstrated to be robust for the purposes of estimating parameters in images and full motion video (FMV). AI/ML will dramatically accelerate this process by scoring in real-time. This new approach would train an AI to identify the height of burst based on previously scored data. If successful, the results from testing should be available in real time and cost significantly less in terms of man-hours.",147,900,1,No,No,No,,"Direct to Phase 2 requires demonstration of AI/ML based computer vision algorithms for purposes of estimating parameters in images and full motion video, including pertinent data and report(s).","Phase II will consist of identifying the HoB requirements for projectile use cases. Training algorithms on existing, verified data sets must also occur as well as demonstrating performance of algorithm on wide range of HoB experiments.","Phase III should consist of deploying algorithm as an alternative in field test and quantify the reduction in time, cost of use, and performance. Transitioning to test ranges for use during proximity fuze and munition tests is also a required field for commercialization.",1,"Measuring Distance Between Objects in an Image with OpenCV, Adrian Rosebrock, https://www.pyimagesearch.com/2016/04/04/measuring-distance-between-objects-in-an-image-with-opencv/; Vehicle Detection and Distance Estimation, Milutin N. Nikolic, https://towardsdatascience.com/vehicle-detection-and-distance-estimation-7acde48256e1; Learning Object-Specific Distance From a Monocular Image, Jing Zhu & Yi Fang, https://openaccess.thecvf.com/content_ICCV_2019/papers/Zhu_Learning_Object-Specific_Distance_From_a_Monocular_Image_ICCV_2019_paper.pdf","Measuring Distance Between Objects in an Image with OpenCV, Adrian Rosebrock, https://www.pyimagesearch.com/2016/04/04/measuring-distance-between-objects-in-an-image-with-opencv/; Vehicle Detection and Distance Estimation, Milutin N. Nikolic, https://towardsdatascience.com/vehicle-detection-and-distance-estimation-7acde48256e1; Learning Object-Specific Distance From a Monocular Image, Jing Zhu & Yi Fang, https://openaccess.thecvf.com/content_ICCV_2019/papers/Zhu_Learning_Object-Specific_Distance_From_a_Monocular_Image_ICCV_2019_paper.pdf",3,1,,,,,0,,,,,,,,,https://www.dodsbirsttr.mil/topics/api/public/topics/84100/download/PDF,https://www.dodsbirsttr.mil/topics/api/public/topics/84100/download/PDF,,,,,1,0,0,ARMY SBIR 2021.4 Instructions,,,,,,0,0,No,,,,ARMY,,,0,,,,,2025,,,,,,,No,,0,0,,0,No,No,No,No,No,0,,,,,,,2025-08-09 10:17:49,,,,,A214-047_84100,ARMY_SBIR_2021_P1_C4_A214-047,,1,2025-08-09 19:51:32.635591+00
+4217,A214-048,84101,"Machine Learning (ML) for Breach Routing ","Machine Learning (ML) for Breach Routing ",ARMY,United States Army,JPEO A&A,SBIR,SBIR,ARMY SBIR 2021.4,21.4,ARMY_SBIR_2021_P1_C4,,,Closed,Closed,,,,Critical,2021-11-30,2022-01-04,2021-11-30,2022-01-04,,2021-11-16,2021-11-30,,,,,,2021-11-16,2021-12-21,2021-11-16,2021-11-30,NOT_STARTED,Not Started,No,,,13,12,1,,1,13,"Q1 (12/20/2021): According to Government document&nbsp;Army 214 BAA_ASO_A214-048.pdf, page 5, under DESCRIPTION: &quot;AI/ML will be used to identify explosive obstacles, route through minefields, and create efficient firing plans for breaching technology.&quot;
+
+According to Government document&nbsp;Army 214 BAA_ASO_A214-048.pdf, page 5, under PHASE 1: &quot;Phase I consists of the development of a prototype AI detection method that can be used to analyze complex minefield information by training an ML algorithm based on obstacle attributes, expected minefield setup patterns related to known obstacles, and performance of the breaching technology to be used among other factors.&quot;
+
+Q: Will the Government provide locations of the mines within the minefield? And, if so, will the Government provide&nbsp;specific model numbers of the type of mines used?
+A: We can assume that at least some of the mines and other features will be detected by the sensor. The specific type of mine will not necessarily be known.
+
+Q2 (12/20/2021): According to Government document&nbsp;Army 214 BAA_ASO_A214-048.pdf, page 5, under OBJECTIVE: &quot;Artificial Intelligence (AI) and Machine Learning (ML) algorithms will be trained to identify <strong>obstacle locations</strong> within a minefield.&quot;
+
+Q: Can the Government define the word &quot;obstacle&quot; e.g. does it refer to terrain, topography, vegetation, man-made, geography, etc; or does it refer to other&nbsp;landmines?
+A: from Joint publication 3-15 Barriers, Obstacles, and Mine<br />
+Warfare for Joint Operations page B-6 : (2) Obstacles. An obstacle is any obstruction designed or employed to disrupt,<br />
+fix, turn, or block the movement of an opposing force. They are also employed to impose<br />
+additional losses in personnel, time, and equipment on the opposing force. Obstacles can<br />
+exist naturally, be man-made, or be a combination of the two. The effectiveness of<br />
+obstacles is enhanced considerably when covered by observation and fire. Obstacles<br />
+include abatis, anti-vehicle ditches, blown bridges, built-up areas, earth-filled bastions,<br />
+prefabricated concrete sections, minefields, rivers, road craters, terrain, and wire. As<br />
+mentioned above, mines are employed in combination with other obstacles to create<br />
+complex obstacles.&nbsp;
+
+Q3 (12/11/2021): Army 214 BAA ASO A214-048 states that Technical&nbsp; and Business Assistance (TABA) is available up to $6500. However, the Cost Volume returns an error stating that TABA cannot exceed $0.00 when a value is entered and the review is completed. Please advise.
+A: Thank you for reaching out with your TABA funding concern. If you plan on using the Army preferred vendor, you don&rsquo;t need to include in the actual cost in your proposal, just select TABA funding ($0.00 is an acceptable amount). If you are selecting your own vendor then the cost for TABA comes out of your $250K limit and you will need to get approval to use your own vendor.
+
+Q4 (12/10/2021): How is breach routing currently done:<br />
+1) How are Mine locations determined and risk assigned to location? How are Mine/IED types included?<br />
+2) How are routes planned? Is there a ruleset?<br />
+3) What are the current breaching techniques used and how do they affect route planning?<br />
+4) What information is used(eg. Aerial imagery, GIS/DEM data, country locale, soil and road maps, mine distribution patterns/probability around specific objects or conop, etc.)?<br />
+5) How are explosive obstacles identified in the field before planning?<br />
+<br />
+What training data for the ML will be provided in the Phase 1?<br />
+In addition to data provided, can we Add datasets for improving the ML accuracy (as example satellite/aerial imagery, map data, etc. if not already used)?
+A: 1.&nbsp;mine location is typically unknown&nbsp;
+
+2.&nbsp;routes are planned based on areas of responsibility and a lot of best guesses based on terrain and objective locations. I don&rsquo;t now if there is a ruleset, I put in a question to the engineering schoolhouse
+
+3.&nbsp;the primary breaching tool is the M58 MICLIC it requires the route to be a straight line. The army is currently working on a replacement that give the operator more flexibility on the route
+
+4.&nbsp;currently combat engineers rely on what they can see and whatever information they can get from intelligence sources, like what was in the questions. for the new system we are planning on using EOIR sensors. However, the sensing technology may change in the future so we would like the route planning to be sensor agnostic
+
+5. see #4
+
+Q5 (12/10/2021): is this environmental Breaching&nbsp;do your need a divice that fires and lays, fire and detects, or impact oriented to deliver the charge that could activate the minefield.&nbsp;
+
+should this decrease the time of entry&nbsp;or time in&nbsp;landscape
+
+&nbsp;
+
+&nbsp;
+A: the army is developing a new beaching system that this SBIR is intended to supplement
+
+Q6 (12/09/2021): <ol>
+	<li>What are the sensor(s) used to detect mines?</li>
+	<li>What are the time requirements for the system?</li>
+	<li>What technologies are used for the breaching?</li>
+	<li>Do we gain sensing as we go, or is all information known at the beginning? (e.g. how successful was the blast)</li>
+	<li>What is optimized by AI?&nbsp;&nbsp;Shortest path?&nbsp;&nbsp;Safest path?&nbsp;&nbsp;Time to plan? Amount of explosive shots needed?</li>
+</ol>
+A: 1.&nbsp;Currently we are planning on using EOIR sensors and some of that data can be provided. However, the sensing technology may change in the future so we would like the route planning to be sensor agnostic.
+
+2.&nbsp;there are no defined time requirements
+
+3.&nbsp;the army is developing a new beaching system that this SBIR is intended to supplement
+
+4.&nbsp;assume all information is known
+
+5.&nbsp;I think this questions deserves further discussion but time in the lane and amount of explosives needed are major factors.
+
