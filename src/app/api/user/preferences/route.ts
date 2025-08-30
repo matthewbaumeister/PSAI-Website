@@ -5,8 +5,8 @@ import { createAdminSupabaseClient } from '@/lib/supabase'
 export async function GET(request: NextRequest) {
   try {
     const authResult = await requireAuth(request)
-    if (!authResult.success) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+    if ('error' in authResult) {
+      return authResult
     }
 
     const { user } = authResult
@@ -45,8 +45,8 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const authResult = await requireAuth(request)
-    if (!authResult.success) {
-      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 })
+    if ('error' in authResult) {
+      return authResult
     }
 
     const { user } = authResult
