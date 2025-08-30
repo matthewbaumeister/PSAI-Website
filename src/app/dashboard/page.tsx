@@ -17,10 +17,10 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-2 border-gray-300 border-t-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600 text-sm">Loading Dashboard...</p>
+          <div className="animate-spin rounded-full h-16 w-16 border-4 border-purple-500 border-t-transparent mx-auto mb-4"></div>
+          <p className="text-purple-200 text-lg">Loading Dashboard...</p>
         </div>
       </div>
     )
@@ -31,151 +31,132 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dashboard-page">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="bg-gradient-to-r from-slate-800/50 to-purple-800/50 backdrop-blur-sm border-b border-slate-700/50 sticky top-0 z-10">
+        <div className="container mx-auto px-6 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
-              <p className="text-gray-600 mt-1">Welcome back! Here's an overview of your account</p>
+              <h1 className="text-4xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent">
+                Dashboard
+              </h1>
+              <p className="text-slate-300 mt-2 text-lg">Welcome back, {user.firstName}!</p>
             </div>
-            <div className="flex items-center space-x-3">
-              <div className="bg-gray-100 rounded-lg px-3 py-2">
-                <span className="text-gray-600 text-sm">Logged in as: </span>
-                <span className="text-gray-900 font-medium text-sm">{user.email}</span>
+            <div className="flex items-center space-x-4">
+              <div className="bg-slate-800/50 rounded-full px-4 py-2 border border-slate-600/50">
+                <span className="text-slate-300 text-sm">Signed in as </span>
+                <span className="text-white font-semibold">{user.email}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Coming Soon Message */}
-        <div className="max-w-4xl mx-auto mb-8">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
+      <div className="container mx-auto px-6 py-8">
+        {/* Quick Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-blue-500/30 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="text-right">
+                <p className="text-blue-300 text-sm font-medium">Account Status</p>
+                <p className="text-xl font-bold text-white">Active</p>
+              </div>
             </div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Dashboard Coming Soon!</h2>
-            <p className="text-gray-600 text-base max-w-2xl mx-auto">
-              We're working hard to build you an amazing dashboard experience. Soon you'll be able to track your 
-              procurement activities, view analytics, and manage your projects all in one place.
-            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 backdrop-blur-sm border border-emerald-500/30 rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-emerald-500/30 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <div className="text-right">
+                <p className="text-emerald-300 text-sm font-medium">Member Since</p>
+                <p className="text-xl font-bold text-white">2025</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6 hover:scale-105 transition-all duration-300">
+            <div className="flex items-center justify-between mb-4">
+              <div className="w-12 h-12 bg-purple-500/30 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <div className="text-right">
+                <p className="text-purple-300 text-sm font-medium">Company</p>
+                <p className="text-xl font-bold text-white">{user.companyName || 'N/A'}</p>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Quick Stats */}
-        <div className="max-w-6xl mx-auto mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-gray-600 text-sm">Account Status</p>
-                  <p className="text-gray-900 font-medium text-sm">Active</p>
-                </div>
-              </div>
+        {/* Coming Soon Section */}
+        <div className="bg-gradient-to-br from-slate-800/50 to-amber-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 text-center">
+          <div className="w-20 h-20 bg-amber-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-10 h-10 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h2 className="text-3xl font-bold text-white mb-4">Dashboard Coming Soon</h2>
+          <p className="text-slate-300 text-lg mb-6 max-w-2xl mx-auto">
+            We're building an amazing dashboard experience for you. Soon you'll be able to track your procurement activities, 
+            view analytics, and manage your projects all in one place.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <div className="bg-slate-700/30 rounded-lg px-4 py-2 border border-slate-600/30">
+              <span className="text-slate-300">📊 Analytics</span>
             </div>
-
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-gray-600 text-sm">Email Status</p>
-                  <p className={`font-medium text-sm ${
-                    user.emailVerified ? 'text-green-600' : 'text-yellow-600'
-                  }`}>
-                    {user.emailVerified ? 'Verified' : 'Pending'}
-                  </p>
-                </div>
-              </div>
+            <div className="bg-slate-700/30 rounded-lg px-4 py-2 border border-slate-600/30">
+              <span className="text-slate-300">📈 Reports</span>
             </div>
-
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-gray-600 text-sm">Company</p>
-                  <p className="text-gray-900 font-medium text-sm">{user.companyName || 'Not set'}</p>
-                </div>
-              </div>
+            <div className="bg-slate-700/30 rounded-lg px-4 py-2 border border-slate-600/30">
+              <span className="text-slate-300">🎯 Projects</span>
+            </div>
+            <div className="bg-slate-700/30 rounded-lg px-4 py-2 border border-slate-600/30">
+              <span className="text-slate-300">📋 Tasks</span>
             </div>
           </div>
         </div>
 
         {/* Quick Actions */}
-        <div className="max-w-6xl mx-auto mb-8">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <a href="/profile" className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="text-gray-900 text-sm">Edit Profile</span>
-              </a>
-              
-              <a href="/settings" className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span className="text-gray-900 text-sm">Settings</span>
-              </a>
-              
-              {user.isAdmin && (
-                <a href="/admin" className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                  <svg className="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                  <span className="text-gray-900 text-sm">Admin Panel</span>
-                </a>
-              )}
-              
-              <a href="/book-demo" className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span className="text-gray-900 text-sm">Book Demo</span>
-              </a>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300">
+            <h3 className="text-xl font-bold text-white mb-4">Quick Actions</h3>
+            <div className="space-y-3">
+              <button className="w-full text-left p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-colors duration-200">
+                <span className="text-slate-300">📝 Create New Project</span>
+              </button>
+              <button className="w-full text-left p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-colors duration-200">
+                <span className="text-slate-300">🔍 Search Suppliers</span>
+              </button>
+              <button className="w-full text-left p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-colors duration-200">
+                <span className="text-slate-300">📊 View Reports</span>
+              </button>
             </div>
           </div>
-        </div>
 
-        {/* Recent Activity */}
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Activity</h3>
+          <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300">
+            <h3 className="text-xl font-bold text-white mb-4">Recent Activity</h3>
             <div className="space-y-3">
-              <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span className="text-gray-700 text-sm">Profile updated successfully</span>
-                <span className="text-gray-500 text-xs ml-auto">2 hours ago</span>
+              <div className="p-3 bg-slate-700/30 rounded-lg">
+                <p className="text-slate-300 text-sm">🎉 Welcome to Prop Shop AI!</p>
+                <p className="text-slate-500 text-xs">Just now</p>
               </div>
-              <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <span className="text-gray-700 text-sm">Email preferences updated</span>
-                <span className="text-gray-500 text-xs ml-auto">1 day ago</span>
+              <div className="p-3 bg-slate-700/30 rounded-lg">
+                <p className="text-slate-300 text-sm">✅ Account verified successfully</p>
+                <p className="text-slate-500 text-xs">Recently</p>
               </div>
-              <div className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                <span className="text-gray-700 text-sm">Account created</span>
-                <span className="text-gray-500 text-xs ml-auto">3 days ago</span>
+              <div className="p-3 bg-slate-700/30 rounded-lg">
+                <p className="text-slate-300 text-sm">🔐 Profile setup completed</p>
+                <p className="text-slate-500 text-xs">Recently</p>
               </div>
             </div>
           </div>

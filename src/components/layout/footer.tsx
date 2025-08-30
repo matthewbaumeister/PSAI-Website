@@ -1,11 +1,6 @@
-'use client'
-
 import Link from 'next/link'
-import { useCookieConsent } from '@/hooks/useCookieConsent'
 
 export function Footer() {
-  const { reopenBanner } = useCookieConsent()
-  
   return (
     <footer className="footer">
       <div className="container">
@@ -57,7 +52,6 @@ export function Footer() {
               <li><Link href="/privacy">Privacy Policy</Link></li>
               <li><Link href="/terms">Terms of Service</Link></li>
               <li><Link href="/security">Security</Link></li>
-              <li><button onClick={reopenBanner} className="text-inherit hover:underline">Cookie Preferences</button></li>
             </ul>
           </div>
         </div>

@@ -9,10 +9,7 @@ interface User {
   lastName?: string
   companyName?: string
   companySize?: string
-  jobTitle?: string
   phone?: string
-  website?: string
-  bio?: string
   isAdmin: boolean
   emailVerified: boolean
   isActive: boolean

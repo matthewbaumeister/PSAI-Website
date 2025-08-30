@@ -2,9 +2,7 @@ import type { Metadata } from 'next'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { AuthProvider } from '@/contexts/AuthContext'
-import CookieConsent from '@/components/CookieConsent'
-// TEMPORARILY DISABLED FOR TESTING
-// import './globals.css'
+import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Prop Shop AI - Procurement Intelligence Platform',
@@ -24,15 +22,14 @@ export default function RootLayout({
       <body className="antialiased">
         <AuthProvider>
           {/* Clean, Subtle Background Animations */}
-          {/* <div className="animated-bg"></div> */}
-          {/* <div className="bg-grid-overlay"></div> */}
-          {/* <div className="bg-dots"></div> */}
-          {/* <div className="floating-elements"></div> */}
+          <div className="animated-bg"></div>
+          <div className="bg-grid-overlay"></div>
+          <div className="bg-dots"></div>
+          <div className="floating-elements"></div>
           
           <Header />
           {children}
           <Footer />
-          <CookieConsent />
         </AuthProvider>
       </body>
     </html>
