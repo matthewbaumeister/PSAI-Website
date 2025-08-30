@@ -1,13 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-
-interface CookiePreferences {
-  essential: boolean
-  analytics: boolean
-  marketing: boolean
-  functional: boolean
-}
+import { cookieManager, CookiePreferences } from '@/lib/cookie-manager'
 
 export function CookieConsent() {
   const [showBanner, setShowBanner] = useState(false)
@@ -21,16 +15,13 @@ export function CookieConsent() {
 
   useEffect(() => {
     // Check if user has already made a cookie choice
-    const cookieConsent = localStorage.getItem('cookieConsent')
-    if (!cookieConsent) {
+    if (!cookieManager.hasConsent()) {
       setShowBanner(true)
     } else {
       // Load saved preferences
-      try {
-        const savedPreferences = JSON.parse(cookieConsent)
+      const savedPreferences = cookieManager.getPreferences()
+      if (savedPreferences) {
         setPreferences(savedPreferences)
-      } catch (error) {
-        console.error('Error loading cookie preferences:', error)
       }
     }
   }, [])
@@ -66,11 +57,8 @@ export function CookieConsent() {
   }
 
   const savePreferences = (prefs: CookiePreferences) => {
-    localStorage.setItem('cookieConsent', JSON.stringify(prefs))
-    localStorage.setItem('cookieConsentDate', new Date().toISOString())
-    
-    // Here you would typically also set actual cookies based on preferences
-    // For now, we're just saving the user's choice
+    // Use the cookie manager to save preferences and apply them
+    cookieManager.setPreferences(prefs)
   }
 
   const togglePreference = (key: keyof CookiePreferences) => {

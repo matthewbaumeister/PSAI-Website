@@ -4,13 +4,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-
-interface CookiePreferences {
-  essential: boolean
-  analytics: boolean
-  marketing: boolean
-  functional: boolean
-}
+import { cookieManager, CookiePreferences } from '@/lib/cookie-manager'
 
 export default function CookieSettingsPage() {
   const { user, isLoading } = useAuth()
@@ -34,14 +28,9 @@ export default function CookieSettingsPage() {
   }, [user, isLoading, router])
 
   const loadCookiePreferences = () => {
-    try {
-      const savedPreferences = localStorage.getItem('cookieConsent')
-      if (savedPreferences) {
-        const parsed = JSON.parse(savedPreferences)
-        setPreferences(parsed)
-      }
-    } catch (error) {
-      console.error('Error loading cookie preferences:', error)
+    const savedPreferences = cookieManager.getPreferences()
+    if (savedPreferences) {
+      setPreferences(savedPreferences)
     }
   }
 
@@ -56,11 +45,8 @@ export default function CookieSettingsPage() {
   const handleSave = async () => {
     setIsSaving(true)
     try {
-      // Save to localStorage
-      localStorage.setItem('cookieConsent', JSON.stringify(preferences))
-      localStorage.setItem('cookieConsentDate', new Date().toISOString())
-      
-      // Here you would typically also update actual cookies based on preferences
+      // Use the cookie manager to save preferences and apply them
+      cookieManager.setPreferences(preferences)
       
       setMessage('Cookie preferences updated successfully!')
       setMessageType('success')
@@ -83,6 +69,8 @@ export default function CookieSettingsPage() {
       functional: false
     }
     setPreferences(defaultPreferences)
+    // Apply the reset preferences immediately
+    cookieManager.setPreferences(defaultPreferences)
     setMessage('Preferences reset to default')
     setMessageType('success')
     setTimeout(() => setMessage(''), 3000)
