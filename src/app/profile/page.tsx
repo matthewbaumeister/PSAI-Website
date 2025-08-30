@@ -480,51 +480,58 @@ export default function ProfilePage() {
               </div>
             </div>
 
-            {/* Phone Number Row - Full Width */}
+            {/* Phone Number Row - Constrained Width */}
             <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '24px',
               width: '100%'
             }}>
-              <label style={{
-                display: 'block',
-                color: '#cbd5e1',
-                fontWeight: '500',
-                marginBottom: '8px',
-                fontSize: '14px'
-              }}>
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                style={{
-                  width: '100%',
-                  maxWidth: '400px',
-                  boxSizing: 'border-box',
-                  padding: '16px 20px',
-                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
-                  border: '1px solid rgba(148, 163, 184, 0.3)',
-                  borderRadius: '12px',
-                  color: '#ffffff',
-                  fontSize: '16px',
-                  transition: 'all 0.2s ease',
-                  opacity: isEditing ? 1 : 0.7
-                }}
-                onFocus={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
-                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
-                  }
-                }}
-                onBlur={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
-                    e.target.style.boxShadow = 'none'
-                  }
-                }}
-              />
+              <div style={{ minWidth: 0 }}>
+                <label style={{
+                  display: 'block',
+                  color: '#cbd5e1',
+                  fontWeight: '500',
+                  marginBottom: '8px',
+                  fontSize: '14px'
+                }}>
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  disabled={!isEditing}
+                  style={{
+                    width: '100%',
+                    boxSizing: 'border-box',
+                    padding: '16px 20px',
+                    background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    transition: 'all 0.2s ease',
+                    opacity: isEditing ? 1 : 0.7
+                  }}
+                  onFocus={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                      e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                      e.target.style.boxShadow = 'none'
+                    }
+                  }}
+                />
+              </div>
+              
+              {/* Empty space to maintain grid alignment */}
+              <div></div>
             </div>
           </div>
 
