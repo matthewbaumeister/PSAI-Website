@@ -1,11 +1,13 @@
 "use client"
 
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useAuth } from '@/contexts/AuthContext'
 
 export function Header() {
+  const router = useRouter()
   const { user, logout } = useAuth()
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
@@ -275,6 +277,34 @@ export function Header() {
           
           {user && (
             <>
+              {/* PS.AI Platform Access Button */}
+              <button
+                onClick={() => router.push('/platform')}
+                style={{
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  border: 'none',
+                  borderRadius: '10px',
+                  padding: '10px 20px',
+                  color: '#ffffff',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
+                  marginRight: '16px'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+                }}
+              >
+                🚀 PS.AI Platform Access
+              </button>
+              
               <div className="header-divider"></div>
               <div className="user-dropdown-container">
                 <button ref={userButtonRef} className="user-dropdown-trigger" onClick={toggleUserDropdown} aria-expanded={isUserDropdownOpen}>
