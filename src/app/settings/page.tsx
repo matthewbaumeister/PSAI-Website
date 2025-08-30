@@ -160,51 +160,34 @@ export default function SettingsPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Modern Hero Header */}
-      <div className="relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-slate-900/20">
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(156, 146, 172, 0.1) 1px, transparent 1px)`,
-              backgroundSize: '60px 60px'
-            }}></div>
-          </div>
-        </div>
-        
-        <div className="relative container mx-auto px-6 py-16">
-          <div className="text-center max-w-4xl mx-auto">
-            {/* Icon Header */}
-            <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-3xl mb-8 shadow-2xl border border-purple-400/30 backdrop-blur-sm">
-              <svg className="w-12 h-12 text-purple-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '48px', height: '48px' }}>
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            
-            {/* Title */}
-            <h1 className="text-6xl font-bold bg-gradient-to-r from-white via-purple-100 to-blue-100 bg-clip-text text-transparent mb-6 leading-tight">
-              Settings
-            </h1>
-            
-            {/* Subtitle */}
-            <p className="text-slate-300 text-xl mb-8 max-w-2xl mx-auto leading-relaxed">
-              Customize your experience, manage security, and control your account preferences
-            </p>
-            
-            {/* User Status Badge */}
-            <div className="inline-flex items-center space-x-3 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-full px-8 py-4 shadow-lg">
-              <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse shadow-lg shadow-emerald-400/50"></div>
-              <span className="text-slate-200 font-medium">Signed in as</span>
-              <span className="text-white font-semibold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-                {user.email}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      {/* Simple Modern Header */}
       <div className="container mx-auto px-6 py-12">
+        <div className="text-center mb-12">
+          {/* Simple Icon */}
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-2xl mb-6 shadow-lg border border-purple-400/30">
+            <svg className="w-10 h-10 text-purple-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '40px', height: '40px' }}>
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          
+          {/* Title */}
+          <h1 className="text-5xl font-bold text-white mb-4">
+            Settings
+          </h1>
+          
+          {/* Subtitle */}
+          <p className="text-slate-300 text-lg mb-6 max-w-2xl mx-auto">
+            Customize your experience, manage security, and control your account preferences
+          </p>
+          
+          {/* User Status */}
+          <div className="inline-flex items-center space-x-3 bg-slate-800/50 border border-slate-700/50 rounded-full px-6 py-3">
+            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+            <span className="text-slate-200">Signed in as</span>
+            <span className="text-white font-semibold">{user.email}</span>
+          </div>
+        </div>
         {/* Message Display */}
         {message && (
           <div className={`mb-8 p-4 rounded-xl border backdrop-blur-sm transition-all duration-300 ${
@@ -237,233 +220,130 @@ export default function SettingsPage() {
           </div>
         )}
 
-        {/* Enhanced Tab Navigation */}
+        {/* Simple Tab Navigation */}
         <div className="flex justify-center mb-12">
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-2 shadow-xl">
+          <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-2">
             <div className="flex space-x-2">
               <button
                 onClick={() => setActiveTab('password')}
-                className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                   activeTab === 'password'
-                    ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg shadow-blue-500/25 border border-blue-400/30'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-700/50 hover:border-slate-600/50 border border-transparent'
+                    ? 'bg-blue-600 text-white'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
                 }`}
               >
-                <div className="flex items-center space-x-3">
-                  <div className={`w-6 h-6 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                    activeTab === 'password' ? 'bg-blue-500/30' : 'bg-slate-600/50'
-                  }`}>
-                    <svg className="w-4 h-4 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                  </div>
-                  <span className="text-lg">Password</span>
+                <div className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '16px', height: '16px' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                  <span>Password</span>
                 </div>
               </button>
               <button
                 onClick={() => setActiveTab('preferences')}
-                className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                   activeTab === 'preferences'
-                    ? 'bg-gradient-to-r from-emerald-600 to-emerald-700 text-white shadow-lg shadow-emerald-500/25 border border-emerald-400/30'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-700/50 hover:border-slate-600/50 border border-transparent'
+                    ? 'bg-emerald-600 text-white'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
                 }`}
               >
-                <div className="flex items-center space-x-3">
-                  <div className={`w-6 h-6 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                    activeTab === 'preferences' ? 'bg-emerald-500/30' : 'bg-slate-600/50'
-                  }`}>
-                    <svg className="w-4 h-4 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM4 19h6l-6 6v-6zM4 13h6l-6 6v-6zM4 7h6l-6 6V7zM10 7h6l-6 6V7zM10 1h6l-6 6V1zM4 1h6l-6 6V1z" />
-                    </svg>
-                  </div>
-                  <span className="text-lg">Preferences</span>
+                <div className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '16px', height: '16px' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span>Preferences</span>
                 </div>
               </button>
               <button
                 onClick={() => setActiveTab('account')}
-                className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                   activeTab === 'account'
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/25 border border-red-400/30'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-700/50 hover:border-slate-600/50 border border-transparent'
+                    ? 'bg-purple-600 text-white'
+                    : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
                 }`}
               >
-                <div className="flex items-center space-x-3">
-                  <div className={`w-6 h-6 rounded-lg flex items-center justify-center transition-all duration-300 ${
-                    activeTab === 'account' ? 'bg-red-500/30' : 'bg-slate-600/50'
-                  }`}>
-                    <svg className="w-4 h-4 text-current" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                    </svg>
-                  </div>
-                  <span className="text-lg">Account</span>
+                <div className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '16px', height: '16px' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                  </svg>
+                  <span>Account</span>
                 </div>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Password Change Tab - Modern Design */}
+        {/* Password Change Tab - Clean Design */}
         {activeTab === 'password' && (
-          <div className="space-y-8">
-            {/* Security Overview Card */}
-            <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-3xl p-8 group hover:border-blue-500/30 transition-all duration-500">
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center space-x-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500/40 to-blue-600/40 rounded-3xl flex items-center justify-center shadow-2xl shadow-blue-500/20 border border-blue-400/30 group-hover:from-blue-500/50 group-hover:to-blue-600/50 group-hover:shadow-blue-500/30 group-hover:scale-110 transition-all duration-500">
-                    <svg className="w-8 h-8 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '32px', height: '32px' }}>
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h2 className="text-3xl font-bold text-white mb-2">Password Security</h2>
-                    <p className="text-slate-300 text-lg">Keep your account safe with a strong password</p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className="inline-flex items-center space-x-2 bg-emerald-500/20 border border-emerald-400/30 rounded-full px-4 py-2">
-                    <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                    <span className="text-emerald-300 text-sm font-medium">Secure</span>
-                  </div>
-                </div>
+          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-8">
+            <div className="flex items-center space-x-4 mb-8">
+              <div className="w-12 h-12 bg-blue-500/30 rounded-xl flex items-center justify-center">
+                <svg className="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
               </div>
-
-              {/* Password Strength Indicator */}
-              <div className="bg-slate-800/30 rounded-2xl p-6 mb-8 border border-slate-700/50">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-white font-semibold text-lg">Password Strength</h3>
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full"></div>
-                    <div className="w-3 h-3 bg-slate-600 rounded-full"></div>
-                  </div>
-                </div>
-                <div className="w-full bg-slate-700/50 rounded-full h-2">
-                  <div className="bg-gradient-to-r from-emerald-400 to-emerald-500 h-2 rounded-full transition-all duration-300" style={{ width: '80%' }}></div>
-                </div>
-                <p className="text-slate-400 text-sm mt-2">Your password meets most security requirements</p>
+              <div>
+                <h2 className="text-2xl font-bold text-white">Change Password</h2>
+                <p className="text-slate-300">Keep your account secure</p>
               </div>
-
-              {/* Modern Form */}
-              <form onSubmit={handlePasswordChange} className="space-y-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                  {/* Current Password */}
-                  <div className="space-y-4">
-                    <label className="block text-slate-200 text-base font-semibold mb-4 flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
-                      <span>Current Password</span>
-                    </label>
-                    <div className="relative group">
-                      <input
-                        type="password"
-                        value={passwordData.currentPassword}
-                        onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
-                        className="w-full px-6 py-5 bg-slate-800/50 border border-slate-600/50 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500/50 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 backdrop-blur-sm group-hover:border-slate-500/50"
-                        placeholder="Enter your current password"
-                        required
-                      />
-                      <div className="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
-                        <svg className="w-5 h-5 text-slate-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* New Password */}
-                  <div className="space-y-4">
-                    <label className="block text-slate-200 text-base font-semibold mb-4 flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
-                      <span>New Password</span>
-                    </label>
-                    <div className="relative group">
-                      <input
-                        type="password"
-                        value={passwordData.newPassword}
-                        onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
-                        className="w-full px-6 py-5 bg-slate-800/50 border border-slate-600/50 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/10 transition-all duration-300 backdrop-blur-sm group-hover:border-slate-500/50"
-                        placeholder="Enter your new password"
-                        required
-                      />
-                      <div className="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
-                        <svg className="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                      </div>
-                    </div>
-                    <div className="bg-emerald-500/10 border border-emerald-400/20 rounded-xl p-4">
-                      <div className="flex items-center space-x-3 mb-3">
-                        <svg className="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span className="text-emerald-300 font-medium text-sm">Password Requirements</span>
-                      </div>
-                      <ul className="text-slate-300 text-sm space-y-1">
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
-                          <span>At least 8 characters long</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
-                          <span>Include uppercase and lowercase letters</span>
-                        </li>
-                        <li className="flex items-center space-x-2">
-                          <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full"></div>
-                          <span>Include numbers and special characters</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Confirm Password */}
-                <div className="space-y-4">
-                  <label className="block text-slate-200 text-base font-semibold mb-4 flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
-                    <span>Confirm New Password</span>
-                  </label>
-                  <div className="relative group max-w-md">
-                    <input
-                      type="password"
-                      value={passwordData.confirmPassword}
-                      onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                      className="w-full px-6 py-5 bg-slate-800/50 border border-slate-600/50 rounded-2xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-4 focus:ring-purple-500/10 transition-all duration-300 backdrop-blur-sm group-hover:border-slate-500/50"
-                      placeholder="Confirm your new password"
-                      required
-                    />
-                    <div className="absolute inset-y-0 right-0 pr-5 flex items-center pointer-events-none">
-                      <svg className="w-5 h-5 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Enhanced Submit Button */}
-                <div className="pt-8">
-                  <button
-                    type="submit"
-                    disabled={isChangingPassword}
-                    className="w-full px-10 py-6 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 text-white rounded-3xl hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 font-bold text-xl transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none border border-blue-400/30 group"
-                  >
-                    {isChangingPassword ? (
-                      <div className="flex items-center justify-center space-x-4">
-                        <div className="animate-spin rounded-full h-6 w-6 border-4 border-white border-t-transparent"></div>
-                        <span>Updating Password...</span>
-                      </div>
-                    ) : (
-                      <div className="flex items-center justify-center space-x-4">
-                        <svg className="w-7 h-7 flex-shrink-0 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '28px', height: '28px' }}>
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>Update Password</span>
-                      </div>
-                    )}
-                  </button>
-                </div>
-              </form>
             </div>
+            
+            <form onSubmit={handlePasswordChange} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-slate-200 font-medium mb-2">Current Password</label>
+                  <input
+                    type="password"
+                    value={passwordData.currentPassword}
+                    onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                    placeholder="Enter your current password"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-slate-200 font-medium mb-2">New Password</label>
+                  <input
+                    type="password"
+                    value={passwordData.newPassword}
+                    onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-200"
+                    placeholder="Enter your new password"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-slate-200 font-medium mb-2">Confirm New Password</label>
+                <input
+                  type="password"
+                  value={passwordData.confirmPassword}
+                  onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+                  placeholder="Confirm your new password"
+                  required
+                />
+                <p className="text-slate-400 text-sm mt-2">Password must be at least 8 characters long</p>
+              </div>
+
+              <button
+                type="submit"
+                disabled={isChangingPassword}
+                className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isChangingPassword ? (
+                  <div className="flex items-center justify-center space-x-2">
+                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                    <span>Changing Password...</span>
+                  </div>
+                ) : (
+                  'Change Password'
+                )}
+              </button>
+            </form>
           </div>
         )}
 
