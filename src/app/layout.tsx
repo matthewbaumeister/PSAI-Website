@@ -3,7 +3,8 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { AuthProvider } from '@/contexts/AuthContext'
 import CookieConsent from '@/components/CookieConsent'
-import './globals.css'
+// TEMPORARILY DISABLED FOR TESTING
+// import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Prop Shop AI - Procurement Intelligence Platform',
