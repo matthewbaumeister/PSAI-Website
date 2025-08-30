@@ -2,6 +2,7 @@
 
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 interface PasswordChangeData {
@@ -762,6 +763,40 @@ export default function SettingsPage() {
                     <p style={{ color: 'white', fontWeight: '500', margin: '0' }}>{user.isAdmin ? 'Admin' : 'User'}</p>
                   </div>
                 </div>
+              </div>
+
+              <div style={{
+                padding: '20px',
+                background: 'rgba(139, 92, 246, 0.1)',
+                borderRadius: '12px',
+                border: '1px solid rgba(139, 92, 246, 0.2)'
+              }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#c4b5fd', margin: '0 0 16px 0' }}>Privacy & Cookies</h3>
+                <p style={{ color: '#ddd6fe', margin: '0 0 16px 0', fontSize: '14px' }}>
+                  Manage your cookie preferences and privacy settings to control how we use your data.
+                </p>
+                <Link href="/settings/cookies" style={{
+                  padding: '8px 16px',
+                  background: 'rgba(139, 92, 246, 0.2)',
+                  color: '#c4b5fd',
+                  borderRadius: '8px',
+                  fontWeight: '500',
+                  fontSize: '14px',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(139, 92, 246, 0.3)';
+                  e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)';
+                  e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.3)';
+                }}>
+                  Manage Cookies
+                </Link>
               </div>
 
               <div style={{
