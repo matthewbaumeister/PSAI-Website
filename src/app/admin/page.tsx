@@ -624,43 +624,6 @@ export default function AdminDashboard() {
                 Welcome back, {user.firstName}! Manage your system and users.
               </p>
               
-              {/* System Messages - Always Visible */}
-              {message && (
-                <div style={{
-                  background: messageType === 'success' ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-                  border: `1px solid ${messageType === 'success' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
-                  borderRadius: '12px',
-                  padding: '16px 20px',
-                  marginTop: '24px',
-                  color: messageType === 'success' ? '#86efac' : '#fca5a5',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  backdropFilter: 'blur(10px)',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
-                }}>
-                  <div style={{
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50%',
-                    background: messageType === 'success' ? '#22c55e' : '#ef4444',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: '12px',
-                    fontWeight: 'bold'
-                  }}>
-                    {messageType === 'success' ? '✓' : '✕'}
-                  </div>
-                  <div style={{
-                    flex: 1,
-                    whiteSpace: 'pre-line',
-                    lineHeight: '1.5'
-                  }}>
-                    {message}
-                  </div>
-                </div>
-              )}
             </div>
             <div style={{
               display: 'flex',
@@ -679,6 +642,45 @@ export default function AdminDashboard() {
               </div>
             </div>
           </div>
+          
+          {/* System Messages - Always Visible on New Line */}
+          {message && (
+            <div style={{
+              background: messageType === 'success' ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+              border: `1px solid ${messageType === 'success' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
+              borderRadius: '12px',
+              padding: '16px 20px',
+              marginTop: '24px',
+              color: messageType === 'success' ? '#86efac' : '#fca5a5',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+              width: '100%'
+            }}>
+              <div style={{
+                width: '20px',
+                height: '20px',
+                borderRadius: '50%',
+                background: messageType === 'success' ? '#22c55e' : '#ef4444',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '12px',
+                fontWeight: 'bold'
+              }}>
+                {messageType === 'success' ? '✓' : '✕'}
+              </div>
+              <div style={{
+                flex: 1,
+                whiteSpace: 'pre-line',
+                lineHeight: '1.5'
+              }}>
+                {message}
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
