@@ -1974,7 +1974,7 @@ a {
 }
 
 .solution-page .hero-features .feature-icon {
-  font-size: 3rem;
+  font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -2916,7 +2916,7 @@ a {
 }
 
 .resources-page .product-icon {
-  font-size: 2rem;
+  font-size: 1.25rem;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
