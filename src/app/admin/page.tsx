@@ -1450,7 +1450,7 @@ export default function AdminDashboard() {
                 View Search Tool
               </button>
               <button
-                onClick={() => window.open('/admin/dsip-management', '_blank')}
+                onClick={() => window.open('/admin/system-settings', '_blank')}
                 style={{
                   padding: '12px 20px',
                   background: 'rgba(34, 197, 94, 0.2)',
