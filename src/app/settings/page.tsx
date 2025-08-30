@@ -159,8 +159,8 @@ export default function SettingsPage() {
   }
 
   return (
-    <div style={{ 
-      minHeight: '100vh', 
+    <div style={{
+      minHeight: '100vh',
       background: 'linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%)',
       color: 'white',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
@@ -364,7 +364,7 @@ export default function SettingsPage() {
                   border: 'none',
                   cursor: 'pointer',
                   background: activeTab === 'account' ? '#7c3aed' : 'transparent',
-                  color: activeTab === 'account' ? 'white' : '#94a3b8'
+                  color: activeTab === 'password' ? 'white' : '#94a3b8'
                 }}
                 onMouseEnter={(e) => {
                   if (activeTab !== 'account') {
