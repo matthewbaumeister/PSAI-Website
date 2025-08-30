@@ -180,7 +180,7 @@ export default function ProfilePage() {
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">
+                <span className="text-white font-bold text-xl flex-shrink-0">
                   {user.firstName?.charAt(0)}{user.lastName?.charAt(0)}
                 </span>
               </div>
