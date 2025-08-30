@@ -265,12 +265,9 @@ export function Header() {
           <Link href="/about" className="nav-link">About</Link>
         </nav>
 
-        <div className="header-divider"></div>
-
         <div className="header-actions">
           <div className="action-buttons">
             <Link href="/book-demo" className="btn btn-primary">Book Demo</Link>
-            <div className="header-divider"></div>
             {!user && (
               <Link href="/auth/login" className="btn btn-secondary">Sign In</Link>
             )}
