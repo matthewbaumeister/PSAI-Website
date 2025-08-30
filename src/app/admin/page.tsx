@@ -279,7 +279,10 @@ export default function AdminDashboard() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ action: 'stop' })
+        body: JSON.stringify({ 
+          action: 'stop',
+          jobId: currentScrapingJob?.id 
+        })
       })
 
       if (response.ok) {
@@ -304,7 +307,10 @@ export default function AdminDashboard() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ action: 'resume' })
+        body: JSON.stringify({ 
+          action: 'resume',
+          jobId: currentScrapingJob?.id 
+        })
       })
 
       if (response.ok) {
