@@ -688,32 +688,7 @@ export default function AdminDashboard() {
         padding: '32px 24px'
       }}>
         {/* Message */}
-        {message && (
-          <div style={{
-            background: messageType === 'success' ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-            border: `1px solid ${messageType === 'success' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
-            borderRadius: '12px',
-            padding: '16px 20px',
-            marginBottom: '32px',
-            color: messageType === 'success' ? '#86efac' : '#fca5a5',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px'
-          }}>
-            <div style={{
-              width: '20px',
-              height: '20px',
-              borderRadius: '50%',
-              background: messageType === 'success' ? '#22c55e' : '#ef4444',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-              {messageType === 'success' ? '✓' : '✕'}
-            </div>
-            {message}
-          </div>
-        )}
+
 
         {/* System Statistics */}
         <div style={{
