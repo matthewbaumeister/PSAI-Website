@@ -76,25 +76,45 @@ export async function GET(request: NextRequest) {
         if (columnsError) {
           insertError = `Schema error: ${columnsError.message}`;
         } else {
-          // Create a minimal test record with only required fields
-          const testRecord = {
-            topic_id: 999999, // Use a simple integer for testing
-            title: 'Test Record'
-          };
+          // Get the actual column names from the first record
+          const actualColumns = columns && columns.length > 0 ? Object.keys(columns[0]) : [];
           
-          const { error } = await supabase
-            .from('dsip_opportunities')
-            .insert(testRecord);
+          // Create a minimal test record using only columns that actually exist
+          const testRecord: any = {};
           
-          if (!error) {
-            canInsert = true;
-            // Clean up the test record
-            await supabase
+          // Try to use basic columns that should exist
+          if (actualColumns.includes('topic_id')) {
+            testRecord.topic_id = 999999;
+          }
+          if (actualColumns.includes('id')) {
+            // Skip id as it's auto-generated
+          }
+          if (actualColumns.includes('created_at')) {
+            testRecord.created_at = new Date().toISOString();
+          } else if (actualColumns.includes('created_date')) {
+            testRecord.created_date = new Date().toISOString().split('T')[0];
+          }
+          
+          // Only try to insert if we have at least one valid column
+          if (Object.keys(testRecord).length > 0) {
+            const { error } = await supabase
               .from('dsip_opportunities')
-              .delete()
-              .eq('topic_id', testRecord.topic_id);
+              .insert(testRecord);
+            
+            if (!error) {
+              canInsert = true;
+              // Clean up the test record
+              if (testRecord.topic_id) {
+                await supabase
+                  .from('dsip_opportunities')
+                  .delete()
+                  .eq('topic_id', testRecord.topic_id);
+              }
+            } else {
+              insertError = `Insert failed: ${error.message}`;
+            }
           } else {
-            insertError = error.message;
+            insertError = `No valid columns found for test insert. Available columns: ${actualColumns.join(', ')}`;
           }
         }
       } catch (e) {
@@ -106,7 +126,8 @@ export async function GET(request: NextRequest) {
       databaseStatus: {
         opportunitiesTable: {
           exists: opportunitiesTableExists,
-          count: opportunitiesCount
+          count: opportunitiesCount,
+          columns: columns && columns.length > 0 ? Object.keys(columns[0]) : []
         },
         scrapingJobsTable: {
           exists: scrapingJobsTableExists,
