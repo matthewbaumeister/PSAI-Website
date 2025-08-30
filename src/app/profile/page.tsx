@@ -281,225 +281,244 @@ export default function ProfilePage() {
           </div>
 
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            display: 'flex',
+            flexDirection: 'column',
             gap: '24px'
           }}>
-            <div>
-              <label style={{
-                display: 'block',
-                color: '#cbd5e1',
-                fontWeight: '500',
-                marginBottom: '8px',
-                fontSize: '14px'
-              }}>
-                First Name
-              </label>
-              <input
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                style={{
-                  width: '100%',
-                  padding: '16px 20px',
-                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
-                  border: '1px solid rgba(148, 163, 184, 0.3)',
-                  borderRadius: '12px',
-                  color: '#ffffff',
-                  fontSize: '16px',
-                  transition: 'all 0.2s ease',
-                  opacity: isEditing ? 1 : 0.7
-                }}
-                onFocus={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
-                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
-                  }
-                }}
-                onBlur={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
-                    e.target.style.boxShadow = 'none'
-                  }
-                }}
-              />
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '24px'
+            }}>
+              <div>
+                <label style={{
+                  display: 'block',
+                  color: '#cbd5e1',
+                  fontWeight: '500',
+                  marginBottom: '8px',
+                  fontSize: '14px'
+                }}>
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  disabled={!isEditing}
+                  style={{
+                    width: '100%',
+                    padding: '16px 20px',
+                    background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    transition: 'all 0.2s ease',
+                    opacity: isEditing ? 1 : 0.7
+                  }}
+                  onFocus={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                      e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                      e.target.style.boxShadow = 'none'
+                    }
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  color: '#cbd5e1',
+                  fontWeight: '500',
+                  marginBottom: '8px',
+                  fontSize: '14px'
+                }}>
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  disabled={!isEditing}
+                  style={{
+                    width: '100%',
+                    padding: '16px 20px',
+                    background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    transition: 'all 0.2s ease',
+                    opacity: isEditing ? 1 : 0.7
+                  }}
+                  onFocus={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                      e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                      e.target.style.boxShadow = 'none'
+                    }
+                  }}
+                />
+              </div>
             </div>
 
-            <div>
-              <label style={{
-                display: 'block',
-                color: '#cbd5e1',
-                fontWeight: '500',
-                marginBottom: '8px',
-                fontSize: '14px'
-              }}>
-                Last Name
-              </label>
-              <input
-                type="text"
-                name="lastName"
-                value={formData.lastName}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                style={{
-                  width: '100%',
-                  padding: '16px 20px',
-                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
-                  border: '1px solid rgba(148, 163, 184, 0.3)',
-                  borderRadius: '12px',
-                  color: '#ffffff',
-                  fontSize: '16px',
-                  transition: 'all 0.2s ease',
-                  opacity: isEditing ? 1 : 0.7
-                }}
-                onFocus={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
-                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
-                  }
-                }}
-                onBlur={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
-                    e.target.style.boxShadow = 'none'
-                  }
-                }}
-              />
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gap: '24px'
+            }}>
+              <div>
+                <label style={{
+                  display: 'block',
+                  color: '#cbd5e1',
+                  fontWeight: '500',
+                  marginBottom: '8px',
+                  fontSize: '14px'
+                }}>
+                  Company Name
+                </label>
+                <input
+                  type="text"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleInputChange}
+                  disabled={!isEditing}
+                  style={{
+                    width: '100%',
+                    padding: '16px 20px',
+                    background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    transition: 'all 0.2s ease',
+                    opacity: isEditing ? 1 : 0.7
+                  }}
+                  onFocus={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                      e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                      e.target.style.boxShadow = 'none'
+                    }
+                  }}
+                />
+              </div>
+
+              <div>
+                <label style={{
+                  display: 'block',
+                  color: '#cbd5e1',
+                  fontWeight: '500',
+                  marginBottom: '8px',
+                  fontSize: '14px'
+                }}>
+                  Company Size
+                </label>
+                <select
+                  name="companySize"
+                  value={formData.companySize}
+                  onChange={handleInputChange}
+                  disabled={!isEditing}
+                  style={{
+                    width: '100%',
+                    padding: '16px 20px',
+                    background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    transition: 'all 0.2s ease',
+                    opacity: isEditing ? 1 : 0.7
+                  }}
+                  onFocus={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                      e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                      e.target.style.boxShadow = 'none'
+                    }
+                  }}
+                >
+                  <option value="">Select company size</option>
+                  <option value="1-10">1-10 employees</option>
+                  <option value="11-50">11-50 employees</option>
+                  <option value="51-200">51-200 employees</option>
+                  <option value="201-500">201-500 employees</option>
+                  <option value="501-1000">501-1000 employees</option>
+                  <option value="1000+">1000+ employees</option>
+                </select>
+              </div>
             </div>
 
-            <div>
-              <label style={{
-                display: 'block',
-                color: '#cbd5e1',
-                fontWeight: '500',
-                marginBottom: '8px',
-                fontSize: '14px'
-              }}>
-                Company Name
-              </label>
-              <input
-                type="text"
-                name="companyName"
-                value={formData.companyName}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                style={{
-                  width: '100%',
-                  padding: '16px 20px',
-                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
-                  border: '1px solid rgba(148, 163, 184, 0.3)',
-                  borderRadius: '12px',
-                  color: '#ffffff',
-                  fontSize: '16px',
-                  transition: 'all 0.2s ease',
-                  opacity: isEditing ? 1 : 0.7
-                }}
-                onFocus={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
-                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
-                  }
-                }}
-                onBlur={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
-                    e.target.style.boxShadow = 'none'
-                  }
-                }}
-              />
-            </div>
-
-            <div>
-              <label style={{
-                display: 'block',
-                color: '#cbd5e1',
-                fontWeight: '500',
-                marginBottom: '8px',
-                fontSize: '14px'
-              }}>
-                Company Size
-              </label>
-              <select
-                name="companySize"
-                value={formData.companySize}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                style={{
-                  width: '100%',
-                  padding: '16px 20px',
-                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
-                  border: '1px solid rgba(148, 163, 184, 0.3)',
-                  borderRadius: '12px',
-                  color: '#ffffff',
-                  fontSize: '16px',
-                  transition: 'all 0.2s ease',
-                  opacity: isEditing ? 1 : 0.7
-                }}
-                onFocus={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
-                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
-                  }
-                }}
-                onBlur={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
-                    e.target.style.boxShadow = 'none'
-                  }
-                }}
-              >
-                <option value="">Select company size</option>
-                <option value="1-10">1-10 employees</option>
-                <option value="11-50">11-50 employees</option>
-                <option value="51-200">51-200 employees</option>
-                <option value="201-500">201-500 employees</option>
-                <option value="501-1000">501-1000 employees</option>
-                <option value="1000+">1000+ employees</option>
-              </select>
-            </div>
-
-            <div>
-              <label style={{
-                display: 'block',
-                color: '#cbd5e1',
-                fontWeight: '500',
-                marginBottom: '8px',
-                fontSize: '14px'
-              }}>
-                Phone Number
-              </label>
-              <input
-                type="tel"
-                name="phone"
-                value={formData.phone}
-                onChange={handleInputChange}
-                disabled={!isEditing}
-                style={{
-                  width: '100%',
-                  padding: '16px 20px',
-                  background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
-                  border: '1px solid rgba(148, 163, 184, 0.3)',
-                  borderRadius: '12px',
-                  color: '#ffffff',
-                  fontSize: '16px',
-                  transition: 'all 0.2s ease',
-                  opacity: isEditing ? 1 : 0.7
-                }}
-                onFocus={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
-                    e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
-                  }
-                }}
-                onBlur={(e) => {
-                  if (isEditing) {
-                    e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
-                    e.target.style.boxShadow = 'none'
-                  }
-                }}
-              />
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr',
+              gap: '24px'
+            }}>
+              <div>
+                <label style={{
+                  display: 'block',
+                  color: '#cbd5e1',
+                  fontWeight: '500',
+                  marginBottom: '8px',
+                  fontSize: '14px'
+                }}>
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  disabled={!isEditing}
+                  style={{
+                    width: '100%',
+                    maxWidth: '400px',
+                    padding: '16px 20px',
+                    background: isEditing ? 'rgba(15, 23, 42, 0.6)' : 'rgba(15, 23, 42, 0.3)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '12px',
+                    color: '#ffffff',
+                    fontSize: '16px',
+                    transition: 'all 0.2s ease',
+                    opacity: isEditing ? 1 : 0.7
+                  }}
+                  onFocus={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                      e.target.style.boxShadow = '0 0 0 3px rgba(139, 92, 246, 0.1)'
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (isEditing) {
+                      e.target.style.borderColor = 'rgba(148, 163, 184, 0.3)'
+                      e.target.style.boxShadow = 'none'
+                    }
+                  }}
+                />
+              </div>
             </div>
           </div>
 
@@ -728,7 +747,7 @@ export default function ProfilePage() {
                 fontWeight: '600',
                 margin: 0
               }}>
-                                 {user.emailVerified ? 'Yes' : 'No'}
+                {user.emailVerified ? 'Yes' : 'No'}
               </p>
             </div>
 
