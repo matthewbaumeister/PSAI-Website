@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
 
     const supabase = createAdminSupabaseClient()
     
-    // Get all users
+    // Get all users with only columns that definitely exist
     const { data: users, error } = await supabase
       .from('users')
       .select(`
@@ -23,8 +23,7 @@ export async function GET(request: NextRequest) {
         first_name,
         last_name,
         is_admin,
-        created_at,
-        last_login
+        created_at
       `)
       .order('created_at', { ascending: false })
 
