@@ -266,10 +266,10 @@ export default function SettingsPage() {
 
         {/* Password Change Tab */}
         {activeTab === 'password' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 group">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-blue-500/30 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500/40 to-blue-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 border border-blue-400/30 group-hover:from-blue-500/50 group-hover:to-blue-600/50 group-hover:shadow-blue-500/30 transition-all duration-300">
+                <svg className="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
@@ -340,10 +340,10 @@ export default function SettingsPage() {
 
         {/* Email Preferences Tab */}
         {activeTab === 'preferences' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 group">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-emerald-500/30 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
+              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/40 to-emerald-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/20 border border-emerald-400/30 group-hover:from-emerald-500/50 group-hover:to-emerald-600/50 group-hover:shadow-emerald-500/30 transition-all duration-300">
+                <svg className="w-6 h-6 text-emerald-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM4 19h6l-6 6v-6zM4 13h6l-6 6v-6zM4 7h6l-6 6V7zM10 7h6l-6 6V7zM10 1h6l-6 6V1zM4 1h6l-6 6V1z" />
                 </svg>
               </div>
@@ -419,10 +419,10 @@ export default function SettingsPage() {
 
         {/* Account Management Tab */}
         {activeTab === 'account' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-red-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8">
+          <div className="bg-gradient-to-br from-slate-800/50 to-red-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 group">
             <div className="flex items-center space-x-3 mb-6">
-              <div className="w-10 h-10 bg-red-500/30 rounded-xl flex items-center justify-center">
-                <svg className="w-5 h-5 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
+              <div className="w-12 h-12 bg-gradient-to-br from-red-500/40 to-red-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/20 border border-red-400/30 group-hover:from-red-500/50 group-hover:to-red-600/50 group-hover:shadow-red-500/30 transition-all duration-300">
+                <svg className="w-6 h-6 text-red-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>

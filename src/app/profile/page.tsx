@@ -179,8 +179,8 @@ export default function ProfilePage() {
         <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500/30 to-purple-500/30 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl flex-shrink-0">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500/40 to-purple-600/40 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/20 border border-blue-400/30 hover:from-blue-500/50 hover:to-purple-600/50 hover:shadow-purple-500/20 hover:scale-105 transition-all duration-300">
+                <span className="text-white font-bold text-2xl flex-shrink-0">
                   {user.firstName?.charAt(0)}{user.lastName?.charAt(0)}
                 </span>
               </div>

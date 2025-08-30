@@ -370,10 +370,10 @@ export default function AdminDashboard() {
         )}
 
         {/* Admin Invitation Form */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 mb-8 hover:border-purple-500/30 transition-all duration-300">
+        <div className="bg-gradient-to-br from-slate-800/50 to-purple-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 mb-8 hover:border-purple-500/30 transition-all duration-300 group">
           <div className="flex items-center space-x-3 mb-6">
-            <div className="w-10 h-10 bg-purple-500/30 rounded-xl flex items-center justify-center">
-              <svg className="w-5 h-5 text-purple-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
+            <div className="w-12 h-12 bg-gradient-to-br from-purple-500/40 to-purple-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/20 border border-purple-400/30 group-hover:from-purple-500/50 group-hover:to-purple-600/50 group-hover:shadow-purple-500/30 group-hover:scale-110 transition-all duration-300">
+              <svg className="w-6 h-6 text-purple-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
@@ -418,10 +418,10 @@ export default function AdminDashboard() {
         </div>
 
         {/* Admin Invitations */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-amber-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 mb-8 hover:border-amber-500/30 transition-all duration-300">
+        <div className="bg-gradient-to-br from-slate-800/50 to-amber-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 mb-8 hover:border-amber-500/30 transition-all duration-300 group">
           <div className="flex items-center space-x-3 mb-6">
-            <div className="w-10 h-10 bg-amber-500/30 rounded-xl flex items-center justify-center">
-              <svg className="w-5 h-5 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
+            <div className="w-12 h-12 bg-gradient-to-br from-amber-500/40 to-amber-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-amber-500/20 border border-amber-400/30 group-hover:from-amber-500/50 group-hover:to-amber-600/50 group-hover:shadow-amber-500/30 group-hover:scale-110 transition-all duration-300">
+              <svg className="w-6 h-6 text-amber-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
@@ -459,8 +459,8 @@ export default function AdminDashboard() {
                     <tr key={invitation.id} className="border-b border-slate-700/30 hover:bg-slate-700/20 transition-colors duration-200">
                       <td className="py-4">
                         <div className="flex items-center space-x-3">
-                          <div className="w-8 h-8 bg-slate-600/50 rounded-full flex items-center justify-center">
-                            <svg className="w-4 h-4 text-slate-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '16px', height: '16px' }}>
+                          <div className="w-8 h-8 bg-gradient-to-br from-slate-600/50 to-slate-700/50 rounded-full flex items-center justify-center shadow-sm border border-slate-500/30">
+                            <svg className="w-4 h-4 text-slate-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '16px', height: '16px' }}>
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                           </div>
@@ -500,10 +500,10 @@ export default function AdminDashboard() {
         </div>
 
         {/* Users Management */}
-        <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-300">
+        <div className="bg-gradient-to-br from-slate-800/50 to-blue-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 hover:border-blue-500/30 transition-all duration-300 group">
           <div className="flex items-center space-x-3 mb-6">
-            <div className="w-10 h-10 bg-blue-500/30 rounded-xl flex items-center justify-center">
-              <svg className="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '20px', height: '20px' }}>
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500/40 to-blue-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20 border border-blue-400/30 group-hover:from-blue-500/50 group-hover:to-blue-600/50 group-hover:shadow-blue-500/30 group-hover:scale-110 transition-all duration-300">
+              <svg className="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
             </div>
