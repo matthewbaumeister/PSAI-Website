@@ -3374,7 +3374,8 @@ a {
   transform: translateY(-3px);
 }
 
-.about-page .stat-number {
+/* TEMPORARILY DISABLED - TESTING FOR SYMBOL ISSUE */
+/* .about-page .stat-number {
   font-size: 1.5rem;
   font-weight: 700;
   color: #667eea;
@@ -3382,7 +3383,7 @@ a {
   display: block;
   position: relative;
   z-index: 1;
-}
+} */
 
 .about-page .stat-label {
   color: #B8B8B8;
@@ -3463,12 +3464,13 @@ a {
   transform: translateY(-3px);
 }
 
-.about-page .method-icon {
+/* TEMPORARILY DISABLED - TESTING FOR SYMBOL ISSUE */
+/* .about-page .method-icon {
   font-size: 1.25rem;
   margin-bottom: 1rem;
   position: relative;
   z-index: 1;
-}
+} */
 
 .about-page .method h3 {
   font-size: 1.25rem;
