@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import { requireAuth } from '@/lib/auth-middleware'
 import { createAdminSupabaseClient } from '@/lib/supabase'
 
-export async function GET(request: NextRequest) {
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const authResult = await requireAuth(request)
     if ('error' in authResult) {
-      return authResult
+      return authResult as NextResponse
     }
 
     const { user } = authResult
@@ -42,11 +42,11 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const authResult = await requireAuth(request)
     if ('error' in authResult) {
-      return authResult
+      return authResult as NextResponse
     }
 
     const { user } = authResult
