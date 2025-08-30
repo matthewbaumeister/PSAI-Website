@@ -78,8 +78,8 @@ export async function GET(request: NextRequest) {
         } else {
           // Create a minimal test record with only required fields
           const testRecord = {
-            topic_id_topicid: `test_${Date.now()}`,
-            created_at: new Date().toISOString()
+            topic_id: 999999, // Use a simple integer for testing
+            title: 'Test Record'
           };
           
           const { error } = await supabase
@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
             await supabase
               .from('dsip_opportunities')
               .delete()
-              .eq('topic_id_topicid', testRecord.topic_id_topicid);
+              .eq('topic_id', testRecord.topic_id);
           } else {
             insertError = error.message;
           }
