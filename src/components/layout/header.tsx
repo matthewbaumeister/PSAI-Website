@@ -292,7 +292,6 @@ export function Header() {
                   <div className="header-divider"></div>
                   <div className="admin-dropdown-container">
                     <button ref={adminButtonRef} className="admin-dropdown-trigger" onClick={toggleAdminDropdown} aria-expanded={isAdminDropdownOpen}>
-                      <div className="admin-icon">⚙️</div>
                       <span className="admin-text">Admin</span>
                       <span className="dropdown-arrow">▼</span>
                     </button>

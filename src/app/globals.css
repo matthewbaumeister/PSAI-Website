@@ -173,6 +173,7 @@ body::after {
   position: sticky;
   top: 0;
   z-index: 9999;
+  padding-bottom: 1rem;
 }
 
 .header .container {
