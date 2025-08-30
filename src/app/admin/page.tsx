@@ -450,6 +450,45 @@ export default function AdminDashboard() {
     }
   }
 
+  const testDatabase = async () => {
+    try {
+      setMessage('🗄️ Testing database connection and tables...')
+      setMessageType('success')
+      
+      const response = await fetch('/api/dsip/test-database')
+      if (response.ok) {
+        const data = await response.json()
+        console.log('Database Test Results:', data)
+        
+        if (data.success) {
+          const status = data.databaseStatus
+          let message = '🗄️ Database Test Results:\n'
+          message += `📊 Opportunities Table: ${status.opportunitiesTable.exists ? '✅ Exists' : '❌ Missing'} (${status.opportunitiesTable.count} records)\n`
+          message += `📋 Scraping Jobs Table: ${status.scrapingJobsTable.exists ? '✅ Exists' : '❌ Missing'} (${status.scrapingJobsTable.count} records)\n`
+          message += `👥 Users Table: ${status.usersTable.exists ? '✅ Exists' : '❌ Missing'} (${status.usersTable.count} records)\n`
+          message += `✏️ Can Insert: ${status.canInsert ? '✅ Yes' : '❌ No'}`
+          
+          if (status.insertError) {
+            message += `\n❌ Insert Error: ${status.insertError}`
+          }
+          
+          setMessage(message)
+          setMessageType(status.opportunitiesTable.exists && status.canInsert ? 'success' : 'error')
+        } else {
+          setMessage('❌ Database test failed')
+          setMessageType('error')
+        }
+      } else {
+        setMessage('❌ Failed to test database')
+        setMessageType('error')
+      }
+    } catch (error) {
+      setMessage('❌ Error testing database')
+      setMessageType('error')
+      console.error('Database test error:', error)
+    }
+  }
+
   const checkActiveOpportunities = async () => {
     try {
       setIsCheckingActive(true)
@@ -1786,6 +1825,30 @@ export default function AdminDashboard() {
                   }}
                 >
                   🧪 Test Scraper System
+                </button>
+                <button
+                  onClick={testDatabase}
+                  style={{
+                    padding: '10px 16px',
+                    background: 'rgba(59, 130, 246, 0.2)',
+                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                    borderRadius: '8px',
+                    color: '#93c5fd',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    width: '100%',
+                    textAlign: 'left'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'
+                  }}
+                >
+                  🗄️ Test Database
                 </button>
               </div>
             </div>
