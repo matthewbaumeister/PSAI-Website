@@ -420,50 +420,48 @@ export default function SettingsPage() {
             </div>
             
             <form onSubmit={handlePasswordChange} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
-                <div>
-                  <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>Current Password</label>
-                  <input
-                    type="password"
-                    value={passwordData.currentPassword}
-                    onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
-                    style={{
-                      width: '100%',
-                      padding: '12px 16px',
-                      background: 'rgba(51, 65, 85, 0.5)',
-                      border: '1px solid rgba(71, 85, 105, 0.5)',
-                      borderRadius: '12px',
-                      color: 'white',
-                      fontSize: '16px',
-                      outline: 'none',
-                      transition: 'all 0.2s ease'
-                    }}
-                    placeholder="Enter your current password"
-                    required
-                  />
-                </div>
+              <div>
+                <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>Current Password</label>
+                <input
+                  type="password"
+                  value={passwordData.currentPassword}
+                  onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    background: 'rgba(51, 65, 85, 0.5)',
+                    border: '1px solid rgba(71, 85, 105, 0.5)',
+                    borderRadius: '12px',
+                    color: 'white',
+                    fontSize: '16px',
+                    outline: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                  placeholder="Enter your current password"
+                  required
+                />
+              </div>
 
-                <div>
-                  <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>New Password</label>
-                  <input
-                    type="password"
-                    value={passwordData.newPassword}
-                    onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
-                    style={{
-                      width: '100%',
-                      padding: '12px 16px',
-                      background: 'rgba(51, 65, 85, 0.5)',
-                      border: '1px solid rgba(71, 85, 105, 0.5)',
-                      borderRadius: '12px',
-                      color: 'white',
-                      fontSize: '16px',
-                      outline: 'none',
-                      transition: 'all 0.2s ease'
-                    }}
-                    placeholder="Enter your new password"
-                    required
-                  />
-                </div>
+              <div>
+                <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>New Password</label>
+                <input
+                  type="password"
+                  value={passwordData.newPassword}
+                  onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    background: 'rgba(51, 65, 85, 0.5)',
+                    border: '1px solid rgba(71, 85, 105, 0.5)',
+                    borderRadius: '12px',
+                    color: 'white',
+                    fontSize: '16px',
+                    outline: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
+                  placeholder="Enter your new password"
+                  required
+                />
               </div>
 
               <div>
@@ -538,78 +536,98 @@ export default function SettingsPage() {
 
         {/* Email Preferences Tab */}
         {activeTab === 'preferences' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-emerald-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 group">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/40 to-emerald-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-emerald-500/20 border border-emerald-400/30 group-hover:from-emerald-500/50 group-hover:to-emerald-600/50 group-hover:shadow-emerald-500/30 transition-all duration-300">
-                <svg className="w-6 h-6 text-emerald-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM4 19h6l-6 6v-6zM4 13h6l-6 6v-6zM4 7h6l-6 6V7zM10 7h6l-6 6V7zM10 1h6l-6 6V1zM4 1h6l-6 6V1z" />
+          <div style={{
+            background: 'rgba(30, 41, 59, 0.5)',
+            border: '1px solid rgba(71, 85, 105, 0.5)',
+            borderRadius: '16px',
+            padding: '32px',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                background: 'rgba(16, 185, 129, 0.3)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <svg style={{ width: '24px', height: '24px', color: '#6ee7b7' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-white">Email Preferences</h2>
+              <div>
+                <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'white', margin: '0 0 4px 0' }}>Email Preferences</h2>
+                <p style={{ color: '#cbd5e1', margin: '0' }}>Manage your notification settings</p>
+              </div>
             </div>
             
-            <div className="space-y-6">
-              <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-xl">
-                <div>
-                  <h3 className="text-white font-medium">Marketing Emails</h3>
-                  <p className="text-slate-400 text-sm">Receive emails about new features and promotions</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div style={{
+                padding: '20px',
+                background: 'rgba(51, 65, 85, 0.3)',
+                borderRadius: '12px',
+                border: '1px solid rgba(71, 85, 105, 0.3)'
+              }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white', margin: '0 0 16px 0' }}>Marketing Communications</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                  <input type="checkbox" id="marketing" style={{ width: '18px', height: '18px' }} />
+                  <label htmlFor="marketing" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
+                    Receive updates about new features and services
+                  </label>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={emailPreferences.marketingEmails}
-                    onChange={(e) => setEmailPreferences(prev => ({ ...prev, marketingEmails: e.target.checked }))}
-                    className="sr-only peer"
-                  />
-                  <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-500/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
-                </label>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <input type="checkbox" id="newsletter" style={{ width: '18px', height: '18px' }} />
+                  <label htmlFor="newsletter" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
+                    Subscribe to our monthly newsletter
+                  </label>
+                </div>
               </div>
 
-              <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-xl">
-                <div>
-                  <h3 className="text-white font-medium">Product Updates</h3>
-                  <p className="text-slate-400 text-sm">Get notified about new features and improvements</p>
+              <div style={{
+                padding: '20px',
+                background: 'rgba(51, 65, 85, 0.3)',
+                borderRadius: '12px',
+                border: '1px solid rgba(71, 85, 105, 0.3)'
+              }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white', margin: '0 0 16px 0' }}>System Notifications</h3>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                  <input type="checkbox" id="security" defaultChecked style={{ width: '18px', height: '18px' }} />
+                  <label htmlFor="security" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
+                    Security alerts and login notifications
+                  </label>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={emailPreferences.productUpdates}
-                    onChange={(e) => setEmailPreferences(prev => ({ ...prev, productUpdates: e.target.checked }))}
-                    className="sr-only peer"
-                  />
-                  <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-500/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
-                </label>
-              </div>
-
-              <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-xl">
-                <div>
-                  <h3 className="text-white font-medium">Security Alerts</h3>
-                  <p className="text-slate-400 text-sm">Important security notifications and account updates</p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  <input type="checkbox" id="updates" defaultChecked style={{ width: '18px', height: '18px' }} />
+                  <label htmlFor="updates" style={{ color: '#cbd5e1', cursor: 'pointer' }}>
+                    System updates and maintenance notices
+                  </label>
                 </div>
-                <label className="relative inline-flex items-center cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={emailPreferences.securityAlerts}
-                    onChange={(e) => setEmailPreferences(prev => ({ ...prev, securityAlerts: e.target.checked }))}
-                    className="sr-only peer"
-                  />
-                  <div className="w-11 h-6 bg-slate-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-emerald-500/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-600"></div>
-                </label>
               </div>
 
               <button
-                onClick={handleSavePreferences}
-                disabled={isSavingPreferences}
-                className="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl hover:from-emerald-700 hover:to-emerald-800 font-semibold transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{
+                  width: '100%',
+                  padding: '12px 24px',
+                  background: '#059669',
+                  color: 'white',
+                  borderRadius: '12px',
+                  fontWeight: '600',
+                  fontSize: '16px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  (e.target as HTMLElement).style.background = '#047857';
+                }}
+                onMouseLeave={(e) => {
+                  (e.target as HTMLElement).style.background = '#059669';
+                }}
               >
-                {isSavingPreferences ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                    <span>Saving...</span>
-                  </div>
-                ) : (
-                  'Save Preferences'
-                )}
+                Save Preferences
               </button>
             </div>
           </div>
@@ -617,74 +635,92 @@ export default function SettingsPage() {
 
         {/* Account Management Tab */}
         {activeTab === 'account' && (
-          <div className="bg-gradient-to-br from-slate-800/50 to-red-800/20 backdrop-blur-sm border border-slate-700/50 rounded-2xl p-8 group">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-red-500/40 to-red-600/40 rounded-2xl flex items-center justify-center shadow-lg shadow-red-500/20 border border-red-400/30 group-hover:from-red-500/50 group-hover:to-red-600/50 group-hover:shadow-red-500/30 transition-all duration-300">
-                <svg className="w-6 h-6 text-red-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
+          <div style={{
+            background: 'rgba(30, 41, 59, 0.5)',
+            border: '1px solid rgba(71, 85, 105, 0.5)',
+            borderRadius: '16px',
+            padding: '32px',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                background: 'rgba(124, 58, 237, 0.3)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <svg style={{ width: '24px', height: '24px', color: '#c4b5fd' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-white">Account Management</h2>
+              <div>
+                <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'white', margin: '0 0 4px 0' }}>Account Management</h2>
+                <p style={{ color: '#cbd5e1', margin: '0' }}>Manage your account settings and data</p>
+              </div>
             </div>
             
-            <div className="space-y-6">
-              {/* Account Information */}
-              <div className="bg-slate-700/30 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-white mb-4">Account Information</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div style={{
+                padding: '20px',
+                background: 'rgba(51, 65, 85, 0.3)',
+                borderRadius: '12px',
+                border: '1px solid rgba(71, 85, 105, 0.3)'
+              }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', color: 'white', margin: '0 0 16px 0' }}>Account Information</h3>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                   <div>
-                    <p className="text-slate-400 text-sm">Email</p>
-                    <p className="text-white font-medium">{user.email}</p>
+                    <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 4px 0' }}>Email</p>
+                    <p style={{ color: 'white', fontWeight: '500', margin: '0' }}>{user.email}</p>
                   </div>
                   <div>
-                    <p className="text-slate-400 text-sm">Member Since</p>
-                    <p className="text-white font-medium">2025</p>
+                    <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 4px 0' }}>Member Since</p>
+                    <p style={{ color: 'white', fontWeight: '500', margin: '0' }}>2025</p>
                   </div>
                   <div>
-                    <p className="text-slate-400 text-sm">Account Status</p>
-                    <p className="text-white font-medium">Active</p>
+                    <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 4px 0' }}>Account Status</p>
+                    <p style={{ color: 'white', fontWeight: '500', margin: '0' }}>Active</p>
                   </div>
                   <div>
-                    <p className="text-slate-400 text-sm">Role</p>
-                    <p className="text-white font-medium">{user.isAdmin ? 'Admin' : 'User'}</p>
+                    <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 4px 0' }}>Role</p>
+                    <p style={{ color: 'white', fontWeight: '500', margin: '0' }}>{user.isAdmin ? 'Admin' : 'User'}</p>
                   </div>
                 </div>
               </div>
 
-              {/* Danger Zone */}
-              <div className="bg-red-500/10 border border-red-500/30 rounded-xl p-6">
-                <h3 className="text-lg font-semibold text-red-400 mb-4">Danger Zone</h3>
-                <p className="text-slate-300 mb-4">
+              <div style={{
+                padding: '20px',
+                background: 'rgba(239, 68, 68, 0.1)',
+                borderRadius: '12px',
+                border: '1px solid rgba(239, 68, 68, 0.2)'
+              }}>
+                <h3 style={{ fontSize: '18px', fontWeight: '600', color: '#fca5a5', margin: '0 0 16px 0' }}>Danger Zone</h3>
+                <p style={{ color: '#fecaca', margin: '0 0 16px 0', fontSize: '14px' }}>
                   Once you delete your account, there is no going back. Please be certain.
                 </p>
-                
-                {!showDeleteConfirm ? (
-                  <button
-                    onClick={() => setShowDeleteConfirm(true)}
-                    className="px-6 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 font-semibold transition-all duration-300 border border-red-500/50"
-                  >
-                    Delete Account
-                  </button>
-                ) : (
-                  <div className="space-y-4">
-                    <p className="text-red-300 font-medium">Are you absolutely sure?</p>
-                    <div className="flex space-x-3">
-                      <button
-                        onClick={handleDeleteAccount}
-                        disabled={isDeletingAccount}
-                        className="px-6 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        {isDeletingAccount ? 'Deleting...' : 'Yes, Delete My Account'}
-                      </button>
-                      <button
-                        onClick={() => setShowDeleteConfirm(false)}
-                        className="px-6 py-3 bg-slate-600 text-white rounded-xl hover:bg-slate-700 font-semibold transition-all duration-300"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                )}
+                <button
+                  style={{
+                    padding: '8px 16px',
+                    background: '#dc2626',
+                    color: 'white',
+                    borderRadius: '8px',
+                    fontWeight: '500',
+                    fontSize: '14px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    (e.target as HTMLElement).style.background = '#b91c1c';
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.target as HTMLElement).style.background = '#dc2626';
+                  }}
+                >
+                  Delete Account
+                </button>
               </div>
             </div>
           </div>
