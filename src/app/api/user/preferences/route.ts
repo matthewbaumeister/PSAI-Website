@@ -5,8 +5,10 @@ import { createAdminSupabaseClient } from '@/lib/supabase'
 export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const authResult = await requireAuth(request)
-    if ('error' in authResult) {
-      return authResult as NextResponse
+    
+    // Check if it's a NextResponse (error case)
+    if (authResult instanceof NextResponse) {
+      return authResult
     }
 
     const { user } = authResult
@@ -45,8 +47,10 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const authResult = await requireAuth(request)
-    if ('error' in authResult) {
-      return authResult as NextResponse
+    
+    // Check if it's a NextResponse (error case)
+    if (authResult instanceof NextResponse) {
+      return authResult
     }
 
     const { user } = authResult
