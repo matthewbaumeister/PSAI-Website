@@ -4450,6 +4450,60 @@ body > * {
   z-index: 1 !important;
 }
 
+/* CRITICAL: Prevent about page content from appearing on other pages */
+body:not(.about-page) .stat-number,
+body:not(.about-page) .method-icon,
+body:not(.about-page) .about-page * {
+  display: none !important;
+}
+
+/* Force all stat numbers to be hidden unless explicitly on about page */
+.stat-number:not(.about-page .stat-number) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Prevent any elements with large font sizes from appearing outside their containers */
+[class*="stat"], [class*="method"] {
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
+}
+
+/* Nuclear option: Hide any massive symbols that might be appearing */
+.stat-number,
+.method-icon,
+[class*="500B"],
+[class*="dollar"] {
+  position: relative !important;
+  z-index: 1 !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+}
+
+/* CRITICAL: Prevent any massive elements from appearing in wrong places */
+body > *:not(.about-page) .stat-number,
+body > *:not(.about-page) .method-icon,
+body > *:not(.about-page) [class*="500B"],
+body > *:not(.about-page) [class*="dollar"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
+/* Force about page content to stay within its container */
+.about-page {
+  contain: layout style paint;
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
+}
+
 /* ===== AUTH PAGE ISOLATION ===== */
 /* Ensure auth pages are completely isolated from global styling */
 .auth-page-isolated {
