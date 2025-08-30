@@ -178,7 +178,7 @@ a {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 100;
   padding-bottom: 0.5rem;
 }
 
@@ -4389,26 +4389,18 @@ a {
   z-index: auto !important;
 }
 
-/* Prevent any elements from appearing outside their containers */
-body > * {
-  overflow: hidden;
-}
+
 
 /* Ensure footer area is clean */
 .footer {
-  overflow: hidden;
   isolation: isolate;
 }
 
-/* Prevent any elements from appearing between footer and cookie popup */
-.footer + * {
-  position: relative !important;
-  z-index: 1 !important;
-}
+
 
 /* Ensure cookie popup is always on top */
 .fixed.bottom-0 {
-  z-index: 9999 !important;
+  z-index: 200;
 }
 
 /* Prevent any about page content from leaking to other pages */
@@ -4420,42 +4412,16 @@ body > * {
 /* Ensure stat numbers and method icons stay within about page */
 .about-page .stat-number,
 .about-page .method-icon {
-  position: relative !important;
-  z-index: 1 !important;
-  overflow: visible !important;
-}
-
-/* Fix any potential positioning issues - ONLY for about page */
-.about-page .stat-number {
-  position: relative !important;
-  display: inline-block !important;
-  z-index: auto !important;
-}
-
-/* CRITICAL: Prevent any elements from appearing between footer and cookie popup */
-.footer ~ *:not(.cookie-consent) {
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-/* Ensure about page elements don't escape their container */
-.about-page * {
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-/* Force footer to be the last visible element before cookie popup */
-.footer {
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-/* Ensure about page content stays properly contained */
-.about-page {
-  isolation: isolate;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
+
+
+
+
+
+
 
 
 
@@ -4464,7 +4430,7 @@ body > * {
 .auth-page-isolated {
   isolation: isolate;
   position: relative;
-  z-index: 9999;
+  z-index: 50;
 }
 
 .auth-page-isolated * {
