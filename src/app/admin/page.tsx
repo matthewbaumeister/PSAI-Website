@@ -53,6 +53,8 @@ export default function AdminDashboard() {
   const [isScraperRunning, setIsScraperRunning] = useState(false)
   const [scraperStatus, setScraperStatus] = useState<'idle' | 'running' | 'completed' | 'failed' | 'paused'>('idle')
   const [currentScrapingJob, setCurrentScrapingJob] = useState<any>(null)
+  const [isCheckingActive, setIsCheckingActive] = useState(false)
+  const [activeOpportunitiesCount, setActiveOpportunitiesCount] = useState<number | null>(null)
 
   // Check if user is admin
   useEffect(() => {
@@ -400,6 +402,37 @@ export default function AdminDashboard() {
       setMessage('❌ Test failed with error. Check console for details.')
       setMessageType('error')
       console.error('Test error:', error)
+    }
+  }
+
+  const checkActiveOpportunities = async () => {
+    try {
+      setIsCheckingActive(true)
+      setMessage('🔍 Checking for active opportunities...')
+      setMessageType('success')
+      
+      // Query the database for active opportunities
+      const response = await fetch('/api/dsip/active-opportunities')
+      
+      if (response.ok) {
+        const data = await response.json()
+        if (data.success) {
+          setActiveOpportunitiesCount(data.count)
+          setMessage(`✅ Found ${data.count} active opportunities in the database`)
+          setMessageType('success')
+        } else {
+          setMessage(`❌ Failed to check opportunities: ${data.error}`)
+          setMessageType('error')
+        }
+      } else {
+        setMessage('❌ Failed to check opportunities')
+        setMessageType('error')
+      }
+    } catch (error) {
+      setMessage('❌ Error checking active opportunities')
+      setMessageType('error')
+    } finally {
+      setIsCheckingActive(false)
     }
   }
 
@@ -1341,6 +1374,92 @@ export default function AdminDashboard() {
               >
                 Advanced Management
               </button>
+            </div>
+          </div>
+          
+          {/* Active Opportunities Checker */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%)',
+            borderRadius: '16px',
+            padding: '24px',
+            border: '1px solid rgba(34, 197, 94, 0.3)',
+            marginBottom: '24px'
+          }}>
+            <h4 style={{
+              fontSize: '20px',
+              fontWeight: '600',
+              color: '#10b981',
+              margin: '0 0 16px 0',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}>
+              📊 Active Opportunities Monitor
+            </h4>
+            <p style={{
+              color: '#d1fae5',
+              fontSize: '14px',
+              margin: '0 0 20px 0',
+              lineHeight: '1.5'
+            }}>
+              Check DSIP for all currently active opportunities. This will scan the database and identify opportunities that are currently open for submissions.
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '16px',
+              flexWrap: 'wrap'
+            }}>
+              <button
+                onClick={checkActiveOpportunities}
+                disabled={isCheckingActive}
+                style={{
+                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  border: 'none',
+                  borderRadius: '10px',
+                  padding: '12px 24px',
+                  color: '#ffffff',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: isCheckingActive ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease',
+                  opacity: isCheckingActive ? 0.6 : 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}
+              >
+                {isCheckingActive ? (
+                  <>
+                    <div style={{
+                      width: '16px',
+                      height: '16px',
+                      border: '2px solid #ffffff',
+                      borderTop: '2px solid transparent',
+                      borderRadius: '50%',
+                      animation: 'spin 1s linear infinite'
+                    }}></div>
+                    Checking Active Opportunities...
+                  </>
+                ) : (
+                  <>
+                    🔍 Check All Active Opportunities
+                  </>
+                )}
+              </button>
+              
+              {activeOpportunitiesCount !== null && (
+                <div style={{
+                  background: 'rgba(16, 185, 129, 0.2)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  borderRadius: '8px',
+                  padding: '12px 16px',
+                  color: '#10b981',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}>
+                  📈 Found {activeOpportunitiesCount} active opportunities
+                </div>
+              )}
             </div>
           </div>
 
