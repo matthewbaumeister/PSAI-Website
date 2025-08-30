@@ -14,7 +14,7 @@ CREATE TABLE dsip_opportunities (
     short_title VARCHAR(255),
     component VARCHAR(100),
     component_full_name TEXT,
-    command VARCHAR(100),
+    command_name VARCHAR(100),
     program VARCHAR(100),
     program_type VARCHAR(100),
     solicitation_title TEXT,
@@ -85,7 +85,7 @@ CREATE TABLE dsip_opportunities (
     phase_ii_description TEXT,
     phase_iii_dual_use TEXT,
     has_commercial_potential BOOLEAN,
-    references TEXT[],
+    references_data TEXT[],
     reference_docs TEXT,
     reference_count INTEGER,
     has_references BOOLEAN,
@@ -204,7 +204,7 @@ BEGIN
         setweight(to_tsvector('english', COALESCE(array_to_string(NEW.keywords, ' '), '')), 'A') ||
         setweight(to_tsvector('english', COALESCE(array_to_string(NEW.technology_areas, ' '), '')), 'A') ||
         setweight(to_tsvector('english', COALESCE(NEW.component_full_name, '')), 'C') ||
-        setweight(to_tsvector('english', COALESCE(NEW.command, '')), 'C');
+        setweight(to_tsvector('english', COALESCE(NEW.command_name, '')), 'C');
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
