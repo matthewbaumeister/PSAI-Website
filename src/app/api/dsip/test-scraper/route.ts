@@ -4,7 +4,14 @@ import { dsipScraper } from '@/lib/dsip-scraper';
 
 export async function GET(request: NextRequest) {
   try {
-    const { user } = await requireAdmin(request);
+    const authResult = await requireAdmin(request);
+    
+    // Check if it's an error response
+    if (authResult instanceof NextResponse) {
+      return authResult;
+    }
+    
+    const { user } = authResult;
     
     // Test basic scraper functionality
     const currentJob = dsipScraper.getCurrentJob();
@@ -62,7 +69,14 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const { user } = await requireAdmin(request);
+    const authResult = await requireAdmin(request);
+    
+    // Check if it's an error response
+    if (authResult instanceof NextResponse) {
+      return authResult;
+    }
+    
+    const { user } = authResult;
     const { action } = await request.json();
     
     switch (action) {
