@@ -1049,6 +1049,318 @@ export default function AdminDashboard() {
             </table>
           </div>
         </div>
+
+        {/* DSIP Management */}
+        <div style={{
+          background: 'rgba(30, 41, 59, 0.6)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(148, 163, 184, 0.2)',
+          borderRadius: '20px',
+          padding: '32px',
+          marginBottom: '48px'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            marginBottom: '24px'
+          }}>
+            <h2 style={{
+              fontSize: '28px',
+              fontWeight: '700',
+              color: '#ffffff',
+              margin: 0
+            }}>
+              🍪 DSIP Smart Search Management
+            </h2>
+            <div style={{
+              display: 'flex',
+              gap: '16px',
+              alignItems: 'center'
+            }}>
+              <button
+                onClick={() => window.open('/dsip-search', '_blank')}
+                style={{
+                  padding: '12px 20px',
+                  background: 'rgba(139, 92, 246, 0.2)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  borderRadius: '10px',
+                  color: '#c4b5fd',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(139, 92, 246, 0.3)'
+                  e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)'
+                  e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.3)'
+                }}
+              >
+                View Search Tool
+              </button>
+              <button
+                onClick={() => window.open('/admin/dsip-management', '_blank')}
+                style={{
+                  padding: '12px 20px',
+                  background: 'rgba(34, 197, 94, 0.2)',
+                  border: '1px solid rgba(34, 197, 94, 0.3)',
+                  borderRadius: '10px',
+                  color: '#86efac',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(34, 197, 94, 0.3)'
+                  e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.5)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(34, 197, 94, 0.2)'
+                  e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.3)'
+                }}
+              >
+                Advanced Management
+              </button>
+            </div>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '24px',
+            marginBottom: '24px'
+          }}>
+            <div style={{
+              background: 'rgba(15, 23, 42, 0.4)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid rgba(148, 163, 184, 0.1)'
+            }}>
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#ffffff',
+                margin: '0 0 16px 0'
+              }}>
+                Database Status
+              </h3>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
+              }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Total Opportunities:</span>
+                  <span style={{ color: '#ffffff', fontWeight: '600' }}>33,000+</span>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Last Updated:</span>
+                  <span style={{ color: '#ffffff', fontWeight: '600' }}>Today</span>
+                </div>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
+                }}>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Auto-Refresh:</span>
+                  <span style={{ color: '#10b981', fontWeight: '600' }}>Active</span>
+                </div>
+              </div>
+            </div>
+
+            <div style={{
+              background: 'rgba(15, 23, 42, 0.4)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid rgba(148, 163, 184, 0.1)'
+            }}>
+              <h3 style={{
+                fontSize: '18px',
+                fontWeight: '600',
+                color: '#ffffff',
+                margin: '0 0 16px 0'
+              }}>
+                Quick Actions
+              </h3>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
+              }}>
+                <button
+                  onClick={() => {
+                    // Trigger DSIP refresh
+                    fetch('/api/dsip/refresh', { method: 'POST' })
+                      .then(response => response.json())
+                      .then(data => {
+                        if (data.status === 'completed') {
+                          alert('DSIP refresh completed successfully!')
+                        }
+                      })
+                      .catch(error => {
+                        console.error('DSIP refresh failed:', error)
+                        alert('DSIP refresh failed. Check console for details.')
+                      })
+                  }}
+                  style={{
+                    padding: '10px 16px',
+                    background: 'rgba(59, 130, 246, 0.2)',
+                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                    borderRadius: '8px',
+                    color: '#93c5fd',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    width: '100%',
+                    textAlign: 'left'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'
+                  }}
+                >
+                  🔄 Manual Refresh DSIP Data
+                </button>
+                <button
+                  onClick={() => window.open('/dsip-search', '_blank')}
+                  style={{
+                    padding: '10px 16px',
+                    background: 'rgba(139, 92, 246, 0.2)',
+                    border: '1px solid rgba(139, 92, 246, 0.3)',
+                    borderRadius: '8px',
+                    color: '#c4b5fd',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    width: '100%',
+                    textAlign: 'left'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(139, 92, 246, 0.3)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)'
+                  }}
+                >
+                  🔍 Test Search Tool
+                </button>
+                <button
+                  onClick={() => window.open('/admin/system-logs', '_blank')}
+                  style={{
+                    padding: '10px 16px',
+                    background: 'rgba(168, 85, 247, 0.2)',
+                    border: '1px solid rgba(168, 85, 247, 0.3)',
+                    borderRadius: '8px',
+                    color: '#c4b5fd',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    width: '100%',
+                    textAlign: 'left'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(168, 85, 247, 0.3)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(168, 85, 247, 0.2)'
+                  }}
+                >
+                  📊 View System Logs
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style={{
+            background: 'rgba(15, 23, 42, 0.4)',
+            borderRadius: '12px',
+            padding: '24px',
+            border: '1px solid rgba(148, 163, 184, 0.1)'
+          }}>
+            <h3 style={{
+              fontSize: '18px',
+              fontWeight: '600',
+              color: '#ffffff',
+              margin: '0 0 16px 0'
+            }}>
+              DSIP Tool Information
+            </h3>
+            <p style={{
+              color: '#cbd5e1',
+              fontSize: '14px',
+              lineHeight: '1.6',
+              margin: '0 0 16px 0'
+            }}>
+              The DSIP Smart Search tool provides access to over 33,000 defense SBIR/STTR opportunities 
+              with advanced filtering, AI-powered matching, and real-time updates. Users can search by 
+              keywords, technology areas, funding amounts, and more.
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              flexWrap: 'wrap'
+            }}>
+              <span style={{
+                padding: '6px 12px',
+                background: 'rgba(139, 92, 246, 0.2)',
+                borderRadius: '20px',
+                color: '#c4b5fd',
+                fontSize: '12px',
+                fontWeight: '500'
+              }}>
+                Advanced Search
+              </span>
+              <span style={{
+                padding: '6px 12px',
+                background: 'rgba(34, 197, 94, 0.2)',
+                borderRadius: '20px',
+                color: '#86efac',
+                fontSize: '12px',
+                fontWeight: '500'
+              }}>
+                AI Matching
+              </span>
+              <span style={{
+                padding: '6px 12px',
+                background: 'rgba(59, 130, 246, 0.2)',
+                borderRadius: '20px',
+                color: '#93c5fd',
+                fontSize: '12px',
+                fontWeight: '500'
+              }}>
+                Real-time Updates
+              </span>
+              <span style={{
+                padding: '6px 12px',
+                background: 'rgba(168, 85, 247, 0.2)',
+                borderRadius: '20px',
+                color: '#c4b5fd',
+                fontSize: '12px',
+                fontWeight: '500'
+              }}>
+                Export Results
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <style jsx>{`

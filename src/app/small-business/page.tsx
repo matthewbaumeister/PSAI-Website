@@ -162,6 +162,68 @@ export default function SmallBusinessPage() {
           </div>
         </div>
 
+        <div className="content-section">
+          <h2>DSIP Smart Search Tool</h2>
+          <div className="dsip-tool-section">
+            <div className="dsip-tool-header">
+              <h3>🍪 Advanced DSIP Opportunity Search</h3>
+              <p>
+                Access our comprehensive DSIP (Defense SBIR/STTR Innovation Program) database with 
+                33,000+ opportunities and advanced search capabilities. Find the perfect SBIR/STTR 
+                opportunities for your small business.
+              </p>
+            </div>
+            
+            <div className="dsip-tool-features">
+              <div className="dsip-feature">
+                <div className="feature-icon">🔍</div>
+                <h4>Advanced Search</h4>
+                <p>Search by keywords, technology areas, funding amounts, and more</p>
+              </div>
+              <div className="dsip-feature">
+                <div className="feature-icon">🎯</div>
+                <h4>Smart Filters</h4>
+                <p>Filter by agency, program type, phase, status, and special requirements</p>
+              </div>
+              <div className="dsip-feature">
+                <div className="feature-icon">📊</div>
+                <h4>Real-time Data</h4>
+                <p>Access to the latest DSIP opportunities with automatic updates</p>
+              </div>
+              <div className="dsip-feature">
+                <div className="feature-icon">💡</div>
+                <h4>AI-Powered Matching</h4>
+                <p>Intelligent opportunity matching based on your capabilities</p>
+              </div>
+            </div>
+
+            <div className="dsip-tool-cta">
+              <div className="dsip-tool-info">
+                <h4>Ready to Search DSIP Opportunities?</h4>
+                <p>
+                  Our DSIP Smart Search tool provides access to all active and upcoming 
+                  SBIR/STTR opportunities across all defense agencies.
+                </p>
+                <ul className="dsip-benefits">
+                  <li>✓ Search 33,000+ DSIP opportunities</li>
+                  <li>✓ Advanced filtering and sorting</li>
+                  <li>✓ Real-time opportunity updates</li>
+                  <li>✓ Export and save search results</li>
+                  <li>✓ AI-powered opportunity matching</li>
+                </ul>
+              </div>
+              <div className="dsip-tool-actions">
+                <a href="/dsip-search" className="btn btn-primary btn-lg">
+                  🚀 Launch DSIP Smart Search
+                </a>
+                <p className="dsip-tool-note">
+                  <small>Requires free account login to access advanced features</small>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="cta-section">
           <h2>Ready to Access Our Proprietary Small Business Platform?</h2>
           <p>

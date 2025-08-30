@@ -189,6 +189,42 @@ export default function SolutionsPage() {
               <a href="/small-business" className="btn btn-primary">Learn More</a>
             </div>
           </div>
+
+          <div className="solution-card">
+            <div className="solution-icon">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+                <defs>
+                  <linearGradient id="dsipGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor:"#8b5cf6",stopOpacity:1}} />
+                    <stop offset="100%" style={{stopColor:"#7c3aed",stopOpacity:1}} />
+                  </linearGradient>
+                </defs>
+                <rect x="8" y="8" width="32" height="32" rx="6" fill="url(#dsipGradient)" opacity="0.9"/>
+                <circle cx="16" cy="16" r="2" fill="white"/>
+                <circle cx="32" cy="16" r="2" fill="white"/>
+                <circle cx="24" cy="24" r="2" fill="white"/>
+                <circle cx="16" cy="32" r="2" fill="white"/>
+                <circle cx="32" cy="32" r="2" fill="white"/>
+                <line x1="16" y1="16" x2="24" y2="24" stroke="white" strokeWidth="1.5" opacity="0.8"/>
+                <line x1="32" y1="16" x2="24" y2="24" stroke="white" strokeWidth="1.5" opacity="0.8"/>
+                <line x1="24" y1="24" x2="16" y2="32" stroke="white" strokeWidth="1.5" opacity="0.8"/>
+                <line x1="24" y1="24" x2="32" y2="32" stroke="white" strokeWidth="1.5" opacity="0.8"/>
+                <path d="M12 12 L20 12 L20 20 L12 20 Z" fill="white" opacity="0.6"/>
+                <path d="M28 12 L36 12 L36 20 L28 20 Z" fill="white" opacity="0.6"/>
+                <path d="M20 28 L28 28 L28 36 L20 36 Z" fill="white" opacity="0.6"/>
+              </svg>
+            </div>
+            <div className="solution-content">
+              <h3>DSIP Smart Search</h3>
+              <p>Advanced search tool for 33,000+ DSIP opportunities with AI-powered matching, real-time updates, and comprehensive filtering across all defense agencies.</p>
+              <div className="solution-features">
+                <span className="feature-tag">33K+ Opportunities</span>
+                <span className="feature-tag">AI Matching</span>
+                <span className="feature-tag">Real-time Updates</span>
+              </div>
+              <a href="/dsip-search" className="btn btn-primary">Launch Tool</a>
+            </div>
+          </div>
         </div>
 
         <div className="integration-section">

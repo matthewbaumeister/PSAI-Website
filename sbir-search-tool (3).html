@@ -1,0 +1,3468 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBIR Search Tool</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- Save Search Modal -->
+    <div class="save-search-modal" id="saveSearchModal">
+        <div class="save-search-modal-content">
+            <h3>Save Current Search</h3>
+            <input 
+                type="text" 
+                class="save-search-input" 
+                id="saveSearchName" 
+                placeholder="Enter a name for this search..."
+                maxlength="50"
+            >
+            <div class="save-search-info" style="margin-bottom: 20px; color: #718096; font-size: 14px;">
+                <p id="saveSearchInfo"></p>
+            </div>
+            <div class="save-search-buttons">
+                <button class="modal-cancel-btn" onclick="closeSaveSearchModal()">Cancel</button>
+                <button class="modal-save-btn" onclick="saveCurrentSearch()">Save Search</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configure PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ebebdd;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        body.not-logged-in {
+            overflow: hidden;
+        }
+
+        /* Container adjustment */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            transition: padding-top 0.3s ease;
+        }
+        
+        .logged-in .container {
+            padding-top: 80px;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #1a365d;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #4a5568;
+        }
+
+        /* Hide elements when not logged in */
+        .not-logged-in .header,
+        .not-logged-in .results-section,
+        .not-logged-in .contact-float {
+            visibility: hidden;
+        }
+
+        /* User Info Section - spans full width when logged in */
+        .user-info-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: none !important;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: #ebebdd;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .user-info-container.show {
+            display: flex !important;
+        }
+
+        /* Add padding to body when logged in to prevent overlap */
+        body.logged-in {
+            padding-top: 60px;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .user-buttons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Login button when not logged in */
+        .login-section {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .contact-link {
+            color: #4299e1;
+            text-decoration: none;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid #4299e1;
+        }
+
+        .contact-link:hover {
+            background: #4299e1;
+            color: white;
+        }
+
+        .login-btn, .logout-btn {
+            background: #2c5282;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .login-btn:hover, .logout-btn:hover {
+            background: #2a4e7c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .logout-btn {
+            background: #e53e3e;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        .logout-btn:hover {
+            background: #c53030;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+        }
+
+        /* Blur Effect for Non-Logged Users */
+        .search-content-wrapper {
+            position: relative;
+        }
+
+        .search-content-wrapper.blurred {
+            filter: blur(5px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* Login Required Overlay - Now covers just the search section */
+        .login-required-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.9);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            border-radius: 15px;
+        }
+
+        .login-required-overlay.show {
+            display: flex;
+        }
+
+        .login-required-content {
+            text-align: center;
+            padding: 40px;
+            max-width: 500px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .login-required-content h3 {
+            color: #1a365d;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .login-required-content p {
+            color: #4a5568;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .login-required-content .feature-list {
+            text-align: left;
+            margin: 25px 0;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 10px;
+        }
+
+        .login-required-content .feature-list li {
+            color: #2d3748;
+            margin: 10px 0;
+            list-style: none;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .login-required-content .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #48bb78;
+            font-weight: bold;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .search-divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .search-divider span {
+            background: white;
+            padding: 0 20px;
+            color: #718096;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e2e8f0;
+            transform: translateY(-50%);
+        }
+
+        .upload-container {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .upload-help-text {
+            color: #718096;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        .basic-search-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .basic-search-input:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .upload-btn {
+            background: #48bb78;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .upload-btn:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+        }
+
+        .search-status-container {
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .document-search-status {
+            text-align: center;
+            color: #4a5568;
+            font-size: 14px;
+            font-style: italic;
+            animation: fadeIn 0.3s ease-out;
+            margin-bottom: 5px;
+        }
+
+        .document-search-status span {
+            background: #edf2f7;
+            padding: 6px 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .persistent-search-info {
+            text-align: center;
+            color: #2d3748;
+            font-size: 13px;
+            margin-top: 8px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .persistent-search-info span {
+            background: #e6fffa;
+            border: 1px solid #81e6d9;
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .filters-container {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .filter-group-divider {
+            width: 1px;
+            height: 20px;
+            background: #cbd5e0;
+            margin: 0 5px;
+        }
+
+        .filter-chip {
+            background: #edf2f7;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-chip:hover {
+            background: #e2e8f0;
+        }
+
+        .filter-chip.active {
+            background: #4299e1;
+            color: white;
+        }
+
+        .filter-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .filter-instruction {
+            font-size: 13px;
+            color: #718096;
+            font-style: italic;
+        }
+
+        .itar-toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .itar-toggle-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .itar-checkbox {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .itar-toggle-text {
+            font-weight: 500;
+        }
+
+        .itar-explanation {
+            font-size: 12px;
+            color: #718096;
+            font-style: italic;
+        }
+
+        /* Warning Badges */
+        .warning-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .warning-xtech {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #f59e0b;
+        }
+
+        .warning-itar {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        .requirement-itar {
+            background: #e0e7ff;
+            color: #3730a3;
+            border: 1px solid #6366f1;
+        }
+
+        .warning-section {
+            background: #fffbeb;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .warning-section.itar {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .warning-icon {
+            font-size: 16px;
+            margin-right: 8px;
+        }
+
+        .results-count {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Export Button */
+        .export-btn {
+            background: #2d3748;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            height: 36px; /* Consistent height */
+            white-space: nowrap;
+        }
+
+        .export-btn:hover {
+            background: #1a202c;
+            transform: translateY(-1px);
+        }
+
+        .export-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* View Favorites Button */
+        .view-favorites-btn {
+            background: #805ad5;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            height: 36px; /* Consistent height */
+            white-space: nowrap;
+        }
+
+        .view-favorites-btn:hover {
+            background: #6b46c1;
+            transform: translateY(-1px);
+        }
+
+        /* Saved Searches Button */
+        .saved-searches-btn {
+            background: #319795;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            height: 36px; /* Consistent height */
+            white-space: nowrap;
+        }
+
+        .saved-searches-btn:hover {
+            background: #2c7a7b;
+            transform: translateY(-1px);
+        }
+
+        /* Uploaded Documents Button */
+        .uploaded-docs-btn {
+            background: #d69e2e;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            height: 36px; /* Consistent height */
+            white-space: nowrap;
+        }
+
+        .uploaded-docs-btn:hover {
+            background: #b7791f;
+            transform: translateY(-1px);
+        }
+
+        /* Save Search Button */
+        .save-search-btn {
+            background: #38a169;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            height: 36px; /* Consistent height */
+            white-space: nowrap;
+        }
+
+        .save-search-btn:hover {
+            background: #2f855a;
+            transform: translateY(-1px);
+        }
+
+        /* Results Actions Container */
+        .results-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        }
+
+        /* Quick Access Buttons in Search Section */
+        .quick-access-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .quick-access-btn {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            color: #4a5568;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-access-btn:hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+            transform: translateY(-1px);
+        }
+
+        /* Save Search Modal */
+        .save-search-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .save-search-modal.show {
+            display: flex;
+        }
+
+        .save-search-modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .save-search-modal h3 {
+            color: #1a365d;
+            margin-bottom: 20px;
+        }
+
+        .save-search-input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .save-search-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .modal-cancel-btn {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-cancel-btn:hover {
+            background: #cbd5e0;
+        }
+
+        .modal-save-btn {
+            background: #38a169;
+            color: white;
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-save-btn:hover {
+            background: #2f855a;
+        }
+
+        /* Saved Search Item */
+        .saved-search-item {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .saved-search-item:hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+        }
+
+        .saved-search-info h4 {
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+
+        .saved-search-details {
+            color: #718096;
+            font-size: 13px;
+        }
+
+        .saved-search-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .load-search-btn, .delete-search-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .load-search-btn {
+            background: #4299e1;
+            color: white;
+        }
+
+        .load-search-btn:hover {
+            background: #3182ce;
+        }
+
+        .delete-search-btn {
+            background: #e53e3e;
+            color: white;
+        }
+
+        /* Uploaded Document Item */
+        .uploaded-doc-item {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .uploaded-doc-item:hover {
+            background: #edf2f7;
+            border-color: #cbd5e0;
+        }
+
+        .uploaded-doc-info h4 {
+            color: #2d3748;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .uploaded-doc-details {
+            color: #718096;
+            font-size: 13px;
+        }
+
+        .uploaded-doc-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .use-doc-btn, .delete-doc-btn {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .use-doc-btn {
+            background: #4299e1;
+            color: white;
+        }
+
+        .use-doc-btn:hover {
+            background: #3182ce;
+        }
+
+        .delete-doc-btn {
+            background: #e53e3e;
+            color: white;
+        }
+
+        .delete-doc-btn:hover {
+            background: #c53030;
+        }
+
+        .file-type-icon {
+            font-size: 20px;
+        }
+
+        /* Favorite button on cards */
+        .favorite-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #cbd5e0;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .favorite-btn:hover {
+            color: #fbbf24;
+            transform: scale(1.1);
+            border-color: #fbbf24;
+            background: #fffbeb;
+        }
+
+        .favorite-btn.favorited {
+            color: #fbbf24;
+            background: #fffbeb;
+            border-color: #fbbf24;
+        }
+
+        .result-card {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid #4299e1;
+            position: relative;
+            overflow: visible; /* Allow favorite button to show properly */
+        }
+
+        .result-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .result-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-left {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .contact-help-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-help-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(245, 87, 108, 0.4);
+        }
+
+        .prerelease-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            max-width: 300px;
+        }
+
+        .prerelease-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .download-docs-btn {
+            background: #48bb78;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .download-docs-btn:hover {
+            background: #38a169;
+            transform: translateY(-1px);
+        }
+
+        .prerelease-hint {
+            font-size: 12px;
+            color: #718096;
+            font-style: italic;
+            max-width: 300px;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        /* Countdown Timer Styles */
+        .countdown-timer {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            box-shadow: 0 2px 8px rgba(238, 90, 36, 0.3);
+            min-width: 180px; /* Ensure consistent width for seconds display */
+            justify-content: center;
+        }
+
+        .countdown-timer.warning {
+            background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
+            animation: pulse 1.5s infinite;
+        }
+
+        .countdown-timer.urgent {
+            background: linear-gradient(135deg, #ff4757 0%, #c44569 100%);
+            animation: pulse 1s infinite;
+        }
+
+        .countdown-timer.expired {
+            background: #718096;
+            animation: none;
+        }
+
+        .timer-icon {
+            font-size: 16px;
+            animation: tick 1s steps(1) infinite;
+        }
+        
+        @keyframes tick {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(15deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .result-title {
+            font-size: 1.3em;
+            color: #1a365d;
+            margin-bottom: 5px;
+        }
+
+        .topic-number {
+            background: #edf2f7;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #4a5568;
+        }
+
+        .result-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .meta-item strong {
+            color: #2d3748;
+        }
+
+        .result-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-open {
+            background: #c6f6d5;
+            color: #276749;
+        }
+
+        .status-closed {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Initial Message */
+        .initial-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #718096;
+        }
+
+        .initial-message h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #4a5568;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* Contact Button */
+        .contact-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            animation: pulse 2s infinite;
+            z-index: 100;
+        }
+
+        .contact-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 15px 30px;
+            padding-right: 45px; /* Extra padding for close button */
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(245, 87, 108, 0.5);
+        }
+
+        .contact-close-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .contact-close-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .contact-float.hidden {
+            display: none;
+        }
+
+        /* Contact Form Sliding Panel */
+        .contact-form-panel {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            z-index: 1000;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .contact-form-panel.show {
+            bottom: 0;
+        }
+
+        .contact-form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .close-contact {
+            background: none;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #718096;
+            transition: all 0.3s ease;
+        }
+
+        .close-contact:hover {
+            color: #2d3748;
+            transform: rotate(90deg);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2d3748;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(72, 187, 120, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .search-container {
+                flex-direction: column;
+            }
+            
+            .basic-search-input {
+                min-width: 100%;
+            }
+            
+            .login-section {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .filter-footer {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .itar-toggle-container {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- User Info Section (when logged in) -->
+    <div class="user-info-container" id="userInfo">
+        <span class="user-name" id="userName"></span>
+        <div class="user-buttons">
+            <a href="#" class="contact-link" onclick="toggleContactForm(); return false;">Contact Us</a>
+            <button class="logout-btn" onclick="handleLogout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Login Section (when not logged in) -->
+    <div class="login-section">
+        <button class="login-btn" id="loginBtn" onclick="handleLogin()">Login</button>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>SBIR Opportunity Search</h1>
+            <p>Find the perfect government contract opportunities for your business</p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <!-- Search Content Wrapper -->
+            <div class="search-content-wrapper" id="searchContentWrapper">
+                <!-- Basic Search (Always Visible) -->
+                <div style="text-align: center; margin-bottom: 25px;">
+                    <h2 style="color: #2d3748; margin-bottom: 10px;">Search SBIR Opportunities</h2>
+                    <p style="color: #718096;">Find opportunities by keywords or document content</p>
+                </div>
+                
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        class="basic-search-input" 
+                        id="basicSearchInput" 
+                        placeholder="Enter keywords, topic numbers, or paste text..."
+                        onkeypress="handleKeyPress(event)"
+                    >
+                    <button class="search-btn" onclick="performBasicSearch()">
+                        Search
+                    </button>
+                </div>
+                
+                <div class="search-divider">
+                    <span>OR</span>
+                </div>
+                
+                <div class="upload-container">
+                    <input 
+                        type="file" 
+                        id="fileInput" 
+                        accept=".txt,.doc,.docx,.pdf" 
+                        style="display: none;"
+                        onchange="handleFileUpload(event)"
+                    >
+                    <button class="upload-btn" onclick="document.getElementById('fileInput').click()" title="Upload document to search">
+                        📄 Upload Your Capability Document
+                    </button>
+                    <div style="display: flex; flex-direction: column; gap: 5px; align-items: center;">
+                        <span class="upload-help-text">One-pager, white paper, or capabilities deck</span>
+                        <span class="upload-help-text" style="font-size: 12px;">Accepts PDF, Word (.doc, .docx), and text files</span>
+                    </div>
+                </div>
+                
+                <div class="search-status-container" id="searchStatusContainer" style="display: none;">
+                    <div class="document-search-status" id="documentSearchStatus" style="display: none;">
+                        <span id="documentSearchText"></span>
+                    </div>
+                    <div class="persistent-search-info" id="persistentSearchInfo" style="display: none;">
+                        <span id="persistentSearchText"></span>
+                    </div>
+                </div>
+                
+                <div class="filters-container">
+                    <div class="filter-options">
+                        <div class="filter-chip" onclick="toggleFilter(this, 'Open')">Open</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'Prerelease')">Prerelease</div>
+                        <div class="filter-group-divider"></div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'SBIR')">SBIR</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'STTR')">STTR</div>
+                        <div class="filter-group-divider"></div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'Phase I')">Phase I</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'Phase II')">Phase II</div>
+                        <div class="filter-group-divider"></div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'xTech')" title="xTech Competitions">xTech</div>
+                        <div class="filter-chip" onclick="toggleFilter(this, 'No ITAR')" title="Exclude ITAR requirements">No ITAR</div>
+                    </div>
+                    <div class="filter-footer">
+                        <div class="filter-instruction">Click any filter above to search the entire database</div>
+                        <div class="itar-toggle-container">
+                            <label class="itar-toggle-label">
+                                <input type="checkbox" id="itarCheckbox" class="itar-checkbox" onchange="handleITARCheckbox()">
+                                <span class="itar-toggle-text">Include ITAR Work</span>
+                            </label>
+                            <span class="itar-explanation">(ITAR requires U.S. persons only & export control compliance)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quick-access-container">
+                    <button class="quick-access-btn" onclick="viewFavorites()">
+                        <span style="font-size: 16px;">★</span>
+                        View Favorites
+                    </button>
+                    <button class="quick-access-btn" onclick="viewSavedSearches()">
+                        <span style="font-size: 16px;">🔖</span>
+                        Saved Searches
+                    </button>
+                    <button class="quick-access-btn" onclick="viewUploadedDocs()">
+                        <span style="font-size: 16px;">📁</span>
+                        My Documents
+                    </button>
+                </div>
+            </div>
+
+            <!-- Login Required Overlay -->
+            <div class="login-required-overlay" id="loginOverlay">
+                <div class="login-required-content">
+                    <h3>🔒 Login Required</h3>
+                    <p>Create a free account to search SBIR opportunities and unlock premium features:</p>
+                    <ul class="feature-list">
+                        <li>Search all active SBIR/STTR opportunities</li>
+                        <li>Smart capability matching with AI analysis</li>
+                        <li>Save and track opportunities</li>
+                        <li>Export search results</li>
+                        <li>Set up automated alerts</li>
+                        <li>Access proposal writing support</li>
+                    </ul>
+                    <button class="search-btn" onclick="handleLogin()" style="width: 100%;">
+                        Login / Sign Up Free
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section" id="resultsSection">
+            <div class="loading" id="loadingState">
+                <div class="spinner"></div>
+                <p>Searching opportunities...</p>
+            </div>
+            <div class="results-count" id="resultsCount" style="display:none;">
+                <span id="resultsText"></span>
+                <div class="results-actions" id="resultsActions">
+                    <button class="save-search-btn" onclick="showSaveSearchModal()" id="saveSearchBtn">
+                        <span style="font-size: 16px;">💾</span>
+                        Save Search
+                    </button>
+                    <button class="export-btn" onclick="exportToPDF()" id="exportBtn">
+                        <svg fill="currentColor" viewBox="0 0 20 20" style="width: 16px; height: 16px;">
+                            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z"/>
+                        </svg>
+                        Export to PDF
+                    </button>
+                    <button class="view-favorites-btn" onclick="viewFavorites()" id="favoritesBtn">
+                        <span style="font-size: 16px;">★</span>
+                        View Favorites
+                    </button>
+                    <button class="saved-searches-btn" onclick="viewSavedSearches()" id="savedSearchesBtn">
+                        <span style="font-size: 16px;">🔖</span>
+                        Saved Searches
+                    </button>
+                    <button class="uploaded-docs-btn" onclick="viewUploadedDocs()" id="uploadedDocsBtn">
+                        <span style="font-size: 16px;">📁</span>
+                        My Documents
+                    </button>
+                </div>
+            </div>
+            <div id="resultsContainer">
+                <div class="initial-message">
+                    <h3>Welcome to SBIR Opportunity Search</h3>
+                    <p>Login to search through thousands of government contract opportunities</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Button -->
+    <div class="contact-float" id="contactFloat">
+        <button class="contact-btn" onclick="toggleContactForm()">
+            <span style="font-size: 24px;">📝</span>
+            Contact Us to Start Your Proposal
+            <button class="contact-close-btn" onclick="event.stopPropagation(); hideContactFloat()" title="Hide contact button">
+                ×
+            </button>
+        </button>
+    </div>
+
+    <!-- Contact Form Panel -->
+    <div class="contact-form-panel" id="contactFormPanel">
+        <div class="contact-form-header">
+            <h2 style="color: #1a365d;">Start Your Winning Proposal</h2>
+            <button class="close-contact" onclick="toggleContactForm()">×</button>
+        </div>
+        
+        <form class="contact-form" onsubmit="handleContactSubmit(event)">
+            <p style="color: #4a5568; margin-bottom: 30px; text-align: center;">
+                Our team has helped clients win over $50 million in SBIR awards. Let us help you craft a winning proposal.
+            </p>
+            
+            <div class="form-group">
+                <label for="contactName">Name *</label>
+                <input type="text" id="contactName" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contactEmail">Email *</label>
+                <input type="email" id="contactEmail" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="contactCompany">Company</label>
+                <input type="text" id="contactCompany" name="company">
+            </div>
+            
+            <div class="form-group">
+                <label for="contactPhone">Phone</label>
+                <input type="tel" id="contactPhone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="contactOpportunity">SBIR Opportunity of Interest</label>
+                <input type="text" id="contactOpportunity" name="opportunity" placeholder="e.g., AF251-0013">
+            </div>
+            
+            <div class="form-group">
+                <label for="contactMessage">Tell us about your project *</label>
+                <textarea id="contactMessage" name="message" required placeholder="Briefly describe your technology and how we can help with your proposal..."></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </div>
+
+    <script>
+        // State Management
+        let sbirData = [];
+        let activeFilters = [];
+        let currentResults = [];
+        let originalSearchResults = []; // Store original search results
+        let isLoggedIn = false;
+        let userFavorites = [];
+        let showingFavorites = false;
+        let documentSearchText = ''; // Store document text for searching
+        let lastSearchInfo = ''; // Store last search info for persistent display
+        let includeITARWork = false; // Track if user wants to pursue ITAR opportunities
+        let userSavedSearches = []; // Store saved searches
+        let showingSavedSearches = false; // Track if viewing saved searches
+        let userUploadedDocs = []; // Store uploaded documents
+        let showingUploadedDocs = false; // Track if viewing uploaded documents
+
+        // Define all functions first
+        function handleLogin() {
+            window.parent.postMessage({ type: 'login' }, '*');
+        }
+
+        function handleLogout() {
+            window.parent.postMessage({ type: 'logout' }, '*');
+            updateLoginStatus(false);
+            currentResults = [];
+            document.getElementById('resultsContainer').innerHTML = `
+                <div class="initial-message">
+                    <h3>Welcome to SBIR Opportunity Search</h3>
+                    <p>Login to search through thousands of government contract opportunities</p>
+                </div>
+            `;
+        }
+
+        function performBasicSearch() {
+            if (!isLoggedIn) {
+                alert('Please login to search SBIR opportunities');
+                return;
+            }
+
+            // Use document text if available, otherwise use search input
+            const searchInputValue = document.getElementById('basicSearchInput').value;
+            const searchInput = documentSearchText || searchInputValue;
+            
+            // Update last search info
+            if (!documentSearchText && searchInputValue) {
+                lastSearchInfo = `Keywords: "${searchInputValue}"`;
+            } else if (activeFilters.length > 0 && !searchInputValue && !documentSearchText) {
+                lastSearchInfo = `Filters: ${activeFilters.join(', ')}`;
+            }
+            
+            console.log('Performing search with:', searchInput, 'Filters:', activeFilters);
+            
+            showLoading();
+            
+            setTimeout(() => {
+                // Allow filter-only searches
+                if (!searchInput && activeFilters.length === 0) {
+                    displayAllResults();
+                } else if (!searchInput && activeFilters.length > 0) {
+                    // Filter-only search
+                    let results = filterOnlySearch();
+                    currentResults = results;
+                    originalSearchResults = [...results];
+                    displayResults(results);
+                    
+                    window.parent.postMessage({
+                        type: 'trackSearch',
+                        data: {
+                            query: '',
+                            filters: activeFilters,
+                            resultsCount: results.length,
+                            searchType: 'filter-only'
+                        }
+                    }, '*');
+                } else {
+                    // Regular smart search
+                    let results = smartSearch(searchInput);
+                    currentResults = results;
+                    originalSearchResults = [...results];
+                    displayResults(results);
+                    
+                    window.parent.postMessage({
+                        type: 'trackSearch',
+                        data: {
+                            query: searchInput.substring(0, 100),
+                            filters: activeFilters,
+                            resultsCount: results.length,
+                            searchType: searchInput ? 'manual' : 'filter'
+                        }
+                    }, '*');
+                }
+                hideLoading();
+                document.getElementById('resultsCount').style.display = 'block';
+                
+                // Show persistent search info
+                updatePersistentSearchInfo();
+                
+                // Clear document search text after search
+                if (documentSearchText) {
+                    documentSearchText = '';
+                }
+            }, 500);
+        }
+
+        function filterOnlySearch() {
+            // Search using only filters, no keywords
+            return sbirData.filter(item => {
+                // Get all fields for filter matching
+                const topicStatus = item.topicStatus || item.status || item.Status || '';
+                const program = item.program || item.Program || '';
+                const phase = item.phase || item.Phase || '';
+                const allText = JSON.stringify(item).toLowerCase();
+                
+                // Get fields for xTech and ITAR checking
+                const title = item.title || item.Title || item.title_fld || '';
+                const description = item.description || item.Description || item.description_fld || '';
+                const keyReqs = item.keyRequirements || item['Key Requirements'] || '';
+                const techArea = item.techModernization || item.techArea || item['Tech Area'] || '';
+                
+                // Check each active filter
+                return activeFilters.every(filter => {
+                    const filterLower = filter.toLowerCase();
+                    
+                    // Special handling for specific filters
+                    if (filterLower === 'open') {
+                        return topicStatus.toLowerCase() === 'open';
+                    } else if (filterLower === 'prerelease') {
+                        return topicStatus.toLowerCase() === 'prerelease' || topicStatus.toLowerCase() === 'pre-release';
+                    } else if (filterLower === 'sbir') {
+                        return program.toLowerCase().includes('sbir');
+                    } else if (filterLower === 'sttr') {
+                        return program.toLowerCase().includes('sttr');
+                    } else if (filterLower === 'phase i' || filterLower === 'phase 1') {
+                        return allText.includes('phase i') || allText.includes('phase 1');
+                    } else if (filterLower === 'phase ii' || filterLower === 'phase 2') {
+                        return allText.includes('phase ii') || allText.includes('phase 2');
+                    } else if (filterLower === 'xtech') {
+                        // First check database field
+                        if (item.isXTech) {
+                            return true;
+                        }
+                        // Then check text for xTech keywords
+                        return checkForXTech(title, description, keyReqs);
+                    } else if (filterLower === 'no itar') {
+                        // First check database fields
+                        if (item.requiresITAR || item.itar || item.ITAR) {
+                            return false;
+                        }
+                        // Then check text for explicit "ITAR" word
+                        return !checkForITAR(title, description, keyReqs, techArea);
+                    } else {
+                        // Generic filter matching
+                        return allText.includes(filterLower);
+                    }
+                });
+            });
+        }
+
+        function updatePersistentSearchInfo() {
+            const statusContainer = document.getElementById('searchStatusContainer');
+            const persistentInfo = document.getElementById('persistentSearchInfo');
+            const persistentText = document.getElementById('persistentSearchText');
+            const documentStatus = document.getElementById('documentSearchStatus');
+            
+            if (lastSearchInfo && currentResults.length > 0) {
+                statusContainer.style.display = 'block';
+                persistentInfo.style.display = 'block';
+                documentStatus.style.display = 'none'; // Hide loading status
+                persistentText.textContent = `Current search: ${lastSearchInfo} - Found ${currentResults.length} results`;
+            } else if (lastSearchInfo) {
+                statusContainer.style.display = 'block';
+                persistentInfo.style.display = 'block';
+                documentStatus.style.display = 'none';
+                persistentText.textContent = `Current search: ${lastSearchInfo} - No results found`;
+            } else {
+                statusContainer.style.display = 'none';
+                persistentInfo.style.display = 'none';
+                documentStatus.style.display = 'none';
+            }
+        }
+
+        function smartSearch(searchInput) {
+            if (!searchInput && activeFilters.length === 0) {
+                return sbirData;
+            }
+
+            // Extract meaningful keywords from the search input
+            const keywords = extractKeywords(searchInput);
+            console.log('Extracted keywords:', keywords);
+
+            // If no keywords after extraction, return empty results
+            if (keywords.length === 0 && activeFilters.length === 0) {
+                return [];
+            }
+
+            // Score each item based on relevance
+            let scoredResults = sbirData.map(item => {
+                let score = 0;
+                let matches = [];
+
+                // Get all searchable fields with proper field names
+                const title = item.title || item.Title || item.title_fld || '';
+                const description = item.description || item.Description || item.description_fld || '';
+                const topicNumber = item.topicNumber || item['Topic Number'] || '';
+                const program = item.program || item.Program || '';
+                const techArea = item.techModernization || item.techArea || item['Tech Area'] || '';
+                const keyReqs = item.keyRequirements || item['Key Requirements'] || '';
+                const company = item.company || item.Company || '';
+
+                // Check each keyword against all fields
+                keywords.forEach(keyword => {
+                    const lowerKeyword = keyword.toLowerCase();
+                    let keywordMatched = false;
+                    
+                    // Also check for singular/plural variations
+                    const variations = [lowerKeyword];
+                    if (lowerKeyword.endsWith('s')) {
+                        variations.push(lowerKeyword.slice(0, -1)); // Remove 's' for singular
+                    } else {
+                        variations.push(lowerKeyword + 's'); // Add 's' for plural
+                    }
+                    
+                    variations.forEach(variant => {
+                        // Title matches (highest weight)
+                        if (title.toLowerCase().includes(variant)) {
+                            score += 10;
+                            matches.push(`Title: ${keyword}`);
+                            keywordMatched = true;
+                        }
+                        
+                        // Topic number exact match (very high weight)
+                        if (topicNumber.toLowerCase() === variant) {
+                            score += 15;
+                            matches.push(`Topic#: ${keyword}`);
+                            keywordMatched = true;
+                        } else if (topicNumber.toLowerCase().includes(variant)) {
+                            score += 8;
+                            matches.push(`Topic#: ${keyword}`);
+                            keywordMatched = true;
+                        }
+                        
+                        // Description matches
+                        if (description.toLowerCase().includes(variant)) {
+                            score += 5;
+                            matches.push(`Desc: ${keyword}`);
+                            keywordMatched = true;
+                        }
+                        
+                        // Key requirements matches
+                        if (keyReqs.toLowerCase().includes(variant)) {
+                            score += 7;
+                            matches.push(`KeyReq: ${keyword}`);
+                            keywordMatched = true;
+                        }
+                        
+                        // Tech area matches
+                        if (techArea.toLowerCase().includes(variant)) {
+                            score += 6;
+                            matches.push(`Tech: ${keyword}`);
+                            keywordMatched = true;
+                        }
+                        
+                        // Program matches
+                        if (program.toLowerCase().includes(variant)) {
+                            score += 3;
+                            matches.push(`Program: ${keyword}`);
+                            keywordMatched = true;
+                        }
+                        
+                        // Company matches
+                        if (company.toLowerCase().includes(variant)) {
+                            score += 4;
+                            matches.push(`Company: ${keyword}`);
+                            keywordMatched = true;
+                        }
+                    });
+                });
+
+                // Log items that are getting scores when they shouldn't
+                if (score > 0 && matches.length > 0) {
+                    const titlePreview = title.substring(0, 50);
+                    if (!title.toLowerCase().includes('drone') && 
+                        !description.toLowerCase().includes('drone') && 
+                        !keyReqs.toLowerCase().includes('drone') && 
+                        !techArea.toLowerCase().includes('drone')) {
+                        console.log(`Unexpected match for "${titlePreview}...":`, matches, 'Score:', score);
+                    }
+                }
+
+                // Apply active filters
+                let passesFilters = true;
+                if (activeFilters.length > 0) {
+                    passesFilters = activeFilters.every(filter => {
+                        const filterLower = filter.toLowerCase();
+                        
+                        // Special handling for xTech and ITAR filters
+                        if (filterLower === 'xtech') {
+                            // First check database field
+                            if (item.isXTech) {
+                                return true;
+                            }
+                            // Then check text for xTech keywords
+                            return checkForXTech(title, description, keyReqs);
+                        } else if (filterLower === 'no itar') {
+                            return !checkForITAR(title, description, keyReqs, techArea);
+                        } else {
+                            // Regular filter matching
+                            const itemText = JSON.stringify(item).toLowerCase();
+                            return itemText.includes(filterLower);
+                        }
+                    });
+                }
+
+                return {
+                    item: item,
+                    score: score,
+                    matches: matches,
+                    passesFilters: passesFilters
+                };
+            });
+
+            // Filter and sort results - ONLY include items with score > 0
+            let results = scoredResults
+                .filter(result => result.score > 0 && result.passesFilters)
+                .sort((a, b) => b.score - a.score)
+                .map(result => {
+                    // Add debug info to item for display
+                    result.item._searchScore = result.score;
+                    result.item._searchMatches = result.matches;
+                    return result.item;
+                });
+
+            console.log(`Found ${results.length} results for "${searchInput}"`);
+            return results;
+        }
+
+        function extractKeywords(text) {
+            // Remove extra whitespace and newlines
+            text = text.replace(/\s+/g, ' ').trim();
+            
+            console.log('Extracting keywords from:', text);
+            
+            // Common words to ignore
+            const stopWords = new Set([
+                'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for',
+                'of', 'with', 'by', 'from', 'is', 'are', 'was', 'were', 'been', 'be',
+                'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could',
+                'should', 'may', 'might', 'must', 'can', 'this', 'that', 'these',
+                'those', 'i', 'you', 'he', 'she', 'it', 'we', 'they', 'what', 'which',
+                'who', 'when', 'where', 'why', 'how', 'all', 'each', 'every', 'some',
+                'any', 'many', 'much', 'more', 'most', 'other', 'another', 'such',
+                'no', 'not', 'only', 'own', 'same', 'so', 'than', 'too', 'very'
+            ]);
+            
+            // Extract words and filter
+            let words = text.toLowerCase()
+                .replace(/[^\w\s-]/g, ' ') // Keep letters, numbers, spaces, and hyphens
+                .split(/\s+/)
+                .filter(word => word.length > 2) // Min 3 characters
+                .filter(word => !stopWords.has(word));
+            
+            // Remove duplicates and limit to reasonable number
+            words = [...new Set(words)].slice(0, 20);
+            
+            // Also extract any topic numbers (pattern like A254-017)
+            const topicPattern = /[A-Z]\d{3}-\d{3}/gi;
+            const topicMatches = text.match(topicPattern) || [];
+            
+            // Combine and return
+            const finalKeywords = [...new Set([...words, ...topicMatches])];
+            console.log('Final keywords:', finalKeywords);
+            
+            return finalKeywords;
+        }
+
+        function fuzzyMatch(keyword, text) {
+            // Disable fuzzy matching for now - it's too broad
+            return false;
+            
+            // If we want to re-enable it later, we need a much better algorithm
+            // that checks for actual similar words, not just scattered letters
+        }
+
+        function handleITARCheckbox() {
+            const checkbox = document.getElementById('itarCheckbox');
+            includeITARWork = checkbox.checked;
+            
+            // Remove "No ITAR" filter if ITAR checkbox is checked
+            if (includeITARWork) {
+                document.querySelectorAll('.filter-chip').forEach(chip => {
+                    if (chip.textContent === 'No ITAR' && chip.classList.contains('active')) {
+                        chip.classList.remove('active');
+                        activeFilters = activeFilters.filter(f => f !== 'No ITAR');
+                    }
+                });
+            }
+            
+            // Only re-run search if we're NOT viewing favorites
+            if (isLoggedIn && !showingFavorites) {
+                // If we have active filters or search terms, re-run the search
+                if (activeFilters.length > 0 || document.getElementById('basicSearchInput').value) {
+                    performBasicSearch();
+                } else if (currentResults.length > 0) {
+                    // Just refresh the display with current results
+                    displayResults(currentResults);
+                }
+            }
+            // If we're viewing favorites, the ITAR checkbox shouldn't trigger a new search
+        }
+
+        function toggleFilter(chip, filter) {
+            const wasActive = chip.classList.contains('active');
+            
+            // If toggling "No ITAR" filter, uncheck the ITAR checkbox
+            if (filter === 'No ITAR' && !wasActive) {
+                document.getElementById('itarCheckbox').checked = false;
+                includeITARWork = false;
+            }
+            
+            // Define mutually exclusive groups
+            const filterGroups = {
+                status: ['Open', 'Prerelease'],
+                program: ['SBIR', 'STTR'],
+                phase: ['Phase I', 'Phase II']
+            };
+            
+            // Find which group this filter belongs to
+            let filterGroup = null;
+            for (const [groupName, filters] of Object.entries(filterGroups)) {
+                if (filters.includes(filter)) {
+                    filterGroup = filters;
+                    break;
+                }
+            }
+            
+            // If filter belongs to a mutually exclusive group
+            if (filterGroup) {
+                // Deactivate other filters in the same group
+                filterGroup.forEach(groupFilter => {
+                    if (groupFilter !== filter) {
+                        // Find and deactivate the other filter chip
+                        document.querySelectorAll('.filter-chip').forEach(otherChip => {
+                            if (otherChip.textContent === groupFilter) {
+                                otherChip.classList.remove('active');
+                                activeFilters = activeFilters.filter(f => f !== groupFilter);
+                            }
+                        });
+                    }
+                });
+            }
+            
+            // Toggle the current filter
+            if (!wasActive) {
+                chip.classList.add('active');
+                activeFilters.push(filter);
+            } else {
+                chip.classList.remove('active');
+                activeFilters = activeFilters.filter(f => f !== filter);
+            }
+            
+            // Automatically search when filters change
+            if (isLoggedIn) {
+                performBasicSearch();
+            }
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                performBasicSearch();
+            }
+        }
+
+        function toggleContactForm() {
+            const panel = document.getElementById('contactFormPanel');
+            panel.classList.toggle('show');
+        }
+
+        function hideContactFloat() {
+            const contactFloat = document.getElementById('contactFloat');
+            contactFloat.classList.add('hidden');
+            
+            // Store preference in sessionStorage so it stays hidden during the session
+            sessionStorage.setItem('contactFloatHidden', 'true');
+        }
+
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                name: document.getElementById('contactName').value,
+                email: document.getElementById('contactEmail').value,
+                company: document.getElementById('contactCompany').value,
+                phone: document.getElementById('contactPhone').value,
+                opportunity: document.getElementById('contactOpportunity').value,
+                message: document.getElementById('contactMessage').value,
+                to: 'info@make-ready-consulting.com',
+                subject: 'SBIR Proposal Inquiry - ' + (document.getElementById('contactOpportunity').value || 'General')
+            };
+            
+            window.parent.postMessage({ 
+                type: 'submitContact',
+                data: formData
+            }, '*');
+            
+            alert('Thank you! We\'ll contact you within 24 hours to discuss your proposal.');
+            event.target.reset();
+            toggleContactForm();
+        }
+
+        function toggleFavorite(topicNumber, index) {
+            if (!isLoggedIn) {
+                alert('Please login to save favorites');
+                return false;
+            }
+
+            const item = currentResults[index];
+            const isFavorited = userFavorites.some(fav => fav.topicNumber === topicNumber);
+            
+            if (isFavorited) {
+                console.log('Removing favorite:', topicNumber);
+                // Remove from userFavorites array immediately
+                userFavorites = userFavorites.filter(fav => fav.topicNumber !== topicNumber);
+                
+                // Send message to backend
+                window.parent.postMessage({
+                    type: 'removeFavorite',
+                    data: { topicNumber: topicNumber }
+                }, '*');
+                
+                // Don't manually update display here - let the message handler do it
+            } else {
+                console.log('Adding favorite:', topicNumber);
+                // Add the favorite
+                const favoriteData = {
+                    topicNumber: topicNumber,
+                    title: item.title || item.Title || item.title_fld || 'Untitled',
+                    opportunityData: item
+                };
+                
+                // Add to userFavorites array immediately
+                userFavorites.push(favoriteData);
+                
+                window.parent.postMessage({
+                    type: 'addFavorite',
+                    data: favoriteData
+                }, '*');
+            }
+            
+            // Update the button UI
+            const btn = event.target.closest('.favorite-btn');
+            if (btn) {
+                btn.classList.toggle('favorited');
+                btn.innerHTML = btn.classList.contains('favorited') ? '★' : '☆';
+                btn.title = btn.classList.contains('favorited') ? 'Remove from favorites' : 'Add to favorites';
+            }
+            
+            return false; // Prevent event bubbling
+        }
+
+        function viewFavorites() {
+            showingFavorites = true;
+            showingSavedSearches = false;
+            // Store current results before switching to favorites
+            if (!showingFavorites && currentResults.length > 0) {
+                originalSearchResults = [...currentResults];
+            }
+            window.parent.postMessage({ type: 'requestFavorites' }, '*');
+        }
+
+        function viewSavedSearches() {
+            showingSavedSearches = true;
+            showingFavorites = false;
+            showingUploadedDocs = false;
+            
+            // Store current results before switching
+            if (currentResults.length > 0) {
+                originalSearchResults = [...currentResults];
+            }
+            
+            // Request saved searches from backend
+            window.parent.postMessage({ type: 'requestSavedSearches' }, '*');
+        }
+
+        function viewUploadedDocs() {
+            showingUploadedDocs = true;
+            showingFavorites = false;
+            showingSavedSearches = false;
+            
+            // Store current results before switching
+            if (currentResults.length > 0) {
+                originalSearchResults = [...currentResults];
+            }
+            
+            // Request uploaded documents from backend
+            window.parent.postMessage({ type: 'requestUploadedDocs' }, '*');
+        }
+
+        function saveUploadedDocument(fileName, fileContent, fileSize, fileType) {
+            // Send document to backend for saving
+            window.parent.postMessage({
+                type: 'saveUploadedDoc',
+                data: {
+                    fileName: fileName,
+                    fileContent: fileContent,
+                    fileSize: fileSize || 0,
+                    fileType: fileType
+                }
+            }, '*');
+        }
+
+        function useUploadedDoc(docId) {
+            // Find the document
+            const doc = userUploadedDocs.find(d => d._id === docId);
+            if (!doc) return;
+            
+            // Set the document text for searching
+            let searchText = doc.fileContent || '';
+            if (searchText.length > 10000) {
+                searchText = searchText.substring(0, 10000) + '...';
+            }
+            
+            documentSearchText = searchText;
+            lastSearchInfo = `Document: "${doc.fileName}"`;
+            
+            // Update last used date
+            window.parent.postMessage({
+                type: 'updateDocLastUsed',
+                data: { docId: docId }
+            }, '*');
+            
+            // Exit uploaded docs view
+            showingUploadedDocs = false;
+            showingFavorites = false;
+            showingSavedSearches = false;
+            
+            // Clear search input and run search
+            document.getElementById('basicSearchInput').value = '';
+            performBasicSearch();
+        }
+
+        function deleteUploadedDoc(docId) {
+            if (confirm('Are you sure you want to delete this document?')) {
+                window.parent.postMessage({
+                    type: 'deleteUploadedDoc',
+                    data: { docId: docId }
+                }, '*');
+            }
+        }
+
+        function displayUploadedDocs() {
+            const container = document.getElementById('resultsContainer');
+            const countElement = document.getElementById('resultsText');
+            const uploadedDocsBtn = document.getElementById('uploadedDocsBtn');
+            
+            showingUploadedDocs = true;
+            showingFavorites = false;
+            showingSavedSearches = false;
+            
+            // Hide save search button
+            const saveBtn = document.getElementById('saveSearchBtn');
+            if (saveBtn) saveBtn.style.display = 'none';
+            
+            countElement.innerHTML = `${userUploadedDocs.length} uploaded document${userUploadedDocs.length !== 1 ? 's' : ''}`;
+            uploadedDocsBtn.innerHTML = '<span style="font-size: 16px;">🔍</span> Back to Results';
+            uploadedDocsBtn.onclick = function() {
+                showingUploadedDocs = false;
+                
+                // Show save search button again
+                if (saveBtn) saveBtn.style.display = 'flex';
+                
+                // Restore previous results
+                if (originalSearchResults.length > 0) {
+                    currentResults = [...originalSearchResults];
+                    displayResults(currentResults);
+                } else {
+                    container.innerHTML = `
+                        <div class="initial-message">
+                            <h3>Ready to Search</h3>
+                            <p>Enter keywords above to find matching SBIR opportunities</p>
+                        </div>
+                    `;
+                    document.getElementById('resultsCount').style.display = 'none';
+                }
+                
+                // Reset button
+                uploadedDocsBtn.innerHTML = '<span style="font-size: 16px;">📁</span> My Documents';
+                uploadedDocsBtn.onclick = viewUploadedDocs;
+            };
+            
+            if (userUploadedDocs.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px; color: #718096;">
+                        <h3 style="font-size: 1.5em; margin-bottom: 10px; color: #4a5568;">No uploaded documents</h3>
+                        <p>Upload a document to search and it will be saved here for future use</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = userUploadedDocs.map(doc => {
+                const uploadDate = new Date(doc.uploadDate);
+                const uploadDateStr = uploadDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const lastUsedDate = doc.lastUsedDate ? new Date(doc.lastUsedDate) : null;
+                const lastUsedStr = lastUsedDate ? lastUsedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Never';
+                
+                // File type icon
+                let fileIcon = '📄';
+                if (doc.fileType === 'pdf') fileIcon = '📕';
+                else if (doc.fileType === 'doc' || doc.fileType === 'docx') fileIcon = '📘';
+                else if (doc.fileType === 'txt') fileIcon = '📃';
+                
+                // File size formatting
+                let sizeStr = '';
+                if (doc.fileSize) {
+                    const kb = doc.fileSize / 1024;
+                    const mb = kb / 1024;
+                    sizeStr = mb > 1 ? `${mb.toFixed(1)} MB` : `${Math.round(kb)} KB`;
+                }
+                
+                return `
+                    <div class="uploaded-doc-item">
+                        <div class="uploaded-doc-info">
+                            <h4>
+                                <span class="file-type-icon">${fileIcon}</span>
+                                ${doc.fileName}
+                            </h4>
+                            <div class="uploaded-doc-details">
+                                Type: ${doc.fileType.toUpperCase()} ${sizeStr ? `| Size: ${sizeStr}` : ''}
+                                <br>
+                                Uploaded: ${uploadDateStr} | Last used: ${lastUsedStr}
+                            </div>
+                        </div>
+                        <div class="uploaded-doc-actions">
+                            <button class="use-doc-btn" onclick="useUploadedDoc('${doc._id}')">
+                                Use for Search
+                            </button>
+                            <button class="delete-doc-btn" onclick="deleteUploadedDoc('${doc._id}')">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function showSaveSearchModal() {
+            const modal = document.getElementById('saveSearchModal');
+            const searchInfo = document.getElementById('saveSearchInfo');
+            const searchInput = document.getElementById('basicSearchInput').value;
+            
+            // Build info about what will be saved
+            let infoText = 'This will save: ';
+            if (searchInput) {
+                infoText += `Keywords: "${searchInput}"`;
+            }
+            if (activeFilters.length > 0) {
+                if (searchInput) infoText += ', ';
+                infoText += `Filters: ${activeFilters.join(', ')}`;
+            }
+            if (includeITARWork) {
+                infoText += ', ITAR Work: Included';
+            }
+            infoText += ` (${currentResults.length} results)`;
+            
+            searchInfo.textContent = infoText;
+            modal.classList.add('show');
+            document.getElementById('saveSearchName').focus();
+        }
+
+        function closeSaveSearchModal() {
+            const modal = document.getElementById('saveSearchModal');
+            modal.classList.remove('show');
+            document.getElementById('saveSearchName').value = '';
+        }
+
+        function saveCurrentSearch() {
+            const searchName = document.getElementById('saveSearchName').value.trim();
+            if (!searchName) {
+                alert('Please enter a name for this search');
+                return;
+            }
+            
+            const searchData = {
+                name: searchName,
+                keywords: document.getElementById('basicSearchInput').value,
+                filters: [...activeFilters],
+                includeITAR: includeITARWork,
+                resultCount: currentResults.length,
+                savedDate: new Date().toISOString()
+            };
+            
+            // Send to backend
+            window.parent.postMessage({
+                type: 'saveSearch',
+                data: searchData
+            }, '*');
+            
+            closeSaveSearchModal();
+        }
+
+        function loadSavedSearch(searchId) {
+            // Find the saved search
+            const savedSearch = userSavedSearches.find(s => s._id === searchId);
+            if (!savedSearch) return;
+            
+            // Restore search state
+            document.getElementById('basicSearchInput').value = savedSearch.keywords || '';
+            
+            // Clear and restore filters
+            activeFilters = [];
+            document.querySelectorAll('.filter-chip').forEach(chip => {
+                chip.classList.remove('active');
+            });
+            
+            if (savedSearch.filters && savedSearch.filters.length > 0) {
+                savedSearch.filters.forEach(filter => {
+                    document.querySelectorAll('.filter-chip').forEach(chip => {
+                        if (chip.textContent === filter) {
+                            chip.classList.add('active');
+                            activeFilters.push(filter);
+                        }
+                    });
+                });
+            }
+            
+            // Restore ITAR setting
+            includeITARWork = savedSearch.includeITAR || false;
+            document.getElementById('itarCheckbox').checked = includeITARWork;
+            
+            // Exit saved searches view
+            showingSavedSearches = false;
+            showingFavorites = false;
+            
+            // Run the search
+            performBasicSearch();
+        }
+
+        function deleteSavedSearch(searchId) {
+            if (confirm('Are you sure you want to delete this saved search?')) {
+                window.parent.postMessage({
+                    type: 'deleteSavedSearch',
+                    data: { searchId: searchId }
+                }, '*');
+            }
+        }
+
+        function displaySavedSearches() {
+            const container = document.getElementById('resultsContainer');
+            const countElement = document.getElementById('resultsText');
+            const savedSearchesBtn = document.getElementById('savedSearchesBtn');
+            
+            showingSavedSearches = true;
+            showingFavorites = false;
+            
+            countElement.innerHTML = `${userSavedSearches.length} saved search${userSavedSearches.length !== 1 ? 'es' : ''}`;
+            savedSearchesBtn.innerHTML = '<span style="font-size: 16px;">🔍</span> Back to Results';
+            savedSearchesBtn.onclick = function() {
+                showingSavedSearches = false;
+                
+                // Restore previous results
+                if (originalSearchResults.length > 0) {
+                    currentResults = [...originalSearchResults];
+                    displayResults(currentResults);
+                } else {
+                    container.innerHTML = `
+                        <div class="initial-message">
+                            <h3>Ready to Search</h3>
+                            <p>Enter keywords above to find matching SBIR opportunities</p>
+                        </div>
+                    `;
+                    document.getElementById('resultsCount').style.display = 'none';
+                }
+                
+                // Reset button
+                savedSearchesBtn.innerHTML = '<span style="font-size: 16px;">🔖</span> Saved Searches';
+                savedSearchesBtn.onclick = viewSavedSearches;
+            };
+            
+            // Hide save search button when viewing saved searches
+            document.getElementById('saveSearchBtn').style.display = 'none';
+            
+            if (userSavedSearches.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px; color: #718096;">
+                        <h3 style="font-size: 1.5em; margin-bottom: 10px; color: #4a5568;">No saved searches</h3>
+                        <p>Save your search criteria to quickly run the same search again</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            container.innerHTML = userSavedSearches.map(search => {
+                const date = new Date(search.savedDate);
+                const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                
+                return `
+                    <div class="saved-search-item">
+                        <div class="saved-search-info">
+                            <h4>${search.name}</h4>
+                            <div class="saved-search-details">
+                                ${search.keywords ? `Keywords: "${search.keywords}"` : ''}
+                                ${search.filters && search.filters.length > 0 ? `${search.keywords ? ' | ' : ''}Filters: ${search.filters.join(', ')}` : ''}
+                                ${search.includeITAR ? ' | ITAR Included' : ''}
+                                <br>
+                                <small>Saved: ${dateStr} | ${search.resultCount || 0} results</small>
+                            </div>
+                        </div>
+                        <div class="saved-search-actions">
+                            <button class="load-search-btn" onclick="loadSavedSearch('${search._id}')">
+                                Load Search
+                            </button>
+                            <button class="delete-search-btn" onclick="deleteSavedSearch('${search._id}')">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const fileName = file.name;
+            const fileNameLower = fileName.toLowerCase();
+            const fileSize = file.size;
+            let fileType = 'txt';
+            
+            if (fileNameLower.endsWith('.pdf')) fileType = 'pdf';
+            else if (fileNameLower.endsWith('.doc')) fileType = 'doc';
+            else if (fileNameLower.endsWith('.docx')) fileType = 'docx';
+
+            // Show loading state and document name
+            const searchInput = document.getElementById('basicSearchInput');
+            const statusContainer = document.getElementById('searchStatusContainer');
+            const documentStatus = document.getElementById('documentSearchStatus');
+            const documentText = document.getElementById('documentSearchText');
+            
+            searchInput.value = '';
+            statusContainer.style.display = 'block';
+            documentStatus.style.display = 'block';
+            documentText.textContent = `Loading "${fileName}"...`;
+            
+            // Hide persistent search info during loading
+            document.getElementById('persistentSearchInfo').style.display = 'none';
+
+            if (fileNameLower.endsWith('.pdf')) {
+                // Handle PDF files
+                handlePDFFile(file, fileName, fileSize, fileType);
+            } else {
+                // Handle text files
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    let text = '';
+                    
+                    if (fileNameLower.endsWith('.txt')) {
+                        // Plain text file
+                        text = e.target.result;
+                    } else {
+                        // For .doc/.docx, try to extract text (basic approach)
+                        text = e.target.result;
+                        // Remove binary characters for basic text extraction
+                        text = text.replace(/[\x00-\x1F\x80-\xFF]/g, ' ');
+                    }
+
+                    // Limit text length to prevent overwhelming the search
+                    const fullText = text;
+                    if (text.length > 10000) {
+                        text = text.substring(0, 10000) + '...';
+                        console.log('Document truncated to 10,000 characters');
+                    }
+
+                    // Save the document to backend
+                    saveUploadedDocument(fileName, fullText, fileSize, fileType);
+
+                    // Store the text for searching
+                    documentSearchText = text;
+                    lastSearchInfo = `Document: "${fileName}"`;
+                    
+                    // Update status
+                    documentText.textContent = `Searching "${fileName}" for relevant opportunities...`;
+                    
+                    // Automatically trigger search
+                    performBasicSearch();
+                };
+
+                reader.onerror = function() {
+                    alert('Error reading file. Please try copying and pasting the text instead.');
+                    resetSearchInput();
+                };
+
+                reader.readAsText(file);
+            }
+            
+            // Clear the file input so the same file can be selected again
+            event.target.value = '';
+        }
+
+        async function handlePDFFile(file, fileName, fileSize, fileType) {
+            const documentText = document.getElementById('documentSearchText');
+            
+            try {
+                const arrayBuffer = await file.arrayBuffer();
+                const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+                let fullText = '';
+                
+                // Extract text from all pages
+                for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                    const page = await pdf.getPage(pageNum);
+                    const textContent = await page.getTextContent();
+                    const pageText = textContent.items.map(item => item.str).join(' ');
+                    fullText += pageText + '\n';
+                    
+                    // Update progress
+                    documentText.textContent = `Loading "${fileName}"... (${pageNum}/${pdf.numPages} pages)`;
+                }
+                
+                // Save the full document
+                const savedFullText = fullText;
+                
+                // Limit text length for search
+                if (fullText.length > 10000) {
+                    fullText = fullText.substring(0, 10000) + '...';
+                    console.log('PDF text truncated to 10,000 characters');
+                }
+                
+                // Save the document to backend
+                saveUploadedDocument(fileName, savedFullText, fileSize, fileType);
+                
+                // Store the text for searching
+                documentSearchText = fullText;
+                lastSearchInfo = `Document: "${fileName}"`;
+                
+                // Update status
+                documentText.textContent = `Searching "${fileName}" for relevant opportunities...`;
+                
+                // Automatically trigger search
+                performBasicSearch();
+                
+            } catch (error) {
+                console.error('PDF extraction error:', error);
+                alert('Error reading PDF file. Please try a different file or copy and paste the text instead.');
+                resetSearchInput();
+            }
+        }
+
+        function resetSearchInput() {
+            const searchInput = document.getElementById('basicSearchInput');
+            const statusContainer = document.getElementById('searchStatusContainer');
+            
+            searchInput.value = '';
+            searchInput.disabled = false;
+            
+            // Don't hide the status container if we have persistent search info
+            if (!lastSearchInfo) {
+                statusContainer.style.display = 'none';
+            }
+            
+            documentSearchText = '';
+        }
+
+        function contactForOpportunity(topicNumber, title) {
+            // Pre-fill the contact form with the opportunity info
+            document.getElementById('contactOpportunity').value = topicNumber;
+            
+            // Pre-fill the message with a template
+            const messageTemplate = `I'm interested in getting help writing and submitting a proposal for:\n\nTopic: ${topicNumber}\nTitle: ${title}\n\nPlease contact me to discuss how Make Ready Group can assist with writing and submitting this proposal.`;
+            document.getElementById('contactMessage').value = messageTemplate;
+            
+            // Open the contact form
+            toggleContactForm();
+            
+            // Scroll to the form
+            setTimeout(() => {
+                document.getElementById('contactFormPanel').scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+
+        function contactForPrerelease(topicNumber, title) {
+            // Pre-fill the contact form for prerelease opportunities
+            document.getElementById('contactOpportunity').value = topicNumber + ' (Prerelease)';
+            
+            // Pre-fill with prerelease-specific message
+            const messageTemplate = `I'm interested in government outreach for this prerelease opportunity:\n\nTopic: ${topicNumber}\nTitle: ${title}\n\nI understand this is a prerelease opportunity and would like Make Ready Group's help with:\n- Reaching out to the government program office\n- Understanding the opportunity requirements\n- Getting early writing direction\n- Facilitating connections with the technical POCs\n\nPlease contact me to discuss how you can help with this internal BD opportunity.`;
+            document.getElementById('contactMessage').value = messageTemplate;
+            
+            // Open the contact form
+            toggleContactForm();
+            
+            // Scroll to the form
+            setTimeout(() => {
+                document.getElementById('contactFormPanel').scrollIntoView({ behavior: 'smooth' });
+            }, 300);
+        }
+
+        function exportToPDF() {
+            if (currentResults.length === 0) {
+                alert('No results to export');
+                return;
+            }
+
+            const userEmail = document.getElementById('userName').textContent || 'Guest';
+            const emailPrefix = userEmail.split('@')[0];
+            const filename = `${emailPrefix}_MakeReadySearchResults`;
+
+            const topicNumbers = currentResults.map(item => item.topicNumber || 'N/A');
+            const currentSearchQuery = document.getElementById('basicSearchInput').value;
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({
+                orientation: 'portrait',
+                unit: 'pt',
+                format: 'letter'
+            });
+
+            const margins = {
+                top: 72,
+                bottom: 72,
+                left: 72,
+                right: 72,
+                width: 468
+            };
+
+            function addWatermark() {
+                doc.saveGraphicsState();
+                doc.setGState(new doc.GState({opacity: 0.1}));
+                doc.setFontSize(20);
+                doc.setTextColor(200, 200, 200);
+                
+                const watermarkText = 'Make Ready Group';
+                const startX = 50;
+                const startY = 50;
+                const spacingX = 200;
+                const spacingY = 100;
+                
+                for (let y = startY; y < 850; y += spacingY) {
+                    for (let x = startX; x < 650; x += spacingX) {
+                        doc.saveGraphicsState();
+                        doc.text(watermarkText, x, y, {
+                            angle: -45,
+                            rotationDirection: 1
+                        });
+                        doc.restoreGraphicsState();
+                    }
+                }
+                
+                doc.restoreGraphicsState();
+            }
+
+            addWatermark();
+
+            let yPosition = margins.top;
+
+            doc.setFontSize(10);
+            doc.setTextColor(51, 51, 51);
+            const dateTime = new Date().toLocaleString('en-US', { 
+                month: 'numeric', 
+                day: 'numeric', 
+                year: '2-digit',
+                hour: 'numeric',
+                minute: '2-digit',
+                hour12: true
+            });
+            doc.text(dateTime, margins.left, yPosition);
+            doc.text(`SBIR Search Results - ${filename}`, 612 - margins.right, yPosition, { align: 'right' });
+            
+            yPosition += 30;
+
+            doc.setFontSize(24);
+            doc.setTextColor(26, 54, 93);
+            doc.text('Make Ready Group', 306, yPosition, { align: 'center' });
+            yPosition += 30;
+
+            doc.setFontSize(18);
+            doc.setTextColor(74, 85, 104);
+            doc.text('SBIR Opportunity Search Results', 306, yPosition, { align: 'center' });
+            yPosition += 25;
+
+            doc.setFontSize(12);
+            doc.setTextColor(113, 128, 150);
+            doc.text(`Generated on ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`, 306, yPosition, { align: 'center' });
+            yPosition += 20;
+            doc.text(`Total Opportunities: ${currentResults.length}`, 306, yPosition, { align: 'center' });
+            yPosition += 10;
+
+            doc.setDrawColor(26, 54, 93);
+            doc.setLineWidth(2);
+            doc.line(margins.left, yPosition, 612 - margins.right, yPosition);
+            yPosition += 30;
+
+            currentResults.forEach((item, index) => {
+                if (yPosition > 680) {
+                    doc.addPage();
+                    addWatermark();
+                    yPosition = margins.top;
+                }
+
+                const boxStartY = yPosition;
+                doc.setDrawColor(226, 232, 240);
+                doc.setFillColor(255, 255, 255);
+                doc.setLineWidth(1);
+                
+                doc.setFontSize(14);
+                doc.setTextColor(26, 54, 93);
+                doc.setFont(undefined, 'bold');
+                const title = item.title || 'Untitled';
+                doc.text(title, margins.left + 10, yPosition + 20);
+                yPosition += 35;
+                
+                doc.setFontSize(11);
+                doc.setTextColor(74, 85, 104);
+                doc.setFont(undefined, 'normal');
+                doc.text(`Topic: ${item.topicNumber || 'N/A'}`, margins.left + 10, yPosition);
+                
+                doc.setFontSize(10);
+                if ((item.topicStatus || '').toLowerCase() === 'open') {
+                    doc.setTextColor(39, 103, 73);
+                } else {
+                    doc.setTextColor(116, 42, 42);
+                }
+                doc.text(item.topicStatus || 'Unknown', 540 - 10, boxStartY + 20, { align: 'right' });
+                yPosition += 25;
+
+                doc.setFontSize(10);
+                doc.setTextColor(74, 85, 104);
+                doc.text(`Program: ${item.program || 'N/A'} | Open: ${formatDate(item.openDate)} | Close: ${formatDate(item.closeDate)} | Funding: ${item.phaseFunding || 'N/A'}`, 
+                    margins.left + 10, yPosition);
+                yPosition += 20;
+
+                if (item.description) {
+                    doc.setTextColor(51, 51, 51);
+                    const descLines = doc.splitTextToSize(item.description, margins.width - 20);
+                    doc.text(descLines, margins.left + 10, yPosition);
+                    yPosition += descLines.length * 14 + 15;
+                } else {
+                    doc.text('No description available', margins.left + 10, yPosition);
+                    yPosition += 20;
+                }
+
+                doc.setTextColor(74, 85, 104);
+                doc.text(`Tech Area: ${item.techModernization || 'N/A'}`, margins.left + 10, yPosition);
+                yPosition += 20;
+
+                if (item.keyRequirements) {
+                    const keyReqLines = doc.splitTextToSize(`Key Requirements: ${item.keyRequirements}`, margins.width - 20);
+                    doc.text(keyReqLines, margins.left + 10, yPosition);
+                    yPosition += keyReqLines.length * 14 + 10;
+                } else {
+                    doc.text('Key Requirements: N/A', margins.left + 10, yPosition);
+                    yPosition += 20;
+                }
+
+                const boxHeight = yPosition - boxStartY;
+                doc.rect(margins.left, boxStartY, margins.width, boxHeight);
+                
+                yPosition += 20;
+            });
+
+            doc.setFontSize(10);
+            doc.setTextColor(113, 128, 150);
+            doc.setFont(undefined, 'normal');
+            const footerY = 792 - margins.bottom + 30;
+            doc.text('Make Ready Group | www.themakereadygroup.com | info@make-ready-consulting.com', 306, footerY, { align: 'center' });
+
+            doc.save(`${filename}.pdf`);
+
+            const pdfBlob = doc.output('blob');
+            const pdfFile = new File([pdfBlob], `${filename}.pdf`, {
+                type: 'application/pdf'
+            });
+            
+            console.log('PDF file created:', pdfFile.name, 'Size:', pdfFile.size);
+            
+            window.parent.postMessage({
+                type: 'storePDF',
+                data: {
+                    filename: `${filename}.pdf`,
+                    count: currentResults.length,
+                    topics: topicNumbers,
+                    searchQuery: currentSearchQuery,
+                    filters: activeFilters
+                }
+            }, '*');
+        }
+
+        function checkLoginStatus() {
+            window.parent.postMessage({ type: 'checkLogin' }, '*');
+        }
+
+        function updateLoginStatus(loggedIn, userName) {
+            console.log('UpdateLoginStatus called:', loggedIn, userName);
+            isLoggedIn = loggedIn;
+            document.body.classList.toggle('logged-in', loggedIn);
+            document.body.classList.toggle('not-logged-in', !loggedIn);
+            
+            const searchWrapper = document.getElementById('searchContentWrapper');
+            const loginOverlay = document.getElementById('loginOverlay');
+            const userInfo = document.getElementById('userInfo');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            if (loggedIn) {
+                loginBtn.style.display = 'none';
+                userInfo.style.display = 'flex';
+                userInfo.style.visibility = 'visible';
+                userInfo.classList.add('show');
+                document.getElementById('userName').textContent = userName || 'Guest';
+                searchWrapper.classList.remove('blurred');
+                loginOverlay.classList.remove('show');
+                
+                console.log('User info element:', userInfo);
+                console.log('User info display:', window.getComputedStyle(userInfo).display);
+                
+                if (sbirData.length > 0 && currentResults.length === 0) {
+                    document.getElementById('resultsContainer').innerHTML = `
+                        <div class="initial-message">
+                            <h3>Ready to Search</h3>
+                            <p>Enter keywords above to find matching SBIR opportunities</p>
+                        </div>
+                    `;
+                }
+                
+                window.parent.postMessage({ type: 'requestFavorites' }, '*');
+                window.parent.postMessage({ type: 'requestSavedSearches' }, '*');
+                window.parent.postMessage({ type: 'requestUploadedDocs' }, '*');
+            } else {
+                loginBtn.style.display = 'block';
+                userInfo.style.display = 'none';
+                userInfo.style.visibility = 'hidden';
+                userInfo.classList.remove('show');
+                searchWrapper.classList.add('blurred');
+                loginOverlay.classList.add('show');
+            }
+        }
+
+        function showLoading() {
+            document.getElementById('loadingState').classList.add('show');
+            document.getElementById('resultsContainer').style.display = 'none';
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingState').classList.remove('show');
+            document.getElementById('resultsContainer').style.display = 'block';
+        }
+
+        function displayAllResults() {
+            console.log('WARNING: displayAllResults called - showing all data');
+            currentResults = sbirData;
+            originalSearchResults = [...sbirData]; // Store copy when displaying all
+            displayResults(currentResults);
+        }
+
+        function displayResults(results) {
+            const container = document.getElementById('resultsContainer');
+            const countElement = document.getElementById('resultsText');
+            const actionsContainer = document.getElementById('resultsActions');
+            
+            // Reset viewing states when displaying regular results
+            if (!showingFavorites && !showingSavedSearches) {
+                // Show save search button for regular results
+                const saveBtn = document.getElementById('saveSearchBtn');
+                if (saveBtn) saveBtn.style.display = 'flex';
+            }
+            
+            if (results.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px; color: #718096;">
+                        <h3 style="font-size: 1.5em; margin-bottom: 10px; color: #4a5568;">No opportunities found</h3>
+                        <p>Try adjusting your search terms or filters</p>
+                    </div>
+                `;
+                countElement.innerHTML = '';
+                actionsContainer.style.display = 'none';
+                return;
+            }
+
+            // Only update the count if we're not showing favorites (favorites updates its own count)
+            if (!showingFavorites && !showingSavedSearches) {
+                countElement.innerHTML = `Found ${results.length} opportunit${results.length === 1 ? 'y' : 'ies'}`;
+            }
+            actionsContainer.style.display = 'flex';
+            
+            container.innerHTML = results.map((item, index) => {
+                // Handle Wix CMS field names with _fld suffix
+                const title = item.title || item.Title || item.title_fld || 'Untitled';
+                const description = item.description || item.Description || item.description_fld || 'No description available';
+                const topicNumber = item.topicNumber || item['Topic Number'] || item['topic-number'] || 'N/A';
+                const topicStatus = item.topicStatus || item.status || item.Status || 'Unknown';
+                const program = item.program || item.Program || 'N/A';
+                const openDate = item.openDate || item['Open Date'] || item['open-date'];
+                const closeDate = item.closeDate || item['Close Date'] || item['close-date'];
+                const closeDateTime = item.closeDateTime || closeDate;
+                const phaseFunding = item.phaseFunding || item.funding || item.Funding || 'N/A';
+                const techArea = item.techModernization || item.techArea || item['Tech Area'] || 'N/A';
+                const keyReqs = item.keyRequirements || item['Key Requirements'] || 'N/A';
+                const docsUrl = item.documentsUrl || item.docsUrl || item['Documents URL'] || '';
+                
+                // Check for xTech and ITAR indicators
+                const isXTech = item.isXTech || checkForXTech(title, description, keyReqs);
+                const requiresITAR = item.requiresITAR || item.itar || item.ITAR || checkForITAR(title, description, keyReqs, techArea);
+                
+                const timeRemaining = closeDateTime ? calculateTimeRemaining(closeDateTime) : null;
+                const isFavorited = userFavorites.some(fav => fav.topicNumber === topicNumber);
+                const isPrerelease = topicStatus.toLowerCase() === 'prerelease' || topicStatus.toLowerCase() === 'pre-release';
+                
+                return `
+                <div class="result-card">
+                    <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" 
+                            onclick="event.stopPropagation(); toggleFavorite('${topicNumber}', ${index}); return false;"
+                            title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
+                        ${isFavorited ? '★' : '☆'}
+                    </button>
+                    <div class="result-header" style="padding-right: 50px;">
+                        <div>
+                            <h3 class="result-title">${title}</h3>
+                            <span class="topic-number">${topicNumber}</span>
+                            ${isXTech ? '<span class="warning-badge warning-xtech">⚠️ xTechIgnite</span>' : ''}
+                            ${requiresITAR ? (includeITARWork ? '<span class="warning-badge requirement-itar">📋 ITAR Required</span>' : '<span class="warning-badge warning-itar">🔒 ITAR Required</span>') : ''}
+                            ${timeRemaining && topicStatus === "Open" ? `
+                                <div class="countdown-timer ${getCountdownClass(timeRemaining)}" id="countdown-${index}">
+                                    <span class="timer-icon">⏰</span>
+                                    <span>${formatCountdown(timeRemaining)}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                        <span class="status-badge ${topicStatus.toLowerCase() === 'open' ? 'status-open' : 'status-closed'}">
+                            ${topicStatus}
+                        </span>
+                    </div>
+                    
+                    <div class="result-meta">
+                        <span class="meta-item"><strong>Program:</strong> ${program}</span>
+                        <span class="meta-item"><strong>Open:</strong> ${formatDate(openDate)}</span>
+                        <span class="meta-item"><strong>Close:</strong> ${formatDate(closeDate)}</span>
+                        <span class="meta-item"><strong>Funding:</strong> ${phaseFunding}</span>
+                    </div>
+                    
+                    <p class="result-description">${description}</p>
+                    
+                    ${isXTech ? `
+                        <div class="warning-section">
+                            <strong><span class="warning-icon">⚠️</span>xTechIgnite Prize Competition:</strong> This topic is part of an xTechIgnite prize competition that serves as the competitive gateway. Only winners of the xTechIgnite competition can submit a Phase I SBIR proposal. Direct SBIR/STTR applications without winning the xTechIgnite competition will not be accepted.
+                        </div>
+                    ` : ''}
+                    
+                    ${requiresITAR && !includeITARWork ? `
+                        <div class="warning-section itar">
+                            <strong><span class="warning-icon">🔒</span>ITAR Compliance Required:</strong> This opportunity requires ITAR (International Traffic in Arms Regulations) compliance. Your company must be registered with DDTC and have proper export control procedures in place. All personnel working on this project must be U.S. persons.
+                        </div>
+                    ` : ''}
+                    
+                    ${requiresITAR && includeITARWork ? `
+                        <div class="warning-section" style="background: #eef2ff; border-color: #6366f1;">
+                            <strong><span class="warning-icon">📋</span>ITAR Requirement:</strong> This opportunity requires ITAR compliance. Since you've indicated capability to handle ITAR work, ensure your company maintains current DDTC registration and all team members are U.S. persons as required by export control regulations.
+                        </div>
+                    ` : ''}
+                    
+                    <div class="result-meta">
+                        <span class="meta-item"><strong>Tech Area:</strong> ${techArea}</span>
+                    </div>
+                    
+                    <div class="result-meta">
+                        <span class="meta-item"><strong>Key Requirements:</strong> ${keyReqs}</span>
+                    </div>
+                    
+                    <div class="result-footer">
+                        <div class="footer-left">
+                            <div class="opportunity-info">
+                                <span style="font-size: 12px; color: #718096;">Topic: ${topicNumber}</span>
+                            </div>
+                            ${docsUrl ? `
+                                <button class="download-docs-btn" onclick="window.open('${docsUrl}', '_blank')">
+                                    <span>📄</span> Download Documents
+                                </button>
+                            ` : ''}
+                        </div>
+                        <div class="footer-right">
+                            ${isPrerelease ? `
+                                <div>
+                                    <button class="prerelease-btn" onclick="contactForPrerelease('${topicNumber}', '${title.replace(/'/g, "\\'")}')">
+                                        <span>🚀</span> Help with Government Outreach
+                                    </button>
+                                    <p class="prerelease-hint">This is a great way to do internal BD and get help with writing direction. Make Ready is happy to facilitate this connection.</p>
+                                </div>
+                            ` : `
+                                <button class="contact-help-btn" onclick="contactForOpportunity('${topicNumber}', '${title.replace(/'/g, "\\'")}')">
+                                    <span>✍️</span> Get Help Writing & Submitting a Proposal
+                                </button>
+                            `}
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+            
+            // Start the countdown timer updates
+            if (window.countdownInterval) {
+                clearInterval(window.countdownInterval);
+            }
+            window.countdownInterval = setInterval(updateAllCountdowns, 1000);
+        }
+
+        function formatDate(dateString) {
+            if (!dateString) return 'N/A';
+            try {
+                const date = new Date(dateString);
+                return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            } catch {
+                return 'N/A';
+            }
+        }
+
+        function calculateTimeRemaining(closeDateTime) {
+            const now = new Date();
+            const deadline = new Date(closeDateTime);
+            const timeDiff = deadline - now;
+
+            if (timeDiff <= 0) {
+                return { expired: true };
+            }
+
+            const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+            return {
+                expired: false,
+                days,
+                hours,
+                minutes,
+                seconds,
+                total: timeDiff
+            };
+        }
+
+        function formatCountdown(timeRemaining) {
+            if (timeRemaining.expired) {
+                return "EXPIRED";
+            }
+
+            // Always show seconds for live countdown effect
+            if (timeRemaining.days > 0) {
+                return `${timeRemaining.days}d ${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`;
+            } else if (timeRemaining.hours > 0) {
+                return `${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`;
+            } else if (timeRemaining.minutes > 0) {
+                return `${timeRemaining.minutes}m ${timeRemaining.seconds}s`;
+            } else {
+                return `${timeRemaining.seconds}s`;
+            }
+        }
+
+        function getCountdownClass(timeRemaining) {
+            if (timeRemaining.expired) return 'expired';
+            if (timeRemaining.days <= 3) return 'urgent';
+            if (timeRemaining.days <= 7) return 'warning';
+            return '';
+        }
+
+        function updateAllCountdowns() {
+            currentResults.forEach((item, index) => {
+                if (item.closeDateTime && item.topicStatus === "Open") {
+                    const timeRemaining = calculateTimeRemaining(item.closeDateTime);
+                    const countdownElement = document.getElementById(`countdown-${index}`);
+                    if (countdownElement) {
+                        const timerSpan = countdownElement.querySelector('span:last-child');
+                        if (timerSpan) {
+                            timerSpan.textContent = formatCountdown(timeRemaining);
+                        }
+                        // Update the class based on time remaining
+                        countdownElement.className = `countdown-timer ${getCountdownClass(timeRemaining)}`;
+                        
+                        // If expired, update the status badge too
+                        if (timeRemaining.expired) {
+                            const statusBadge = countdownElement.closest('.result-card').querySelector('.status-badge');
+                            if (statusBadge) {
+                                statusBadge.className = 'status-badge status-closed';
+                                statusBadge.textContent = 'Closed';
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+
+        function displayFavorites() {
+            console.log('displayFavorites called, userFavorites:', userFavorites.length);
+            const favorites = userFavorites.map(fav => fav.opportunityData).filter(Boolean);
+            const container = document.getElementById('resultsContainer');
+            const countElement = document.getElementById('resultsText');
+            const favoritesBtn = document.getElementById('favoritesBtn');
+            
+            showingFavorites = true; // Make sure this is set
+            showingSavedSearches = false;
+            
+            // Hide save search button when viewing favorites
+            const saveBtn = document.getElementById('saveSearchBtn');
+            if (saveBtn) saveBtn.style.display = 'none';
+            
+            // Update count and button
+            countElement.innerHTML = `Showing ${favorites.length} favorite${favorites.length !== 1 ? 's' : ''}`;
+            favoritesBtn.innerHTML = '<span style="font-size: 16px;">🔍</span> Back to Search';
+            favoritesBtn.onclick = function() {
+                showingFavorites = false;
+                
+                // Show save search button again
+                if (saveBtn) saveBtn.style.display = 'flex';
+                
+                // Restore the original search results
+                if (originalSearchResults.length > 0) {
+                    currentResults = [...originalSearchResults];
+                    displayResults(currentResults);
+                } else if (currentResults.length > 0) {
+                    displayResults(currentResults);
+                } else {
+                    // No previous search results, show initial message
+                    container.innerHTML = `
+                        <div class="initial-message">
+                            <h3>Ready to Search</h3>
+                            <p>Enter keywords above to find matching SBIR opportunities</p>
+                        </div>
+                    `;
+                    document.getElementById('resultsCount').style.display = 'none';
+                }
+                
+                // Reset the button
+                favoritesBtn.innerHTML = '<span style="font-size: 16px;">★</span> View Favorites';
+                favoritesBtn.onclick = viewFavorites;
+            };
+            
+            if (favorites.length === 0) {
+                console.log('No favorites to display, showing empty message');
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 60px 20px; color: #718096;">
+                        <h3 style="font-size: 1.5em; margin-bottom: 10px; color: #4a5568;">No favorites saved</h3>
+                        <p>Click the star icon on any opportunity to save it as a favorite</p>
+                    </div>
+                `;
+                document.getElementById('resultsActions').style.display = 'flex'; // Keep actions visible
+                return;
+            }
+            
+            // Set currentResults to favorites before displaying
+            currentResults = favorites;
+            console.log('Displaying', favorites.length, 'favorites');
+            displayResults(favorites);
+        }
+
+        // Add the missing updateFavoriteButtons function
+        function updateFavoriteButtons() {
+            // Update favorite button states on all displayed cards
+            if (!currentResults || currentResults.length === 0) return;
+            
+            document.querySelectorAll('.favorite-btn').forEach((btn, index) => {
+                if (currentResults[index]) {
+                    const topicNumber = currentResults[index].topicNumber || currentResults[index]['Topic Number'] || '';
+                    const isFavorited = userFavorites.some(fav => fav.topicNumber === topicNumber);
+                    
+                    if (isFavorited) {
+                        btn.classList.add('favorited');
+                        btn.innerHTML = '★';
+                        btn.title = 'Remove from favorites';
+                    } else {
+                        btn.classList.remove('favorited');
+                        btn.innerHTML = '☆';
+                        btn.title = 'Add to favorites';
+                    }
+                }
+            });
+        }
+
+        // Check if opportunity is xTech competition
+        function checkForXTech(title, description, keyReqs) {
+            const xTechKeywords = [
+                'xtech',
+                'x-tech',
+                'xtechignite',
+                'xtech ignite',
+                'xtech competition',
+                'xtech challenge',
+                'army xtech',
+                'air force xtech',
+                'navy xtech',
+                'socom xtech',
+                'competition prize',
+                'prize competition'
+            ];
+            
+            const allText = `${title} ${description} ${keyReqs}`.toLowerCase();
+            return xTechKeywords.some(keyword => allText.includes(keyword));
+        }
+
+        // Check if opportunity requires ITAR compliance
+        function checkForITAR(title, description, keyReqs, techArea) {
+            // First check if the data has an explicit ITAR field
+            if (typeof item !== 'undefined' && (item.requiresITAR || item.itar || item.ITAR)) {
+                return true;
+            }
+            
+            // Otherwise, only detect if "ITAR" appears as a standalone word
+            const allText = ` ${title} ${description} ${keyReqs} ${techArea} `.toUpperCase();
+            
+            // Look for ITAR as a complete word (with word boundaries)
+            // This regex ensures ITAR is not part of another word like "military"
+            const itarRegex = /\bITAR\b/;
+            
+            return itarRegex.test(allText);
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            console.log('SBIR Tool: Page loaded, initializing...');
+            
+            document.getElementById('userInfo').style.display = 'none';
+            
+            // Check if contact button was previously hidden
+            if (sessionStorage.getItem('contactFloatHidden') === 'true') {
+                document.getElementById('contactFloat').classList.add('hidden');
+            }
+            
+            checkLoginStatus();
+            
+            window.addEventListener('message', function(event) {
+                console.log('Message received:', event.data);
+                if (event.data.type === 'loadData') {
+                    sbirData = event.data.data;
+                    console.log('SBIR data loaded:', sbirData.length, 'items');
+                    if (sbirData.length > 0) {
+                        console.log('First item fields:', Object.keys(sbirData[0]));
+                        console.log('First item data:', sbirData[0]);
+                    }
+                } else if (event.data.type === 'loginStatus') {
+                    updateLoginStatus(event.data.isLoggedIn, event.data.userName);
+                } else if (event.data.type === 'favoritesData') {
+                    userFavorites = event.data.favorites || [];
+                    console.log('Favorites updated:', userFavorites.length, 'items');
+                    console.log('Currently showing favorites?', showingFavorites);
+                    if (showingFavorites) {
+                        // Always refresh the favorites display when we get updated data
+                        console.log('Refreshing favorites display...');
+                        displayFavorites();
+                    } else {
+                        updateFavoriteButtons();
+                    }
+                } else if (event.data.type === 'savedSearchesData') {
+                    userSavedSearches = event.data.searches || [];
+                    console.log('Saved searches updated:', userSavedSearches.length, 'items');
+                    if (showingSavedSearches) {
+                        displaySavedSearches();
+                    }
+                } else if (event.data.type === 'uploadedDocsData') {
+                    userUploadedDocs = event.data.documents || [];
+                    console.log('Uploaded documents updated:', userUploadedDocs.length, 'items');
+                    if (showingUploadedDocs) {
+                        displayUploadedDocs();
+                    }
+                }
+            });
+
+            window.parent.postMessage({ type: 'requestData' }, '*');
+            
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', function() {
+                if (!isLoggedIn) return;
+                
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const userInfo = document.getElementById('userInfo');
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    userInfo.style.transform = 'translateY(-100%)';
+                } else {
+                    userInfo.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+            }, false);
+        };
+        
+        // Clean up interval on page unload
+        window.addEventListener('beforeunload', function() {
+            if (window.countdownInterval) {
+                clearInterval(window.countdownInterval);
+            }
+        });
+    </script>
+</body>
+</html>
