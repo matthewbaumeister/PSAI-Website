@@ -4400,11 +4400,54 @@ body > * {
   isolation: isolate;
 }
 
+/* Prevent any elements from appearing between footer and cookie popup */
+.footer + * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Ensure cookie popup is always on top */
+.fixed.bottom-0 {
+  z-index: 9999 !important;
+}
+
+/* Prevent any about page content from leaking to other pages */
+.about-page {
+  isolation: isolate;
+  position: relative;
+}
+
+/* Ensure stat numbers and method icons stay within about page */
+.about-page .stat-number,
+.about-page .method-icon {
+  position: relative !important;
+  z-index: 1 !important;
+  overflow: visible !important;
+}
+
 /* Fix any potential positioning issues */
 .stat-number {
   position: relative !important;
   display: inline-block !important;
   z-index: auto !important;
+}
+
+/* CRITICAL: Prevent any elements from appearing between footer and cookie popup */
+.footer ~ *:not(.cookie-consent) {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Ensure about page elements don't escape their container */
+.about-page * {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Force footer to be the last visible element before cookie popup */
+.footer {
+  position: relative !important;
+  z-index: 1 !important;
 }
 
 /* ===== AUTH PAGE ISOLATION ===== */
