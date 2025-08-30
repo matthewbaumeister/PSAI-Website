@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
 
     const supabase = createAdminSupabaseClient()
     
-    // First, check if the table exists
+    // Check if the table exists and handle gracefully
     try {
       const { data: tableCheck, error: tableError } = await supabase
         .from('admin_invitations')
@@ -22,26 +22,22 @@ export async function GET(request: NextRequest) {
         .limit(1)
       
       if (tableError) {
-        console.error('Table check error:', tableError)
-        return NextResponse.json(
-          { 
-            error: 'Table not found', 
-            message: `admin_invitations table error: ${tableError.message}`,
-            details: tableError
-          },
-          { status: 500 }
-        )
+        // Table doesn't exist, return empty list instead of error
+        console.log('admin_invitations table not found, returning empty list')
+        return NextResponse.json({
+          success: true,
+          invitations: [],
+          message: 'No invitations table found - returning empty list'
+        })
       }
     } catch (tableCheckError) {
-      console.error('Table check exception:', tableCheckError)
-      return NextResponse.json(
-        { 
-          error: 'Table check failed', 
-          message: 'Could not verify admin_invitations table exists',
-          details: tableCheckError
-        },
-        { status: 500 }
-      )
+      // Table check failed, return empty list instead of error
+      console.log('admin_invitations table check failed, returning empty list')
+      return NextResponse.json({
+        success: true,
+        invitations: [],
+        message: 'Could not verify invitations table - returning empty list'
+      })
     }
     
     // Get all admin invitations
