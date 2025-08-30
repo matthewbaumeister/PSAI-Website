@@ -1582,17 +1582,7 @@ export default function AdminDashboard() {
                     >
                       🚀 Full Refresh (8-12 hours)
                     </button>
-                    <div style={{
-                      background: 'rgba(255, 193, 7, 0.1)',
-                      border: '1px solid rgba(255, 193, 7, 0.3)',
-                      borderRadius: '6px',
-                      padding: '8px 12px',
-                      marginTop: '8px',
-                      fontSize: '12px',
-                      color: '#ffc107'
-                    }}>
-                      💡 <strong>Data Safe:</strong> Existing records are updated, not deleted
-                    </div>
+
                     <button
                       onClick={() => startScraper('quick')}
                       style={{
