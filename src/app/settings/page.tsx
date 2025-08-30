@@ -159,33 +159,92 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-      {/* Simple Modern Header */}
-      <div className="container mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          {/* Simple Icon */}
-          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500/30 to-blue-500/30 rounded-2xl mb-6 shadow-lg border border-purple-400/30">
-            <svg className="w-10 h-10 text-purple-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '40px', height: '40px' }}>
+    <div style={{ 
+      minHeight: '100vh', 
+      background: 'linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%)',
+      color: 'white',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
+    }}>
+      <style jsx>{`
+        @keyframes spin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      `}</style>
+      {/* Modern Header */}
+      <div style={{ 
+        maxWidth: '1200px', 
+        margin: '0 auto', 
+        padding: '0 24px', 
+        paddingTop: '48px', 
+        paddingBottom: '48px' 
+      }}>
+        <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+          {/* Icon */}
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '80px',
+            height: '80px',
+            background: 'linear-gradient(135deg, rgba(147, 51, 234, 0.3) 0%, rgba(59, 130, 246, 0.3) 100%)',
+            borderRadius: '16px',
+            marginBottom: '24px',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+            border: '1px solid rgba(147, 51, 234, 0.3)'
+          }}>
+            <svg style={{ width: '40px', height: '40px', color: '#c4b5fd' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </div>
           
           {/* Title */}
-          <h1 className="text-5xl font-bold text-white mb-4">
+          <h1 style={{ 
+            fontSize: '48px', 
+            fontWeight: '700', 
+            marginBottom: '16px',
+            color: 'white',
+            margin: '0 0 16px 0'
+          }}>
             Settings
           </h1>
           
           {/* Subtitle */}
-          <p className="text-slate-300 text-lg mb-6 max-w-2xl mx-auto">
+          <p style={{ 
+            fontSize: '18px', 
+            color: '#cbd5e1', 
+            marginBottom: '24px', 
+            maxWidth: '600px', 
+            margin: '0 auto 24px auto',
+            lineHeight: '1.6'
+          }}>
             Customize your experience, manage security, and control your account preferences
           </p>
           
           {/* User Status */}
-          <div className="inline-flex items-center space-x-3 bg-slate-800/50 border border-slate-700/50 rounded-full px-6 py-3">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-            <span className="text-slate-200">Signed in as</span>
-            <span className="text-white font-semibold">{user.email}</span>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '12px',
+            background: 'rgba(30, 41, 59, 0.5)',
+            border: '1px solid rgba(71, 85, 105, 0.5)',
+            borderRadius: '9999px',
+            padding: '12px 24px'
+          }}>
+            <div style={{
+              width: '8px',
+              height: '8px',
+              backgroundColor: '#10b981',
+              borderRadius: '50%',
+              animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+            }}></div>
+            <span style={{ color: '#cbd5e1' }}>Signed in as</span>
+            <span style={{ color: 'white', fontWeight: '600' }}>{user.email}</span>
           </div>
         </div>
         {/* Message Display */}
@@ -220,20 +279,43 @@ export default function SettingsPage() {
           </div>
         )}
 
-        {/* Simple Tab Navigation */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-slate-800/50 border border-slate-700/50 rounded-xl p-2">
-            <div className="flex space-x-2">
+        {/* Modern Tab Navigation */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '48px' }}>
+          <div style={{
+            background: 'rgba(30, 41, 59, 0.5)',
+            border: '1px solid rgba(71, 85, 105, 0.5)',
+            borderRadius: '12px',
+            padding: '8px',
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)'
+          }}>
+            <div style={{ display: 'flex', gap: '8px' }}>
               <button
                 onClick={() => setActiveTab('password')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  activeTab === 'password'
-                    ? 'bg-blue-600 text-white'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-700/50'
-                }`}
+                style={{
+                  padding: '12px 24px',
+                  borderRadius: '8px',
+                  fontWeight: '500',
+                  transition: 'all 0.2s ease',
+                  border: 'none',
+                  cursor: 'pointer',
+                  background: activeTab === 'password' ? '#2563eb' : 'transparent',
+                  color: activeTab === 'password' ? 'white' : '#94a3b8'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== 'password') {
+                    (e.target as HTMLElement).style.background = 'rgba(71, 85, 105, 0.5)';
+                    (e.target as HTMLElement).style.color = 'white';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== 'password') {
+                    (e.target as HTMLElement).style.background = 'transparent';
+                    (e.target as HTMLElement).style.color = '#94a3b8';
+                  }
+                }}
               >
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '16px', height: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                   </svg>
                   <span>Password</span>
@@ -241,14 +323,31 @@ export default function SettingsPage() {
               </button>
               <button
                 onClick={() => setActiveTab('preferences')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  activeTab === 'preferences'
-                    ? 'bg-emerald-600 text-white'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
-                }`}
+                style={{
+                  padding: '12px 24px',
+                  borderRadius: '8px',
+                  fontWeight: '500',
+                  transition: 'all 0.2s ease',
+                  border: 'none',
+                  cursor: 'pointer',
+                  background: activeTab === 'preferences' ? '#059669' : 'transparent',
+                  color: activeTab === 'preferences' ? 'white' : '#94a3b8'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== 'preferences') {
+                    (e.target as HTMLElement).style.background = 'rgba(71, 85, 105, 0.5)';
+                    (e.target as HTMLElement).style.color = 'white';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== 'preferences') {
+                    (e.target as HTMLElement).style.background = 'transparent';
+                    (e.target as HTMLElement).style.color = '#94a3b8';
+                  }
+                }}
               >
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '16px', height: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -257,14 +356,31 @@ export default function SettingsPage() {
               </button>
               <button
                 onClick={() => setActiveTab('account')}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
-                  activeTab === 'account'
-                    ? 'bg-purple-600 text-white'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-700/50'
-                }`}
+                style={{
+                  padding: '12px 24px',
+                  borderRadius: '8px',
+                  fontWeight: '500',
+                  transition: 'all 0.2s ease',
+                  border: 'none',
+                  cursor: 'pointer',
+                  background: activeTab === 'account' ? '#7c3aed' : 'transparent',
+                  color: activeTab === 'account' ? 'white' : '#94a3b8'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== 'account') {
+                    (e.target as HTMLElement).style.background = 'rgba(71, 85, 105, 0.5)';
+                    (e.target as HTMLElement).style.color = 'white';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== 'account') {
+                    (e.target as HTMLElement).style.background = 'transparent';
+                    (e.target as HTMLElement).style.color = '#94a3b8';
+                  }
+                }}
               >
-                <div className="flex items-center space-x-2">
-                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '16px', height: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <svg style={{ width: '16px', height: '16px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                   <span>Account</span>
@@ -274,42 +390,76 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Password Change Tab - Clean Design */}
+        {/* Password Change Tab - Modern Design */}
         {activeTab === 'password' && (
-          <div className="bg-slate-800/50 border border-slate-700/50 rounded-2xl p-8">
-            <div className="flex items-center space-x-4 mb-8">
-              <div className="w-12 h-12 bg-blue-500/30 rounded-xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-blue-300 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ width: '24px', height: '24px' }}>
+          <div style={{
+            background: 'rgba(30, 41, 59, 0.5)',
+            border: '1px solid rgba(71, 85, 105, 0.5)',
+            borderRadius: '16px',
+            padding: '32px',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '32px' }}>
+              <div style={{
+                width: '48px',
+                height: '48px',
+                background: 'rgba(59, 130, 246, 0.3)',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <svg style={{ width: '24px', height: '24px', color: '#93c5fd' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
               </div>
               <div>
-                <h2 className="text-2xl font-bold text-white">Change Password</h2>
-                <p className="text-slate-300">Keep your account secure</p>
+                <h2 style={{ fontSize: '24px', fontWeight: '700', color: 'white', margin: '0 0 4px 0' }}>Change Password</h2>
+                <p style={{ color: '#cbd5e1', margin: '0' }}>Keep your account secure</p>
               </div>
             </div>
             
-            <form onSubmit={handlePasswordChange} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form onSubmit={handlePasswordChange} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
                 <div>
-                  <label className="block text-slate-200 font-medium mb-2">Current Password</label>
+                  <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>Current Password</label>
                   <input
                     type="password"
                     value={passwordData.currentPassword}
                     onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-blue-500/50 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                    style={{
+                      width: '100%',
+                      padding: '12px 16px',
+                      background: 'rgba(51, 65, 85, 0.5)',
+                      border: '1px solid rgba(71, 85, 105, 0.5)',
+                      borderRadius: '12px',
+                      color: 'white',
+                      fontSize: '16px',
+                      outline: 'none',
+                      transition: 'all 0.2s ease'
+                    }}
                     placeholder="Enter your current password"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="block text-slate-200 font-medium mb-2">New Password</label>
+                  <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>New Password</label>
                   <input
                     type="password"
                     value={passwordData.newPassword}
                     onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500/50 focus:ring-2 focus:ring-emerald-500/20 transition-all duration-200"
+                    style={{
+                      width: '100%',
+                      padding: '12px 16px',
+                      background: 'rgba(51, 65, 85, 0.5)',
+                      border: '1px solid rgba(71, 85, 105, 0.5)',
+                      borderRadius: '12px',
+                      color: 'white',
+                      fontSize: '16px',
+                      outline: 'none',
+                      transition: 'all 0.2s ease'
+                    }}
                     placeholder="Enter your new password"
                     required
                   />
@@ -317,26 +467,65 @@ export default function SettingsPage() {
               </div>
 
               <div>
-                <label className="block text-slate-200 font-medium mb-2">Confirm New Password</label>
+                <label style={{ display: 'block', color: '#cbd5e1', fontWeight: '500', marginBottom: '8px' }}>Confirm New Password</label>
                 <input
                   type="password"
                   value={passwordData.confirmPassword}
                   onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                  className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+                  style={{
+                    width: '100%',
+                    padding: '12px 16px',
+                    background: 'rgba(51, 65, 85, 0.5)',
+                    border: '1px solid rgba(71, 85, 105, 0.5)',
+                    borderRadius: '12px',
+                    color: 'white',
+                    fontSize: '16px',
+                    outline: 'none',
+                    transition: 'all 0.2s ease'
+                  }}
                   placeholder="Confirm your new password"
                   required
                 />
-                <p className="text-slate-400 text-sm mt-2">Password must be at least 8 characters long</p>
+                <p style={{ color: '#94a3b8', fontSize: '14px', marginTop: '8px', margin: '8px 0 0 0' }}>Password must be at least 8 characters long</p>
               </div>
 
               <button
                 type="submit"
                 disabled={isChangingPassword}
-                className="w-full px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{
+                  width: '100%',
+                  padding: '12px 24px',
+                  background: '#2563eb',
+                  color: 'white',
+                  borderRadius: '12px',
+                  fontWeight: '600',
+                  fontSize: '16px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  opacity: isChangingPassword ? '0.5' : '1'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isChangingPassword) {
+                    (e.target as HTMLElement).style.background = '#1d4ed8';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isChangingPassword) {
+                    (e.target as HTMLElement).style.background = '#2563eb';
+                  }
+                }}
               >
                 {isChangingPassword ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                    <div style={{
+                      width: '16px',
+                      height: '16px',
+                      border: '2px solid white',
+                      borderTop: '2px solid transparent',
+                      borderRadius: '50%',
+                      animation: 'spin 1s linear infinite'
+                    }}></div>
                     <span>Changing Password...</span>
                   </div>
                 ) : (
