@@ -515,11 +515,11 @@ class DSIPScraper {
       // Process each topic individually to handle duplicates
       for (const topic of formattedBatch) {
         try {
-          // Check if topic already exists by topic_id_topicid
+          // Check if topic already exists by topic_id
           const { data: existing } = await supabase
             .from('dsip_opportunities')
-            .select('id, last_scraped_sys_current_timestamp_eastern')
-            .eq('topic_id_topicid', topic.topic_id_topicid)
+            .select('id, last_activity_date')
+            .eq('topic_id', topic.topicId)
             .single();
 
           if (existing) {
@@ -528,12 +528,12 @@ class DSIPScraper {
               .from('dsip_opportunities')
               .update({
                 ...topic,
-                last_scraped_sys_current_timestamp_eastern: new Date().toISOString()
+                last_activity_date: new Date().toISOString()
               })
               .eq('id', existing.id);
             
             if (updateError) {
-              this.log(jobId, 'warning', `Warning updating topic ${topic.topic_id_topicid}: ${updateError.message}`);
+              this.log(jobId, 'warning', `Warning updating topic ${topic.topicId}: ${updateError.message}`);
             } else {
               updatedCount++;
             }
@@ -544,13 +544,13 @@ class DSIPScraper {
               .insert(topic);
             
             if (insertError) {
-              this.log(jobId, 'warning', `Warning inserting topic ${topic.topic_id_topicid}: ${insertError.message}`);
+              this.log(jobId, 'warning', `Warning inserting topic ${topic.topicId}: ${insertError.message}`);
             } else {
               insertedCount++;
             }
           }
         } catch (error) {
-          this.log(jobId, 'warning', `Warning processing topic ${topic.topic_id_topicid}: ${error}`);
+          this.log(jobId, 'warning', `Warning processing topic ${topic.topicId}: ${error}`);
           skippedCount++;
         }
       }
@@ -580,7 +580,7 @@ class DSIPScraper {
         const { data: existing } = await supabase
           .from('dsip_opportunities')
           .select('id')
-          .eq('topic_id_topicid', topic.topicId)
+          .eq('topic_id', topic.topicId)
           .single();
 
         const formattedTopic = this.formatTopicForDatabase(topic);
@@ -604,142 +604,140 @@ class DSIPScraper {
   }
 
   private formatTopicForDatabase(topic: any): any {
-    // Format the topic data to match your CSV structure and database schema
+    // Format the topic data to match your database schema
     const details = topic.detailed_info || {};
     
     return {
       // Basic topic information
-      topic_number_topiccode: topic.topicCode,
-      topic_id_topicid: topic.topicId,
-      title_topictitle: topic.topicTitle,
-      short_title_first_50_chars_of_topictitle: topic.topicTitle ? topic.topicTitle.substring(0, 50) : '',
+      topic_number: topic.topicCode,
+      topic_id: topic.topicId,
+      title: topic.topicTitle,
+      short_title: topic.topicTitle ? topic.topicTitle.substring(0, 50) : '',
       
       // Component and program information
-      component_component: topic.component,
-      component_full_name_expanded_from_component_abbreviation: this.expandComponentName(topic.component),
-      command_command: topic.command,
-      program_program: topic.program,
-      program_type_extracted_from_program_field: topic.program ? (topic.program.includes('SBIR') ? 'SBIR' : topic.program.includes('STTR') ? 'STTR' : 'Other') : '',
+      component: topic.component,
+      component_full_name: this.expandComponentName(topic.component),
+      command_name: topic.command,
+      program: topic.program,
+      program_type: topic.program ? (topic.program.includes('SBIR') ? 'SBIR' : topic.program.includes('STTR') ? 'STTR' : 'Other') : '',
       
       // Solicitation information
-      solicitation_solicitationtitle: topic.solicitationTitle,
-      solicitation_number_solicitationnumber: topic.solicitationNumber,
-      cycle_name_cyclename: topic.cycleName,
-      release_number_releasenumber: topic.releaseNumber ? String(topic.releaseNumber) : '',
+      solicitation_title: topic.solicitationTitle,
+      solicitation_number: topic.solicitationNumber,
+      cycle_name: topic.cycleName,
+      release_number: topic.releaseNumber ? String(topic.releaseNumber) : '',
       
       // Status and timing
-      status_topicstatus: topic.topicStatus,
-      topic_status_topicstatus_duplicate: topic.topicStatus,
-      proposal_window_status_calculated_based_on_current_date_vs_start_end_dates: this.getWindowStatus(topic.topicStartDate, topic.topicEndDate),
-      days_until_close_calculated_topicenddate_current_date: this.calculateDaysUntil(topic.topicEndDate),
-      days_since_open_calculated_current_date_topicstartdate: this.calculateDaysSince(topic.topicStartDate),
-      urgency_level_calculated_based_on_days_until_close_thresholds: this.getUrgencyLevel(topic.topicEndDate),
+      status: topic.topicStatus,
+      topic_status: topic.topicStatus,
+      proposal_window_status: this.getWindowStatus(topic.topicStartDate, topic.topicEndDate),
+      days_until_close: this.calculateDaysUntil(topic.topicEndDate),
+      days_since_open: this.calculateDaysSince(topic.topicStartDate),
+      urgency_level: this.getUrgencyLevel(topic.topicEndDate),
       
       // Dates
-      open_date_api_topicstartdate_converted_to_mm_dd_yyyy: this.formatDate(topic.topicStartDate),
-      close_date_api_topicenddate_converted_to_mm_dd_yyyy: this.formatDate(topic.topicEndDate),
-      open_datetime_api_topicstartdate_duplicate: this.formatDate(topic.topicStartDate),
-      close_datetime_api_topicenddate_duplicate: this.formatDate(topic.topicEndDate),
-      duration_days_calculated_topicenddate_topicstartdate: this.calculateDays(topic.topicStartDate, topic.topicEndDate),
-      pre_release_start_api_topicprereleasestartdate: this.formatDate(topic.topicPreReleaseStartDate),
-      pre_release_end_api_topicprereleaseenddate: this.formatDate(topic.topicPreReleaseEndDate),
-      pre_release_duration_calculated_prereleaseenddate_prereleasestartdate: this.calculateDays(topic.topicPreReleaseStartDate, topic.topicPreReleaseEndDate),
-      created_date_api_createddate: this.formatDate(topic.createdDate),
-      updated_date_api_updateddate: this.formatDate(topic.updatedDate),
-      modified_date_api_modifieddate: this.formatDate(topic.modifiedDate),
+      open_date: this.formatDate(topic.topicStartDate),
+      close_date: this.formatDate(topic.topicEndDate),
+      open_datetime: this.formatDate(topic.topicStartDate),
+      close_datetime: this.formatDate(topic.topicEndDate),
+      duration_days: this.calculateDays(topic.topicStartDate, topic.topicEndDate),
+      pre_release_start: this.formatDate(topic.topicPreReleaseStartDate),
+      pre_release_end: this.formatDate(topic.topicPreReleaseEndDate),
+      pre_release_duration: this.calculateDays(topic.topicPreReleaseStartDate, topic.topicPreReleaseEndDate),
+      created_date: this.formatDate(topic.createdDate),
+      updated_date: this.formatDate(topic.updatedDate),
+      modified_date: this.formatDate(topic.modifiedDate),
       
       // Q&A information
-      qa_start_api_topicqastartdate: this.formatDate(topic.topicQAStartDate),
-      qa_end_api_topicqaenddate: this.formatDate(topic.topicQAEndDate),
-      qa_tpoc_start_api_topicqatpocstartdate: this.formatDate(topic.topicQATpocStartDate),
-      qa_tpoc_end_api_topicqatpocenddate: this.formatDate(topic.topicQATpocEndDate),
-      qa_status_api_topicqastatus: topic.topicQAStatus,
-      qa_status_display_api_topicqastatusdisplay: topic.topicQAStatusDisplay,
-      qa_open_api_topicqaopen_boolean: topic.topicQAOpen ? 'Yes' : 'No',
-      total_questions_api_topicquestioncount: topic.topicQuestionCount || 0,
-      published_questions_api_noofpublishedquestions: topic.noOfPublishedQuestions || 0,
-      unpublished_questions_calculated_topicquestioncount_noofpublishedquestions: (topic.topicQuestionCount || 0) - (topic.noOfPublishedQuestions || 0),
-      hasqa_derived_1_if_topicquestioncount_0: topic.topicQuestionCount && topic.topicQuestionCount > 0 ? '1' : '0',
-      qa_data_api_topicquestioncount_duplicate: topic.topicQuestionCount || 0,
-      qa_content_fetched_from_questions_endpoint_and_formatted: topic.qa_data ? this.formatQAContent(topic.qa_data) : '',
+      qanda_start: this.formatDate(topic.topicQAStartDate),
+      qanda_end: this.formatDate(topic.topicQAEndDate),
+      qanda_tpoc_start: this.formatDate(topic.topicQATpocStartDate),
+      qanda_tpoc_end: this.formatDate(topic.topicQATpocEndDate),
+      qanda_status: topic.topicQAStatus,
+      qanda_status_display: topic.topicQAStatusDisplay,
+      qanda_open: topic.topicQAOpen || false,
+      total_questions: topic.topicQuestionCount || 0,
+      published_questions: topic.noOfPublishedQuestions || 0,
+      unpublished_questions: (topic.topicQuestionCount || 0) - (topic.noOfPublishedQuestions || 0),
+      has_qa: topic.topicQuestionCount && topic.topicQuestionCount > 0,
+      qa_data: topic.topicQuestionCount || 0,
+      qanda_content: topic.qa_data ? this.formatQAContent(topic.qa_data) : '',
       
       // Technology and modernization
-      technology_areas_api_details_technologyareas_array_joined: details.technologyAreas ? details.technologyAreas.map((area: any) => area.name || area).join(', ') : '',
-      technology_areas_count_calculated_count_of_comma_separated_values: details.technologyAreas ? details.technologyAreas.length : 0,
-      primary_technology_area_derived_first_item_in_technologyareas: details.technologyAreas && details.technologyAreas.length > 0 ? (details.technologyAreas[0].name || details.technologyAreas[0]) : '',
-      tech_modernization_api_details_focusareas_mapped: details.focusAreas ? details.focusAreas.map((area: any) => area.name || area).join(' | ') : '',
-      modernization_priorities_api_details_focusareas_array_joined: details.focusAreas ? details.focusAreas.map((area: any) => area.name || area).join(' | ') : '',
-      modernization_priority_count_calculated_count_of_pipe_separated_values: details.focusAreas ? details.focusAreas.length : 0,
+      technology_areas: details.technologyAreas ? details.technologyAreas.map((area: any) => area.name || area) : [],
+      technology_areas_count: details.technologyAreas ? details.technologyAreas.length : 0,
+      primary_technology_area: details.technologyAreas && details.technologyAreas.length > 0 ? (details.technologyAreas[0].name || details.technologyAreas[0]) : '',
+      tech_modernization_details: details.focusAreas ? details.focusAreas.map((area: any) => area.name || area).join(' | ') : '',
+      modernization_priorities: details.focusAreas ? details.focusAreas.map((area: any) => area.name || area) : [],
+      modernization_priority_count: details.focusAreas ? details.focusAreas.length : 0,
       
       // Keywords and descriptions
-      keywords_api_details_keywords: details.keywords ? (Array.isArray(details.keywords) ? details.keywords.join('; ') : details.keywords) : '',
-      keywords_count_calculated_count_of_semicolon_separated_values: details.keywords ? (Array.isArray(details.keywords) ? details.keywords.length : details.keywords.split(';').length) : 0,
-      primary_keyword_derived_first_keyword_before_semicolon: details.keywords ? (Array.isArray(details.keywords) ? details.keywords[0] : details.keywords.split(';')[0]) : '',
+      keywords: details.keywords ? (Array.isArray(details.keywords) ? details.keywords : details.keywords.split(';')) : [],
+      keywords_count: details.keywords ? (Array.isArray(details.keywords) ? details.keywords.length : details.keywords.split(';').length) : 0,
+      primary_keyword: details.keywords ? (Array.isArray(details.keywords) ? details.keywords[0] : details.keywords.split(';')[0]) : '',
       
       // Security and ITAR
-      itar_controlled_api_details_itar_boolean_to_yes_no: details.itar ? 'Yes' : 'No',
-      requiresitar_derived_1_if_itar_is_yes_else_0: details.itar ? '1' : '0',
-      security_export_api_details_itar_duplicate: details.itar ? 'Yes' : 'No',
+      itar_controlled: details.itar ? 'Yes' : 'No',
+      requires_itar: details.itar || false,
+      security_export: details.itar ? 'Yes' : 'No',
       
       // Content descriptions
-      objective_api_details_objective_with_html_removed: details.objective ? this.cleanHtml(details.objective) : '',
-      objective_word_count_calculated_space_separated_word_count: details.objective ? details.objective.split(' ').length : 0,
-      key_requirements_api_details_objective_duplicate: details.objective ? this.cleanHtml(details.objective) : '',
-      description_api_details_description_with_html_removed: details.description ? this.cleanHtml(details.description) : '',
-      description_word_count_calculated_space_separated_word_count: details.description ? details.description.split(' ').length : 0,
-      description_length_calculated_character_count: details.description ? details.description.length : 0,
-      has_technical_details_derived_1_if_description_500_chars: details.description && details.description.length > 500 ? '1' : '0',
-      isxtech_text_analysis_xtech_mentioned_in_description: details.description && (details.description.includes('xTech') || details.description.includes('XTech')) ? 'Yes' : 'No',
-      is_xtech_text_analysis_xtech_keyword_search_duplicate: details.description && (details.description.includes('xTech') || details.description.includes('XTech')) ? 'Yes' : 'No',
-      prize_gating_derived_yes_if_xtech_detected: details.description && (details.description.includes('xTech') || details.description.includes('XTech')) ? 'Yes' : 'No',
+      objective: details.objective ? this.cleanHtml(details.objective) : '',
+      objective_word_count: details.objective ? details.objective.split(' ').length : 0,
+      key_requirements: details.objective ? this.cleanHtml(details.objective) : '',
+      description: details.description ? this.cleanHtml(details.description) : '',
+      description_word_count: details.description ? details.description.split(' ').length : 0,
+      description_length: details.description ? details.description.length : 0,
+      has_technical_details: details.description && details.description.length > 500,
+      is_xtech: details.description && (details.description.includes('xTech') || details.description.includes('XTech')),
+      is_xtech_analysis: details.description && (details.description.includes('xTech') || details.description.includes('XTech')),
+      prize_gating: details.description && (details.description.includes('xTech') || details.description.includes('XTech')) ? 'Yes' : 'No',
       
       // Phase descriptions
-      phase_i_description_api_details_phase1description_with_html_removed: details.phase1Description ? this.cleanHtml(details.phase1Description) : '',
-      phase_ii_description_api_details_phase2description_with_html_removed: details.phase2Description ? this.cleanHtml(details.phase2Description) : '',
-      phase_iii_dual_use_api_details_phase3description_with_html_removed: details.phase3Description ? this.cleanHtml(details.phase3Description) : '',
-      has_commercial_potential_derived_1_if_phase3description_exists: details.phase3Description ? '1' : '0',
+      phase_i_description: details.phase1Description ? this.cleanHtml(details.phase1Description) : '',
+      phase_ii_description: details.phase2Description ? this.cleanHtml(details.phase2Description) : '',
+      phase_iii_dual_use: details.phase3Description ? this.cleanHtml(details.phase3Description) : '',
+      has_commercial_potential: details.phase3Description ? true : false,
       
       // References
-      references_api_details_referencedocuments_array_formatted: details.referenceDocuments ? details.referenceDocuments.map((ref: any) => this.cleanHtml(ref.referenceTitle || '')).join('; ') : '',
-      reference_docs_api_details_referencedocuments_duplicate: details.referenceDocuments ? details.referenceDocuments.map((ref: any) => this.cleanHtml(ref.referenceTitle || '')).join('; ') : '',
-      reference_count_calculated_count_of_semicolon_separated_refs: details.referenceDocuments ? details.referenceDocuments.length : 0,
-      has_references_derived_1_if_references_exist: details.referenceDocuments && details.referenceDocuments.length > 0 ? '1' : '0',
+      references_data: details.referenceDocuments ? details.referenceDocuments.map((ref: any) => this.cleanHtml(ref.referenceTitle || '')) : [],
+      reference_docs: details.referenceDocuments ? details.referenceDocuments.map((ref: any) => this.cleanHtml(ref.referenceTitle || '')).join('; ') : '',
+      reference_count: details.referenceDocuments ? details.referenceDocuments.length : 0,
+      has_references: details.referenceDocuments && details.referenceDocuments.length > 0,
       
       // TPOC information
-      tpoc_api_topicmanagers_where_assignmenttypetpoc_names_joined: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').map((m: any) => m.name).join('; ') : '',
-      tpoc_names_api_topicmanagers_name_array: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').map((m: any) => m.name).join('; ') : '',
-      tpoc_emails_api_topicmanagers_email_array: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').map((m: any) => m.email).join('; ') : '',
-      tpoc_centers_api_topicmanagers_center_array: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').map((m: any) => m.center).join('; ') : '',
-      tpoc_count_calculated_number_of_tpocs: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').length : 0,
+      tpoc_names: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').map((m: any) => m.name).join('; ') : '',
+      tpoc_emails: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').map((m: any) => m.email).join('; ') : '',
+      tpoc_centers: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').map((m: any) => m.center).join('; ') : '',
+      tpoc_count: topic.topicManagers ? topic.topicManagers.filter((m: any) => m.assignmentType === 'TPOC').length : 0,
       has_tpoc_derived_1_if_tpoc_exists: topic.topicManagers && topic.topicManagers.some((m: any) => m.assignmentType === 'TPOC') ? '1' : '0',
-      show_tpoc_api_showtpoc_boolean: topic.showTpoc ? 'Yes' : 'No',
+      show_tpoc: topic.showTpoc || false,
       
       // Additional fields
-      owner_api_owner_field: topic.owner || '',
-      internal_lead_api_internallead_field: topic.internalLead || '',
-      sponsor_component_api_sponsorcomponent_or_component_fallback: topic.sponsorComponent || topic.component || '',
-      selection_criteria_api_selectioncriteria: topic.selectionCriteria || '',
-      historical_awards_api_historicalawards: topic.historicalAwards || '',
-      previous_awards_count_api_previousawardscount: topic.previousAwardsCount || '',
-      success_rate_api_successrate: topic.successRate || '',
-      year_system_current_year: new Date().getFullYear(),
-      program_year_api_programyear: topic.programYear || '',
-      baa_preface_upload_id_api_baaprefaceuploadid: topic.baaPrefaceUploadId || '',
-      baa_preface_title_api_baaprefaceuploadtitle: topic.baaPrefaceUploadTitle || '',
-      is_release_preface_api_isreleasepreface_boolean: topic.isReleasePreface ? 'Yes' : 'No',
-      is_active_api_isactive_boolean: topic.isActive ? 'Yes' : 'No',
-      is_archived_api_isarchived_boolean: topic.isArchived ? 'Yes' : 'No',
-      is_draft_api_isdraft_boolean: topic.isDraft ? 'Yes' : 'No',
-      is_published_api_ispublished_boolean: topic.isPublished ? 'Yes' : 'No',
-      allow_proposal_submission_api_allowproposalsubmission_boolean: topic.allowProposalSubmission ? 'Yes' : 'No',
-      is_open_for_submission_derived_1_if_topicstatus_is_open: topic.topicStatus === 'Open' ? '1' : '0',
+      owner: topic.owner || '',
+      internal_lead: topic.internalLead || '',
+      sponsor_component: topic.sponsorComponent || topic.component || '',
+      selection_criteria: topic.selectionCriteria || '',
+      historical_awards: topic.historicalAwards || '',
+      previous_awards_count: topic.previousAwardsCount || '',
+      success_rate: topic.successRate || '',
+      program_year: topic.programYear || '',
+      baa_preface_upload_id: topic.baaPrefaceUploadId || '',
+      baa_preface_title: topic.baaPrefaceUploadTitle || '',
+      is_release_preface: topic.isReleasePreface || false,
+      is_active: topic.isActive || false,
+      is_archived: topic.isArchived || false,
+      is_draft: topic.isDraft || false,
+      is_published: topic.isPublished || false,
+      allow_proposal_submission: topic.allowProposalSubmission || false,
+      is_open_for_submission: topic.topicStatus === 'Open',
       
       // System fields
-      last_scraped_sys_current_timestamp_eastern: new Date().toISOString(),
-      record_id_generated_topiccode_topicid_first_8_chars: `${topic.topicCode}_${topic.topicId ? topic.topicId.toString().substring(0, 8) : ''}`,
-      unique_id_generated_cyclename_topiccode: `${topic.cycleName || ''}_${topic.topicCode || ''}`,
-      tracking_number_api_trackingnumber_if_exists: topic.trackingNumber || '',
-      version_api_version_or_default_1: topic.version || '1'
+      last_activity_date: new Date().toISOString(),
+      record_id: `${topic.topicCode}_${topic.topicId ? topic.topicId.toString().substring(0, 8) : ''}`,
+      unique_id: `${topic.cycleName || ''}_${topic.topicCode || ''}`,
+      tracking_number: topic.trackingNumber || '',
+      version: topic.version || '1'
     };
   }
 

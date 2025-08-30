@@ -242,7 +242,7 @@ async function simulateQuickCheck(jobId: string) {
     // Simulate finding a new opportunity
     if (i === 5) {
       const newOpportunity = {
-        topic_id_topicid: `test_opportunity_${Date.now()}`,
+        topic_id: 999999,
         title: `Test Opportunity ${Date.now()}`,
         component: 'ARMY',
         solicitation: 'Test Solicitation',
@@ -292,7 +292,7 @@ async function simulateFullRefresh(jobId: string) {
     // Simulate finding opportunities
     if (i % 10 === 0) {
       const newOpportunity = {
-        topic_id_topicid: `full_refresh_${Date.now()}_${i}`,
+        topic_id: 1000000 + i,
         title: `Full Refresh Opportunity ${i}`,
         component: 'ARMY',
         solicitation: 'Full Refresh Test',

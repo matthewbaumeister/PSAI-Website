@@ -47,9 +47,9 @@ export async function GET(request: NextRequest) {
     // Get some sample active opportunities for display
     const { data: sampleOpportunities, error: sampleError } = await supabase
       .from('dsip_opportunities')
-      .select('topic_id_topicid, title, component, solicitation, last_scraped_sys_current_timestamp_eastern')
-      .gte('last_scraped_sys_current_timestamp_eastern', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
-      .order('last_scraped_sys_current_timestamp_eastern', { ascending: false })
+              .select('topic_id, title, component, solicitation, last_activity_date')
+              .gte('last_activity_date', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString())
+        .order('last_activity_date', { ascending: false })
       .limit(5);
     
     if (sampleError) {
