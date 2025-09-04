@@ -2419,6 +2419,350 @@ body::after {
   color: white;
 }
 
+/* Featured Article Styles */
+.featured-article {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  margin-bottom: 4rem;
+  overflow: hidden;
+}
+
+.article-header {
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(45, 91, 255, 0.1) 0%, rgba(154, 242, 58, 0.1) 100%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.article-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.article-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: white;
+  line-height: 1.2;
+}
+
+.article-meta {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.article-meta span {
+  color: #B8B8B8;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.article-meta .author {
+  color: #9AF23A;
+  font-weight: 600;
+}
+
+.article-excerpt {
+  font-size: 1.25rem;
+  color: #B8B8B8;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.article-content {
+  padding: 0;
+}
+
+.article-body {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.article-body h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 3rem 0 1.5rem 0;
+  color: white;
+  border-bottom: 2px solid rgba(45, 91, 255, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.article-body h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  color: #9AF23A;
+}
+
+.article-body p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: #E0E0E0;
+}
+
+.article-body .lead {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: white;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(45, 91, 255, 0.05);
+  border-left: 4px solid #2D5BFF;
+  border-radius: 0 8px 8px 0;
+}
+
+.article-body blockquote {
+  background: rgba(154, 242, 58, 0.05);
+  border-left: 4px solid #9AF23A;
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #E0E0E0;
+}
+
+.article-body blockquote p {
+  margin: 0;
+  font-size: 1.125rem;
+}
+
+/* Requirements List */
+.requirements-list {
+  display: grid;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.requirement-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.requirement-item:hover {
+  transform: translateY(-2px);
+}
+
+.requirement-item h4 {
+  color: #2D5BFF;
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+}
+
+.requirement-item p {
+  margin: 0;
+  font-size: 1rem;
+  color: #B8B8B8;
+}
+
+/* Highlight Box */
+.highlight-box {
+  background: rgba(255, 122, 41, 0.1);
+  border: 1px solid rgba(255, 122, 41, 0.3);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.highlight-box h4 {
+  color: #FF7A29;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.highlight-box ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.highlight-box li {
+  margin-bottom: 0.75rem;
+  color: #E0E0E0;
+}
+
+/* Funding Comparison */
+.funding-comparison {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.funding-option {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.funding-option:hover {
+  transform: translateY(-3px);
+}
+
+.funding-option h4 {
+  color: #9AF23A;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.funding-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.funding-details .ratio {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2D5BFF;
+}
+
+.funding-details .amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #9AF23A;
+}
+
+.funding-details .breakdown {
+  font-size: 0.875rem;
+  color: #B8B8B8;
+}
+
+/* Success Strategies */
+.success-strategies {
+  background: rgba(45, 91, 255, 0.05);
+  border: 1px solid rgba(45, 91, 255, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.success-strategies h4 {
+  color: #2D5BFF;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+}
+
+.success-strategies ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.success-strategies li {
+  margin-bottom: 1rem;
+  color: #E0E0E0;
+  line-height: 1.6;
+}
+
+/* Contact Info */
+.contact-info {
+  background: rgba(154, 242, 58, 0.05);
+  border: 1px solid rgba(154, 242, 58, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+}
+
+.contact-info h4 {
+  color: #9AF23A;
+  margin-bottom: 1rem;
+  font-size: 1.125rem;
+}
+
+.contact-info ul {
+  margin: 0 0 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.contact-info li {
+  margin-bottom: 0.5rem;
+  color: #E0E0E0;
+}
+
+/* Article Footer */
+.article-footer {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.article-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.article-tags .tag {
+  background: rgba(45, 91, 255, 0.2);
+  color: #2D5BFF;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(45, 91, 255, 0.3);
+}
+
+.article-meta-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.article-meta-footer p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #B8B8B8;
+}
+
+/* Responsive Design for Article */
+@media (max-width: 768px) {
+  .article-header h2 {
+    font-size: 2rem;
+  }
+  
+  .article-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .article-body {
+    padding: 2rem 1rem;
+  }
+  
+  .article-body h3 {
+    font-size: 1.5rem;
+  }
+  
+  .funding-comparison {
+    grid-template-columns: 1fr;
+  }
+  
+  .article-meta-footer {
+    flex-direction: column;
+  }
+}
+
 .publications-page .page-header {
   text-align: center;
   margin-bottom: 4rem;
