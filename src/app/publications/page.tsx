@@ -2,48 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import type { Metadata } from 'next'
-
-// Publication data structure
-interface Publication {
-  id: string
-  title: string
-  author: string
-  date: string
-  readTime: string
-  excerpt: string
-  tags: string[]
-  category: string
-  featured: boolean
-  content: string
-}
-
-// Sample publications data
-const publications: Publication[] = [
-  {
-    id: '1',
-    title: 'Complete Guide to Small Business Federal Contracting: From Formation to Award 2024-2025',
-    author: 'MB',
-    date: 'January 2025',
-    readTime: '25 min read',
-    excerpt: 'Comprehensive roadmap for companies with no government contracting experience to pursue small business set-aside contracts across all federal agencies.',
-    tags: ['Federal Contracting', 'Small Business', 'SAM.gov', 'CAGE Code', 'Set-Asides', '8(a)', 'HUBZone', 'WOSB', 'VOSB', 'GSA Schedule'],
-    category: 'Research & Insights',
-    featured: true,
-    content: 'full-content-here'
-  },
-  {
-    id: '2',
-    title: 'Air Force and Space Force Extend Critical STRATFI/TACFI Bridge Funding Deadline to October 2025',
-    author: 'MB',
-    date: 'January 2025',
-    readTime: '15 min read',
-    excerpt: 'Historic funding levels and extended deadlines signal unprecedented commitment to closing the valley of death for small defense contractors.',
-    tags: ['STRATFI', 'TACFI', 'SBIR', 'Defense Innovation', 'Government Contracting', 'AFWERX', 'SpaceWERX'],
-    category: 'Funding Opportunities',
-    featured: false,
-    content: 'full-content-here'
-  }
-]
+import { publications, type Publication } from '@/data/publications'
 
 export default function PublicationsPage() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -51,6 +10,43 @@ export default function PublicationsPage() {
   const [selectedTag, setSelectedTag] = useState('All')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [sortBy, setSortBy] = useState<'date' | 'title' | 'readTime'>('date')
+  const [selectedPublication, setSelectedPublication] = useState<Publication | null>(null)
+
+  // Button handlers
+  const handleReadMore = (publication: Publication) => {
+    setSelectedPublication(publication)
+    // Scroll to top of page
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleShare = async (publication: Publication) => {
+    const shareData = {
+      title: publication.title,
+      text: publication.excerpt,
+      url: window.location.href
+    }
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData)
+      } catch (err) {
+        console.log('Error sharing:', err)
+      }
+    } else {
+      // Fallback: copy to clipboard
+      const shareText = `${publication.title}\n\n${publication.excerpt}\n\nRead more: ${window.location.href}`
+      try {
+        await navigator.clipboard.writeText(shareText)
+        alert('Publication link copied to clipboard!')
+      } catch (err) {
+        console.log('Error copying to clipboard:', err)
+      }
+    }
+  }
+
+  const closePublication = () => {
+    setSelectedPublication(null)
+  }
 
   // Get unique categories and tags
   const categories = ['All', ...Array.from(new Set(publications.map(pub => pub.category)))]
@@ -208,6 +204,56 @@ export default function PublicationsPage() {
                   <span key={tag} className="tag">{tag}</span>
                 ))}
               </div>
+              <div className="featured-actions">
+                <button 
+                  className="read-more-btn"
+                  onClick={() => handleReadMore(featuredPublication)}
+                >
+                  Read Full Article
+                </button>
+                <button 
+                  className="share-btn"
+                  onClick={() => handleShare(featuredPublication)}
+                >
+                  Share
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Publication Modal/Overlay */}
+        {selectedPublication && (
+          <div className="publication-modal">
+            <div className="modal-overlay" onClick={closePublication}></div>
+            <div className="modal-content">
+              <div className="modal-header">
+                <h2>{selectedPublication.title}</h2>
+                <button className="close-btn" onClick={closePublication}>×</button>
+              </div>
+              <div className="modal-body">
+                <div className="modal-meta">
+                  <span className="author">By {selectedPublication.author}</span>
+                  <span className="date">{selectedPublication.date}</span>
+                  <span className="read-time">{selectedPublication.readTime}</span>
+                </div>
+                <div className="modal-tags">
+                  {selectedPublication.tags.map(tag => (
+                    <span key={tag} className="tag">{tag}</span>
+                  ))}
+                </div>
+                <div className="modal-excerpt">
+                  <p>{selectedPublication.excerpt}</p>
+                </div>
+                <div className="modal-actions">
+                  <button 
+                    className="share-btn"
+                    onClick={() => handleShare(selectedPublication)}
+                  >
+                    Share This Article
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         )}
@@ -240,8 +286,18 @@ export default function PublicationsPage() {
                 </div>
                 
                 <div className="publication-actions">
-                  <button className="read-more-btn">Read More</button>
-                  <button className="share-btn">Share</button>
+                  <button 
+                    className="read-more-btn"
+                    onClick={() => handleReadMore(publication)}
+                  >
+                    Read More
+                  </button>
+                  <button 
+                    className="share-btn"
+                    onClick={() => handleShare(publication)}
+                  >
+                    Share
+                  </button>
                 </div>
               </div>
             ))}
