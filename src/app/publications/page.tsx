@@ -242,9 +242,10 @@ export default function PublicationsPage() {
                     <span key={tag} className="tag">{tag}</span>
                   ))}
                 </div>
-                <div className="modal-excerpt">
-                  <p>{selectedPublication.excerpt}</p>
-                </div>
+                <div 
+                  className="modal-content-body"
+                  dangerouslySetInnerHTML={{ __html: selectedPublication.content }}
+                />
                 <div className="modal-actions">
                   <button 
                     className="share-btn"

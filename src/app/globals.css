@@ -3212,14 +3212,70 @@ body::after {
   border: 1px solid rgba(45, 91, 255, 0.3);
 }
 
-.modal-excerpt {
+.modal-content-body {
   margin-bottom: 2rem;
-}
-
-.modal-excerpt p {
   color: #E0E0E0;
   line-height: 1.6;
-  font-size: 1.125rem;
+  font-size: 1rem;
+}
+
+.modal-content-body h2 {
+  color: #9AF23A;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem 0;
+  border-bottom: 2px solid rgba(154, 242, 58, 0.3);
+  padding-bottom: 0.5rem;
+}
+
+.modal-content-body h3 {
+  color: #2D5BFF;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.75rem 0;
+}
+
+.modal-content-body p {
+  margin-bottom: 1rem;
+  color: #E0E0E0;
+}
+
+.modal-content-body ul, .modal-content-body ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.modal-content-body li {
+  margin-bottom: 0.5rem;
+  color: #E0E0E0;
+}
+
+.modal-content-body strong {
+  color: #9AF23A;
+  font-weight: 600;
+}
+
+.modal-content-body a {
+  color: #2D5BFF;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(45, 91, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.modal-content-body a:hover {
+  color: #5B7FFF;
+  border-bottom-color: rgba(91, 127, 255, 0.6);
+}
+
+.modal-content-body blockquote {
+  border-left: 4px solid #2D5BFF;
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: #B8B8B8;
+  background: rgba(45, 91, 255, 0.05);
+  padding: 1rem 1.5rem;
+  border-radius: 0 8px 8px 0;
 }
 
 .modal-actions {
