@@ -48,20 +48,57 @@ export default function PublicationsPage() {
     setSelectedPublication(null)
   }
 
-  // Get unique categories and tags
-  const categories = ['All', ...Array.from(new Set(publications.map(pub => pub.category)))]
-  const allTags = Array.from(new Set(publications.flatMap(pub => pub.tags)))
-  const tags = ['All', ...allTags]
-
   // Check if we're in search mode
   const isSearchMode = searchTerm.trim() !== '' || selectedCategory !== 'All' || selectedTag !== 'All'
+
+  // Get available categories and tags based on current filters (cascading)
+  const availableCategories = useMemo(() => {
+    let filtered = publications
+    
+    // Apply search filter first
+    if (searchTerm.trim() !== '') {
+      filtered = filtered.filter(pub => 
+        pub.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        pub.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        pub.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      )
+    }
+    
+    // Apply tag filter if selected
+    if (selectedTag !== 'All') {
+      filtered = filtered.filter(pub => pub.tags.includes(selectedTag))
+    }
+    
+    return ['All', ...Array.from(new Set(filtered.map(pub => pub.category)))]
+  }, [searchTerm, selectedTag])
+
+  const availableTags = useMemo(() => {
+    let filtered = publications
+    
+    // Apply search filter first
+    if (searchTerm.trim() !== '') {
+      filtered = filtered.filter(pub => 
+        pub.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        pub.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        pub.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      )
+    }
+    
+    // Apply category filter if selected
+    if (selectedCategory !== 'All') {
+      filtered = filtered.filter(pub => pub.category === selectedCategory)
+    }
+    
+    return ['All', ...Array.from(new Set(filtered.flatMap(pub => pub.tags)))]
+  }, [searchTerm, selectedCategory])
 
   // Filter and sort publications
   const filteredPublications = useMemo(() => {
     let filtered = publications.filter(pub => {
-      const matchesSearch = pub.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           pub.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           pub.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
+      const matchesSearch = searchTerm.trim() === '' || 
+        pub.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        pub.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        pub.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
       
       const matchesCategory = selectedCategory === 'All' || pub.category === selectedCategory
       const matchesTag = selectedTag === 'All' || pub.tags.includes(selectedTag)
@@ -112,7 +149,11 @@ export default function PublicationsPage() {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-input"
               />
-              <div className="search-icon">🔍</div>
+              <div className="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
             </div>
           </div>
           
@@ -121,11 +162,19 @@ export default function PublicationsPage() {
               <label>Category:</label>
               <select 
                 value={selectedCategory} 
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={(e) => {
+                  setSelectedCategory(e.target.value)
+                  // Reset tag filter if current tag is not available in new category
+                  if (e.target.value !== 'All' && !availableTags.includes(selectedTag)) {
+                    setSelectedTag('All')
+                  }
+                }}
                 className="filter-select"
               >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+                {availableCategories.map(category => (
+                  <option key={category} value={category}>
+                    {category} {category !== 'All' && `(${publications.filter(pub => pub.category === category).length})`}
+                  </option>
                 ))}
               </select>
             </div>
@@ -134,11 +183,19 @@ export default function PublicationsPage() {
               <label>Tag:</label>
               <select 
                 value={selectedTag} 
-                onChange={(e) => setSelectedTag(e.target.value)}
+                onChange={(e) => {
+                  setSelectedTag(e.target.value)
+                  // Reset category filter if current category is not available with new tag
+                  if (e.target.value !== 'All' && !availableCategories.includes(selectedCategory)) {
+                    setSelectedCategory('All')
+                  }
+                }}
                 className="filter-select"
               >
-                {tags.map(tag => (
-                  <option key={tag} value={tag}>{tag}</option>
+                {availableTags.map(tag => (
+                  <option key={tag} value={tag}>
+                    {tag} {tag !== 'All' && `(${publications.filter(pub => pub.tags.includes(tag)).length})`}
+                  </option>
                 ))}
               </select>
             </div>
@@ -175,7 +232,16 @@ export default function PublicationsPage() {
 
         {/* Results Summary */}
         <div className="results-summary">
-          <p>Showing {filteredPublications.length} of {publications.length} publications</p>
+          <div className="results-info">
+            <p>Showing {filteredPublications.length} of {publications.length} publications</p>
+            {(searchTerm || selectedCategory !== 'All' || selectedTag !== 'All') && (
+              <div className="active-filters">
+                {searchTerm && <span className="filter-tag">Search: "{searchTerm}"</span>}
+                {selectedCategory !== 'All' && <span className="filter-tag">Category: {selectedCategory}</span>}
+                {selectedTag !== 'All' && <span className="filter-tag">Tag: {selectedTag}</span>}
+              </div>
+            )}
+          </div>
           {(searchTerm || selectedCategory !== 'All' || selectedTag !== 'All') && (
             <button 
               className="clear-filters"
@@ -185,7 +251,7 @@ export default function PublicationsPage() {
                 setSelectedTag('All')
               }}
             >
-              Clear Filters
+              Clear All Filters
             </button>
           )}
         </div>
