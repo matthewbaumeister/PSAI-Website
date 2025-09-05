@@ -279,8 +279,10 @@ export default function PublicationsPage() {
             {regularPublications.map(publication => (
               <div key={publication.id} className="publication-card">
                 <div className="publication-header">
-                  <div className="publication-category">{publication.category}</div>
-                  {publication.featured && <div className="featured-badge">Featured</div>}
+                  <div className="publication-badges">
+                    <div className="publication-category">{publication.category}</div>
+                    {publication.featured && <div className="featured-badge">Featured</div>}
+                  </div>
                   <div className="publication-meta">
                     <span className="author">By {publication.author}</span>
                     <span className="date">{publication.date}</span>

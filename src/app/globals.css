@@ -2942,6 +2942,8 @@ body::after {
   padding: 2rem;
   transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .publication-card:hover {
@@ -2952,9 +2954,16 @@ body::after {
 
 .publication-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.75rem;
   margin-bottom: 1rem;
+}
+
+.publication-badges {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .publication-category {
@@ -2971,6 +2980,7 @@ body::after {
   gap: 1rem;
   font-size: 0.875rem;
   color: #B8B8B8;
+  margin-left: auto;
 }
 
 .publication-meta .author {
@@ -3352,17 +3362,32 @@ body::after {
   }
   
   .publications-list .publication-header {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    gap: 0.75rem;
   }
   
   .publications-list .publication-meta {
     flex-direction: row;
+    margin-left: 0;
+    justify-content: flex-start;
   }
   
   .publications-list .publication-actions {
     flex-direction: row;
+  }
+  
+  .publication-header {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .publication-meta {
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+  
+  .publication-badges {
+    justify-content: flex-start;
   }
   
   .publication-modal {
@@ -3388,6 +3413,15 @@ body::after {
   .featured-actions {
     flex-direction: column;
     align-items: center;
+  }
+  
+  .featured-section-header {
+    margin: 2rem 0 1.5rem 0;
+    padding: 1.5rem;
+  }
+  
+  .featured-section-header h2 {
+    font-size: 1.5rem;
   }
 }
 
