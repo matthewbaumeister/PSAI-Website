@@ -21,8 +21,8 @@ export default function PublicationsPage() {
 
   const handleShare = async (publication: Publication) => {
     const shareData = {
-      title: publication.title,
-      text: publication.excerpt,
+      title: `${publication.title} - Prop Shop AI`,
+      text: `${publication.excerpt}\n\nFrom Prop Shop AI - Procurement Intelligence Platform`,
       url: window.location.href
     }
 
@@ -34,7 +34,7 @@ export default function PublicationsPage() {
       }
     } else {
       // Fallback: copy to clipboard
-      const shareText = `${publication.title}\n\n${publication.excerpt}\n\nRead more: ${window.location.href}`
+      const shareText = `${publication.title} - Prop Shop AI\n\n${publication.excerpt}\n\nRead more: ${window.location.href}\n\nFrom Prop Shop AI - Procurement Intelligence Platform`
       try {
         await navigator.clipboard.writeText(shareText)
         alert('Publication link copied to clipboard!')
