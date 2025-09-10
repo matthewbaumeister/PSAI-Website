@@ -56,6 +56,11 @@ export default function AdminDashboard() {
   const [isCheckingActive, setIsCheckingActive] = useState(false)
   const [activeOpportunitiesCount, setActiveOpportunitiesCount] = useState<number | null>(null)
 
+  // SBIR Database state
+  const [sbirStats, setSbirStats] = useState<any>(null)
+  const [sbirScraperStatus, setSbirScraperStatus] = useState<'idle' | 'running'>('idle')
+  const [isLoadingSbirStats, setIsLoadingSbirStats] = useState(false)
+
   // Check if user is admin
   useEffect(() => {
     if (!isLoading && (!user || !user.isAdmin)) {
@@ -71,6 +76,8 @@ export default function AdminDashboard() {
       loadStats()
       // Initialize scraper status
       checkScraperStatus()
+      // Load SBIR stats
+      loadSbirStats()
     }
   }, [user])
 
@@ -551,6 +558,70 @@ export default function AdminDashboard() {
     return () => clearInterval(interval)
   }
 
+  // SBIR Database functions
+  const loadSbirStats = async () => {
+    setIsLoadingSbirStats(true)
+    try {
+      const response = await fetch('/api/admin/sbir/stats')
+      if (response.ok) {
+        const data = await response.json()
+        setSbirStats(data)
+      }
+    } catch (error) {
+      console.error('Error loading SBIR stats:', error)
+    } finally {
+      setIsLoadingSbirStats(false)
+    }
+  }
+
+  const checkSbirScraperStatus = async () => {
+    try {
+      const response = await fetch('/api/admin/sbir/scraper', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'check_status' })
+      })
+      if (response.ok) {
+        const data = await response.json()
+        setSbirScraperStatus(data.status)
+      }
+    } catch (error) {
+      console.error('Error checking SBIR scraper status:', error)
+    }
+  }
+
+  const startSbirScraper = async () => {
+    try {
+      setMessage('🚀 Starting SBIR database scraper...')
+      setMessageType('success')
+      
+      const response = await fetch('/api/admin/sbir/scraper', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'start_scraper' })
+      })
+      
+      if (response.ok) {
+        const data = await response.json()
+        if (data.success) {
+          setMessage(`✅ SBIR scraper completed! Processed ${data.processed} records.`)
+          setMessageType('success')
+          loadSbirStats()
+        } else {
+          setMessage('❌ SBIR scraper failed: ' + data.error)
+          setMessageType('error')
+        }
+      } else {
+        setMessage('❌ Failed to start SBIR scraper')
+        setMessageType('error')
+      }
+    } catch (error) {
+      console.error('Error starting SBIR scraper:', error)
+      setMessage('❌ Error starting SBIR scraper')
+      setMessageType('error')
+    }
+  }
+
   if (isLoading) {
     return (
       <div style={{
@@ -695,7 +766,7 @@ export default function AdminDashboard() {
         {/* System Statistics */}
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(4, 1fr)',
           gap: '24px',
           marginBottom: '48px'
         }}>
@@ -879,7 +950,7 @@ export default function AdminDashboard() {
           border: '1px solid rgba(148, 163, 184, 0.2)',
           borderRadius: '20px',
           padding: '32px',
-          marginBottom: '48px'
+          marginBottom: '32px'
         }}>
           <h2 style={{
             fontSize: '28px',
@@ -891,8 +962,8 @@ export default function AdminDashboard() {
           </h2>
           <form onSubmit={handleInvite} style={{
             display: 'flex',
-            gap: '16px',
-            alignItems: 'flex-end'
+            gap: '20px',
+            alignItems: 'flex-start'
           }}>
             <div style={{ flex: 1 }}>
               <label style={{
@@ -930,37 +1001,39 @@ export default function AdminDashboard() {
                 }}
               />
             </div>
-            <button
-              type="submit"
-              disabled={isInviting}
-              style={{
-                padding: '16px 32px',
-                background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
-                border: 'none',
-                borderRadius: '12px',
-                color: '#ffffff',
-                fontSize: '16px',
-                fontWeight: '600',
-                cursor: isInviting ? 'not-allowed' : 'pointer',
-                transition: 'all 0.2s ease',
-                opacity: isInviting ? 0.6 : 1,
-                minWidth: '140px'
-              }}
-              onMouseEnter={(e) => {
-                if (!isInviting) {
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.3)'
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!isInviting) {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow = 'none'
-                }
-              }}
-            >
-              {isInviting ? 'Sending...' : 'Send Invitation'}
-            </button>
+            <div style={{ marginTop: '24px' }}>
+              <button
+                type="submit"
+                disabled={isInviting}
+                style={{
+                  padding: '16px 32px',
+                  background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
+                  border: 'none',
+                  borderRadius: '12px',
+                  color: '#ffffff',
+                  fontSize: '16px',
+                  fontWeight: '600',
+                  cursor: isInviting ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease',
+                  opacity: isInviting ? 0.6 : 1,
+                  minWidth: '140px'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isInviting) {
+                    e.currentTarget.style.transform = 'translateY(-2px)'
+                    e.currentTarget.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.3)'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isInviting) {
+                    e.currentTarget.style.transform = 'translateY(0)'
+                    e.currentTarget.style.boxShadow = 'none'
+                  }
+                }}
+              >
+                {isInviting ? 'Sending...' : 'Send Invitation'}
+              </button>
+            </div>
           </form>
         </div>
 
@@ -971,7 +1044,7 @@ export default function AdminDashboard() {
           border: '1px solid rgba(148, 163, 184, 0.2)',
           borderRadius: '20px',
           padding: '32px',
-          marginBottom: '48px'
+          marginBottom: '32px'
         }}>
           <div style={{
             display: 'flex',
@@ -1217,7 +1290,8 @@ export default function AdminDashboard() {
           backdropFilter: 'blur(20px)',
           border: '1px solid rgba(148, 163, 184, 0.2)',
           borderRadius: '20px',
-          padding: '32px'
+          padding: '32px',
+          marginBottom: '32px'
         }}>
           <div style={{
             display: 'flex',
@@ -1404,7 +1478,7 @@ export default function AdminDashboard() {
           border: '1px solid rgba(148, 163, 184, 0.2)',
           borderRadius: '20px',
           padding: '32px',
-          marginBottom: '48px'
+          marginBottom: '32px'
         }}>
           <div style={{
             display: 'flex',
@@ -2002,6 +2076,193 @@ export default function AdminDashboard() {
               }}>
                 Export Results
               </span>
+            </div>
+          </div>
+
+          {/* SBIR Database Management Section */}
+          <div style={{
+            background: 'rgba(15, 23, 42, 0.4)',
+            borderRadius: '12px',
+            padding: '24px',
+            border: '1px solid rgba(148, 163, 184, 0.1)',
+            marginTop: '24px'
+          }}>
+            <h3 style={{
+              fontSize: '18px',
+              fontWeight: '600',
+              color: '#ffffff',
+              margin: '0 0 16px 0',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}>
+              🗄️ SBIR Database Management
+            </h3>
+            <p style={{
+              color: '#cbd5e1',
+              fontSize: '14px',
+              lineHeight: '1.6',
+              margin: '0 0 20px 0'
+            }}>
+              Manage the complete DoD SBIR/STTR database with automated daily updates, 
+              search functionality, and data management tools.
+            </p>
+
+            {/* SBIR Stats */}
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: '16px',
+              marginBottom: '24px'
+            }}>
+              <div style={{
+                background: 'rgba(34, 197, 94, 0.1)',
+                borderRadius: '8px',
+                padding: '16px',
+                border: '1px solid rgba(34, 197, 94, 0.2)'
+              }}>
+                <div style={{ color: '#22c55e', fontSize: '24px', fontWeight: 'bold' }}>
+                  {sbirStats?.totalRecords?.toLocaleString() || '0'}
+                </div>
+                <div style={{ color: '#86efac', fontSize: '12px' }}>Total Records</div>
+              </div>
+              <div style={{
+                background: 'rgba(59, 130, 246, 0.1)',
+                borderRadius: '8px',
+                padding: '16px',
+                border: '1px solid rgba(59, 130, 246, 0.2)'
+              }}>
+                <div style={{ color: '#3b82f6', fontSize: '24px', fontWeight: 'bold' }}>
+                  {sbirStats?.recentRecords?.toLocaleString() || '0'}
+                </div>
+                <div style={{ color: '#93c5fd', fontSize: '12px' }}>Recent Updates</div>
+              </div>
+              <div style={{
+                background: 'rgba(139, 92, 246, 0.1)',
+                borderRadius: '8px',
+                padding: '16px',
+                border: '1px solid rgba(139, 92, 246, 0.2)'
+              }}>
+                <div style={{ color: '#8b5cf6', fontSize: '24px', fontWeight: 'bold' }}>
+                  {sbirStats?.components?.[0]?.component || 'N/A'}
+                </div>
+                <div style={{ color: '#c4b5fd', fontSize: '12px' }}>Top Component</div>
+              </div>
+              <div style={{
+                background: 'rgba(245, 158, 11, 0.1)',
+                borderRadius: '8px',
+                padding: '16px',
+                border: '1px solid rgba(245, 158, 11, 0.2)'
+              }}>
+                <div style={{ color: '#f59e0b', fontSize: '24px', fontWeight: 'bold' }}>
+                  {sbirScraperStatus === 'running' ? 'Running' : 'Idle'}
+                </div>
+                <div style={{ color: '#fcd34d', fontSize: '12px' }}>Scraper Status</div>
+              </div>
+            </div>
+
+            {/* SBIR Controls */}
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              flexWrap: 'wrap',
+              marginBottom: '20px'
+            }}>
+              <button
+                onClick={startSbirScraper}
+                disabled={sbirScraperStatus === 'running'}
+                style={{
+                  padding: '12px 20px',
+                  background: sbirScraperStatus === 'running' 
+                    ? 'rgba(148, 163, 184, 0.3)' 
+                    : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  border: 'none',
+                  borderRadius: '8px',
+                  color: '#ffffff',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: sbirScraperStatus === 'running' ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease',
+                  boxShadow: sbirScraperStatus === 'running' ? 'none' : '0 4px 15px rgba(16, 185, 129, 0.3)'
+                }}
+              >
+                {sbirScraperStatus === 'running' ? '🔄 Running...' : '🚀 Start Daily Update'}
+              </button>
+
+              <button
+                onClick={checkSbirScraperStatus}
+                style={{
+                  padding: '12px 20px',
+                  background: 'rgba(59, 130, 246, 0.2)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                  borderRadius: '8px',
+                  color: '#93c5fd',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                🔍 Check Status
+              </button>
+
+              <button
+                onClick={() => router.push('/admin/sbir-management')}
+                style={{
+                  padding: '12px 20px',
+                  background: 'rgba(139, 92, 246, 0.2)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  borderRadius: '8px',
+                  color: '#c4b5fd',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                📊 View Database
+              </button>
+            </div>
+
+            {/* SBIR Info */}
+            <div style={{
+              background: 'rgba(0, 0, 0, 0.2)',
+              borderRadius: '8px',
+              padding: '16px',
+              border: '1px solid rgba(148, 163, 184, 0.1)'
+            }}>
+              <h4 style={{
+                color: '#ffffff',
+                fontSize: '14px',
+                fontWeight: '600',
+                margin: '0 0 8px 0'
+              }}>
+                Database Information
+              </h4>
+              <p style={{
+                color: '#cbd5e1',
+                fontSize: '12px',
+                lineHeight: '1.5',
+                margin: '0 0 8px 0'
+              }}>
+                • <strong>Total Records:</strong> {sbirStats?.totalRecords?.toLocaleString() || 'Loading...'} SBIR/STTR topics
+              </p>
+              <p style={{
+                color: '#cbd5e1',
+                fontSize: '12px',
+                lineHeight: '1.5',
+                margin: '0 0 8px 0'
+              }}>
+                • <strong>Last Updated:</strong> {sbirStats?.lastUpdated ? new Date(sbirStats.lastUpdated).toLocaleString() : 'Never'}
+              </p>
+              <p style={{
+                color: '#cbd5e1',
+                fontSize: '12px',
+                lineHeight: '1.5',
+                margin: '0'
+              }}>
+                • <strong>Auto-Update:</strong> Daily at 2:00 AM EST
+              </p>
             </div>
           </div>
         </div>
