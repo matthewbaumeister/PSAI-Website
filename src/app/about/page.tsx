@@ -29,17 +29,17 @@ export default function AboutPage() {
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">🏹</div>
+                <div className="feature-icon"></div>
                 <h3>Fighting for the Underdogs</h3>
                 <p>We champion small businesses, startups, and innovative companies</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">⚖️</div>
+                <div className="feature-icon"></div>
                 <h3>Leveling the Playing Field</h3>
                 <p>Democratizing access to government contracting opportunities</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🚀</div>
+                <div className="feature-icon"></div>
                 <h3>Innovation Over Connections</h3>
                 <p>Rewarding merit, capability, and innovation, not just relationships</p>
               </div>
@@ -99,19 +99,19 @@ export default function AboutPage() {
             </div>
             <div className="mission-principles">
               <div className="principle">
-                <h4>🏹 Merit Over Connections</h4>
+                <h4>Merit Over Connections</h4>
                 <p>We believe contracts should be won based on capability, not relationships</p>
               </div>
               <div className="principle">
-                <h4>⚖️ Fair Play for All</h4>
+                <h4>Fair Play for All</h4>
                 <p>Every company deserves equal access to government opportunities</p>
               </div>
               <div className="principle">
-                <h4>🚀 Innovation Wins</h4>
+                <h4>Innovation Wins</h4>
                 <p>We reward creativity and innovation over established advantages</p>
               </div>
               <div className="principle">
-                <h4>🤝 Power to the People</h4>
+                <h4>Power to the People</h4>
                 <p>Democratizing access to government contracting tools and intelligence</p>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function AboutPage() {
           <h2>How We're Supporting the Underdogs</h2>
           <div className="fighting-methods">
             <div className="method">
-              <div className="method-icon">🔍</div>
+              <div className="method-icon"></div>
               <h3>Democratizing Intelligence</h3>
               <p>
                 Established companies have teams of analysts and expensive market intelligence tools. We're making
@@ -130,7 +130,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="method">
-              <div className="method-icon">🤖</div>
+              <div className="method-icon"></div>
               <h3>AI-Powered Tools</h3>
               <p>
                 We're using artificial intelligence to give small companies the same capabilities that
@@ -138,7 +138,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="method">
-              <div className="method-icon">📊</div>
+              <div className="method-icon"></div>
               <h3>Proprietary Data Access</h3>
               <p>
                 We've built proprietary databases and search tools that give underdogs access to
@@ -146,7 +146,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="method">
-              <div className="method-icon">✍️</div>
+              <div className="method-icon"></div>
               <h3>Expert Writing Support</h3>
               <p>
                 Established companies have entire proposal departments. We're providing PhD-level writing
@@ -154,7 +154,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="method">
-              <div className="method-icon">🏢</div>
+              <div className="method-icon"></div>
               <h3>Small Business Focus</h3>
               <p>
                 We're specifically designed for small businesses, with tools and resources that
@@ -162,7 +162,7 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="method">
-              <div className="method-icon">👥</div>
+              <div className="method-icon"></div>
               <h3>Community Building</h3>
               <p>
                 We're building a community of underdogs who support each other, share knowledge,
@@ -214,19 +214,19 @@ export default function AboutPage() {
             </div>
             <div className="team-values">
               <div className="value">
-                <h4>🎯 Relentless Focus</h4>
+                <h4>Relentless Focus</h4>
                 <p>We're laser-focused on leveling the playing field for underdogs</p>
               </div>
               <div className="value">
-                <h4>💪 Unwavering Determination</h4>
+                <h4>Unwavering Determination</h4>
                 <p>We won't stop until every deserving company has a fair shot</p>
               </div>
               <div className="value">
-                <h4>🚀 Innovation First</h4>
+                <h4>Innovation First</h4>
                 <p>We use cutting-edge technology to solve age-old problems</p>
               </div>
               <div className="value">
-                <h4>🤝 Community Driven</h4>
+                <h4>Community Driven</h4>
                 <p>We succeed when our community of underdogs succeeds</p>
               </div>
             </div>
@@ -252,17 +252,17 @@ export default function AboutPage() {
             </div>
             <div className="rebellion-actions">
               <div className="action">
-                <h4>🏹 Arm Yourself</h4>
+                <h4>Arm Yourself</h4>
                 <p>Get access to the tools and intelligence you need to compete</p>
                 <a href="/contact" className="btn btn-primary">Get Started</a>
               </div>
               <div className="action">
-                <h4>🤝 Join the Community</h4>
+                <h4>Join the Community</h4>
                 <p>Connect with other companies working to succeed in government contracting</p>
                 <a href="/contact" className="btn btn-outline">Join Us</a>
               </div>
               <div className="action">
-                <h4>📚 Learn the Ropes</h4>
+                <h4>Learn the Ropes</h4>
                 <p>Master government contracting with our expert resources</p>
                 <a href="/resources" className="btn btn-outline">Learn More</a>
               </div>
