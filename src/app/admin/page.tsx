@@ -2080,13 +2080,16 @@ export default function AdminDashboard() {
           </div>
 
           {/* SBIR Database Management Section */}
-          <div style={{
-            background: 'rgba(15, 23, 42, 0.4)',
-            borderRadius: '12px',
-            padding: '24px',
-            border: '1px solid rgba(148, 163, 184, 0.1)',
-            marginTop: '24px'
-          }}>
+          <div 
+            id="sbir-management-section"
+            style={{
+              background: 'rgba(15, 23, 42, 0.4)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid rgba(148, 163, 184, 0.1)',
+              marginTop: '24px'
+            }}
+          >
             <h3 style={{
               fontSize: '18px',
               fontWeight: '600',
@@ -2207,7 +2210,12 @@ export default function AdminDashboard() {
               </button>
 
               <button
-                onClick={() => router.push('/admin/sbir-management')}
+                onClick={() => {
+                  const sbirSection = document.getElementById('sbir-management-section');
+                  if (sbirSection) {
+                    sbirSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 style={{
                   padding: '12px 20px',
                   background: 'rgba(139, 92, 246, 0.2)',
