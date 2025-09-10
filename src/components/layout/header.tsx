@@ -269,17 +269,20 @@ export function Header() {
 
         <div className="header-actions">
           <div className="action-buttons">
-            <Link href="/book-demo" className="btn btn-primary">Book Demo</Link>
             {!user && (
-              <Link href="/auth/login" className="btn btn-secondary">Sign In</Link>
+              <>
+                <Link href="/book-demo" className="btn btn-primary">Book Demo</Link>
+                <Link href="/auth/login" className="btn btn-secondary">Sign In</Link>
+              </>
             )}
           </div>
           
           {user && (
             <>
-              {/* PS.AI Platform Access Button */}
+              {/* PS.AI Platform Access Button with Glow Effect */}
               <button
                 onClick={() => router.push('/platform')}
+                className="platform-access-btn"
                 style={{
                   background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                   border: 'none',
@@ -290,19 +293,21 @@ export function Header() {
                   fontWeight: '600',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3)',
-                  marginRight: '16px'
+                  boxShadow: '0 4px 15px rgba(102, 126, 234, 0.3), 0 0 20px rgba(102, 126, 234, 0.2)',
+                  marginRight: '16px',
+                  position: 'relative',
+                  overflow: 'hidden'
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
+                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4), 0 0 30px rgba(102, 126, 234, 0.3)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3), 0 0 20px rgba(102, 126, 234, 0.2)';
                 }}
               >
-                🚀 PS.AI Platform Access
+                <span style={{ position: 'relative', zIndex: 1 }}>🚀 PS.AI Platform Access</span>
               </button>
               
               <div className="header-divider"></div>
