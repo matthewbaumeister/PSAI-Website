@@ -96,8 +96,7 @@ export async function POST(request: NextRequest) {
       .select('*')
       .single()
 
-    i
-    f (createError) {
+    if (createError) {
       console.error('Error creating invitation:', createError)
       return NextResponse.json(
         { error: 'Invitation creation failed', message: 'Failed to create admin invitation' },
