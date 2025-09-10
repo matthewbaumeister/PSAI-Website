@@ -546,11 +546,12 @@ body::after {
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain 8s ease-in-out infinite, platform-glow 2s ease-in-out infinite alternate;
   border-radius: 12px;
   z-index: -1;
   opacity: 0.3;
-  animation: platform-glow 2s ease-in-out infinite alternate;
 }
 
 .platform-access-btn::after {
@@ -560,7 +561,9 @@ body::after {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #0B1220 0%, #2D5BFF 25%, #9AF23A 50%, #FF7A29 75%, #0B1220 100%);
+  background-size: 400% 400%;
+  animation: color-chain 8s ease-in-out infinite;
   border-radius: 10px;
   z-index: -1;
   opacity: 0;
@@ -573,10 +576,10 @@ body::after {
 
 @keyframes platform-glow {
   0% {
-    box-shadow: 0 0 20px rgba(102, 126, 234, 0.3), 0 0 40px rgba(102, 126, 234, 0.1);
+    box-shadow: 0 0 20px rgba(45, 91, 255, 0.3), 0 0 40px rgba(45, 91, 255, 0.1);
   }
   100% {
-    box-shadow: 0 0 30px rgba(102, 126, 234, 0.5), 0 0 60px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 0 30px rgba(45, 91, 255, 0.5), 0 0 60px rgba(45, 91, 255, 0.2);
   }
 }
 
