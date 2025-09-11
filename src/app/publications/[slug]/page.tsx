@@ -227,13 +227,19 @@ export default function PublicationPage() {
               </ul>
               <div className="login-actions">
                 <button 
-                  onClick={() => router.push('/auth/login')}
+                  onClick={() => {
+                    localStorage.setItem('redirectAfterLogin', `/publications/${publication.slug}`)
+                    router.push('/auth/login')
+                  }}
                   className="btn btn-primary"
                 >
                   Login
                 </button>
                 <button 
-                  onClick={() => router.push('/auth/register')}
+                  onClick={() => {
+                    localStorage.setItem('redirectAfterLogin', `/publications/${publication.slug}`)
+                    router.push('/auth/register')
+                  }}
                   className="btn btn-outline"
                 >
                   Sign Up Free

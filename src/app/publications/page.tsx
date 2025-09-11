@@ -413,6 +413,7 @@ export default function PublicationsPage() {
                closePublication()
                // Check if user is logged in, if not redirect to login
                if (!user) {
+                 localStorage.setItem('redirectAfterLogin', `/publications/${selectedPublication.slug}`)
                  router.push('/auth/login')
                } else {
                  router.push(`/publications/${selectedPublication.slug}`)
@@ -460,6 +461,7 @@ export default function PublicationsPage() {
                             className="btn btn-primary"
                             onClick={() => {
                               closePublication()
+                              localStorage.setItem('redirectAfterLogin', `/publications/${selectedPublication.slug}`)
                               router.push('/auth/login')
                             }}
                           >
@@ -469,6 +471,7 @@ export default function PublicationsPage() {
                             className="btn btn-outline"
                             onClick={() => {
                               closePublication()
+                              localStorage.setItem('redirectAfterLogin', `/publications/${selectedPublication.slug}`)
                               router.push('/auth/signup')
                             }}
                           >
@@ -527,6 +530,7 @@ export default function PublicationsPage() {
                     className="read-more-btn"
                     onClick={() => {
                       if (!user) {
+                        localStorage.setItem('redirectAfterLogin', `/publications/${publication.slug}`)
                         router.push('/auth/login')
                       } else {
                         router.push(`/publications/${publication.slug}`)
