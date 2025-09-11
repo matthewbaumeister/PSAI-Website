@@ -675,12 +675,38 @@ export default function PublicationsPage() {
             <div className="info-card">
               <h4>Newsletter Subscription</h4>
               <p>Get our latest research and insights delivered directly to your inbox. Stay updated on market trends, regulatory changes, and strategic opportunities.</p>
-              <a href="/contact" className="btn btn-outline">Subscribe Now</a>
+              <button 
+                className="btn btn-outline"
+                onClick={() => {
+                  if (!user) {
+                    // Store the intended destination in localStorage
+                    localStorage.setItem('redirectAfterLogin', '/settings')
+                    router.push('/auth/login')
+                  } else {
+                    router.push('/settings')
+                  }
+                }}
+              >
+                Subscribe Now
+              </button>
             </div>
             <div className="info-card">
               <h4>Research Alerts</h4>
               <p>Receive notifications when new research reports, market analysis, and industry insights are published.</p>
-              <a href="/contact" className="btn btn-outline">Set Up Alerts</a>
+              <button 
+                className="btn btn-outline"
+                onClick={() => {
+                  if (!user) {
+                    // Store the intended destination in localStorage
+                    localStorage.setItem('redirectAfterLogin', '/settings')
+                    router.push('/auth/login')
+                  } else {
+                    router.push('/settings')
+                  }
+                }}
+              >
+                Set Up Alerts
+              </button>
             </div>
             <div className="info-card">
               <h4>Custom Research</h4>

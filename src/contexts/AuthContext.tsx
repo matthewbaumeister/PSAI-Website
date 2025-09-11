@@ -97,6 +97,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (response.ok) {
         const data = await response.json()
         setUser(data.user)
+        
+        // Check for redirect after login
+        const redirectPath = localStorage.getItem('redirectAfterLogin')
+        if (redirectPath) {
+          localStorage.removeItem('redirectAfterLogin')
+          window.location.href = redirectPath
+        }
+        
         return true
       } else {
         const errorData = await response.json()
