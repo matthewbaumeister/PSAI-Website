@@ -16,7 +16,6 @@ export default function PublicationsPage() {
   const [selectedTag, setSelectedTag] = useState('All')
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
   const [sortBy, setSortBy] = useState<'date' | 'title' | 'readTime'>('date')
-  const [selectedPublication, setSelectedPublication] = useState<Publication | null>(null)
 
   // Button handlers
 
@@ -45,9 +44,6 @@ export default function PublicationsPage() {
     }
   }
 
-  const closePublication = () => {
-    setSelectedPublication(null)
-  }
 
   const handleExportPDF = async (publication: Publication) => {
     try {
@@ -399,101 +395,6 @@ export default function PublicationsPage() {
           )}
         </div>
 
-        {/* Publication Modal/Overlay */}
-        {selectedPublication && (
-          <div className="publication-modal">
-            <div className="modal-overlay" onClick={closePublication}></div>
-            <div className="modal-content">
-            <div className="modal-header">
-              <h2>{selectedPublication.title}</h2>
-              <div className="modal-header-actions">
-           <button
-             className="read-full-btn"
-             onClick={() => {
-               closePublication()
-               // Check if user is logged in, if not redirect to login
-               if (!user) {
-                 localStorage.setItem('redirectAfterLogin', `/publications/${selectedPublication.slug}`)
-                 router.push('/auth/login')
-               } else {
-                 router.push(`/publications/${selectedPublication.slug}`)
-               }
-             }}
-             title="Read Full Article"
-           >
-             Read Full Article
-           </button>
-           {user && (
-             <button
-               className="pdf-export-btn"
-               onClick={() => handleExportPDF(selectedPublication)}
-               title="Export to PDF"
-             >
-               Export PDF
-             </button>
-           )}
-           <button className="close-btn" onClick={closePublication}>×</button>
-              </div>
-            </div>
-              <div className="modal-body">
-                <div className="modal-meta">
-                  <span className="author">By {selectedPublication.author}</span>
-                  <span className="date">{selectedPublication.date}</span>
-                  <span className="read-time">{selectedPublication.readTime}</span>
-                </div>
-                <div className="modal-tags">
-                  {selectedPublication.tags.map(tag => (
-                    <span key={tag} className="tag">{tag}</span>
-                  ))}
-                </div>
-                <div className="modal-content">
-                  <div className="executive-summary">
-                    <h2>Executive Summary</h2>
-                    <p>{selectedPublication.excerpt}</p>
-                  </div>
-                  <div className="preview-restricted">
-                    <div className="restricted-overlay">
-                      <div className="restricted-content">
-                        <h3>🔒 Full Content Available After Login</h3>
-                        <p>Sign in to access the complete article with detailed analysis, comprehensive references, and expert insights.</p>
-                        <div className="restricted-actions">
-                          <button 
-                            className="btn btn-primary"
-                            onClick={() => {
-                              closePublication()
-                              localStorage.setItem('redirectAfterLogin', `/publications/${selectedPublication.slug}`)
-                              router.push('/auth/login')
-                            }}
-                          >
-                            Sign In to Continue Reading
-                          </button>
-                          <button 
-                            className="btn btn-outline"
-                            onClick={() => {
-                              closePublication()
-                              localStorage.setItem('redirectAfterLogin', `/publications/${selectedPublication.slug}`)
-                              router.push('/auth/signup')
-                            }}
-                          >
-                            Create Free Account
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="modal-actions">
-                  <button 
-                    className="share-btn"
-                    onClick={() => handleShare(selectedPublication)}
-                  >
-                    Share This Article
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
 
         {/* Publications Grid/List */}
         <div className="publications-section">
@@ -538,12 +439,6 @@ export default function PublicationsPage() {
                     }}
                   >
                     Read More
-                  </button>
-                  <button 
-                    className="preview-btn"
-                    onClick={() => setSelectedPublication(publication)}
-                  >
-                    Preview
                   </button>
                 </div>
               </div>

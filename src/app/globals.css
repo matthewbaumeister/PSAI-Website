@@ -2830,92 +2830,6 @@ body::after {
   box-shadow: 0 4px 12px rgba(154, 242, 58, 0.3);
 }
 
-/* Preview Restricted Content */
-.preview-restricted {
-  position: relative;
-  margin-top: 2rem;
-}
-
-.modal-content-body {
-  position: relative;
-}
-
-.preview-restricted .modal-content-body::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    transparent 30%,
-    rgba(15, 23, 42, 0.3) 70%,
-    rgba(15, 23, 42, 0.8) 100%
-  );
-  backdrop-filter: blur(3px);
-  pointer-events: none;
-  z-index: 1;
-}
-
-.preview-restricted .modal-content-body > *:not(.executive-summary) {
-  filter: blur(2px);
-  opacity: 0.6;
-  transition: all 0.3s ease;
-}
-
-.restricted-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: rgba(15, 23, 42, 0.95);
-  border: 1px solid rgba(148, 163, 184, 0.3);
-  border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  z-index: 10;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  width: 90%;
-}
-
-.restricted-content h3 {
-  color: #9AF23A;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px rgba(154, 242, 58, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-.restricted-content p {
-  color: #cbd5e1;
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  line-height: 1.6;
-}
-
-.restricted-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.restricted-actions .btn {
-  padding: 12px 24px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  min-width: 160px;
-}
-
 .restricted-actions .btn-primary {
   background: linear-gradient(135deg, #9AF23A, #7dd3fc);
   color: #1a1a1a;
@@ -2942,27 +2856,6 @@ body::after {
   box-shadow: 0 6px 20px rgba(125, 211, 252, 0.3);
 }
 
-/* Preview Button */
-.preview-btn {
-  background: linear-gradient(135deg, #7dd3fc, #9AF23A);
-  border: none;
-  border-radius: 8px;
-  color: #1a1a1a;
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.preview-btn:hover {
-  background: linear-gradient(135deg, #9AF23A, #7dd3fc);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(125, 211, 252, 0.3);
-}
 
 /* Settings Page */
 .settings-page {
