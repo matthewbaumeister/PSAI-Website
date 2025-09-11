@@ -27,12 +27,12 @@ export const publications: Publication[] = [
     id: '1',
     title: 'Complete Guide to Small Business Federal Contracting: From Formation to Award 2024-2025',
     author: 'MB',
-    date: 'January 2025',
+    date: 'August 15, 2025',
     readTime: '35 min read',
     excerpt: 'Comprehensive roadmap for companies with no government contracting experience to pursue small business set-aside contracts across all federal agencies.',
     tags: ['Federal Contracting', 'Small Business', 'SAM.gov', 'CAGE Code', 'Set-Asides', '8(a)', 'HUBZone', 'WOSB', 'VOSB', 'GSA Schedule'],
     category: 'Research & Insights',
-    featured: true,
+    featured: false,
     content: `
       <h2>Executive Summary</h2>
       <p>This comprehensive guide provides a step-by-step roadmap for small businesses with no government contracting experience to successfully pursue and win federal contracts. The guide covers everything from initial business formation to contract award, including critical compliance requirements, registration processes, and strategic positioning.</p>
@@ -372,14 +372,14 @@ export const publications: Publication[] = [
       </ul>
     `,
     slug: 'complete-guide-small-business-federal-contracting-2024-2025',
-    publishedAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01')
+    publishedAt: new Date('2025-08-15'),
+    updatedAt: new Date('2025-08-15')
   },
   {
     id: '2',
     title: 'Air Force and Space Force Extend Critical STRATFI/TACFI Bridge Funding Deadline to October 2025',
     author: 'MB',
-    date: 'January 2025',
+    date: 'August 25, 2025',
     readTime: '20 min read',
     excerpt: 'Historic funding levels and extended deadlines signal unprecedented commitment to closing the valley of death for small defense contractors.',
     tags: ['STRATFI', 'TACFI', 'SBIR', 'Defense Innovation', 'Government Contracting', 'AFWERX', 'SpaceWERX'],
@@ -640,19 +640,19 @@ export const publications: Publication[] = [
       </ul>
     `,
     slug: 'air-force-space-force-stratfi-tacfi-bridge-funding-deadline-october-2025',
-    publishedAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01')
+    publishedAt: new Date('2025-08-25'),
+    updatedAt: new Date('2025-08-25')
   },
   {
     id: '3',
     title: 'Defense Innovation Guide: ITAR Compliance and DoD Funding Mechanisms',
     author: 'MB',
-    date: 'January 2025',
+    date: 'September 11, 2025',
     readTime: '60 min read',
     excerpt: 'Complete report covering ITAR compliance requirements for small businesses pursuing defense innovation, including comprehensive cost analysis, timeline planning, and detailed coverage of APFIT and STRATFI/TACFI funding mechanisms with full source citations.',
     tags: ['ITAR', 'APFIT', 'STRATFI', 'TACFI', 'DoD', 'Defense Innovation', 'Export Control', 'Compliance', 'SBIR', 'STTR', 'Government Contracting', 'Small Business', 'Defense Funding'],
     category: 'Research & Insights',
-    featured: true,
+    featured: false,
     content: `
       <h2>Executive Summary</h2>
       <p>This comprehensive report provides detailed analysis of ITAR compliance requirements for small businesses pursuing defense innovation opportunities, including complete cost breakdowns, implementation timelines, and comprehensive coverage of DoD funding mechanisms including APFIT and STRATFI/TACFI programs. The report includes extensive source citations and references to support all claims and recommendations.</p>
@@ -802,14 +802,14 @@ export const publications: Publication[] = [
       </ul>
     `,
     slug: 'defense-innovation-guide-itar-compliance-dod-funding-mechanisms',
-    publishedAt: new Date('2025-01-15'),
-    updatedAt: new Date('2025-01-15')
+    publishedAt: new Date('2025-09-11'),
+    updatedAt: new Date('2025-09-11')
   },
   {
     id: '4',
     title: 'Comprehensive Guide for Small Businesses Pursuing DoD SBIR/STTR Opportunities Through DSIP',
     author: 'MB',
-    date: 'January 2025',
+    date: 'August 30, 2025',
     readTime: '45 min read',
     excerpt: 'Complete roadmap for small businesses new to federal contracting to successfully navigate the Defense SBIR/STTR Innovation Portal (DSIP) and compete for DoD awards across all service branches.',
     tags: ['SBIR', 'STTR', 'DSIP', 'DoD', 'Federal Contracting', 'Small Business', 'Defense Innovation', 'SAM.gov', 'CAGE Code', 'Research Partnerships'],
@@ -983,14 +983,14 @@ export const publications: Publication[] = [
       </ul>
     `,
     slug: 'comprehensive-guide-dod-sbir-sttr-opportunities-dsip',
-    publishedAt: new Date('2025-01-01'),
-    updatedAt: new Date('2025-01-01')
+    publishedAt: new Date('2025-08-30'),
+    updatedAt: new Date('2025-08-30')
   },
   {
     id: '5',
     title: 'Understanding APFIT and STRATFI: DoD Funding Mechanisms for Defense Innovation',
     author: 'MB',
-    date: 'January 2025',
+    date: 'September 11, 2025',
     readTime: '35 min read',
     excerpt: 'Complete analysis of APFIT and STRATFI funding mechanisms, including program structures, eligibility requirements, application processes, and strategic selection criteria for defense contractors.',
     tags: ['APFIT', 'STRATFI', 'TACFI', 'DoD', 'Defense Innovation', 'SBIR', 'STTR', 'Government Contracting', 'Small Business', 'Defense Funding', 'AFWERX', 'SpaceWERX'],
@@ -1081,8 +1081,8 @@ export const publications: Publication[] = [
       <p><em>This comprehensive analysis provides detailed insights into APFIT and STRATFI funding mechanisms, enabling defense contractors to make informed decisions about program selection and strategic funding approaches. All data and statistics are sourced from official DoD publications, program websites, and verified industry reports as of January 2025.</em></p>
     `,
     slug: 'understanding-apfit-stratfi-dod-funding-mechanisms-defense-innovation',
-    publishedAt: new Date('2025-01-15'),
-    updatedAt: new Date('2025-01-15')
+    publishedAt: new Date('2025-09-11'),
+    updatedAt: new Date('2025-09-11')
   }
 ]
 
