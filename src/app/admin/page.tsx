@@ -103,7 +103,7 @@ export default function AdminDashboard() {
       if (response.ok) {
         const data = await response.json()
         setUsers(data.users || [])
-        if (data.error) {
+        if (data.error && !data.isMockData) {
           console.warn('Users loaded with warning:', data.error)
         }
       } else {

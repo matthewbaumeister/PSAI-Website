@@ -262,7 +262,9 @@ export default function UserManagementPage() {
           display: 'grid',
           gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
           gap: '24px',
-          marginBottom: '32px'
+          marginBottom: '32px',
+          width: '100%',
+          boxSizing: 'border-box'
         }}>
           <div style={{
             background: 'rgba(30, 41, 59, 0.6)',

@@ -20,8 +20,74 @@ export async function GET(request: NextRequest) {
     // Get all users with their settings
     const supabase = createAdminSupabaseClient()
     
-    // For now, return mock data since Supabase auth admin might not be accessible
-    // TODO: Implement proper user fetching once Supabase permissions are configured
+    // Try to get real users first
+    let realUsers = null
+    try {
+      // Try to get users from a custom users table first
+      const { data: customUsers, error: customError } = await supabase
+        .from('users')
+        .select('*')
+        .order('created_at', { ascending: false })
+      
+      if (!customError && customUsers) {
+        realUsers = customUsers
+        console.log('Found users in custom users table:', customUsers.length)
+      }
+    } catch (error) {
+      console.log('Custom users table not found, trying auth.users')
+    }
+
+    // If no custom users table, try auth.users
+    if (!realUsers) {
+      try {
+        const { data: authUsers, error: authError } = await supabase
+          .from('auth.users')
+          .select('*')
+          .order('created_at', { ascending: false })
+        
+        if (!authError && authUsers) {
+          realUsers = authUsers
+          console.log('Found users in auth.users table:', authUsers.length)
+        }
+      } catch (error) {
+        console.log('auth.users table not accessible')
+      }
+    }
+
+    // If we have real users, use them; otherwise use mock data
+    if (realUsers && realUsers.length > 0) {
+      const transformedUsers = realUsers.map(user => ({
+        id: user.id,
+        email: user.email || '',
+        first_name: user.first_name || user.user_metadata?.first_name || null,
+        last_name: user.last_name || user.user_metadata?.last_name || null,
+        company_name: user.company_name || user.user_metadata?.company_name || null,
+        company_size: user.company_size || user.user_metadata?.company_size || null,
+        phone: user.phone || user.user_metadata?.phone || null,
+        email_verified_at: user.email_verified_at || user.email_confirmed_at,
+        created_at: user.created_at,
+        updated_at: user.updated_at,
+        last_login_at: user.last_login_at || user.last_sign_in_at,
+        is_active: user.is_active !== false,
+        is_admin: user.is_admin || user.user_metadata?.is_admin || false,
+        two_factor_enabled: user.two_factor_enabled || false,
+        session_timeout_minutes: user.session_timeout_minutes || 30,
+        settings: {
+          newsletter_subscription: user.newsletter_subscription || user.user_metadata?.newsletter_subscription || false,
+          research_alerts: user.research_alerts || user.user_metadata?.research_alerts || false
+        },
+        session_count: 0
+      }))
+
+      return NextResponse.json({ 
+        users: transformedUsers,
+        total: transformedUsers.length,
+        isRealData: true
+      })
+    }
+
+    // Fallback to mock data
+    console.log('Using mock user data - no real users found')
     const mockUsers = [
       {
         id: '1',
@@ -116,7 +182,8 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ 
       users: transformedUsers,
-      total: transformedUsers.length
+      total: transformedUsers.length,
+      isMockData: true // Flag to indicate this is mock data
     })
 
   } catch (error) {
