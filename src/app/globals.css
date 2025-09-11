@@ -2930,6 +2930,28 @@ body::after {
   box-shadow: 0 6px 20px rgba(125, 211, 252, 0.3);
 }
 
+/* Preview Button */
+.preview-btn {
+  background: linear-gradient(135deg, #7dd3fc, #9AF23A);
+  border: none;
+  border-radius: 8px;
+  color: #1a1a1a;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.preview-btn:hover {
+  background: linear-gradient(135deg, #9AF23A, #7dd3fc);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(125, 211, 252, 0.3);
+}
+
 .pdf-export-btn {
   background: linear-gradient(135deg, #2D5BFF, #1e40af);
   border: none;

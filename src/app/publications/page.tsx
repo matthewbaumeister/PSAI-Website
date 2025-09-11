@@ -17,11 +17,6 @@ export default function PublicationsPage() {
   const [selectedPublication, setSelectedPublication] = useState<Publication | null>(null)
 
   // Button handlers
-  const handleReadMore = (publication: Publication) => {
-    setSelectedPublication(publication)
-    // Scroll to top of page
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
 
   const handleShare = async (publication: Publication) => {
     const shareData = {
@@ -521,15 +516,21 @@ export default function PublicationsPage() {
                 <div className="publication-actions">
                   <button 
                     className="read-more-btn"
-                    onClick={() => handleReadMore(publication)}
+                    onClick={() => {
+                      if (!user) {
+                        router.push('/auth/login')
+                      } else {
+                        router.push(`/publications/${publication.slug}`)
+                      }
+                    }}
                   >
                     Read More
                   </button>
                   <button 
-                    className="share-btn"
-                    onClick={() => handleShare(publication)}
+                    className="preview-btn"
+                    onClick={() => openPublication(publication)}
                   >
-                    Share
+                    Preview
                   </button>
                 </div>
               </div>
