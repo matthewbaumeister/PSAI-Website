@@ -3067,6 +3067,16 @@ input:checked + .toggle-slider:before {
   padding: 2rem 0;
   color: white;
   min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-users-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .admin-users-page.loading {
@@ -3131,6 +3141,11 @@ input:checked + .toggle-slider:before {
   border-radius: 16px;
   padding: 2rem;
   margin-bottom: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .search-section {
@@ -3156,6 +3171,8 @@ input:checked + .toggle-slider:before {
   gap: 1rem;
   flex-wrap: wrap;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .filter-group {
@@ -3185,6 +3202,9 @@ input:checked + .toggle-slider:before {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin-bottom: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  clear: both;
 }
 
 .stat-card {

@@ -20,60 +20,84 @@ export async function GET(request: NextRequest) {
     // Get all users with their settings
     const supabase = createAdminSupabaseClient()
     
-    // Get users
-    const { data: users, error: usersError } = await supabase
-      .from('users')
-      .select('*')
-      .order('created_at', { ascending: false })
+    // Get users from auth.users (Supabase's built-in auth table)
+    const { data: users, error: usersError } = await supabase.auth.admin.listUsers()
 
     if (usersError) {
       console.error('Error fetching users:', usersError)
       return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 })
     }
 
-    // Get user settings for all users
-    const userIds = users.map(user => user.id)
-    const { data: settings, error: settingsError } = await supabase
-      .from('user_settings')
-      .select('user_id, setting_key, setting_value')
-      .in('user_id', userIds)
+    // Transform Supabase auth users to our expected format
+    const transformedUsers = users.users.map(user => ({
+      id: user.id,
+      email: user.email || '',
+      first_name: user.user_metadata?.first_name || null,
+      last_name: user.user_metadata?.last_name || null,
+      company_name: user.user_metadata?.company_name || null,
+      company_size: user.user_metadata?.company_size || null,
+      phone: user.user_metadata?.phone || null,
+      email_verified_at: user.email_confirmed_at,
+      created_at: user.created_at,
+      updated_at: user.updated_at,
+      last_login_at: user.last_sign_in_at,
+      is_active: !user.banned_until,
+      is_admin: user.user_metadata?.is_admin || false,
+      two_factor_enabled: user.app_metadata?.provider === 'email' ? false : true,
+      session_timeout_minutes: 30,
+      settings: {
+        newsletter_subscription: user.user_metadata?.newsletter_subscription || false,
+        research_alerts: user.user_metadata?.research_alerts || false
+      },
+      session_count: 0 // We'll get this from user_sessions if it exists
+    }))
 
-    if (settingsError) {
-      console.error('Error fetching user settings:', settingsError)
-      // Continue without settings rather than failing
-    }
+    // Try to get user settings from user_settings table if it exists
+    try {
+      const userIds = transformedUsers.map(user => user.id)
+      const { data: settings, error: settingsError } = await supabase
+        .from('user_settings')
+        .select('user_id, setting_key, setting_value')
+        .in('user_id', userIds)
 
-    // Get session counts for each user
-    const { data: sessions, error: sessionsError } = await supabase
-      .from('user_sessions')
-      .select('user_id')
-      .in('user_id', userIds)
-
-    if (sessionsError) {
-      console.error('Error fetching user sessions:', sessionsError)
-      // Continue without session data
-    }
-
-    // Process settings into user objects
-    const usersWithSettings = users.map(user => {
-      const userSettings = settings?.filter(s => s.user_id === user.id) || []
-      const settingsObj = userSettings.reduce((acc, setting) => {
-        acc[setting.setting_key] = setting.setting_value === 'true'
-        return acc
-      }, {} as Record<string, boolean>)
-
-      const sessionCount = sessions?.filter(s => s.user_id === user.id).length || 0
-
-      return {
-        ...user,
-        settings: Object.keys(settingsObj).length > 0 ? settingsObj : undefined,
-        session_count: sessionCount
+      if (!settingsError && settings) {
+        // Merge settings into user objects
+        transformedUsers.forEach(user => {
+          const userSettings = settings.filter(s => s.user_id === user.id)
+          const settingsObj = userSettings.reduce((acc, setting) => {
+            acc[setting.setting_key] = setting.setting_value === 'true'
+            return acc
+          }, {} as Record<string, boolean>)
+          
+          if (Object.keys(settingsObj).length > 0) {
+            user.settings = { ...user.settings, ...settingsObj }
+          }
+        })
       }
-    })
+    } catch (error) {
+      console.log('user_settings table not found, using default settings')
+    }
+
+    // Try to get session counts if user_sessions table exists
+    try {
+      const userIds = transformedUsers.map(user => user.id)
+      const { data: sessions, error: sessionsError } = await supabase
+        .from('user_sessions')
+        .select('user_id')
+        .in('user_id', userIds)
+
+      if (!sessionsError && sessions) {
+        transformedUsers.forEach(user => {
+          user.session_count = sessions.filter(s => s.user_id === user.id).length
+        })
+      }
+    } catch (error) {
+      console.log('user_sessions table not found, using default session count')
+    }
 
     return NextResponse.json({ 
-      users: usersWithSettings,
-      total: usersWithSettings.length
+      users: transformedUsers,
+      total: transformedUsers.length
     })
 
   } catch (error) {
@@ -108,18 +132,10 @@ export async function POST(request: NextRequest) {
 
     switch (action) {
       case 'toggle_active':
-        // Toggle user active status
-        const { error: toggleError } = await supabase
-          .from('users')
-          .update({ 
-            is_active: value !== undefined ? value : !(await supabase
-              .from('users')
-              .select('is_active')
-              .eq('id', userId)
-              .single()
-            ).data?.is_active
-          })
-          .eq('id', userId)
+        // Toggle user active status using Supabase auth admin
+        const { error: toggleError } = await supabase.auth.admin.updateUserById(userId, {
+          ban_duration: value === false ? '876000h' : 'none' // 100 years for ban, none for unban
+        })
 
         if (toggleError) {
           console.error('Error toggling user active status:', toggleError)
@@ -128,31 +144,27 @@ export async function POST(request: NextRequest) {
         break
 
       case 'toggle_admin':
-        // Toggle user admin status
-        const { error: adminError } = await supabase
-          .from('users')
-          .update({ 
-            is_admin: value !== undefined ? value : !(await supabase
-              .from('users')
-              .select('is_admin')
-              .eq('id', userId)
-              .single()
-            ).data?.is_admin
+        // Toggle user admin status by updating user metadata
+        const { data: currentUser } = await supabase.auth.admin.getUserById(userId)
+        if (currentUser.user) {
+          const newAdminStatus = value !== undefined ? value : !currentUser.user.user_metadata?.is_admin
+          const { error: adminError } = await supabase.auth.admin.updateUserById(userId, {
+            user_metadata: {
+              ...currentUser.user.user_metadata,
+              is_admin: newAdminStatus
+            }
           })
-          .eq('id', userId)
 
-        if (adminError) {
-          console.error('Error toggling user admin status:', adminError)
-          return NextResponse.json({ error: 'Failed to update admin status' }, { status: 500 })
+          if (adminError) {
+            console.error('Error toggling user admin status:', adminError)
+            return NextResponse.json({ error: 'Failed to update admin status' }, { status: 500 })
+          }
         }
         break
 
       case 'delete_user':
-        // Delete user and all related data
-        const { error: deleteError } = await supabase
-          .from('users')
-          .delete()
-          .eq('id', userId)
+        // Delete user using Supabase auth admin
+        const { error: deleteError } = await supabase.auth.admin.deleteUser(userId)
 
         if (deleteError) {
           console.error('Error deleting user:', deleteError)
@@ -161,9 +173,16 @@ export async function POST(request: NextRequest) {
         break
 
       case 'reset_password':
-        // This would typically send a password reset email
-        // For now, we'll just log it
-        console.log(`Password reset requested for user ${userId}`)
+        // Send password reset email using Supabase auth
+        const { error: resetError } = await supabase.auth.admin.generateLink({
+          type: 'recovery',
+          email: (await supabase.auth.admin.getUserById(userId)).data.user?.email || ''
+        })
+
+        if (resetError) {
+          console.error('Error sending password reset:', resetError)
+          return NextResponse.json({ error: 'Failed to send password reset' }, { status: 500 })
+        }
         break
 
       default:
