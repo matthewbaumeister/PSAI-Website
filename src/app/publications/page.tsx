@@ -47,6 +47,11 @@ export default function PublicationsPage() {
 
   const handleExportPDF = async (publication: Publication) => {
     try {
+      // Check if jsPDF is available
+      if (typeof window === 'undefined' || !(window as any).jsPDF) {
+        throw new Error('jsPDF library not loaded')
+      }
+
       // Create PDF with proper 1" margins
       const pdf = new jsPDF('p', 'pt', 'letter') // 612x792 points (8.5" x 11")
       const pageWidth = 612
@@ -64,13 +69,18 @@ export default function PublicationsPage() {
       
       // Add watermark function
       const addWatermark = () => {
-        pdf.setGState({opacity: 0.15})
-        pdf.setTextColor(45, 91, 255)
-        pdf.setFontSize(48)
-        pdf.text('PROP SHOP AI', pageWidth/2, pageHeight/2, {angle: -45, align: 'center'})
-        pdf.setGState({opacity: 1})
-        pdf.setTextColor(0, 0, 0)
-        pdf.setFontSize(fontSize)
+        try {
+          pdf.setGState({opacity: 0.15})
+          pdf.setTextColor(45, 91, 255)
+          pdf.setFontSize(48)
+          pdf.text('PROP SHOP AI', pageWidth/2, pageHeight/2, {angle: -45, align: 'center'})
+          pdf.setGState({opacity: 1})
+          pdf.setTextColor(0, 0, 0)
+          pdf.setFontSize(fontSize)
+        } catch (error) {
+          console.warn('Watermark failed:', error)
+          // Continue without watermark
+        }
       }
       
       // Add watermark to first page
@@ -122,7 +132,12 @@ export default function PublicationsPage() {
           addWatermark()
           yPosition = margin
         }
-        pdf.text(contentLines[i], margin, yPosition)
+        try {
+          pdf.text(contentLines[i], margin, yPosition)
+        } catch (error) {
+          console.warn('Text rendering failed for line:', i, error)
+          // Skip this line and continue
+        }
         yPosition += lineHeight
       }
       
@@ -140,11 +155,26 @@ export default function PublicationsPage() {
         .replace(/\s+/g, '-')
         .substring(0, 60)
       
-      pdf.save(`PropShop-AI-${fileName}.pdf`)
+      try {
+        pdf.save(`PropShop-AI-${fileName}.pdf`)
+      } catch (saveError) {
+        console.error('Error saving PDF:', saveError)
+        // Try alternative save method
+        const pdfBlob = pdf.output('blob')
+        const url = URL.createObjectURL(pdfBlob)
+        const link = document.createElement('a')
+        link.href = url
+        link.download = `PropShop-AI-${fileName}.pdf`
+        document.body.appendChild(link)
+        link.click()
+        document.body.removeChild(link)
+        URL.revokeObjectURL(url)
+      }
       
     } catch (error) {
       console.error('Error generating PDF:', error)
-      alert('Error generating PDF. Please try again.')
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      alert(`Error generating PDF: ${errorMessage}. Please try again.`)
     }
   }
 
