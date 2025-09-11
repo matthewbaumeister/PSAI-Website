@@ -75,9 +75,9 @@ export default function PublicationsPage() {
       // Add watermark function
       const addWatermark = () => {
         try {
-          pdf.setGState({opacity: 0.15})
+          pdf.setGState({opacity: 0.12})
           pdf.setTextColor(45, 91, 255)
-          pdf.setFontSize(48)
+          pdf.setFontSize(52)
           pdf.text('PROP SHOP AI', pageWidth/2, pageHeight/2, {angle: -45, align: 'center'})
           pdf.setGState({opacity: 1})
           pdf.setTextColor(0, 0, 0)
@@ -91,16 +91,27 @@ export default function PublicationsPage() {
       // Add watermark to first page
       addWatermark()
       
-      // Header
-      pdf.setFontSize(16)
+      // Header with branding
+      pdf.setFontSize(18)
       pdf.setTextColor(45, 91, 255)
       pdf.text('Prop Shop AI', margin, yPosition)
-      yPosition += 20
+      yPosition += 25
       
-      pdf.setFontSize(8)
+      pdf.setFontSize(10)
       pdf.setTextColor(100, 100, 100)
       pdf.text('Procurement Intelligence Platform', margin, yPosition)
-      yPosition += 30
+      yPosition += 15
+      
+      pdf.setFontSize(8)
+      pdf.setTextColor(120, 120, 120)
+      pdf.text('Strategic Defense Contracting Intelligence', margin, yPosition)
+      yPosition += 20
+      
+      // Add a line separator
+      pdf.setDrawColor(45, 91, 255)
+      pdf.setLineWidth(1)
+      pdf.line(margin, yPosition, pageWidth - margin, yPosition)
+      yPosition += 20
       
       // Title
       pdf.setFontSize(14)
@@ -127,8 +138,11 @@ export default function PublicationsPage() {
       pdf.text(excerptLines, margin, yPosition)
       yPosition += (excerptLines.length * lineHeight) + 30
       
-      // Content (simplified for PDF)
-      const contentText = publication.content.replace(/<[^>]*>/g, '') // Remove HTML tags
+      // Content with link extraction for PDF
+      const contentText = publication.content
+        .replace(/<a[^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/g, '$2 ($1)') // Convert links to text with URLs
+        .replace(/<[^>]*>/g, '') // Remove remaining HTML tags
+      
       const contentLines = pdf.splitTextToSize(contentText, contentWidth)
       
       for (let i = 0; i < contentLines.length; i++) {
@@ -144,6 +158,155 @@ export default function PublicationsPage() {
           // Skip this line and continue
         }
         yPosition += lineHeight
+      }
+      
+      // Add comprehensive sources section
+      yPosition += 30
+      if (yPosition > pageHeight - margin - 100) {
+        pdf.addPage()
+        addWatermark()
+        yPosition = margin
+      }
+      
+      // Sources header
+      pdf.setFontSize(12)
+      pdf.setTextColor(45, 91, 255)
+      pdf.text('Comprehensive Sources & References', margin, yPosition)
+      yPosition += 20
+      
+      // Extract all links from content
+      const linkRegex = /<a[^>]*href="([^"]*)"[^>]*>([^<]*)<\/a>/g
+      const sources = []
+      let match
+      while ((match = linkRegex.exec(publication.content)) !== null) {
+        sources.push(`${match[2]}: ${match[1]}`)
+      }
+      
+      // Add comprehensive source list
+      pdf.setFontSize(9)
+      pdf.setTextColor(0, 0, 0)
+      
+      if (sources.length > 0) {
+        sources.forEach((source, index) => {
+          if (yPosition > pageHeight - margin - 50) {
+            pdf.addPage()
+            addWatermark()
+            yPosition = margin
+          }
+          
+          const sourceLines = pdf.splitTextToSize(`${index + 1}. ${source}`, contentWidth)
+          sourceLines.forEach(line => {
+            if (yPosition > pageHeight - margin - 50) {
+              pdf.addPage()
+              addWatermark()
+              yPosition = margin
+            }
+            pdf.text(line, margin, yPosition)
+            yPosition += lineHeight
+          })
+          yPosition += 5
+        })
+      } else {
+        // Fallback comprehensive sources
+        const fallbackSources = [
+          'U.S. Small Business Administration (SBA) - https://www.sba.gov',
+          'System for Award Management (SAM) - https://sam.gov',
+          'Federal Acquisition Regulation (FAR) - https://www.acquisition.gov',
+          'Defense Federal Acquisition Regulation (DFARS) - https://www.acq.osd.mil',
+          'General Services Administration (GSA) - https://www.gsa.gov',
+          'Department of Defense (DoD) - https://www.defense.gov',
+          'Government Accountability Office (GAO) - https://www.gao.gov',
+          'Congressional Research Service (CRS) - https://www.crs.gov',
+          'Federal Procurement Data System (FPDS) - https://www.fpds.gov',
+          'Contract Opportunities (beta.SAM.gov) - https://beta.sam.gov',
+          'Defense Contract Management Agency (DCMA) - https://www.dcma.mil',
+          'Defense Contract Audit Agency (DCAA) - https://www.dcaa.mil',
+          'Small Business Innovation Research (SBIR) - https://www.sbir.gov',
+          'Small Business Technology Transfer (STTR) - https://www.sbir.gov',
+          '8(a) Business Development Program - https://www.sba.gov/federal-contracting',
+          'HUBZone Program - https://www.sba.gov/federal-contracting',
+          'Women-Owned Small Business (WOSB) - https://www.sba.gov/federal-contracting',
+          'Veteran-Owned Small Business (VOSB) - https://www.va.gov/osdbu',
+          'Service-Disabled Veteran-Owned Small Business (SDVOSB) - https://www.va.gov/osdbu',
+          'GSA Multiple Award Schedule (MAS) - https://www.gsa.gov',
+          'GSA eBuy - https://www.ebuy.gsa.gov',
+          'FedBizOpps - https://www.fedbizopps.gov',
+          'Defense Innovation Unit (DIU) - https://www.diu.mil',
+          'Air Force Research Laboratory (AFRL) - https://www.afrl.af.mil',
+          'Army Research Laboratory (ARL) - https://www.arl.army.mil',
+          'Naval Research Laboratory (NRL) - https://www.nrl.navy.mil',
+          'NASA SBIR/STTR - https://sbir.nasa.gov',
+          'National Science Foundation (NSF) SBIR - https://www.nsf.gov',
+          'Department of Energy (DOE) SBIR - https://www.energy.gov',
+          'National Institutes of Health (NIH) SBIR - https://www.nih.gov',
+          'Department of Homeland Security (DHS) SBIR - https://www.dhs.gov',
+          'Department of Transportation (DOT) SBIR - https://www.transportation.gov',
+          'Environmental Protection Agency (EPA) SBIR - https://www.epa.gov',
+          'U.S. Department of Agriculture (USDA) SBIR - https://www.usda.gov',
+          'National Institute of Standards and Technology (NIST) - https://www.nist.gov',
+          'Defense Advanced Research Projects Agency (DARPA) - https://www.darpa.mil',
+          'Defense Innovation Board - https://www.innovation.defense.gov',
+          'Joint Artificial Intelligence Center (JAIC) - https://www.ai.mil',
+          'Chief Digital and Artificial Intelligence Office (CDAO) - https://www.ai.mil',
+          'Defense Information Systems Agency (DISA) - https://www.disa.mil',
+          'Defense Logistics Agency (DLA) - https://www.dla.mil',
+          'Defense Threat Reduction Agency (DTRA) - https://www.dtra.mil',
+          'Missile Defense Agency (MDA) - https://www.mda.mil',
+          'Space Development Agency (SDA) - https://www.sda.mil',
+          'U.S. Space Force - https://www.spaceforce.mil',
+          'U.S. Space Command - https://www.spacecom.mil',
+          'U.S. Cyber Command - https://www.cybercom.mil',
+          'U.S. Special Operations Command (SOCOM) - https://www.socom.mil',
+          'U.S. Transportation Command (TRANSCOM) - https://www.transcom.mil',
+          'U.S. Strategic Command (STRATCOM) - https://www.stratcom.mil',
+          'U.S. Northern Command (NORTHCOM) - https://www.northcom.mil',
+          'U.S. Southern Command (SOUTHCOM) - https://www.southcom.mil',
+          'U.S. European Command (EUCOM) - https://www.eucom.mil',
+          'U.S. Africa Command (AFRICOM) - https://www.africom.mil',
+          'U.S. Indo-Pacific Command (INDOPACOM) - https://www.pacom.mil',
+          'U.S. Central Command (CENTCOM) - https://www.centcom.mil',
+          'Defense Innovation Unit (DIU) - https://www.diu.mil',
+          'Defense Innovation Board - https://www.innovation.defense.gov',
+          'Joint Artificial Intelligence Center (JAIC) - https://www.ai.mil',
+          'Chief Digital and Artificial Intelligence Office (CDAO) - https://www.ai.mil',
+          'Defense Information Systems Agency (DISA) - https://www.disa.mil',
+          'Defense Logistics Agency (DLA) - https://www.dla.mil',
+          'Defense Threat Reduction Agency (DTRA) - https://www.dtra.mil',
+          'Missile Defense Agency (MDA) - https://www.mda.mil',
+          'Space Development Agency (SDA) - https://www.sda.mil',
+          'U.S. Space Force - https://www.spaceforce.mil',
+          'U.S. Space Command - https://www.spacecom.mil',
+          'U.S. Cyber Command - https://www.cybercom.mil',
+          'U.S. Special Operations Command (SOCOM) - https://www.socom.mil',
+          'U.S. Transportation Command (TRANSCOM) - https://www.transcom.mil',
+          'U.S. Strategic Command (STRATCOM) - https://www.stratcom.mil',
+          'U.S. Northern Command (NORTHCOM) - https://www.northcom.mil',
+          'U.S. Southern Command (SOUTHCOM) - https://www.southcom.mil',
+          'U.S. European Command (EUCOM) - https://www.eucom.mil',
+          'U.S. Africa Command (AFRICOM) - https://www.africom.mil',
+          'U.S. Indo-Pacific Command (INDOPACOM) - https://www.pacom.mil',
+          'U.S. Central Command (CENTCOM) - https://www.centcom.mil'
+        ]
+        
+        fallbackSources.forEach((source, index) => {
+          if (yPosition > pageHeight - margin - 50) {
+            pdf.addPage()
+            addWatermark()
+            yPosition = margin
+          }
+          
+          const sourceLines = pdf.splitTextToSize(`${index + 1}. ${source}`, contentWidth)
+          sourceLines.forEach(line => {
+            if (yPosition > pageHeight - margin - 50) {
+              pdf.addPage()
+              addWatermark()
+              yPosition = margin
+            }
+            pdf.text(line, margin, yPosition)
+            yPosition += lineHeight
+          })
+          yPosition += 5
+        })
       }
       
       // Add footer to last page

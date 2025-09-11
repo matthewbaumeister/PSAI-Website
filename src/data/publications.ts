@@ -13,6 +13,7 @@ export interface Publication {
   slug: string
   publishedAt: Date
   updatedAt?: Date
+  sources?: string[]
 }
 
 // This is where you would store your publications data
