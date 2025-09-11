@@ -47,147 +47,93 @@ export default function PublicationsPage() {
 
   const handleExportPDF = async (publication: Publication) => {
     try {
-      // Create a temporary element to render the article content for PDF
-      const tempElement = document.createElement('div')
-      tempElement.style.position = 'absolute'
-      tempElement.style.left = '-9999px'
-      tempElement.style.top = '-9999px'
-      tempElement.style.width = '612px' // 8.5" at 72 DPI
-      tempElement.style.padding = '72px' // 1" margins
-      tempElement.style.backgroundColor = 'white'
-      tempElement.style.color = '#1a1a1a'
-      tempElement.style.fontFamily = 'Georgia, serif'
-      tempElement.style.fontSize = '16px'
-      tempElement.style.lineHeight = '1.7'
-      
-      // Generate current date for footer
-      const currentDate = new Date().toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-      })
-      
-      // Create the HTML content for the PDF with professional formatting
-      tempElement.innerHTML = `
-        <div style="position: relative; z-index: 1; margin-bottom: 40px;">
-          <!-- Header with Prop Shop AI Branding -->
-          <div style="text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 3px solid #2D5BFF;">
-            <div style="margin-bottom: 20px;">
-              <h1 style="color: #2D5BFF; font-size: 32px; margin: 0; font-weight: 700; letter-spacing: -0.5px;">Prop Shop AI</h1>
-              <p style="color: #666; font-size: 14px; margin: 5px 0 0 0; font-style: italic;">Procurement Intelligence Platform</p>
-            </div>
-            <h2 style="color: #1a1a1a; font-size: 28px; margin: 0; font-weight: 600; line-height: 1.3;">${publication.title}</h2>
-            <div style="color: #666; font-size: 16px; margin: 20px 0 0 0;">
-              <span style="color: #9AF23A; font-weight: 600;">By ${publication.author}</span> • 
-              <span>${publication.date}</span> • 
-              <span>${publication.readTime}</span>
-            </div>
-            <div style="margin-top: 20px;">
-              ${publication.tags.map(tag => `<span style="background: #f8f9fa; color: #495057; padding: 6px 12px; border-radius: 20px; margin: 3px; font-size: 12px; display: inline-block; border: 1px solid #dee2e6;">${tag}</span>`).join('')}
-            </div>
-          </div>
-          
-          <!-- Executive Summary -->
-          <div style="background: #f8f9fa; padding: 25px; border-left: 4px solid #2D5BFF; margin-bottom: 30px; border-radius: 0 8px 8px 0;">
-            <h3 style="color: #2D5BFF; font-size: 18px; margin: 0 0 15px 0; font-weight: 600;">Executive Summary</h3>
-            <p style="margin: 0; color: #495057; font-size: 15px; line-height: 1.6;">${publication.excerpt}</p>
-          </div>
-          
-          <!-- Main Content -->
-          <div style="color: #1a1a1a; line-height: 1.8; font-size: 16px;">
-            ${publication.content}
-          </div>
-          
-          <!-- References Section -->
-          <div style="margin-top: 50px; padding-top: 30px; border-top: 2px solid #e9ecef;">
-            <h3 style="color: #2D5BFF; font-size: 20px; margin: 0 0 25px 0; font-weight: 600;">References</h3>
-            <div style="font-size: 14px; line-height: 1.6; color: #495057;">
-              <p style="margin: 0 0 15px 0;"><strong>Primary Sources:</strong></p>
-              <ul style="margin: 0 0 20px 0; padding-left: 20px;">
-                <li style="margin-bottom: 8px;">Defense Innovation Unit. "Small Business Innovation Research (SBIR) Program." U.S. Department of Defense. Accessed ${currentDate}. <span style="color: #2D5BFF;">https://www.dodsbirsttr.mil/</span></li>
-                <li style="margin-bottom: 8px;">Small Business Administration. "SBIR/STTR Programs." U.S. Small Business Administration. Accessed ${currentDate}. <span style="color: #2D5BFF;">https://www.sbir.gov/</span></li>
-                <li style="margin-bottom: 8px;">Federal Procurement Data System. "Contracting Data." General Services Administration. Accessed ${currentDate}. <span style="color: #2D5BFF;">https://www.fpds.gov/</span></li>
-                <li style="margin-bottom: 8px;">System for Award Management (SAM). "Contract Opportunities." General Services Administration. Accessed ${currentDate}. <span style="color: #2D5BFF;">https://sam.gov/</span></li>
-              </ul>
-              
-              <p style="margin: 0 0 15px 0;"><strong>Additional Resources:</strong></p>
-              <ul style="margin: 0 0 20px 0; padding-left: 20px;">
-                <li style="margin-bottom: 8px;">Defense Innovation Unit. "Defense Innovation Portal (DSIP)." U.S. Department of Defense. Accessed ${currentDate}. <span style="color: #2D5BFF;">https://www.dodsbirsttr.mil/topics-app/</span></li>
-                <li style="margin-bottom: 8px;">Federal Acquisition Regulation (FAR). "Part 19 - Small Business Programs." Code of Federal Regulations. Accessed ${currentDate}. <span style="color: #2D5BFF;">https://www.acquisition.gov/far/part-19</span></li>
-                <li style="margin-bottom: 8px;">Defense Federal Acquisition Regulation Supplement (DFARS). "Part 219 - Small Business Programs." Code of Federal Regulations. Accessed ${currentDate}. <span style="color: #2D5BFF;">https://www.acquisition.gov/dfars/part-219</span></li>
-              </ul>
-              
-              <p style="margin: 0 0 15px 0;"><strong>Methodology:</strong></p>
-              <p style="margin: 0 0 20px 0; font-style: italic; color: #6c757d;">This analysis is based on publicly available data from federal contracting databases, official government websites, and regulatory documentation. All statistics and figures are current as of the publication date and are subject to change based on ongoing federal procurement activities.</p>
-            </div>
-          </div>
-          
-          <!-- Legal Footer -->
-          <div style="margin-top: 50px; padding: 30px 0; border-top: 1px solid #e9ecef; text-align: center; font-size: 12px; color: #6c757d; line-height: 1.5;">
-            <div style="margin-bottom: 20px;">
-              <h4 style="color: #2D5BFF; font-size: 16px; margin: 0 0 10px 0; font-weight: 600;">Prop Shop AI</h4>
-              <p style="margin: 0; font-size: 14px; color: #495057;">Procurement Intelligence Platform</p>
-              <p style="margin: 5px 0 0 0;">www.prop-shop.ai | info@prop-shop.ai</p>
-            </div>
-            
-            <div style="margin-bottom: 20px; font-size: 11px; line-height: 1.4;">
-              <p style="margin: 0 0 10px 0;"><strong>Legal Disclaimer:</strong></p>
-              <p style="margin: 0 0 10px 0;">This publication is for informational purposes only and does not constitute legal, financial, or professional advice. While we strive to provide accurate and up-to-date information, Prop Shop AI makes no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information contained herein.</p>
-              
-              <p style="margin: 0 0 10px 0;"><strong>Copyright Notice:</strong></p>
-              <p style="margin: 0 0 10px 0;">© ${new Date().getFullYear()} Make Ready Consulting, dba. Prop Shop AI. All rights reserved. This document may not be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of Prop Shop AI, except for personal, non-commercial use.</p>
-              
-              <p style="margin: 0 0 10px 0;"><strong>Terms of Use:</strong></p>
-              <p style="margin: 0;">By accessing and using this publication, you agree to be bound by our Terms of Service and Privacy Policy, available at www.prop-shop.ai/terms and www.prop-shop.ai/privacy respectively.</p>
-            </div>
-            
-            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e9ecef;">
-              <p style="margin: 0; font-size: 11px; color: #adb5bd;">Generated on ${currentDate} | Document ID: PS-${Date.now().toString().slice(-6)}</p>
-            </div>
-          </div>
-        </div>
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.03;">
-          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); font-size: 72px; font-weight: bold; color: #2D5BFF; white-space: nowrap; font-family: Arial, sans-serif;">
-            PROP SHOP AI
-          </div>
-        </div>
-      `
-      
-      document.body.appendChild(tempElement)
-      
-      // Generate PDF using html2canvas and jsPDF
-      const canvas = await html2canvas(tempElement, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#ffffff',
-        logging: false
-      })
-      
-      const imgData = canvas.toDataURL('image/png')
+      // Create PDF with proper 1" margins
       const pdf = new jsPDF('p', 'pt', 'letter') // 612x792 points (8.5" x 11")
-      
-      const imgWidth = 612 // Full width minus 1" margins on each side
+      const pageWidth = 612
       const pageHeight = 792
-      const imgHeight = (canvas.height * imgWidth) / canvas.width
-      let heightLeft = imgHeight
+      const margin = 72 // 1" margins
+      const contentWidth = pageWidth - (margin * 2) // 468 points
       
-      let position = 0
+      let yPosition = margin
+      const lineHeight = 14
+      const fontSize = 10
       
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
-      heightLeft -= pageHeight
+      // Set font
+      pdf.setFont('helvetica', 'normal')
+      pdf.setFontSize(fontSize)
       
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight
-        pdf.addPage()
-        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
-        heightLeft -= pageHeight
+      // Add watermark function
+      const addWatermark = () => {
+        pdf.setGState({opacity: 0.15})
+        pdf.setTextColor(45, 91, 255)
+        pdf.setFontSize(48)
+        pdf.text('PROP SHOP AI', pageWidth/2, pageHeight/2, {angle: -45, align: 'center'})
+        pdf.setGState({opacity: 1})
+        pdf.setTextColor(0, 0, 0)
+        pdf.setFontSize(fontSize)
       }
       
-      // Clean up
-      document.body.removeChild(tempElement)
+      // Add watermark to first page
+      addWatermark()
       
-      // Download the PDF with professional filename
+      // Header
+      pdf.setFontSize(16)
+      pdf.setTextColor(45, 91, 255)
+      pdf.text('Prop Shop AI', margin, yPosition)
+      yPosition += 20
+      
+      pdf.setFontSize(8)
+      pdf.setTextColor(100, 100, 100)
+      pdf.text('Procurement Intelligence Platform', margin, yPosition)
+      yPosition += 30
+      
+      // Title
+      pdf.setFontSize(14)
+      pdf.setTextColor(0, 0, 0)
+      const titleLines = pdf.splitTextToSize(publication.title, contentWidth)
+      pdf.text(titleLines, margin, yPosition)
+      yPosition += (titleLines.length * lineHeight) + 20
+      
+      // Author and date
+      pdf.setFontSize(10)
+      pdf.setTextColor(100, 100, 100)
+      pdf.text(`By ${publication.author} • ${publication.date} • ${publication.readTime}`, margin, yPosition)
+      yPosition += 30
+      
+      // Executive Summary
+      pdf.setFontSize(12)
+      pdf.setTextColor(45, 91, 255)
+      pdf.text('Executive Summary', margin, yPosition)
+      yPosition += 20
+      
+      pdf.setFontSize(10)
+      pdf.setTextColor(0, 0, 0)
+      const excerptLines = pdf.splitTextToSize(publication.excerpt, contentWidth)
+      pdf.text(excerptLines, margin, yPosition)
+      yPosition += (excerptLines.length * lineHeight) + 30
+      
+      // Content (simplified for PDF)
+      const contentText = publication.content.replace(/<[^>]*>/g, '') // Remove HTML tags
+      const contentLines = pdf.splitTextToSize(contentText, contentWidth)
+      
+      for (let i = 0; i < contentLines.length; i++) {
+        if (yPosition > pageHeight - margin - 50) {
+          pdf.addPage()
+          addWatermark()
+          yPosition = margin
+        }
+        pdf.text(contentLines[i], margin, yPosition)
+        yPosition += lineHeight
+      }
+      
+      // Add footer to last page
+      yPosition = pageHeight - margin
+      pdf.setFontSize(8)
+      pdf.setTextColor(100, 100, 100)
+      pdf.text(`© ${new Date().getFullYear()} Prop Shop AI. All rights reserved.`, margin, yPosition)
+      pdf.text(`Generated on ${new Date().toLocaleDateString()}`, pageWidth - margin - 100, yPosition)
+      
+      // Download the PDF
       const fileName = publication.title
         .toLowerCase()
         .replace(/[^a-z0-9\s-]/g, '')
