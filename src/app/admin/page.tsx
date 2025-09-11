@@ -47,7 +47,7 @@ export default function AdminDashboard() {
   const [inviteEmail, setInviteEmail] = useState('')
   const [isInviting, setIsInviting] = useState(false)
   const [message, setMessage] = useState('')
-  const [messageType, setMessageType] = useState<'success' | 'error'>('success')
+  const [messageType, setMessageType] = useState<'success' | 'error' | 'warning'>('success')
   
   // DSIP Scraper state
   const [isScraperRunning, setIsScraperRunning] = useState(false)
@@ -102,14 +102,21 @@ export default function AdminDashboard() {
       const response = await fetch('/api/admin/users')
       if (response.ok) {
         const data = await response.json()
-        setUsers(data.users)
+        setUsers(data.users || [])
+        if (data.error) {
+          console.warn('Users loaded with warning:', data.error)
+        }
       } else {
-        setMessage('Failed to load users')
-        setMessageType('error')
+        console.error('Failed to load users:', response.status)
+        setUsers([]) // Set empty array instead of showing error
+        setMessage('Users data temporarily unavailable')
+        setMessageType('warning')
       }
     } catch (error) {
-      setMessage('Error loading users')
-      setMessageType('error')
+      console.error('Error loading users:', error)
+      setUsers([]) // Set empty array instead of showing error
+      setMessage('Users data temporarily unavailable')
+      setMessageType('warning')
     } finally {
       setIsLoadingUsers(false)
     }

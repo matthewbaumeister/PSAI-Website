@@ -63,12 +63,19 @@ export default function AdminUsersPage() {
       if (response.ok) {
         const data = await response.json()
         setUsers(data.users || [])
+        if (data.error) {
+          console.warn('Users loaded with warning:', data.error)
+          setMessage('Users data loaded with limited functionality')
+        }
       } else {
-        setMessage('Failed to load users')
+        console.error('Failed to load users:', response.status)
+        setUsers([]) // Set empty array instead of showing error
+        setMessage('Users data temporarily unavailable')
       }
     } catch (error) {
       console.error('Failed to load users:', error)
-      setMessage('Failed to load users')
+      setUsers([]) // Set empty array instead of showing error
+      setMessage('Users data temporarily unavailable')
     } finally {
       setIsLoading(false)
     }
