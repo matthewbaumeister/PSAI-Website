@@ -195,7 +195,7 @@ export default function PublicationsPage() {
           }
           
           const sourceLines = pdf.splitTextToSize(`${index + 1}. ${source}`, contentWidth)
-          sourceLines.forEach(line => {
+          sourceLines.forEach((line: string) => {
             if (yPosition > pageHeight - margin - 50) {
               pdf.addPage()
               addWatermark()
@@ -296,7 +296,7 @@ export default function PublicationsPage() {
           }
           
           const sourceLines = pdf.splitTextToSize(`${index + 1}. ${source}`, contentWidth)
-          sourceLines.forEach(line => {
+          sourceLines.forEach((line: string) => {
             if (yPosition > pageHeight - margin - 50) {
               pdf.addPage()
               addWatermark()
