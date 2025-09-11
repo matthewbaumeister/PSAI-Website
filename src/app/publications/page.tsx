@@ -405,24 +405,29 @@ export default function PublicationsPage() {
             <div className="modal-header">
               <h2>{selectedPublication.title}</h2>
               <div className="modal-header-actions">
-                <button
-                  className="read-full-btn"
-                  onClick={() => {
-                    closePublication()
-                    router.push(`/publications/${selectedPublication.slug}`)
-                  }}
-                  title="Read Full Article"
-                >
-                  📖 Read Full Article
-                </button>
-                <button
-                  className="pdf-export-btn"
-                  onClick={() => handleExportPDF(selectedPublication)}
-                  title="Export to PDF"
-                >
-                  📄 Export PDF
-                </button>
-                <button className="close-btn" onClick={closePublication}>×</button>
+           <button
+             className="read-full-btn"
+             onClick={() => {
+               closePublication()
+               // Check if user is logged in, if not redirect to login
+               if (!user) {
+                 router.push('/auth/login')
+               } else {
+                 router.push(`/publications/${selectedPublication.slug}`)
+               }
+             }}
+             title="Read Full Article"
+           >
+             Read Full Article
+           </button>
+           <button
+             className="pdf-export-btn"
+             onClick={() => handleExportPDF(selectedPublication)}
+             title="Export to PDF"
+           >
+             Export PDF
+           </button>
+           <button className="close-btn" onClick={closePublication}>×</button>
               </div>
             </div>
               <div className="modal-body">
@@ -436,10 +441,40 @@ export default function PublicationsPage() {
                     <span key={tag} className="tag">{tag}</span>
                   ))}
                 </div>
-                <div 
-                  className="modal-content-body"
-                  dangerouslySetInnerHTML={{ __html: selectedPublication.content }}
-                />
+                <div className="modal-content">
+                  <div className="executive-summary">
+                    <h2>Executive Summary</h2>
+                    <p>{selectedPublication.excerpt}</p>
+                  </div>
+                  <div className="preview-restricted">
+                    <div className="restricted-overlay">
+                      <div className="restricted-content">
+                        <h3>🔒 Full Content Available After Login</h3>
+                        <p>Sign in to access the complete article with detailed analysis, comprehensive references, and expert insights.</p>
+                        <div className="restricted-actions">
+                          <button 
+                            className="btn btn-primary"
+                            onClick={() => {
+                              closePublication()
+                              router.push('/auth/login')
+                            }}
+                          >
+                            Sign In to Continue Reading
+                          </button>
+                          <button 
+                            className="btn btn-outline"
+                            onClick={() => {
+                              closePublication()
+                              router.push('/auth/signup')
+                            }}
+                          >
+                            Create Free Account
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="modal-actions">
                   <button 
                     className="share-btn"

@@ -315,7 +315,7 @@ export default function PublicationPage() {
               onClick={() => handleExportPDF(publication)}
               title="Export to PDF"
             >
-              📄 Export PDF
+              Export PDF
             </button>
             <button 
               className="share-btn"

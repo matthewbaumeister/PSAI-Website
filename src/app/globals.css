@@ -2829,6 +2829,107 @@ body::after {
   box-shadow: 0 4px 12px rgba(154, 242, 58, 0.3);
 }
 
+/* Preview Restricted Content */
+.preview-restricted {
+  position: relative;
+  margin-top: 2rem;
+}
+
+.restricted-overlay {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.restricted-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    rgba(154, 242, 58, 0.1) 0%, 
+    rgba(125, 211, 252, 0.1) 25%, 
+    rgba(154, 242, 58, 0.1) 50%, 
+    rgba(125, 211, 252, 0.1) 75%, 
+    rgba(154, 242, 58, 0.1) 100%);
+  background-size: 20px 20px;
+  animation: shimmer 3s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+.restricted-content {
+  position: relative;
+  z-index: 1;
+}
+
+.restricted-content h3 {
+  color: #9AF23A;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(154, 242, 58, 0.3);
+}
+
+.restricted-content p {
+  color: #cbd5e1;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.restricted-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.restricted-actions .btn {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  min-width: 160px;
+}
+
+.restricted-actions .btn-primary {
+  background: linear-gradient(135deg, #9AF23A, #7dd3fc);
+  color: #1a1a1a;
+  border: none;
+}
+
+.restricted-actions .btn-primary:hover {
+  background: linear-gradient(135deg, #7dd3fc, #9AF23A);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(154, 242, 58, 0.4);
+}
+
+.restricted-actions .btn-outline {
+  background: transparent;
+  color: #9AF23A;
+  border: 2px solid #9AF23A;
+}
+
+.restricted-actions .btn-outline:hover {
+  background: rgba(154, 242, 58, 0.1);
+  color: #7dd3fc;
+  border-color: #7dd3fc;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(125, 211, 252, 0.3);
+}
+
 .pdf-export-btn {
   background: linear-gradient(135deg, #2D5BFF, #1e40af);
   border: none;
