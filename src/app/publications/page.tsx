@@ -4,11 +4,13 @@ import { useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import type { Metadata } from 'next'
 import { publications, type Publication } from '@/data/publications'
+import { useAuth } from '@/contexts/AuthContext'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 
 export default function PublicationsPage() {
   const router = useRouter()
+  const { user } = useAuth()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedTag, setSelectedTag] = useState('All')
@@ -528,7 +530,7 @@ export default function PublicationsPage() {
                   </button>
                   <button 
                     className="preview-btn"
-                    onClick={() => openPublication(publication)}
+                    onClick={() => setSelectedPublication(publication)}
                   >
                     Preview
                   </button>
