@@ -7,6 +7,66 @@ import { useAuth } from '@/contexts/AuthContext'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 
+// Comprehensive sources data
+const getComprehensiveSources = () => [
+  { name: 'U.S. Small Business Administration (SBA)', url: 'https://www.sba.gov' },
+  { name: 'System for Award Management (SAM)', url: 'https://sam.gov' },
+  { name: 'Federal Acquisition Regulation (FAR)', url: 'https://www.acquisition.gov' },
+  { name: 'Defense Federal Acquisition Regulation (DFARS)', url: 'https://www.acq.osd.mil' },
+  { name: 'General Services Administration (GSA)', url: 'https://www.gsa.gov' },
+  { name: 'Department of Defense (DoD)', url: 'https://www.defense.gov' },
+  { name: 'Government Accountability Office (GAO)', url: 'https://www.gao.gov' },
+  { name: 'Congressional Research Service (CRS)', url: 'https://www.crs.gov' },
+  { name: 'Federal Procurement Data System (FPDS)', url: 'https://www.fpds.gov' },
+  { name: 'Contract Opportunities (beta.SAM.gov)', url: 'https://beta.sam.gov' },
+  { name: 'Defense Contract Management Agency (DCMA)', url: 'https://www.dcma.mil' },
+  { name: 'Defense Contract Audit Agency (DCAA)', url: 'https://www.dcaa.mil' },
+  { name: 'Small Business Innovation Research (SBIR)', url: 'https://www.sbir.gov' },
+  { name: 'Small Business Technology Transfer (STTR)', url: 'https://www.sbir.gov' },
+  { name: '8(a) Business Development Program', url: 'https://www.sba.gov/federal-contracting' },
+  { name: 'HUBZone Program', url: 'https://www.sba.gov/federal-contracting' },
+  { name: 'Women-Owned Small Business (WOSB)', url: 'https://www.sba.gov/federal-contracting' },
+  { name: 'Veteran-Owned Small Business (VOSB)', url: 'https://www.va.gov/osdbu' },
+  { name: 'Service-Disabled Veteran-Owned Small Business (SDVOSB)', url: 'https://www.va.gov/osdbu' },
+  { name: 'GSA Multiple Award Schedule (MAS)', url: 'https://www.gsa.gov' },
+  { name: 'GSA eBuy', url: 'https://www.ebuy.gsa.gov' },
+  { name: 'FedBizOpps', url: 'https://www.fedbizopps.gov' },
+  { name: 'Defense Innovation Unit (DIU)', url: 'https://www.diu.mil' },
+  { name: 'Air Force Research Laboratory (AFRL)', url: 'https://www.afrl.af.mil' },
+  { name: 'Army Research Laboratory (ARL)', url: 'https://www.arl.army.mil' },
+  { name: 'Naval Research Laboratory (NRL)', url: 'https://www.nrl.navy.mil' },
+  { name: 'NASA SBIR/STTR', url: 'https://sbir.nasa.gov' },
+  { name: 'National Science Foundation (NSF) SBIR', url: 'https://www.nsf.gov' },
+  { name: 'Department of Energy (DOE) SBIR', url: 'https://www.energy.gov' },
+  { name: 'National Institutes of Health (NIH) SBIR', url: 'https://www.nih.gov' },
+  { name: 'Department of Homeland Security (DHS) SBIR', url: 'https://www.dhs.gov' },
+  { name: 'Department of Transportation (DOT) SBIR', url: 'https://www.transportation.gov' },
+  { name: 'Environmental Protection Agency (EPA) SBIR', url: 'https://www.epa.gov' },
+  { name: 'U.S. Department of Agriculture (USDA) SBIR', url: 'https://www.usda.gov' },
+  { name: 'National Institute of Standards and Technology (NIST)', url: 'https://www.nist.gov' },
+  { name: 'Defense Advanced Research Projects Agency (DARPA)', url: 'https://www.darpa.mil' },
+  { name: 'Defense Innovation Board', url: 'https://www.innovation.defense.gov' },
+  { name: 'Joint Artificial Intelligence Center (JAIC)', url: 'https://www.ai.mil' },
+  { name: 'Chief Digital and Artificial Intelligence Office (CDAO)', url: 'https://www.ai.mil' },
+  { name: 'Defense Information Systems Agency (DISA)', url: 'https://www.disa.mil' },
+  { name: 'Defense Logistics Agency (DLA)', url: 'https://www.dla.mil' },
+  { name: 'Defense Threat Reduction Agency (DTRA)', url: 'https://www.dtra.mil' },
+  { name: 'Missile Defense Agency (MDA)', url: 'https://www.mda.mil' },
+  { name: 'Space Development Agency (SDA)', url: 'https://www.sda.mil' },
+  { name: 'U.S. Space Force', url: 'https://www.spaceforce.mil' },
+  { name: 'U.S. Space Command', url: 'https://www.spacecom.mil' },
+  { name: 'U.S. Cyber Command', url: 'https://www.cybercom.mil' },
+  { name: 'U.S. Special Operations Command (SOCOM)', url: 'https://www.socom.mil' },
+  { name: 'U.S. Transportation Command (TRANSCOM)', url: 'https://www.transcom.mil' },
+  { name: 'U.S. Strategic Command (STRATCOM)', url: 'https://www.stratcom.mil' },
+  { name: 'U.S. Northern Command (NORTHCOM)', url: 'https://www.northcom.mil' },
+  { name: 'U.S. Southern Command (SOUTHCOM)', url: 'https://www.southcom.mil' },
+  { name: 'U.S. European Command (EUCOM)', url: 'https://www.eucom.mil' },
+  { name: 'U.S. Africa Command (AFRICOM)', url: 'https://www.africom.mil' },
+  { name: 'U.S. Indo-Pacific Command (INDOPACOM)', url: 'https://www.pacom.mil' },
+  { name: 'U.S. Central Command (CENTCOM)', url: 'https://www.centcom.mil' }
+]
+
 export default function PublicationPage() {
   const params = useParams()
   const router = useRouter()
@@ -472,6 +532,26 @@ export default function PublicationPage() {
             className="article-content"
             dangerouslySetInnerHTML={{ __html: publication.content }}
           />
+          
+          {/* Comprehensive Sources Section */}
+          <div className="sources-section">
+            <h2>Comprehensive Sources & References</h2>
+            <div className="sources-grid">
+              {getComprehensiveSources().map((source, index) => (
+                <div key={index} className="source-item">
+                  <span className="source-number">{index + 1}.</span>
+                  <a 
+                    href={source.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="source-link"
+                  >
+                    {source.name}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </main>
