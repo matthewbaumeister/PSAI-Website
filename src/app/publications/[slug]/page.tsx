@@ -6,10 +6,10 @@ import { getPublicationBySlug, type Publication } from '@/data/publications'
 import { useAuth } from '@/contexts/AuthContext'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
-import { getAILobbyingSources } from '@/data/ai-lobbying-sources'
+import { getPublicationSources } from '@/data/publication-sources'
 
-// Use specific sources from the AI lobbying article
-const getComprehensiveSources = () => getAILobbyingSources()
+// Get sources for the current publication
+const getComprehensiveSources = (publicationId: string) => getPublicationSources(publicationId)
 
 export default function PublicationPage() {
   const params = useParams()
@@ -175,66 +175,9 @@ export default function PublicationPage() {
           })
           yPosition += 5
         })
-      } else {
-        // Fallback comprehensive sources
-        const fallbackSources = [
-          'U.S. Small Business Administration (SBA) - https://www.sba.gov',
-          'System for Award Management (SAM) - https://sam.gov',
-          'Federal Acquisition Regulation (FAR) - https://www.acquisition.gov',
-          'Defense Federal Acquisition Regulation (DFARS) - https://www.acq.osd.mil',
-          'General Services Administration (GSA) - https://www.gsa.gov',
-          'Department of Defense (DoD) - https://www.defense.gov',
-          'Government Accountability Office (GAO) - https://www.gao.gov',
-          'Congressional Research Service (CRS) - https://www.crs.gov',
-          'Federal Procurement Data System (FPDS) - https://www.fpds.gov',
-          'Contract Opportunities (beta.SAM.gov) - https://beta.sam.gov',
-          'Defense Contract Management Agency (DCMA) - https://www.dcma.mil',
-          'Defense Contract Audit Agency (DCAA) - https://www.dcaa.mil',
-          'Small Business Innovation Research (SBIR) - https://www.sbir.gov',
-          'Small Business Technology Transfer (STTR) - https://www.sbir.gov',
-          '8(a) Business Development Program - https://www.sba.gov/federal-contracting',
-          'HUBZone Program - https://www.sba.gov/federal-contracting',
-          'Women-Owned Small Business (WOSB) - https://www.sba.gov/federal-contracting',
-          'Veteran-Owned Small Business (VOSB) - https://www.va.gov/osdbu',
-          'Service-Disabled Veteran-Owned Small Business (SDVOSB) - https://www.va.gov/osdbu',
-          'GSA Multiple Award Schedule (MAS) - https://www.gsa.gov',
-          'GSA eBuy - https://www.ebuy.gsa.gov',
-          'FedBizOpps - https://www.fedbizopps.gov',
-          'Defense Innovation Unit (DIU) - https://www.diu.mil',
-          'Air Force Research Laboratory (AFRL) - https://www.afrl.af.mil',
-          'Army Research Laboratory (ARL) - https://www.arl.army.mil',
-          'Naval Research Laboratory (NRL) - https://www.nrl.navy.mil',
-          'NASA SBIR/STTR - https://sbir.nasa.gov',
-          'National Science Foundation (NSF) SBIR - https://www.nsf.gov',
-          'Department of Energy (DOE) SBIR - https://www.energy.gov',
-          'National Institutes of Health (NIH) SBIR - https://www.nih.gov',
-          'Department of Homeland Security (DHS) SBIR - https://www.dhs.gov',
-          'Department of Transportation (DOT) SBIR - https://www.transportation.gov',
-          'Environmental Protection Agency (EPA) SBIR - https://www.epa.gov',
-          'U.S. Department of Agriculture (USDA) SBIR - https://www.usda.gov',
-          'National Institute of Standards and Technology (NIST) - https://www.nist.gov',
-          'Defense Advanced Research Projects Agency (DARPA) - https://www.darpa.mil',
-          'Defense Innovation Board - https://www.innovation.defense.gov',
-          'Joint Artificial Intelligence Center (JAIC) - https://www.ai.mil',
-          'Chief Digital and Artificial Intelligence Office (CDAO) - https://www.ai.mil',
-          'Defense Information Systems Agency (DISA) - https://www.disa.mil',
-          'Defense Logistics Agency (DLA) - https://www.dla.mil',
-          'Defense Threat Reduction Agency (DTRA) - https://www.dtra.mil',
-          'Missile Defense Agency (MDA) - https://www.mda.mil',
-          'Space Development Agency (SDA) - https://www.sda.mil',
-          'U.S. Space Force - https://www.spaceforce.mil',
-          'U.S. Space Command - https://www.spacecom.mil',
-          'U.S. Cyber Command - https://www.cybercom.mil',
-          'U.S. Special Operations Command (SOCOM) - https://www.socom.mil',
-          'U.S. Transportation Command (TRANSCOM) - https://www.transcom.mil',
-          'U.S. Strategic Command (STRATCOM) - https://www.stratcom.mil',
-          'U.S. Northern Command (NORTHCOM) - https://www.northcom.mil',
-          'U.S. Southern Command (SOUTHCOM) - https://www.southcom.mil',
-          'U.S. European Command (EUCOM) - https://www.eucom.mil',
-          'U.S. Africa Command (AFRICOM) - https://www.africom.mil',
-          'U.S. Indo-Pacific Command (INDOPACOM) - https://www.pacom.mil',
-          'U.S. Central Command (CENTCOM) - https://www.centcom.mil'
-        ]
+        } else {
+          // Use publication-specific sources
+          const fallbackSources = getComprehensiveSources(publication.id).map(source => `${source.name} - ${source.url}`)
         
         fallbackSources.forEach((source, index) => {
           if (yPosition > pageHeight - margin - 50) {
@@ -481,7 +424,7 @@ export default function PublicationPage() {
           <div className="sources-section">
             <h2>Comprehensive Sources & References</h2>
             <div className="sources-grid">
-              {getComprehensiveSources().map((source, index) => (
+              {getComprehensiveSources(publication.id).map((source, index) => (
                 <div key={index} className="source-item">
                   <span className="source-number">{index + 1}.</span>
                   <a 

@@ -7,7 +7,7 @@ import { publications, type Publication } from '@/data/publications'
 import { useAuth } from '@/contexts/AuthContext'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
-import { getAILobbyingSources } from '@/data/ai-lobbying-sources'
+import { getPublicationSources } from '@/data/publication-sources'
 
 export default function PublicationsPage() {
   const router = useRouter()
@@ -208,8 +208,8 @@ export default function PublicationsPage() {
           yPosition += 5
         })
       } else {
-        // Use specific sources from the AI lobbying article
-        const fallbackSources = getAILobbyingSources().map(source => `${source.name} - ${source.url}`)
+        // Use publication-specific sources
+        const fallbackSources = getPublicationSources(publication.id).map(source => `${source.name} - ${source.url}`)
         
         fallbackSources.forEach((source, index) => {
           if (yPosition > pageHeight - margin - 50) {
