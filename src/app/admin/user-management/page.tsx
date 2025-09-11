@@ -24,7 +24,7 @@ export default function UserManagementPage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [filterRole, setFilterRole] = useState<'all' | 'admin' | 'user'>('all')
   const [message, setMessage] = useState('')
-  const [messageType, setMessageType] = useState<'success' | 'error'>('success')
+  const [messageType, setMessageType] = useState<'success' | 'error' | 'warning'>('success')
 
   // Check if user is authenticated and is admin
   useEffect(() => {
