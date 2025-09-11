@@ -23,9 +23,14 @@ export default function PublicationPage() {
 
   const handleExportPDF = async (publication: Publication) => {
     try {
+      // Check if we're in browser environment
+      if (typeof window === 'undefined') {
+        throw new Error('PDF export only available in browser')
+      }
+
       // Check if jsPDF is available
-      if (typeof window === 'undefined' || !(window as any).jsPDF) {
-        throw new Error('jsPDF library not loaded')
+      if (!jsPDF) {
+        throw new Error('jsPDF library not available')
       }
 
       // Create PDF with proper 1" margins
