@@ -2099,7 +2099,7 @@ export default function AdminDashboard() {
               alignItems: 'center',
               gap: '8px'
             }}>
-              🗄️ SBIR Database Management
+              🗄️ SBIR Database Overview
             </h3>
             <p style={{
               color: '#cbd5e1',
@@ -2107,8 +2107,7 @@ export default function AdminDashboard() {
               lineHeight: '1.6',
               margin: '0 0 20px 0'
             }}>
-              Manage the complete DoD SBIR/STTR database with automated daily updates, 
-              search functionality, and data management tools.
+              Overview of the DoD SBIR/STTR database status and quick access to management tools.
             </p>
 
             {/* SBIR Stats */}
@@ -2246,6 +2245,23 @@ export default function AdminDashboard() {
                 }}
               >
                 👥 View Users
+              </button>
+              <button
+                onClick={() => router.push('/admin/dsip-settings')}
+                style={{
+                  padding: '12px 20px',
+                  background: 'rgba(139, 92, 246, 0.2)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  borderRadius: '8px',
+                  color: '#c4b5fd',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  marginLeft: '12px'
+                }}
+              >
+                🔍 DSIP Settings
               </button>
             </div>
 
