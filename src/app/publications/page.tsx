@@ -1,12 +1,14 @@
 'use client'
 
 import { useState, useMemo } from 'react'
+import { useRouter } from 'next/navigation'
 import type { Metadata } from 'next'
 import { publications, type Publication } from '@/data/publications'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 
 export default function PublicationsPage() {
+  const router = useRouter()
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [selectedTag, setSelectedTag] = useState('All')
@@ -400,19 +402,29 @@ export default function PublicationsPage() {
           <div className="publication-modal">
             <div className="modal-overlay" onClick={closePublication}></div>
             <div className="modal-content">
-              <div className="modal-header">
-                <h2>{selectedPublication.title}</h2>
-                <div className="modal-header-actions">
-                  <button 
-                    className="pdf-export-btn"
-                    onClick={() => handleExportPDF(selectedPublication)}
-                    title="Export to PDF"
-                  >
-                    📄 Export PDF
-                  </button>
-                  <button className="close-btn" onClick={closePublication}>×</button>
-                </div>
+            <div className="modal-header">
+              <h2>{selectedPublication.title}</h2>
+              <div className="modal-header-actions">
+                <button
+                  className="read-full-btn"
+                  onClick={() => {
+                    closePublication()
+                    router.push(`/publications/${selectedPublication.slug}`)
+                  }}
+                  title="Read Full Article"
+                >
+                  📖 Read Full Article
+                </button>
+                <button
+                  className="pdf-export-btn"
+                  onClick={() => handleExportPDF(selectedPublication)}
+                  title="Export to PDF"
+                >
+                  📄 Export PDF
+                </button>
+                <button className="close-btn" onClick={closePublication}>×</button>
               </div>
+            </div>
               <div className="modal-body">
                 <div className="modal-meta">
                   <span className="author">By {selectedPublication.author}</span>
