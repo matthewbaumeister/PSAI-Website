@@ -995,7 +995,7 @@ export const publications: Publication[] = [
     excerpt: 'Complete analysis of APFIT and STRATFI funding mechanisms, including program structures, eligibility requirements, application processes, and strategic selection criteria for defense contractors.',
     tags: ['APFIT', 'STRATFI', 'TACFI', 'DoD', 'Defense Innovation', 'SBIR', 'STTR', 'Government Contracting', 'Small Business', 'Defense Funding', 'AFWERX', 'SpaceWERX'],
     category: 'Research & Insights',
-    featured: true,
+    featured: false,
     content: `
       <h2>Executive Summary</h2>
       <p><strong>APFIT offers production-ready procurement funding while STRATFI bridges SBIR development gaps</strong> - these DoD funding mechanisms serve distinct stages of technology maturation with fundamentally different structures, eligibility requirements, and organizational reach.</p>
