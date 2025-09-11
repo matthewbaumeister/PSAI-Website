@@ -41,7 +41,7 @@ export async function GET(request: NextRequest) {
       created_at: user.created_at,
       updated_at: user.updated_at,
       last_login_at: user.last_sign_in_at,
-      is_active: !user.banned_until,
+      is_active: true, // Supabase users are active by default unless explicitly banned
       is_admin: user.user_metadata?.is_admin || false,
       two_factor_enabled: user.app_metadata?.provider === 'email' ? false : true,
       session_timeout_minutes: 30,
