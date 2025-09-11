@@ -2230,6 +2230,23 @@ export default function AdminDashboard() {
               >
                 📊 View Database
               </button>
+              <button
+                onClick={() => router.push('/admin/users')}
+                style={{
+                  padding: '12px 20px',
+                  background: 'rgba(59, 130, 246, 0.2)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                  borderRadius: '8px',
+                  color: '#93c5fd',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  marginLeft: '12px'
+                }}
+              >
+                👥 View Users
+              </button>
             </div>
 
             {/* SBIR Info */}
