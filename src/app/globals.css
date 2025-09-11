@@ -2782,6 +2782,7 @@ body::after {
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0 auto;
 }
 
 .modal-header {
@@ -2833,47 +2834,51 @@ body::after {
 .preview-restricted {
   position: relative;
   margin-top: 2rem;
-  border-radius: 12px;
-  overflow: hidden;
 }
 
 .modal-content-body {
-  transition: all 0.3s ease;
+  position: relative;
 }
 
-.preview-restricted .modal-content-body {
-  filter: blur(8px);
-  opacity: 0.4;
-  pointer-events: none;
-  user-select: none;
-}
-
-.restricted-overlay {
+.preview-restricted .modal-content-body::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(15px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  border-radius: 12px;
-  padding: 2rem;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 30%,
+    rgba(15, 23, 42, 0.3) 70%,
+    rgba(15, 23, 42, 0.8) 100%
+  );
+  backdrop-filter: blur(3px);
+  pointer-events: none;
+  z-index: 1;
 }
 
-.restricted-content {
-  text-align: center;
-  max-width: 500px;
-  background: rgba(30, 41, 59, 0.9);
-  border-radius: 12px;
+.preview-restricted .modal-content-body > *:not(.executive-summary) {
+  filter: blur(2px);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.restricted-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 23, 42, 0.95);
   border: 1px solid rgba(148, 163, 184, 0.3);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
   padding: 2rem;
-  position: relative;
-  z-index: 1;
+  text-align: center;
+  z-index: 10;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
 }
 
 .restricted-content h3 {
@@ -4195,9 +4200,11 @@ input:checked + .toggle-slider:before {
 }
 
 .modal-body {
-  padding: 32px;
+  padding: 2rem;
   max-height: calc(90vh - 100px);
   overflow-y: auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .modal-meta {
@@ -4504,9 +4511,9 @@ input:checked + .toggle-slider:before {
   border-left: 4px solid #2D5BFF;
   padding: 2rem;
   border-radius: 0 12px 12px 0;
-  margin-bottom: 3rem;
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0 0 3rem 0;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .executive-summary h2 {
