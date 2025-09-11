@@ -2833,42 +2833,45 @@ body::after {
 .preview-restricted {
   position: relative;
   margin-top: 2rem;
-}
-
-.restricted-overlay {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
-  border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 12px;
-  padding: 2rem;
-  text-align: center;
-  position: relative;
   overflow: hidden;
 }
 
-.restricted-overlay::before {
-  content: '';
+.modal-content-body {
+  transition: all 0.3s ease;
+}
+
+.preview-restricted .modal-content-body {
+  filter: blur(8px);
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+}
+
+.restricted-overlay {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, 
-    rgba(154, 242, 58, 0.1) 0%, 
-    rgba(125, 211, 252, 0.1) 25%, 
-    rgba(154, 242, 58, 0.1) 50%, 
-    rgba(125, 211, 252, 0.1) 75%, 
-    rgba(154, 242, 58, 0.1) 100%);
-  background-size: 20px 20px;
-  animation: shimmer 3s ease-in-out infinite;
-  opacity: 0.3;
-}
-
-@keyframes shimmer {
-  0%, 100% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 12px;
+  padding: 2rem;
 }
 
 .restricted-content {
+  text-align: center;
+  max-width: 500px;
+  background: rgba(30, 41, 59, 0.9);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
   position: relative;
   z-index: 1;
 }
@@ -2879,6 +2882,10 @@ body::after {
   font-weight: 700;
   margin-bottom: 1rem;
   text-shadow: 0 0 10px rgba(154, 242, 58, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .restricted-content p {
@@ -3587,6 +3594,9 @@ input:checked + .toggle-slider:before {
 
 .modal-content {
   padding: 2rem;
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
 }
 
 .user-detail-section {
@@ -4495,6 +4505,8 @@ input:checked + .toggle-slider:before {
   padding: 2rem;
   border-radius: 0 12px 12px 0;
   margin-bottom: 3rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .executive-summary h2 {
