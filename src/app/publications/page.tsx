@@ -56,8 +56,8 @@ export default function PublicationsPage() {
       tempElement.style.position = 'absolute'
       tempElement.style.left = '-9999px'
       tempElement.style.top = '-9999px'
-      tempElement.style.width = '800px'
-      tempElement.style.padding = '60px'
+      tempElement.style.width = '612px' // 8.5" at 72 DPI
+      tempElement.style.padding = '72px' // 1" margins
       tempElement.style.backgroundColor = 'white'
       tempElement.style.color = '#1a1a1a'
       tempElement.style.fontFamily = 'Georgia, serif'
@@ -73,7 +73,7 @@ export default function PublicationsPage() {
       
       // Create the HTML content for the PDF with professional formatting
       tempElement.innerHTML = `
-        <div style="margin-bottom: 40px;">
+        <div style="position: relative; z-index: 1; margin-bottom: 40px;">
           <!-- Header with Prop Shop AI Branding -->
           <div style="text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 3px solid #2D5BFF;">
             <div style="margin-bottom: 20px;">
@@ -150,6 +150,11 @@ export default function PublicationsPage() {
             </div>
           </div>
         </div>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; opacity: 0.03;">
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-45deg); font-size: 72px; font-weight: bold; color: #2D5BFF; white-space: nowrap; font-family: Arial, sans-serif;">
+            PROP SHOP AI
+          </div>
+        </div>
       `
       
       document.body.appendChild(tempElement)
@@ -164,10 +169,10 @@ export default function PublicationsPage() {
       })
       
       const imgData = canvas.toDataURL('image/png')
-      const pdf = new jsPDF('p', 'mm', 'a4')
+      const pdf = new jsPDF('p', 'pt', 'letter') // 612x792 points (8.5" x 11")
       
-      const imgWidth = 210
-      const pageHeight = 295
+      const imgWidth = 612 // Full width minus 1" margins on each side
+      const pageHeight = 792
       const imgHeight = (canvas.height * imgWidth) / canvas.width
       let heightLeft = imgHeight
       
@@ -417,13 +422,15 @@ export default function PublicationsPage() {
            >
              Read Full Article
            </button>
-           <button
-             className="pdf-export-btn"
-             onClick={() => handleExportPDF(selectedPublication)}
-             title="Export to PDF"
-           >
-             Export PDF
-           </button>
+           {user && (
+             <button
+               className="pdf-export-btn"
+               onClick={() => handleExportPDF(selectedPublication)}
+               title="Export to PDF"
+             >
+               Export PDF
+             </button>
+           )}
            <button className="close-btn" onClick={closePublication}>×</button>
               </div>
             </div>
