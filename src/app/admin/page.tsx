@@ -103,20 +103,23 @@ export default function AdminDashboard() {
       if (response.ok) {
         const data = await response.json()
         setUsers(data.users || [])
-        if (data.error && !data.isMockData) {
-          console.warn('Users loaded with warning:', data.error)
+        if (data.message) {
+          setMessage(data.message)
+          setMessageType('warning')
+        } else {
+          setMessage('') // Clear any previous messages
         }
       } else {
         console.error('Failed to load users:', response.status)
-        setUsers([]) // Set empty array instead of showing error
-        setMessage('Users data temporarily unavailable')
-        setMessageType('warning')
+        setUsers([])
+        setMessage('Failed to load users data')
+        setMessageType('error')
       }
     } catch (error) {
       console.error('Error loading users:', error)
-      setUsers([]) // Set empty array instead of showing error
-      setMessage('Users data temporarily unavailable')
-      setMessageType('warning')
+      setUsers([])
+      setMessage('Error loading users data')
+      setMessageType('error')
     } finally {
       setIsLoadingUsers(false)
     }

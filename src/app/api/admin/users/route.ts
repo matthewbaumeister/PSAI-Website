@@ -54,88 +54,42 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    // If we have real users, use them; otherwise use mock data
-    if (realUsers && realUsers.length > 0) {
-      const transformedUsers = realUsers.map(user => ({
-        id: user.id,
-        email: user.email || '',
-        first_name: user.first_name || user.user_metadata?.first_name || null,
-        last_name: user.last_name || user.user_metadata?.last_name || null,
-        company_name: user.company_name || user.user_metadata?.company_name || null,
-        company_size: user.company_size || user.user_metadata?.company_size || null,
-        phone: user.phone || user.user_metadata?.phone || null,
-        email_verified_at: user.email_verified_at || user.email_confirmed_at,
-        created_at: user.created_at,
-        updated_at: user.updated_at,
-        last_login_at: user.last_login_at || user.last_sign_in_at,
-        is_active: user.is_active !== false,
-        is_admin: user.is_admin || user.user_metadata?.is_admin || false,
-        two_factor_enabled: user.two_factor_enabled || false,
-        session_timeout_minutes: user.session_timeout_minutes || 30,
-        settings: {
-          newsletter_subscription: user.newsletter_subscription || user.user_metadata?.newsletter_subscription || false,
-          research_alerts: user.research_alerts || user.user_metadata?.research_alerts || false
-        },
-        session_count: 0
-      }))
-
+    // Always use real data - no mock data fallback
+    if (!realUsers || realUsers.length === 0) {
+      console.log('No users found in database')
       return NextResponse.json({ 
-        users: transformedUsers,
-        total: transformedUsers.length,
-        isRealData: true
+        users: [],
+        total: 0,
+        isRealData: true,
+        message: 'No users found in database'
       })
     }
 
-    // Fallback to mock data
-    console.log('Using mock user data - no real users found')
-    const mockUsers = [
-      {
-        id: '1',
-        email: 'admin@prop-shop.ai',
-        first_name: 'Matt',
-        last_name: 'Baumeister',
-        company_name: 'Prop Shop AI',
-        company_size: '1-10',
-        phone: '+1-555-0123',
-        email_verified_at: new Date().toISOString(),
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
-        last_login_at: new Date().toISOString(),
-        is_active: true,
-        is_admin: true,
-        two_factor_enabled: false,
-        session_timeout_minutes: 30,
-        settings: {
-          newsletter_subscription: true,
-          research_alerts: true
-        },
-        session_count: 1
+    console.log('Processing real users:', realUsers.length)
+    console.log('First user sample:', JSON.stringify(realUsers[0], null, 2))
+    
+    const transformedUsers = realUsers.map(user => ({
+      id: user.id,
+      email: user.email || '',
+      first_name: user.first_name || null,
+      last_name: user.last_name || null,
+      company_name: user.company_name || null,
+      company_size: user.company_size || null,
+      phone: user.phone || null,
+      email_verified_at: user.email_verified_at || null,
+      created_at: user.created_at,
+      updated_at: user.updated_at || user.created_at,
+      last_login_at: user.last_login_at || null,
+      is_active: user.is_active !== false,
+      is_admin: user.is_admin || false,
+      two_factor_enabled: user.two_factor_enabled || false,
+      session_timeout_minutes: user.session_timeout_minutes || 30,
+      settings: {
+        newsletter_subscription: user.newsletter_subscription || false,
+        research_alerts: user.research_alerts || false
       },
-      {
-        id: '2',
-        email: 'user@example.com',
-        first_name: 'John',
-        last_name: 'Doe',
-        company_name: 'Example Corp',
-        company_size: '11-50',
-        phone: '+1-555-0124',
-        email_verified_at: new Date().toISOString(),
-        created_at: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
-        updated_at: new Date().toISOString(),
-        last_login_at: new Date(Date.now() - 3600000).toISOString(), // 1 hour ago
-        is_active: true,
-        is_admin: false,
-        two_factor_enabled: false,
-        session_timeout_minutes: 30,
-        settings: {
-          newsletter_subscription: true,
-          research_alerts: false
-        },
-        session_count: 3
-      }
-    ]
-
-    const transformedUsers = mockUsers
+      session_count: 0
+    }))
 
     // Try to get user settings from user_settings table if it exists
     try {
@@ -180,10 +134,13 @@ export async function GET(request: NextRequest) {
       console.log('user_sessions table not found, using default session count')
     }
 
+    console.log('Transformed users:', transformedUsers.length)
+    console.log('First transformed user:', JSON.stringify(transformedUsers[0], null, 2))
+
     return NextResponse.json({ 
       users: transformedUsers,
       total: transformedUsers.length,
-      isMockData: true // Flag to indicate this is mock data
+      isRealData: true
     })
 
   } catch (error) {
