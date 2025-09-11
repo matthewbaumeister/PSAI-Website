@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { getPublicationBySlug, type Publication } from '@/data/publications'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/contexts/AuthContext'
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas'
 
