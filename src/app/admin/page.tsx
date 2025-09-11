@@ -111,8 +111,9 @@ export default function AdminDashboard() {
         }
       } else {
         console.error('Failed to load users:', response.status)
+        const errorData = await response.json()
         setUsers([])
-        setMessage('Failed to load users data')
+        setMessage(`Failed to load users: ${errorData.details || errorData.error || 'Unknown error'}`)
         setMessageType('error')
       }
     } catch (error) {

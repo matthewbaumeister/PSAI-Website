@@ -23,18 +23,23 @@ export async function GET(request: NextRequest) {
     // Try to get real users first
     let realUsers = null
     try {
+      console.log('Attempting to fetch from users table...')
       // Try to get users from a custom users table first
       const { data: customUsers, error: customError } = await supabase
         .from('users')
         .select('*')
         .order('created_at', { ascending: false })
       
+      console.log('Users table query result:', { customUsers, customError })
+      
       if (!customError && customUsers) {
         realUsers = customUsers
         console.log('Found users in custom users table:', customUsers.length)
+      } else {
+        console.log('Error fetching from users table:', customError)
       }
     } catch (error) {
-      console.log('Custom users table not found, trying auth.users')
+      console.log('Exception fetching from users table:', error)
     }
 
     // If no custom users table, try auth.users
@@ -145,7 +150,17 @@ export async function GET(request: NextRequest) {
 
   } catch (error) {
     console.error('Error in GET /api/admin/users:', error)
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : undefined
+    })
+    return NextResponse.json({ 
+      error: 'Internal server error',
+      details: error instanceof Error ? error.message : 'Unknown error',
+      users: [],
+      total: 0,
+      isRealData: true
+    }, { status: 500 })
   }
 }
 
