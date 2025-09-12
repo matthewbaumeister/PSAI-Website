@@ -103,6 +103,10 @@ export const publicationSources: PublicationSourcesConfig = {
   
   '6': [ // AI Lobbying article - use the comprehensive sources we already created
     ...getAILobbyingSources()
+  ],
+  
+  '7': [ // Project MAVEN article - use the comprehensive sources we already created
+    ...getProjectMavenSources()
   ]
 }
 
@@ -119,3 +123,4 @@ export const getSourcesByCategory = (publicationId: string, category: Publicatio
 
 // Import the AI lobbying sources
 import { getAILobbyingSources } from './ai-lobbying-sources'
+import { getProjectMavenSources } from './project-maven-sources'
