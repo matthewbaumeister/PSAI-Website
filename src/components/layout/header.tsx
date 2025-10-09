@@ -223,6 +223,9 @@ export function Header() {
         <Link href="/admin/settings" className="dropdown-link" onClick={closeDropdowns}>
           System Settings
         </Link>
+        <Link href="/admin/dsip-settings" className="dropdown-link" onClick={closeDropdowns}>
+          DSIP Scraper Settings
+        </Link>
         <div className="dropdown-divider"></div>
         <Link href="/admin/logs" className="dropdown-link" onClick={closeDropdowns}>
           System Logs

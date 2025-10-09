@@ -27,6 +27,13 @@ export default function DSIPSettingsPage() {
   const [isLoadingStats, setIsLoadingStats] = useState(false)
   const [isLoadingScraper, setIsLoadingScraper] = useState(false)
   
+  // DSIP Scraper state
+  const [isScraperRunning, setIsScraperRunning] = useState(false)
+  const [scraperStatus, setScraperStatus] = useState<'idle' | 'running' | 'completed' | 'failed' | 'paused'>('idle')
+  const [currentScrapingJob, setCurrentScrapingJob] = useState<any>(null)
+  const [isCheckingActive, setIsCheckingActive] = useState(false)
+  const [activeOpportunitiesCount, setActiveOpportunitiesCount] = useState<number | null>(null)
+  
   // State for search testing
   const [searchResults, setSearchResults] = useState<SbirRecord[]>([])
   const [isSearching, setIsSearching] = useState(false)
@@ -59,8 +66,24 @@ export default function DSIPSettingsPage() {
     if (currentUser?.isAdmin) {
       loadSbirStats()
       checkSbirScraperStatus()
+      checkScraperStatus()
     }
   }, [currentUser])
+  
+  // Check scraper status on mount
+  const checkScraperStatus = async () => {
+    try {
+      const response = await fetch('/api/dsip/scraper')
+      if (response.ok) {
+        const data = await response.json()
+        setIsScraperRunning(data.isRunning)
+        setScraperStatus(data.status)
+        setCurrentScrapingJob(data.currentJob)
+      }
+    } catch (error) {
+      console.error('Error checking scraper status:', error)
+    }
+  }
 
   const loadSbirStats = async () => {
     setIsLoadingStats(true)
@@ -184,6 +207,240 @@ export default function DSIPSettingsPage() {
 
   const totalPages = Math.ceil(totalResults / resultsPerPage)
 
+  // DSIP Scraper functions
+  const startScraper = async (type: 'full' | 'quick') => {
+    try {
+      const response = await fetch('/api/dsip/scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action: 'start', type })
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        setIsScraperRunning(true)
+        setScraperStatus('running')
+        setMessage(`Scraper started successfully! ${data.message}`)
+        
+        // Start monitoring the scraper
+        monitorScraper()
+      } else {
+        const errorData = await response.json()
+        setMessage(`Failed to start scraper: ${errorData.error}`)
+      }
+    } catch (error) {
+      setMessage('Error starting scraper')
+    }
+  }
+
+  const stopScraper = async () => {
+    try {
+      const response = await fetch('/api/dsip/scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          action: 'stop',
+          jobId: currentScrapingJob?.id 
+        })
+      })
+
+      if (response.ok) {
+        setIsScraperRunning(false)
+        setScraperStatus('paused')
+        setMessage('Scraper paused successfully')
+      } else {
+        setMessage('Failed to pause scraper')
+      }
+    } catch (error) {
+      setMessage('Error pausing scraper')
+    }
+  }
+
+  const resumeScraper = async () => {
+    try {
+      const response = await fetch('/api/dsip/scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          action: 'resume',
+          jobId: currentScrapingJob?.id 
+        })
+      })
+
+      if (response.ok) {
+        setIsScraperRunning(true)
+        setScraperStatus('running')
+        setMessage('Scraper resumed successfully')
+        
+        // Start monitoring the scraper again
+        monitorScraper()
+      } else {
+        const errorData = await response.json()
+        setMessage(`Failed to resume scraper: ${errorData.error}`)
+      }
+    } catch (error) {
+      setMessage('Error resuming scraper')
+    }
+  }
+
+  const checkActiveOpportunities = async () => {
+    try {
+      setIsCheckingActive(true)
+      setMessage('🔍 Checking for active opportunities...')
+      
+      // Query the database for active opportunities
+      const response = await fetch('/api/dsip/active-opportunities')
+      
+      if (response.ok) {
+        const data = await response.json()
+        if (data.success) {
+          setActiveOpportunitiesCount(data.count)
+          setMessage(`✅ Found ${data.count} active opportunities in the database`)
+        } else {
+          setMessage(`❌ Failed to check opportunities: ${data.error}`)
+        }
+      } else {
+        setMessage('❌ Failed to check opportunities')
+      }
+    } catch (error) {
+      setMessage('❌ Error checking active opportunities')
+    } finally {
+      setIsCheckingActive(false)
+    }
+  }
+
+  const monitorScraper = async () => {
+    const interval = setInterval(async () => {
+      try {
+        const response = await fetch('/api/dsip/scraper')
+        if (response.ok) {
+          const data = await response.json()
+          setIsScraperRunning(data.isRunning)
+          setScraperStatus(data.status)
+          setCurrentScrapingJob(data.currentJob)
+          
+          if (data.status === 'completed' || data.status === 'failed') {
+            clearInterval(interval)
+            setIsScraperRunning(false)
+            if (data.status === 'completed') {
+              setMessage('Scraping completed successfully!')
+            } else {
+              setMessage(`Scraping failed: ${data.currentJob?.error || 'Unknown error'}`)
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error monitoring scraper:', error)
+      }
+    }, 2000) // Check every 2 seconds
+
+    // Cleanup interval on component unmount
+    return () => clearInterval(interval)
+  }
+
+  const testScraperSystem = async () => {
+    try {
+      setMessage('🧪 Testing scraper system...')
+      
+      // Test 1: Basic system status
+      const statusResponse = await fetch('/api/dsip/test-scraper')
+      if (statusResponse.ok) {
+        const statusData = await statusResponse.json()
+        console.log('System Status Test:', statusData)
+        
+        if (statusData.success) {
+          setMessage('✅ System status test passed! Check console for details.')
+        } else {
+          setMessage('❌ System status test failed! Check console for details.')
+        }
+      }
+      
+      // Test 2: Database operations
+      const dbResponse = await fetch('/api/dsip/test-scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action: 'test-database' })
+      })
+      
+      if (dbResponse.ok) {
+        const dbData = await dbResponse.json()
+        console.log('Database Test:', dbData)
+        
+        if (dbData.success) {
+          setMessage('✅ Database test passed! Check console for details.')
+        } else {
+          setMessage('❌ Database test failed! Check console for details.')
+        }
+      }
+      
+      // Test 3: Connection test
+      const connResponse = await fetch('/api/dsip/test-scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action: 'test-connection' })
+      })
+      
+      if (connResponse.ok) {
+        const connData = await connResponse.json()
+        console.log('Connection Test:', connData)
+        
+        if (connData.success) {
+          setMessage('✅ Connection test passed! Check console for details.')
+        } else {
+          setMessage('❌ Connection test failed! Check console for details.')
+        }
+      }
+      
+    } catch (error) {
+      setMessage('❌ Test failed with error. Check console for details.')
+      console.error('Test error:', error)
+    }
+  }
+
+  const testDatabase = async () => {
+    try {
+      setMessage('🗄️ Testing database connection and tables...')
+      
+      const response = await fetch('/api/dsip/test-database')
+      if (response.ok) {
+        const data = await response.json()
+        console.log('Database Test Results:', data)
+        
+        if (data.success) {
+          const status = data.databaseStatus
+          let message = '🗄️ Database Test Results:\n'
+          message += `📊 Opportunities Table: ${status.opportunitiesTable.exists ? '✅ Exists' : '❌ Missing'} (${status.opportunitiesTable.count} records)\n`
+          message += `📋 Scraping Jobs Table: ${status.scrapingJobsTable.exists ? '✅ Exists' : '❌ Missing'} (${status.scrapingJobsTable.count} records)\n`
+          message += `👥 Users Table: ${status.usersTable.exists ? '✅ Exists' : '❌ Missing'} (${status.usersTable.count} records)\n`
+          message += `✏️ Can Insert: ${status.canInsert ? '✅ Yes' : '❌ No'}`
+          
+          if (status.insertError) {
+            message += `\n❌ Insert Error: ${status.insertError}`
+          }
+          
+          setMessage(message)
+        } else {
+          setMessage('❌ Database test failed')
+        }
+      } else {
+        setMessage('❌ Failed to test database')
+      }
+    } catch (error) {
+      setMessage('❌ Error testing database')
+      console.error('Database test error:', error)
+    }
+  }
+
   if (authLoading || isLoadingStats) {
     return (
       <div className="dsip-settings-page loading">
@@ -270,6 +527,229 @@ export default function DSIPSettingsPage() {
               {isLoadingStats ? 'Loading...' : 'Refresh Stats'}
             </button>
           </div>
+        </div>
+
+        {/* DSIP Scraper Management Section */}
+        <div className="settings-section">
+          <h2>🍪 DSIP Scraper Management</h2>
+          <p>Control and monitor the DSIP web scraper for real-time opportunity updates.</p>
+          
+          {/* Active Opportunities Checker */}
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%)',
+            borderRadius: '12px',
+            padding: '24px',
+            border: '1px solid rgba(34, 197, 94, 0.3)',
+            marginBottom: '24px'
+          }}>
+            <h3 style={{
+              fontSize: '18px',
+              fontWeight: '600',
+              color: '#10b981',
+              margin: '0 0 12px 0'
+            }}>
+              📊 Active Opportunities Monitor
+            </h3>
+            <p style={{
+              color: '#6b7280',
+              fontSize: '14px',
+              margin: '0 0 16px 0'
+            }}>
+              Check DSIP for all currently active opportunities. This will scan the database and identify opportunities that are currently open for submissions.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
+              <button
+                onClick={checkActiveOpportunities}
+                disabled={isCheckingActive}
+                className="btn btn-primary"
+                style={{
+                  background: isCheckingActive ? 'rgba(148, 163, 184, 0.3)' : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  opacity: isCheckingActive ? 0.6 : 1
+                }}
+              >
+                {isCheckingActive ? '🔄 Checking...' : '🔍 Check Active Opportunities'}
+              </button>
+              
+              {activeOpportunitiesCount !== null && (
+                <div style={{
+                  background: 'rgba(16, 185, 129, 0.2)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  borderRadius: '8px',
+                  padding: '8px 12px',
+                  color: '#10b981',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}>
+                  📈 Found {activeOpportunitiesCount} active opportunities
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Scraper Controls Grid */}
+          <div className="scraper-controls-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '24px',
+            marginBottom: '24px'
+          }}>
+            {/* Database Status */}
+            <div style={{
+              background: 'rgba(30, 41, 59, 0.5)',
+              borderRadius: '12px',
+              padding: '20px',
+              border: '1px solid rgba(148, 163, 184, 0.2)'
+            }}>
+              <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 16px 0' }}>Database Status</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Total Opportunities:</span>
+                  <span style={{ fontWeight: '600' }}>33,000+</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Last Updated:</span>
+                  <span style={{ fontWeight: '600' }}>Today</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Scraper Status:</span>
+                  <span style={{ 
+                    color: scraperStatus === 'running' ? '#fbbf24' : scraperStatus === 'completed' ? '#10b981' : scraperStatus === 'failed' ? '#ef4444' : '#94a3b8', 
+                    fontWeight: '600' 
+                  }}>
+                    {scraperStatus === 'running' ? '🔄 Running' : scraperStatus === 'completed' ? '✅ Completed' : scraperStatus === 'failed' ? '❌ Failed' : '⏸️ Idle'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Scraper Controls */}
+            <div style={{
+              background: 'rgba(30, 41, 59, 0.5)',
+              borderRadius: '12px',
+              padding: '20px',
+              border: '1px solid rgba(148, 163, 184, 0.2)'
+            }}>
+              <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 16px 0' }}>Scraper Controls</h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {!isScraperRunning ? (
+                  <>
+                    <button
+                      onClick={() => startScraper('full')}
+                      className="btn btn-primary"
+                      style={{
+                        background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)',
+                        width: '100%'
+                      }}
+                    >
+                      🚀 Full Refresh (8-12 hours)
+                    </button>
+                    <button
+                      onClick={() => startScraper('quick')}
+                      className="btn btn-primary"
+                      style={{
+                        background: 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)',
+                        width: '100%'
+                      }}
+                    >
+                      ⚡ Quick Check Active
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={stopScraper}
+                      className="btn btn-warning"
+                      style={{ width: '100%' }}
+                    >
+                      🛑 Pause Scraper
+                    </button>
+                    {currentScrapingJob?.status === 'paused' && (
+                      <button
+                        onClick={resumeScraper}
+                        className="btn btn-primary"
+                        style={{ width: '100%' }}
+                      >
+                        ▶️ Resume Scraper
+                      </button>
+                    )}
+                  </>
+                )}
+                <button
+                  onClick={testScraperSystem}
+                  className="btn btn-outline"
+                  style={{ width: '100%' }}
+                >
+                  🧪 Test Scraper System
+                </button>
+                <button
+                  onClick={testDatabase}
+                  className="btn btn-outline"
+                  style={{ width: '100%' }}
+                >
+                  🗄️ Test Database
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Scraper Status */}
+          {isScraperRunning && currentScrapingJob && (
+            <div style={{
+              background: 'rgba(15, 23, 42, 0.6)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid rgba(148, 163, 184, 0.2)',
+              marginBottom: '24px'
+            }}>
+              <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 16px 0' }}>
+                Scraping Progress - {currentScrapingJob.type === 'full' ? 'Full Refresh' : 'Quick Check'}
+              </h3>
+              <div style={{ marginBottom: '16px' }}>
+                <div style={{
+                  width: '100%',
+                  height: '12px',
+                  background: 'rgba(148, 163, 184, 0.2)',
+                  borderRadius: '6px',
+                  overflow: 'hidden'
+                }}>
+                  <div style={{
+                    width: `${currentScrapingJob.progress}%`,
+                    height: '100%',
+                    background: 'linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%)',
+                    transition: 'width 0.3s ease'
+                  }} />
+                </div>
+                <p style={{ color: '#94a3b8', margin: '8px 0 0 0', fontSize: '14px' }}>
+                  {currentScrapingJob.progress}% complete - {currentScrapingJob.processedTopics} of {currentScrapingJob.totalTopics} topics
+                </p>
+                {currentScrapingJob.estimatedCompletion && (
+                  <p style={{ color: '#94a3b8', margin: '4px 0 0 0', fontSize: '12px' }}>
+                    ⏰ Estimated completion: {new Date(currentScrapingJob.estimatedCompletion).toLocaleString()}
+                  </p>
+                )}
+              </div>
+              <div style={{ 
+                maxHeight: '200px', 
+                overflowY: 'auto',
+                background: 'rgba(0, 0, 0, 0.2)',
+                borderRadius: '8px',
+                padding: '12px'
+              }}>
+                <h4 style={{ color: '#ffffff', margin: '0 0 8px 0', fontSize: '14px' }}>Recent Logs:</h4>
+                {currentScrapingJob.logs.slice(-8).map((log: string, index: number) => (
+                  <p key={index} style={{ 
+                    color: '#cbd5e1', 
+                    margin: '4px 0', 
+                    fontSize: '12px',
+                    fontFamily: 'monospace',
+                    lineHeight: '1.4'
+                  }}>
+                    {log}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Search Testing Section */}

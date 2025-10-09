@@ -48,13 +48,6 @@ export default function AdminDashboard() {
   const [isInviting, setIsInviting] = useState(false)
   const [message, setMessage] = useState('')
   const [messageType, setMessageType] = useState<'success' | 'error' | 'warning'>('success')
-  
-  // DSIP Scraper state
-  const [isScraperRunning, setIsScraperRunning] = useState(false)
-  const [scraperStatus, setScraperStatus] = useState<'idle' | 'running' | 'completed' | 'failed' | 'paused'>('idle')
-  const [currentScrapingJob, setCurrentScrapingJob] = useState<any>(null)
-  const [isCheckingActive, setIsCheckingActive] = useState(false)
-  const [activeOpportunitiesCount, setActiveOpportunitiesCount] = useState<number | null>(null)
 
   // SBIR Database state
   const [sbirStats, setSbirStats] = useState<any>(null)
@@ -74,27 +67,10 @@ export default function AdminDashboard() {
       loadUsers()
       loadInvitations()
       loadStats()
-      // Initialize scraper status
-      checkScraperStatus()
       // Load SBIR stats
       loadSbirStats()
     }
   }, [user])
-
-  // Check scraper status on mount
-  const checkScraperStatus = async () => {
-    try {
-      const response = await fetch('/api/dsip/scraper')
-      if (response.ok) {
-        const data = await response.json()
-        setIsScraperRunning(data.isRunning)
-        setScraperStatus(data.status)
-        setCurrentScrapingJob(data.currentJob)
-      }
-    } catch (error) {
-      console.error('Error checking scraper status:', error)
-    }
-  }
 
   const loadUsers = async () => {
     setIsLoadingUsers(true)
@@ -304,269 +280,6 @@ export default function AdminDashboard() {
       setMessage('Error deleting invitation')
       setMessageType('error')
     }
-  }
-
-  // DSIP Scraper functions
-  const startScraper = async (type: 'full' | 'quick') => {
-    try {
-      const response = await fetch('/api/dsip/scraper', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ action: 'start', type })
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        setIsScraperRunning(true)
-        setScraperStatus('running')
-        setMessage(`Scraper started successfully! ${data.message}`)
-        setMessageType('success')
-        
-        // Start monitoring the scraper
-        monitorScraper()
-      } else {
-        const errorData = await response.json()
-        setMessage(`Failed to start scraper: ${errorData.error}`)
-        setMessageType('error')
-      }
-    } catch (error) {
-      setMessage('Error starting scraper')
-      setMessageType('error')
-    }
-  }
-
-  const stopScraper = async () => {
-    try {
-      const response = await fetch('/api/dsip/scraper', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          action: 'stop',
-          jobId: currentScrapingJob?.id 
-        })
-      })
-
-      if (response.ok) {
-        setIsScraperRunning(false)
-        setScraperStatus('paused')
-        setMessage('Scraper paused successfully')
-        setMessageType('success')
-      } else {
-        setMessage('Failed to pause scraper')
-        setMessageType('error')
-      }
-    } catch (error) {
-      setMessage('Error pausing scraper')
-      setMessageType('error')
-    }
-  }
-
-  const resumeScraper = async () => {
-    try {
-      const response = await fetch('/api/dsip/scraper', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          action: 'resume',
-          jobId: currentScrapingJob?.id 
-        })
-      })
-
-      if (response.ok) {
-        setIsScraperRunning(true)
-        setScraperStatus('running')
-        setMessage('Scraper resumed successfully')
-        setMessageType('success')
-        
-        // Start monitoring the scraper again
-        monitorScraper()
-      } else {
-        const errorData = await response.json()
-        setMessage(`Failed to resume scraper: ${errorData.error}`)
-        setMessageType('error')
-      }
-    } catch (error) {
-      setMessage('Error resuming scraper')
-      setMessageType('error')
-    }
-  }
-
-  const testScraperSystem = async () => {
-    try {
-      setMessage('🧪 Testing scraper system...')
-      setMessageType('success')
-      
-      // Test 1: Basic system status
-      const statusResponse = await fetch('/api/dsip/test-scraper')
-      if (statusResponse.ok) {
-        const statusData = await statusResponse.json()
-        console.log('System Status Test:', statusData)
-        
-        if (statusData.success) {
-          setMessage('✅ System status test passed! Check console for details.')
-          setMessageType('success')
-        } else {
-          setMessage('❌ System status test failed! Check console for details.')
-          setMessageType('error')
-        }
-      }
-      
-      // Test 2: Database operations
-      const dbResponse = await fetch('/api/dsip/test-scraper', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ action: 'test-database' })
-      })
-      
-      if (dbResponse.ok) {
-        const dbData = await dbResponse.json()
-        console.log('Database Test:', dbData)
-        
-        if (dbData.success) {
-          setMessage('✅ Database test passed! Check console for details.')
-          setMessageType('success')
-        } else {
-          setMessage('❌ Database test failed! Check console for details.')
-          setMessageType('error')
-        }
-      }
-      
-      // Test 3: Connection test
-      const connResponse = await fetch('/api/dsip/test-scraper', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ action: 'test-connection' })
-      })
-      
-      if (connResponse.ok) {
-        const connData = await connResponse.json()
-        console.log('Connection Test:', connData)
-        
-        if (connData.success) {
-          setMessage('✅ Connection test passed! Check console for details.')
-          setMessageType('success')
-        } else {
-          setMessage('❌ Connection test failed! Check console for details.')
-          setMessageType('error')
-        }
-      }
-      
-    } catch (error) {
-      setMessage('❌ Test failed with error. Check console for details.')
-      setMessageType('error')
-      console.error('Test error:', error)
-    }
-  }
-
-  const testDatabase = async () => {
-    try {
-      setMessage('🗄️ Testing database connection and tables...')
-      setMessageType('success')
-      
-      const response = await fetch('/api/dsip/test-database')
-      if (response.ok) {
-        const data = await response.json()
-        console.log('Database Test Results:', data)
-        
-        if (data.success) {
-          const status = data.databaseStatus
-          let message = '🗄️ Database Test Results:\n'
-          message += `📊 Opportunities Table: ${status.opportunitiesTable.exists ? '✅ Exists' : '❌ Missing'} (${status.opportunitiesTable.count} records)\n`
-          message += `📋 Scraping Jobs Table: ${status.scrapingJobsTable.exists ? '✅ Exists' : '❌ Missing'} (${status.scrapingJobsTable.count} records)\n`
-          message += `👥 Users Table: ${status.usersTable.exists ? '✅ Exists' : '❌ Missing'} (${status.usersTable.count} records)\n`
-          message += `✏️ Can Insert: ${status.canInsert ? '✅ Yes' : '❌ No'}`
-          
-          if (status.insertError) {
-            message += `\n❌ Insert Error: ${status.insertError}`
-          }
-          
-          setMessage(message)
-          setMessageType(status.opportunitiesTable.exists && status.canInsert ? 'success' : 'error')
-        } else {
-          setMessage('❌ Database test failed')
-          setMessageType('error')
-        }
-      } else {
-        setMessage('❌ Failed to test database')
-        setMessageType('error')
-      }
-    } catch (error) {
-      setMessage('❌ Error testing database')
-      setMessageType('error')
-      console.error('Database test error:', error)
-    }
-  }
-
-  const checkActiveOpportunities = async () => {
-    try {
-      setIsCheckingActive(true)
-      setMessage('🔍 Checking for active opportunities...')
-      setMessageType('success')
-      
-      // Query the database for active opportunities
-      const response = await fetch('/api/dsip/active-opportunities')
-      
-      if (response.ok) {
-        const data = await response.json()
-        if (data.success) {
-          setActiveOpportunitiesCount(data.count)
-          setMessage(`✅ Found ${data.count} active opportunities in the database`)
-          setMessageType('success')
-        } else {
-          setMessage(`❌ Failed to check opportunities: ${data.error}`)
-          setMessageType('error')
-        }
-      } else {
-        setMessage('❌ Failed to check opportunities')
-        setMessageType('error')
-      }
-    } catch (error) {
-      setMessage('❌ Error checking active opportunities')
-      setMessageType('error')
-    } finally {
-      setIsCheckingActive(false)
-    }
-  }
-
-  const monitorScraper = async () => {
-    const interval = setInterval(async () => {
-      try {
-        const response = await fetch('/api/dsip/scraper')
-        if (response.ok) {
-          const data = await response.json()
-          setIsScraperRunning(data.isRunning)
-          setScraperStatus(data.status)
-          setCurrentScrapingJob(data.currentJob)
-          
-          if (data.status === 'completed' || data.status === 'failed') {
-            clearInterval(interval)
-            setIsScraperRunning(false)
-            if (data.status === 'completed') {
-              setMessage('Scraping completed successfully!')
-              setMessageType('success')
-            } else {
-              setMessage(`Scraping failed: ${data.currentJob?.error || 'Unknown error'}`)
-              setMessageType('error')
-            }
-          }
-        }
-      } catch (error) {
-        console.error('Error monitoring scraper:', error)
-      }
-    }, 2000) // Check every 2 seconds
-
-    // Cleanup interval on component unmount
-    return () => clearInterval(interval)
   }
 
   // SBIR Database functions
@@ -1482,7 +1195,7 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* DSIP Management */}
+        {/* DSIP & SBIR Quick Access */}
         <div style={{
           background: 'rgba(30, 41, 59, 0.6)',
           backdropFilter: 'blur(20px)',
@@ -1491,603 +1204,113 @@ export default function AdminDashboard() {
           padding: '32px',
           marginBottom: '32px'
         }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            marginBottom: '24px'
+          <h2 style={{
+            fontSize: '28px',
+            fontWeight: '700',
+            color: '#ffffff',
+            margin: '0 0 24px 0'
           }}>
-            <h2 style={{
-              fontSize: '28px',
-              fontWeight: '700',
-              color: '#ffffff',
-              margin: 0
-            }}>
-              🍪 DSIP Smart Search Management
-            </h2>
-            <div style={{
-              display: 'flex',
-              gap: '16px',
-              alignItems: 'center'
-            }}>
-              <button
-                onClick={() => window.open('/dsip-search', '_blank')}
-                style={{
-                  padding: '12px 20px',
-                  background: 'rgba(139, 92, 246, 0.2)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
-                  borderRadius: '10px',
-                  color: '#c4b5fd',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(139, 92, 246, 0.3)'
-                  e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)'
-                  e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.3)'
-                }}
-              >
-                View Search Tool
-              </button>
-              <button
-                onClick={() => window.open('/admin/system-settings', '_blank')}
-                style={{
-                  padding: '12px 20px',
-                  background: 'rgba(34, 197, 94, 0.2)',
-                  border: '1px solid rgba(34, 197, 94, 0.3)',
-                  borderRadius: '10px',
-                  color: '#86efac',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(34, 197, 94, 0.3)'
-                  e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.5)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(34, 197, 94, 0.2)'
-                  e.currentTarget.style.borderColor = 'rgba(34, 197, 94, 0.3)'
-                }}
-              >
-                Advanced Management
-              </button>
-            </div>
-          </div>
-          
-          {/* Active Opportunities Checker */}
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%)',
-            borderRadius: '16px',
-            padding: '24px',
-            border: '1px solid rgba(34, 197, 94, 0.3)',
-            marginBottom: '24px'
+            🍪 DSIP & SBIR Management
+          </h2>
+          <p style={{
+            color: '#cbd5e1',
+            fontSize: '16px',
+            lineHeight: '1.6',
+            margin: '0 0 24px 0'
           }}>
-            <h4 style={{
-              fontSize: '20px',
-              fontWeight: '600',
-              color: '#10b981',
-              margin: '0 0 16px 0',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}>
-              📊 Active Opportunities Monitor
-            </h4>
-            <p style={{
-              color: '#d1fae5',
-              fontSize: '14px',
-              margin: '0 0 20px 0',
-              lineHeight: '1.5'
-            }}>
-              Check DSIP for all currently active opportunities. This will scan the database and identify opportunities that are currently open for submissions.
-            </p>
-            <div style={{
-              display: 'flex',
-              gap: '16px',
-              flexWrap: 'wrap'
-            }}>
-              <button
-                onClick={checkActiveOpportunities}
-                disabled={isCheckingActive}
-                style={{
-                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                  border: 'none',
-                  borderRadius: '10px',
-                  padding: '12px 24px',
-                  color: '#ffffff',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  cursor: isCheckingActive ? 'not-allowed' : 'pointer',
-                  transition: 'all 0.2s ease',
-                  opacity: isCheckingActive ? 0.6 : 1,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
-                {isCheckingActive ? (
-                  <>
-                    <div style={{
-                      width: '16px',
-                      height: '16px',
-                      border: '2px solid #ffffff',
-                      borderTop: '2px solid transparent',
-                      borderRadius: '50%',
-                      animation: 'spin 1s linear infinite'
-                    }}></div>
-                    Checking Active Opportunities...
-                  </>
-                ) : (
-                  <>
-                    🔍 Check All Active Opportunities
-                  </>
-                )}
-              </button>
-              
-              {activeOpportunitiesCount !== null && (
-                <div style={{
-                  background: 'rgba(16, 185, 129, 0.2)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
-                  borderRadius: '8px',
-                  padding: '12px 16px',
-                  color: '#10b981',
-                  fontSize: '14px',
-                  fontWeight: '500'
-                }}>
-                  📈 Found {activeOpportunitiesCount} active opportunities
-                </div>
-              )}
-            </div>
-          </div>
-
+            Quick access to DSIP scraper settings and SBIR database management tools.
+          </p>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '24px',
-            marginBottom: '24px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '16px'
           }}>
-            <div style={{
-              background: 'rgba(15, 23, 42, 0.4)',
-              borderRadius: '12px',
-              padding: '24px',
-              border: '1px solid rgba(148, 163, 184, 0.1)'
-            }}>
-              <h3 style={{
-                fontSize: '18px',
-                fontWeight: '600',
+            <button
+              onClick={() => router.push('/admin/dsip-settings')}
+              style={{
+                padding: '16px 20px',
+                background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                border: 'none',
+                borderRadius: '12px',
                 color: '#ffffff',
-                margin: '0 0 16px 0'
-              }}>
-                Database Status
-              </h3>
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px'
-              }}>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}>
-                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Total Opportunities:</span>
-                  <span style={{ color: '#ffffff', fontWeight: '600' }}>33,000+</span>
-                </div>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}>
-                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Last Updated:</span>
-                  <span style={{ color: '#ffffff', fontWeight: '600' }}>Today</span>
-                </div>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}>
-                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Auto-Refresh:</span>
-                  <span style={{ color: '#10b981', fontWeight: '600' }}>Active</span>
-                </div>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}>
-                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Scraper Status:</span>
-                  <span style={{ 
-                    color: scraperStatus === 'running' ? '#fbbf24' : scraperStatus === 'completed' ? '#10b981' : scraperStatus === 'failed' ? '#ef4444' : '#94a3b8', 
-                    fontWeight: '600' 
-                  }}>
-                    {scraperStatus === 'running' ? '🔄 Running' : scraperStatus === 'completed' ? '✅ Completed' : scraperStatus === 'failed' ? '❌ Failed' : '⏸️ Idle'}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            <div style={{
-              background: 'rgba(15, 23, 42, 0.4)',
-              borderRadius: '12px',
-              padding: '24px',
-              border: '1px solid rgba(148, 163, 184, 0.1)'
-            }}>
-              <h3 style={{
-                fontSize: '18px',
+                fontSize: '16px',
                 fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 15px rgba(139, 92, 246, 0.3)',
+                textAlign: 'left'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(139, 92, 246, 0.3)'
+              }}
+            >
+              <div style={{ fontSize: '24px', marginBottom: '8px' }}>🔧</div>
+              <div style={{ fontSize: '16px', fontWeight: '700', marginBottom: '4px' }}>DSIP Scraper Settings</div>
+              <div style={{ fontSize: '13px', opacity: '0.9' }}>Configure and monitor the DSIP web scraper</div>
+            </button>
+            
+            <button
+              onClick={() => window.open('/dsip-search', '_blank')}
+              style={{
+                padding: '16px 20px',
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                border: 'none',
+                borderRadius: '12px',
                 color: '#ffffff',
-                margin: '0 0 16px 0'
-              }}>
-                Scraper Controls
-              </h3>
-              <div style={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px'
-              }}>
-                {!isScraperRunning ? (
-                  <>
-                    <button
-                      onClick={() => startScraper('full')}
-                      style={{
-                        padding: '12px 16px',
-                        background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)',
-                        border: 'none',
-                        borderRadius: '8px',
-                        color: '#ffffff',
-                        fontSize: '14px',
-                        fontWeight: '600',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                        width: '100%',
-                        textAlign: 'left',
-                        boxShadow: '0 4px 15px rgba(255, 107, 107, 0.3)'
-                      }}
-                    >
-                      🚀 Full Refresh (8-12 hours)
-                    </button>
-
-                    <button
-                      onClick={() => startScraper('quick')}
-                      style={{
-                        padding: '12px 16px',
-                        background: 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)',
-                        border: 'none',
-                        borderRadius: '8px',
-                        color: '#ffffff',
-                        fontSize: '14px',
-                        fontWeight: '600',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                        width: '100%',
-                        textAlign: 'left',
-                        boxShadow: '0 4px 15px rgba(78, 205, 196, 0.3)'
-                      }}
-                    >
-                      ⚡ Quick Check Active
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={stopScraper}
-                      style={{
-                        padding: '12px 16px',
-                        background: 'linear-gradient(135deg, #ffa726 0%, #ff9800 100%)',
-                        border: 'none',
-                        borderRadius: '8px',
-                        color: '#ffffff',
-                        fontSize: '14px',
-                        fontWeight: '600',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                        width: '100%',
-                        textAlign: 'left',
-                        boxShadow: '0 4px 15px rgba(255, 167, 38, 0.3)'
-                      }}
-                    >
-                      🛑 Pause Scraper
-                    </button>
-                    {currentScrapingJob?.status === 'paused' && (
-                      <button
-                        onClick={resumeScraper}
-                        style={{
-                          padding: '12px 16px',
-                          background: 'linear-gradient(135deg, #4caf50 0%, #45a049 100%)',
-                          border: 'none',
-                          borderRadius: '8px',
-                          color: '#ffffff',
-                          fontSize: '14px',
-                          fontWeight: '600',
-                          cursor: 'pointer',
-                          transition: 'all 0.2s ease',
-                          width: '100%',
-                          textAlign: 'left',
-                          boxShadow: '0 4px 15px rgba(76, 175, 80, 0.3)'
-                        }}
-                      >
-                        ▶️ Resume Scraper
-                      </button>
-                    )}
-                  </>
-                )}
-                <button
-                  onClick={() => {
-                    // Trigger DSIP refresh
-                    fetch('/api/dsip/refresh', { method: 'POST' })
-                      .then(response => response.json())
-                      .then(data => {
-                        if (data.status === 'completed') {
-                          alert('DSIP refresh completed successfully!')
-                        }
-                      })
-                      .catch(error => {
-                        console.error('DSIP refresh failed:', error)
-                        alert('DSIP refresh failed. Check console for details.')
-                      })
-                  }}
-                  style={{
-                    padding: '10px 16px',
-                    background: 'rgba(59, 130, 246, 0.2)',
-                    border: '1px solid rgba(59, 130, 246, 0.3)',
-                    borderRadius: '8px',
-                    color: '#93c5fd',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    width: '100%',
-                    textAlign: 'left'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'
-                  }}
-                >
-                  🔄 Manual Refresh DSIP Data
-                </button>
-                <button
-                  onClick={() => window.open('/dsip-search', '_blank')}
-                  style={{
-                    padding: '10px 16px',
-                    background: 'rgba(139, 92, 246, 0.2)',
-                    border: '1px solid rgba(139, 92, 246, 0.3)',
-                    borderRadius: '8px',
-                    color: '#c4b5fd',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    width: '100%',
-                    textAlign: 'left'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(139, 92, 246, 0.3)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)'
-                  }}
-                >
-                  🔍 Test Search Tool
-                </button>
-                <button
-                  onClick={() => window.open('/admin/system-logs', '_blank')}
-                  style={{
-                    padding: '10px 16px',
-                    background: 'rgba(168, 85, 247, 0.2)',
-                    border: '1px solid rgba(168, 85, 247, 0.3)',
-                    borderRadius: '8px',
-                    color: '#c4b5fd',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    width: '100%',
-                    textAlign: 'left'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(168, 85, 247, 0.3)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(168, 85, 247, 0.2)'
-                  }}
-                >
-                  📊 View System Logs
-                </button>
-                <button
-                  onClick={testScraperSystem}
-                  style={{
-                    padding: '10px 16px',
-                    background: 'rgba(34, 197, 94, 0.2)',
-                    border: '1px solid rgba(34, 197, 94, 0.3)',
-                    borderRadius: '8px',
-                    color: '#86efac',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    width: '100%',
-                    textAlign: 'left'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(34, 197, 94, 0.3)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(34, 197, 94, 0.2)'
-                  }}
-                >
-                  🧪 Test Scraper System
-                </button>
-                <button
-                  onClick={testDatabase}
-                  style={{
-                    padding: '10px 16px',
-                    background: 'rgba(59, 130, 246, 0.2)',
-                    border: '1px solid rgba(59, 130, 246, 0.3)',
-                    borderRadius: '8px',
-                    color: '#93c5fd',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    width: '100%',
-                    textAlign: 'left'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'
-                  }}
-                >
-                  🗄️ Test Database
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Scraper Status */}
-          {isScraperRunning && currentScrapingJob && (
-            <div style={{
-              background: 'rgba(15, 23, 42, 0.6)',
-              borderRadius: '12px',
-              padding: '24px',
-              border: '1px solid rgba(148, 163, 184, 0.2)',
-              marginTop: '24px'
-            }}>
-              <h3 style={{
-                fontSize: '18px',
+                fontSize: '16px',
                 fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 15px rgba(16, 185, 129, 0.3)',
+                textAlign: 'left'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(16, 185, 129, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.3)'
+              }}
+            >
+              <div style={{ fontSize: '24px', marginBottom: '8px' }}>🔍</div>
+              <div style={{ fontSize: '16px', fontWeight: '700', marginBottom: '4px' }}>DSIP Search Tool</div>
+              <div style={{ fontSize: '13px', opacity: '0.9' }}>Search 33,000+ defense opportunities</div>
+            </button>
+            
+            <button
+              onClick={startSbirScraper}
+              style={{
+                padding: '16px 20px',
+                background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                border: 'none',
+                borderRadius: '12px',
                 color: '#ffffff',
-                margin: '0 0 16px 0'
-              }}>
-                Scraping Progress - {currentScrapingJob.type === 'full' ? 'Full Refresh' : 'Quick Check'}
-              </h3>
-              <div style={{ marginBottom: '16px' }}>
-                <div style={{
-                  width: '100%',
-                  height: '12px',
-                  background: 'rgba(148, 163, 184, 0.2)',
-                  borderRadius: '6px',
-                  overflow: 'hidden'
-                }}>
-                  <div style={{
-                    width: `${currentScrapingJob.progress}%`,
-                    height: '100%',
-                    background: 'linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%)',
-                    transition: 'width 0.3s ease'
-                  }} />
-                </div>
-                <p style={{ color: '#94a3b8', margin: '8px 0 0 0', fontSize: '14px' }}>
-                  {currentScrapingJob.progress}% complete - {currentScrapingJob.processedTopics} of {currentScrapingJob.totalTopics} topics
-                </p>
-                {currentScrapingJob.estimatedCompletion && (
-                  <p style={{ color: '#94a3b8', margin: '4px 0 0 0', fontSize: '12px' }}>
-                    ⏰ Estimated completion: {new Date(currentScrapingJob.estimatedCompletion).toLocaleString()}
-                  </p>
-                )}
-              </div>
-              <div style={{ 
-                maxHeight: '200px', 
-                overflowY: 'auto',
-                background: 'rgba(0, 0, 0, 0.2)',
-                borderRadius: '8px',
-                padding: '12px'
-              }}>
-                <h4 style={{ color: '#ffffff', margin: '0 0 8px 0', fontSize: '14px' }}>Recent Logs:</h4>
-                {currentScrapingJob.logs.slice(-8).map((log: string, index: number) => (
-                  <p key={index} style={{ 
-                    color: '#cbd5e1', 
-                    margin: '4px 0', 
-                    fontSize: '12px',
-                    fontFamily: 'monospace',
-                    lineHeight: '1.4'
-                  }}>
-                    {log}
-                  </p>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div style={{
-            background: 'rgba(15, 23, 42, 0.4)',
-            borderRadius: '12px',
-            padding: '24px',
-            border: '1px solid rgba(148, 163, 184, 0.1)'
-          }}>
-            <h3 style={{
-              fontSize: '18px',
-              fontWeight: '600',
-              color: '#ffffff',
-              margin: '0 0 16px 0'
-            }}>
-              DSIP Tool Information
-            </h3>
-            <p style={{
-              color: '#cbd5e1',
-              fontSize: '14px',
-              lineHeight: '1.6',
-              margin: '0 0 16px 0'
-            }}>
-              The DSIP Smart Search tool provides access to over 33,000 defense SBIR/STTR opportunities 
-              with advanced filtering, AI-powered matching, and real-time updates. Users can search by 
-              keywords, technology areas, funding amounts, and more.
-            </p>
-            <div style={{
-              display: 'flex',
-              gap: '12px',
-              flexWrap: 'wrap'
-            }}>
-              <span style={{
-                padding: '6px 12px',
-                background: 'rgba(139, 92, 246, 0.2)',
-                borderRadius: '20px',
-                color: '#c4b5fd',
-                fontSize: '12px',
-                fontWeight: '500'
-              }}>
-                Advanced Search
-              </span>
-              <span style={{
-                padding: '6px 12px',
-                background: 'rgba(34, 197, 94, 0.2)',
-                borderRadius: '20px',
-                color: '#86efac',
-                fontSize: '12px',
-                fontWeight: '500'
-              }}>
-                AI Matching
-              </span>
-              <span style={{
-                padding: '6px 12px',
-                background: 'rgba(59, 130, 246, 0.2)',
-                borderRadius: '20px',
-                color: '#93c5fd',
-                fontSize: '12px',
-                fontWeight: '500'
-              }}>
-                Real-time Updates
-              </span>
-              <span style={{
-                padding: '6px 12px',
-                background: 'rgba(168, 85, 247, 0.2)',
-                borderRadius: '20px',
-                color: '#c4b5fd',
-                fontSize: '12px',
-                fontWeight: '500'
-              }}>
-                Export Results
-              </span>
-            </div>
+                fontSize: '16px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 15px rgba(59, 130, 246, 0.3)',
+                textAlign: 'left'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.4)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(59, 130, 246, 0.3)'
+              }}
+            >
+              <div style={{ fontSize: '24px', marginBottom: '8px' }}>🗄️</div>
+              <div style={{ fontSize: '16px', fontWeight: '700', marginBottom: '4px' }}>SBIR Database</div>
+              <div style={{ fontSize: '13px', opacity: '0.9' }}>Update SBIR/STTR records</div>
+            </button>
           </div>
 
           {/* SBIR Database Management Section */}
