@@ -24,7 +24,8 @@ export async function GET(request: NextRequest) {
       hasFromEmail: !!process.env.SENDGRID_FROM_EMAIL,
       hasFromName: !!process.env.SENDGRID_FROM_NAME,
       fromEmail: process.env.SENDGRID_FROM_EMAIL || 'Not configured',
-      fromName: process.env.SENDGRID_FROM_NAME || 'Not configured'
+      fromName: process.env.SENDGRID_FROM_NAME || 'Not configured',
+      apiKeyLength: process.env.SENDGRID_API_KEY ? process.env.SENDGRID_API_KEY.length : 0
     };
     
     return NextResponse.json({

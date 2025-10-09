@@ -813,12 +813,15 @@ export default function DSIPSettingsPage() {
               marginTop: '20px',
               border: '1px solid rgba(148, 163, 184, 0.2)'
             }}>
-              <h4 style={{ color: '#ffffff', marginBottom: '8px', fontSize: '14px' }}>📋 SendGrid Status from Dashboard:</h4>
+              <h4 style={{ color: '#ffffff', marginBottom: '8px', fontSize: '14px' }}>📋 Current SendGrid Configuration:</h4>
               <div style={{ color: '#cbd5e1', fontSize: '13px', lineHeight: '1.5' }}>
-                <div>✅ Verified Senders: matt@prop-shop.ai, info@prop-shop.ai, noreply@prop-shop.ai</div>
-                <div>❌ Failed: info@make-ready-consulting.com</div>
-                <div>⏳ Pending Domains: em1793.prop-shop.ai, em5199.prop-shop.ai</div>
-                <div>✅ Verified Domain: em7352.prop-shop.ai</div>
+                <div><strong>Sender Email:</strong> {sendgridConfig?.fromEmail || 'Not configured'}</div>
+                <div><strong>Sender Name:</strong> {sendgridConfig?.fromName || 'Not configured'}</div>
+                <div><strong>API Key:</strong> {sendgridConfig?.hasApiKey ? '✅ Configured' : '❌ Missing'}</div>
+                <div><strong>From Email:</strong> {sendgridConfig?.hasFromEmail ? '✅ Configured' : '❌ Missing'}</div>
+                <div style={{ marginTop: '8px', fontSize: '12px', color: '#94a3b8' }}>
+                  Note: This shows your current configuration. Make sure your sender email matches one of your verified senders in SendGrid.
+                </div>
               </div>
             </div>
           </div>
