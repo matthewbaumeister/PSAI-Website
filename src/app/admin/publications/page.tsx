@@ -242,7 +242,7 @@ export default function PublicationsManagementPage() {
   return (
     <div className="publications-management-page">
       <div className="container">
-        <div className="page-header">
+        <div className="page-header" style={{ marginBottom: '32px' }}>
           <button
             onClick={() => router.back()}
             className="back-button"
@@ -257,10 +257,10 @@ export default function PublicationsManagementPage() {
               marginBottom: '20px'
             }}
           >
-            ← Back
+            Back
           </button>
-          <h1>Publications Management</h1>
-          <p>Manage all publications on the website. Edit, add, or remove publications.</p>
+          <h1 style={{ color: '#ffffff', marginBottom: '8px' }}>Publications Management</h1>
+          <p style={{ color: '#cbd5e1', margin: 0 }}>Manage all publications on the website. Edit, add, or remove publications.</p>
         </div>
 
         {message && (
@@ -290,8 +290,8 @@ export default function PublicationsManagementPage() {
           marginBottom: '24px',
           border: '1px solid rgba(148, 163, 184, 0.2)'
         }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            <h2 style={{ color: '#ffffff', margin: 0 }}>Publications ({publications.length})</h2>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
+            <h2 style={{ color: '#ffffff', margin: 0, fontSize: '24px' }}>Publications ({publications.length})</h2>
             <button
               onClick={handleAddNew}
               style={{
@@ -302,14 +302,15 @@ export default function PublicationsManagementPage() {
                 color: '#ffffff',
                 fontSize: '14px',
                 fontWeight: '600',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                whiteSpace: 'nowrap'
               }}
             >
-              ➕ Add New Publication
+              Add New Publication
             </button>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px' }}>
             <div>
               <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px' }}>
                 Search Publications
@@ -401,13 +402,13 @@ export default function PublicationsManagementPage() {
               background: 'rgba(30, 41, 59, 0.6)',
               borderRadius: '12px',
               padding: '24px',
-              marginBottom: '16px',
+              marginBottom: '20px',
               border: '1px solid rgba(148, 163, 184, 0.2)'
             }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-                    <h3 style={{ color: '#ffffff', margin: 0, fontSize: '20px' }}>{publication.title}</h3>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '20px' }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                    <h3 style={{ color: '#ffffff', margin: 0, fontSize: '20px', lineHeight: '1.3' }}>{publication.title}</h3>
                     {publication.featured && (
                       <span style={{
                         background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
@@ -415,13 +416,14 @@ export default function PublicationsManagementPage() {
                         padding: '4px 8px',
                         borderRadius: '4px',
                         fontSize: '12px',
-                        fontWeight: '600'
+                        fontWeight: '600',
+                        whiteSpace: 'nowrap'
                       }}>
                         Featured
                       </span>
                     )}
                   </div>
-                  <div style={{ display: 'flex', gap: '16px', color: '#94a3b8', fontSize: '14px', marginBottom: '12px' }}>
+                  <div style={{ display: 'flex', gap: '16px', color: '#94a3b8', fontSize: '14px', marginBottom: '12px', flexWrap: 'wrap' }}>
                     <span>By {publication.author}</span>
                     <span>{publication.date}</span>
                     <span>{publication.readTime}</span>
@@ -449,7 +451,7 @@ export default function PublicationsManagementPage() {
                     )}
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '8px', marginLeft: '16px' }}>
+                <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
                   <button
                     onClick={() => handleEdit(publication)}
                     style={{
@@ -459,10 +461,11 @@ export default function PublicationsManagementPage() {
                       padding: '8px 12px',
                       color: '#ffffff',
                       fontSize: '12px',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap'
                     }}
                   >
-                    ✏️ Edit
+                    Edit
                   </button>
                   <button
                     onClick={() => window.open(`/publications/${publication.slug}`, '_blank')}
@@ -473,10 +476,11 @@ export default function PublicationsManagementPage() {
                       padding: '8px 12px',
                       color: '#ffffff',
                       fontSize: '12px',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap'
                     }}
                   >
-                    👁️ View
+                    View
                   </button>
                   <button
                     onClick={() => handleDelete(publication)}
@@ -487,10 +491,11 @@ export default function PublicationsManagementPage() {
                       padding: '8px 12px',
                       color: '#ffffff',
                       fontSize: '12px',
-                      cursor: 'pointer'
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap'
                     }}
                   >
-                    🗑️ Delete
+                    Delete
                   </button>
                 </div>
               </div>
@@ -527,14 +532,15 @@ export default function PublicationsManagementPage() {
               background: 'rgba(15, 23, 42, 0.95)',
               borderRadius: '12px',
               padding: '32px',
-              maxWidth: '800px',
+              maxWidth: '900px',
               width: '100%',
               maxHeight: '90vh',
               overflowY: 'auto',
-              border: '1px solid rgba(148, 163, 184, 0.2)'
+              border: '1px solid rgba(148, 163, 184, 0.2)',
+              boxShadow: '0 25px 50px rgba(0, 0, 0, 0.5)'
             }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
-                <h2 style={{ color: '#ffffff', margin: 0 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+                <h2 style={{ color: '#ffffff', margin: 0, fontSize: '24px' }}>
                   {editingPublication ? 'Edit Publication' : 'Add New Publication'}
                 </h2>
                 <button
@@ -544,17 +550,25 @@ export default function PublicationsManagementPage() {
                     border: 'none',
                     color: '#94a3b8',
                     fontSize: '24px',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    padding: '4px',
+                    borderRadius: '4px'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(148, 163, 184, 0.1)'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'none'
                   }}
                 >
                   ×
                 </button>
               </div>
 
-              <div style={{ display: 'grid', gap: '20px' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                   <div>
-                    <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px' }}>
+                    <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px', fontWeight: '500' }}>
                       Title *
                     </label>
                     <input
@@ -568,12 +582,13 @@ export default function PublicationsManagementPage() {
                         border: '1px solid rgba(148, 163, 184, 0.3)',
                         borderRadius: '8px',
                         color: '#ffffff',
-                        fontSize: '14px'
+                        fontSize: '14px',
+                        boxSizing: 'border-box'
                       }}
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px' }}>
+                    <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px', fontWeight: '500' }}>
                       Author *
                     </label>
                     <input
@@ -587,15 +602,16 @@ export default function PublicationsManagementPage() {
                         border: '1px solid rgba(148, 163, 184, 0.3)',
                         borderRadius: '8px',
                         color: '#ffffff',
-                        fontSize: '14px'
+                        fontSize: '14px',
+                        boxSizing: 'border-box'
                       }}
                     />
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                   <div>
-                    <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px' }}>
+                    <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px', fontWeight: '500' }}>
                       Date
                     </label>
                     <input
@@ -609,12 +625,13 @@ export default function PublicationsManagementPage() {
                         border: '1px solid rgba(148, 163, 184, 0.3)',
                         borderRadius: '8px',
                         color: '#ffffff',
-                        fontSize: '14px'
+                        fontSize: '14px',
+                        boxSizing: 'border-box'
                       }}
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px' }}>
+                    <label style={{ display: 'block', color: '#cbd5e1', fontSize: '14px', marginBottom: '8px', fontWeight: '500' }}>
                       Read Time
                     </label>
                     <input
@@ -628,7 +645,8 @@ export default function PublicationsManagementPage() {
                         border: '1px solid rgba(148, 163, 184, 0.3)',
                         borderRadius: '8px',
                         color: '#ffffff',
-                        fontSize: '14px'
+                        fontSize: '14px',
+                        boxSizing: 'border-box'
                       }}
                     />
                   </div>

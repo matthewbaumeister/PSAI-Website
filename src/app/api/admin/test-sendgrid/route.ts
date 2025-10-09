@@ -160,43 +160,70 @@ export async function POST(request: NextRequest) {
       };
       
       try {
-        await sgMail.send(msg);
+        const result = await sgMail.send(msg);
+        console.log('SendGrid send result:', result);
         return NextResponse.json({
           success: true,
           message: `Test email sent successfully to ${testEmail}`,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          sendGridResponse: result
         });
-      } catch (sendError) {
+      } catch (sendError: any) {
         console.error('SendGrid send error:', sendError);
         
         // Extract more detailed error information
         let errorMessage = 'Failed to send test email';
         let errorDetails = 'Unknown error';
+        let sendGridError = null;
         
         if (sendError instanceof Error) {
           errorMessage = sendError.message;
           errorDetails = sendError.stack || 'No stack trace available';
         }
         
+        // Try to extract SendGrid specific error details
+        if (sendError.response) {
+          sendGridError = {
+            status: sendError.response.status,
+            statusText: sendError.response.statusText,
+            body: sendError.response.body
+          };
+          
+          // Parse SendGrid error response
+          if (sendError.response.body && typeof sendError.response.body === 'object') {
+            if (sendError.response.body.errors && sendError.response.body.errors.length > 0) {
+              const sgError = sendError.response.body.errors[0];
+              errorMessage = `SendGrid Error: ${sgError.message}`;
+              if (sgError.field) {
+                errorMessage += ` (Field: ${sgError.field})`;
+              }
+              if (sgError.help) {
+                errorMessage += ` - ${sgError.help}`;
+              }
+            }
+          }
+        }
+        
         // Check for common SendGrid errors
-        if (errorMessage.includes('401')) {
-          errorMessage = 'Invalid SendGrid API key';
-        } else if (errorMessage.includes('403')) {
-          errorMessage = 'SendGrid API key lacks permission';
-        } else if (errorMessage.includes('400')) {
-          errorMessage = 'Invalid email address or SendGrid configuration';
-        } else if (errorMessage.includes('Unauthorized')) {
+        if (errorMessage.includes('401') || errorMessage.includes('Unauthorized')) {
           errorMessage = 'SendGrid API key is invalid or expired';
+        } else if (errorMessage.includes('403') || errorMessage.includes('Forbidden')) {
+          errorMessage = 'SendGrid API key lacks permission to send emails';
+        } else if (errorMessage.includes('400') || errorMessage.includes('Bad Request')) {
+          errorMessage = 'Invalid email address or SendGrid configuration';
         }
         
         return NextResponse.json({
           success: false,
           error: errorMessage,
           details: errorDetails,
+          sendGridError: sendGridError,
           config: {
             hasApiKey: !!process.env.SENDGRID_API_KEY,
             fromEmail: process.env.SENDGRID_FROM_EMAIL,
-            apiKeyLength: process.env.SENDGRID_API_KEY ? process.env.SENDGRID_API_KEY.length : 0
+            fromName: process.env.SENDGRID_FROM_NAME,
+            apiKeyLength: process.env.SENDGRID_API_KEY ? process.env.SENDGRID_API_KEY.length : 0,
+            apiKeyPrefix: process.env.SENDGRID_API_KEY ? process.env.SENDGRID_API_KEY.substring(0, 10) + '...' : 'Not set'
           }
         });
       }

@@ -664,7 +664,7 @@ export default function DSIPSettingsPage() {
 
         {/* SendGrid Email Test Section */}
         <div className="settings-section">
-          <h2>📧 SendGrid Email Testing</h2>
+          <h2>SendGrid Email Testing</h2>
           <p>Test SendGrid email delivery and resend verification emails to users who didn't receive them.</p>
           
           <div style={{
@@ -674,7 +674,7 @@ export default function DSIPSettingsPage() {
             border: '1px solid rgba(148, 163, 184, 0.2)',
             marginBottom: '24px'
           }}>
-            <h3 style={{ color: '#ffffff', marginBottom: '16px', fontSize: '18px' }}>🔧 SendGrid Configuration</h3>
+            <h3 style={{ color: '#ffffff', marginBottom: '16px', fontSize: '18px' }}>SendGrid Configuration</h3>
             
             {sendgridConfig && (
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '20px' }}>
@@ -725,7 +725,7 @@ export default function DSIPSettingsPage() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
               {/* Test Email */}
               <div>
-                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '16px' }}>🧪 Send Test Email</h4>
+                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '16px' }}>Send Test Email</h4>
                 <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
                   Send a test email to verify SendGrid is working
                 </p>
@@ -761,14 +761,14 @@ export default function DSIPSettingsPage() {
                       opacity: isTestingSendgrid ? 0.6 : 1
                     }}
                   >
-                    {isTestingSendgrid ? '🔄 Sending...' : '📧 Send Test'}
+                    {isTestingSendgrid ? 'Sending...' : 'Send Test'}
                   </button>
                 </div>
               </div>
               
               {/* Resend Verification */}
               <div>
-                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '16px' }}>🔄 Resend Verification Email</h4>
+                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '16px' }}>Resend Verification Email</h4>
                 <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
                   Resend verification email to a user who didn't receive it
                 </p>
@@ -804,7 +804,7 @@ export default function DSIPSettingsPage() {
                       opacity: isTestingSendgrid ? 0.6 : 1
                     }}
                   >
-                    {isTestingSendgrid ? '🔄 Sending...' : '🔄 Resend'}
+                    {isTestingSendgrid ? 'Sending...' : 'Resend'}
                   </button>
                 </div>
               </div>
@@ -817,12 +817,12 @@ export default function DSIPSettingsPage() {
               marginTop: '20px',
               border: '1px solid rgba(148, 163, 184, 0.2)'
             }}>
-              <h4 style={{ color: '#ffffff', marginBottom: '8px', fontSize: '14px' }}>📋 Current SendGrid Configuration:</h4>
+              <h4 style={{ color: '#ffffff', marginBottom: '8px', fontSize: '14px' }}>Current SendGrid Configuration:</h4>
               <div style={{ color: '#cbd5e1', fontSize: '13px', lineHeight: '1.5' }}>
                 <div><strong>Sender Email:</strong> {sendgridConfig?.fromEmail || 'Not configured'}</div>
                 <div><strong>Sender Name:</strong> {sendgridConfig?.fromName || 'Not configured'}</div>
-                <div><strong>API Key:</strong> {sendgridConfig?.hasApiKey ? '✅ Configured' : '❌ Missing'}</div>
-                <div><strong>From Email:</strong> {sendgridConfig?.hasFromEmail ? '✅ Configured' : '❌ Missing'}</div>
+                <div><strong>API Key:</strong> {sendgridConfig?.hasApiKey ? 'Configured' : 'Missing'}</div>
+                <div><strong>From Email:</strong> {sendgridConfig?.hasFromEmail ? 'Configured' : 'Missing'}</div>
                 <div style={{ marginTop: '8px', fontSize: '12px', color: '#94a3b8' }}>
                   Note: This shows your current configuration. Make sure your sender email matches one of your verified senders in SendGrid.
                 </div>
@@ -833,7 +833,7 @@ export default function DSIPSettingsPage() {
 
         {/* Supabase Database Test Section */}
         <div className="settings-section">
-          <h2>🗄️ Supabase Database Test</h2>
+          <h2>Supabase Database Test</h2>
           <p>Test your Supabase database connection and view actual data from your tables.</p>
           
           <div className="database-test-actions" style={{ marginBottom: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
@@ -853,7 +853,7 @@ export default function DSIPSettingsPage() {
                 opacity: isTestingSupabase ? 0.6 : 1
               }}
             >
-              {isTestingSupabase ? '🔄 Testing...' : '🧪 Test Supabase Connection'}
+              {isTestingSupabase ? 'Testing...' : 'Test Supabase Connection'}
             </button>
             
             {supabaseTestResults && (
@@ -871,7 +871,7 @@ export default function DSIPSettingsPage() {
                   cursor: 'pointer'
                 }}
               >
-                🔍 Test DSIP Tables
+                Test DSIP Tables
               </button>
             )}
           </div>
