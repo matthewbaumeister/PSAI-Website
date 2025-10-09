@@ -35,6 +35,12 @@ export default function DSIPSettingsPage() {
   const [selectedTable, setSelectedTable] = useState<string>('')
   const [dataSearchQuery, setDataSearchQuery] = useState('')
   
+  // SendGrid test state
+  const [sendgridConfig, setSendgridConfig] = useState<any>(null)
+  const [isTestingSendgrid, setIsTestingSendgrid] = useState(false)
+  const [testEmail, setTestEmail] = useState('')
+  const [resendEmail, setResendEmail] = useState('')
+  
   // DSIP Scraper state
   const [isScraperRunning, setIsScraperRunning] = useState(false)
   const [scraperStatus, setScraperStatus] = useState<'idle' | 'running' | 'completed' | 'failed' | 'paused'>('idle')
@@ -75,6 +81,7 @@ export default function DSIPSettingsPage() {
       loadSbirStats()
       checkSbirScraperStatus()
       checkScraperStatus()
+      testSendgridConfig()
     }
   }, [currentUser])
   
@@ -523,6 +530,98 @@ export default function DSIPSettingsPage() {
       console.error('Database test error:', error)
     }
   }
+  
+  const testSendgridConfig = async () => {
+    try {
+      const response = await fetch('/api/admin/test-sendgrid')
+      if (response.ok) {
+        const data = await response.json()
+        if (data.success) {
+          setSendgridConfig(data.config)
+        }
+      }
+    } catch (error) {
+      console.error('SendGrid config test error:', error)
+    }
+  }
+  
+  const sendTestEmail = async () => {
+    if (!testEmail.trim()) {
+      setMessage('Please enter a test email address')
+      return
+    }
+    
+    try {
+      setIsTestingSendgrid(true)
+      setMessage('📧 Sending test email...')
+      
+      const response = await fetch('/api/admin/test-sendgrid', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: 'send_test_email',
+          testEmail: testEmail.trim()
+        })
+      })
+      
+      if (response.ok) {
+        const data = await response.json()
+        if (data.success) {
+          setMessage(`✅ Test email sent successfully to ${testEmail}! Check your inbox.`)
+        } else {
+          setMessage('❌ Failed to send test email: ' + data.error)
+        }
+      } else {
+        setMessage('❌ Failed to send test email')
+      }
+    } catch (error) {
+      setMessage('❌ Error sending test email')
+      console.error('Test email error:', error)
+    } finally {
+      setIsTestingSendgrid(false)
+    }
+  }
+  
+  const resendVerificationEmail = async () => {
+    if (!resendEmail.trim()) {
+      setMessage('Please enter the user email address')
+      return
+    }
+    
+    try {
+      setIsTestingSendgrid(true)
+      setMessage('📧 Resending verification email...')
+      
+      const response = await fetch('/api/admin/test-sendgrid', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: 'resend_verification',
+          userEmail: resendEmail.trim()
+        })
+      })
+      
+      if (response.ok) {
+        const data = await response.json()
+        if (data.success) {
+          setMessage(`✅ Verification email resent successfully to ${resendEmail}!`)
+        } else {
+          setMessage('❌ Failed to resend verification email: ' + data.error)
+        }
+      } else {
+        setMessage('❌ Failed to resend verification email')
+      }
+    } catch (error) {
+      setMessage('❌ Error resending verification email')
+      console.error('Resend verification error:', error)
+    } finally {
+      setIsTestingSendgrid(false)
+    }
+  }
 
   if (authLoading || isLoadingStats) {
     return (
@@ -558,6 +657,172 @@ export default function DSIPSettingsPage() {
             {message}
           </div>
         )}
+
+        {/* SendGrid Email Test Section */}
+        <div className="settings-section">
+          <h2>📧 SendGrid Email Testing</h2>
+          <p>Test SendGrid email delivery and resend verification emails to users who didn't receive them.</p>
+          
+          <div style={{
+            background: 'rgba(30, 41, 59, 0.6)',
+            borderRadius: '12px',
+            padding: '20px',
+            border: '1px solid rgba(148, 163, 184, 0.2)',
+            marginBottom: '24px'
+          }}>
+            <h3 style={{ color: '#ffffff', marginBottom: '16px', fontSize: '18px' }}>🔧 SendGrid Configuration</h3>
+            
+            {sendgridConfig && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '20px' }}>
+                <div style={{
+                  background: sendgridConfig.hasApiKey ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                  border: `1px solid ${sendgridConfig.hasApiKey ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
+                  borderRadius: '8px',
+                  padding: '16px'
+                }}>
+                  <div style={{ color: sendgridConfig.hasApiKey ? '#22c55e' : '#ef4444', fontSize: '24px', fontWeight: 'bold' }}>
+                    {sendgridConfig.hasApiKey ? '✅' : '❌'}
+                  </div>
+                  <div style={{ color: sendgridConfig.hasApiKey ? '#86efac' : '#fca5a5', fontSize: '12px' }}>
+                    API Key
+                  </div>
+                </div>
+                
+                <div style={{
+                  background: sendgridConfig.hasFromEmail ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                  border: `1px solid ${sendgridConfig.hasFromEmail ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
+                  borderRadius: '8px',
+                  padding: '16px'
+                }}>
+                  <div style={{ color: sendgridConfig.hasFromEmail ? '#22c55e' : '#ef4444', fontSize: '24px', fontWeight: 'bold' }}>
+                    {sendgridConfig.hasFromEmail ? '✅' : '❌'}
+                  </div>
+                  <div style={{ color: sendgridConfig.hasFromEmail ? '#86efac' : '#fca5a5', fontSize: '12px' }}>
+                    From Email
+                  </div>
+                </div>
+                
+                <div style={{
+                  background: 'rgba(59, 130, 246, 0.1)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                  borderRadius: '8px',
+                  padding: '16px'
+                }}>
+                  <div style={{ color: '#3b82f6', fontSize: '14px', fontWeight: 'bold', wordBreak: 'break-all' }}>
+                    {sendgridConfig.fromEmail}
+                  </div>
+                  <div style={{ color: '#93c5fd', fontSize: '12px' }}>
+                    Sender Address
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+              {/* Test Email */}
+              <div>
+                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '16px' }}>🧪 Send Test Email</h4>
+                <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
+                  Send a test email to verify SendGrid is working
+                </p>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <input
+                    type="email"
+                    placeholder="test@example.com"
+                    value={testEmail}
+                    onChange={(e) => setTestEmail(e.target.value)}
+                    style={{
+                      background: 'rgba(15, 23, 42, 0.6)',
+                      border: '1px solid rgba(148, 163, 184, 0.3)',
+                      borderRadius: '6px',
+                      padding: '8px 12px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      flex: '1',
+                      minWidth: '200px'
+                    }}
+                  />
+                  <button
+                    onClick={sendTestEmail}
+                    disabled={isTestingSendgrid || !testEmail.trim()}
+                    style={{
+                      background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                      border: 'none',
+                      borderRadius: '6px',
+                      padding: '8px 16px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      cursor: isTestingSendgrid ? 'not-allowed' : 'pointer',
+                      opacity: isTestingSendgrid ? 0.6 : 1
+                    }}
+                  >
+                    {isTestingSendgrid ? '🔄 Sending...' : '📧 Send Test'}
+                  </button>
+                </div>
+              </div>
+              
+              {/* Resend Verification */}
+              <div>
+                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '16px' }}>🔄 Resend Verification Email</h4>
+                <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
+                  Resend verification email to a user who didn't receive it
+                </p>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <input
+                    type="email"
+                    placeholder="user@example.com"
+                    value={resendEmail}
+                    onChange={(e) => setResendEmail(e.target.value)}
+                    style={{
+                      background: 'rgba(15, 23, 42, 0.6)',
+                      border: '1px solid rgba(148, 163, 184, 0.3)',
+                      borderRadius: '6px',
+                      padding: '8px 12px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      flex: '1',
+                      minWidth: '200px'
+                    }}
+                  />
+                  <button
+                    onClick={resendVerificationEmail}
+                    disabled={isTestingSendgrid || !resendEmail.trim()}
+                    style={{
+                      background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                      border: 'none',
+                      borderRadius: '6px',
+                      padding: '8px 16px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      cursor: isTestingSendgrid ? 'not-allowed' : 'pointer',
+                      opacity: isTestingSendgrid ? 0.6 : 1
+                    }}
+                  >
+                    {isTestingSendgrid ? '🔄 Sending...' : '🔄 Resend'}
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <div style={{
+              background: 'rgba(15, 23, 42, 0.4)',
+              borderRadius: '8px',
+              padding: '16px',
+              marginTop: '20px',
+              border: '1px solid rgba(148, 163, 184, 0.2)'
+            }}>
+              <h4 style={{ color: '#ffffff', marginBottom: '8px', fontSize: '14px' }}>📋 SendGrid Status from Dashboard:</h4>
+              <div style={{ color: '#cbd5e1', fontSize: '13px', lineHeight: '1.5' }}>
+                <div>✅ Verified Senders: matt@prop-shop.ai, info@prop-shop.ai, noreply@prop-shop.ai</div>
+                <div>❌ Failed: info@make-ready-consulting.com</div>
+                <div>⏳ Pending Domains: em1793.prop-shop.ai, em5199.prop-shop.ai</div>
+                <div>✅ Verified Domain: em7352.prop-shop.ai</div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         {/* Supabase Database Test Section */}
         <div className="settings-section">
