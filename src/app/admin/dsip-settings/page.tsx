@@ -571,10 +571,14 @@ export default function DSIPSettingsPage() {
         if (data.success) {
           setMessage(`✅ Test email sent successfully to ${testEmail}! Check your inbox.`)
         } else {
-          setMessage('❌ Failed to send test email: ' + data.error)
+          let errorMsg = '❌ Failed to send test email: ' + data.error
+          if (data.config) {
+            errorMsg += `\n\nConfiguration:\n- API Key: ${data.config.hasApiKey ? 'Present' : 'Missing'}\n- From Email: ${data.config.fromEmail || 'Not set'}\n- API Key Length: ${data.config.apiKeyLength}`
+          }
+          setMessage(errorMsg)
         }
       } else {
-        setMessage('❌ Failed to send test email')
+        setMessage('❌ Failed to send test email - Server error')
       }
     } catch (error) {
       setMessage('❌ Error sending test email')

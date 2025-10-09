@@ -168,10 +168,36 @@ export async function POST(request: NextRequest) {
         });
       } catch (sendError) {
         console.error('SendGrid send error:', sendError);
+        
+        // Extract more detailed error information
+        let errorMessage = 'Failed to send test email';
+        let errorDetails = 'Unknown error';
+        
+        if (sendError instanceof Error) {
+          errorMessage = sendError.message;
+          errorDetails = sendError.stack || 'No stack trace available';
+        }
+        
+        // Check for common SendGrid errors
+        if (errorMessage.includes('401')) {
+          errorMessage = 'Invalid SendGrid API key';
+        } else if (errorMessage.includes('403')) {
+          errorMessage = 'SendGrid API key lacks permission';
+        } else if (errorMessage.includes('400')) {
+          errorMessage = 'Invalid email address or SendGrid configuration';
+        } else if (errorMessage.includes('Unauthorized')) {
+          errorMessage = 'SendGrid API key is invalid or expired';
+        }
+        
         return NextResponse.json({
           success: false,
-          error: 'Failed to send test email',
-          details: sendError instanceof Error ? sendError.message : 'Unknown error'
+          error: errorMessage,
+          details: errorDetails,
+          config: {
+            hasApiKey: !!process.env.SENDGRID_API_KEY,
+            fromEmail: process.env.SENDGRID_FROM_EMAIL,
+            apiKeyLength: process.env.SENDGRID_API_KEY ? process.env.SENDGRID_API_KEY.length : 0
+          }
         });
       }
     }
