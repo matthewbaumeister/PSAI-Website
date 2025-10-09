@@ -59,9 +59,13 @@ export default function DSIPSettingsPage() {
   const [resultsPerPage] = useState(20)
   
   // State for database management
-  const [isRefreshingData, setIsRefreshingData] = useState(false)
+const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [lastUpdate, setLastUpdate] = useState<string | null>(null)
   const [message, setMessage] = useState('')
+  
+  // State for SBIR scraper
+  const [isTriggeringSbirScraper, setIsTriggeringSbirScraper] = useState(false)
+  const [sbirScraperResult, setSbirScraperResult] = useState<any>(null)
 
   // Redirect if not admin
   useEffect(() => {
@@ -128,6 +132,37 @@ export default function DSIPSettingsPage() {
       setMessage('Failed to check scraper status')
     } finally {
       setIsLoadingScraper(false)
+    }
+  }
+
+  const triggerSbirScraper = async () => {
+    setIsTriggeringSbirScraper(true)
+    setSbirScraperResult(null)
+    try {
+      const response = await fetch('/api/admin/sbir/trigger-scraper', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      
+      const result = await response.json()
+      setSbirScraperResult(result)
+      
+      if (response.ok) {
+        setMessage('SBIR scraper triggered successfully')
+        // Refresh stats after scraping
+        setTimeout(() => {
+          loadSbirStats()
+        }, 2000)
+      } else {
+        setMessage(`Failed to trigger SBIR scraper: ${result.error}`)
+      }
+    } catch (error) {
+      console.error('Failed to trigger SBIR scraper:', error)
+      setMessage('Failed to trigger SBIR scraper')
+    } finally {
+      setIsTriggeringSbirScraper(false)
     }
   }
 
@@ -1232,6 +1267,197 @@ export default function DSIPSettingsPage() {
                 <p>Try adjusting your search terms or filters.</p>
               </div>
             )}
+          </div>
+        </div>
+
+        {/* SBIR Scraper Management Section */}
+        <div className="settings-section">
+          <h2>SBIR Database Management</h2>
+          <p>Manage automated SBIR data scraping and database updates. The scraper runs twice daily to fetch active/open/pre-release opportunities.</p>
+          
+          <div className="sbir-management">
+            {/* SBIR Statistics */}
+            {sbirStats && (
+              <div className="stats-grid" style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
+                gap: '16px', 
+                marginBottom: '24px' 
+              }}>
+                <div className="stat-card" style={{
+                  background: 'rgba(15, 23, 42, 0.6)',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  border: '1px solid rgba(148, 163, 184, 0.2)'
+                }}>
+                  <h3 style={{ fontSize: '14px', fontWeight: '600', margin: '0 0 8px 0', color: '#e2e8f0' }}>
+                    Total Records
+                  </h3>
+                  <p style={{ fontSize: '24px', fontWeight: '700', margin: '0', color: '#3b82f6' }}>
+                    {sbirStats.totalRecords?.toLocaleString() || '0'}
+                  </p>
+                </div>
+                
+                <div className="stat-card" style={{
+                  background: 'rgba(15, 23, 42, 0.6)',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  border: '1px solid rgba(148, 163, 184, 0.2)'
+                }}>
+                  <h3 style={{ fontSize: '14px', fontWeight: '600', margin: '0 0 8px 0', color: '#e2e8f0' }}>
+                    Active Opportunities
+                  </h3>
+                  <p style={{ fontSize: '24px', fontWeight: '700', margin: '0', color: '#10b981' }}>
+                    {sbirStats.activeOpportunities?.toLocaleString() || '0'}
+                  </p>
+                </div>
+                
+                <div className="stat-card" style={{
+                  background: 'rgba(15, 23, 42, 0.6)',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  border: '1px solid rgba(148, 163, 184, 0.2)'
+                }}>
+                  <h3 style={{ fontSize: '14px', fontWeight: '600', margin: '0 0 8px 0', color: '#e2e8f0' }}>
+                    Last Updated
+                  </h3>
+                  <p style={{ fontSize: '14px', margin: '0', color: '#94a3b8' }}>
+                    {lastUpdate ? new Date(lastUpdate).toLocaleString() : 'Never'}
+                  </p>
+                </div>
+              </div>
+            )}
+
+            {/* Scraper Controls */}
+            <div className="scraper-controls" style={{
+              background: 'rgba(15, 23, 42, 0.6)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid rgba(148, 163, 184, 0.2)',
+              marginBottom: '24px'
+            }}>
+              <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 16px 0', color: '#ffffff' }}>
+                Automated Scraper Controls
+              </h3>
+              
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '16px' }}>
+                <button
+                  className="btn btn-primary"
+                  onClick={triggerSbirScraper}
+                  disabled={isTriggeringSbirScraper}
+                  style={{
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    color: 'white',
+                    padding: '12px 24px',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: isTriggeringSbirScraper ? 'not-allowed' : 'pointer',
+                    opacity: isTriggeringSbirScraper ? 0.6 : 1
+                  }}
+                >
+                  {isTriggeringSbirScraper ? 'Running Scraper...' : 'Trigger Manual Scrape'}
+                </button>
+                
+                <button
+                  className="btn btn-outline"
+                  onClick={loadSbirStats}
+                  disabled={isLoadingStats}
+                  style={{
+                    color: '#3b82f6',
+                    border: '1px solid #3b82f6',
+                    padding: '12px 24px',
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: isLoadingStats ? 'not-allowed' : 'pointer',
+                    opacity: isLoadingStats ? 0.6 : 1
+                  }}
+                >
+                  {isLoadingStats ? 'Loading...' : 'Refresh Statistics'}
+                </button>
+              </div>
+
+              {/* Scraper Status */}
+              {sbirScraperStatus && (
+                <div style={{
+                  background: 'rgba(0, 0, 0, 0.2)',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  marginBottom: '16px'
+                }}>
+                  <h4 style={{ color: '#ffffff', margin: '0 0 8px 0', fontSize: '14px' }}>Scraper Status:</h4>
+                  <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                    Status: <span style={{ color: sbirScraperStatus.isRunning ? '#10b981' : '#94a3b8' }}>
+                      {sbirScraperStatus.isRunning ? 'Running' : 'Idle'}
+                    </span>
+                  </p>
+                  {sbirScraperStatus.lastScraped && (
+                    <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                      Last Scraped: {new Date(sbirScraperStatus.lastScraped).toLocaleString()}
+                    </p>
+                  )}
+                  {sbirScraperStatus.totalRecords && (
+                    <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                      Total Records: {sbirScraperStatus.totalRecords.toLocaleString()}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Manual Trigger Results */}
+              {sbirScraperResult && (
+                <div style={{
+                  background: sbirScraperResult.success ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                  border: `1px solid ${sbirScraperResult.success ? '#10b981' : '#ef4444'}`,
+                  borderRadius: '8px',
+                  padding: '16px',
+                  marginBottom: '16px'
+                }}>
+                  <h4 style={{ 
+                    color: sbirScraperResult.success ? '#10b981' : '#ef4444', 
+                    margin: '0 0 8px 0', 
+                    fontSize: '14px' 
+                  }}>
+                    {sbirScraperResult.success ? 'Scraper Completed Successfully' : 'Scraper Failed'}
+                  </h4>
+                  {sbirScraperResult.result && (
+                    <div style={{ color: '#cbd5e1', fontSize: '14px' }}>
+                      <p style={{ margin: '4px 0' }}>
+                        Total Topics: {sbirScraperResult.result.totalTopics || 0}
+                      </p>
+                      <p style={{ margin: '4px 0' }}>
+                        Processed: {sbirScraperResult.result.processedTopics || 0}
+                      </p>
+                      <p style={{ margin: '4px 0' }}>
+                        New Records: {sbirScraperResult.result.newRecords || 0}
+                      </p>
+                      <p style={{ margin: '4px 0' }}>
+                        Updated Records: {sbirScraperResult.result.updatedRecords || 0}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div style={{ 
+                background: 'rgba(59, 130, 246, 0.1)', 
+                border: '1px solid rgba(59, 130, 246, 0.3)', 
+                borderRadius: '8px', 
+                padding: '16px' 
+              }}>
+                <h4 style={{ color: '#3b82f6', margin: '0 0 8px 0', fontSize: '14px' }}>
+                  Automated Schedule
+                </h4>
+                <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                  The SBIR scraper runs automatically twice daily at 6:00 AM and 6:00 PM EST.
+                </p>
+                <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                  It fetches only active, open, and pre-release opportunities to keep the database current.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
 

@@ -8,8 +8,17 @@
   "functions": {
     "src/app/api/**/*.ts": {
       "maxDuration": 30
+    },
+    "src/app/api/cron/sbir-scraper/route.ts": {
+      "maxDuration": 300
     }
   },
+  "crons": [
+    {
+      "path": "/api/cron/sbir-scraper",
+      "schedule": "0 6,18 * * *"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
