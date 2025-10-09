@@ -55,15 +55,21 @@ export default function LoginPage() {
     setSubmitStatus('idle')
     
     try {
-      const success = await login(formData.email, formData.password, formData.rememberMe)
+      const result = await login(formData.email, formData.password, formData.rememberMe)
       
-      if (success) {
+      if (result.success) {
         setSubmitStatus('success')
         setSubmitMessage('Login successful! Redirecting...')
         setTimeout(() => router.push('/'), 1500)
       } else {
         setSubmitStatus('error')
-        setSubmitMessage('Invalid email or password. Please try again.')
+        // Display the specific error message from the backend
+        setSubmitMessage(result.message || 'Invalid email or password. Please try again.')
+        
+        // If email verification is required, add additional help
+        if (result.requiresVerification) {
+          setSubmitMessage(result.message + ' Check your email for the verification link.')
+        }
       }
     } catch (error) {
       setSubmitStatus('error')

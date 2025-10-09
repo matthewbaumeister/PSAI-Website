@@ -21,7 +21,7 @@ interface User {
 interface AuthContextType {
   user: User | null
   isLoading: boolean
-  login: (email: string, password: string, rememberMe?: boolean) => Promise<boolean>
+  login: (email: string, password: string, rememberMe?: boolean) => Promise<{ success: boolean; message?: string; requiresVerification?: boolean }>
   logout: () => Promise<void>
   checkAuth: () => Promise<void>
   refreshToken: () => Promise<boolean>
@@ -84,7 +84,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const login = async (email: string, password: string, rememberMe = false): Promise<boolean> => {
+  const login = async (email: string, password: string, rememberMe = false): Promise<{ success: boolean; message?: string; requiresVerification?: boolean }> => {
     try {
       const response = await fetch('/api/auth/login', {
         method: 'POST',
@@ -105,15 +105,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           window.location.href = redirectPath
         }
         
-        return true
+        return { success: true }
       } else {
         const errorData = await response.json()
         console.error('Login failed:', errorData.message)
-        return false
+        return { 
+          success: false, 
+          message: errorData.message || 'Login failed',
+          requiresVerification: errorData.requiresVerification || false
+        }
       }
     } catch (error) {
       console.error('Login error:', error)
-      return false
+      return { success: false, message: 'An error occurred during login. Please try again.' }
     }
   }
 
