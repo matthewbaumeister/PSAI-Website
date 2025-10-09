@@ -586,12 +586,12 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
           >
             ← Back to Admin Dashboard
           </button>
-          <h1>DSIP Search Tool Settings</h1>
-          <p>Manage the DSIP search tool, test queries, and monitor database performance.</p>
+          <h1>Database & Scraper Management</h1>
+          <p>Manage database connections, automated scrapers, and monitor system performance.</p>
         </div>
 
         {message && (
-          <div className={`message ${message.includes('successfully') ? 'success' : 'error'}`}>
+          <div className={`message ${message.includes('successfully') || message.includes('✅') || message.includes('Connected') ? 'success' : 'error'}`}>
             {message}
           </div>
         )}
@@ -849,9 +849,9 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
           </div>
         )}
 
-        {/* DSIP Scraper Management Section */}
+        {/* DSIP Opportunities Scraper Section */}
         <div className="settings-section">
-          <h2>🍪 DSIP Scraper Management</h2>
+          <h2>DSIP Opportunities Scraper</h2>
           <p>Control and monitor the DSIP web scraper for real-time opportunity updates.</p>
           
           {/* Active Opportunities Checker */}
@@ -1270,7 +1270,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
           </div>
         </div>
 
-        {/* SBIR Scraper Management Section */}
+        {/* SBIR Database Management Section */}
         <div className="settings-section">
           <h2>SBIR Database Management</h2>
           <p>Manage automated SBIR data scraping and database updates. The scraper runs twice daily to fetch active/open/pre-release opportunities.</p>
