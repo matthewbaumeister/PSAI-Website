@@ -229,8 +229,8 @@ export async function POST(request: NextRequest) {
       
       const emailSent = await sendVerificationEmail({
         email: user.email,
-        firstName: user.first_name,
-        lastName: user.last_name,
+        firstName: user.first_name || 'User',
+        lastName: user.last_name || '',
         verificationToken,
         verificationUrl
       });
