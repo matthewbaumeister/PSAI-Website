@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireAdmin } from '@/lib/auth-middleware';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 import fs from 'fs';
@@ -10,6 +11,25 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
+
+// GET - Check scraper status
+export async function GET(request: NextRequest) {
+  try {
+    const authResult = await requireAdmin(request);
+    
+    if (authResult instanceof NextResponse) {
+      return authResult;
+    }
+    
+    return await checkScraperStatus();
+  } catch (error) {
+    console.error('SBIR scraper status check error:', error);
+    return NextResponse.json({ 
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error' 
+    }, { status: 500 });
+  }
+}
 
 // POST - Trigger automated scraper
 export async function POST(request: NextRequest) {
@@ -545,19 +565,44 @@ async function processCSV(csvPath: string) {
 }
 
 async function checkScraperStatus() {
-  // Check if scraper is running
   try {
-    const { stdout } = await execAsync('ps aux | grep sbir_scraper.py | grep -v grep');
-    const isRunning = stdout.trim().length > 0;
+    // Check for recent scraping activity in the database
+    const { data: recentActivity, error } = await supabase
+      .from('sbir_final')
+      .select('last_scraped_current_timestamp_eastern')
+      .order('last_scraped_current_timestamp_eastern', { ascending: false })
+      .limit(1);
+
+    if (error) {
+      console.error('Error checking scraper status:', error);
+      return NextResponse.json({
+        isRunning: false,
+        status: 'idle',
+        error: error.message
+      });
+    }
+
+    // Check if there's recent activity (within last 24 hours)
+    const isRecentlyActive = recentActivity && recentActivity.length > 0;
+    let lastScraped = null;
+    
+    if (isRecentlyActive && recentActivity[0].last_scraped_current_timestamp_eastern) {
+      lastScraped = recentActivity[0].last_scraped_current_timestamp_eastern;
+    }
 
     return NextResponse.json({
-      isRunning,
-      status: isRunning ? 'running' : 'idle'
+      isRunning: false, // Always false for serverless environment
+      status: 'idle',
+      lastScraped,
+      totalRecords: recentActivity?.length || 0,
+      message: 'SBIR scraper status checked via database'
     });
   } catch (error) {
+    console.error('Error in checkScraperStatus:', error);
     return NextResponse.json({
       isRunning: false,
-      status: 'idle'
+      status: 'idle',
+      error: error instanceof Error ? error.message : 'Unknown error'
     });
   }
 }
