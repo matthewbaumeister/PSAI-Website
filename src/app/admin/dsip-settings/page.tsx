@@ -27,6 +27,14 @@ export default function DSIPSettingsPage() {
   const [isLoadingStats, setIsLoadingStats] = useState(false)
   const [isLoadingScraper, setIsLoadingScraper] = useState(false)
   
+  // Supabase test state
+  const [supabaseTestResults, setSupabaseTestResults] = useState<any>(null)
+  const [isTestingSupabase, setIsTestingSupabase] = useState(false)
+  const [supabaseData, setSupabaseData] = useState<any[]>([])
+  const [isLoadingData, setIsLoadingData] = useState(false)
+  const [selectedTable, setSelectedTable] = useState<string>('')
+  const [dataSearchQuery, setDataSearchQuery] = useState('')
+  
   // DSIP Scraper state
   const [isScraperRunning, setIsScraperRunning] = useState(false)
   const [scraperStatus, setScraperStatus] = useState<'idle' | 'running' | 'completed' | 'failed' | 'paused'>('idle')
@@ -407,6 +415,81 @@ export default function DSIPSettingsPage() {
     }
   }
 
+  const testSupabaseDatabase = async () => {
+    try {
+      setIsTestingSupabase(true)
+      setMessage('🗄️ Testing Supabase database connection...')
+      
+      const response = await fetch('/api/admin/supabase-test')
+      if (response.ok) {
+        const data = await response.json()
+        console.log('Supabase Test Results:', data)
+        
+        if (data.success) {
+          setSupabaseTestResults(data.results)
+          
+          let message = '🗄️ Supabase Database Test Results:\n'
+          message += `🔗 Connection: ${data.results.connection.success ? '✅ Connected' : '❌ Failed'}\n`
+          message += `📊 Total Records: ${data.results.totalRecords.toLocaleString()}\n\n`
+          message += '📋 Tables Status:\n'
+          
+          Object.entries(data.results.tables).forEach(([tableName, tableInfo]: [string, any]) => {
+            const status = tableInfo.exists ? '✅' : '❌'
+            const count = tableInfo.exists ? `(${tableInfo.count} records)` : '(missing)'
+            message += `${status} ${tableName}: ${count}\n`
+          })
+          
+          setMessage(message)
+        } else {
+          setMessage('❌ Supabase test failed: ' + data.error)
+        }
+      } else {
+        setMessage('❌ Failed to test Supabase database')
+      }
+    } catch (error) {
+      setMessage('❌ Error testing Supabase database')
+      console.error('Supabase test error:', error)
+    } finally {
+      setIsTestingSupabase(false)
+    }
+  }
+  
+  const loadSupabaseData = async (tableName: string, searchQuery: string = '') => {
+    if (!tableName) return
+    
+    try {
+      setIsLoadingData(true)
+      const response = await fetch('/api/admin/supabase-test', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          action: 'search_data',
+          tableName,
+          searchQuery,
+          limit: 50
+        })
+      })
+      
+      if (response.ok) {
+        const data = await response.json()
+        if (data.success) {
+          setSupabaseData(data.data)
+        } else {
+          setMessage('❌ Failed to load data: ' + data.error)
+        }
+      } else {
+        setMessage('❌ Failed to load data')
+      }
+    } catch (error) {
+      setMessage('❌ Error loading data')
+      console.error('Data loading error:', error)
+    } finally {
+      setIsLoadingData(false)
+    }
+  }
+  
   const testDatabase = async () => {
     try {
       setMessage('🗄️ Testing database connection and tables...')
@@ -476,58 +559,257 @@ export default function DSIPSettingsPage() {
           </div>
         )}
 
-        {/* Database Management Section */}
+        {/* Supabase Database Test Section */}
         <div className="settings-section">
-          <h2>Database Management</h2>
-          <div className="database-stats">
-            {sbirStats ? (
-              <div className="stats-grid">
-                <div className="stat-card">
-                  <h3>Total Records</h3>
-                  <span className="stat-number">{sbirStats.totalRecords?.toLocaleString() || '0'}</span>
-                </div>
-                <div className="stat-card">
-                  <h3>Last Update</h3>
-                  <span className="stat-text">
-                    {lastUpdate ? new Date(lastUpdate).toLocaleString() : 'Never'}
-                  </span>
-                </div>
-                <div className="stat-card">
-                  <h3>Database Size</h3>
-                  <span className="stat-text">{sbirStats.databaseSize || 'Unknown'}</span>
-                </div>
-                <div className="stat-card">
-                  <h3>Scraper Status</h3>
-                  <span className={`status-badge ${sbirScraperStatus?.isRunning ? 'running' : 'stopped'}`}>
-                    {sbirScraperStatus?.isRunning ? 'Running' : 'Stopped'}
-                  </span>
-                </div>
-              </div>
-            ) : (
-              <div className="loading-stats">
-                <div className="spinner"></div>
-                <p>Loading database statistics...</p>
-              </div>
+          <h2>🗄️ Supabase Database Test</h2>
+          <p>Test your Supabase database connection and view actual data from your tables.</p>
+          
+          <div className="database-test-actions" style={{ marginBottom: '24px', display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+            <button
+              className="btn btn-primary"
+              onClick={testSupabaseDatabase}
+              disabled={isTestingSupabase}
+              style={{
+                background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                color: 'white',
+                padding: '12px 24px',
+                border: 'none',
+                borderRadius: '8px',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: isTestingSupabase ? 'not-allowed' : 'pointer',
+                opacity: isTestingSupabase ? 0.6 : 1
+              }}
+            >
+              {isTestingSupabase ? '🔄 Testing...' : '🧪 Test Supabase Connection'}
+            </button>
+            
+            {supabaseTestResults && (
+              <button
+                className="btn btn-outline"
+                onClick={testDatabase}
+                style={{
+                  background: 'rgba(59, 130, 246, 0.1)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                  color: '#93c5fd',
+                  padding: '12px 24px',
+                  borderRadius: '8px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: 'pointer'
+                }}
+              >
+                🔍 Test DSIP Tables
+              </button>
             )}
           </div>
 
-          <div className="database-actions">
-            <button
-              className="btn btn-primary"
-              onClick={startSbirScraper}
-              disabled={isRefreshingData || sbirScraperStatus?.isRunning}
-            >
-              {isRefreshingData ? 'Refreshing...' : 'Refresh Database'}
-            </button>
-            <button
-              className="btn btn-outline"
-              onClick={loadSbirStats}
-              disabled={isLoadingStats}
-            >
-              {isLoadingStats ? 'Loading...' : 'Refresh Stats'}
-            </button>
-          </div>
+          {supabaseTestResults && (
+            <div style={{
+              background: 'rgba(30, 41, 59, 0.6)',
+              borderRadius: '12px',
+              padding: '20px',
+              border: '1px solid rgba(148, 163, 184, 0.2)',
+              marginBottom: '24px'
+            }}>
+              <h3 style={{ color: '#ffffff', marginBottom: '16px', fontSize: '18px' }}>📊 Database Status</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
+                <div style={{
+                  background: supabaseTestResults.connection.success ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                  border: `1px solid ${supabaseTestResults.connection.success ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
+                  borderRadius: '8px',
+                  padding: '16px'
+                }}>
+                  <div style={{ color: supabaseTestResults.connection.success ? '#22c55e' : '#ef4444', fontSize: '24px', fontWeight: 'bold' }}>
+                    {supabaseTestResults.connection.success ? '✅' : '❌'}
+                  </div>
+                  <div style={{ color: supabaseTestResults.connection.success ? '#86efac' : '#fca5a5', fontSize: '12px' }}>
+                    Connection Status
+                  </div>
+                </div>
+                
+                <div style={{
+                  background: 'rgba(59, 130, 246, 0.1)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                  borderRadius: '8px',
+                  padding: '16px'
+                }}>
+                  <div style={{ color: '#3b82f6', fontSize: '24px', fontWeight: 'bold' }}>
+                    {supabaseTestResults.totalRecords.toLocaleString()}
+                  </div>
+                  <div style={{ color: '#93c5fd', fontSize: '12px' }}>
+                    Total Records
+                  </div>
+                </div>
+              </div>
+              
+              <div style={{ marginTop: '16px' }}>
+                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '14px' }}>📋 Tables Status:</h4>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '8px' }}>
+                  {Object.entries(supabaseTestResults.tables).map(([tableName, tableInfo]: [string, any]) => (
+                    <div key={tableName} style={{
+                      background: 'rgba(15, 23, 42, 0.4)',
+                      borderRadius: '6px',
+                      padding: '12px',
+                      border: `1px solid ${tableInfo.exists ? 'rgba(34, 197, 94, 0.2)' : 'rgba(239, 68, 68, 0.2)'}`
+                    }}>
+                      <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        color: '#ffffff',
+                        fontSize: '13px',
+                        fontWeight: '500'
+                      }}>
+                        <span>{tableName}</span>
+                        <span style={{ color: tableInfo.exists ? '#22c55e' : '#ef4444' }}>
+                          {tableInfo.exists ? '✅' : '❌'} {tableInfo.exists ? tableInfo.count : 'Missing'}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
+
+        {/* Database Data Viewer Section */}
+        {supabaseTestResults && (
+          <div className="settings-section">
+            <h2>📊 Database Data Viewer</h2>
+            <p>Browse and search actual data from your Supabase tables.</p>
+            
+            <div style={{
+              background: 'rgba(30, 41, 59, 0.6)',
+              borderRadius: '12px',
+              padding: '20px',
+              border: '1px solid rgba(148, 163, 184, 0.2)',
+              marginBottom: '24px'
+            }}>
+              <div style={{ display: 'flex', gap: '12px', marginBottom: '16px', flexWrap: 'wrap' }}>
+                <select
+                  value={selectedTable}
+                  onChange={(e) => setSelectedTable(e.target.value)}
+                  style={{
+                    background: 'rgba(15, 23, 42, 0.6)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '6px',
+                    padding: '8px 12px',
+                    color: '#ffffff',
+                    fontSize: '14px',
+                    minWidth: '200px'
+                  }}
+                >
+                  <option value="">Select a table...</option>
+                  {Object.entries(supabaseTestResults.tables)
+                    .filter(([_, tableInfo]: [string, any]) => tableInfo.exists)
+                    .map(([tableName, tableInfo]: [string, any]) => (
+                      <option key={tableName} value={tableName}>
+                        {tableName} ({tableInfo.count} records)
+                      </option>
+                    ))}
+                </select>
+                
+                <input
+                  type="text"
+                  placeholder="Search in data..."
+                  value={dataSearchQuery}
+                  onChange={(e) => setDataSearchQuery(e.target.value)}
+                  style={{
+                    background: 'rgba(15, 23, 42, 0.6)',
+                    border: '1px solid rgba(148, 163, 184, 0.3)',
+                    borderRadius: '6px',
+                    padding: '8px 12px',
+                    color: '#ffffff',
+                    fontSize: '14px',
+                    minWidth: '200px'
+                  }}
+                />
+                
+                <button
+                  onClick={() => loadSupabaseData(selectedTable, dataSearchQuery)}
+                  disabled={!selectedTable || isLoadingData}
+                  style={{
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '8px 16px',
+                    color: '#ffffff',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: isLoadingData ? 'not-allowed' : 'pointer',
+                    opacity: isLoadingData ? 0.6 : 1
+                  }}
+                >
+                  {isLoadingData ? '🔄 Loading...' : '🔍 Load Data'}
+                </button>
+              </div>
+              
+              {supabaseData.length > 0 && (
+                <div style={{
+                  background: 'rgba(0, 0, 0, 0.3)',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  maxHeight: '400px',
+                  overflowY: 'auto'
+                }}>
+                  <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '14px' }}>
+                    📋 Data from {selectedTable} ({supabaseData.length} records shown)
+                  </h4>
+                  <div style={{ overflowX: 'auto' }}>
+                    <table style={{
+                      width: '100%',
+                      borderCollapse: 'collapse',
+                      fontSize: '12px'
+                    }}>
+                      <thead>
+                        <tr style={{ background: 'rgba(15, 23, 42, 0.8)' }}>
+                          {Object.keys(supabaseData[0] || {}).slice(0, 8).map((key) => (
+                            <th key={key} style={{
+                              padding: '8px',
+                              textAlign: 'left',
+                              color: '#cbd5e1',
+                              fontWeight: '600',
+                              borderBottom: '1px solid rgba(148, 163, 184, 0.2)'
+                            }}>
+                              {key}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {supabaseData.slice(0, 10).map((row, index) => (
+                          <tr key={index} style={{
+                            borderBottom: '1px solid rgba(148, 163, 184, 0.1)'
+                          }}>
+                            {Object.values(row).slice(0, 8).map((value, i) => (
+                              <td key={i} style={{
+                                padding: '8px',
+                                color: '#e2e8f0',
+                                maxWidth: '200px',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap'
+                              }}>
+                                {typeof value === 'object' ? JSON.stringify(value) : String(value || '')}
+                              </td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  {supabaseData.length > 10 && (
+                    <p style={{ color: '#94a3b8', fontSize: '12px', marginTop: '8px' }}>
+                      Showing first 10 records of {supabaseData.length} total
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* DSIP Scraper Management Section */}
         <div className="settings-section">
@@ -593,25 +875,17 @@ export default function DSIPSettingsPage() {
             gap: '24px',
             marginBottom: '24px'
           }}>
-            {/* Database Status */}
+            {/* Scraper Status */}
             <div style={{
               background: 'rgba(30, 41, 59, 0.5)',
               borderRadius: '12px',
               padding: '20px',
               border: '1px solid rgba(148, 163, 184, 0.2)'
             }}>
-              <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 16px 0' }}>Database Status</h3>
+              <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 16px 0' }}>Scraper Status</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Total Opportunities:</span>
-                  <span style={{ fontWeight: '600' }}>33,000+</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Last Updated:</span>
-                  <span style={{ fontWeight: '600' }}>Today</span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Scraper Status:</span>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Current Status:</span>
                   <span style={{ 
                     color: scraperStatus === 'running' ? '#fbbf24' : scraperStatus === 'completed' ? '#10b981' : scraperStatus === 'failed' ? '#ef4444' : '#94a3b8', 
                     fontWeight: '600' 
@@ -619,6 +893,20 @@ export default function DSIPSettingsPage() {
                     {scraperStatus === 'running' ? '🔄 Running' : scraperStatus === 'completed' ? '✅ Completed' : scraperStatus === 'failed' ? '❌ Failed' : '⏸️ Idle'}
                   </span>
                 </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#94a3b8', fontSize: '14px' }}>Is Running:</span>
+                  <span style={{ color: isScraperRunning ? '#10b981' : '#ef4444', fontWeight: '600' }}>
+                    {isScraperRunning ? 'Yes' : 'No'}
+                  </span>
+                </div>
+                {currentScrapingJob && (
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span style={{ color: '#94a3b8', fontSize: '14px' }}>Current Job:</span>
+                    <span style={{ color: '#ffffff', fontWeight: '600', fontSize: '12px' }}>
+                      {currentScrapingJob.type || 'Unknown'}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 
