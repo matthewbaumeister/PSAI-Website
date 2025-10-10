@@ -782,7 +782,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
 
 
         {/* Supabase Database Test Section */}
-        <div className="settings-section">
+        <div className="settings-section" style={{ display: 'none' }}>
           <h2>Supabase Database Test</h2>
           <p>Test your Supabase database connection and view actual data from your tables.</p>
           
@@ -1034,10 +1034,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         )}
 
         {/* DSIP Opportunities Scraper Section */}
-        <div className="settings-section" style={{ position: 'relative' }}>
-          <h2>DSIP Opportunities Scraper</h2>
-          <p>Control and monitor the DSIP web scraper for real-time opportunity updates.</p>
-          
+        <div className="settings-section" style={{ position: 'relative', display: 'none' }}>
           {/* Active Opportunities Checker */}
           <div style={{
             background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%)',
@@ -1268,7 +1265,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         </div>
 
         {/* Search Testing Section */}
-        <div className="settings-section">
+        <div className="settings-section" style={{ display: 'none' }}>
           <h2>Search Tool Testing</h2>
           <p>Test the DSIP search functionality with real queries against the sbir_final database.</p>
           
@@ -1462,7 +1459,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         {/* SBIR Database Management Section */}
         <div className="settings-section">
           <h2>SBIR Database Management</h2>
-          <p>Manage automated SBIR data scraping and database updates. The scraper runs twice daily to fetch active/open/pre-release opportunities.</p>
+          <p>Manage automated SBIR data scraping and database updates. The scraper runs once daily at noon to fetch active/open/pre-release opportunities.</p>
           
           <div className="sbir-management">
             {/* SBIR Statistics */}
