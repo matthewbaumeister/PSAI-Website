@@ -55,22 +55,32 @@ export async function GET(request: NextRequest) {
       statusCounts[status] = (statusCounts[status] || 0) + 1;
     });
 
-    // Get recent activity (last 7 days)
-    const sevenDaysAgo = new Date();
-    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
-    
-    const { data: recentData, error: recentError } = await supabase
+    // Get active opportunities count (Open, Pre-Release)
+    const { count: activeCount, error: activeError } = await supabase
       .from('sbir_final')
-      .select('created_date')
-      .gte('created_date', sevenDaysAgo.toISOString());
+      .select('*', { count: 'exact', head: true })
+      .in('status', ['Open', 'Pre-Release']);
 
-    if (recentError) {
-      console.error('Error fetching recent data:', recentError);
+    if (activeError) {
+      console.error('Error fetching active count:', activeError);
+    }
+
+    // Get last updated timestamp from most recently scraped record
+    const { data: lastScrapedData, error: lastScrapedError } = await supabase
+      .from('sbir_final')
+      .select('last_scraped')
+      .not('last_scraped', 'is', null)
+      .order('last_scraped', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (lastScrapedError) {
+      console.error('Error fetching last scraped:', lastScrapedError);
     }
 
     const stats = {
       totalRecords: totalCount || 0,
-      recentRecords: recentData?.length || 0,
+      activeOpportunities: activeCount || 0,
       components: Object.entries(componentCounts)
         .map(([component, count]) => ({ component, count }))
         .sort((a, b) => b.count - a.count)
@@ -78,7 +88,7 @@ export async function GET(request: NextRequest) {
       statuses: Object.entries(statusCounts)
         .map(([status, count]) => ({ status, count }))
         .sort((a, b) => b.count - a.count),
-      lastUpdated: new Date().toISOString()
+      lastUpdated: lastScrapedData?.last_scraped || null
     };
 
     return NextResponse.json(stats);
