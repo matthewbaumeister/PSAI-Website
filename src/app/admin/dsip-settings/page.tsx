@@ -179,16 +179,29 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       })
       
       const result = await response.json()
-      console.log('[SBIR Scraper] Response:', result)
+      console.log('[SBIR Scraper] Full Response:', JSON.stringify(result, null, 2))
       setSbirScraperResult(result)
       
       if (response.ok) {
+        const details = result.result || {};
+        const message = `
+📊 Scraper Results:
+• Total Topics Found: ${details.totalTopics || 0}
+• Processed: ${details.processedTopics || 0}  
+• New Records: ${details.newRecords || 0}
+• Updated Records: ${details.updatedRecords || 0}
+
+${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs for details.' : ''}
+        `.trim();
+        
         showNotification(
-          `✅ SBIR scraper completed! Found ${result.result?.totalTopics || 0} active topics.`,
-          'success',
+          details.totalTopics > 0 
+            ? `✅ SBIR scraper completed! Found ${details.totalTopics} active topics.`
+            : `⚠️ SBIR scraper completed but found 0 active topics.`,
+          details.totalTopics > 0 ? 'success' : 'warning',
           { 
-            message: result.result ? `Processed: ${result.result.processedTopics}, New: ${result.result.newRecords}, Updated: ${result.result.updatedRecords}` : '',
-            duration: 10000
+            message,
+            duration: 15000
           }
         )
         // Refresh stats after scraping (WITHOUT page reload)
