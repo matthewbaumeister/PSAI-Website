@@ -61,6 +61,7 @@ async function scrapeAndUpdateSBIR() {
       processedTopics: processedTopics.length,
       newRecords: updateResult.newRecords,
       updatedRecords: updateResult.updatedRecords,
+      skippedRecords: updateResult.skippedRecords,
       timestamp: new Date().toISOString()
     };
 
@@ -273,44 +274,65 @@ async function processTopics(topics: any[], baseUrl: string) {
 async function updateDatabase(topics: any[]) {
   let newRecords = 0;
   let updatedRecords = 0;
+  let skippedRecords = 0;
 
   try {
     console.log(`💾 Upserting ${topics.length} topics to database...`);
     
-    // Get count before upsert
-    const { count: countBefore } = await supabase
+    // Get existing records with their modified dates to track actual changes
+    const topicKeys = topics.map(t => ({ 
+      topic_number: t.topic_number, 
+      cycle_name: t.cycle_name 
+    }));
+    
+    const { data: existingRecords } = await supabase
       .from('sbir_final')
-      .select('*', { count: 'exact', head: true });
+      .select('topic_number, cycle_name, modified_date')
+      .in('topic_number', topics.map(t => t.topic_number));
+    
+    const existingMap = new Map(
+      existingRecords?.map(r => [
+        `${r.topic_number}_${r.cycle_name}`, 
+        r.modified_date
+      ]) || []
+    );
+    
+    // Count records before
+    const countBefore = existingMap.size;
     
     // Use upsert with onConflict to handle duplicates automatically
-    // This will INSERT new records or UPDATE existing ones based on the unique constraint
-    const { data, error: upsertError } = await supabase
+    const { error: upsertError } = await supabase
       .from('sbir_final')
       .upsert(topics, {
-        onConflict: 'topic_number,cycle_name', // Matches the unique_topic_cycle constraint
-        ignoreDuplicates: false // Update if exists
-      })
-      .select();
+        onConflict: 'topic_number,cycle_name',
+        ignoreDuplicates: false
+      });
 
     if (upsertError) {
       console.error('❌ Error upserting topics:', upsertError);
       throw upsertError;
     }
 
-    // Get count after upsert
-    const { count: countAfter } = await supabase
-      .from('sbir_final')
-      .select('*', { count: 'exact', head: true });
+    // Determine new vs updated by checking which existed before
+    topics.forEach(topic => {
+      const key = `${topic.topic_number}_${topic.cycle_name}`;
+      const existingModifiedDate = existingMap.get(key);
+      
+      if (!existingModifiedDate) {
+        newRecords++;
+      } else if (topic.modified_date && topic.modified_date !== existingModifiedDate) {
+        updatedRecords++;
+      } else {
+        skippedRecords++;
+      }
+    });
 
-    newRecords = (countAfter || 0) - (countBefore || 0);
-    updatedRecords = topics.length - newRecords;
-
-    console.log(`✅ Database upsert complete: ${newRecords} new, ${updatedRecords} updated`);
+    console.log(`✅ Database upsert complete: ${newRecords} new, ${updatedRecords} updated, ${skippedRecords} unchanged`);
 
   } catch (error) {
     console.error('❌ Database update error:', error);
     throw error;
   }
 
-  return { newRecords, updatedRecords };
+  return { newRecords, updatedRecords, skippedRecords };
 }

@@ -213,6 +213,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
 • Processed: ${details.processedTopics || 0}  
 • New Records: ${details.newRecords || 0}
 • Updated Records: ${details.updatedRecords || 0}
+• Unchanged: ${details.skippedRecords || 0}
 
 ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs for details.' : ''}
         `.trim();
@@ -1854,10 +1855,13 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                         Processed: {sbirScraperResult.result.processedTopics || 0}
                       </p>
                       <p style={{ margin: '4px 0' }}>
-                        New Records: {sbirScraperResult.result.newRecords || 0}
+                        ✨ New Records: {sbirScraperResult.result.newRecords || 0}
                       </p>
                       <p style={{ margin: '4px 0' }}>
-                        Updated Records: {sbirScraperResult.result.updatedRecords || 0}
+                        🔄 Updated Records: {sbirScraperResult.result.updatedRecords || 0}
+                      </p>
+                      <p style={{ margin: '4px 0' }}>
+                        ⏭️ Unchanged: {sbirScraperResult.result.skippedRecords || 0}
                       </p>
                     </div>
                   )}
