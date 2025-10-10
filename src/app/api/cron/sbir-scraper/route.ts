@@ -126,7 +126,7 @@ async function fetchActiveTopics(baseUrl: string) {
   await new Promise(resolve => setTimeout(resolve, 3000));
 
   while (page < maxPages) {
-    // Use EXACT parameters from working Python script
+    // Get RECENT topics first (active topics are recent!)
     const searchParams = {
       searchText: null,
       components: null,
@@ -135,7 +135,7 @@ async function fetchActiveTopics(baseUrl: string) {
       releaseNumbers: [],
       topicReleaseStatus: [],
       modernizationPriorities: [],
-      sortBy: "finalTopicCode,asc", // EXACT match to Python default
+      sortBy: "topicStartDate,desc", // Get most recent topics first!
       technologyAreaIds: [],
       component: null,
       program: null
@@ -214,8 +214,12 @@ async function fetchActiveTopics(baseUrl: string) {
       }
 
       // Early termination if no active topics found in several consecutive pages
-      if (consecutivePagesWithoutActive >= maxConsecutivePagesWithoutActive && totalActiveFound > 0) {
-        console.log(`   ✅ Early termination: Found ${totalActiveFound} active topics, no more in last ${maxConsecutivePagesWithoutActive} pages`);
+      if (consecutivePagesWithoutActive >= maxConsecutivePagesWithoutActive) {
+        if (totalActiveFound > 0) {
+          console.log(`   ✅ Early termination: Found ${totalActiveFound} active topics, no more in last ${maxConsecutivePagesWithoutActive} pages`);
+        } else {
+          console.log(`   ⚠️ Early termination: No active topics found after ${maxConsecutivePagesWithoutActive} pages`);
+        }
         break;
       }
       
