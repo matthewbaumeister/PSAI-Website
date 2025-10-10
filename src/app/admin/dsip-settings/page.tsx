@@ -1659,29 +1659,36 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
 
             {/* Progress Display - Modal Overlay */}
             {isScrapingActive && (
-              <div style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'rgba(0, 0, 0, 0.85)',
-                backdropFilter: 'blur(12px)',
-                zIndex: 99999,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                overflow: 'hidden'
-              }}>
+              <>
+                {/* Backdrop */}
                 <div style={{
-                  background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-                  border: '2px solid rgba(148, 163, 184, 0.3)',
-                  borderRadius: '20px',
-                  padding: '40px',
-                  maxWidth: '600px',
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'rgba(0, 0, 0, 0.7)',
+                  backdropFilter: 'blur(8px)',
+                  zIndex: 99998
+                }} />
+                
+                {/* Modal */}
+                <div style={{
+                  position: 'fixed',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  zIndex: 99999,
                   width: '90%',
-                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+                  maxWidth: '650px'
                 }}>
+                  <div style={{
+                    background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                    border: '3px solid #4ecdc4',
+                    borderRadius: '16px',
+                    padding: '36px',
+                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 100px rgba(78, 205, 196, 0.3)'
+                  }}>
                   <h3 style={{ 
                     color: '#ffffff', 
                     fontSize: '24px', 
@@ -1768,8 +1775,9 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                       </p>
                     </div>
                   )}
+                  </div>
                 </div>
-              </div>
+              </>
             )}
 
             {/* Scraped Data Display */}
