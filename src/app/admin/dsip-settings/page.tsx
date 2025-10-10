@@ -377,11 +377,16 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
             }
           )
         } else {
-          showNotification(`❌ Failed to check opportunities: ${data.error}`, 'error')
+          showNotification(
+            `❌ Failed to check opportunities: ${data.error}`,
+            'error',
+            data.hint ? { hint: data.hint, details: data.details } : undefined
+          )
         }
       } else {
         const errorText = await response.text()
-        showNotification(`❌ Failed to check opportunities: ${response.status} ${errorText}`, 'error')
+        console.error('Check opportunities error response:', errorText)
+        showNotification(`❌ Failed to check opportunities: ${response.status}`, 'error', { responseText: errorText })
       }
     } catch (error) {
       console.error('Check active opportunities error:', error)
@@ -1618,6 +1623,22 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                   {notification.details.connection !== undefined && (
                     <div style={{ marginTop: '8px' }}>
                       🔗 Connection: {notification.details.connection ? '✅ Connected' : '❌ Failed'}
+                    </div>
+                  )}
+                  {notification.details.hint && (
+                    <div style={{ 
+                      marginTop: '12px', 
+                      padding: '10px',
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '8px',
+                      fontSize: '13px'
+                    }}>
+                      💡 <strong>Hint:</strong> {notification.details.hint}
+                    </div>
+                  )}
+                  {notification.details.message && (
+                    <div style={{ marginTop: '8px', fontSize: '13px', fontStyle: 'italic' }}>
+                      ℹ️ {notification.details.message}
                     </div>
                   )}
                   {notification.details.timestamp && (
