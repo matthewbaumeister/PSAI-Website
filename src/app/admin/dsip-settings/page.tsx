@@ -410,9 +410,27 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
             clearInterval(interval)
             setIsScraperRunning(false)
             if (data.status === 'completed') {
-              setMessage('Scraping completed successfully!')
+              showNotification(
+                '✅ Scraping completed successfully!',
+                'success',
+                {
+                  recordsProcessed: data.currentJob?.recordsProcessed,
+                  newRecords: data.currentJob?.newRecordsFound,
+                  updatedRecords: data.currentJob?.updatedRecords,
+                  duration: data.currentJob?.duration,
+                  completedAt: data.currentJob?.completedAt
+                }
+              )
             } else {
-              setMessage(`Scraping failed: ${data.currentJob?.error || 'Unknown error'}`)
+              showNotification(
+                `❌ Scraping failed: ${data.currentJob?.error || 'Unknown error'}`,
+                'error',
+                {
+                  error: data.currentJob?.error,
+                  recordsProcessed: data.currentJob?.recordsProcessed,
+                  startedAt: data.currentJob?.startedAt
+                }
+              )
             }
           }
         }
@@ -562,7 +580,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   
   const testDatabase = async () => {
     try {
-      setMessage('🗄️ Testing database connection and tables...')
+      showNotification('🗄️ Testing database connection and tables...', 'info')
       
       const response = await fetch('/api/dsip/test-database')
       if (response.ok) {
@@ -571,25 +589,34 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         
         if (data.success) {
           const status = data.databaseStatus
-          let message = '🗄️ Database Test Results:\n'
-          message += `📊 Opportunities Table: ${status.opportunitiesTable.exists ? '✅ Exists' : '❌ Missing'} (${status.opportunitiesTable.count} records)\n`
-          message += `📋 Scraping Jobs Table: ${status.scrapingJobsTable.exists ? '✅ Exists' : '❌ Missing'} (${status.scrapingJobsTable.count} records)\n`
-          message += `👥 Users Table: ${status.usersTable.exists ? '✅ Exists' : '❌ Missing'} (${status.usersTable.count} records)\n`
-          message += `✏️ Can Insert: ${status.canInsert ? '✅ Yes' : '❌ No'}`
-          
-          if (status.insertError) {
-            message += `\n❌ Insert Error: ${status.insertError}`
-          }
-          
-          setMessage(message)
+          showNotification(
+            '✅ Database Test Complete',
+            'success',
+            {
+              opportunitiesTable: {
+                exists: status.opportunitiesTable.exists,
+                count: status.opportunitiesTable.count
+              },
+              scrapingJobsTable: {
+                exists: status.scrapingJobsTable.exists,
+                count: status.scrapingJobsTable.count
+              },
+              usersTable: {
+                exists: status.usersTable.exists,
+                count: status.usersTable.count
+              },
+              canInsert: status.canInsert,
+              insertError: status.insertError
+            }
+          )
         } else {
-          setMessage('❌ Database test failed')
+          showNotification('❌ Database test failed', 'error')
         }
       } else {
-        setMessage('❌ Failed to test database')
+        showNotification('❌ Failed to test database', 'error')
       }
     } catch (error) {
-      setMessage('❌ Error testing database')
+      showNotification(`❌ Error testing database: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       console.error('Database test error:', error)
     }
   }
@@ -1620,9 +1647,76 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                       ))}
                     </div>
                   )}
+                  {(notification.details.opportunitiesTable || notification.details.scrapingJobsTable || notification.details.usersTable) && (
+                    <div style={{ marginTop: '12px' }}>
+                      <div style={{ fontWeight: '600', marginBottom: '6px' }}>📊 Database Tables:</div>
+                      {notification.details.opportunitiesTable && (
+                        <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9, marginTop: '3px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span>{notification.details.opportunitiesTable.exists ? '✅' : '❌'}</span>
+                          <span style={{ flex: 1 }}>dsip_opportunities</span>
+                          {notification.details.opportunitiesTable.exists && (
+                            <span style={{ opacity: 0.8 }}>({notification.details.opportunitiesTable.count?.toLocaleString() || 0} records)</span>
+                          )}
+                        </div>
+                      )}
+                      {notification.details.scrapingJobsTable && (
+                        <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9, marginTop: '3px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span>{notification.details.scrapingJobsTable.exists ? '✅' : '❌'}</span>
+                          <span style={{ flex: 1 }}>dsip_scraping_jobs</span>
+                          {notification.details.scrapingJobsTable.exists && (
+                            <span style={{ opacity: 0.8 }}>({notification.details.scrapingJobsTable.count?.toLocaleString() || 0} records)</span>
+                          )}
+                        </div>
+                      )}
+                      {notification.details.usersTable && (
+                        <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9, marginTop: '3px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span>{notification.details.usersTable.exists ? '✅' : '❌'}</span>
+                          <span style={{ flex: 1 }}>users</span>
+                          {notification.details.usersTable.exists && (
+                            <span style={{ opacity: 0.8 }}>({notification.details.usersTable.count?.toLocaleString() || 0} records)</span>
+                          )}
+                        </div>
+                      )}
+                      {notification.details.canInsert !== undefined && (
+                        <div style={{ marginTop: '8px', fontSize: '13px', paddingLeft: '8px' }}>
+                          ✏️ Can Insert: {notification.details.canInsert ? '✅ Yes' : '❌ No'}
+                        </div>
+                      )}
+                      {notification.details.insertError && (
+                        <div style={{ marginTop: '6px', fontSize: '12px', paddingLeft: '8px', color: '#fca5a5' }}>
+                          ⚠️ Insert Error: {notification.details.insertError}
+                        </div>
+                      )}
+                    </div>
+                  )}
                   {notification.details.connection !== undefined && (
                     <div style={{ marginTop: '8px' }}>
                       🔗 Connection: {notification.details.connection ? '✅ Connected' : '❌ Failed'}
+                    </div>
+                  )}
+                  {(notification.details.recordsProcessed !== undefined || notification.details.newRecords !== undefined) && (
+                    <div style={{ marginTop: '12px' }}>
+                      <div style={{ fontWeight: '600', marginBottom: '6px' }}>📊 Scraping Results:</div>
+                      {notification.details.recordsProcessed !== undefined && (
+                        <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9 }}>
+                          📝 Records Processed: {notification.details.recordsProcessed?.toLocaleString()}
+                        </div>
+                      )}
+                      {notification.details.newRecords !== undefined && (
+                        <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9 }}>
+                          ✨ New Records: {notification.details.newRecords?.toLocaleString()}
+                        </div>
+                      )}
+                      {notification.details.updatedRecords !== undefined && (
+                        <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9 }}>
+                          🔄 Updated Records: {notification.details.updatedRecords?.toLocaleString()}
+                        </div>
+                      )}
+                      {notification.details.duration && (
+                        <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9 }}>
+                          ⏱️ Duration: {notification.details.duration}
+                        </div>
+                      )}
                     </div>
                   )}
                   {notification.details.hint && (
