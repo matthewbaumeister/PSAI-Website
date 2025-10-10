@@ -67,6 +67,12 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [isTriggeringSbirScraper, setIsTriggeringSbirScraper] = useState(false)
   const [sbirScraperResult, setSbirScraperResult] = useState<any>(null)
   
+  // State for real active scraper
+  const [activeScraperJobId, setActiveScraperJobId] = useState<string | null>(null)
+  const [activeScraperData, setActiveScraperData] = useState<any[]>([])
+  const [activeScraperProgress, setActiveScraperProgress] = useState<any>(null)
+  const [isScrapingActive, setIsScrapingActive] = useState(false)
+  
   // State for floating notifications
   const [notification, setNotification] = useState<{
     show: boolean
@@ -451,6 +457,79 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
     return () => clearInterval(interval)
   }
 
+  // Real active scraper function
+  const startRealActiveScraper = async () => {
+    try {
+      setIsScrapingActive(true)
+      showNotification('🚀 Starting real DSIP scraper for active opportunities...', 'info')
+      
+      const response = await fetch('/api/dsip/scrape-active', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'start' })
+      })
+      
+      if (response.ok) {
+        const data = await response.json()
+        setActiveScraperJobId(data.jobId)
+        showNotification('✅ Scraper started! Fetching active opportunities from DSIP...', 'success')
+        
+        // Start monitoring progress
+        monitorActiveScraperProgress(data.jobId)
+      } else {
+        showNotification('❌ Failed to start scraper', 'error')
+        setIsScrapingActive(false)
+      }
+    } catch (error) {
+      showNotification(`❌ Error starting scraper: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+      setIsScrapingActive(false)
+    }
+  }
+  
+  const monitorActiveScraperProgress = async (jobId: string) => {
+    const interval = setInterval(async () => {
+      try {
+        const response = await fetch('/api/dsip/scrape-active', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'status', jobId })
+        })
+        
+        if (response.ok) {
+          const data = await response.json()
+          const job = data.job
+          
+          if (job) {
+            setActiveScraperProgress(job.progress)
+            
+            if (job.status === 'completed') {
+              clearInterval(interval)
+              setIsScrapingActive(false)
+              setActiveScraperData(job.data || [])
+              
+              showNotification(
+                `✅ Scraping completed! Found ${job.totalRecords} active opportunities`,
+                'success',
+                {
+                  totalRecords: job.totalRecords,
+                  activeTopics: job.progress?.activeTopicsFound,
+                  processedTopics: job.progress?.processedTopics,
+                  message: 'Data is ready to import to Supabase'
+                }
+              )
+            } else if (job.status === 'failed') {
+              clearInterval(interval)
+              setIsScrapingActive(false)
+              showNotification(`❌ Scraping failed: ${job.error}`, 'error')
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error monitoring scraper:', error)
+      }
+    }, 2000) // Check every 2 seconds
+  }
+  
   const testScraperSystem = async () => {
     try {
       showNotification('🧪 Testing scraper system...', 'info')
@@ -1061,14 +1140,18 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                       🚀 Full Refresh (8-12 hours)
                     </button>
                     <button
-                      onClick={() => startScraper('quick')}
+                      onClick={startRealActiveScraper}
                       className="btn btn-primary"
+                      disabled={isScrapingActive}
                       style={{
-                        background: 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)',
-                        width: '100%'
+                        background: isScrapingActive 
+                          ? 'linear-gradient(135deg, #94a3b8 0%, #64748b 100%)'
+                          : 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)',
+                        width: '100%',
+                        cursor: isScrapingActive ? 'not-allowed' : 'pointer'
                       }}
                     >
-                      ⚡ Quick Check Active
+                      {isScrapingActive ? '⏳ Scraping Active Opportunities...' : '⚡ Scrape Active Opportunities'}
                     </button>
                   </>
                 ) : (
@@ -1551,6 +1634,138 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
             </div>
           </div>
         </div>
+
+        {/* Active Opportunities Scraped Data Section */}
+        {(isScrapingActive || activeScraperData.length > 0) && (
+          <div style={{
+            background: 'rgba(30, 41, 59, 0.6)',
+            backdropFilter: 'blur(20px)',
+            border: '1px solid rgba(148, 163, 184, 0.2)',
+            borderRadius: '20px',
+            padding: '32px',
+            marginBottom: '32px'
+          }}>
+            <h2 style={{
+              fontSize: '28px',
+              fontWeight: '700',
+              color: '#ffffff',
+              margin: '0 0 24px 0',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }}>
+              🎯 Active Opportunities Data
+            </h2>
+
+            {/* Progress Display */}
+            {isScrapingActive && activeScraperProgress && (
+              <div style={{ marginBottom: '24px' }}>
+                <h3 style={{ color: '#cbd5e1', fontSize: '18px', marginBottom: '16px' }}>
+                  Scraping in Progress...
+                </h3>
+                <div style={{
+                  width: '100%',
+                  height: '12px',
+                  background: 'rgba(148, 163, 184, 0.2)',
+                  borderRadius: '6px',
+                  overflow: 'hidden',
+                  marginBottom: '12px'
+                }}>
+                  <div style={{
+                    width: `${activeScraperProgress.processedTopics && activeScraperProgress.totalTopics 
+                      ? (activeScraperProgress.processedTopics / activeScraperProgress.totalTopics * 100) 
+                      : 0}%`,
+                    height: '100%',
+                    background: 'linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%)',
+                    transition: 'width 0.3s ease'
+                  }} />
+                </div>
+                <div style={{ color: '#94a3b8', fontSize: '14px' }}>
+                  <p>📊 Phase: {activeScraperProgress.phase}</p>
+                  <p>📝 Processed: {activeScraperProgress.processedTopics || 0} topics</p>
+                  <p>✨ Active Found: {activeScraperProgress.activeTopicsFound || 0}</p>
+                </div>
+              </div>
+            )}
+
+            {/* Scraped Data Display */}
+            {!isScrapingActive && activeScraperData.length > 0 && (
+              <div>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '20px'
+                }}>
+                  <div>
+                    <h3 style={{ color: '#cbd5e1', fontSize: '18px', marginBottom: '8px' }}>
+                      ✅ {activeScraperData.length} Active Opportunities Ready
+                    </h3>
+                    <p style={{ color: '#94a3b8', fontSize: '14px' }}>
+                      Data includes all 159 columns from DSIP
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => showNotification('⚠️ Supabase import coming soon!', 'info')}
+                    style={{
+                      padding: '12px 24px',
+                      background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                      color: '#ffffff',
+                      border: 'none',
+                      borderRadius: '12px',
+                      fontSize: '16px',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s ease'
+                    }}
+                  >
+                    📥 Import to Supabase (Coming Soon)
+                  </button>
+                </div>
+
+                {/* Data Preview Table */}
+                <div style={{
+                  background: 'rgba(0, 0, 0, 0.3)',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  maxHeight: '400px',
+                  overflowY: 'auto'
+                }}>
+                  <h4 style={{ color: '#cbd5e1', marginBottom: '16px' }}>Data Preview (First 10 rows)</h4>
+                  <table style={{ width: '100%', color: '#cbd5e1', fontSize: '13px', borderCollapse: 'collapse' }}>
+                    <thead>
+                      <tr style={{ borderBottom: '1px solid rgba(148, 163, 184, 0.3)' }}>
+                        <th style={{ padding: '12px', textAlign: 'left' }}>Topic Number</th>
+                        <th style={{ padding: '12px', textAlign: 'left' }}>Title</th>
+                        <th style={{ padding: '12px', textAlign: 'left' }}>Component</th>
+                        <th style={{ padding: '12px', textAlign: 'left' }}>Status</th>
+                        <th style={{ padding: '12px', textAlign: 'left' }}>Close Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {activeScraperData.slice(0, 10).map((opp, idx) => (
+                        <tr key={idx} style={{ borderBottom: '1px solid rgba(148, 163, 184, 0.1)' }}>
+                          <td style={{ padding: '12px' }}>{opp['Topic Number (API: topicCode)']}</td>
+                          <td style={{ padding: '12px', maxWidth: '300px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {opp['Title (API: topicTitle)']}
+                          </td>
+                          <td style={{ padding: '12px' }}>{opp['Component (API: component)']}</td>
+                          <td style={{ padding: '12px' }}>{opp['Status (API: topicStatus)']}</td>
+                          <td style={{ padding: '12px' }}>{opp['Close Date']}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  {activeScraperData.length > 10 && (
+                    <p style={{ color: '#94a3b8', marginTop: '16px', textAlign: 'center' }}>
+                      ...and {activeScraperData.length - 10} more opportunities
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
 
         {/* System Configuration Section */}
         <div className="settings-section">

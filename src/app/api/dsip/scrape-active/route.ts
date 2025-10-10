@@ -124,28 +124,12 @@ async function startRealScraping(jobId: string) {
       updateJob({ progress });
     });
 
-    // Generate CSV
-    const csv = generateCSV(results);
-    
-    // Save CSV to public directory
-    const publicDir = join(process.cwd(), 'public', 'exports');
-    
-    // Create directory if it doesn't exist
-    if (!existsSync(publicDir)) {
-      await mkdir(publicDir, { recursive: true });
-    }
-    
-    const fileName = `dsip_active_opportunities_${Date.now()}.csv`;
-    const filePath = join(publicDir, fileName);
-    
-    await writeFile(filePath, csv, 'utf-8');
-
-    // Update job as completed
+    // Store the data in memory (will be displayed in admin portal)
     updateJob({
       status: 'completed',
       endTime: new Date().toISOString(),
-      csvFile: `/exports/${fileName}`,
       totalRecords: results.length,
+      data: results, // Store the actual data
       progress: {
         ...scraper.getProgress(),
         phase: 'completed'
