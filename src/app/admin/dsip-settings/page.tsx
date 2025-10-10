@@ -286,16 +286,16 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         const data = await response.json()
         setIsScraperRunning(true)
         setScraperStatus('running')
-        setMessage(`Scraper started successfully! ${data.message}`)
+        showNotification(`🚀 Scraper started successfully! ${data.message}`, 'success')
         
         // Start monitoring the scraper
         monitorScraper()
       } else {
         const errorData = await response.json()
-        setMessage(`Failed to start scraper: ${errorData.error}`)
+        showNotification(`❌ Failed to start scraper: ${errorData.error}`, 'error')
       }
     } catch (error) {
-      setMessage('Error starting scraper')
+      showNotification('❌ Error starting scraper', 'error')
     }
   }
 
@@ -315,12 +315,12 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       if (response.ok) {
         setIsScraperRunning(false)
         setScraperStatus('paused')
-        setMessage('Scraper paused successfully')
+        showNotification('⏸️ Scraper paused successfully', 'warning')
       } else {
-        setMessage('Failed to pause scraper')
+        showNotification('❌ Failed to pause scraper', 'error')
       }
     } catch (error) {
-      setMessage('Error pausing scraper')
+      showNotification('❌ Error pausing scraper', 'error')
     }
   }
 
@@ -340,16 +340,16 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       if (response.ok) {
         setIsScraperRunning(true)
         setScraperStatus('running')
-        setMessage('Scraper resumed successfully')
+        showNotification('▶️ Scraper resumed successfully', 'success')
         
         // Start monitoring the scraper again
         monitorScraper()
       } else {
         const errorData = await response.json()
-        setMessage(`Failed to resume scraper: ${errorData.error}`)
+        showNotification(`❌ Failed to resume scraper: ${errorData.error}`, 'error')
       }
     } catch (error) {
-      setMessage('Error resuming scraper')
+      showNotification('❌ Error resuming scraper', 'error')
     }
   }
 
@@ -486,7 +486,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const testSupabaseDatabase = async () => {
     try {
       setIsTestingSupabase(true)
-      setMessage('🗄️ Testing Supabase database connection...')
+      showNotification('🗄️ Testing Supabase database connection...', 'info')
       
       const response = await fetch('/api/admin/supabase-test')
       if (response.ok) {
@@ -496,26 +496,23 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         if (data.success) {
           setSupabaseTestResults(data.results)
           
-          let message = '🗄️ Supabase Database Test Results:\n'
-          message += `🔗 Connection: ${data.results.connection.success ? '✅ Connected' : '❌ Failed'}\n`
-          message += `📊 Total Records: ${data.results.totalRecords.toLocaleString()}\n\n`
-          message += '📋 Tables Status:\n'
-          
-          Object.entries(data.results.tables).forEach(([tableName, tableInfo]: [string, any]) => {
-            const status = tableInfo.exists ? '✅' : '❌'
-            const count = tableInfo.exists ? `(${tableInfo.count} records)` : '(missing)'
-            message += `${status} ${tableName}: ${count}\n`
-          })
-          
-          setMessage(message)
+          showNotification(
+            '✅ Supabase Connection Successful',
+            'success',
+            {
+              connection: data.results.connection.success,
+              totalRecords: data.results.totalRecords,
+              tables: data.results.tables
+            }
+          )
         } else {
-          setMessage('❌ Supabase test failed: ' + data.error)
+          showNotification(`❌ Supabase test failed: ${data.error}`, 'error')
         }
       } else {
-        setMessage('❌ Failed to test Supabase database')
+        showNotification('❌ Failed to test Supabase database', 'error')
       }
     } catch (error) {
-      setMessage('❌ Error testing Supabase database')
+      showNotification(`❌ Error testing Supabase database: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       console.error('Supabase test error:', error)
     } finally {
       setIsTestingSupabase(false)
@@ -1594,6 +1591,33 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                           • {opp.title || opp.topic_id}
                         </div>
                       ))}
+                    </div>
+                  )}
+                  {notification.details.tables && (
+                    <div style={{ marginTop: '12px' }}>
+                      <div style={{ fontWeight: '600', marginBottom: '6px' }}>📋 Tables:</div>
+                      {Object.entries(notification.details.tables).map(([tableName, tableInfo]: [string, any]) => (
+                        <div key={tableName} style={{ 
+                          fontSize: '13px', 
+                          marginLeft: '8px',
+                          opacity: 0.9,
+                          marginTop: '3px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '8px'
+                        }}>
+                          <span>{tableInfo.exists ? '✅' : '❌'}</span>
+                          <span style={{ flex: 1 }}>{tableName}</span>
+                          {tableInfo.exists && (
+                            <span style={{ opacity: 0.8 }}>({tableInfo.count?.toLocaleString() || 0} records)</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {notification.details.connection !== undefined && (
+                    <div style={{ marginTop: '8px' }}>
+                      🔗 Connection: {notification.details.connection ? '✅ Connected' : '❌ Failed'}
                     </div>
                   )}
                   {notification.details.timestamp && (
