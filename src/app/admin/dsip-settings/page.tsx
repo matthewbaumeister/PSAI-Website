@@ -66,6 +66,8 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   // State for SBIR scraper
   const [isTriggeringSbirScraper, setIsTriggeringSbirScraper] = useState(false)
   const [sbirScraperResult, setSbirScraperResult] = useState<any>(null)
+  const [scraperProgress, setScraperProgress] = useState(0)
+  const [scraperCurrentStep, setScraperCurrentStep] = useState('')
   
   // State for real active scraper
   const [activeScraperJobId, setActiveScraperJobId] = useState<string | null>(null)
@@ -167,8 +169,25 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
     console.log('[SBIR Scraper] Starting manual trigger...')
     setIsTriggeringSbirScraper(true)
     setSbirScraperResult(null)
+    setScraperProgress(0)
+    setScraperCurrentStep('Initializing scraper...')
     
     showNotification('🚀 Starting SBIR scraper...', 'info')
+    
+    // Simulate progress updates
+    const progressInterval = setInterval(() => {
+      setScraperProgress(prev => {
+        if (prev < 90) return prev + 5
+        return prev
+      })
+    }, 1500)
+    
+    // Update step messages
+    setTimeout(() => setScraperCurrentStep('📡 Connecting to SBIR API...'), 2000)
+    setTimeout(() => setScraperCurrentStep('🔍 Fetching active topics...'), 8000)
+    setTimeout(() => setScraperCurrentStep('📦 Processing topic data...'), 15000)
+    setTimeout(() => setScraperCurrentStep('💾 Mapping to database columns...'), 25000)
+    setTimeout(() => setScraperCurrentStep('🗄️ Updating Supabase database...'), 35000)
     
     try {
       const response = await fetch('/api/admin/sbir/trigger-scraper', {
@@ -177,6 +196,10 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
           'Content-Type': 'application/json'
         }
       })
+      
+      clearInterval(progressInterval)
+      setScraperProgress(100)
+      setScraperCurrentStep('✅ Scraper completed!')
       
       const result = await response.json()
       console.log('[SBIR Scraper] Full Response:', JSON.stringify(result, null, 2))
@@ -1626,41 +1649,146 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               {/* Scraper Progress Display */}
               {isTriggeringSbirScraper && (
                 <div style={{
-                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%)',
+                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%)',
                   border: '2px solid #10b981',
-                  borderRadius: '12px',
-                  padding: '20px',
-                  marginBottom: '16px'
+                  borderRadius: '16px',
+                  padding: '28px',
+                  marginBottom: '20px',
+                  boxShadow: '0 8px 32px rgba(16, 185, 129, 0.25)',
+                  position: 'relative',
+                  overflow: 'hidden'
                 }}>
-                  <h4 style={{ 
-                    color: '#10b981', 
-                    margin: '0 0 12px 0', 
-                    fontSize: '16px',
-                    fontWeight: '600'
-                  }}>
-                    ⏳ SBIR Scraper Running...
-                  </h4>
+                  {/* Animated background shimmer */}
                   <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: '-100%',
                     width: '100%',
-                    height: '8px',
-                    background: 'rgba(148, 163, 184, 0.2)',
-                    borderRadius: '4px',
-                    overflow: 'hidden',
-                    marginBottom: '12px'
-                  }}>
+                    height: '100%',
+                    background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+                    animation: 'shimmer 2s infinite'
+                  }} />
+                  
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                      <h4 style={{ 
+                        color: '#10b981', 
+                        margin: 0, 
+                        fontSize: '18px',
+                        fontWeight: '700',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px'
+                      }}>
+                        <span style={{ animation: 'spin 2s linear infinite', display: 'inline-block' }}>⚙️</span>
+                        SBIR Scraper Running
+                      </h4>
+                      <div style={{
+                        background: 'rgba(16, 185, 129, 0.3)',
+                        padding: '8px 16px',
+                        borderRadius: '8px',
+                        fontWeight: '700',
+                        fontSize: '20px',
+                        color: '#10b981',
+                        minWidth: '80px',
+                        textAlign: 'center',
+                        boxShadow: '0 2px 8px rgba(16, 185, 129, 0.3)'
+                      }}>
+                        {scraperProgress}%
+                      </div>
+                    </div>
+
+                    {/* Current Step */}
+                    <p style={{ 
+                      color: '#d1fae5', 
+                      margin: '0 0 16px 0', 
+                      fontSize: '15px',
+                      fontWeight: '500'
+                    }}>
+                      {scraperCurrentStep}
+                    </p>
+
+                    {/* Progress Bar Container */}
                     <div style={{
                       width: '100%',
-                      height: '100%',
-                      background: 'linear-gradient(90deg, #10b981 0%, #059669 100%)',
-                      animation: 'pulse 2s infinite'
-                    }} />
+                      height: '24px',
+                      background: 'rgba(15, 23, 42, 0.6)',
+                      borderRadius: '12px',
+                      overflow: 'hidden',
+                      border: '2px solid rgba(16, 185, 129, 0.3)',
+                      position: 'relative'
+                    }}>
+                      {/* Animated Progress Bar */}
+                      <div style={{
+                        width: `${scraperProgress}%`,
+                        height: '100%',
+                        background: 'linear-gradient(90deg, #10b981 0%, #34d399 50%, #10b981 100%)',
+                        backgroundSize: '200% 100%',
+                        animation: 'gradientMove 2s ease infinite',
+                        transition: 'width 0.5s ease-out',
+                        position: 'relative',
+                        boxShadow: '0 0 20px rgba(16, 185, 129, 0.6)'
+                      }}>
+                        {/* Shine effect */}
+                        <div style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: '-100%',
+                          width: '100%',
+                          height: '100%',
+                          background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)',
+                          animation: 'shine 1.5s infinite'
+                        }} />
+                      </div>
+                      
+                      {/* Progress milestones */}
+                      <div style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        padding: '0 2px'
+                      }}>
+                        {[25, 50, 75].map(milestone => (
+                          <div key={milestone} style={{
+                            position: 'absolute',
+                            left: `${milestone}%`,
+                            width: '2px',
+                            height: '100%',
+                            background: 'rgba(255, 255, 255, 0.2)'
+                          }} />
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Stage Indicators */}
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      marginTop: '12px',
+                      fontSize: '11px',
+                      color: '#94a3b8'
+                    }}>
+                      <span style={{ opacity: scraperProgress >= 0 ? 1 : 0.4 }}>🚀 Init</span>
+                      <span style={{ opacity: scraperProgress >= 25 ? 1 : 0.4 }}>📡 Fetch</span>
+                      <span style={{ opacity: scraperProgress >= 50 ? 1 : 0.4 }}>📦 Process</span>
+                      <span style={{ opacity: scraperProgress >= 75 ? 1 : 0.4 }}>💾 Map</span>
+                      <span style={{ opacity: scraperProgress >= 90 ? 1 : 0.4 }}>🗄️ Save</span>
+                    </div>
+
+                    <p style={{ 
+                      color: '#cbd5e1', 
+                      margin: '16px 0 0 0', 
+                      fontSize: '13px',
+                      textAlign: 'center',
+                      fontStyle: 'italic'
+                    }}>
+                      Fetching active SBIR opportunities. This may take several minutes...
+                    </p>
                   </div>
-                  <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
-                    The scraper is fetching active SBIR opportunities. This may take several minutes.
-                  </p>
-                  <p style={{ color: '#94a3b8', margin: '4px 0', fontSize: '12px', fontStyle: 'italic' }}>
-                    Check the "Scraper Status" section below for updates.
-                  </p>
                 </div>
               )}
 
@@ -2191,6 +2319,54 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
           to {
             transform: translateX(0);
             opacity: 1;
+          }
+        }
+
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes shimmer {
+          0% {
+            left: -100%;
+          }
+          100% {
+            left: 100%;
+          }
+        }
+
+        @keyframes gradientMove {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        @keyframes shine {
+          0% {
+            left: -100%;
+          }
+          50%, 100% {
+            left: 100%;
+          }
+        }
+
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.7;
           }
         }
       `}</style>
