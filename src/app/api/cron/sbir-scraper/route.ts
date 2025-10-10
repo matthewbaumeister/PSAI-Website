@@ -9,7 +9,7 @@ const supabase = createClient(
 
 // Force dynamic rendering and set max duration
 export const dynamic = 'force-dynamic';
-export const maxDuration = 60; // Try 60 seconds (may require Pro plan)
+export const maxDuration = 300; // 5 minutes for Pro plan
 
 export async function GET(request: NextRequest) {
   try {
@@ -78,9 +78,9 @@ async function fetchActiveTopics(baseUrl: string) {
   const allTopics: any[] = [];
   let page = 0;
   const size = 100;
-  const maxPages = 50; // Safety limit
+  const maxPages = 20; // With Pro plan, we can be more conservative
   let consecutivePagesWithoutActive = 0;
-  const maxConsecutivePagesWithoutActive = 10; // Early termination
+  const maxConsecutivePagesWithoutActive = 5; // Stop after 5 pages with no active topics
   let totalActiveFound = 0;
 
   console.log('🔍 Fetching topics and filtering for Open/Pre-Release/Active status...');
@@ -125,14 +125,14 @@ async function fetchActiveTopics(baseUrl: string) {
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   while (page < maxPages) {
-    // Filter for active topics FIRST to avoid timeout
+    // API doesn't support status filtering - must be empty array!
     const searchParams = {
       searchText: null,
       components: null,
       programYear: null,
       solicitationCycleNames: null,
       releaseNumbers: [],
-      topicReleaseStatus: ["Open", "Pre-Release"], // FILTER at API level!
+      topicReleaseStatus: [], // MUST BE EMPTY - API rejects values here!
       modernizationPriorities: [],
       sortBy: "modifiedDate,desc", // Get most recent first
       technologyAreaIds: [],
@@ -193,14 +193,18 @@ async function fetchActiveTopics(baseUrl: string) {
         });
       }
 
-      // API already filtered for us - just add all results
-      const topicsInPage = data.data;
-      totalActiveFound += topicsInPage.length;
+      // Filter for Open, Pre-Release, and Active topics (client-side)
+      const activeTopicsInPage = data.data.filter((topic: any) => {
+        const status = topic.topicStatus;
+        return status === 'Open' || status === 'Pre-Release' || status === 'Active';
+      });
 
-      if (topicsInPage.length > 0) {
+      totalActiveFound += activeTopicsInPage.length;
+
+      if (activeTopicsInPage.length > 0) {
         consecutivePagesWithoutActive = 0;
-        console.log(`   ✓ Page ${page + 1}: Found ${topicsInPage.length} active topics (total: ${totalActiveFound})`);
-        allTopics.push(...topicsInPage);
+        console.log(`   ✓ Page ${page + 1}: Found ${activeTopicsInPage.length} active topics (total: ${totalActiveFound})`);
+        allTopics.push(...activeTopicsInPage);
       } else {
         consecutivePagesWithoutActive++;
         console.log(`   ⏭️ Page ${page + 1}: No active topics (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
