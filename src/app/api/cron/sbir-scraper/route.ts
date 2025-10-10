@@ -121,15 +121,16 @@ async function fetchActiveTopics(baseUrl: string) {
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   while (page < maxPages) {
+    // Try MINIMAL search params to avoid triggering API errors
     const searchParams = {
       searchText: null,
       components: null,
       programYear: null,
       solicitationCycleNames: null,
       releaseNumbers: [],
-      topicReleaseStatus: [], // Don't filter here - we'll filter by topicStatus after fetching
+      topicReleaseStatus: [],
       modernizationPriorities: [],
-      sortBy: "modifiedDate,desc", // Get most recently modified first
+      sortBy: "finalTopicCode,asc", // Use simple ascending sort like Python script default
       technologyAreaIds: [],
       component: null,
       program: null
