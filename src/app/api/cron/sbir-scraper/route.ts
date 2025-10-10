@@ -82,11 +82,12 @@ async function fetchActiveTopics(baseUrl: string) {
   console.log('🔍 Fetching topics and filtering for Open/Pre-Release/Active status...');
   console.log('📡 API Base URL:', baseUrl);
 
-  // CRITICAL: Initialize "session" by visiting main page first (like Python script does)
-  console.log('🔐 Initializing session by visiting main page...');
-  let sessionCookies = '';
+  // CRITICAL: Multi-step session initialization (like Python script does)
+  console.log('🔐 Initializing session with multi-step process...');
   
   try {
+    // Step 1: Visit main HTML page
+    console.log('   Step 1: Visiting main page...');
     const initResponse = await fetch(`${baseUrl}/topics-app/`, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
@@ -94,20 +95,29 @@ async function fetchActiveTopics(baseUrl: string) {
         'Accept-Language': 'en-US,en;q=0.9',
       }
     });
+    console.log(`   ✓ Main page loaded (status: ${initResponse.status})`);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
-    // Extract cookies from response (critical for session persistence!)
-    const setCookieHeaders = initResponse.headers.get('set-cookie');
-    if (setCookieHeaders) {
-      sessionCookies = setCookieHeaders;
-      console.log(`✅ Session initialized with cookies (status: ${initResponse.status})`);
-    } else {
-      console.log(`✅ Session initialized (status: ${initResponse.status}, no cookies)`);
-    }
+    // Step 2: Fetch component instructions (establishes API session)
+    console.log('   Step 2: Fetching component instructions...');
+    const compResponse = await fetch(`${baseUrl}/core/api/public/dropdown/components`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Authorization': 'Bearer null',
+        'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+      }
+    });
+    console.log(`   ✓ Component API called (status: ${compResponse.status})`);
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    console.log(`✅ Session fully initialized - ready for topic search`);
   } catch (error) {
-    console.warn('⚠️ Could not initialize session:', error);
+    console.warn('⚠️ Session initialization had issues:', error);
   }
 
-  // Add delay after session init (critical!)
+  // Final delay before starting main scrape
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   while (page < maxPages) {
@@ -131,23 +141,15 @@ async function fetchActiveTopics(baseUrl: string) {
     console.log(`📡 Fetching page ${page + 1}...`);
 
     try {
-      // Build headers with session cookies (if available)
-      const apiHeaders: Record<string, string> = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
-        'Accept': 'application/json, text/plain, */*',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Authorization': 'Bearer null',
-        'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
-        'Origin': 'https://www.dodsbirsttr.mil'
-      };
-      
-      // Add cookies if we have them (critical for session persistence!)
-      if (sessionCookies) {
-        apiHeaders['Cookie'] = sessionCookies;
-      }
-      
       const response = await fetch(searchUrl, {
-        headers: apiHeaders
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+          'Accept': 'application/json, text/plain, */*',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Authorization': 'Bearer null',
+          'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+          'Origin': 'https://www.dodsbirsttr.mil'
+        }
       });
 
       console.log(`📡 Page ${page + 1} response status: ${response.status}`);
