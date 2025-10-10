@@ -121,20 +121,21 @@ async function fetchActiveTopics(baseUrl: string) {
     console.warn('⚠️ Session initialization had issues:', error);
   }
 
-  // Final delay before starting main scrape
-  await new Promise(resolve => setTimeout(resolve, 1000));
+  // Longer delay before starting main scrape (give server time to process session)
+  console.log('⏳ Waiting 3 seconds before search...');
+  await new Promise(resolve => setTimeout(resolve, 3000));
 
   while (page < maxPages) {
-    // API doesn't support status filtering - must be empty array!
+    // Use EXACT parameters from working Python script
     const searchParams = {
       searchText: null,
       components: null,
       programYear: null,
       solicitationCycleNames: null,
       releaseNumbers: [],
-      topicReleaseStatus: [], // MUST BE EMPTY - API rejects values here!
+      topicReleaseStatus: [],
       modernizationPriorities: [],
-      sortBy: "modifiedDate,desc", // Get most recent first
+      sortBy: "finalTopicCode,asc", // EXACT match to Python default
       technologyAreaIds: [],
       component: null,
       program: null
@@ -144,6 +145,8 @@ async function fetchActiveTopics(baseUrl: string) {
     const searchUrl = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${size}&page=${page}`;
 
     console.log(`📡 Fetching page ${page + 1}...`);
+    console.log(`🔍 Search params:`, JSON.stringify(searchParams));
+    console.log(`🔗 URL: ${searchUrl.substring(0, 150)}...`);
 
     try {
       const response = await fetch(searchUrl, {
