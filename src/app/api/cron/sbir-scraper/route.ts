@@ -49,14 +49,18 @@ async function scrapeAndUpdateSBIR() {
     console.log(`✅ Processed ${processedTopics.length} topics`);
 
     // Step 3: Update database with incremental changes
-    console.log('💾 Updating database...');
-    const updateResult = await updateDatabase(processedTopics);
+    // TEMPORARILY DISABLED FOR TESTING - NOT INSERTING TO SUPABASE
+    console.log('⚠️ Database update DISABLED for testing');
+    // const updateResult = await updateDatabase(processedTopics);
     
     return {
       totalTopics: topics.length,
       processedTopics: processedTopics.length,
-      newRecords: updateResult.newRecords,
-      updatedRecords: updateResult.updatedRecords,
+      sampleTopics: processedTopics.slice(0, 3), // Return first 3 topics for preview
+      columnCount: processedTopics.length > 0 ? Object.keys(processedTopics[0]).length : 0,
+      columns: processedTopics.length > 0 ? Object.keys(processedTopics[0]) : [],
+      // newRecords: updateResult.newRecords,
+      // updatedRecords: updateResult.updatedRecords,
       timestamp: new Date().toISOString()
     };
 
