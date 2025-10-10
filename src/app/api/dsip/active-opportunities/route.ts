@@ -162,16 +162,7 @@ export async function GET(request: NextRequest) {
       console.log('Error getting sample opportunities:', err);
     }
     
-    const sampleError = null; // Set to null since we handled errors above
-    
-    if (sampleError) {
-      console.error('Error getting sample opportunities:', sampleError);
-      return NextResponse.json({ 
-        success: false, 
-        error: `Failed to get sample opportunities: ${sampleError.message}` 
-      }, { status: 500 });
-    }
-    
+    // All errors are handled inline above, return success
     return NextResponse.json({
       success: true,
       count: activeCount || 0,
