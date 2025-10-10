@@ -1577,9 +1577,8 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                   )}
                   {notification.details.breakdown && (
                     <div style={{ marginTop: '8px', paddingLeft: '16px' }}>
-                      <div>🟢 Open: {notification.details.breakdown.open}</div>
-                      <div>🔵 Pre-Release: {notification.details.breakdown.preRelease}</div>
-                      <div>🟡 Active: {notification.details.breakdown.active}</div>
+                      <div>🟢 Open (Accepting Submissions): {notification.details.breakdown.open}</div>
+                      <div>🔵 Pre-Release (Prepare Now): {notification.details.breakdown.preRelease}</div>
                     </div>
                   )}
                   {notification.details.sampleOpportunities && notification.details.sampleOpportunities.length > 0 && (

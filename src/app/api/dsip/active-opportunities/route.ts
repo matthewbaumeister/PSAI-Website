@@ -29,8 +29,8 @@ export async function GET(request: NextRequest) {
       }, { status: 500 });
     }
     
-    // Get count of ACTIVE opportunities based on status (matching Python scraper logic)
-    // Active = status is 'Open', 'Pre-Release', or 'Active'
+    // Get count of ACTIVE opportunities based on status (Open and Pre-Release only)
+    // These are the actionable opportunities users can submit to or prepare for
     const { count: openCount, error: openError } = await supabase
       .from('dsip_opportunities')
       .select('*', { count: 'exact', head: true })
@@ -41,26 +41,21 @@ export async function GET(request: NextRequest) {
       .select('*', { count: 'exact', head: true })
       .eq('status', 'Pre-Release');
     
-    const { count: activeStatusCount, error: activeStatusError } = await supabase
-      .from('dsip_opportunities')
-      .select('*', { count: 'exact', head: true })
-      .eq('status', 'Active');
-    
-    if (openError || preReleaseError || activeStatusError) {
-      console.error('Error getting active counts:', { openError, preReleaseError, activeStatusError });
+    if (openError || preReleaseError) {
+      console.error('Error getting active counts:', { openError, preReleaseError });
       return NextResponse.json({ 
         success: false, 
         error: 'Failed to get active opportunity counts' 
       }, { status: 500 });
     }
     
-    const activeCount = (openCount || 0) + (preReleaseCount || 0) + (activeStatusCount || 0);
+    const activeCount = (openCount || 0) + (preReleaseCount || 0);
     
-    // Get sample active opportunities for display (Open, Pre-Release, and Active status)
+    // Get sample active opportunities for display (Open and Pre-Release status only)
     const { data: sampleOpportunities, error: sampleError } = await supabase
       .from('dsip_opportunities')
       .select('topic_id, title, component, solicitation, status, open_date, close_date')
-      .in('status', ['Open', 'Pre-Release', 'Active'])
+      .in('status', ['Open', 'Pre-Release'])
       .order('open_date', { ascending: false })
       .limit(10);
     
@@ -78,8 +73,7 @@ export async function GET(request: NextRequest) {
       totalCount: totalCount || 0,
       breakdown: {
         open: openCount || 0,
-        preRelease: preReleaseCount || 0,
-        active: activeStatusCount || 0
+        preRelease: preReleaseCount || 0
       },
       sampleOpportunities: sampleOpportunities || [],
       timestamp: new Date().toISOString(),
