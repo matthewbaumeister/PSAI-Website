@@ -66,7 +66,27 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   // State for SBIR scraper
   const [isTriggeringSbirScraper, setIsTriggeringSbirScraper] = useState(false)
   const [sbirScraperResult, setSbirScraperResult] = useState<any>(null)
+  
+  // State for floating notifications
+  const [notification, setNotification] = useState<{
+    show: boolean
+    message: string
+    type: 'success' | 'error' | 'info' | 'warning'
+    details?: any
+  }>({
+    show: false,
+    message: '',
+    type: 'info'
+  })
 
+  // Helper function to show notifications
+  const showNotification = (message: string, type: 'success' | 'error' | 'info' | 'warning', details?: any) => {
+    setNotification({ show: true, message, type, details })
+    setTimeout(() => {
+      setNotification(prev => ({ ...prev, show: false }))
+    }, 5000) // Auto-hide after 5 seconds
+  }
+  
   // Redirect if not admin
   useEffect(() => {
     if (!authLoading && (!currentUser || !currentUser.isAdmin)) {
@@ -336,7 +356,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const checkActiveOpportunities = async () => {
     try {
       setIsCheckingActive(true)
-      setMessage('🔍 Checking for active opportunities...')
+      showNotification('🔍 Checking for active opportunities...', 'info')
       
       // Query the database for active opportunities
       const response = await fetch('/api/dsip/active-opportunities')
@@ -345,15 +365,26 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         const data = await response.json()
         if (data.success) {
           setActiveOpportunitiesCount(data.count)
-          setMessage(`✅ Found ${data.count} active opportunities in the database`)
+          showNotification(
+            `✅ Found ${data.count} active opportunities`,
+            'success',
+            {
+              totalCount: data.totalCount,
+              activeCount: data.count,
+              sampleOpportunities: data.sampleOpportunities,
+              timestamp: data.timestamp
+            }
+          )
         } else {
-          setMessage(`❌ Failed to check opportunities: ${data.error}`)
+          showNotification(`❌ Failed to check opportunities: ${data.error}`, 'error')
         }
       } else {
-        setMessage('❌ Failed to check opportunities')
+        const errorText = await response.text()
+        showNotification(`❌ Failed to check opportunities: ${response.status} ${errorText}`, 'error')
       }
     } catch (error) {
-      setMessage('❌ Error checking active opportunities')
+      console.error('Check active opportunities error:', error)
+      showNotification(`❌ Error checking active opportunities: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
     } finally {
       setIsCheckingActive(false)
     }
@@ -1451,7 +1482,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                   Automated Schedule
                 </h4>
                 <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
-                  The SBIR scraper runs automatically twice daily at 6:00 AM and 6:00 PM EST.
+                  The SBIR scraper runs automatically once daily at 12:00 PM (noon) EST.
                 </p>
                 <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
                   It fetches only active, open, and pre-release opportunities to keep the database current.
@@ -1492,6 +1523,123 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
           </div>
         </div>
       </div>
+      
+      {/* Floating Notification Overlay */}
+      {notification.show && (
+        <div style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          maxWidth: '500px',
+          minWidth: '300px',
+          background: notification.type === 'success' ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' :
+                     notification.type === 'error' ? 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)' :
+                     notification.type === 'warning' ? 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)' :
+                     'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+          color: '#ffffff',
+          padding: '20px 24px',
+          borderRadius: '16px',
+          boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2)',
+          zIndex: 10000,
+          animation: 'slideInFromRight 0.3s ease-out',
+          backdropFilter: 'blur(10px)'
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
+            gap: '16px'
+          }}>
+            <div style={{ flex: 1 }}>
+              <div style={{
+                fontSize: '16px',
+                fontWeight: '600',
+                marginBottom: '8px',
+                lineHeight: '1.5'
+              }}>
+                {notification.message}
+              </div>
+              
+              {notification.details && (
+                <div style={{
+                  marginTop: '12px',
+                  paddingTop: '12px',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+                  fontSize: '14px',
+                  lineHeight: '1.6'
+                }}>
+                  {notification.details.totalCount !== undefined && (
+                    <div>📊 Total in DB: {notification.details.totalCount}</div>
+                  )}
+                  {notification.details.activeCount !== undefined && (
+                    <div>✅ Active: {notification.details.activeCount}</div>
+                  )}
+                  {notification.details.sampleOpportunities && notification.details.sampleOpportunities.length > 0 && (
+                    <div style={{ marginTop: '8px' }}>
+                      <div style={{ fontWeight: '600', marginBottom: '4px' }}>Recent Opportunities:</div>
+                      {notification.details.sampleOpportunities.slice(0, 3).map((opp: any, idx: number) => (
+                        <div key={idx} style={{ 
+                          fontSize: '13px', 
+                          marginLeft: '8px',
+                          opacity: 0.9,
+                          marginTop: '2px'
+                        }}>
+                          • {opp.title || opp.topic_id}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {notification.details.timestamp && (
+                    <div style={{ marginTop: '8px', fontSize: '12px', opacity: 0.8 }}>
+                      🕒 {new Date(notification.details.timestamp).toLocaleString()}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            
+            <button
+              onClick={() => setNotification(prev => ({ ...prev, show: false }))}
+              style={{
+                background: 'rgba(255, 255, 255, 0.2)',
+                border: 'none',
+                color: '#ffffff',
+                width: '32px',
+                height: '32px',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                fontSize: '18px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                flexShrink: 0,
+                transition: 'all 0.2s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)'
+              }}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+      
+      <style jsx global>{`
+        @keyframes slideInFromRight {
+          from {
+            transform: translateX(400px);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   )
 }
