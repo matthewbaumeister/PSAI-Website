@@ -2,25 +2,29 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/auth-middleware';
 import { DSIPRealScraper } from '@/lib/dsip-real-scraper';
 
-// Configure route for longer timeout (needed for scraping)
-export const maxDuration = 300; // 5 minutes
+// Configure route for dynamic behavior
 export const dynamic = 'force-dynamic';
 
 // Store active scraping jobs in memory
 const activeJobs = new Map<string, any>();
 
 export async function POST(request: NextRequest) {
+  console.log('=== Scrape-active POST called ===');
+  
   try {
+    console.log('Step 1: Checking admin auth...');
     const authResult = await requireAdmin(request);
     
     if (authResult instanceof NextResponse) {
+      console.log('Auth failed, returning auth response');
       return authResult;
     }
     
+    console.log('Step 2: Parsing request body...');
     const body = await request.json();
     const { action } = body;
     
-    console.log('Scrape-active API called with action:', action);
+    console.log('Step 3: Action received:', action);
 
     if (action === 'start') {
       // Create a new scraping job
@@ -57,7 +61,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (action === 'status') {
-      const { jobId } = await request.json();
+      const { jobId } = body;
       const job = activeJobs.get(jobId);
       
       if (!job) {
