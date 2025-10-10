@@ -82,7 +82,22 @@ async function fetchActiveTopics(baseUrl: string) {
   console.log('🔍 Fetching topics and filtering for Open/Pre-Release/Active status...');
   console.log('📡 API Base URL:', baseUrl);
 
-  // Add initial delay to avoid rate limiting
+  // CRITICAL: Initialize "session" by visiting main page first (like Python script does)
+  console.log('🔐 Initializing session by visiting main page...');
+  try {
+    const initResponse = await fetch(`${baseUrl}/topics-app/`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+      }
+    });
+    console.log(`✅ Session initialized (status: ${initResponse.status})`);
+  } catch (error) {
+    console.warn('⚠️ Could not initialize session:', error);
+  }
+
+  // Add delay after session init
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   while (page < maxPages) {
