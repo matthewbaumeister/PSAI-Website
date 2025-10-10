@@ -275,75 +275,37 @@ async function updateDatabase(topics: any[]) {
   let updatedRecords = 0;
 
   try {
-    // Get existing topic IDs for comparison
-    const { data: existingTopics, error: fetchError } = await supabase
+    console.log(`💾 Upserting ${topics.length} topics to database...`);
+    
+    // Get count before upsert
+    const { count: countBefore } = await supabase
       .from('sbir_final')
-      .select('topic_id, updated_date');
+      .select('*', { count: 'exact', head: true });
+    
+    // Use upsert with onConflict to handle duplicates automatically
+    // This will INSERT new records or UPDATE existing ones based on the unique constraint
+    const { data, error: upsertError } = await supabase
+      .from('sbir_final')
+      .upsert(topics, {
+        onConflict: 'topic_number,cycle_name', // Matches the unique_topic_cycle constraint
+        ignoreDuplicates: false // Update if exists
+      })
+      .select();
 
-    if (fetchError) {
-      console.error('❌ Error fetching existing topics:', fetchError);
-      throw fetchError;
+    if (upsertError) {
+      console.error('❌ Error upserting topics:', upsertError);
+      throw upsertError;
     }
 
-    const existingTopicMap = new Map(
-      existingTopics?.map(topic => [topic.topic_id, topic.updated_date]) || []
-    );
+    // Get count after upsert
+    const { count: countAfter } = await supabase
+      .from('sbir_final')
+      .select('*', { count: 'exact', head: true });
 
-    // Process topics in batches
-    const batchSize = 100;
-    for (let i = 0; i < topics.length; i += batchSize) {
-      const batch = topics.slice(i, i + batchSize);
-      
-      for (const topic of batch) {
-        const existingDate = existingTopicMap.get(topic.topic_id);
-        
-        if (!existingDate) {
-          // New record - insert
-          const { error: insertError } = await supabase
-            .from('sbir_final')
-            .insert(topic);
-          
-          if (insertError) {
-            console.error(`❌ Error inserting topic ${topic.topic_id}:`, insertError);
-            console.error(`❌ Insert error code: ${insertError.code}`);
-            console.error(`❌ Insert error message: ${insertError.message}`);
-            console.error(`❌ First few keys of topic being inserted:`, Object.keys(topic).slice(0, 20));
-            
-            // Try to extract column name from error message
-            if (insertError.message.includes('does not exist')) {
-              const match = insertError.message.match(/column [^.]+\.(\S+) does not exist/);
-              if (match) {
-                console.error(`❌ Problem column: ${match[1]}`);
-              }
-            }
-            continue;
-          }
-          
-          newRecords++;
-        } else {
-          // Existing record - check if update needed
-          const topicUpdatedDate = new Date(topic.updated_date).getTime();
-          const existingUpdatedDate = new Date(existingDate).getTime();
-          
-          if (topicUpdatedDate > existingUpdatedDate) {
-            // Update needed
-            const { error: updateError } = await supabase
-              .from('sbir_final')
-              .update(topic)
-              .eq('topic_id', topic.topic_id);
-            
-            if (updateError) {
-              console.error(`❌ Error updating topic ${topic.topic_id}:`, updateError);
-              continue;
-            }
-            
-            updatedRecords++;
-          }
-        }
-      }
-    }
+    newRecords = (countAfter || 0) - (countBefore || 0);
+    updatedRecords = topics.length - newRecords;
 
-    console.log(`✅ Database update complete: ${newRecords} new, ${updatedRecords} updated`);
+    console.log(`✅ Database upsert complete: ${newRecords} new, ${updatedRecords} updated`);
 
   } catch (error) {
     console.error('❌ Database update error:', error);
