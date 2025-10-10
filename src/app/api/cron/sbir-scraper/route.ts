@@ -96,8 +96,7 @@ async function fetchActiveTopics(baseUrl: string) {
           'Accept': 'application/json, text/plain, */*',
           'Authorization': 'Bearer null',
           'Referer': 'https://www.dodsbirsttr.mil/topics-app/'
-        },
-        timeout: 30000
+        }
       });
 
       if (response.status !== 200) {
