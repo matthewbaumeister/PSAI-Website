@@ -40,13 +40,15 @@ export default function SBIRDatabaseBrowser() {
     programTypes: []
   });
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
+  const [sortBy, setSortBy] = useState('modified_date');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   const pageSize = 25;
 
-  // Fetch data when filters or page changes
+  // Fetch data when filters, page, or sort changes
   useEffect(() => {
     fetchRecords();
-  }, [currentPage, selectedComponent, selectedStatus, selectedProgramType]);
+  }, [currentPage, selectedComponent, selectedStatus, selectedProgramType, sortBy, sortOrder]);
 
   const fetchRecords = async () => {
     setLoading(true);
@@ -61,8 +63,8 @@ export default function SBIRDatabaseBrowser() {
           programType: selectedProgramType,
           page: currentPage,
           pageSize,
-          sortBy: 'modified_date',
-          sortOrder: 'desc'
+          sortBy,
+          sortOrder
         })
       });
 
@@ -98,6 +100,23 @@ export default function SBIRDatabaseBrowser() {
     setSelectedStatus('all');
     setSelectedProgramType('all');
     setCurrentPage(0);
+  };
+
+  const handleSort = (column: string) => {
+    if (sortBy === column) {
+      // Toggle order if clicking same column
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      // New column, default to descending
+      setSortBy(column);
+      setSortOrder('desc');
+    }
+    setCurrentPage(0); // Reset to first page on sort change
+  };
+
+  const getSortIcon = (column: string) => {
+    if (sortBy !== column) return ' ⇅';
+    return sortOrder === 'asc' ? ' ▲' : ' ▼';
   };
 
   const toggleRow = (topicId: string) => {
@@ -359,12 +378,54 @@ export default function SBIRDatabaseBrowser() {
                   background: 'rgba(15, 23, 42, 0.6)',
                   borderBottom: '1px solid rgba(71, 85, 105, 0.5)'
                 }}>
-                  <th style={headerStyle}>Topic #</th>
-                  <th style={headerStyle}>Title</th>
-                  <th style={headerStyle}>Component</th>
-                  <th style={headerStyle}>Status</th>
-                  <th style={headerStyle}>Program</th>
-                  <th style={headerStyle}>Close Date</th>
+                  <th style={headerStyle}>
+                    <button 
+                      onClick={() => handleSort('topic_number')}
+                      style={sortButtonStyle}
+                    >
+                      Topic #{getSortIcon('topic_number')}
+                    </button>
+                  </th>
+                  <th style={headerStyle}>
+                    <button 
+                      onClick={() => handleSort('title')}
+                      style={sortButtonStyle}
+                    >
+                      Title{getSortIcon('title')}
+                    </button>
+                  </th>
+                  <th style={headerStyle}>
+                    <button 
+                      onClick={() => handleSort('component')}
+                      style={sortButtonStyle}
+                    >
+                      Component{getSortIcon('component')}
+                    </button>
+                  </th>
+                  <th style={headerStyle}>
+                    <button 
+                      onClick={() => handleSort('status')}
+                      style={sortButtonStyle}
+                    >
+                      Status{getSortIcon('status')}
+                    </button>
+                  </th>
+                  <th style={headerStyle}>
+                    <button 
+                      onClick={() => handleSort('program_type')}
+                      style={sortButtonStyle}
+                    >
+                      Program{getSortIcon('program_type')}
+                    </button>
+                  </th>
+                  <th style={headerStyle}>
+                    <button 
+                      onClick={() => handleSort('close_date')}
+                      style={sortButtonStyle}
+                    >
+                      Close Date{getSortIcon('close_date')}
+                    </button>
+                  </th>
                   <th style={headerStyle}>Actions</th>
                 </tr>
               </thead>
@@ -586,6 +647,24 @@ const headerStyle: React.CSSProperties = {
   fontWeight: '600',
   textTransform: 'uppercase',
   letterSpacing: '0.5px'
+};
+
+const sortButtonStyle: React.CSSProperties = {
+  background: 'none',
+  border: 'none',
+  color: '#cbd5e1',
+  fontSize: '13px',
+  fontWeight: '600',
+  textTransform: 'uppercase',
+  letterSpacing: '0.5px',
+  cursor: 'pointer',
+  padding: 0,
+  display: 'flex',
+  alignItems: 'center',
+  gap: '4px',
+  transition: 'color 0.2s ease',
+  width: '100%',
+  textAlign: 'left'
 };
 
 const cellStyle: React.CSSProperties = {
