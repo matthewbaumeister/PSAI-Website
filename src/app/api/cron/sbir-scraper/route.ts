@@ -126,7 +126,7 @@ async function fetchActiveTopics(baseUrl: string) {
   await new Promise(resolve => setTimeout(resolve, 3000));
 
   while (page < maxPages) {
-    // Get RECENT topics first (active topics are recent!)
+    // Sort by END DATE desc - currently open topics have future/recent end dates!
     const searchParams = {
       searchText: null,
       components: null,
@@ -135,7 +135,7 @@ async function fetchActiveTopics(baseUrl: string) {
       releaseNumbers: [],
       topicReleaseStatus: [],
       modernizationPriorities: [],
-      sortBy: "topicStartDate,desc", // Get most recent topics first!
+      sortBy: "topicEndDate,desc", // Active topics haven't closed yet - end dates in future!
       technologyAreaIds: [],
       component: null,
       program: null
