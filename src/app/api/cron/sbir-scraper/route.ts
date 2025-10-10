@@ -84,6 +84,8 @@ async function fetchActiveTopics(baseUrl: string) {
 
   // CRITICAL: Initialize "session" by visiting main page first (like Python script does)
   console.log('🔐 Initializing session by visiting main page...');
+  let sessionCookies = '';
+  
   try {
     const initResponse = await fetch(`${baseUrl}/topics-app/`, {
       headers: {
@@ -92,12 +94,20 @@ async function fetchActiveTopics(baseUrl: string) {
         'Accept-Language': 'en-US,en;q=0.9',
       }
     });
-    console.log(`✅ Session initialized (status: ${initResponse.status})`);
+    
+    // Extract cookies from response (critical for session persistence!)
+    const setCookieHeaders = initResponse.headers.get('set-cookie');
+    if (setCookieHeaders) {
+      sessionCookies = setCookieHeaders;
+      console.log(`✅ Session initialized with cookies (status: ${initResponse.status})`);
+    } else {
+      console.log(`✅ Session initialized (status: ${initResponse.status}, no cookies)`);
+    }
   } catch (error) {
     console.warn('⚠️ Could not initialize session:', error);
   }
 
-  // Add delay after session init
+  // Add delay after session init (critical!)
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   while (page < maxPages) {
@@ -121,15 +131,23 @@ async function fetchActiveTopics(baseUrl: string) {
     console.log(`📡 Fetching page ${page + 1}...`);
 
     try {
+      // Build headers with session cookies (if available)
+      const apiHeaders: Record<string, string> = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Authorization': 'Bearer null',
+        'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+        'Origin': 'https://www.dodsbirsttr.mil'
+      };
+      
+      // Add cookies if we have them (critical for session persistence!)
+      if (sessionCookies) {
+        apiHeaders['Cookie'] = sessionCookies;
+      }
+      
       const response = await fetch(searchUrl, {
-        headers: {
-          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
-          'Accept': 'application/json, text/plain, */*',
-          'Accept-Language': 'en-US,en;q=0.9',
-          'Authorization': 'Bearer null',
-          'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
-          'Origin': 'https://www.dodsbirsttr.mil'
-        }
+        headers: apiHeaders
       });
 
       console.log(`📡 Page ${page + 1} response status: ${response.status}`);
