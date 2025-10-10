@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/auth-middleware';
 
+// Force dynamic rendering and set max duration for Vercel Pro
+export const dynamic = 'force-dynamic';
+export const maxDuration = 300; // 5 minutes for Pro plan
+
 export async function POST(request: NextRequest) {
   try {
     const authResult = await requireAdmin(request);

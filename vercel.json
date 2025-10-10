@@ -7,9 +7,12 @@
   "regions": ["iad1"],
   "functions": {
     "src/app/api/**/*.ts": {
-      "maxDuration": 30
+      "maxDuration": 60
     },
     "src/app/api/cron/sbir-scraper/route.ts": {
+      "maxDuration": 300
+    },
+    "src/app/api/admin/sbir/trigger-scraper/route.ts": {
       "maxDuration": 300
     }
   },
