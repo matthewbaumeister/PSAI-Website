@@ -164,8 +164,12 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   }
 
   const triggerSbirScraper = async () => {
+    console.log('[SBIR Scraper] Starting manual trigger...')
     setIsTriggeringSbirScraper(true)
     setSbirScraperResult(null)
+    
+    showNotification('🚀 Starting SBIR scraper...', 'info')
+    
     try {
       const response = await fetch('/api/admin/sbir/trigger-scraper', {
         method: 'POST',
@@ -175,20 +179,28 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       })
       
       const result = await response.json()
+      console.log('[SBIR Scraper] Response:', result)
       setSbirScraperResult(result)
       
       if (response.ok) {
-        setMessage('SBIR scraper triggered successfully')
+        showNotification(
+          '✅ SBIR scraper triggered successfully! This may take several minutes.',
+          'success',
+          { 
+            message: 'The scraper is running in the background. Check the scraper status section for updates.',
+            duration: 8000
+          }
+        )
         // Refresh stats after scraping
         setTimeout(() => {
           loadSbirStats()
-        }, 2000)
+        }, 3000)
       } else {
-        setMessage(`Failed to trigger SBIR scraper: ${result.error}`)
+        showNotification(`❌ Failed to trigger SBIR scraper: ${result.error}`, 'error')
       }
     } catch (error) {
-      console.error('Failed to trigger SBIR scraper:', error)
-      setMessage('Failed to trigger SBIR scraper')
+      console.error('[SBIR Scraper] Error:', error)
+      showNotification('❌ Failed to trigger SBIR scraper', 'error')
     } finally {
       setIsTriggeringSbirScraper(false)
     }
@@ -1530,7 +1542,11 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                 <button
                   type="button"
                   className="btn btn-primary"
-                  onClick={triggerSbirScraper}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    triggerSbirScraper();
+                  }}
                   disabled={isTriggeringSbirScraper}
                   style={{
                     background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
@@ -1544,7 +1560,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                     opacity: isTriggeringSbirScraper ? 0.6 : 1
                   }}
                 >
-                  {isTriggeringSbirScraper ? 'Running Scraper...' : 'Trigger Manual Scrape'}
+                  {isTriggeringSbirScraper ? '⏳ Running Scraper...' : '🚀 Trigger Manual Scrape'}
                 </button>
                 
                 <button
@@ -1594,8 +1610,49 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                 </div>
               )}
 
+              {/* Scraper Progress Display */}
+              {isTriggeringSbirScraper && (
+                <div style={{
+                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%)',
+                  border: '2px solid #10b981',
+                  borderRadius: '12px',
+                  padding: '20px',
+                  marginBottom: '16px'
+                }}>
+                  <h4 style={{ 
+                    color: '#10b981', 
+                    margin: '0 0 12px 0', 
+                    fontSize: '16px',
+                    fontWeight: '600'
+                  }}>
+                    ⏳ SBIR Scraper Running...
+                  </h4>
+                  <div style={{
+                    width: '100%',
+                    height: '8px',
+                    background: 'rgba(148, 163, 184, 0.2)',
+                    borderRadius: '4px',
+                    overflow: 'hidden',
+                    marginBottom: '12px'
+                  }}>
+                    <div style={{
+                      width: '100%',
+                      height: '100%',
+                      background: 'linear-gradient(90deg, #10b981 0%, #059669 100%)',
+                      animation: 'pulse 2s infinite'
+                    }} />
+                  </div>
+                  <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                    The scraper is fetching active SBIR opportunities. This may take several minutes.
+                  </p>
+                  <p style={{ color: '#94a3b8', margin: '4px 0', fontSize: '12px', fontStyle: 'italic' }}>
+                    Check the "Scraper Status" section below for updates.
+                  </p>
+                </div>
+              )}
+
               {/* Manual Trigger Results */}
-              {sbirScraperResult && (
+              {!isTriggeringSbirScraper && sbirScraperResult && (
                 <div style={{
                   background: sbirScraperResult.success ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
                   border: `1px solid ${sbirScraperResult.success ? '#10b981' : '#ef4444'}`,
