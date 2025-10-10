@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/auth-middleware';
 import { DSIPRealScraper } from '@/lib/dsip-real-scraper';
-import { writeFile, mkdir } from 'fs/promises';
-import { join } from 'path';
-import { existsSync } from 'fs';
+
+// Configure route for longer timeout (needed for scraping)
+export const maxDuration = 300; // 5 minutes
+export const dynamic = 'force-dynamic';
 
 // Store active scraping jobs in memory
 const activeJobs = new Map<string, any>();
@@ -16,7 +17,10 @@ export async function POST(request: NextRequest) {
       return authResult;
     }
     
-    const { action } = await request.json();
+    const body = await request.json();
+    const { action } = body;
+    
+    console.log('Scrape-active API called with action:', action);
 
     if (action === 'start') {
       // Create a new scraping job
@@ -148,27 +152,4 @@ async function startRealScraping(jobId: string) {
   }
 }
 
-function generateCSV(data: any[]): string {
-  if (data.length === 0) {
-    return 'No data available';
-  }
-
-  // Get all column headers from first row
-  const headers = Object.keys(data[0]);
-  
-  // Create CSV header row
-  const csvHeader = headers.map(h => `"${h}"`).join(',');
-  
-  // Create CSV data rows
-  const csvRows = data.map(row => {
-    return headers.map(header => {
-      const value = row[header];
-      // Escape quotes and wrap in quotes
-      const escaped = String(value || '').replace(/"/g, '""');
-      return `"${escaped}"`;
-    }).join(',');
-  });
-
-  return [csvHeader, ...csvRows].join('\n');
-}
 

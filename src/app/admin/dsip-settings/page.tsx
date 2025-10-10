@@ -1657,33 +1657,116 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
               🎯 Active Opportunities Data
             </h2>
 
-            {/* Progress Display */}
-            {isScrapingActive && activeScraperProgress && (
-              <div style={{ marginBottom: '24px' }}>
-                <h3 style={{ color: '#cbd5e1', fontSize: '18px', marginBottom: '16px' }}>
-                  Scraping in Progress...
-                </h3>
+            {/* Progress Display - Modal Overlay */}
+            {isScrapingActive && (
+              <div style={{
+                position: 'fixed',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'rgba(0, 0, 0, 0.7)',
+                backdropFilter: 'blur(8px)',
+                zIndex: 9999,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
                 <div style={{
-                  width: '100%',
-                  height: '12px',
-                  background: 'rgba(148, 163, 184, 0.2)',
-                  borderRadius: '6px',
-                  overflow: 'hidden',
-                  marginBottom: '12px'
+                  background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                  border: '2px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '20px',
+                  padding: '40px',
+                  maxWidth: '600px',
+                  width: '90%',
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
                 }}>
-                  <div style={{
-                    width: `${activeScraperProgress.processedTopics && activeScraperProgress.totalTopics 
-                      ? (activeScraperProgress.processedTopics / activeScraperProgress.totalTopics * 100) 
-                      : 0}%`,
-                    height: '100%',
-                    background: 'linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%)',
-                    transition: 'width 0.3s ease'
-                  }} />
-                </div>
-                <div style={{ color: '#94a3b8', fontSize: '14px' }}>
-                  <p>📊 Phase: {activeScraperProgress.phase}</p>
-                  <p>📝 Processed: {activeScraperProgress.processedTopics || 0} topics</p>
-                  <p>✨ Active Found: {activeScraperProgress.activeTopicsFound || 0}</p>
+                  <h3 style={{ 
+                    color: '#ffffff', 
+                    fontSize: '24px', 
+                    marginBottom: '24px',
+                    textAlign: 'center'
+                  }}>
+                    🔄 Scraping Active Opportunities
+                  </h3>
+                  
+                  {activeScraperProgress ? (
+                    <>
+                      <div style={{
+                        width: '100%',
+                        height: '16px',
+                        background: 'rgba(148, 163, 184, 0.2)',
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                        marginBottom: '20px'
+                      }}>
+                        <div style={{
+                          width: `${activeScraperProgress.processedTopics && activeScraperProgress.totalTopics 
+                            ? (activeScraperProgress.processedTopics / activeScraperProgress.totalTopics * 100) 
+                            : 10}%`,
+                          height: '100%',
+                          background: 'linear-gradient(90deg, #4ecdc4 0%, #44a08d 100%)',
+                          transition: 'width 0.5s ease',
+                          animation: 'pulse 2s infinite'
+                        }} />
+                      </div>
+                      
+                      <div style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: '1.8' }}>
+                        <p style={{ marginBottom: '12px' }}>
+                          <strong style={{ color: '#4ecdc4' }}>Phase:</strong> {activeScraperProgress.phase || 'Starting...'}
+                        </p>
+                        {activeScraperProgress.totalTopics > 0 && (
+                          <p style={{ marginBottom: '12px' }}>
+                            <strong style={{ color: '#4ecdc4' }}>Progress:</strong> {activeScraperProgress.processedTopics || 0} / {activeScraperProgress.totalTopics} topics
+                          </p>
+                        )}
+                        {activeScraperProgress.activeTopicsFound > 0 && (
+                          <p style={{ marginBottom: '12px' }}>
+                            <strong style={{ color: '#10b981' }}>Active Found:</strong> {activeScraperProgress.activeTopicsFound} opportunities
+                          </p>
+                        )}
+                        {activeScraperProgress.topicsWithDetails > 0 && (
+                          <p style={{ marginBottom: '12px' }}>
+                            <strong style={{ color: '#4ecdc4' }}>Details Fetched:</strong> {activeScraperProgress.topicsWithDetails} topics
+                          </p>
+                        )}
+                      </div>
+                      
+                      {activeScraperProgress.logs && activeScraperProgress.logs.length > 0 && (
+                        <div style={{
+                          marginTop: '20px',
+                          padding: '16px',
+                          background: 'rgba(0, 0, 0, 0.3)',
+                          borderRadius: '12px',
+                          maxHeight: '150px',
+                          overflowY: 'auto'
+                        }}>
+                          <p style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '8px', fontWeight: '600' }}>
+                            Recent Logs:
+                          </p>
+                          {activeScraperProgress.logs.slice(-5).map((log: string, idx: number) => (
+                            <p key={idx} style={{ 
+                              color: '#94a3b8', 
+                              fontSize: '12px',
+                              marginBottom: '4px',
+                              fontFamily: 'monospace'
+                            }}>
+                              {log.split(': ')[1] || log}
+                            </p>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <div style={{ textAlign: 'center', color: '#cbd5e1' }}>
+                      <p style={{ fontSize: '18px', marginBottom: '16px' }}>
+                        🚀 Initializing scraper...
+                      </p>
+                      <p style={{ fontSize: '14px', color: '#94a3b8' }}>
+                        This may take a few moments
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
