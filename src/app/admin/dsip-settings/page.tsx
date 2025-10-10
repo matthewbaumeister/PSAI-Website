@@ -1562,6 +1562,43 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               </div>
             )}
 
+            {/* Browse Database Button */}
+            <div style={{ marginBottom: '24px' }}>
+              <button
+                onClick={() => router.push('/admin/sbir-database')}
+                style={{
+                  width: '100%',
+                  padding: '16px 24px',
+                  background: 'linear-gradient(135deg, #34d399 0%, #10b981 100%)',
+                  border: 'none',
+                  borderRadius: '12px',
+                  color: '#ffffff',
+                  fontSize: '16px',
+                  fontWeight: '700',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)',
+                  transition: 'all 0.2s ease',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                📊 Browse SBIR Database
+                <span style={{ 
+                  fontSize: '12px', 
+                  opacity: 0.9,
+                  background: 'rgba(255, 255, 255, 0.2)',
+                  padding: '4px 8px',
+                  borderRadius: '4px'
+                }}>
+                  {sbirStats?.totalRecords?.toLocaleString() || '0'} records
+                </span>
+              </button>
+            </div>
+
             {/* Scraper Controls */}
             <div className="scraper-controls" style={{
               background: 'rgba(15, 23, 42, 0.6)',

@@ -1497,23 +1497,6 @@ export default function AdminDashboard() {
               >
                 🔍 DSIP Settings
               </button>
-              <button
-                onClick={() => router.push('/admin/sbir-database')}
-                style={{
-                  padding: '12px 20px',
-                  background: 'rgba(34, 197, 94, 0.2)',
-                  border: '1px solid rgba(34, 197, 94, 0.3)',
-                  borderRadius: '8px',
-                  color: '#86efac',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  marginLeft: '12px'
-                }}
-              >
-                📊 Browse SBIR Database
-              </button>
             </div>
 
             {/* SBIR Info */}
