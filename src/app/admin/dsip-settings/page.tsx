@@ -184,14 +184,14 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       
       if (response.ok) {
         showNotification(
-          '✅ SBIR scraper triggered successfully! This may take several minutes.',
+          `✅ SBIR scraper completed! Found ${result.result?.totalTopics || 0} active topics.`,
           'success',
           { 
-            message: 'The scraper is running in the background. Check the scraper status section for updates.',
-            duration: 8000
+            message: result.result ? `Processed: ${result.result.processedTopics}, New: ${result.result.newRecords}, Updated: ${result.result.updatedRecords}` : '',
+            duration: 10000
           }
         )
-        // Refresh stats after scraping
+        // Refresh stats after scraping (WITHOUT page reload)
         setTimeout(() => {
           loadSbirStats()
         }, 3000)

@@ -70,6 +70,11 @@ async function fetchActiveTopics(baseUrl: string) {
   let page = 0;
   const size = 100;
   const maxPages = 50; // Safety limit
+  let consecutivePagesWithoutActive = 0;
+  const maxConsecutivePagesWithoutActive = 10; // Early termination
+  let totalActiveFound = 0;
+
+  console.log('🔍 Fetching topics and filtering for Open/Pre-Release/Active status...');
 
   while (page < maxPages) {
     const searchParams = {
@@ -78,9 +83,9 @@ async function fetchActiveTopics(baseUrl: string) {
       programYear: null,
       solicitationCycleNames: null,
       releaseNumbers: [],
-      topicReleaseStatus: ['Open', 'Pre-Release'], // Only active statuses
+      topicReleaseStatus: [], // Don't filter here - we'll filter by topicStatus after fetching
       modernizationPriorities: [],
-      sortBy: "finalTopicCode,asc",
+      sortBy: "modifiedDate,desc", // Get most recently modified first
       technologyAreaIds: [],
       component: null,
       program: null
@@ -110,7 +115,28 @@ async function fetchActiveTopics(baseUrl: string) {
         break;
       }
 
-      allTopics.push(...data.data);
+      // Filter for only Open, Pre-Release, and Active topics
+      const activeTopicsInPage = data.data.filter((topic: any) => {
+        const status = topic.topicStatus;
+        return status === 'Open' || status === 'Pre-Release' || status === 'Active';
+      });
+
+      totalActiveFound += activeTopicsInPage.length;
+
+      if (activeTopicsInPage.length > 0) {
+        consecutivePagesWithoutActive = 0;
+        console.log(`   ✓ Page ${page + 1}: Found ${activeTopicsInPage.length} active topics (total: ${totalActiveFound})`);
+        allTopics.push(...activeTopicsInPage);
+      } else {
+        consecutivePagesWithoutActive++;
+        console.log(`   ⏭️ Page ${page + 1}: No active topics (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
+      }
+
+      // Early termination if no active topics found in several consecutive pages
+      if (consecutivePagesWithoutActive >= maxConsecutivePagesWithoutActive && totalActiveFound > 0) {
+        console.log(`   ✅ Early termination: Found ${totalActiveFound} active topics, no more in last ${maxConsecutivePagesWithoutActive} pages`);
+        break;
+      }
       
       if (data.data.length < size) {
         break; // Last page
