@@ -82,9 +82,11 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   // Helper function to show notifications
   const showNotification = (message: string, type: 'success' | 'error' | 'info' | 'warning', details?: any) => {
     setNotification({ show: true, message, type, details })
+    // Auto-hide after 15 seconds (or longer for notifications with lots of details)
+    const timeout = details && Object.keys(details).length > 3 ? 20000 : 15000
     setTimeout(() => {
       setNotification(prev => ({ ...prev, show: false }))
-    }, 5000) // Auto-hide after 5 seconds
+    }, timeout)
   }
   
   // Redirect if not admin
@@ -365,15 +367,21 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         const data = await response.json()
         if (data.success) {
           setActiveOpportunitiesCount(data.count)
+          const notificationType = data.count === 0 ? 'warning' : 'success'
+          const notificationMessage = data.count === 0 
+            ? '⚠️ Database is empty - No opportunities found' 
+            : `✅ Found ${data.count} active opportunities`
+          
           showNotification(
-            `✅ Found ${data.count} active opportunities`,
-            'success',
+            notificationMessage,
+            notificationType,
             {
               totalCount: data.totalCount,
               activeCount: data.count,
               breakdown: data.breakdown,
               sampleOpportunities: data.sampleOpportunities,
-              timestamp: data.timestamp
+              timestamp: data.timestamp,
+              hint: data.count === 0 ? 'Click "Quick Check" or "Full Scrape" below to populate the database with DSIP opportunities' : undefined
             }
           )
         } else {
