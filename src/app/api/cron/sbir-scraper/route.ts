@@ -404,7 +404,7 @@ async function processTopics(topics: any[], baseUrl: string) {
         has_special_requirements_special_keywords_detected: '',
         information_quality_based_on_key_field_lengths: '',
         data_completeness_score_percentage_of_filled_fields: '',
-        last_scraped_current_timestamp_eastern: new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }),
+        last_scraped: new Date().toISOString(),
         search_tags_component_program_status_combined: '',
         category_tags_tech_categories_from_keywords: '',
         priority_score_multi_factor_scoring_algorithm: '',
@@ -461,6 +461,17 @@ async function updateDatabase(topics: any[]) {
           
           if (insertError) {
             console.error(`❌ Error inserting topic ${topic.topic_id}:`, insertError);
+            console.error(`❌ Insert error code: ${insertError.code}`);
+            console.error(`❌ Insert error message: ${insertError.message}`);
+            console.error(`❌ First few keys of topic being inserted:`, Object.keys(topic).slice(0, 20));
+            
+            // Try to extract column name from error message
+            if (insertError.message.includes('does not exist')) {
+              const match = insertError.message.match(/column [^.]+\.(\S+) does not exist/);
+              if (match) {
+                console.error(`❌ Problem column: ${match[1]}`);
+              }
+            }
             continue;
           }
           
