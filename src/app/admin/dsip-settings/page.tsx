@@ -371,6 +371,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
             {
               totalCount: data.totalCount,
               activeCount: data.count,
+              breakdown: data.breakdown,
               sampleOpportunities: data.sampleOpportunities,
               timestamp: data.timestamp
             }
@@ -1573,6 +1574,13 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                   )}
                   {notification.details.activeCount !== undefined && (
                     <div>✅ Active: {notification.details.activeCount}</div>
+                  )}
+                  {notification.details.breakdown && (
+                    <div style={{ marginTop: '8px', paddingLeft: '16px' }}>
+                      <div>🟢 Open: {notification.details.breakdown.open}</div>
+                      <div>🔵 Pre-Release: {notification.details.breakdown.preRelease}</div>
+                      <div>🟡 Active: {notification.details.breakdown.active}</div>
+                    </div>
                   )}
                   {notification.details.sampleOpportunities && notification.details.sampleOpportunities.length > 0 && (
                     <div style={{ marginTop: '8px' }}>
