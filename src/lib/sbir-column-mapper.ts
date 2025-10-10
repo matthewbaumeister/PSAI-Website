@@ -55,10 +55,14 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   if (scrapedTopic.topicStartDate) {
     mapped.open_date = formatDate(scrapedTopic.topicStartDate);
     mapped.open_datetime = formatDate(scrapedTopic.topicStartDate);
+    // Add timestamp for proper chronological sorting
+    mapped.open_date_ts = new Date(scrapedTopic.topicStartDate).toISOString();
   }
   if (scrapedTopic.topicEndDate) {
     mapped.close_date = formatDate(scrapedTopic.topicEndDate);
     mapped.close_datetime = formatDate(scrapedTopic.topicEndDate);
+    // Add timestamp for proper chronological sorting
+    mapped.close_date_ts = new Date(scrapedTopic.topicEndDate).toISOString();
   }
   if (scrapedTopic.topicPreReleaseStartDate) {
     mapped.pre_release_start = formatDate(scrapedTopic.topicPreReleaseStartDate);

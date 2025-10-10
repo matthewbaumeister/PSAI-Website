@@ -30,6 +30,11 @@ export async function POST(request: NextRequest) {
       .from('sbir_final')
       .select('*', { count: 'exact' });
 
+    // Filter out corrupted/invalid entries
+    // Only show entries with valid topic_number (not null, not empty, matches pattern)
+    query = query.not('topic_number', 'is', null);
+    query = query.neq('topic_number', '');
+    
     // Apply filters
     if (searchText && searchText.trim()) {
       // Smart search across multiple fields
@@ -53,9 +58,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Apply sorting
-    const sortColumn = sortBy || 'modified_date';
+    let sortColumn = sortBy || 'modified_date';
     const order = sortOrder === 'asc' ? true : false;
-    query = query.order(sortColumn, { ascending: order });
+    
+    // Use timestamp columns for date sorting (chronologically correct)
+    if (sortColumn === 'close_date') {
+      sortColumn = 'close_date_ts';
+    } else if (sortColumn === 'open_date') {
+      sortColumn = 'open_date_ts';
+    }
+    
+    query = query.order(sortColumn, { ascending: order, nullsFirst: false });
 
     // Apply pagination
     const from = page * pageSize;
