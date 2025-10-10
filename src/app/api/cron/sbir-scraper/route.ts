@@ -82,6 +82,9 @@ async function fetchActiveTopics(baseUrl: string) {
   console.log('🔍 Fetching topics and filtering for Open/Pre-Release/Active status...');
   console.log('📡 API Base URL:', baseUrl);
 
+  // Add initial delay to avoid rate limiting
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
   while (page < maxPages) {
     const searchParams = {
       searchText: null,
@@ -105,10 +108,12 @@ async function fetchActiveTopics(baseUrl: string) {
     try {
       const response = await fetch(searchUrl, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
           'Accept': 'application/json, text/plain, */*',
+          'Accept-Language': 'en-US,en;q=0.9',
           'Authorization': 'Bearer null',
-          'Referer': 'https://www.dodsbirsttr.mil/topics-app/'
+          'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+          'Origin': 'https://www.dodsbirsttr.mil'
         }
       });
 
