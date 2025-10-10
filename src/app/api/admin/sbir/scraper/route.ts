@@ -429,7 +429,7 @@ for idx, topic in enumerate(all_topics):
         'has_special_requirements_special_keywords_detected': '',
         'information_quality_based_on_key_field_lengths': '',
         'data_completeness_score_percentage_of_filled_fields': '',
-        'last_scraped_current_timestamp_eastern': datetime.now(pytz.timezone('US/Eastern')).strftime('%Y-%m-%d %H:%M:%S'),
+        'last_scraped': datetime.now(pytz.timezone('US/Eastern')).strftime('%Y-%m-%d %H:%M:%S'),
         'search_tags_component_program_status_combined': '',
         'category_tags_tech_categories_from_keywords': '',
         'priority_score_multi_factor_scoring_algorithm': '',
@@ -569,8 +569,8 @@ async function checkScraperStatus() {
     // Check for recent scraping activity in the database
     const { data: recentActivity, error } = await supabase
       .from('sbir_final')
-      .select('last_scraped_current_timestamp_eastern')
-      .order('last_scraped_current_timestamp_eastern', { ascending: false })
+      .select('last_scraped')
+      .order('last_scraped', { ascending: false })
       .limit(1);
 
     if (error) {
@@ -586,8 +586,8 @@ async function checkScraperStatus() {
     const isRecentlyActive = recentActivity && recentActivity.length > 0;
     let lastScraped = null;
     
-    if (isRecentlyActive && recentActivity[0].last_scraped_current_timestamp_eastern) {
-      lastScraped = recentActivity[0].last_scraped_current_timestamp_eastern;
+    if (isRecentlyActive && recentActivity[0].last_scraped) {
+      lastScraped = recentActivity[0].last_scraped;
     }
 
     return NextResponse.json({
