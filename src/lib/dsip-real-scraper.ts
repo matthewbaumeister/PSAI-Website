@@ -140,8 +140,7 @@ export class DSIPRealScraper {
 
       try {
         const response = await fetch(searchUrl, { 
-          headers: this.headers,
-          signal: AbortSignal.timeout(30000)
+          headers: this.headers
         });
 
         if (response.ok) {
@@ -230,8 +229,7 @@ export class DSIPRealScraper {
         // Fetch detailed information
         const detailsUrl = `${this.baseUrl}/topics/api/public/topics/${topicId}/details`;
         const response = await fetch(detailsUrl, { 
-          headers: this.headers,
-          signal: AbortSignal.timeout(15000)
+          headers: this.headers
         });
 
         if (response.ok) {
@@ -244,8 +242,7 @@ export class DSIPRealScraper {
         if (topic.topicQuestionCount && topic.topicQuestionCount > 0) {
           const qaUrl = `${this.baseUrl}/topics/api/public/topics/${topicId}/questions`;
           const qaResponse = await fetch(qaUrl, { 
-            headers: this.headers,
-            signal: AbortSignal.timeout(10000)
+            headers: this.headers
           });
 
           if (qaResponse.ok) {
