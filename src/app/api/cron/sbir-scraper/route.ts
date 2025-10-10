@@ -115,6 +115,21 @@ async function fetchActiveTopics(baseUrl: string) {
         break;
       }
 
+      // Debug: Log first page's status distribution
+      if (page === 0 && data.data.length > 0) {
+        const statusCounts: Record<string, number> = {};
+        data.data.forEach((topic: any) => {
+          const status = topic.topicStatus || 'Unknown';
+          statusCounts[status] = (statusCounts[status] || 0) + 1;
+        });
+        console.log('📊 Status distribution in first page:', statusCounts);
+        console.log('📊 Sample topic:', {
+          topicCode: data.data[0]?.topicCode,
+          topicStatus: data.data[0]?.topicStatus,
+          topicTitle: data.data[0]?.topicTitle?.substring(0, 50)
+        });
+      }
+
       // Filter for only Open, Pre-Release, and Active topics
       const activeTopicsInPage = data.data.filter((topic: any) => {
         const status = topic.topicStatus;
