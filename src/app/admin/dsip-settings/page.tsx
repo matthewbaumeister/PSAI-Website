@@ -1665,12 +1665,13 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                 left: 0,
                 right: 0,
                 bottom: 0,
-                background: 'rgba(0, 0, 0, 0.7)',
-                backdropFilter: 'blur(8px)',
-                zIndex: 9999,
+                background: 'rgba(0, 0, 0, 0.85)',
+                backdropFilter: 'blur(12px)',
+                zIndex: 99999,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                overflow: 'hidden'
               }}>
                 <div style={{
                   background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',

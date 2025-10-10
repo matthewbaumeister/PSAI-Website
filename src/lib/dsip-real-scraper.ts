@@ -115,6 +115,8 @@ export class DSIPRealScraper {
     const allTopics: DSIPTopic[] = [];
     let page = 0;
     const size = 100;
+    let consecutivePagesWithoutActive = 0;
+    const maxConsecutivePagesWithoutActive = 5; // Stop after 5 pages with no active opportunities
     
     while (true) {
       const searchParams = {
@@ -125,7 +127,7 @@ export class DSIPRealScraper {
         releaseNumbers: [],
         topicReleaseStatus: [],
         modernizationPriorities: [],
-        sortBy: "finalTopicCode,asc",
+        sortBy: "modifiedDate,desc", // Start with most recently modified
         technologyAreaIds: [],
         component: null,
         program: null
@@ -155,11 +157,32 @@ export class DSIPRealScraper {
               this.progress.totalTopics = total;
             }
 
+            // Check if this page has any active opportunities
+            const activeInThisPage = topics.filter((t: any) => 
+              t.topicStatus === 'Open' || 
+              t.topicStatus === 'Pre-Release' || 
+              t.topicStatus === 'Active'
+            ).length;
+
+            if (activeInThisPage > 0) {
+              consecutivePagesWithoutActive = 0;
+              this.log(`   ✓ Found ${activeInThisPage} active opportunities on page ${page + 1}`);
+            } else {
+              consecutivePagesWithoutActive++;
+              this.log(`   ⏭️ No active opportunities on page ${page + 1} (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
+            }
+
             allTopics.push(...topics);
             this.progress.processedTopics = allTopics.length;
 
             if (progressCallback) {
               progressCallback({ ...this.progress });
+            }
+
+            // Early termination conditions
+            if (consecutivePagesWithoutActive >= maxConsecutivePagesWithoutActive) {
+              this.log(`   ✅ Stopping early: No active opportunities found in last ${maxConsecutivePagesWithoutActive} pages`);
+              break;
             }
 
             if (topics.length < size || allTopics.length >= total) {
