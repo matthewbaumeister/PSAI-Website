@@ -460,6 +460,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   // Real active scraper function
   const startRealActiveScraper = async () => {
     try {
+      console.log('[Active Scraper] Starting...')
       setIsScrapingActive(true)
       showNotification('🚀 Starting real DSIP scraper for active opportunities...', 'info')
       
@@ -469,24 +470,31 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         body: JSON.stringify({ action: 'start' })
       })
       
+      console.log('[Active Scraper] Response status:', response.status)
+      
       if (response.ok) {
         const data = await response.json()
+        console.log('[Active Scraper] Job started:', data)
         setActiveScraperJobId(data.jobId)
         showNotification('✅ Scraper started! Fetching active opportunities from DSIP...', 'success')
         
         // Start monitoring progress
         monitorActiveScraperProgress(data.jobId)
       } else {
-        showNotification('❌ Failed to start scraper', 'error')
+        const errorText = await response.text()
+        console.error('[Active Scraper] Failed:', response.status, errorText)
+        showNotification(`❌ Failed to start scraper: ${response.status}`, 'error')
         setIsScrapingActive(false)
       }
     } catch (error) {
+      console.error('[Active Scraper] Error:', error)
       showNotification(`❌ Error starting scraper: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       setIsScrapingActive(false)
     }
   }
   
   const monitorActiveScraperProgress = async (jobId: string) => {
+    console.log('[Active Scraper Monitor] Starting to monitor job:', jobId)
     const interval = setInterval(async () => {
       try {
         const response = await fetch('/api/dsip/scrape-active', {
@@ -499,6 +507,8 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
           const data = await response.json()
           const job = data.job
           
+          console.log('[Active Scraper Monitor] Job status update:', job)
+          
           if (job) {
             setActiveScraperProgress(job.progress)
             
@@ -507,6 +517,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
               setIsScrapingActive(false)
               setActiveScraperData(job.data || [])
               
+              console.log('[Active Scraper Monitor] Completed! Total records:', job.totalRecords)
               showNotification(
                 `✅ Scraping completed! Found ${job.totalRecords} active opportunities`,
                 'success',
@@ -520,12 +531,15 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
             } else if (job.status === 'failed') {
               clearInterval(interval)
               setIsScrapingActive(false)
+              console.error('[Active Scraper Monitor] Failed:', job.error)
               showNotification(`❌ Scraping failed: ${job.error}`, 'error')
             }
           }
+        } else {
+          console.error('[Active Scraper Monitor] Status check failed:', response.status)
         }
       } catch (error) {
-        console.error('Error monitoring scraper:', error)
+        console.error('[Active Scraper Monitor] Error:', error)
       }
     }, 2000) // Check every 2 seconds
   }
@@ -1140,6 +1154,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                       🚀 Full Refresh (8-12 hours)
                     </button>
                     <button
+                      type="button"
                       onClick={startRealActiveScraper}
                       className="btn btn-primary"
                       disabled={isScrapingActive}
@@ -1516,6 +1531,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
               
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '16px' }}>
                 <button
+                  type="button"
                   className="btn btn-primary"
                   onClick={triggerSbirScraper}
                   disabled={isTriggeringSbirScraper}
@@ -1535,6 +1551,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                 </button>
                 
                 <button
+                  type="button"
                   className="btn btn-outline"
                   onClick={loadSbirStats}
                   disabled={isLoadingStats}
