@@ -445,19 +445,20 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
 
   const testScraperSystem = async () => {
     try {
-      setMessage('🧪 Testing scraper system...')
+      showNotification('🧪 Testing scraper system...', 'info')
+      
+      let allTestsPassed = true
+      const results: any = {}
       
       // Test 1: Basic system status
       const statusResponse = await fetch('/api/dsip/test-scraper')
       if (statusResponse.ok) {
         const statusData = await statusResponse.json()
         console.log('System Status Test:', statusData)
-        
-        if (statusData.success) {
-          setMessage('✅ System status test passed! Check console for details.')
-        } else {
-          setMessage('❌ System status test failed! Check console for details.')
-        }
+        results.systemStatus = statusData
+        if (!statusData.success) allTestsPassed = false
+      } else {
+        allTestsPassed = false
       }
       
       // Test 2: Database operations
@@ -472,12 +473,10 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       if (dbResponse.ok) {
         const dbData = await dbResponse.json()
         console.log('Database Test:', dbData)
-        
-        if (dbData.success) {
-          setMessage('✅ Database test passed! Check console for details.')
-        } else {
-          setMessage('❌ Database test failed! Check console for details.')
-        }
+        results.databaseTest = dbData
+        if (!dbData.success) allTestsPassed = false
+      } else {
+        allTestsPassed = false
       }
       
       // Test 3: Connection test
@@ -492,16 +491,39 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       if (connResponse.ok) {
         const connData = await connResponse.json()
         console.log('Connection Test:', connData)
-        
-        if (connData.success) {
-          setMessage('✅ Connection test passed! Check console for details.')
-        } else {
-          setMessage('❌ Connection test failed! Check console for details.')
-        }
+        results.connectionTest = connData
+        if (!connData.success) allTestsPassed = false
+      } else {
+        allTestsPassed = false
+      }
+      
+      // Show final result
+      if (allTestsPassed) {
+        showNotification(
+          '✅ All scraper system tests passed!',
+          'success',
+          {
+            systemStatus: results.systemStatus?.success ? '✅ Passed' : '❌ Failed',
+            databaseTest: results.databaseTest?.success ? '✅ Passed' : '❌ Failed',
+            connectionTest: results.connectionTest?.success ? '✅ Passed' : '❌ Failed',
+            message: 'Check browser console for detailed results'
+          }
+        )
+      } else {
+        showNotification(
+          '⚠️ Some scraper system tests failed',
+          'warning',
+          {
+            systemStatus: results.systemStatus?.success ? '✅ Passed' : '❌ Failed',
+            databaseTest: results.databaseTest?.success ? '✅ Passed' : '❌ Failed',
+            connectionTest: results.connectionTest?.success ? '✅ Passed' : '❌ Failed',
+            message: 'Check browser console for detailed error information'
+          }
+        )
       }
       
     } catch (error) {
-      setMessage('❌ Test failed with error. Check console for details.')
+      showNotification(`❌ Test failed with error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       console.error('Test error:', error)
     }
   }

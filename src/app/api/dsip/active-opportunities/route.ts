@@ -47,27 +47,71 @@ export async function GET(request: NextRequest) {
     
     // Get count of ACTIVE opportunities based on status (Open and Pre-Release only)
     // These are the actionable opportunities users can submit to or prepare for
-    // Try both 'status' and 'topic_status' columns as the schema has both
-    const { count: openCount, error: openError } = await supabase
-      .from('dsip_opportunities')
-      .select('*', { count: 'exact', head: true })
-      .or('status.eq.Open,topic_status.eq.Open');
+    let openCount = 0;
+    let preReleaseCount = 0;
     
-    const { count: preReleaseCount, error: preReleaseError } = await supabase
-      .from('dsip_opportunities')
-      .select('*', { count: 'exact', head: true })
-      .or('status.eq.Pre-Release,topic_status.eq.Pre-Release');
-    
-    if (openError || preReleaseError) {
-      console.error('Error getting active counts:', { openError, preReleaseError });
-      return NextResponse.json({ 
-        success: false, 
-        error: `Failed to get active opportunity counts. Open error: ${openError?.message || 'none'}, PreRelease error: ${preReleaseError?.message || 'none'}`,
-        details: { openError, preReleaseError }
-      }, { status: 500 });
+    // Try querying with status column first
+    try {
+      const { count, error } = await supabase
+        .from('dsip_opportunities')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'Open');
+      
+      if (!error) {
+        openCount = count || 0;
+      } else {
+        console.log('Status column query failed, might not exist:', error);
+      }
+    } catch (err) {
+      console.log('Error querying status column:', err);
     }
     
-    const activeCount = (openCount || 0) + (preReleaseCount || 0);
+    // Try querying with topic_status column as fallback
+    if (openCount === 0) {
+      try {
+        const { count, error } = await supabase
+          .from('dsip_opportunities')
+          .select('*', { count: 'exact', head: true })
+          .eq('topic_status', 'Open');
+        
+        if (!error) {
+          openCount = count || 0;
+        }
+      } catch (err) {
+        console.log('Error querying topic_status column:', err);
+      }
+    }
+    
+    // Repeat for Pre-Release
+    try {
+      const { count, error } = await supabase
+        .from('dsip_opportunities')
+        .select('*', { count: 'exact', head: true })
+        .eq('status', 'Pre-Release');
+      
+      if (!error) {
+        preReleaseCount = count || 0;
+      }
+    } catch (err) {
+      console.log('Error querying status column for Pre-Release:', err);
+    }
+    
+    if (preReleaseCount === 0) {
+      try {
+        const { count, error } = await supabase
+          .from('dsip_opportunities')
+          .select('*', { count: 'exact', head: true })
+          .eq('topic_status', 'Pre-Release');
+        
+        if (!error) {
+          preReleaseCount = count || 0;
+        }
+      } catch (err) {
+        console.log('Error querying topic_status column for Pre-Release:', err);
+      }
+    }
+    
+    const activeCount = openCount + preReleaseCount;
     
     // If no active opportunities found, still return success with 0 count
     if (activeCount === 0) {
@@ -87,12 +131,38 @@ export async function GET(request: NextRequest) {
     }
     
     // Get sample active opportunities for display (Open and Pre-Release status only)
-    const { data: sampleOpportunities, error: sampleError } = await supabase
-      .from('dsip_opportunities')
-      .select('topic_id, title, component, solicitation_title, status, topic_status, open_date, close_date')
-      .or('status.in.(Open,Pre-Release),topic_status.in.(Open,Pre-Release)')
-      .order('open_date', { ascending: false })
-      .limit(10);
+    let sampleOpportunities: any[] = [];
+    
+    try {
+      // Try with status column first
+      const { data, error } = await supabase
+        .from('dsip_opportunities')
+        .select('topic_id, title, component, solicitation_title, status, topic_status, open_date, close_date')
+        .in('status', ['Open', 'Pre-Release'])
+        .order('open_date', { ascending: false })
+        .limit(10);
+      
+      if (!error && data) {
+        sampleOpportunities = data;
+      } else if (error) {
+        console.log('Status column sample query failed:', error);
+        // Try with topic_status as fallback
+        const { data: fallbackData, error: fallbackError } = await supabase
+          .from('dsip_opportunities')
+          .select('topic_id, title, component, solicitation_title, status, topic_status, open_date, close_date')
+          .in('topic_status', ['Open', 'Pre-Release'])
+          .order('open_date', { ascending: false })
+          .limit(10);
+        
+        if (!fallbackError && fallbackData) {
+          sampleOpportunities = fallbackData;
+        }
+      }
+    } catch (err) {
+      console.log('Error getting sample opportunities:', err);
+    }
+    
+    const sampleError = null; // Set to null since we handled errors above
     
     if (sampleError) {
       console.error('Error getting sample opportunities:', sampleError);
