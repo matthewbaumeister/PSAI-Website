@@ -75,6 +75,7 @@ async function fetchActiveTopics(baseUrl: string) {
   let totalActiveFound = 0;
 
   console.log('🔍 Fetching topics and filtering for Open/Pre-Release/Active status...');
+  console.log('📡 API Base URL:', baseUrl);
 
   while (page < maxPages) {
     const searchParams = {
@@ -94,6 +95,8 @@ async function fetchActiveTopics(baseUrl: string) {
     const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
     const searchUrl = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${size}&page=${page}`;
 
+    console.log(`📡 Fetching page ${page + 1}...`);
+
     try {
       const response = await fetch(searchUrl, {
         headers: {
@@ -104,12 +107,22 @@ async function fetchActiveTopics(baseUrl: string) {
         }
       });
 
+      console.log(`📡 Page ${page + 1} response status: ${response.status}`);
+
       if (response.status !== 200) {
         console.warn(`⚠️ Non-200 response on page ${page}: ${response.status}`);
+        const errorText = await response.text();
+        console.error(`⚠️ Error response:`, errorText.substring(0, 200));
         break;
       }
 
       const data = await response.json();
+      console.log(`📡 Page ${page + 1} data structure:`, {
+        hasData: !!data.data,
+        dataLength: data.data?.length || 0,
+        total: data.total,
+        dataKeys: data.data?.[0] ? Object.keys(data.data[0]).slice(0, 10) : []
+      });
       
       if (!data.data || data.data.length === 0) {
         break;
@@ -164,9 +177,17 @@ async function fetchActiveTopics(baseUrl: string) {
       
     } catch (error) {
       console.error(`❌ Error fetching page ${page}:`, error);
+      console.error(`❌ Error details:`, error);
       break;
     }
   }
+
+  console.log(`✅ Finished fetching topics. Total active found: ${allTopics.length}`);
+  console.log(`📊 Sample of first topic:`, allTopics[0] ? {
+    topicCode: allTopics[0].topicCode,
+    topicStatus: allTopics[0].topicStatus,
+    topicTitle: allTopics[0].topicTitle?.substring(0, 50)
+  } : 'No topics found');
 
   return allTopics;
 }
