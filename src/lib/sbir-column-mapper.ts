@@ -219,8 +219,11 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
 
   // Actions and status flags
   if (scrapedTopic.applicableActions) {
-    mapped.applicable_actions = scrapedTopic.applicableActions;
-    const actions = scrapedTopic.applicableActions.split(',');
+    // Handle both array and string formats
+    const actions = Array.isArray(scrapedTopic.applicableActions) 
+      ? scrapedTopic.applicableActions 
+      : scrapedTopic.applicableActions.split(',');
+    mapped.applicable_actions = actions.join(', ');
     mapped.actions_count = String(actions.length);
   }
   if (scrapedTopic.isActive !== undefined) mapped.is_active = scrapedTopic.isActive ? 'Yes' : 'No';
