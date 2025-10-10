@@ -16,7 +16,7 @@
   "crons": [
     {
       "path": "/api/cron/sbir-scraper",
-      "schedule": "0 6 * * *"
+      "schedule": "0 12 * * *"
     }
   ],
   "headers": [
