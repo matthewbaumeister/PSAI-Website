@@ -7,6 +7,10 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+// Force dynamic rendering and set max duration
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60; // Try 60 seconds (may require Pro plan)
+
 export async function GET(request: NextRequest) {
   try {
     // Verify this is a cron job request
@@ -121,16 +125,16 @@ async function fetchActiveTopics(baseUrl: string) {
   await new Promise(resolve => setTimeout(resolve, 1000));
 
   while (page < maxPages) {
-    // Try MINIMAL search params to avoid triggering API errors
+    // Filter for active topics FIRST to avoid timeout
     const searchParams = {
       searchText: null,
       components: null,
       programYear: null,
       solicitationCycleNames: null,
       releaseNumbers: [],
-      topicReleaseStatus: [],
+      topicReleaseStatus: ["Open", "Pre-Release"], // FILTER at API level!
       modernizationPriorities: [],
-      sortBy: "finalTopicCode,asc", // Use simple ascending sort like Python script default
+      sortBy: "modifiedDate,desc", // Get most recent first
       technologyAreaIds: [],
       component: null,
       program: null
@@ -189,18 +193,14 @@ async function fetchActiveTopics(baseUrl: string) {
         });
       }
 
-      // Filter for only Open, Pre-Release, and Active topics
-      const activeTopicsInPage = data.data.filter((topic: any) => {
-        const status = topic.topicStatus;
-        return status === 'Open' || status === 'Pre-Release' || status === 'Active';
-      });
+      // API already filtered for us - just add all results
+      const topicsInPage = data.data;
+      totalActiveFound += topicsInPage.length;
 
-      totalActiveFound += activeTopicsInPage.length;
-
-      if (activeTopicsInPage.length > 0) {
+      if (topicsInPage.length > 0) {
         consecutivePagesWithoutActive = 0;
-        console.log(`   ✓ Page ${page + 1}: Found ${activeTopicsInPage.length} active topics (total: ${totalActiveFound})`);
-        allTopics.push(...activeTopicsInPage);
+        console.log(`   ✓ Page ${page + 1}: Found ${topicsInPage.length} active topics (total: ${totalActiveFound})`);
+        allTopics.push(...topicsInPage);
       } else {
         consecutivePagesWithoutActive++;
         console.log(`   ⏭️ Page ${page + 1}: No active topics (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
