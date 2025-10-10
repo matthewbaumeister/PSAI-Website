@@ -116,7 +116,8 @@ export class DSIPRealScraper {
     let page = 0;
     const size = 100;
     let consecutivePagesWithoutActive = 0;
-    const maxConsecutivePagesWithoutActive = 5; // Stop after 5 pages with no active opportunities
+    const maxConsecutivePagesWithoutActive = 10; // Stop after 10 pages with no active opportunities
+    let totalActiveFound = 0;
     
     while (true) {
       const searchParams = {
@@ -164,24 +165,29 @@ export class DSIPRealScraper {
               t.topicStatus === 'Active'
             ).length;
 
+            totalActiveFound += activeInThisPage;
+
             if (activeInThisPage > 0) {
               consecutivePagesWithoutActive = 0;
-              this.log(`   ✓ Found ${activeInThisPage} active opportunities on page ${page + 1}`);
+              this.log(`   ✓ Found ${activeInThisPage} active opportunities on page ${page + 1} (total: ${totalActiveFound})`);
+              console.log(`[DSIP Scraper] Page ${page + 1}: ${activeInThisPage} active, ${totalActiveFound} total active so far`);
             } else {
               consecutivePagesWithoutActive++;
-              this.log(`   ⏭️ No active opportunities on page ${page + 1} (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
+              this.log(`   ⏭️ No active on page ${page + 1} (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
             }
 
             allTopics.push(...topics);
             this.progress.processedTopics = allTopics.length;
+            this.progress.activeTopicsFound = totalActiveFound;
 
             if (progressCallback) {
               progressCallback({ ...this.progress });
             }
 
             // Early termination conditions
-            if (consecutivePagesWithoutActive >= maxConsecutivePagesWithoutActive) {
-              this.log(`   ✅ Stopping early: No active opportunities found in last ${maxConsecutivePagesWithoutActive} pages`);
+            if (consecutivePagesWithoutActive >= maxConsecutivePagesWithoutActive && totalActiveFound > 0) {
+              this.log(`   ✅ Stopping early: Found ${totalActiveFound} active opportunities, no more in last ${maxConsecutivePagesWithoutActive} pages`);
+              console.log(`[DSIP Scraper] Early termination: ${totalActiveFound} active topics found`);
               break;
             }
 
@@ -214,14 +220,27 @@ export class DSIPRealScraper {
     this.log('🔍 Filtering for active/open/pre-release opportunities...');
     this.progress.phase = 'filtering';
     
+    console.log(`[DSIP Scraper] Total topics to filter: ${topics.length}`);
+    
     const activeStatuses = ['Active', 'Open', 'Pre-Release'];
+    
+    // Log sample of statuses for debugging
+    const statusCounts: Record<string, number> = {};
+    topics.forEach(topic => {
+      const status = topic.topicStatus || 'Unknown';
+      statusCounts[status] = (statusCounts[status] || 0) + 1;
+    });
+    console.log('[DSIP Scraper] Status distribution:', statusCounts);
     
     const filtered = topics.filter(topic => {
       const status = topic.topicStatus || '';
       return activeStatuses.includes(status);
     });
     
+    console.log(`[DSIP Scraper] Filtered ${filtered.length} active opportunities from ${topics.length} total`);
     this.progress.activeTopicsFound = filtered.length;
+    this.log(`   Found ${filtered.length} matching opportunities`);
+    
     return filtered;
   }
 

@@ -1020,7 +1020,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         )}
 
         {/* DSIP Opportunities Scraper Section */}
-        <div className="settings-section">
+        <div className="settings-section" style={{ position: 'relative' }}>
           <h2>DSIP Opportunities Scraper</h2>
           <p>Control and monitor the DSIP web scraper for real-time opportunity updates.</p>
           
@@ -1659,36 +1659,24 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
 
             {/* Progress Display - Modal Overlay */}
             {isScrapingActive && (
-              <>
-                {/* Backdrop */}
+              <div style={{
+                position: 'absolute',
+                top: '120px',
+                left: '0',
+                right: '0',
+                zIndex: 1000,
+                padding: '0 20px',
+                marginBottom: '24px'
+              }}>
                 <div style={{
-                  position: 'fixed',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  background: 'rgba(0, 0, 0, 0.7)',
-                  backdropFilter: 'blur(8px)',
-                  zIndex: 99998
-                }} />
-                
-                {/* Modal */}
-                <div style={{
-                  position: 'fixed',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  zIndex: 99999,
-                  width: '90%',
-                  maxWidth: '650px'
+                  background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                  border: '3px solid #4ecdc4',
+                  borderRadius: '16px',
+                  padding: '36px',
+                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 100px rgba(78, 205, 196, 0.3)',
+                  maxWidth: '900px',
+                  margin: '0 auto'
                 }}>
-                  <div style={{
-                    background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-                    border: '3px solid #4ecdc4',
-                    borderRadius: '16px',
-                    padding: '36px',
-                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 100px rgba(78, 205, 196, 0.3)'
-                  }}>
                   <h3 style={{ 
                     color: '#ffffff', 
                     fontSize: '24px', 
@@ -1775,9 +1763,8 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
                       </p>
                     </div>
                   )}
-                  </div>
                 </div>
-              </>
+              </div>
             )}
 
             {/* Scraped Data Display */}
