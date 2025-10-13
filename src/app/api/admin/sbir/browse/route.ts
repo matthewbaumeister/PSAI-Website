@@ -25,55 +25,49 @@ export async function POST(request: NextRequest) {
 
     console.log(' SBIR Browse request:', { searchText, component, statuses, programType, page });
 
-    // Build the base query with increased timeout
+    // Build query - IMPORTANT: Apply indexed filters FIRST to reduce search space
     let query = supabase
       .from('sbir_final')
-      .select('*', { count: 'exact' });
+      .select('*', { count: 'estimated', head: false }); // Use estimated count to avoid full table scan
 
-    // Filter out corrupted/invalid entries
-    // Only show entries with valid topic_number (not null, not empty, matches pattern)
+    // Filter out corrupted/invalid entries FIRST (this should use index on topic_number)
     query = query.not('topic_number', 'is', null);
     query = query.neq('topic_number', '');
     
-    // Apply filters
-    if (searchText && searchText.trim()) {
-      // Split search text into individual keywords for better performance
-      // Remove punctuation and filter out short words
-      const allKeywords = searchText.trim()
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, ' ') // Remove punctuation except hyphens
-        .split(/\s+/)
-        .filter((k: string) => k.length > 3); // Increased min length to 3 chars
-      
-      // Prioritize longer, more specific keywords (limit to 3 for performance)
-      // Longer words are usually more specific and will match fewer records
-      const searchKeywords = allKeywords
-        .sort((a: string, b: string) => b.length - a.length) // Sort by length descending
-        .slice(0, 3); // Take top 3 most specific (reduced from 5)
-      
-      if (searchKeywords.length > 0) {
-        // Search only title and keywords fields (skip description for performance)
-        // Build OR conditions for each keyword
-        const orConditions = searchKeywords.map((keyword: string) => 
-          `title.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
-        ).join(',');
-        
-        console.log(` Searching ${searchKeywords.length} keywords (from ${allKeywords.length} total):`, searchKeywords);
-        query = query.or(orConditions);
-      }
-    }
-
+    // Apply indexed filters BEFORE search (dramatically reduces search space)
     if (component && component !== 'all') {
       query = query.eq('component', component);
+      console.log(` Filtering by component: ${component}`);
     }
 
-    // Handle multiple status filters
+    // Handle multiple status filters (indexed field)
     if (Array.isArray(statuses) && statuses.length > 0) {
       query = query.in('status', statuses);
+      console.log(` Filtering by statuses: ${statuses.join(', ')}`);
     }
 
     if (programType && programType !== 'all') {
       query = query.eq('program_type', programType);
+      console.log(` Filtering by program_type: ${programType}`);
+    }
+
+    // NOW apply search AFTER filtering (searches smaller dataset)
+    if (searchText && searchText.trim()) {
+      // Use ONLY the single longest keyword for maximum performance
+      const allKeywords = searchText.trim()
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, ' ')
+        .split(/\s+/)
+        .filter((k: string) => k.length > 4); // Minimum 5 chars
+      
+      if (allKeywords.length > 0) {
+        // Take ONLY the longest keyword
+        const longestKeyword = allKeywords.sort((a: string, b: string) => b.length - a.length)[0];
+        
+        // Search only title field (most relevant)
+        console.log(` Searching for: "${longestKeyword}" (from: "${searchText.substring(0, 50)}")`);
+        query = query.ilike('title', `%${longestKeyword}%`);
+      }
     }
 
     if (keywords && keywords.trim()) {
