@@ -1,13 +1,15 @@
 /**
  * RAG Embedding Service
- * Uses HuggingFace Inference API (FREE tier) for NV-Embed-v2
+ * Uses HuggingFace Inference API (FREE tier) for BGE-small-en-v1.5
  * 
+ * Model: BAAI/bge-small-en-v1.5 (384 dimensions)
  * Setup: Add HUGGINGFACE_API_KEY to Vercel environment variables
  * Get free key: https://huggingface.co/settings/tokens (read permissions)
  */
 
-const HF_API_URL = 'https://api-inference.huggingface.co/models/nvidia/NV-Embed-v2';
+const HF_API_URL = 'https://api-inference.huggingface.co/pipeline/feature-extraction/BAAI/bge-small-en-v1.5';
 const HF_API_KEY = process.env.HUGGINGFACE_API_KEY;
+const EMBEDDING_DIMENSIONS = 384; // BGE-small outputs 384-dimensional vectors
 
 interface EmbeddingResponse {
   embedding: number[];
@@ -17,7 +19,7 @@ interface EmbeddingResponse {
 /**
  * Generate embedding for a single text chunk
  * @param text - Text to embed (max ~512 tokens recommended)
- * @returns 1024-dimensional vector
+ * @returns 384-dimensional vector
  */
 export async function generateEmbedding(text: string): Promise<number[]> {
   if (!HF_API_KEY) {
@@ -51,11 +53,11 @@ export async function generateEmbedding(text: string): Promise<number[]> {
 
     const result = await response.json();
     
-    // HuggingFace returns array of embeddings (we send one input, get one output)
+    // BGE model returns array of embeddings (we send one input, get one output)
     const embedding = Array.isArray(result) ? result[0] : result;
     
-    if (!Array.isArray(embedding) || embedding.length !== 1024) {
-      throw new Error(`Invalid embedding format. Expected 1024-dim vector, got: ${JSON.stringify(result).substring(0, 100)}`);
+    if (!Array.isArray(embedding) || embedding.length !== EMBEDDING_DIMENSIONS) {
+      throw new Error(`Invalid embedding format. Expected ${EMBEDDING_DIMENSIONS}-dim vector, got length: ${Array.isArray(embedding) ? embedding.length : 'not an array'}`);
     }
 
     return embedding;
@@ -69,7 +71,7 @@ export async function generateEmbedding(text: string): Promise<number[]> {
 /**
  * Generate embeddings for multiple text chunks in batch
  * @param texts - Array of texts to embed
- * @returns Array of 1024-dimensional vectors
+ * @returns Array of 384-dimensional vectors
  */
 export async function generateEmbeddingsBatch(texts: string[]): Promise<number[][]> {
   if (!texts || texts.length === 0) {
@@ -128,7 +130,7 @@ export function cosineSimilarity(a: number[], b: number[]): number {
 
 /**
  * Format embedding for Supabase pgvector
- * @param embedding - 1024-dimensional vector
+ * @param embedding - 384-dimensional vector
  * @returns Postgres array string format
  */
 export function formatEmbeddingForPostgres(embedding: number[]): string {

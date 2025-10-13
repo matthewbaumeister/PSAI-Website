@@ -256,7 +256,7 @@ export async function POST(request: NextRequest) {
     const embeddingRecords = insertedChunks.map((chunk, index) => ({
       chunk_id: chunk.id,
       embedding: `[${embeddings[index].join(',')}]`, // pgvector format
-      model_name: 'nvidia/NV-Embed-v2'
+      model_name: 'BAAI/bge-small-en-v1.5'
     }));
 
     const { error: embeddingsError } = await supabase
