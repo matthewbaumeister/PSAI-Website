@@ -18,6 +18,9 @@
     "src/app/api/admin/sbir/browse/route.ts": {
       "maxDuration": 120
     },
+    "src/app/api/admin/sbir/extract-file/route.ts": {
+      "maxDuration": 180
+    },
     "src/app/api/admin/rag/ingest/route.ts": {
       "maxDuration": 300
     },

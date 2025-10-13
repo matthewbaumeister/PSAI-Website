@@ -47,6 +47,11 @@ export default function SBIRDatabaseBrowser() {
   const [smartSearchInput, setSmartSearchInput] = useState('');
   const [smartSearchMode, setSmartSearchMode] = useState<'query' | 'doc' | null>(null);
   const [smartSearchProcessing, setSmartSearchProcessing] = useState(false);
+  
+  // File upload state
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [fileProcessing, setFileProcessing] = useState(false);
+  const [filePreview, setFilePreview] = useState<string>('');
 
   const pageSize = 25;
 
@@ -232,6 +237,57 @@ export default function SBIRDatabaseBrowser() {
     return sorted;
   };
 
+  // Handle file upload and processing
+  const handleFileUpload = async () => {
+    if (!uploadedFile) return;
+
+    setFileProcessing(true);
+    setFilePreview('');
+
+    try {
+      const formData = new FormData();
+      formData.append('file', uploadedFile);
+
+      console.log('Uploading file:', uploadedFile.name);
+
+      const response = await fetch('/api/admin/sbir/extract-file', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Set preview
+        setFilePreview(`File: ${data.filename} (${data.fileType})\nExtracted: ${data.stats.characterCount} chars, ${data.stats.wordCount} words\nKeywords: ${data.keywords.join(', ')}`);
+        
+        // Set search text with keywords
+        setSearchText(data.keywords.join(' '));
+        
+        // Reset filters and trigger search
+        setCurrentPage(0);
+        setSelectedStatuses([]);
+        setSelectedComponent('all');
+        setSelectedProgramType('all');
+        
+        // Fetch with new keywords
+        await fetchRecords();
+        
+        // Clear file input
+        setUploadedFile(null);
+        
+      } else {
+        alert(`File processing failed: ${data.error}`);
+      }
+
+    } catch (error) {
+      console.error('File processing error:', error);
+      alert('File processing failed. Please try again.');
+    } finally {
+      setFileProcessing(false);
+    }
+  };
+
   return (
     <div style={{ 
       minHeight: '100vh', 
@@ -382,6 +438,95 @@ Our company specializes in artificial intelligence and machine learning for defe
             color: '#64748b'
           }}>
             Tip: Press Cmd/Ctrl + Enter to search • Paste 50+ words for auto keyword extraction
+          </div>
+
+          {/* OR Divider */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginTop: '24px',
+            marginBottom: '16px'
+          }}>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(148, 163, 184, 0.2)' }} />
+            <div style={{ padding: '0 16px', color: '#64748b', fontSize: '13px', fontWeight: '600' }}>
+              OR
+            </div>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(148, 163, 184, 0.2)' }} />
+          </div>
+
+          {/* File Upload Section */}
+          <div>
+            <label style={{
+              display: 'block',
+              color: '#cbd5e1',
+              fontSize: '14px',
+              fontWeight: '600',
+              marginBottom: '10px'
+            }}>
+              Upload Capabilities Document
+            </label>
+            <p style={{ 
+              color: '#94a3b8', 
+              fontSize: '13px',
+              marginBottom: '12px'
+            }}>
+              Supported formats: PDF, DOCX, TXT, PPTX
+            </p>
+
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+              <input
+                type="file"
+                accept=".pdf,.docx,.txt,.pptx"
+                onChange={(e) => setUploadedFile(e.target.files?.[0] || null)}
+                disabled={fileProcessing}
+                style={{
+                  flex: 1,
+                  minWidth: '250px',
+                  padding: '10px',
+                  background: 'rgba(15, 23, 42, 0.6)',
+                  border: '1px solid rgba(71, 85, 105, 0.5)',
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '13px',
+                  cursor: fileProcessing ? 'not-allowed' : 'pointer'
+                }}
+              />
+              <button
+                onClick={handleFileUpload}
+                disabled={fileProcessing || !uploadedFile}
+                style={{
+                  padding: '10px 20px',
+                  background: fileProcessing || !uploadedFile
+                    ? 'rgba(100, 116, 139, 0.3)'
+                    : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  border: 'none',
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: fileProcessing || !uploadedFile ? 'not-allowed' : 'pointer',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {fileProcessing ? 'Processing...' : 'Extract & Search'}
+              </button>
+            </div>
+
+            {filePreview && (
+              <div style={{
+                marginTop: '12px',
+                padding: '12px',
+                background: 'rgba(16, 185, 129, 0.1)',
+                border: '1px solid rgba(16, 185, 129, 0.3)',
+                borderRadius: '6px',
+                fontSize: '12px',
+                color: '#10b981',
+                fontFamily: 'monospace',
+                whiteSpace: 'pre-wrap'
+              }}>
+                {filePreview}
+              </div>
+            )}
           </div>
         </div>
 
