@@ -21,8 +21,10 @@
     "jsonwebtoken": "^9.0.2",
     "jspdf": "^3.0.2",
     "next": "15.4.6",
+    "pdf-parse": "^2.2.16",
     "react": "^19",
-    "react-dom": "^19"
+    "react-dom": "^19",
+    "tiktoken": "^1.0.22"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
