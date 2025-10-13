@@ -7,7 +7,7 @@
  * Get free key: https://huggingface.co/settings/tokens (read permissions)
  */
 
-const HF_API_URL = 'https://api-inference.huggingface.co/pipeline/feature-extraction/BAAI/bge-small-en-v1.5';
+const HF_API_URL = 'https://api-inference.huggingface.co/models/BAAI/bge-small-en-v1.5';
 const HF_API_KEY = process.env.HUGGINGFACE_API_KEY;
 const EMBEDDING_DIMENSIONS = 384; // BGE-small outputs 384-dimensional vectors
 
