@@ -16,7 +16,7 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('🧹 Running ephemeral file cleanup...');
+    console.log(' Running ephemeral file cleanup...');
 
     // Find files older than 1 hour
     const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
@@ -28,12 +28,12 @@ export async function POST(request: NextRequest) {
       .lt('uploaded_at', oneHourAgo);
 
     if (fetchError) {
-      console.error('❌ Error fetching expired files:', fetchError);
+      console.error(' Error fetching expired files:', fetchError);
       throw fetchError;
     }
 
     if (!expiredFiles || expiredFiles.length === 0) {
-      console.log('✅ No expired files to clean up');
+      console.log(' No expired files to clean up');
       return NextResponse.json({
         success: true,
         deleted: 0,
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    console.log(`🗑️ Found ${expiredFiles.length} expired files`);
+    console.log(` Found ${expiredFiles.length} expired files`);
 
     // Delete expired files (cascades to chunks and embeddings)
     const { error: deleteError } = await supabase
@@ -50,11 +50,11 @@ export async function POST(request: NextRequest) {
       .lt('uploaded_at', oneHourAgo);
 
     if (deleteError) {
-      console.error('❌ Error deleting expired files:', deleteError);
+      console.error(' Error deleting expired files:', deleteError);
       throw deleteError;
     }
 
-    console.log(`✅ Deleted ${expiredFiles.length} expired files`);
+    console.log(` Deleted ${expiredFiles.length} expired files`);
 
     return NextResponse.json({
       success: true,
@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Cleanup error:', error);
+    console.error(' Cleanup error:', error);
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
@@ -98,7 +98,7 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Error checking cleanup stats:', error);
+    console.error(' Error checking cleanup stats:', error);
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'

@@ -171,10 +171,10 @@ def expand_component_name(component):
     }
     return component_map.get(str(component).upper(), component) if component else ''
 
-print("🚀 AUTOMATED SBIR SCRAPER - DAILY UPDATE")
+print(" AUTOMATED SBIR SCRAPER - DAILY UPDATE")
 print("="*50)
-print(f"⏰ Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-print("📊 Automated extraction for database update")
+print(f" Started at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+print(" Automated extraction for database update")
 print("="*50)
 
 base_url = "https://www.dodsbirsttr.mil"
@@ -188,7 +188,7 @@ headers = {
 
 session.headers.update(headers)
 
-print("🔄 Initializing session...")
+print(" Initializing session...")
 try:
     main_page = session.get(f"{base_url}/topics-app/", timeout=10)
     print(f"   Session initialized (status: {main_page.status_code})")
@@ -247,7 +247,7 @@ while True:
                 all_topics.extend(topics)
 
                 if len(topics) < size or len(all_topics) >= total:
-                    print(f"\\n✅ Retrieved all {len(all_topics)} topics")
+                    print(f"\\n Retrieved all {len(all_topics)} topics")
                     break
 
                 page += 1
@@ -261,7 +261,7 @@ while True:
         print(f"   Error on page {page}: {e}")
         break
 
-print(f"\\n📊 Processing {len(all_topics)} topics...")
+print(f"\\n Processing {len(all_topics)} topics...")
 
 # Process topics (simplified for speed)
 formatted_topics = []
@@ -451,11 +451,11 @@ final_df = pd.DataFrame(formatted_topics)
 final_df.to_csv(output_file, index=False)
 
 elapsed_hours = (time.time() - start_time) / 3600
-print(f"\\n✅ Scraping completed in {elapsed_hours:.1f} hours")
-print(f"📊 Processed {len(formatted_topics):,} topics")
-print(f"💾 Saved: {output_file}")
+print(f"\\n Scraping completed in {elapsed_hours:.1f} hours")
+print(f" Processed {len(formatted_topics):,} topics")
+print(f" Saved: {output_file}")
 
-print("\\n🎉 AUTOMATED SCRAPER COMPLETED!")
+print("\\n AUTOMATED SCRAPER COMPLETED!")
 `;
 
     // Write the scraper script to a temporary file

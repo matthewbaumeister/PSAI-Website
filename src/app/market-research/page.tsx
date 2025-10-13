@@ -28,17 +28,17 @@ export default function MarketResearchPage() {
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">🔒</div>
+                <div className="feature-icon"></div>
                 <h3>Proprietary Data</h3>
                 <p>Exclusive data sources and databases not available elsewhere</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🔍</div>
+                <div className="feature-icon"></div>
                 <h3>Advanced Search</h3>
                 <p>Custom-built search algorithms and intelligence tools</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">📊</div>
+                <div className="feature-icon"></div>
                 <h3>Industry Intelligence</h3>
                 <p>Deep insights into industries, markets, and opportunities</p>
               </div>

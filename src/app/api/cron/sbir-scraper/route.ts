@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    console.log('🚀 Starting automated SBIR scraper...');
+    console.log(' Starting automated SBIR scraper...');
     
     const result = await scrapeAndUpdateSBIR();
     
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ SBIR scraper error:', error);
+    console.error(' SBIR scraper error:', error);
     return NextResponse.json({ 
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error' 
@@ -45,15 +45,15 @@ async function scrapeAndUpdateSBIR() {
     // Step 1: Fetch all active/open/pre-release topics
     console.log('📡 Fetching active/open/pre-release topics...');
     const topics = await fetchActiveTopics(baseUrl);
-    console.log(`✅ Found ${topics.length} active topics`);
+    console.log(` Found ${topics.length} active topics`);
 
     // Step 2: Process and format topics
-    console.log('🔄 Processing topics...');
+    console.log(' Processing topics...');
     const processedTopics = await processTopics(topics, baseUrl);
-    console.log(`✅ Processed ${processedTopics.length} topics`);
+    console.log(` Processed ${processedTopics.length} topics`);
 
     // Step 3: Update database with incremental changes
-    console.log('💾 Updating Supabase database...');
+    console.log(' Updating Supabase database...');
     const updateResult = await updateDatabase(processedTopics);
     
     return {
@@ -80,7 +80,7 @@ async function fetchActiveTopics(baseUrl: string) {
   const maxConsecutivePagesWithoutActive = 5; // Stop after 5 pages with no active topics
   let totalActiveFound = 0;
 
-  console.log('🔍 Fetching topics and filtering for Open/Pre-Release/Active status...');
+  console.log(' Fetching topics and filtering for Open/Pre-Release/Active status...');
   console.log('📡 API Base URL:', baseUrl);
 
   // CRITICAL: Multi-step session initialization (like Python script does)
@@ -113,13 +113,13 @@ async function fetchActiveTopics(baseUrl: string) {
     console.log(`   ✓ Component API called (status: ${compResponse.status})`);
     await new Promise(resolve => setTimeout(resolve, 500));
     
-    console.log(`✅ Session fully initialized - ready for topic search`);
+    console.log(` Session fully initialized - ready for topic search`);
   } catch (error) {
-    console.warn('⚠️ Session initialization had issues:', error);
+    console.warn(' Session initialization had issues:', error);
   }
 
   // Longer delay before starting main scrape (give server time to process session)
-  console.log('⏳ Waiting 3 seconds before search...');
+  console.log(' Waiting 3 seconds before search...');
   await new Promise(resolve => setTimeout(resolve, 3000));
 
   while (page < maxPages) {
@@ -142,8 +142,8 @@ async function fetchActiveTopics(baseUrl: string) {
     const searchUrl = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${size}&page=${page}`;
 
     console.log(`📡 Fetching page ${page + 1}...`);
-    console.log(`🔍 Search params:`, JSON.stringify(searchParams));
-    console.log(`🔗 URL: ${searchUrl.substring(0, 150)}...`);
+    console.log(` Search params:`, JSON.stringify(searchParams));
+    console.log(` URL: ${searchUrl.substring(0, 150)}...`);
 
     try {
       const response = await fetch(searchUrl, {
@@ -160,9 +160,9 @@ async function fetchActiveTopics(baseUrl: string) {
       console.log(`📡 Page ${page + 1} response status: ${response.status}`);
 
       if (response.status !== 200) {
-        console.warn(`⚠️ Non-200 response on page ${page}: ${response.status}`);
+        console.warn(` Non-200 response on page ${page}: ${response.status}`);
         const errorText = await response.text();
-        console.error(`⚠️ Error response:`, errorText.substring(0, 200));
+        console.error(` Error response:`, errorText.substring(0, 200));
         break;
       }
 
@@ -185,8 +185,8 @@ async function fetchActiveTopics(baseUrl: string) {
           const status = topic.topicStatus || 'Unknown';
           statusCounts[status] = (statusCounts[status] || 0) + 1;
         });
-        console.log('📊 Status distribution in first page:', statusCounts);
-        console.log('📊 Sample topic:', {
+        console.log(' Status distribution in first page:', statusCounts);
+        console.log(' Sample topic:', {
           topicCode: data.data[0]?.topicCode,
           topicStatus: data.data[0]?.topicStatus,
           topicTitle: data.data[0]?.topicTitle?.substring(0, 50)
@@ -207,15 +207,15 @@ async function fetchActiveTopics(baseUrl: string) {
         allTopics.push(...activeTopicsInPage);
       } else {
         consecutivePagesWithoutActive++;
-        console.log(`   ⏭️ Page ${page + 1}: No active topics (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
+        console.log(`    Page ${page + 1}: No active topics (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
       }
 
       // Early termination if no active topics found in several consecutive pages
       if (consecutivePagesWithoutActive >= maxConsecutivePagesWithoutActive) {
         if (totalActiveFound > 0) {
-          console.log(`   ✅ Early termination: Found ${totalActiveFound} active topics, no more in last ${maxConsecutivePagesWithoutActive} pages`);
+          console.log(`    Early termination: Found ${totalActiveFound} active topics, no more in last ${maxConsecutivePagesWithoutActive} pages`);
         } else {
-          console.log(`   ⚠️ Early termination: No active topics found after ${maxConsecutivePagesWithoutActive} pages`);
+          console.log(`    Early termination: No active topics found after ${maxConsecutivePagesWithoutActive} pages`);
         }
         break;
       }
@@ -230,14 +230,14 @@ async function fetchActiveTopics(baseUrl: string) {
       await new Promise(resolve => setTimeout(resolve, 200));
       
     } catch (error) {
-      console.error(`❌ Error fetching page ${page}:`, error);
-      console.error(`❌ Error details:`, error);
+      console.error(` Error fetching page ${page}:`, error);
+      console.error(` Error details:`, error);
       break;
     }
   }
 
-  console.log(`✅ Finished fetching topics. Total active found: ${allTopics.length}`);
-  console.log(`📊 Sample of first topic:`, allTopics[0] ? {
+  console.log(` Finished fetching topics. Total active found: ${allTopics.length}`);
+  console.log(` Sample of first topic:`, allTopics[0] ? {
     topicCode: allTopics[0].topicCode,
     topicStatus: allTopics[0].topicStatus,
     topicTitle: allTopics[0].topicTitle?.substring(0, 50)
@@ -249,7 +249,7 @@ async function fetchActiveTopics(baseUrl: string) {
 async function processTopics(topics: any[], baseUrl: string) {
   const processedTopics = [];
   
-  console.log(`📦 Processing ${topics.length} topics with column mapper...`);
+  console.log(` Processing ${topics.length} topics with column mapper...`);
   
   for (const topic of topics) {
     try {
@@ -262,12 +262,12 @@ async function processTopics(topics: any[], baseUrl: string) {
       processedTopics.push(mappedTopic);
       
     } catch (error) {
-      console.error(`❌ Error processing topic ${topic.topicId}:`, error);
+      console.error(` Error processing topic ${topic.topicId}:`, error);
       continue;
     }
   }
 
-  console.log(`✅ Successfully mapped ${processedTopics.length} topics to Supabase format`);
+  console.log(` Successfully mapped ${processedTopics.length} topics to Supabase format`);
   return processedTopics;
 }
 
@@ -277,7 +277,7 @@ async function updateDatabase(topics: any[]) {
   let skippedRecords = 0;
 
   try {
-    console.log(`💾 Upserting ${topics.length} topics to database...`);
+    console.log(` Upserting ${topics.length} topics to database...`);
     
     // Get existing records with their modified dates to track actual changes
     const topicKeys = topics.map(t => ({ 
@@ -309,7 +309,7 @@ async function updateDatabase(topics: any[]) {
       });
 
     if (upsertError) {
-      console.error('❌ Error upserting topics:', upsertError);
+      console.error(' Error upserting topics:', upsertError);
       throw upsertError;
     }
 
@@ -327,10 +327,10 @@ async function updateDatabase(topics: any[]) {
       }
     });
 
-    console.log(`✅ Database upsert complete: ${newRecords} new, ${updatedRecords} updated, ${skippedRecords} unchanged`);
+    console.log(` Database upsert complete: ${newRecords} new, ${updatedRecords} updated, ${skippedRecords} unchanged`);
 
   } catch (error) {
-    console.error('❌ Database update error:', error);
+    console.error(' Database update error:', error);
     throw error;
   }
 

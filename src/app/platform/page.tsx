@@ -195,7 +195,7 @@ export default function PlatformPage() {
               marginBottom: '24px',
               fontSize: '28px'
             }}>
-              🔍
+              
             </div>
             <h3 style={{
               fontSize: '24px',

@@ -28,17 +28,17 @@ export default function SearchPage() {
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">🛡️</div>
+                <div className="feature-icon"></div>
                 <h3>DoD-Focused Search</h3>
                 <p>Comprehensive coverage of all Department of Defense contracting opportunities</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🔍</div>
+                <div className="feature-icon"></div>
                 <h3>Multi-Agency Coverage</h3>
                 <p>Search across Army, Navy, Air Force, Marines, and all DoD agencies</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">📊</div>
+                <div className="feature-icon"></div>
                 <h3>Contract Intelligence</h3>
                 <p>Real-time tracking and analysis of DoD contracting activities</p>
               </div>

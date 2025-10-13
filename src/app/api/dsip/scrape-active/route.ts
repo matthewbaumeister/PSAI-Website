@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
           phase: 'starting',
           processedTopics: 0,
           activeTopicsFound: 0,
-          logs: ['🚀 Starting active opportunities scraper...']
+          logs: [' Starting active opportunities scraper...']
         },
         startTime: new Date().toISOString()
       });

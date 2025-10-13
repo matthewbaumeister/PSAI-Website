@@ -172,7 +172,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
     setScraperProgress(0)
     setScraperCurrentStep('Initializing scraper...')
     
-    showNotification('🚀 Starting SBIR scraper...', 'info')
+    showNotification(' Starting SBIR scraper...', 'info')
     
     // Simulate progress updates
     const progressInterval = setInterval(() => {
@@ -184,10 +184,10 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
     
     // Update step messages
     setTimeout(() => setScraperCurrentStep('📡 Connecting to SBIR API...'), 2000)
-    setTimeout(() => setScraperCurrentStep('🔍 Fetching active topics...'), 8000)
-    setTimeout(() => setScraperCurrentStep('📦 Processing topic data...'), 15000)
-    setTimeout(() => setScraperCurrentStep('💾 Mapping to database columns...'), 25000)
-    setTimeout(() => setScraperCurrentStep('🗄️ Updating Supabase database...'), 35000)
+    setTimeout(() => setScraperCurrentStep(' Fetching active topics...'), 8000)
+    setTimeout(() => setScraperCurrentStep(' Processing topic data...'), 15000)
+    setTimeout(() => setScraperCurrentStep(' Mapping to database columns...'), 25000)
+    setTimeout(() => setScraperCurrentStep(' Updating Supabase database...'), 35000)
     
     try {
       const response = await fetch('/api/admin/sbir/trigger-scraper', {
@@ -199,7 +199,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       
       clearInterval(progressInterval)
       setScraperProgress(100)
-      setScraperCurrentStep('✅ Scraper completed!')
+      setScraperCurrentStep(' Scraper completed!')
       
       const result = await response.json()
       console.log('[SBIR Scraper] Full Response:', JSON.stringify(result, null, 2))
@@ -208,20 +208,20 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       if (response.ok) {
         const details = result.result || {};
         const message = `
-📊 Scraper Results:
+ Scraper Results:
 • Total Topics Found: ${details.totalTopics || 0}
 • Processed: ${details.processedTopics || 0}  
 • New Records: ${details.newRecords || 0}
 • Updated Records: ${details.updatedRecords || 0}
 • Unchanged: ${details.skippedRecords || 0}
 
-${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs for details.' : ''}
+${details.totalTopics === 0 ? ' No active topics found. Check Vercel logs for details.' : ''}
         `.trim();
         
         showNotification(
           details.totalTopics > 0 
-            ? `✅ SBIR scraper completed! Found ${details.totalTopics} active topics.`
-            : `⚠️ SBIR scraper completed but found 0 active topics.`,
+            ? ` SBIR scraper completed! Found ${details.totalTopics} active topics.`
+            : ` SBIR scraper completed but found 0 active topics.`,
           details.totalTopics > 0 ? 'success' : 'warning',
           { 
             message,
@@ -233,11 +233,11 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
           loadSbirStats()
         }, 3000)
       } else {
-        showNotification(`❌ Failed to trigger SBIR scraper: ${result.error}`, 'error')
+        showNotification(` Failed to trigger SBIR scraper: ${result.error}`, 'error')
       }
     } catch (error) {
       console.error('[SBIR Scraper] Error:', error)
-      showNotification('❌ Failed to trigger SBIR scraper', 'error')
+      showNotification(' Failed to trigger SBIR scraper', 'error')
     } finally {
       setIsTriggeringSbirScraper(false)
     }
@@ -343,16 +343,16 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
         const data = await response.json()
         setIsScraperRunning(true)
         setScraperStatus('running')
-        showNotification(`🚀 Scraper started successfully! ${data.message}`, 'success')
+        showNotification(` Scraper started successfully! ${data.message}`, 'success')
         
         // Start monitoring the scraper
         monitorScraper()
       } else {
         const errorData = await response.json()
-        showNotification(`❌ Failed to start scraper: ${errorData.error}`, 'error')
+        showNotification(` Failed to start scraper: ${errorData.error}`, 'error')
       }
     } catch (error) {
-      showNotification('❌ Error starting scraper', 'error')
+      showNotification(' Error starting scraper', 'error')
     }
   }
 
@@ -372,12 +372,12 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
       if (response.ok) {
         setIsScraperRunning(false)
         setScraperStatus('paused')
-        showNotification('⏸️ Scraper paused successfully', 'warning')
+        showNotification(' Scraper paused successfully', 'warning')
       } else {
-        showNotification('❌ Failed to pause scraper', 'error')
+        showNotification(' Failed to pause scraper', 'error')
       }
     } catch (error) {
-      showNotification('❌ Error pausing scraper', 'error')
+      showNotification(' Error pausing scraper', 'error')
     }
   }
 
@@ -397,23 +397,23 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
       if (response.ok) {
         setIsScraperRunning(true)
         setScraperStatus('running')
-        showNotification('▶️ Scraper resumed successfully', 'success')
+        showNotification(' Scraper resumed successfully', 'success')
         
         // Start monitoring the scraper again
         monitorScraper()
       } else {
         const errorData = await response.json()
-        showNotification(`❌ Failed to resume scraper: ${errorData.error}`, 'error')
+        showNotification(` Failed to resume scraper: ${errorData.error}`, 'error')
       }
     } catch (error) {
-      showNotification('❌ Error resuming scraper', 'error')
+      showNotification(' Error resuming scraper', 'error')
     }
   }
 
   const checkActiveOpportunities = async () => {
     try {
       setIsCheckingActive(true)
-      showNotification('🔍 Checking for active opportunities...', 'info')
+      showNotification(' Checking for active opportunities...', 'info')
       
       // Query the database for active opportunities
       const response = await fetch('/api/dsip/active-opportunities')
@@ -424,8 +424,8 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
           setActiveOpportunitiesCount(data.count)
           const notificationType = data.count === 0 ? 'warning' : 'success'
           const notificationMessage = data.count === 0 
-            ? '⚠️ Database is empty - No opportunities found' 
-            : `✅ Found ${data.count} active opportunities`
+            ? ' Database is empty - No opportunities found' 
+            : ` Found ${data.count} active opportunities`
           
           showNotification(
             notificationMessage,
@@ -441,7 +441,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
           )
         } else {
           showNotification(
-            `❌ Failed to check opportunities: ${data.error}`,
+            ` Failed to check opportunities: ${data.error}`,
             'error',
             data.hint ? { hint: data.hint, details: data.details } : undefined
           )
@@ -449,11 +449,11 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
       } else {
         const errorText = await response.text()
         console.error('Check opportunities error response:', errorText)
-        showNotification(`❌ Failed to check opportunities: ${response.status}`, 'error', { responseText: errorText })
+        showNotification(` Failed to check opportunities: ${response.status}`, 'error', { responseText: errorText })
       }
     } catch (error) {
       console.error('Check active opportunities error:', error)
-      showNotification(`❌ Error checking active opportunities: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+      showNotification(` Error checking active opportunities: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
     } finally {
       setIsCheckingActive(false)
     }
@@ -474,7 +474,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
             setIsScraperRunning(false)
             if (data.status === 'completed') {
               showNotification(
-                '✅ Scraping completed successfully!',
+                ' Scraping completed successfully!',
                 'success',
                 {
                   recordsProcessed: data.currentJob?.recordsProcessed,
@@ -486,7 +486,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               )
             } else {
               showNotification(
-                `❌ Scraping failed: ${data.currentJob?.error || 'Unknown error'}`,
+                ` Scraping failed: ${data.currentJob?.error || 'Unknown error'}`,
                 'error',
                 {
                   error: data.currentJob?.error,
@@ -511,7 +511,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
     try {
       console.log('[Active Scraper] Starting...')
       setIsScrapingActive(true)
-      showNotification('🚀 Starting real DSIP scraper for active opportunities...', 'info')
+      showNotification(' Starting real DSIP scraper for active opportunities...', 'info')
       
       const response = await fetch('/api/dsip/scrape-active', {
         method: 'POST',
@@ -525,19 +525,19 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
         const data = await response.json()
         console.log('[Active Scraper] Job started:', data)
         setActiveScraperJobId(data.jobId)
-        showNotification('✅ Scraper started! Fetching active opportunities from DSIP...', 'success')
+        showNotification(' Scraper started! Fetching active opportunities from DSIP...', 'success')
         
         // Start monitoring progress
         monitorActiveScraperProgress(data.jobId)
       } else {
         const errorText = await response.text()
         console.error('[Active Scraper] Failed:', response.status, errorText)
-        showNotification(`❌ Failed to start scraper: ${response.status}`, 'error')
+        showNotification(` Failed to start scraper: ${response.status}`, 'error')
         setIsScrapingActive(false)
       }
     } catch (error) {
       console.error('[Active Scraper] Error:', error)
-      showNotification(`❌ Error starting scraper: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+      showNotification(` Error starting scraper: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       setIsScrapingActive(false)
     }
   }
@@ -568,7 +568,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               
               console.log('[Active Scraper Monitor] Completed! Total records:', job.totalRecords)
               showNotification(
-                `✅ Scraping completed! Found ${job.totalRecords} active opportunities`,
+                ` Scraping completed! Found ${job.totalRecords} active opportunities`,
                 'success',
                 {
                   totalRecords: job.totalRecords,
@@ -581,7 +581,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               clearInterval(interval)
               setIsScrapingActive(false)
               console.error('[Active Scraper Monitor] Failed:', job.error)
-              showNotification(`❌ Scraping failed: ${job.error}`, 'error')
+              showNotification(` Scraping failed: ${job.error}`, 'error')
             }
           }
         } else {
@@ -595,7 +595,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
   
   const testScraperSystem = async () => {
     try {
-      showNotification('🧪 Testing scraper system...', 'info')
+      showNotification(' Testing scraper system...', 'info')
       
       let allTestsPassed = true
       const results: any = {}
@@ -650,30 +650,30 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
       // Show final result
       if (allTestsPassed) {
         showNotification(
-          '✅ All scraper system tests passed!',
+          ' All scraper system tests passed!',
           'success',
           {
-            systemStatus: results.systemStatus?.success ? '✅ Passed' : '❌ Failed',
-            databaseTest: results.databaseTest?.success ? '✅ Passed' : '❌ Failed',
-            connectionTest: results.connectionTest?.success ? '✅ Passed' : '❌ Failed',
+            systemStatus: results.systemStatus?.success ? ' Passed' : ' Failed',
+            databaseTest: results.databaseTest?.success ? ' Passed' : ' Failed',
+            connectionTest: results.connectionTest?.success ? ' Passed' : ' Failed',
             message: 'Check browser console for detailed results'
           }
         )
       } else {
         showNotification(
-          '⚠️ Some scraper system tests failed',
+          ' Some scraper system tests failed',
           'warning',
           {
-            systemStatus: results.systemStatus?.success ? '✅ Passed' : '❌ Failed',
-            databaseTest: results.databaseTest?.success ? '✅ Passed' : '❌ Failed',
-            connectionTest: results.connectionTest?.success ? '✅ Passed' : '❌ Failed',
+            systemStatus: results.systemStatus?.success ? ' Passed' : ' Failed',
+            databaseTest: results.databaseTest?.success ? ' Passed' : ' Failed',
+            connectionTest: results.connectionTest?.success ? ' Passed' : ' Failed',
             message: 'Check browser console for detailed error information'
           }
         )
       }
       
     } catch (error) {
-      showNotification(`❌ Test failed with error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+      showNotification(` Test failed with error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       console.error('Test error:', error)
     }
   }
@@ -681,7 +681,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
   const testSupabaseDatabase = async () => {
     try {
       setIsTestingSupabase(true)
-      showNotification('🗄️ Testing Supabase database connection...', 'info')
+      showNotification(' Testing Supabase database connection...', 'info')
       
       const response = await fetch('/api/admin/supabase-test')
       if (response.ok) {
@@ -692,7 +692,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
           setSupabaseTestResults(data.results)
           
           showNotification(
-            '✅ Supabase Connection Successful',
+            ' Supabase Connection Successful',
             'success',
             {
               connection: data.results.connection.success,
@@ -701,13 +701,13 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
             }
           )
         } else {
-          showNotification(`❌ Supabase test failed: ${data.error}`, 'error')
+          showNotification(` Supabase test failed: ${data.error}`, 'error')
         }
       } else {
-        showNotification('❌ Failed to test Supabase database', 'error')
+        showNotification(' Failed to test Supabase database', 'error')
       }
     } catch (error) {
-      showNotification(`❌ Error testing Supabase database: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+      showNotification(` Error testing Supabase database: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       console.error('Supabase test error:', error)
     } finally {
       setIsTestingSupabase(false)
@@ -737,13 +737,13 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
         if (data.success) {
           setSupabaseData(data.data)
         } else {
-          setMessage('❌ Failed to load data: ' + data.error)
+          setMessage(' Failed to load data: ' + data.error)
         }
       } else {
-        setMessage('❌ Failed to load data')
+        setMessage(' Failed to load data')
       }
     } catch (error) {
-      setMessage('❌ Error loading data')
+      setMessage(' Error loading data')
       console.error('Data loading error:', error)
     } finally {
       setIsLoadingData(false)
@@ -752,7 +752,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
   
   const testDatabase = async () => {
     try {
-      showNotification('🗄️ Testing database connection and tables...', 'info')
+      showNotification(' Testing database connection and tables...', 'info')
       
       const response = await fetch('/api/dsip/test-database')
       if (response.ok) {
@@ -762,7 +762,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
         if (data.success) {
           const status = data.databaseStatus
           showNotification(
-            '✅ Database Test Complete',
+            ' Database Test Complete',
             'success',
             {
               opportunitiesTable: {
@@ -782,13 +782,13 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
             }
           )
         } else {
-          showNotification('❌ Database test failed', 'error')
+          showNotification(' Database test failed', 'error')
         }
       } else {
-        showNotification('❌ Failed to test database', 'error')
+        showNotification(' Failed to test database', 'error')
       }
     } catch (error) {
-      showNotification(`❌ Error testing database: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+      showNotification(` Error testing database: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       console.error('Database test error:', error)
     }
   }
@@ -824,7 +824,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
         </div>
 
         {message && (
-          <div className={`message ${message.includes('successfully') || message.includes('✅') || message.includes('Connected') ? 'success' : 'error'}`}>
+          <div className={`message ${message.includes('successfully') || message.includes('') || message.includes('Connected') ? 'success' : 'error'}`}>
             {message}
           </div>
         )}
@@ -883,7 +883,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               border: '1px solid rgba(148, 163, 184, 0.2)',
               marginBottom: '24px'
             }}>
-              <h3 style={{ color: '#ffffff', marginBottom: '16px', fontSize: '18px' }}>📊 Database Status</h3>
+              <h3 style={{ color: '#ffffff', marginBottom: '16px', fontSize: '18px' }}> Database Status</h3>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                 <div style={{
                   background: supabaseTestResults.connection.success ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
@@ -892,7 +892,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   padding: '16px'
                 }}>
                   <div style={{ color: supabaseTestResults.connection.success ? '#22c55e' : '#ef4444', fontSize: '24px', fontWeight: 'bold' }}>
-                    {supabaseTestResults.connection.success ? '✅' : '❌'}
+                    {supabaseTestResults.connection.success ? '' : ''}
                   </div>
                   <div style={{ color: supabaseTestResults.connection.success ? '#86efac' : '#fca5a5', fontSize: '12px' }}>
                     Connection Status
@@ -915,7 +915,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               </div>
               
               <div style={{ marginTop: '16px' }}>
-                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '14px' }}>📋 Tables Status:</h4>
+                <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '14px' }}> Tables Status:</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '8px' }}>
                   {Object.entries(supabaseTestResults.tables).map(([tableName, tableInfo]: [string, any]) => (
                     <div key={tableName} style={{
@@ -934,7 +934,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                       }}>
                         <span>{tableName}</span>
                         <span style={{ color: tableInfo.exists ? '#22c55e' : '#ef4444' }}>
-                          {tableInfo.exists ? '✅' : '❌'} {tableInfo.exists ? tableInfo.count : 'Missing'}
+                          {tableInfo.exists ? '' : ''} {tableInfo.exists ? tableInfo.count : 'Missing'}
                         </span>
                       </div>
                     </div>
@@ -948,7 +948,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
         {/* Database Data Viewer Section */}
         {supabaseTestResults && (
           <div className="settings-section">
-            <h2>📊 Database Data Viewer</h2>
+            <h2> Database Data Viewer</h2>
             <p>Browse and search actual data from your Supabase tables.</p>
             
             <div style={{
@@ -1013,7 +1013,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                     opacity: isLoadingData ? 0.6 : 1
                   }}
                 >
-                  {isLoadingData ? '🔄 Loading...' : '🔍 Load Data'}
+                  {isLoadingData ? ' Loading...' : ' Load Data'}
                 </button>
               </div>
               
@@ -1026,7 +1026,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   overflowY: 'auto'
                 }}>
                   <h4 style={{ color: '#ffffff', marginBottom: '12px', fontSize: '14px' }}>
-                    📋 Data from {selectedTable} ({supabaseData.length} records shown)
+                     Data from {selectedTable} ({supabaseData.length} records shown)
                   </h4>
                   <div style={{ overflowX: 'auto' }}>
                     <table style={{
@@ -1098,7 +1098,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               color: '#10b981',
               margin: '0 0 12px 0'
             }}>
-              📊 Active Opportunities Monitor
+               Active Opportunities Monitor
             </h3>
             <p style={{
               color: '#6b7280',
@@ -1117,7 +1117,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   opacity: isCheckingActive ? 0.6 : 1
                 }}
               >
-                {isCheckingActive ? '🔄 Checking...' : '🔍 Check Active Opportunities'}
+                {isCheckingActive ? ' Checking...' : ' Check Active Opportunities'}
               </button>
               
               {activeOpportunitiesCount !== null && (
@@ -1130,7 +1130,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   fontSize: '14px',
                   fontWeight: '500'
                 }}>
-                  📈 Found {activeOpportunitiesCount} active opportunities
+                   Found {activeOpportunitiesCount} active opportunities
                 </div>
               )}
             </div>
@@ -1158,7 +1158,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                     color: scraperStatus === 'running' ? '#fbbf24' : scraperStatus === 'completed' ? '#10b981' : scraperStatus === 'failed' ? '#ef4444' : '#94a3b8', 
                     fontWeight: '600' 
                   }}>
-                    {scraperStatus === 'running' ? '🔄 Running' : scraperStatus === 'completed' ? '✅ Completed' : scraperStatus === 'failed' ? '❌ Failed' : '⏸️ Idle'}
+                    {scraperStatus === 'running' ? ' Running' : scraperStatus === 'completed' ? ' Completed' : scraperStatus === 'failed' ? ' Failed' : ' Idle'}
                   </span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -1197,7 +1197,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                         width: '100%'
                       }}
                     >
-                      🚀 Full Refresh (8-12 hours)
+                       Full Refresh (8-12 hours)
                     </button>
                     <button
                       type="button"
@@ -1212,7 +1212,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                         cursor: isScrapingActive ? 'not-allowed' : 'pointer'
                       }}
                     >
-                      {isScrapingActive ? '⏳ Scraping Active Opportunities...' : '⚡ Scrape Active Opportunities'}
+                      {isScrapingActive ? ' Scraping Active Opportunities...' : '⚡ Scrape Active Opportunities'}
                     </button>
                   </>
                 ) : (
@@ -1230,7 +1230,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                         className="btn btn-primary"
                         style={{ width: '100%' }}
                       >
-                        ▶️ Resume Scraper
+                         Resume Scraper
                       </button>
                     )}
                   </>
@@ -1240,14 +1240,14 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   className="btn btn-outline"
                   style={{ width: '100%' }}
                 >
-                  🧪 Test Scraper System
+                   Test Scraper System
                 </button>
                 <button
                   onClick={testDatabase}
                   className="btn btn-outline"
                   style={{ width: '100%' }}
                 >
-                  🗄️ Test Database
+                   Test Database
                 </button>
               </div>
             </div>
@@ -1285,7 +1285,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                 </p>
                 {currentScrapingJob.estimatedCompletion && (
                   <p style={{ color: '#94a3b8', margin: '4px 0 0 0', fontSize: '12px' }}>
-                    ⏰ Estimated completion: {new Date(currentScrapingJob.estimatedCompletion).toLocaleString()}
+                     Estimated completion: {new Date(currentScrapingJob.estimatedCompletion).toLocaleString()}
                   </p>
                 )}
               </div>
@@ -1634,7 +1634,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                     opacity: isTriggeringSbirScraper ? 0.6 : 1
                   }}
                 >
-                  {isTriggeringSbirScraper ? '⏳ Running Scraper...' : '🚀 Trigger Manual Scrape'}
+                  {isTriggeringSbirScraper ? ' Running Scraper...' : ' Trigger Manual Scrape'}
                 </button>
                 
                 <button
@@ -1718,7 +1718,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                         alignItems: 'center',
                         gap: '8px'
                       }}>
-                        <span style={{ animation: 'spin 2s linear infinite', display: 'inline-block' }}>⚙️</span>
+                        <span style={{ animation: 'spin 2s linear infinite', display: 'inline-block' }}></span>
                         SBIR Scraper Running
                       </h4>
                       <div style={{
@@ -1810,11 +1810,11 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                       fontSize: '11px',
                       color: '#94a3b8'
                     }}>
-                      <span style={{ opacity: scraperProgress >= 0 ? 1 : 0.4 }}>🚀 Init</span>
+                      <span style={{ opacity: scraperProgress >= 0 ? 1 : 0.4 }}> Init</span>
                       <span style={{ opacity: scraperProgress >= 25 ? 1 : 0.4 }}>📡 Fetch</span>
-                      <span style={{ opacity: scraperProgress >= 50 ? 1 : 0.4 }}>📦 Process</span>
-                      <span style={{ opacity: scraperProgress >= 75 ? 1 : 0.4 }}>💾 Map</span>
-                      <span style={{ opacity: scraperProgress >= 90 ? 1 : 0.4 }}>🗄️ Save</span>
+                      <span style={{ opacity: scraperProgress >= 50 ? 1 : 0.4 }}> Process</span>
+                      <span style={{ opacity: scraperProgress >= 75 ? 1 : 0.4 }}> Map</span>
+                      <span style={{ opacity: scraperProgress >= 90 ? 1 : 0.4 }}> Save</span>
                     </div>
 
                     <p style={{ 
@@ -1855,13 +1855,13 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                         Processed: {sbirScraperResult.result.processedTopics || 0}
                       </p>
                       <p style={{ margin: '4px 0' }}>
-                        ✨ New Records: {sbirScraperResult.result.newRecords || 0}
+                         New Records: {sbirScraperResult.result.newRecords || 0}
                       </p>
                       <p style={{ margin: '4px 0' }}>
-                        🔄 Updated Records: {sbirScraperResult.result.updatedRecords || 0}
+                         Updated Records: {sbirScraperResult.result.updatedRecords || 0}
                       </p>
                       <p style={{ margin: '4px 0' }}>
-                        ⏭️ Unchanged: {sbirScraperResult.result.skippedRecords || 0}
+                         Unchanged: {sbirScraperResult.result.skippedRecords || 0}
                       </p>
                     </div>
                   )}
@@ -1907,7 +1907,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
               alignItems: 'center',
               gap: '12px'
             }}>
-              🎯 Active Opportunities Data
+               Active Opportunities Data
             </h2>
 
             {/* Progress Display - Modal Overlay */}
@@ -1936,7 +1936,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                     marginBottom: '24px',
                     textAlign: 'center'
                   }}>
-                    🔄 Scraping Active Opportunities
+                     Scraping Active Opportunities
                   </h3>
                   
                   {activeScraperProgress ? (
@@ -2009,7 +2009,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   ) : (
                     <div style={{ textAlign: 'center', color: '#cbd5e1' }}>
                       <p style={{ fontSize: '18px', marginBottom: '16px' }}>
-                        🚀 Initializing scraper...
+                         Initializing scraper...
                       </p>
                       <p style={{ fontSize: '14px', color: '#94a3b8' }}>
                         This may take a few moments
@@ -2031,14 +2031,14 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                 }}>
                   <div>
                     <h3 style={{ color: '#cbd5e1', fontSize: '18px', marginBottom: '8px' }}>
-                      ✅ {activeScraperData.length} Active Opportunities Ready
+                       {activeScraperData.length} Active Opportunities Ready
                     </h3>
                     <p style={{ color: '#94a3b8', fontSize: '14px' }}>
                       Data includes all 159 columns from DSIP
                     </p>
                   </div>
                   <button
-                    onClick={() => showNotification('⚠️ Supabase import coming soon!', 'info')}
+                    onClick={() => showNotification(' Supabase import coming soon!', 'info')}
                     style={{
                       padding: '12px 24px',
                       background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
@@ -2051,7 +2051,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                       transition: 'all 0.2s ease'
                     }}
                   >
-                    📥 Import to Supabase (Coming Soon)
+                     Import to Supabase (Coming Soon)
                   </button>
                 </div>
 
@@ -2176,10 +2176,10 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   lineHeight: '1.6'
                 }}>
                   {notification.details.totalCount !== undefined && (
-                    <div>📊 Total in DB: {notification.details.totalCount}</div>
+                    <div> Total in DB: {notification.details.totalCount}</div>
                   )}
                   {notification.details.activeCount !== undefined && (
-                    <div>✅ Active: {notification.details.activeCount}</div>
+                    <div> Active: {notification.details.activeCount}</div>
                   )}
                   {notification.details.breakdown && (
                     <div style={{ marginTop: '8px', paddingLeft: '16px' }}>
@@ -2204,7 +2204,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   )}
                   {notification.details.tables && (
                     <div style={{ marginTop: '12px' }}>
-                      <div style={{ fontWeight: '600', marginBottom: '6px' }}>📋 Tables:</div>
+                      <div style={{ fontWeight: '600', marginBottom: '6px' }}> Tables:</div>
                       {Object.entries(notification.details.tables).map(([tableName, tableInfo]: [string, any]) => (
                         <div key={tableName} style={{ 
                           fontSize: '13px', 
@@ -2215,7 +2215,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                           alignItems: 'center',
                           gap: '8px'
                         }}>
-                          <span>{tableInfo.exists ? '✅' : '❌'}</span>
+                          <span>{tableInfo.exists ? '' : ''}</span>
                           <span style={{ flex: 1 }}>{tableName}</span>
                           {tableInfo.exists && (
                             <span style={{ opacity: 0.8 }}>({tableInfo.count?.toLocaleString() || 0} records)</span>
@@ -2226,10 +2226,10 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                   )}
                   {(notification.details.opportunitiesTable || notification.details.scrapingJobsTable || notification.details.usersTable) && (
                     <div style={{ marginTop: '12px' }}>
-                      <div style={{ fontWeight: '600', marginBottom: '6px' }}>📊 Database Tables:</div>
+                      <div style={{ fontWeight: '600', marginBottom: '6px' }}> Database Tables:</div>
                       {notification.details.opportunitiesTable && (
                         <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9, marginTop: '3px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span>{notification.details.opportunitiesTable.exists ? '✅' : '❌'}</span>
+                          <span>{notification.details.opportunitiesTable.exists ? '' : ''}</span>
                           <span style={{ flex: 1 }}>dsip_opportunities</span>
                           {notification.details.opportunitiesTable.exists && (
                             <span style={{ opacity: 0.8 }}>({notification.details.opportunitiesTable.count?.toLocaleString() || 0} records)</span>
@@ -2238,7 +2238,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                       )}
                       {notification.details.scrapingJobsTable && (
                         <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9, marginTop: '3px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span>{notification.details.scrapingJobsTable.exists ? '✅' : '❌'}</span>
+                          <span>{notification.details.scrapingJobsTable.exists ? '' : ''}</span>
                           <span style={{ flex: 1 }}>dsip_scraping_jobs</span>
                           {notification.details.scrapingJobsTable.exists && (
                             <span style={{ opacity: 0.8 }}>({notification.details.scrapingJobsTable.count?.toLocaleString() || 0} records)</span>
@@ -2247,7 +2247,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                       )}
                       {notification.details.usersTable && (
                         <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9, marginTop: '3px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span>{notification.details.usersTable.exists ? '✅' : '❌'}</span>
+                          <span>{notification.details.usersTable.exists ? '' : ''}</span>
                           <span style={{ flex: 1 }}>users</span>
                           {notification.details.usersTable.exists && (
                             <span style={{ opacity: 0.8 }}>({notification.details.usersTable.count?.toLocaleString() || 0} records)</span>
@@ -2256,42 +2256,42 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                       )}
                       {notification.details.canInsert !== undefined && (
                         <div style={{ marginTop: '8px', fontSize: '13px', paddingLeft: '8px' }}>
-                          ✏️ Can Insert: {notification.details.canInsert ? '✅ Yes' : '❌ No'}
+                           Can Insert: {notification.details.canInsert ? ' Yes' : ' No'}
                         </div>
                       )}
                       {notification.details.insertError && (
                         <div style={{ marginTop: '6px', fontSize: '12px', paddingLeft: '8px', color: '#fca5a5' }}>
-                          ⚠️ Insert Error: {notification.details.insertError}
+                           Insert Error: {notification.details.insertError}
                         </div>
                       )}
                     </div>
                   )}
                   {notification.details.connection !== undefined && (
                     <div style={{ marginTop: '8px' }}>
-                      🔗 Connection: {notification.details.connection ? '✅ Connected' : '❌ Failed'}
+                       Connection: {notification.details.connection ? ' Connected' : ' Failed'}
                     </div>
                   )}
                   {(notification.details.recordsProcessed !== undefined || notification.details.newRecords !== undefined) && (
                     <div style={{ marginTop: '12px' }}>
-                      <div style={{ fontWeight: '600', marginBottom: '6px' }}>📊 Scraping Results:</div>
+                      <div style={{ fontWeight: '600', marginBottom: '6px' }}> Scraping Results:</div>
                       {notification.details.recordsProcessed !== undefined && (
                         <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9 }}>
-                          📝 Records Processed: {notification.details.recordsProcessed?.toLocaleString()}
+                           Records Processed: {notification.details.recordsProcessed?.toLocaleString()}
                         </div>
                       )}
                       {notification.details.newRecords !== undefined && (
                         <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9 }}>
-                          ✨ New Records: {notification.details.newRecords?.toLocaleString()}
+                           New Records: {notification.details.newRecords?.toLocaleString()}
                         </div>
                       )}
                       {notification.details.updatedRecords !== undefined && (
                         <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9 }}>
-                          🔄 Updated Records: {notification.details.updatedRecords?.toLocaleString()}
+                           Updated Records: {notification.details.updatedRecords?.toLocaleString()}
                         </div>
                       )}
                       {notification.details.duration && (
                         <div style={{ fontSize: '13px', marginLeft: '8px', opacity: 0.9 }}>
-                          ⏱️ Duration: {notification.details.duration}
+                           Duration: {notification.details.duration}
                         </div>
                       )}
                     </div>
@@ -2304,12 +2304,12 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                       borderRadius: '8px',
                       fontSize: '13px'
                     }}>
-                      💡 <strong>Hint:</strong> {notification.details.hint}
+                       <strong>Hint:</strong> {notification.details.hint}
                     </div>
                   )}
                   {notification.details.message && (
                     <div style={{ marginTop: '8px', fontSize: '13px', fontStyle: 'italic' }}>
-                      ℹ️ {notification.details.message}
+                       {notification.details.message}
                     </div>
                   )}
                   {notification.details.timestamp && (

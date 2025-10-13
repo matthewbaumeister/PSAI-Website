@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
               processed_topics: 0,
               start_time: new Date().toISOString(),
               last_activity: new Date().toISOString(),
-              logs: ['🚀 Full refresh started', '⏳ This will take 5-6 hours to complete']
+              logs: [' Full refresh started', ' This will take 5-6 hours to complete']
             });
 
           if (jobError) {
@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
               processed_topics: 0,
               start_time: new Date().toISOString(),
               last_activity: new Date().toISOString(),
-              logs: ['🚀 Quick check started', '⏳ Checking for new/updated opportunities']
+              logs: [' Quick check started', ' Checking for new/updated opportunities']
             });
 
           if (jobError) {
@@ -194,7 +194,7 @@ export async function GET(request: NextRequest) {
 // Background scraping process
 async function startScrapingProcess(jobId: string, type: 'full' | 'quick') {
   try {
-    console.log(`🚀 Starting ${type} scraping process for job ${jobId}`);
+    console.log(` Starting ${type} scraping process for job ${jobId}`);
     
     // This would be where the actual scraping logic runs
     // For now, let's simulate the process and update the database
@@ -208,7 +208,7 @@ async function startScrapingProcess(jobId: string, type: 'full' | 'quick') {
     }
     
   } catch (error) {
-    console.error(`❌ Scraping process failed for job ${jobId}:`, error);
+    console.error(` Scraping process failed for job ${jobId}:`, error);
     
     // Update job status to failed
     const supabase = createAdminSupabaseClient();
@@ -269,7 +269,7 @@ async function simulateQuickCheck(jobId: string) {
     })
     .eq('id', jobId);
     
-  console.log(`✅ Quick check completed for job ${jobId}`);
+  console.log(` Quick check completed for job ${jobId}`);
 }
 
 // Simulate full refresh process
@@ -319,5 +319,5 @@ async function simulateFullRefresh(jobId: string) {
     })
     .eq('id', jobId);
     
-  console.log(`✅ Full refresh completed for job ${jobId}`);
+  console.log(` Full refresh completed for job ${jobId}`);
 }

@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
   const startTime = Date.now();
   
   try {
-    console.log('📥 RAG Ingest request received');
+    console.log(' RAG Ingest request received');
 
     // Check authentication (admin only)
     // TODO: Add proper auth check
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    console.log(`📄 Processing: ${filename} (type: ${ingestData.type})`);
+    console.log(` Processing: ${filename} (type: ${ingestData.type})`);
 
     // Step 1: Extract text
     let fullText = '';
@@ -101,12 +101,12 @@ export async function POST(request: NextRequest) {
       pages = extraction.pages.map(p => cleanPDFText(p));
       pageCount = extraction.metadata.pageCount;
       extractedMetadata = extractPDFMetadata(extraction);
-      console.log(`✅ Extracted ${pageCount} pages, ${fullText.length} chars`);
+      console.log(` Extracted ${pageCount} pages, ${fullText.length} chars`);
       
     } else if (ingestData.text) {
       fullText = ingestData.text.trim();
       pages = [fullText];
-      console.log(`✅ Text provided: ${fullText.length} chars`);
+      console.log(` Text provided: ${fullText.length} chars`);
       
     } else {
       return NextResponse.json({
@@ -123,7 +123,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Step 2: Create file record (EPHEMERAL MODE - auto-expires in 1 hour)
-    console.log('💾 Creating ephemeral file record...');
+    console.log(' Creating ephemeral file record...');
     const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour from now
     
     const { data: fileRecord, error: fileError } = await supabase
@@ -149,7 +149,7 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (fileError || !fileRecord) {
-      console.error('❌ Error creating file record:', fileError);
+      console.error(' Error creating file record:', fileError);
       return NextResponse.json({
         success: false,
         error: 'Failed to create file record'
@@ -157,18 +157,18 @@ export async function POST(request: NextRequest) {
     }
 
     const fileId = fileRecord.id;
-    console.log(`✅ File record created: ${fileId}`);
+    console.log(` File record created: ${fileId}`);
 
     // Step 3: Chunk text
-    console.log('✂️ Chunking text...');
+    console.log(' Chunking text...');
     const chunks = pages.length > 1
       ? chunkTextByPages(pages)
       : chunkText(fullText);
     
-    console.log(`✅ Created ${chunks.length} chunks`);
+    console.log(` Created ${chunks.length} chunks`);
 
     // Step 4: Store chunks
-    console.log('💾 Storing chunks...');
+    console.log(' Storing chunks...');
     const chunkRecords = chunks.map(chunk => ({
       file_id: fileId,
       chunk_index: chunk.index,
@@ -185,7 +185,7 @@ export async function POST(request: NextRequest) {
       .select();
 
     if (chunksError || !insertedChunks) {
-      console.error('❌ Error storing chunks:', chunksError);
+      console.error(' Error storing chunks:', chunksError);
       
       // Update file status to error
       await supabase
@@ -199,7 +199,7 @@ export async function POST(request: NextRequest) {
       }, { status: 500 });
     }
 
-    console.log(`✅ Stored ${insertedChunks.length} chunks`);
+    console.log(` Stored ${insertedChunks.length} chunks`);
 
     // Step 5: Generate embeddings
     console.log('🧠 Generating embeddings...');
@@ -208,9 +208,9 @@ export async function POST(request: NextRequest) {
     let embeddings: number[][];
     try {
       embeddings = await generateEmbeddingsBatch(chunkTexts);
-      console.log(`✅ Generated ${embeddings.length} embeddings`);
+      console.log(` Generated ${embeddings.length} embeddings`);
     } catch (embeddingError) {
-      console.error('❌ Error generating embeddings:', embeddingError);
+      console.error(' Error generating embeddings:', embeddingError);
       
       await supabase
         .from('rag_files')
@@ -228,7 +228,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Step 6: Store embeddings
-    console.log('💾 Storing embeddings...');
+    console.log(' Storing embeddings...');
     const embeddingRecords = insertedChunks.map((chunk, index) => ({
       chunk_id: chunk.id,
       embedding: `[${embeddings[index].join(',')}]`, // pgvector format
@@ -240,7 +240,7 @@ export async function POST(request: NextRequest) {
       .insert(embeddingRecords);
 
     if (embeddingsError) {
-      console.error('❌ Error storing embeddings:', embeddingsError);
+      console.error(' Error storing embeddings:', embeddingsError);
       
       await supabase
         .from('rag_files')
@@ -253,7 +253,7 @@ export async function POST(request: NextRequest) {
       }, { status: 500 });
     }
 
-    console.log(`✅ Stored ${embeddingRecords.length} embeddings`);
+    console.log(` Stored ${embeddingRecords.length} embeddings`);
 
     // Step 7: Update file status to ready
     await supabase
@@ -262,7 +262,7 @@ export async function POST(request: NextRequest) {
       .eq('id', fileId);
 
     const processingTime = Date.now() - startTime;
-    console.log(`✅ Ingestion complete in ${processingTime}ms`);
+    console.log(` Ingestion complete in ${processingTime}ms`);
 
     return NextResponse.json({
       success: true,
@@ -283,7 +283,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Ingestion error:', error);
+    console.error(' Ingestion error:', error);
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'

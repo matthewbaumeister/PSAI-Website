@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       sortOrder = 'desc'
     } = await request.json();
 
-    console.log('🔍 SBIR Browse request:', { searchText, component, statuses, programType, page });
+    console.log(' SBIR Browse request:', { searchText, component, statuses, programType, page });
 
     // Build the base query
     let query = supabase
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
     const { data, error, count } = await query;
 
     if (error) {
-      console.error('❌ SBIR browse error:', error);
+      console.error(' SBIR browse error:', error);
       return NextResponse.json({ 
         success: false, 
         error: error.message 
@@ -101,7 +101,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ SBIR browse request error:', error);
+    console.error(' SBIR browse request error:', error);
     return NextResponse.json({ 
       success: false, 
       error: error instanceof Error ? error.message : 'Unknown error' 

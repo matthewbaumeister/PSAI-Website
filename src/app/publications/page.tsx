@@ -530,7 +530,7 @@ export default function PublicationsPage() {
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">📊</div>
+                <div className="feature-icon"></div>
                 <h3>Market Research</h3>
                 <p>Data-driven insights into government contracting trends and opportunities</p>
               </div>
@@ -540,7 +540,7 @@ export default function PublicationsPage() {
                 <p>Latest developments in government contracting and procurement</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🎯</div>
+                <div className="feature-icon"></div>
                 <h3>Strategic Insights</h3>
                 <p>Expert analysis and recommendations for contract success</p>
               </div>

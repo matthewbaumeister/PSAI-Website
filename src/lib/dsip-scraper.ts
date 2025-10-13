@@ -224,35 +224,35 @@ class DSIPScraper {
 
   private async runFullScrape(jobId: string, isResume = false) {
     try {
-      this.log(jobId, 'info', '🚀 Starting full DSIP database refresh...');
-      this.log(jobId, 'info', '⏰ Estimated runtime: 8-12 hours (with breaks)');
-      this.log(jobId, 'info', '💡 This job can be paused and resumed');
+      this.log(jobId, 'info', ' Starting full DSIP database refresh...');
+      this.log(jobId, 'info', ' Estimated runtime: 8-12 hours (with breaks)');
+      this.log(jobId, 'info', ' This job can be paused and resumed');
 
       // Step 1: Fetch all topics (with resume capability)
       this.log(jobId, 'info', '📡 Fetching all topics...');
       const allTopics = await this.fetchAllTopics(jobId, isResume);
       
       this.currentJob!.totalTopics = allTopics.length;
-      this.log(jobId, 'info', `✅ Retrieved ${allTopics.length} topics`);
+      this.log(jobId, 'info', ` Retrieved ${allTopics.length} topics`);
 
       // Step 2: Process each topic with details (with resume capability)
-      this.log(jobId, 'info', '🔄 Processing topics with detailed information...');
+      this.log(jobId, 'info', ' Processing topics with detailed information...');
       await this.processTopicsWithDetails(allTopics, jobId, isResume);
 
       // Step 3: Save to database
-      this.log(jobId, 'info', '💾 Saving to database...');
+      this.log(jobId, 'info', ' Saving to database...');
       await this.saveToDatabase(allTopics, jobId);
 
       this.currentJob!.status = 'completed';
       this.currentJob!.endTime = new Date();
       this.currentJob!.progress = 100;
-      this.log(jobId, 'info', '🎉 Full refresh completed successfully!');
+      this.log(jobId, 'info', ' Full refresh completed successfully!');
       await this.updateJobProgress(this.currentJob!);
 
     } catch (error) {
       this.currentJob!.status = 'failed';
       this.currentJob!.error = error instanceof Error ? error.message : 'Unknown error';
-      this.log(jobId, 'error', `❌ Scraping failed: ${error}`);
+      this.log(jobId, 'error', ` Scraping failed: ${error}`);
       await this.updateJobProgress(this.currentJob!);
     } finally {
       this.isRunning = false;
@@ -267,7 +267,7 @@ class DSIPScraper {
       const recentTopics = await this.fetchRecentTopics(jobId);
       
       this.currentJob!.totalTopics = recentTopics.length;
-      this.log(jobId, 'info', `✅ Found ${recentTopics.length} recent topics`);
+      this.log(jobId, 'info', ` Found ${recentTopics.length} recent topics`);
 
       // Process and update database
       await this.updateRecentTopics(recentTopics, jobId);
@@ -275,13 +275,13 @@ class DSIPScraper {
       this.currentJob!.status = 'completed';
       this.currentJob!.endTime = new Date();
       this.currentJob!.progress = 100;
-      this.log(jobId, 'info', '🎉 Quick check completed!');
+      this.log(jobId, 'info', ' Quick check completed!');
       await this.updateJobProgress(this.currentJob!);
 
     } catch (error) {
       this.currentJob!.status = 'failed';
       this.currentJob!.error = error instanceof Error ? error.message : 'Unknown error';
-      this.log(jobId, 'error', `❌ Quick check failed: ${error}`);
+      this.log(jobId, 'error', ` Quick check failed: ${error}`);
       await this.updateJobProgress(this.currentJob!);
     } finally {
       this.isRunning = false;
@@ -295,7 +295,7 @@ class DSIPScraper {
 
     while (true) {
       if (this.shouldStop) {
-        this.log(jobId, 'info', '⏸️ Scraping paused by user');
+        this.log(jobId, 'info', ' Scraping paused by user');
         this.currentJob!.status = 'paused';
         await this.updateJobProgress(this.currentJob!);
         return allTopics;
@@ -319,7 +319,7 @@ class DSIPScraper {
       const searchUrl = `${this.baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${size}&page=${page}`;
 
       if (page % 10 === 0) {
-        this.log(jobId, 'info', `📄 Fetching page ${page + 1}...`);
+        this.log(jobId, 'info', ` Fetching page ${page + 1}...`);
       }
 
       try {
@@ -340,7 +340,7 @@ class DSIPScraper {
             const total = data.total || 0;
 
             if (page === 0) {
-              this.log(jobId, 'info', `📊 Total topics available: ${total}`);
+              this.log(jobId, 'info', ` Total topics available: ${total}`);
             }
 
             allTopics.push(...topics);
@@ -426,7 +426,7 @@ class DSIPScraper {
 
     for (let i = processed; i < topics.length; i++) {
       if (this.shouldStop) {
-        this.log(jobId, 'info', '⏸️ Processing paused by user');
+        this.log(jobId, 'info', ' Processing paused by user');
         this.currentJob!.status = 'paused';
         await this.updateJobProgress(this.currentJob!);
         return;
@@ -471,7 +471,7 @@ class DSIPScraper {
         }
 
         if (processed % 100 === 0) {
-          this.log(jobId, 'info', `📊 Processed ${processed}/${total} topics (${this.currentJob!.progress}%)`);
+          this.log(jobId, 'info', ` Processed ${processed}/${total} topics (${this.currentJob!.progress}%)`);
           await this.updateJobProgress(this.currentJob!);
         }
 
@@ -493,7 +493,7 @@ class DSIPScraper {
   }
 
   private async saveToDatabase(topics: any[], jobId: string) {
-    this.log(jobId, 'info', '💾 Saving topics to database with duplicate handling...');
+    this.log(jobId, 'info', ' Saving topics to database with duplicate handling...');
     
     const supabase = createAdminSupabaseClient();
     
@@ -505,7 +505,7 @@ class DSIPScraper {
     
     for (let i = 0; i < topics.length; i += batchSize) {
       if (this.shouldStop) {
-        this.log(jobId, 'info', '⏸️ Database save paused by user');
+        this.log(jobId, 'info', ' Database save paused by user');
         return;
       }
 
@@ -557,20 +557,20 @@ class DSIPScraper {
 
       // Log progress every batch
       if ((i + batchSize) % (batchSize * 5) === 0) {
-        this.log(jobId, 'info', `📊 Database progress: ${i + batchSize}/${topics.length} topics processed`);
-        this.log(jobId, 'info', `📈 Stats: ${insertedCount} inserted, ${updatedCount} updated, ${skippedCount} skipped`);
+        this.log(jobId, 'info', ` Database progress: ${i + batchSize}/${topics.length} topics processed`);
+        this.log(jobId, 'info', ` Stats: ${insertedCount} inserted, ${updatedCount} updated, ${skippedCount} skipped`);
       }
 
       // Small delay between batches
       await this.delay(100);
     }
     
-    this.log(jobId, 'info', `🎉 Database save completed!`);
-    this.log(jobId, 'info', `📊 Final stats: ${insertedCount} inserted, ${updatedCount} updated, ${skippedCount} skipped`);
+    this.log(jobId, 'info', ` Database save completed!`);
+    this.log(jobId, 'info', ` Final stats: ${insertedCount} inserted, ${updatedCount} updated, ${skippedCount} skipped`);
   }
 
   private async updateRecentTopics(topics: any[], jobId: string) {
-    this.log(jobId, 'info', '🔄 Updating recent topics in database...');
+    this.log(jobId, 'info', ' Updating recent topics in database...');
     
     const supabase = createAdminSupabaseClient();
     
@@ -887,7 +887,7 @@ class DSIPScraper {
       this.shouldStop = false;
       this.currentJob.status = 'running';
       this.isRunning = true;
-      this.log(this.currentJob.id, 'info', '▶️ Scraper resumed by user');
+      this.log(this.currentJob.id, 'info', ' Scraper resumed by user');
       
       if (this.currentJob.type === 'full') {
         this.runFullScrape(this.currentJob.id, true);

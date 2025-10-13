@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    console.log('🔄 Starting automated SBIR database update...');
+    console.log(' Starting automated SBIR database update...');
 
     // Trigger the scraper
     const scraperResponse = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/admin/sbir/scraper`, {
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     const result = await scraperResponse.json();
 
-    console.log(`✅ Automated SBIR update completed: ${result.processed} records processed`);
+    console.log(` Automated SBIR update completed: ${result.processed} records processed`);
 
     return NextResponse.json({
       success: true,
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Error in automated SBIR update:', error);
+    console.error(' Error in automated SBIR update:', error);
     return NextResponse.json({ 
       error: 'Automated update failed',
       details: error instanceof Error ? error.message : 'Unknown error'

@@ -27,12 +27,12 @@ export default function CRMPage() {
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">🎯</div>
+                <div className="feature-icon"></div>
                 <h3>Lead Intelligence</h3>
                 <p>AI-powered lead scoring and qualification for procurement opportunities</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">📊</div>
+                <div className="feature-icon"></div>
                 <h3>Pipeline Management</h3>
                 <p>Track opportunities from initial contact to contract award</p>
               </div>

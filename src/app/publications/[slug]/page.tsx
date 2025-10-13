@@ -275,7 +275,7 @@ export default function PublicationPage() {
         <div className="container">
           <div className="login-required">
             <div className="login-card">
-              <h1>🔒 Login Required</h1>
+              <h1> Login Required</h1>
               <p>Create a free account to access the full article:</p>
               <ul className="feature-list">
                 <li>Read complete research reports</li>

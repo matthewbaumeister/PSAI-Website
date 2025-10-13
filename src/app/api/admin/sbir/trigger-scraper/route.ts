@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
       return authResult;
     }
 
-    console.log('🚀 Manual SBIR scraper trigger initiated by admin');
+    console.log(' Manual SBIR scraper trigger initiated by admin');
 
     // Trigger the scraper endpoint
     const scraperUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/cron/sbir-scraper`;
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     }
 
   } catch (error) {
-    console.error('❌ Manual scraper trigger error:', error);
+    console.error(' Manual scraper trigger error:', error);
     return NextResponse.json({ 
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error' 

@@ -235,7 +235,7 @@ export default function SolutionsPage() {
           </p>
           <div className="integration-features">
             <div className="integration-feature">
-              <div className="feature-icon">🔄</div>
+              <div className="feature-icon"></div>
               <h4>Data Sync</h4>
               <p>Information flows seamlessly between all solutions</p>
             </div>
@@ -245,7 +245,7 @@ export default function SolutionsPage() {
               <p>Work together across all tools and platforms</p>
             </div>
             <div className="integration-feature">
-              <div className="feature-icon">📊</div>
+              <div className="feature-icon"></div>
               <h4>Unified Analytics</h4>
               <p>See the full picture across all your activities</p>
             </div>

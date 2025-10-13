@@ -413,7 +413,7 @@ export default function DashboardPage() {
               fontSize: '14px',
               fontWeight: '500'
             }}>
-              📊 Analytics Dashboard
+               Analytics Dashboard
             </div>
             <div style={{
               padding: '12px 20px',
@@ -424,7 +424,7 @@ export default function DashboardPage() {
               fontSize: '14px',
               fontWeight: '500'
             }}>
-              📈 Performance Reports
+               Performance Reports
             </div>
             <div style={{
               padding: '12px 20px',
@@ -435,7 +435,7 @@ export default function DashboardPage() {
               fontSize: '14px',
               fontWeight: '500'
             }}>
-              🔔 Smart Notifications
+               Smart Notifications
             </div>
           </div>
         </div>

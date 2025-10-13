@@ -33,12 +33,12 @@ export default function CompliancePage() {
                 <p>Advanced AI technology for compliance checking and template generation</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">👨‍🎓</div>
+                <div className="feature-icon"></div>
                 <h3>PhD-Level Writers</h3>
                 <p>Expert writers with advanced degrees in relevant fields</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">📋</div>
+                <div className="feature-icon"></div>
                 <h3>Custom Templates</h3>
                 <p>Tailored templates designed specifically for your industry and needs</p>
               </div>

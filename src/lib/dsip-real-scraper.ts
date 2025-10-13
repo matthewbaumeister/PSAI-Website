@@ -51,7 +51,7 @@ export class DSIPRealScraper {
    * Main scraping function - fetches ALL topics then filters for active
    */
   async scrapeActiveOpportunities(progressCallback?: (progress: ScraperProgress) => void): Promise<any[]> {
-    this.log('🚀 Starting DSIP scraper for active opportunities');
+    this.log(' Starting DSIP scraper for active opportunities');
     
     try {
       // Step 1: Initialize session
@@ -59,15 +59,15 @@ export class DSIPRealScraper {
       
       // Step 2: Fetch all topics from API (paginated)
       const allTopics = await this.fetchAllTopics(progressCallback);
-      this.log(`✅ Retrieved ${allTopics.length} total topics`);
+      this.log(` Retrieved ${allTopics.length} total topics`);
       
       // Step 3: Filter for active/open/pre-release ONLY
       const activeTopics = this.filterActiveTopics(allTopics);
-      this.log(`✅ Found ${activeTopics.length} active/open/pre-release opportunities`);
+      this.log(` Found ${activeTopics.length} active/open/pre-release opportunities`);
       
       // Step 4: Fetch detailed information for active topics
       const detailedTopics = await this.fetchDetailedInfo(activeTopics, progressCallback);
-      this.log(`✅ Retrieved detailed info for ${detailedTopics.length} topics`);
+      this.log(` Retrieved detailed info for ${detailedTopics.length} topics`);
       
       // Step 5: Format into 159 columns (matching Python scraper)
       const formattedData = this.formatToFullSchema(detailedTopics);
@@ -84,7 +84,7 @@ export class DSIPRealScraper {
    * Initialize session with DSIP website
    */
   private async initializeSession(): Promise<void> {
-    this.log('🔄 Initializing session with DSIP...');
+    this.log(' Initializing session with DSIP...');
     this.progress.phase = 'initializing';
     
     try {
@@ -96,7 +96,7 @@ export class DSIPRealScraper {
       });
       
       if (response.ok) {
-        this.log('✅ Session initialized');
+        this.log(' Session initialized');
       } else {
         this.logError(`Session initialization failed: ${response.status}`);
       }
@@ -173,7 +173,7 @@ export class DSIPRealScraper {
               console.log(`[DSIP Scraper] Page ${page + 1}: ${activeInThisPage} active, ${totalActiveFound} total active so far`);
             } else {
               consecutivePagesWithoutActive++;
-              this.log(`   ⏭️ No active on page ${page + 1} (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
+              this.log(`    No active on page ${page + 1} (${consecutivePagesWithoutActive}/${maxConsecutivePagesWithoutActive})`);
             }
 
             allTopics.push(...topics);
@@ -186,7 +186,7 @@ export class DSIPRealScraper {
 
             // Early termination conditions
             if (consecutivePagesWithoutActive >= maxConsecutivePagesWithoutActive && totalActiveFound > 0) {
-              this.log(`   ✅ Stopping early: Found ${totalActiveFound} active opportunities, no more in last ${maxConsecutivePagesWithoutActive} pages`);
+              this.log(`    Stopping early: Found ${totalActiveFound} active opportunities, no more in last ${maxConsecutivePagesWithoutActive} pages`);
               console.log(`[DSIP Scraper] Early termination: ${totalActiveFound} active topics found`);
               break;
             }
@@ -217,7 +217,7 @@ export class DSIPRealScraper {
    * Filter topics to only Active, Open, or Pre-Release status
    */
   private filterActiveTopics(topics: DSIPTopic[]): DSIPTopic[] {
-    this.log('🔍 Filtering for active/open/pre-release opportunities...');
+    this.log(' Filtering for active/open/pre-release opportunities...');
     this.progress.phase = 'filtering';
     
     console.log(`[DSIP Scraper] Total topics to filter: ${topics.length}`);
@@ -251,7 +251,7 @@ export class DSIPRealScraper {
     topics: DSIPTopic[], 
     progressCallback?: (progress: ScraperProgress) => void
   ): Promise<DSIPTopic[]> {
-    this.log('🔄 Fetching detailed information for active topics...');
+    this.log(' Fetching detailed information for active topics...');
     this.progress.phase = 'fetching_details';
     
     const detailedTopics: DSIPTopic[] = [];
@@ -315,7 +315,7 @@ export class DSIPRealScraper {
    * Format topics into full 159-column schema (matching Python scraper)
    */
   private formatToFullSchema(topics: DSIPTopic[]): any[] {
-    this.log('📊 Formatting data into 159-column schema...');
+    this.log(' Formatting data into 159-column schema...');
     this.progress.phase = 'formatting';
     
     return topics.map(topic => this.formatSingleTopic(topic));

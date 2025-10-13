@@ -28,17 +28,17 @@ export default function SmallBusinessPage() {
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">🔍</div>
+                <div className="feature-icon"></div>
                 <h3>Proprietary Search</h3>
                 <p>Custom-built algorithms for SBIR and SBA opportunity discovery</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">📊</div>
+                <div className="feature-icon"></div>
                 <h3>Dedicated Database</h3>
                 <p>Specialized database tracking small business set-aside contracts</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🎯</div>
+                <div className="feature-icon"></div>
                 <h3>Set-Aside Focus</h3>
                 <p>Targeted tracking of SDVOSB, 8(a), WOSB, and HUBZone opportunities</p>
               </div>
@@ -176,22 +176,22 @@ export default function SmallBusinessPage() {
             
             <div className="dsip-tool-features">
               <div className="dsip-feature">
-                <div className="feature-icon">🔍</div>
+                <div className="feature-icon"></div>
                 <h4>Advanced Search</h4>
                 <p>Search by keywords, technology areas, funding amounts, and more</p>
               </div>
               <div className="dsip-feature">
-                <div className="feature-icon">🎯</div>
+                <div className="feature-icon"></div>
                 <h4>Smart Filters</h4>
                 <p>Filter by agency, program type, phase, status, and special requirements</p>
               </div>
               <div className="dsip-feature">
-                <div className="feature-icon">📊</div>
+                <div className="feature-icon"></div>
                 <h4>Real-time Data</h4>
                 <p>Access to the latest DSIP opportunities with automatic updates</p>
               </div>
               <div className="dsip-feature">
-                <div className="feature-icon">💡</div>
+                <div className="feature-icon"></div>
                 <h4>AI-Powered Matching</h4>
                 <p>Intelligent opportunity matching based on your capabilities</p>
               </div>
@@ -214,7 +214,7 @@ export default function SmallBusinessPage() {
               </div>
               <div className="dsip-tool-actions">
                 <a href="/dsip-search" className="btn btn-primary btn-lg">
-                  🚀 Launch DSIP Smart Search
+                   Launch DSIP Smart Search
                 </a>
                 <p className="dsip-tool-note">
                   <small>Requires free account login to access advanced features</small>

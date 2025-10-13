@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
               </div>
               <div class="content">
                 <div class="success">
-                  <h3>✅ SendGrid is Working!</h3>
+                  <h3> SendGrid is Working!</h3>
                   <p>This is a test email to verify that SendGrid email delivery is functioning correctly.</p>
                 </div>
                 
@@ -138,7 +138,7 @@ export async function POST(request: NextRequest) {
         text: `
           Prop Shop AI - SendGrid Test Email
           
-          ✅ SendGrid is Working!
+           SendGrid is Working!
           
           This is a test email to verify that SendGrid email delivery is functioning correctly.
           

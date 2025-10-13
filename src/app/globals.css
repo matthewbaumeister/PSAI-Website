@@ -4458,17 +4458,17 @@ input:checked + .toggle-slider:before {
 }
 
 .publication-details .author::before {
-  content: '👤';
+  content: '';
   font-size: 12px;
 }
 
 .publication-details .date::before {
-  content: '📅';
+  content: '';
   font-size: 12px;
 }
 
 .publication-details .read-time::before {
-  content: '⏱️';
+  content: '';
   font-size: 12px;
 }
 

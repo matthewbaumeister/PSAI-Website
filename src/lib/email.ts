@@ -252,7 +252,7 @@ export async function sendWelcomeEmail(data: WelcomeEmailData): Promise<boolean>
             </div>
             <div class="content">
               <h2>Welcome ${data.firstName}!</h2>
-              <p>Your Prop Shop AI account has been successfully verified and activated! 🎉</p>
+              <p>Your Prop Shop AI account has been successfully verified and activated! </p>
               
               <p>You now have access to:</p>
               <ul>
@@ -284,7 +284,7 @@ export async function sendWelcomeEmail(data: WelcomeEmailData): Promise<boolean>
         
         Welcome ${data.firstName}!
         
-        Your Prop Shop AI account has been successfully verified and activated! 🎉
+        Your Prop Shop AI account has been successfully verified and activated! 
         
         You now have access to:
         - Advanced procurement intelligence

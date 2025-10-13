@@ -28,7 +28,7 @@ export default function WritePage() {
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">👨‍🎓</div>
+                <div className="feature-icon"></div>
                 <h3>PhD-Level Writers</h3>
                 <p>Expert writers with advanced degrees in relevant fields</p>
               </div>
@@ -38,7 +38,7 @@ export default function WritePage() {
                 <p>Cutting-edge AI technology to enhance writing quality and speed</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">✍️</div>
+                <div className="feature-icon"></div>
                 <h3>100% Manual Writing</h3>
                 <p>Complete manual writing services for maximum quality and customization</p>
               </div>

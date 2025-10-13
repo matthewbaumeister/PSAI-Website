@@ -28,17 +28,17 @@ export default function ResourcesPage() {
             </p>
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">📚</div>
+                <div className="feature-icon"></div>
                 <h3>Comprehensive Guides</h3>
                 <p>Step-by-step guides for every feature and capability</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🎯</div>
+                <div className="feature-icon"></div>
                 <h3>How-To Tutorials</h3>
                 <p>Practical tutorials for real-world government contracting scenarios</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🚀</div>
+                <div className="feature-icon"></div>
                 <h3>Best Practices</h3>
                 <p>Proven strategies and methodologies from industry experts</p>
               </div>
@@ -51,7 +51,7 @@ export default function ResourcesPage() {
           <div className="product-resources">
             <div className="product-resource">
               <div className="product-header">
-                <div className="product-icon">🔍</div>
+                <div className="product-icon"></div>
                 <h3>PS.AI Search</h3>
                 <p>Master DoD-wide government contract search and opportunity discovery</p>
               </div>
@@ -125,7 +125,7 @@ export default function ResourcesPage() {
 
             <div className="product-resource">
               <div className="product-header">
-                <div className="product-icon">📊</div>
+                <div className="product-icon"></div>
                 <h3>PS.AI Market Research</h3>
                 <p>Master proprietary data analysis and market intelligence creation</p>
               </div>
@@ -162,7 +162,7 @@ export default function ResourcesPage() {
 
             <div className="product-resource">
               <div className="product-header">
-                <div className="product-icon">✍️</div>
+                <div className="product-icon"></div>
                 <h3>PS.AI Write</h3>
                 <p>Learn to leverage AI-assisted writing and PhD-level expertise for winning proposals</p>
               </div>
@@ -199,7 +199,7 @@ export default function ResourcesPage() {
 
             <div className="product-resource">
               <div className="product-header">
-                <div className="product-icon">🏢</div>
+                <div className="product-icon"></div>
                 <h3>PS.AI Small Business</h3>
                 <p>Master SBIR/SBA opportunities and small business set-aside contracting</p>
               </div>
@@ -361,7 +361,7 @@ export default function ResourcesPage() {
           <div className="learning-paths">
             <div className="learning-path">
               <div className="path-header">
-                <h3>🚀 New to Government Contracting</h3>
+                <h3> New to Government Contracting</h3>
                 <p>Start your journey with these foundational resources</p>
               </div>
               <div className="path-steps">
@@ -390,7 +390,7 @@ export default function ResourcesPage() {
 
             <div className="learning-path">
               <div className="path-header">
-                <h3>📈 Growing Your Business</h3>
+                <h3> Growing Your Business</h3>
                 <p>Scale your government contracting operations</p>
               </div>
               <div className="path-steps">
@@ -419,7 +419,7 @@ export default function ResourcesPage() {
 
             <div className="learning-path">
               <div className="path-header">
-                <h3>🏆 Advanced Strategies</h3>
+                <h3> Advanced Strategies</h3>
                 <p>Master advanced government contracting techniques</p>
               </div>
               <div className="path-steps">

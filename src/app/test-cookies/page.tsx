@@ -110,7 +110,7 @@ export default function TestCookiesPage() {
             }}>
               <div style={{ color: '#94a3b8', fontSize: '14px' }}>Essential</div>
               <div style={{ color: '#ffffff', fontWeight: '600' }}>
-                {preferences?.essential ? '✅ Enabled' : '❌ Disabled'}
+                {preferences?.essential ? ' Enabled' : ' Disabled'}
               </div>
             </div>
             
@@ -122,7 +122,7 @@ export default function TestCookiesPage() {
             }}>
               <div style={{ color: '#94a3b8', fontSize: '14px' }}>Analytics</div>
               <div style={{ color: '#ffffff', fontWeight: '600' }}>
-                {preferences?.analytics ? '✅ Enabled' : '❌ Disabled'}
+                {preferences?.analytics ? ' Enabled' : ' Disabled'}
               </div>
             </div>
             
@@ -134,7 +134,7 @@ export default function TestCookiesPage() {
             }}>
               <div style={{ color: '#94a3b8', fontSize: '14px' }}>Marketing</div>
               <div style={{ color: '#ffffff', fontWeight: '600' }}>
-                {preferences?.marketing ? '✅ Enabled' : '❌ Disabled'}
+                {preferences?.marketing ? ' Enabled' : ' Disabled'}
               </div>
             </div>
             
@@ -146,7 +146,7 @@ export default function TestCookiesPage() {
             }}>
               <div style={{ color: '#94a3b8', fontSize: '14px' }}>Functional</div>
               <div style={{ color: '#ffffff', fontWeight: '600' }}>
-                {preferences?.functional ? '✅ Enabled' : '❌ Disabled'}
+                {preferences?.functional ? ' Enabled' : ' Disabled'}
               </div>
             </div>
           </div>

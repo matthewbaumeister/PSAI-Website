@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
   const startTime = Date.now();
   
   try {
-    console.log('🔍 RAG Search request received');
+    console.log(' RAG Search request received');
 
     const body: SearchRequest = await request.json();
     const {
@@ -64,12 +64,12 @@ export async function POST(request: NextRequest) {
     let queryEmbedding: number[];
     
     if (query) {
-      console.log(`🔍 Searching for query: "${query}"`);
+      console.log(` Searching for query: "${query}"`);
       queryEmbedding = await generateEmbedding(query);
-      console.log(`✅ Generated query embedding`);
+      console.log(` Generated query embedding`);
       
     } else if (fileId) {
-      console.log(`🔍 Searching by document: ${fileId}`);
+      console.log(` Searching by document: ${fileId}`);
       
       // Get all chunks from the uploaded file and average their embeddings
       const { data: fileChunks, error: chunksError } = await supabase
@@ -109,7 +109,7 @@ export async function POST(request: NextRequest) {
         parsedEmbeddings.reduce((sum: number, emb: number[]) => sum + emb[i], 0) / parsedEmbeddings.length
       );
 
-      console.log(`✅ Averaged ${parsedEmbeddings.length} embeddings from document`);
+      console.log(` Averaged ${parsedEmbeddings.length} embeddings from document`);
     } else {
       return NextResponse.json({
         success: false,
@@ -118,7 +118,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Step 2: Vector similarity search using pgvector
-    console.log(`🔍 Performing vector search (top ${matchCount})...`);
+    console.log(` Performing vector search (top ${matchCount})...`);
     
     const { data: matches, error: searchError } = await supabase.rpc(
       'search_rag_embeddings',
@@ -130,7 +130,7 @@ export async function POST(request: NextRequest) {
     );
 
     if (searchError) {
-      console.error('❌ Search error:', searchError);
+      console.error(' Search error:', searchError);
       return NextResponse.json({
         success: false,
         error: 'Vector search failed',
@@ -138,7 +138,7 @@ export async function POST(request: NextRequest) {
       }, { status: 500 });
     }
 
-    console.log(`✅ Found ${matches?.length || 0} matches`);
+    console.log(` Found ${matches?.length || 0} matches`);
 
     // Step 3: Apply metadata filters if provided
     let filteredMatches = matches || [];
@@ -180,12 +180,12 @@ export async function POST(request: NextRequest) {
 
     // Step 5: EPHEMERAL MODE - Delete file after search (if it was uploaded)
     if (fileId) {
-      console.log(`🗑️ EPHEMERAL MODE: Deleting file ${fileId} after search`);
+      console.log(` EPHEMERAL MODE: Deleting file ${fileId} after search`);
       await supabase
         .from('rag_files')
         .delete()
         .eq('id', fileId);
-      console.log(`✅ File deleted (ephemeral mode)`);
+      console.log(` File deleted (ephemeral mode)`);
     }
 
     // SECURITY: Do NOT log search history in ephemeral mode
@@ -193,7 +193,7 @@ export async function POST(request: NextRequest) {
     // await supabase.from('rag_search_history').insert({...});
 
     const responseTime = Date.now() - startTime;
-    console.log(`✅ Search complete in ${responseTime}ms`);
+    console.log(` Search complete in ${responseTime}ms`);
 
     return NextResponse.json({
       success: true,
@@ -214,7 +214,7 @@ export async function POST(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Search error:', error);
+    console.error(' Search error:', error);
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
@@ -246,7 +246,7 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Error fetching search history:', error);
+    console.error(' Error fetching search history:', error);
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'

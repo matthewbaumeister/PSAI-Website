@@ -11,10 +11,10 @@ const JWT_REFRESH_EXPIRES_IN = process.env.JWT_REFRESH_EXPIRES_IN || '7d'
 if (typeof window === 'undefined' && process.env.NODE_ENV === 'production') {
   // Only log warnings in production, don't throw errors
   if (!process.env.JWT_SECRET || process.env.JWT_SECRET === 'fallback-secret-key-change-in-production') {
-    console.warn('⚠️  JWT_SECRET environment variable is not set. Authentication will not work.')
+    console.warn('  JWT_SECRET environment variable is not set. Authentication will not work.')
   }
   if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
-    console.warn('⚠️  SUPABASE_SERVICE_ROLE_KEY environment variable is not set. Database operations will fail.')
+    console.warn('  SUPABASE_SERVICE_ROLE_KEY environment variable is not set. Database operations will fail.')
   }
 }
 

@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
     const { data: files, error, count } = await query;
 
     if (error) {
-      console.error('❌ Error fetching files:', error);
+      console.error(' Error fetching files:', error);
       throw error;
     }
 
@@ -78,7 +78,7 @@ export async function GET(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Error in GET /api/admin/rag/files:', error);
+    console.error(' Error in GET /api/admin/rag/files:', error);
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
@@ -101,7 +101,7 @@ export async function DELETE(request: NextRequest) {
       }, { status: 400 });
     }
 
-    console.log(`🗑️ Deleting file: ${fileId}`);
+    console.log(` Deleting file: ${fileId}`);
 
     // Check if file exists
     const { data: file, error: fetchError } = await supabase
@@ -124,11 +124,11 @@ export async function DELETE(request: NextRequest) {
       .eq('id', fileId);
 
     if (deleteError) {
-      console.error('❌ Error deleting file:', deleteError);
+      console.error(' Error deleting file:', deleteError);
       throw deleteError;
     }
 
-    console.log(`✅ File deleted: ${file.filename}`);
+    console.log(` File deleted: ${file.filename}`);
 
     return NextResponse.json({
       success: true,
@@ -136,7 +136,7 @@ export async function DELETE(request: NextRequest) {
     });
 
   } catch (error) {
-    console.error('❌ Error in DELETE /api/admin/rag/files:', error);
+    console.error(' Error in DELETE /api/admin/rag/files:', error);
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error'
