@@ -2,8 +2,8 @@
  * RAG Embedding Service
  * Uses HuggingFace Inference API (FREE tier) for NV-Embed-v2
  * 
- * Setup: Add HUGGINGFACE_API_KEY to .env.local
- * Get free key: https://huggingface.co/settings/tokens
+ * Setup: Add HUGGINGFACE_API_KEY to Vercel environment variables
+ * Get free key: https://huggingface.co/settings/tokens (read permissions)
  */
 
 const HF_API_URL = 'https://api-inference.huggingface.co/models/nvidia/NV-Embed-v2';
