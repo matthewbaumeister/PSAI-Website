@@ -29,7 +29,7 @@ export default function SBIRDatabaseBrowser() {
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [selectedComponent, setSelectedComponent] = useState('all');
-  const [selectedStatus, setSelectedStatus] = useState('all');
+  const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
   const [selectedProgramType, setSelectedProgramType] = useState('all');
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
@@ -48,7 +48,7 @@ export default function SBIRDatabaseBrowser() {
   // Fetch data when filters, page, or sort changes
   useEffect(() => {
     fetchRecords();
-  }, [currentPage, selectedComponent, selectedStatus, selectedProgramType, sortBy, sortOrder]);
+  }, [currentPage, selectedComponent, selectedStatuses, selectedProgramType, sortBy, sortOrder]);
 
   const fetchRecords = async () => {
     setLoading(true);
@@ -59,7 +59,7 @@ export default function SBIRDatabaseBrowser() {
         body: JSON.stringify({
           searchText,
           component: selectedComponent,
-          status: selectedStatus,
+          statuses: selectedStatuses, // Send array of statuses
           programType: selectedProgramType,
           page: currentPage,
           pageSize,
@@ -97,9 +97,40 @@ export default function SBIRDatabaseBrowser() {
   const resetFilters = () => {
     setSearchText('');
     setSelectedComponent('all');
-    setSelectedStatus('all');
+    setSelectedStatuses([]);
     setSelectedProgramType('all');
     setCurrentPage(0);
+  };
+
+  const toggleStatus = (status: string) => {
+    if (status === 'Closed') {
+      // If clicking Closed, toggle it and remove Open/Pre-Release
+      if (selectedStatuses.includes('Closed')) {
+        setSelectedStatuses([]);
+      } else {
+        setSelectedStatuses(['Closed']);
+      }
+    } else {
+      // For Open/Pre-Release
+      const newStatuses = [...selectedStatuses];
+      
+      // Remove Closed if present
+      const closedIndex = newStatuses.indexOf('Closed');
+      if (closedIndex > -1) {
+        newStatuses.splice(closedIndex, 1);
+      }
+      
+      // Toggle the clicked status
+      const statusIndex = newStatuses.indexOf(status);
+      if (statusIndex > -1) {
+        newStatuses.splice(statusIndex, 1);
+      } else {
+        newStatuses.push(status);
+      }
+      
+      setSelectedStatuses(newStatuses);
+    }
+    setCurrentPage(0); // Reset to first page when filter changes
   };
 
   const handleSort = (column: string) => {
@@ -250,13 +281,13 @@ export default function SBIRDatabaseBrowser() {
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
               <button
                 onClick={() => {
-                  setSelectedStatus('all');
+                  setSelectedStatuses([]);
                   setCurrentPage(0);
                 }}
                 style={{
                   padding: '8px 16px',
-                  background: selectedStatus === 'all' ? '#3b82f6' : 'rgba(59, 130, 246, 0.2)',
-                  border: `1px solid ${selectedStatus === 'all' ? '#3b82f6' : 'rgba(59, 130, 246, 0.4)'}`,
+                  background: selectedStatuses.length === 0 ? '#3b82f6' : 'rgba(59, 130, 246, 0.2)',
+                  border: `1px solid ${selectedStatuses.length === 0 ? '#3b82f6' : 'rgba(59, 130, 246, 0.4)'}`,
                   borderRadius: '6px',
                   color: '#ffffff',
                   fontSize: '13px',
@@ -268,14 +299,11 @@ export default function SBIRDatabaseBrowser() {
                 All Statuses
               </button>
               <button
-                onClick={() => {
-                  setSelectedStatus('Open');
-                  setCurrentPage(0);
-                }}
+                onClick={() => toggleStatus('Open')}
                 style={{
                   padding: '8px 16px',
-                  background: selectedStatus === 'Open' ? '#10b981' : 'rgba(16, 185, 129, 0.2)',
-                  border: `1px solid ${selectedStatus === 'Open' ? '#10b981' : 'rgba(16, 185, 129, 0.4)'}`,
+                  background: selectedStatuses.includes('Open') ? '#10b981' : 'rgba(16, 185, 129, 0.2)',
+                  border: `1px solid ${selectedStatuses.includes('Open') ? '#10b981' : 'rgba(16, 185, 129, 0.4)'}`,
                   borderRadius: '6px',
                   color: '#ffffff',
                   fontSize: '13px',
@@ -287,14 +315,11 @@ export default function SBIRDatabaseBrowser() {
                 Open
               </button>
               <button
-                onClick={() => {
-                  setSelectedStatus('Pre-Release');
-                  setCurrentPage(0);
-                }}
+                onClick={() => toggleStatus('Pre-Release')}
                 style={{
                   padding: '8px 16px',
-                  background: selectedStatus === 'Pre-Release' ? '#f59e0b' : 'rgba(245, 158, 11, 0.2)',
-                  border: `1px solid ${selectedStatus === 'Pre-Release' ? '#f59e0b' : 'rgba(245, 158, 11, 0.4)'}`,
+                  background: selectedStatuses.includes('Pre-Release') ? '#f59e0b' : 'rgba(245, 158, 11, 0.2)',
+                  border: `1px solid ${selectedStatuses.includes('Pre-Release') ? '#f59e0b' : 'rgba(245, 158, 11, 0.4)'}`,
                   borderRadius: '6px',
                   color: '#ffffff',
                   fontSize: '13px',
@@ -306,14 +331,11 @@ export default function SBIRDatabaseBrowser() {
                 Pre-Release
               </button>
               <button
-                onClick={() => {
-                  setSelectedStatus('Closed');
-                  setCurrentPage(0);
-                }}
+                onClick={() => toggleStatus('Closed')}
                 style={{
                   padding: '8px 16px',
-                  background: selectedStatus === 'Closed' ? '#ef4444' : 'rgba(239, 68, 68, 0.2)',
-                  border: `1px solid ${selectedStatus === 'Closed' ? '#ef4444' : 'rgba(239, 68, 68, 0.4)'}`,
+                  background: selectedStatuses.includes('Closed') ? '#ef4444' : 'rgba(239, 68, 68, 0.2)',
+                  border: `1px solid ${selectedStatuses.includes('Closed') ? '#ef4444' : 'rgba(239, 68, 68, 0.4)'}`,
                   borderRadius: '6px',
                   color: '#ffffff',
                   fontSize: '13px',

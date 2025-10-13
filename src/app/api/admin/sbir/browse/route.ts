@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
     const { 
       searchText = '',
       component = '',
-      status = '',
+      statuses = [],
       programType = '',
       keywords = '',
       page = 0,
@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
       sortOrder = 'desc'
     } = await request.json();
 
-    console.log('🔍 SBIR Browse request:', { searchText, component, status, programType, page });
+    console.log('🔍 SBIR Browse request:', { searchText, component, statuses, programType, page });
 
     // Build the base query
     let query = supabase
@@ -45,8 +45,9 @@ export async function POST(request: NextRequest) {
       query = query.eq('component', component);
     }
 
-    if (status && status !== 'all') {
-      query = query.eq('status', status);
+    // Handle multiple status filters
+    if (Array.isArray(statuses) && statuses.length > 0) {
+      query = query.in('status', statuses);
     }
 
     if (programType && programType !== 'all') {
