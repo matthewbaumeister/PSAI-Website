@@ -7,7 +7,7 @@
 
 const CHUNK_SIZE = 512; // Target tokens per chunk (estimated)
 const CHUNK_OVERLAP = 64; // ~12.5% overlap
-const MIN_CHUNK_SIZE = 100; // Minimum chunk size to avoid tiny fragments
+const MIN_CHUNK_SIZE = 5; // Minimum chunk size (reduced to allow small test queries)
 const CHARS_PER_TOKEN = 4; // Rough estimate: 1 token ≈ 4 characters
 
 export interface TextChunk {

@@ -163,6 +163,24 @@ export async function POST(request: NextRequest) {
     const chunks = chunkText(fullText);
     
     console.log(` Created ${chunks.length} chunks`);
+    
+    if (chunks.length === 0) {
+      console.error(' No chunks created - text too short or invalid');
+      
+      await supabase
+        .from('rag_files')
+        .update({ 
+          status: 'error', 
+          error_message: 'Text too short or could not be chunked. Please provide more text.'
+        })
+        .eq('id', fileId);
+      
+      return NextResponse.json({
+        success: false,
+        error: 'Text too short or could not be chunked',
+        details: `Provided text: ${fullText.length} characters, but could not create valid chunks`
+      }, { status: 400 });
+    }
 
     // Step 4: Store chunks
     console.log(' Storing chunks...');
@@ -199,28 +217,37 @@ export async function POST(request: NextRequest) {
     console.log(` Stored ${insertedChunks.length} chunks`);
 
     // Step 5: Generate embeddings
-    console.log('🧠 Generating embeddings...');
+    console.log(' Generating embeddings...');
     const chunkTexts = chunks.map(c => c.content);
+    console.log(` Sending ${chunkTexts.length} chunks to HuggingFace API...`);
     
     let embeddings: number[][];
     try {
       embeddings = await generateEmbeddingsBatch(chunkTexts);
-      console.log(` Generated ${embeddings.length} embeddings`);
+      console.log(` Generated ${embeddings.length} embeddings successfully`);
     } catch (embeddingError) {
-      console.error(' Error generating embeddings:', embeddingError);
+      console.error(' Error generating embeddings:');
+      console.error('  Error type:', embeddingError instanceof Error ? embeddingError.constructor.name : typeof embeddingError);
+      console.error('  Error message:', embeddingError instanceof Error ? embeddingError.message : String(embeddingError));
+      if (embeddingError instanceof Error && embeddingError.stack) {
+        console.error('  Stack trace:', embeddingError.stack.split('\n').slice(0, 3).join('\n'));
+      }
+      
+      const errorMessage = embeddingError instanceof Error ? embeddingError.message : 'Unknown error';
       
       await supabase
         .from('rag_files')
         .update({ 
           status: 'error', 
-          error_message: `Embedding generation failed: ${embeddingError instanceof Error ? embeddingError.message : 'Unknown error'}`
+          error_message: `Embedding generation failed: ${errorMessage}`
         })
         .eq('id', fileId);
       
       return NextResponse.json({
         success: false,
-        error: 'Failed to generate embeddings',
-        details: embeddingError instanceof Error ? embeddingError.message : 'Unknown error'
+        error: 'Failed to generate embeddings from HuggingFace API',
+        details: errorMessage,
+        hint: 'Check if HF_API_KEY is valid and has correct permissions'
       }, { status: 500 });
     }
 
