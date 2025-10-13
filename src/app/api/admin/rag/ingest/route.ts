@@ -68,6 +68,14 @@ export async function POST(request: NextRequest) {
     } else {
       // Handle JSON (text paste)
       ingestData = await request.json();
+      
+      if (!ingestData) {
+        return NextResponse.json({
+          success: false,
+          error: 'Invalid request format'
+        }, { status: 400 });
+      }
+      
       filename = ingestData.filename || 'pasted-text.txt';
     }
 
