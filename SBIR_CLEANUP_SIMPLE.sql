@@ -2,6 +2,16 @@
 -- Copy-paste each section ONE AT A TIME
 
 -- =============================================
+-- STEP 0: Set longer timeout (RUN THIS FIRST)
+-- =============================================
+-- Set timeout for current session to 10 minutes
+SET statement_timeout = '10min';
+
+-- OR increase timeout for postgres role permanently:
+-- ALTER ROLE postgres SET statement_timeout = '10min';
+-- NOTIFY pgrst, 'reload config';
+
+-- =============================================
 -- CLEANUP 1: Delete invalid records (empty topic_number)
 -- =============================================
 DELETE FROM sbir_final

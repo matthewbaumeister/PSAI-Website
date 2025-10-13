@@ -2,6 +2,12 @@
 -- This combines data cleanup + index creation in one script
 
 -- ============================================
+-- SET LONGER TIMEOUT
+-- ============================================
+-- Increase timeout to 10 minutes for long-running operations
+SET statement_timeout = '10min';
+
+-- ============================================
 -- PART 1: DATA CLEANUP
 -- ============================================
 
