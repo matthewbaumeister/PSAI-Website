@@ -11,7 +11,7 @@ CREATE EXTENSION IF NOT EXISTS pg_trgm;
 -- =============================================
 -- SECTION 2: Add title search index (MOST CRITICAL)
 -- =============================================
-CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_sbir_title_gin 
+CREATE INDEX IF NOT EXISTS idx_sbir_title_gin 
 ON sbir_final USING gin (title gin_trgm_ops);
 
 -- This may take 30-60 seconds. Wait for completion.
@@ -19,10 +19,10 @@ ON sbir_final USING gin (title gin_trgm_ops);
 -- =============================================
 -- SECTION 3: Add filter indexes
 -- =============================================
-CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_sbir_status 
+CREATE INDEX IF NOT EXISTS idx_sbir_status 
 ON sbir_final (status);
 
-CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_sbir_component 
+CREATE INDEX IF NOT EXISTS idx_sbir_component 
 ON sbir_final (component);
 
 -- =============================================
