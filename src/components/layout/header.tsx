@@ -87,6 +87,8 @@ export function Header() {
   const handleLogout = async () => {
     await logout()
     closeDropdowns()
+    // Redirect to home page after sign out
+    router.push('/')
   }
 
   const renderSolutionsDropdown = () => {
