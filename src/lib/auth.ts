@@ -4,7 +4,7 @@ import { createAdminSupabaseClient } from './supabase'
 
 // JWT Configuration
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback-secret-key-change-in-production'
-const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '30m'
+const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '60m' // Changed from 30m to 60m (1 hour)
 const JWT_REFRESH_EXPIRES_IN = process.env.JWT_REFRESH_EXPIRES_IN || '7d'
 
 // Build-time safe environment variable check
@@ -27,7 +27,7 @@ function validateJWTSecret(): string {
 }
 
 // Session Configuration
-const SESSION_TIMEOUT_MINUTES = parseInt(process.env.SESSION_TIMEOUT_MINUTES || '30')
+const SESSION_TIMEOUT_MINUTES = parseInt(process.env.SESSION_TIMEOUT_MINUTES || '60') // Changed from 30 to 60 minutes
 
 export interface JWTPayload {
   userId: string

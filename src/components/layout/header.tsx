@@ -222,7 +222,7 @@ export function Header() {
         <Link href="/admin/invitations" className="dropdown-link" onClick={closeDropdowns}>
           Admin Invitations
         </Link>
-        <Link href="/admin/settings" className="dropdown-link" onClick={closeDropdowns}>
+        <Link href="/admin/system-settings" className="dropdown-link" onClick={closeDropdowns}>
           System Settings
         </Link>
         <Link href="/admin/dsip-settings" className="dropdown-link" onClick={closeDropdowns}>
@@ -232,7 +232,7 @@ export function Header() {
           Publications Management
         </Link>
         <div className="dropdown-divider"></div>
-        <Link href="/admin/logs" className="dropdown-link" onClick={closeDropdowns}>
+        <Link href="/admin/system-logs" className="dropdown-link" onClick={closeDropdowns}>
           System Logs
         </Link>
       </div>
