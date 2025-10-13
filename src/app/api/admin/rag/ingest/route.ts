@@ -1,6 +1,7 @@
 /**
  * RAG Ingestion API
- * POST: Upload PDF or paste text → extract → chunk → embed → store
+ * POST: Upload PDF or paste text, extract, chunk, embed, and store
+ * Updated: Oct 13, 2025
  */
 
 import { NextRequest, NextResponse } from 'next/server';
