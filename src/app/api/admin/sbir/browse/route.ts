@@ -48,7 +48,7 @@ export async function POST(request: NextRequest) {
       // Prioritize longer, more specific keywords (limit to 5 for performance)
       // Longer words are usually more specific and will match fewer records
       const searchKeywords = allKeywords
-        .sort((a, b) => b.length - a.length) // Sort by length descending
+        .sort((a: string, b: string) => b.length - a.length) // Sort by length descending
         .slice(0, 5); // Take top 5 most specific
       
       if (searchKeywords.length > 0) {
