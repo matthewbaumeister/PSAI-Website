@@ -38,12 +38,12 @@ export async function POST(request: NextRequest) {
     // Apply filters
     if (searchText && searchText.trim()) {
       // Split search text into individual keywords for better performance
-      const searchKeywords = searchText.trim().split(/\s+/).filter(k => k.length > 2);
+      const searchKeywords = searchText.trim().split(/\s+/).filter((k: string) => k.length > 2);
       
       if (searchKeywords.length > 0) {
         // Search each keyword across fields (more efficient than one long string)
         // Build OR conditions for each keyword
-        const orConditions = searchKeywords.map(keyword => 
+        const orConditions = searchKeywords.map((keyword: string) => 
           `title.ilike.%${keyword}%,description.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
         ).join(',');
         
