@@ -5,11 +5,10 @@
  * Strategy: 300-800 token chunks with 10-15% overlap
  */
 
-import { encodingForModel } from 'tiktoken';
-
-const CHUNK_SIZE = 512; // Target tokens per chunk
+const CHUNK_SIZE = 512; // Target tokens per chunk (estimated)
 const CHUNK_OVERLAP = 64; // ~12.5% overlap
 const MIN_CHUNK_SIZE = 100; // Minimum chunk size to avoid tiny fragments
+const CHARS_PER_TOKEN = 4; // Rough estimate: 1 token ≈ 4 characters
 
 export interface TextChunk {
   content: string;
@@ -22,18 +21,13 @@ export interface TextChunk {
 }
 
 /**
- * Count tokens in text using tiktoken (GPT-4 encoding)
+ * Count tokens in text using simple estimation
+ * (1 token ≈ 4 characters for English text)
  */
 export function countTokens(text: string): number {
-  try {
-    const encoding = encodingForModel('gpt-4');
-    const tokens = encoding.encode(text);
-    encoding.free();
-    return tokens.length;
-  } catch (error) {
-    // Fallback: rough estimate (4 chars per token)
-    return Math.ceil(text.length / 4);
-  }
+  // Simple word-based estimation (more accurate than pure char count)
+  const words = text.trim().split(/\s+/).length;
+  return Math.ceil(words * 1.3); // ~1.3 tokens per word on average
 }
 
 /**

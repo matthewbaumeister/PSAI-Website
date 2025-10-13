@@ -3,10 +3,15 @@
  * Extract text from PDFs page by page
  */
 
-import * as pdfParse from 'pdf-parse';
+// Dynamic import to handle CommonJS module
+let pdfParse: any;
+try {
+  pdfParse = require('pdf-parse');
+} catch (e) {
+  console.error('Failed to load pdf-parse:', e);
+}
 
-// Handle both CommonJS and ES module exports
-const pdf = (pdfParse as any).default || pdfParse;
+const pdf = pdfParse;
 
 export interface PDFExtraction {
   text: string;
