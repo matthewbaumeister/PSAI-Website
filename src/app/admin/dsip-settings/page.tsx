@@ -1600,6 +1600,66 @@ ${details.totalTopics === 0 ? ' No active topics found. Check Vercel logs for de
               </button>
             </div>
 
+            {/* RAG Document Intelligence Search */}
+            <div style={{
+              background: 'rgba(15, 23, 42, 0.6)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid rgba(148, 163, 184, 0.2)',
+              marginBottom: '24px'
+            }}>
+              <h3 style={{ 
+                fontSize: '18px', 
+                fontWeight: '600', 
+                marginBottom: '12px',
+                color: '#ffffff'
+              }}>
+                Document Intelligence Search
+              </h3>
+              
+              <p style={{ 
+                fontSize: '14px', 
+                color: 'rgba(148, 163, 184, 0.9)',
+                marginBottom: '16px'
+              }}>
+                Upload capabilities documents and search the SBIR database using semantic similarity
+              </p>
+
+              <div style={{
+                padding: '12px',
+                background: 'rgba(245, 158, 11, 0.1)',
+                border: '1px solid rgba(245, 158, 11, 0.3)',
+                borderRadius: '8px',
+                marginBottom: '16px',
+                fontSize: '13px',
+                color: '#fbbf24',
+                lineHeight: '1.5'
+              }}>
+                <strong>EPHEMERAL MODE:</strong> Documents processed in temporary storage only. Original text never stored. Auto-deleted after search or in 1 hour.
+              </div>
+
+              <button
+                onClick={() => router.push('/admin/rag-search')}
+                style={{
+                  width: '100%',
+                  padding: '14px 20px',
+                  background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                  border: 'none',
+                  borderRadius: '10px',
+                  color: '#ffffff',
+                  fontSize: '15px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
+                  transition: 'all 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+              >
+                Open Document Intelligence Search
+              </button>
+            </div>
+
             {/* Scraper Controls */}
             <div className="scraper-controls" style={{
               background: 'rgba(15, 23, 42, 0.6)',
