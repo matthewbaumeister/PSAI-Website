@@ -38,7 +38,12 @@ export async function POST(request: NextRequest) {
     // Apply filters
     if (searchText && searchText.trim()) {
       // Split search text into individual keywords for better performance
-      const searchKeywords = searchText.trim().split(/\s+/).filter((k: string) => k.length > 2);
+      // Remove punctuation and filter out short words
+      const searchKeywords = searchText.trim()
+        .toLowerCase()
+        .replace(/[^\w\s-]/g, ' ') // Remove punctuation except hyphens
+        .split(/\s+/)
+        .filter((k: string) => k.length > 2);
       
       if (searchKeywords.length > 0) {
         // Search each keyword across fields (more efficient than one long string)
@@ -47,6 +52,7 @@ export async function POST(request: NextRequest) {
           `title.ilike.%${keyword}%,description.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
         ).join(',');
         
+        console.log(` Searching ${searchKeywords.length} keywords:`, searchKeywords.slice(0, 5));
         query = query.or(orConditions);
       }
     }
@@ -90,10 +96,17 @@ export async function POST(request: NextRequest) {
     const { data, error, count } = await query;
 
     if (error) {
-      console.error(' SBIR browse error:', error);
+      console.error(' SBIR browse error:', {
+        code: error.code,
+        message: error.message,
+        details: error.details,
+        hint: error.hint,
+        searchText: searchText.substring(0, 100) // Log first 100 chars
+      });
       return NextResponse.json({ 
         success: false, 
-        error: error.message 
+        error: error.message,
+        code: error.code
       }, { status: 500 });
     }
 
