@@ -158,11 +158,9 @@ export async function POST(request: NextRequest) {
     const fileId = fileRecord.id;
     console.log(` File record created: ${fileId}`);
 
-    // Step 3: Chunk text
+    // Step 3: Chunk text (text-only, no page-based chunking)
     console.log(' Chunking text...');
-    const chunks = pages.length > 1
-      ? chunkTextByPages(pages)
-      : chunkText(fullText);
+    const chunks = chunkText(fullText);
     
     console.log(` Created ${chunks.length} chunks`);
 
