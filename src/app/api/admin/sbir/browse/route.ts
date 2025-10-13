@@ -39,11 +39,17 @@ export async function POST(request: NextRequest) {
     if (searchText && searchText.trim()) {
       // Split search text into individual keywords for better performance
       // Remove punctuation and filter out short words
-      const searchKeywords = searchText.trim()
+      const allKeywords = searchText.trim()
         .toLowerCase()
         .replace(/[^\w\s-]/g, ' ') // Remove punctuation except hyphens
         .split(/\s+/)
         .filter((k: string) => k.length > 2);
+      
+      // Prioritize longer, more specific keywords (limit to 5 for performance)
+      // Longer words are usually more specific and will match fewer records
+      const searchKeywords = allKeywords
+        .sort((a, b) => b.length - a.length) // Sort by length descending
+        .slice(0, 5); // Take top 5 most specific
       
       if (searchKeywords.length > 0) {
         // Search each keyword across fields (more efficient than one long string)
@@ -52,7 +58,7 @@ export async function POST(request: NextRequest) {
           `title.ilike.%${keyword}%,description.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
         ).join(',');
         
-        console.log(` Searching ${searchKeywords.length} keywords:`, searchKeywords.slice(0, 5));
+        console.log(` Searching ${searchKeywords.length} keywords (from ${allKeywords.length} total):`, searchKeywords);
         query = query.or(orConditions);
       }
     }
