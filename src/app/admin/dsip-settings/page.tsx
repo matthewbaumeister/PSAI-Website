@@ -1587,7 +1587,7 @@ ${details.totalTopics === 0 ? '⚠️ No active topics found. Check Vercel logs 
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
               >
-                📊 Browse SBIR Database
+                Browse SBIR Database
                 <span style={{ 
                   fontSize: '12px', 
                   opacity: 0.9,

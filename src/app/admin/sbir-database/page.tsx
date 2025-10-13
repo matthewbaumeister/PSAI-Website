@@ -177,11 +177,12 @@ export default function SBIRDatabaseBrowser() {
             <label style={{ 
               display: 'block', 
               color: '#cbd5e1', 
-              fontSize: '14px', 
-              fontWeight: '500',
-              marginBottom: '8px'
+              fontSize: '15px', 
+              fontWeight: '600',
+              marginBottom: '8px',
+              fontStyle: 'italic'
             }}>
-              🔍 Smart Search
+              Filter By
             </label>
             <div style={{ display: 'flex', gap: '10px' }}>
               <input
@@ -234,11 +235,104 @@ export default function SBIRDatabaseBrowser() {
             </div>
           </div>
 
+          {/* Status Filter Buttons (DSIP-style) */}
+          <div style={{ marginTop: '24px' }}>
+            <label style={{ 
+              display: 'block', 
+              color: '#cbd5e1', 
+              fontSize: '14px', 
+              fontWeight: '600',
+              marginBottom: '10px',
+              fontStyle: 'italic'
+            }}>
+              Topic Status:
+            </label>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <button
+                onClick={() => {
+                  setSelectedStatus('all');
+                  setCurrentPage(0);
+                }}
+                style={{
+                  padding: '8px 16px',
+                  background: selectedStatus === 'all' ? '#3b82f6' : 'rgba(59, 130, 246, 0.2)',
+                  border: `1px solid ${selectedStatus === 'all' ? '#3b82f6' : 'rgba(59, 130, 246, 0.4)'}`,
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '13px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                All Statuses
+              </button>
+              <button
+                onClick={() => {
+                  setSelectedStatus('Open');
+                  setCurrentPage(0);
+                }}
+                style={{
+                  padding: '8px 16px',
+                  background: selectedStatus === 'Open' ? '#10b981' : 'rgba(16, 185, 129, 0.2)',
+                  border: `1px solid ${selectedStatus === 'Open' ? '#10b981' : 'rgba(16, 185, 129, 0.4)'}`,
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '13px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                Open
+              </button>
+              <button
+                onClick={() => {
+                  setSelectedStatus('Pre-Release');
+                  setCurrentPage(0);
+                }}
+                style={{
+                  padding: '8px 16px',
+                  background: selectedStatus === 'Pre-Release' ? '#f59e0b' : 'rgba(245, 158, 11, 0.2)',
+                  border: `1px solid ${selectedStatus === 'Pre-Release' ? '#f59e0b' : 'rgba(245, 158, 11, 0.4)'}`,
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '13px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                Pre-Release
+              </button>
+              <button
+                onClick={() => {
+                  setSelectedStatus('Closed');
+                  setCurrentPage(0);
+                }}
+                style={{
+                  padding: '8px 16px',
+                  background: selectedStatus === 'Closed' ? '#ef4444' : 'rgba(239, 68, 68, 0.2)',
+                  border: `1px solid ${selectedStatus === 'Closed' ? '#ef4444' : 'rgba(239, 68, 68, 0.4)'}`,
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '13px',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+              >
+                Closed
+              </button>
+            </div>
+          </div>
+
           {/* Filter Dropdowns */}
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
-            gap: '16px'
+            gap: '16px',
+            marginTop: '20px'
           }}>
             {/* Component Filter */}
             <div>
@@ -271,41 +365,6 @@ export default function SBIRDatabaseBrowser() {
                 <option value="all">All Components</option>
                 {filterOptions.components.map(comp => (
                   <option key={comp} value={comp}>{comp}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Status Filter */}
-            <div>
-              <label style={{ 
-                display: 'block', 
-                color: '#cbd5e1', 
-                fontSize: '13px', 
-                fontWeight: '500',
-                marginBottom: '6px'
-              }}>
-                Status
-              </label>
-              <select
-                value={selectedStatus}
-                onChange={(e) => {
-                  setSelectedStatus(e.target.value);
-                  setCurrentPage(0);
-                }}
-                style={{
-                  width: '100%',
-                  padding: '10px 12px',
-                  background: 'rgba(15, 23, 42, 0.6)',
-                  border: '1px solid rgba(71, 85, 105, 0.5)',
-                  borderRadius: '6px',
-                  color: '#ffffff',
-                  fontSize: '14px',
-                  cursor: 'pointer'
-                }}
-              >
-                <option value="all">All Statuses</option>
-                {filterOptions.statuses.map(status => (
-                  <option key={status} value={status}>{status}</option>
                 ))}
               </select>
             </div>
