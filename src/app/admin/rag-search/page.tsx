@@ -80,20 +80,33 @@ export default function RAGSearchPage() {
       setUploading(true);
       setUploadProgress('Uploading...');
 
-      const formData = new FormData();
+      let requestBody: FormData | string;
+      let headers: HeadersInit = {};
       
       if (uploadMode === 'pdf' && uploadFile) {
+        // PDF upload (currently disabled)
+        const formData = new FormData();
         formData.append('file', uploadFile);
+        requestBody = formData;
       } else if (uploadMode === 'paste') {
-        const blob = new Blob([pasteText], { type: 'text/plain' });
-        formData.append('file', blob, 'pasted-text.txt');
+        // Text paste - send as JSON
+        requestBody = JSON.stringify({
+          text: pasteText,
+          filename: 'pasted-text.txt',
+          type: 'paste'
+        });
+        headers['Content-Type'] = 'application/json';
+      } else {
+        alert('Invalid upload mode');
+        return;
       }
 
       setUploadProgress('Processing document...');
       
       const response = await fetch('/api/admin/rag/ingest', {
         method: 'POST',
-        body: formData
+        headers: headers,
+        body: requestBody
       });
 
       const data = await response.json();
