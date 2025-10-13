@@ -15,11 +15,14 @@
     "src/app/api/admin/sbir/trigger-scraper/route.ts": {
       "maxDuration": 300
     },
+    "src/app/api/admin/sbir/browse/route.ts": {
+      "maxDuration": 120
+    },
     "src/app/api/admin/rag/ingest/route.ts": {
       "maxDuration": 300
     },
     "src/app/api/admin/rag/search/route.ts": {
-      "maxDuration": 60
+      "maxDuration": 120
     }
   },
   "crons": [
