@@ -6,8 +6,9 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
-import { extractPDFText, cleanPDFText, extractPDFMetadata } from '@/lib/rag-pdf';
-import { chunkText, chunkTextByPages } from '@/lib/rag-chunking';
+// PDF parsing temporarily disabled - use text paste only
+// import { extractPDFText, cleanPDFText, extractPDFMetadata } from '@/lib/rag-pdf';
+import { chunkText } from '@/lib/rag-chunking';
 import { generateEmbeddingsBatch } from '@/lib/rag-embedding';
 
 const supabase = createClient(
@@ -95,13 +96,11 @@ export async function POST(request: NextRequest) {
     let extractedMetadata: any = {};
 
     if (ingestData.type === 'pdf' && fileBuffer) {
-      console.log('📑 Extracting PDF text...');
-      const extraction = await extractPDFText(fileBuffer);
-      fullText = cleanPDFText(extraction.text);
-      pages = extraction.pages.map(p => cleanPDFText(p));
-      pageCount = extraction.metadata.pageCount;
-      extractedMetadata = extractPDFMetadata(extraction);
-      console.log(` Extracted ${pageCount} pages, ${fullText.length} chars`);
+      // PDF support temporarily disabled due to serverless environment limitations
+      return NextResponse.json({
+        success: false,
+        error: 'PDF upload temporarily disabled. Please use text paste instead.'
+      }, { status: 400 });
       
     } else if (ingestData.text) {
       fullText = ingestData.text.trim();

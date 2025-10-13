@@ -297,41 +297,23 @@ export default function RAGSearchPage() {
           marginBottom: '24px'
         }}>
           <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px' }}>
-            Upload Capabilities Document
+            Paste Capabilities Document
           </h2>
 
-          {/* Mode Selector */}
-          <div style={{ display: 'flex', gap: '10px', marginBottom: '16px' }}>
-            <button
-              onClick={() => setUploadMode('pdf')}
-              style={{
-                padding: '8px 16px',
-                background: uploadMode === 'pdf' ? '#3b82f6' : 'rgba(59, 130, 246, 0.2)',
-                border: `1px solid ${uploadMode === 'pdf' ? '#3b82f6' : 'rgba(59, 130, 246, 0.4)'}`,
-                borderRadius: '6px',
-                color: '#ffffff',
-                cursor: 'pointer'
-              }}
-            >
-              Upload PDF
-            </button>
-            <button
-              onClick={() => setUploadMode('paste')}
-              style={{
-                padding: '8px 16px',
-                background: uploadMode === 'paste' ? '#3b82f6' : 'rgba(59, 130, 246, 0.2)',
-                border: `1px solid ${uploadMode === 'paste' ? '#3b82f6' : 'rgba(59, 130, 246, 0.4)'}`,
-                borderRadius: '6px',
-                color: '#ffffff',
-                cursor: 'pointer'
-              }}
-            >
-              Paste Text
-            </button>
+          <div style={{
+            padding: '12px',
+            background: 'rgba(245, 158, 11, 0.1)',
+            border: '1px solid rgba(245, 158, 11, 0.3)',
+            borderRadius: '8px',
+            marginBottom: '16px',
+            fontSize: '13px',
+            color: '#fbbf24'
+          }}>
+            Note: PDF upload temporarily disabled. Please paste text below.
           </div>
 
-          {/* Upload Area */}
-          {uploadMode === 'pdf' ? (
+          {/* Upload Area - Text Only */}
+          {false ? (
             <input
               type="file"
               accept=".pdf"
