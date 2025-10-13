@@ -316,7 +316,7 @@ export default function AdminDashboard() {
 
   const startSbirScraper = async () => {
     try {
-      setMessage('🚀 Starting SBIR database scraper...')
+      setMessage('Starting SBIR database scraper...')
       setMessageType('success')
       
       const response = await fetch('/api/admin/sbir/scraper', {
@@ -328,20 +328,20 @@ export default function AdminDashboard() {
       if (response.ok) {
         const data = await response.json()
         if (data.success) {
-          setMessage(`✅ SBIR scraper completed! Processed ${data.processed} records.`)
+          setMessage(`SBIR scraper completed! Processed ${data.processed} records.`)
           setMessageType('success')
           loadSbirStats()
         } else {
-          setMessage('❌ SBIR scraper failed: ' + data.error)
+          setMessage('SBIR scraper failed: ' + data.error)
           setMessageType('error')
         }
       } else {
-        setMessage('❌ Failed to start SBIR scraper')
+        setMessage('Failed to start SBIR scraper')
         setMessageType('error')
       }
     } catch (error) {
       console.error('Error starting SBIR scraper:', error)
-      setMessage('❌ Error starting SBIR scraper')
+      setMessage('Error starting SBIR scraper')
       setMessageType('error')
     }
   }
@@ -997,7 +997,7 @@ export default function AdminDashboard() {
                             e.currentTarget.style.boxShadow = 'none'
                           }}
                         >
-                          🗑️ Remove User
+                          Remove User
                         </button>
                       </div>
                     </td>
