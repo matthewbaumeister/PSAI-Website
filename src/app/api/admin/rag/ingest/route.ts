@@ -15,7 +15,6 @@ const supabase = createClient(
 );
 
 export const dynamic = 'force-dynamic';
-export const maxDuration = 300; // 5 minutes for large PDFs
 
 interface IngestRequest {
   type: 'pdf' | 'text' | 'paste';
