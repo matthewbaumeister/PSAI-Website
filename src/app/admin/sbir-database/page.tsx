@@ -42,8 +42,29 @@ export default function SBIRDatabaseBrowser() {
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState('modified_date');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  
+  // Smart search state
+  const [smartSearchInput, setSmartSearchInput] = useState('');
+  const [smartSearchMode, setSmartSearchMode] = useState<'query' | 'doc' | null>(null);
+  const [smartSearchProcessing, setSmartSearchProcessing] = useState(false);
+  
+  // File upload state
+  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [fileProcessing, setFileProcessing] = useState(false);
+  const [filePreview, setFilePreview] = useState<string>('');
 
   const pageSize = 25;
+
+  // Detect smart search intent
+  useEffect(() => {
+    if (!smartSearchInput.trim()) {
+      setSmartSearchMode(null);
+      return;
+    }
+    
+    const wordCount = smartSearchInput.trim().split(/\s+/).length;
+    setSmartSearchMode(wordCount > 50 ? 'doc' : 'query');
+  }, [smartSearchInput]);
 
   // Fetch data when filters, page, or sort changes
   useEffect(() => {
@@ -155,6 +176,118 @@ export default function SBIRDatabaseBrowser() {
   };
 
   // Handle smart search
+  const handleSmartSearch = async () => {
+    if (!smartSearchInput.trim()) return;
+
+    setSmartSearchProcessing(true);
+    
+    try {
+      if (smartSearchMode === 'doc') {
+        // Extract keywords from pasted doc
+        const keywords = extractKeywords(smartSearchInput);
+        setSearchText(keywords.join(' '));
+      } else {
+        // Direct query
+        setSearchText(smartSearchInput.trim());
+      }
+      
+      // Reset filters and trigger search
+      setCurrentPage(0);
+      setSelectedStatuses([]);
+      setSelectedComponent('all');
+      setSelectedProgramType('all');
+      
+      // Fetch with new search text
+      await fetchRecords();
+      
+      // Clear smart search input
+      setSmartSearchInput('');
+      
+    } catch (error) {
+      console.error('Smart search error:', error);
+      alert('Search failed. Please try again.');
+    } finally {
+      setSmartSearchProcessing(false);
+    }
+  };
+
+  // Simple keyword extraction from capabilities doc
+  const extractKeywords = (text: string): string[] => {
+    // Remove common words and extract technical terms
+    const stopWords = new Set(['the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'from', 'as', 'is', 'was', 'are', 'were', 'been', 'be', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'could', 'should', 'may', 'might', 'must', 'can', 'this', 'that', 'these', 'those', 'we', 'our', 'us', 'you', 'your', 'they', 'their', 'them', 'it', 'its', 'which', 'who', 'what', 'when', 'where', 'how', 'why']);
+    
+    // Split into words and filter
+    const words = text.toLowerCase()
+      .replace(/[^\w\s-]/g, ' ')
+      .split(/\s+/)
+      .filter(word => word.length > 3 && !stopWords.has(word));
+    
+    // Count frequency
+    const freq: Record<string, number> = {};
+    words.forEach(word => {
+      freq[word] = (freq[word] || 0) + 1;
+    });
+    
+    // Get top keywords by frequency
+    const sorted = Object.entries(freq)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10)
+      .map(([word]) => word);
+    
+    return sorted;
+  };
+
+  // Handle file upload and processing
+  const handleFileUpload = async () => {
+    if (!uploadedFile) return;
+
+    setFileProcessing(true);
+    setFilePreview('');
+
+    try {
+      const formData = new FormData();
+      formData.append('file', uploadedFile);
+
+      console.log('Uploading file:', uploadedFile.name);
+
+      const response = await fetch('/api/admin/sbir/extract-file', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Set preview
+        setFilePreview(`File: ${data.filename} (${data.fileType})\nExtracted: ${data.stats.characterCount} chars, ${data.stats.wordCount} words\nKeywords: ${data.keywords.join(', ')}`);
+        
+        // Set search text with keywords
+        setSearchText(data.keywords.join(' '));
+        
+        // Reset filters and trigger search
+        setCurrentPage(0);
+        setSelectedStatuses([]);
+        setSelectedComponent('all');
+        setSelectedProgramType('all');
+        
+        // Fetch with new keywords
+        await fetchRecords();
+        
+        // Clear file input
+        setUploadedFile(null);
+        
+      } else {
+        alert(`File processing failed: ${data.error}`);
+      }
+
+    } catch (error) {
+      console.error('File processing error:', error);
+      alert('File processing failed. Please try again.');
+    } finally {
+      setFileProcessing(false);
+    }
+  };
+
   return (
     <div style={{ 
       minHeight: '100vh', 
@@ -194,6 +327,220 @@ export default function SBIRDatabaseBrowser() {
           }}>
             Search and explore {totalRecords.toLocaleString()} SBIR/STTR opportunities
           </p>
+        </div>
+
+        {/* Smart Search Section */}
+        <div style={{ 
+          background: 'rgba(16, 185, 129, 0.1)',
+          border: '2px solid rgba(16, 185, 129, 0.3)',
+          borderRadius: '12px',
+          padding: '24px',
+          marginBottom: '24px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+            <h2 style={{ 
+              fontSize: '20px', 
+              fontWeight: '600',
+              color: '#10b981',
+              margin: 0
+            }}>
+              Smart Search
+            </h2>
+            <div style={{
+              padding: '4px 10px',
+              background: 'rgba(16, 185, 129, 0.2)',
+              border: '1px solid rgba(16, 185, 129, 0.4)',
+              borderRadius: '6px',
+              fontSize: '11px',
+              fontWeight: '600',
+              color: '#10b981'
+            }}>
+              NEW
+            </div>
+          </div>
+
+          <div style={{
+            padding: '12px',
+            background: 'rgba(245, 158, 11, 0.1)',
+            border: '1px solid rgba(245, 158, 11, 0.3)',
+            borderRadius: '8px',
+            marginBottom: '16px',
+            fontSize: '13px',
+            color: '#fbbf24',
+            lineHeight: '1.5'
+          }}>
+            <strong>EPHEMERAL MODE:</strong> Documents processed in temporary storage only. Original text never stored. Auto-deleted after search or in 1 hour.
+          </div>
+
+          <p style={{ 
+            color: '#94a3b8', 
+            fontSize: '14px',
+            marginBottom: '16px'
+          }}>
+            Type a short query OR paste your capabilities document (50+ words) - we'll extract keywords automatically
+          </p>
+
+          <textarea
+            value={smartSearchInput}
+            onChange={(e) => setSmartSearchInput(e.target.value)}
+            placeholder="Enter search query (e.g. 'AI machine learning defense') OR paste capabilities document...
+
+Example doc:
+Our company specializes in artificial intelligence and machine learning for defense applications. We develop autonomous systems, computer vision, natural language processing, and cybersecurity solutions for government contracts."
+            disabled={smartSearchProcessing}
+            style={{
+              width: '100%',
+              minHeight: '120px',
+              padding: '14px',
+              background: 'rgba(15, 23, 42, 0.6)',
+              border: '2px solid rgba(16, 185, 129, 0.3)',
+              borderRadius: '8px',
+              color: '#ffffff',
+              fontSize: '14px',
+              fontFamily: 'inherit',
+              resize: 'vertical',
+              marginBottom: '12px'
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                handleSmartSearch();
+              }
+            }}
+          />
+
+          {smartSearchMode && (
+            <div style={{
+              padding: '10px 14px',
+              background: smartSearchMode === 'doc' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(59, 130, 246, 0.15)',
+              border: `1px solid ${smartSearchMode === 'doc' ? 'rgba(16, 185, 129, 0.4)' : 'rgba(59, 130, 246, 0.4)'}`,
+              borderRadius: '6px',
+              fontSize: '13px',
+              color: smartSearchMode === 'doc' ? '#10b981' : '#60a5fa',
+              marginBottom: '12px'
+            }}>
+              {smartSearchMode === 'doc' 
+                ? `${smartSearchInput.trim().split(/\s+/).length} words detected - Will extract keywords from document`
+                : `${smartSearchInput.trim().split(/\s+/).length} words - Quick search mode`
+              }
+            </div>
+          )}
+
+          <button
+            onClick={handleSmartSearch}
+            disabled={smartSearchProcessing || !smartSearchInput.trim()}
+            style={{
+              padding: '12px 24px',
+              background: smartSearchProcessing || !smartSearchInput.trim()
+                ? 'rgba(100, 116, 139, 0.3)'
+                : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              border: 'none',
+              borderRadius: '8px',
+              color: '#ffffff',
+              fontSize: '15px',
+              fontWeight: '600',
+              cursor: smartSearchProcessing || !smartSearchInput.trim() ? 'not-allowed' : 'pointer',
+              boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+            }}
+          >
+            {smartSearchProcessing ? 'Processing...' : smartSearchMode === 'doc' ? 'Extract Keywords & Search' : 'Search SBIR Database'}
+          </button>
+
+          <div style={{
+            marginTop: '12px',
+            fontSize: '12px',
+            color: '#64748b'
+          }}>
+            Tip: Press Cmd/Ctrl + Enter to search • Paste 50+ words for auto keyword extraction
+          </div>
+
+          {/* OR Divider */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            marginTop: '24px',
+            marginBottom: '16px'
+          }}>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(148, 163, 184, 0.2)' }} />
+            <div style={{ padding: '0 16px', color: '#64748b', fontSize: '13px', fontWeight: '600' }}>
+              OR
+            </div>
+            <div style={{ flex: 1, height: '1px', background: 'rgba(148, 163, 184, 0.2)' }} />
+          </div>
+
+          {/* File Upload Section */}
+          <div>
+            <label style={{
+              display: 'block',
+              color: '#cbd5e1',
+              fontSize: '14px',
+              fontWeight: '600',
+              marginBottom: '10px'
+            }}>
+              Upload Capabilities Document
+            </label>
+            <p style={{ 
+              color: '#94a3b8', 
+              fontSize: '13px',
+              marginBottom: '12px'
+            }}>
+              Supported formats: PDF, DOCX, TXT, PPTX
+            </p>
+
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+              <input
+                type="file"
+                accept=".pdf,.docx,.txt,.pptx"
+                onChange={(e) => setUploadedFile(e.target.files?.[0] || null)}
+                disabled={fileProcessing}
+                style={{
+                  flex: 1,
+                  minWidth: '250px',
+                  padding: '10px',
+                  background: 'rgba(15, 23, 42, 0.6)',
+                  border: '1px solid rgba(71, 85, 105, 0.5)',
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '13px',
+                  cursor: fileProcessing ? 'not-allowed' : 'pointer'
+                }}
+              />
+              <button
+                onClick={handleFileUpload}
+                disabled={fileProcessing || !uploadedFile}
+                style={{
+                  padding: '10px 20px',
+                  background: fileProcessing || !uploadedFile
+                    ? 'rgba(100, 116, 139, 0.3)'
+                    : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  border: 'none',
+                  borderRadius: '6px',
+                  color: '#ffffff',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  cursor: fileProcessing || !uploadedFile ? 'not-allowed' : 'pointer',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {fileProcessing ? 'Processing...' : 'Extract & Search'}
+              </button>
+            </div>
+
+            {filePreview && (
+              <div style={{
+                marginTop: '12px',
+                padding: '12px',
+                background: 'rgba(16, 185, 129, 0.1)',
+                border: '1px solid rgba(16, 185, 129, 0.3)',
+                borderRadius: '6px',
+                fontSize: '12px',
+                color: '#10b981',
+                fontFamily: 'monospace',
+                whiteSpace: 'pre-wrap'
+              }}>
+                {filePreview}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Search and Filters */}
