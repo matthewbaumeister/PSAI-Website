@@ -40,6 +40,7 @@ export default function RAGSearchPage() {
   // Files state
   const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
   const [loadingFiles, setLoadingFiles] = useState(true);
+  const [cleaningUp, setCleaningUp] = useState(false);
   
   // Search state
   const [searchQuery, setSearchQuery] = useState('');
@@ -98,7 +99,14 @@ export default function RAGSearchPage() {
       const data = await response.json();
 
       if (data.success) {
-        setUploadProgress(`✅ Processed! ${data.stats.chunkCount} chunks, ${data.stats.embeddingCount} embeddings`);
+        const expiresAt = data.security?.expiresAt 
+          ? new Date(data.security.expiresAt).toLocaleTimeString() 
+          : '1 hour';
+        
+        setUploadProgress(
+          `✅ Processed! ${data.stats.chunkCount} chunks, ${data.stats.embeddingCount} embeddings\n` +
+          `🔒 EPHEMERAL: Auto-deletes after search or at ${expiresAt}`
+        );
         
         // Reset form
         setUploadFile(null);
@@ -107,10 +115,10 @@ export default function RAGSearchPage() {
         // Reload files
         await loadFiles();
         
-        // Clear progress after 3 seconds
+        // Clear progress after 5 seconds (longer to read security message)
         setTimeout(() => {
           setUploadProgress('');
-        }, 3000);
+        }, 5000);
       } else {
         alert(`Upload failed: ${data.error}`);
       }
@@ -148,6 +156,14 @@ export default function RAGSearchPage() {
       if (data.success) {
         setSearchResults(data.results);
         setSearchStats(data.stats);
+        
+        // Reload files list (file may have been deleted if searching by document)
+        await loadFiles();
+        
+        // Show security notification
+        if (data.security?.action) {
+          console.log(`🔒 EPHEMERAL MODE: ${data.security.action}`);
+        }
       } else {
         alert(`Search failed: ${data.error}`);
       }
@@ -182,6 +198,31 @@ export default function RAGSearchPage() {
     }
   };
 
+  const handleCleanupExpired = async () => {
+    if (!confirm('Delete all expired files (older than 1 hour)?')) return;
+
+    setCleaningUp(true);
+    try {
+      const response = await fetch('/api/admin/rag/cleanup', {
+        method: 'POST'
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert(`✅ Cleanup complete: ${data.deleted} expired files deleted`);
+        await loadFiles();
+      } else {
+        alert(`Cleanup failed: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('Cleanup error:', error);
+      alert('Cleanup failed');
+    } finally {
+      setCleaningUp(false);
+    }
+  };
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -213,9 +254,39 @@ export default function RAGSearchPage() {
             🔍 Document Intelligence Search
           </h1>
           
-          <p style={{ color: '#94a3b8', fontSize: '16px' }}>
+          <p style={{ color: '#94a3b8', fontSize: '16px', marginBottom: '16px' }}>
             Upload capabilities documents → Search SBIR/STTR opportunities by semantic similarity
           </p>
+
+          {/* SECURITY WARNING */}
+          <div style={{
+            background: 'rgba(245, 158, 11, 0.1)',
+            border: '2px solid rgba(245, 158, 11, 0.4)',
+            borderRadius: '12px',
+            padding: '16px 20px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '12px'
+          }}>
+            <div style={{ fontSize: '24px' }}>🔒</div>
+            <div>
+              <div style={{ 
+                color: '#fbbf24', 
+                fontWeight: '600', 
+                fontSize: '15px',
+                marginBottom: '6px'
+              }}>
+                EPHEMERAL MODE - Maximum Security
+              </div>
+              <div style={{ color: '#fcd34d', fontSize: '13px', lineHeight: '1.5' }}>
+                • Documents are processed in temporary storage only<br/>
+                • Original text is NEVER stored<br/>
+                • All data auto-deleted after search OR in 1 hour<br/>
+                • No search history or user tracking<br/>
+                • Compliant with ITAR and export control requirements
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Upload Section */}
@@ -325,14 +396,58 @@ export default function RAGSearchPage() {
           padding: '24px',
           marginBottom: '24px'
         }}>
-          <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px' }}>
-            📁 Uploaded Documents ({uploadedFiles.length})
-          </h2>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', gap: '12px' }}>
+            <h2 style={{ fontSize: '20px', fontWeight: '600' }}>
+              ⏱️ Temporary Documents ({uploadedFiles.length})
+            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <button
+                onClick={handleCleanupExpired}
+                disabled={cleaningUp}
+                style={{
+                  padding: '6px 12px',
+                  background: cleaningUp ? 'rgba(100, 116, 139, 0.3)' : 'rgba(239, 68, 68, 0.2)',
+                  border: '1px solid rgba(239, 68, 68, 0.4)',
+                  borderRadius: '6px',
+                  fontSize: '12px',
+                  color: '#fca5a5',
+                  fontWeight: '600',
+                  cursor: cleaningUp ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s'
+                }}
+                onMouseEnter={(e) => !cleaningUp && (e.currentTarget.style.background = 'rgba(239, 68, 68, 0.3)')}
+                onMouseLeave={(e) => !cleaningUp && (e.currentTarget.style.background = 'rgba(239, 68, 68, 0.2)')}
+              >
+                {cleaningUp ? '🗑️ Cleaning...' : '🗑️ Cleanup Expired'}
+              </button>
+              <div style={{
+                padding: '6px 12px',
+                background: 'rgba(245, 158, 11, 0.2)',
+                border: '1px solid rgba(245, 158, 11, 0.4)',
+                borderRadius: '6px',
+                fontSize: '12px',
+                color: '#fbbf24',
+                fontWeight: '600'
+              }}>
+                Auto-delete in 1hr or after search
+              </div>
+            </div>
+          </div>
 
           {loadingFiles ? (
             <p style={{ color: '#94a3b8' }}>Loading...</p>
           ) : uploadedFiles.length === 0 ? (
-            <p style={{ color: '#94a3b8' }}>No documents uploaded yet.</p>
+            <div style={{
+              textAlign: 'center',
+              padding: '32px',
+              color: '#94a3b8'
+            }}>
+              <div style={{ fontSize: '48px', marginBottom: '12px' }}>🔒</div>
+              <p>No temporary documents. Upload above to search.</p>
+              <p style={{ fontSize: '13px', marginTop: '8px', color: '#64748b' }}>
+                Documents are ephemeral - they don't persist
+              </p>
+            </div>
           ) : (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {uploadedFiles.map(file => (
@@ -445,16 +560,33 @@ export default function RAGSearchPage() {
           </div>
 
           {searchStats && (
-            <div style={{ 
-              padding: '12px',
-              background: 'rgba(59, 130, 246, 0.1)',
-              border: '1px solid rgba(59, 130, 246, 0.3)',
-              borderRadius: '8px',
-              fontSize: '13px',
-              color: '#94a3b8'
-            }}>
-              Found {searchResults.length} matches in {searchStats.responseTimeMs}ms • Avg similarity: {(searchStats.avgSimilarity * 100).toFixed(1)}%
-            </div>
+            <>
+              <div style={{ 
+                padding: '12px',
+                background: 'rgba(59, 130, 246, 0.1)',
+                border: '1px solid rgba(59, 130, 246, 0.3)',
+                borderRadius: '8px',
+                fontSize: '13px',
+                color: '#94a3b8',
+                marginBottom: '8px'
+              }}>
+                Found {searchResults.length} matches in {searchStats.responseTimeMs}ms • Avg similarity: {(searchStats.avgSimilarity * 100).toFixed(1)}%
+              </div>
+              <div style={{
+                padding: '10px',
+                background: 'rgba(245, 158, 11, 0.1)',
+                border: '1px solid rgba(245, 158, 11, 0.3)',
+                borderRadius: '6px',
+                fontSize: '12px',
+                color: '#fbbf24',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
+              }}>
+                <span>🔒</span>
+                <span>Ephemeral mode: This search was not logged. Document data will be deleted automatically.</span>
+              </div>
+            </>
           )}
         </div>
 

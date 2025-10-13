@@ -20,6 +20,10 @@
     {
       "path": "/api/cron/sbir-scraper",
       "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/admin/rag/cleanup",
+      "schedule": "0 * * * *"
     }
   ],
   "headers": [

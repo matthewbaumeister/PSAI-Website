@@ -178,17 +178,19 @@ export async function POST(request: NextRequest) {
       metadata: match.metadata
     }));
 
-    // Step 5: Log search for analytics
-    await supabase.from('rag_search_history').insert({
-      query_text: query,
-      query_file_id: fileId,
-      search_type: query ? 'text' : 'document',
-      filters,
-      results_count: results.length,
-      top_result_ids: results.slice(0, 10).map(r => r.chunkId),
-      searched_by: 'admin@prop-shop.ai', // TODO: Get from auth
-      response_time_ms: Date.now() - startTime
-    });
+    // Step 5: EPHEMERAL MODE - Delete file after search (if it was uploaded)
+    if (fileId) {
+      console.log(`🗑️ EPHEMERAL MODE: Deleting file ${fileId} after search`);
+      await supabase
+        .from('rag_files')
+        .delete()
+        .eq('id', fileId);
+      console.log(`✅ File deleted (ephemeral mode)`);
+    }
+
+    // SECURITY: Do NOT log search history in ephemeral mode
+    // (Commented out for privacy)
+    // await supabase.from('rag_search_history').insert({...});
 
     const responseTime = Date.now() - startTime;
     console.log(`✅ Search complete in ${responseTime}ms`);
@@ -203,6 +205,11 @@ export async function POST(request: NextRequest) {
         avgSimilarity: results.length > 0
           ? results.reduce((sum, r) => sum + r.similarity, 0) / results.length
           : 0
+      },
+      security: {
+        mode: 'EPHEMERAL',
+        action: fileId ? 'File deleted after search' : 'Query not logged',
+        note: 'No data retained for security/privacy'
       }
     });
 

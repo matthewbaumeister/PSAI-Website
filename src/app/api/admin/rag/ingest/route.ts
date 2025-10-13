@@ -114,21 +114,26 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    // Step 2: Create file record
-    console.log('💾 Creating file record...');
+    // Step 2: Create file record (EPHEMERAL MODE - auto-expires in 1 hour)
+    console.log('💾 Creating ephemeral file record...');
+    const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 1 hour from now
+    
     const { data: fileRecord, error: fileError } = await supabase
       .from('rag_files')
       .insert({
         filename,
         file_type: ingestData.type,
-        original_text: fullText,
+        original_text: null, // SECURITY: Never store original text
         file_size: fileBuffer?.length || fullText.length,
         page_count: pageCount,
         uploaded_by: 'admin@prop-shop.ai', // TODO: Get from auth
         metadata: {
           ...ingestData.metadata,
           ...extractedMetadata,
-          processed_at: new Date().toISOString()
+          processed_at: new Date().toISOString(),
+          expires_at: expiresAt.toISOString(),
+          ephemeral: true,
+          security_note: 'This document will be automatically deleted after 1 hour or after first search'
         },
         status: 'processing'
       })
@@ -261,6 +266,11 @@ export async function POST(request: NextRequest) {
         characterCount: fullText.length,
         embeddingCount: embeddings.length,
         processingTimeMs: processingTime
+      },
+      security: {
+        mode: 'EPHEMERAL',
+        expiresAt: expiresAt.toISOString(),
+        warning: 'Document will be automatically deleted after first search or in 1 hour'
       }
     });
 
