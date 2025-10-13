@@ -43,19 +43,19 @@ export async function POST(request: NextRequest) {
         .toLowerCase()
         .replace(/[^\w\s-]/g, ' ') // Remove punctuation except hyphens
         .split(/\s+/)
-        .filter((k: string) => k.length > 2);
+        .filter((k: string) => k.length > 3); // Increased min length to 3 chars
       
-      // Prioritize longer, more specific keywords (limit to 5 for performance)
+      // Prioritize longer, more specific keywords (limit to 3 for performance)
       // Longer words are usually more specific and will match fewer records
       const searchKeywords = allKeywords
         .sort((a: string, b: string) => b.length - a.length) // Sort by length descending
-        .slice(0, 5); // Take top 5 most specific
+        .slice(0, 3); // Take top 3 most specific (reduced from 5)
       
       if (searchKeywords.length > 0) {
-        // Search each keyword across fields (more efficient than one long string)
+        // Search only title and keywords fields (skip description for performance)
         // Build OR conditions for each keyword
         const orConditions = searchKeywords.map((keyword: string) => 
-          `title.ilike.%${keyword}%,description.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
+          `title.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
         ).join(',');
         
         console.log(` Searching ${searchKeywords.length} keywords (from ${allKeywords.length} total):`, searchKeywords);
