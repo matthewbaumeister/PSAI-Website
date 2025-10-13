@@ -1,11 +1,11 @@
 /**
  * SBIR File Extraction API
  * POST: Upload file → Extract text → Extract keywords → Return
- * Supports: PDF, DOCX, TXT, PPTX
+ * Supports: 50+ formats via Unstructured.io (PDF, DOCX, Images, etc.)
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { extractTextFromFile, isSupportedFileType, getFileTypeDescription } from '@/lib/file-extractor';
+import { extractText, isFileTypeSupported, getFileType, getAllSupportedExtensions } from '@/lib/unstructured-extractor';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,10 +30,11 @@ export async function POST(request: NextRequest) {
     console.log(` Processing file: ${filename} (${file.size} bytes)`);
 
     // Validate file type
-    if (!isSupportedFileType(filename)) {
+    if (!isFileTypeSupported(filename)) {
+      const supportedFormats = getAllSupportedExtensions().join(', ');
       return NextResponse.json({
         success: false,
-        error: `Unsupported file type. Supported: PDF, DOCX, TXT, PPTX`
+        error: `Unsupported file type. Supported: ${supportedFormats}`
       }, { status: 400 });
     }
 
@@ -41,12 +42,20 @@ export async function POST(request: NextRequest) {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = Buffer.from(arrayBuffer);
 
-    // Extract text
-    console.log(` Extracting text from ${getFileTypeDescription(filename)}...`);
+    // Extract text using universal extractor
+    console.log(` Extracting text from ${getFileType(filename)} file...`);
     let extractedText: string;
+    let extractionMetadata: any;
     
     try {
-      extractedText = await extractTextFromFile(buffer, filename);
+      const result = await extractText(buffer, filename);
+      extractedText = result.text;
+      extractionMetadata = result.metadata;
+      
+      console.log(` Extraction successful using ${extractionMetadata.method} method`);
+      if (extractionMetadata.pages) {
+        console.log(` Processed ${extractionMetadata.pages} pages`);
+      }
     } catch (extractError) {
       console.error(' Extraction error:', extractError);
       return NextResponse.json({
@@ -73,12 +82,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       filename,
-      fileType: getFileTypeDescription(filename),
+      fileType: extractionMetadata.fileType || getFileType(filename),
       stats: {
         characterCount: extractedText.length,
         wordCount: extractedText.split(/\s+/).length,
         keywordCount: keywords.length,
-        processingTimeMs: processingTime
+        processingTimeMs: processingTime,
+        pages: extractionMetadata.pages,
+        extractionMethod: extractionMetadata.method
       },
       keywords,
       // Return first 500 chars as preview

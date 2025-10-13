@@ -483,13 +483,13 @@ Our company specializes in artificial intelligence and machine learning for defe
               fontSize: '13px',
               marginBottom: '12px'
             }}>
-              Supported formats: PDF, DOCX, TXT, PPTX
+              Supported: PDF, DOCX, PPTX, Images (PNG/JPG), TXT, HTML, CSV, and 40+ more formats
             </p>
 
             <div style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
               <input
                 type="file"
-                accept=".pdf,.docx,.txt,.pptx"
+                accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.md,.odt,.odp,.rtf,.html,.htm,.png,.jpg,.jpeg,.gif,.tiff,.bmp,.webp,.csv,.xlsx,.xls"
                 onChange={(e) => setUploadedFile(e.target.files?.[0] || null)}
                 disabled={fileProcessing}
                 style={{
