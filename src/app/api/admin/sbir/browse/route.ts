@@ -53,20 +53,26 @@ export async function POST(request: NextRequest) {
 
     // NOW apply search AFTER filtering (searches smaller dataset)
     if (searchText && searchText.trim()) {
-      // Use ONLY the single longest keyword for maximum performance
+      // Accept keywords 2+ characters (allows "AI")
       const allKeywords = searchText.trim()
         .toLowerCase()
         .replace(/[^\w\s-]/g, ' ')
         .split(/\s+/)
-        .filter((k: string) => k.length > 4); // Minimum 5 chars
+        .filter((k: string) => k.length >= 2); // Minimum 2 chars (allows "AI")
       
       if (allKeywords.length > 0) {
-        // Take ONLY the longest keyword
-        const longestKeyword = allKeywords.sort((a: string, b: string) => b.length - a.length)[0];
+        // Take top 2 longest keywords for better matching
+        const topKeywords = allKeywords
+          .sort((a: string, b: string) => b.length - a.length)
+          .slice(0, 2);
         
-        // Search only title field (most relevant)
-        console.log(` Searching for: "${longestKeyword}" (from: "${searchText.substring(0, 50)}")`);
-        query = query.ilike('title', `%${longestKeyword}%`);
+        // Search across title and keywords fields
+        const searchConditions = topKeywords.map((keyword: string) => 
+          `title.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
+        ).join(',');
+        
+        console.log(` Searching for: [${topKeywords.join(', ')}] (from: "${searchText.substring(0, 50)}")`);
+        query = query.or(searchConditions);
       }
     }
 
