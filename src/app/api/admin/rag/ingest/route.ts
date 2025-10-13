@@ -114,10 +114,10 @@ export async function POST(request: NextRequest) {
       }, { status: 400 });
     }
 
-    if (fullText.length < 100) {
+    if (fullText.length < 10) {
       return NextResponse.json({
         success: false,
-        error: 'Text too short (minimum 100 characters)'
+        error: 'Text too short (minimum 10 characters)'
       }, { status: 400 });
     }
 
