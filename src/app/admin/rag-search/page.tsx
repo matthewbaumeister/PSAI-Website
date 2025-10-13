@@ -30,8 +30,8 @@ interface SearchResult {
 export default function RAGSearchPage() {
   const router = useRouter();
   
-  // Upload state
-  const [uploadMode, setUploadMode] = useState<'pdf' | 'paste'>('pdf');
+  // Upload state (text-only mode)
+  const [uploadMode, setUploadMode] = useState<'pdf' | 'paste'>('paste'); // Default to paste since PDF is disabled
   const [uploadFile, setUploadFile] = useState<File | null>(null);
   const [pasteText, setPasteText] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -71,8 +71,8 @@ export default function RAGSearchPage() {
   };
 
   const handleFileUpload = async () => {
-    if (!uploadFile && !pasteText.trim()) {
-      alert('Please select a file or paste text');
+    if (!pasteText.trim()) {
+      alert('Please paste text to process');
       return;
     }
 
@@ -80,26 +80,16 @@ export default function RAGSearchPage() {
       setUploading(true);
       setUploadProgress('Uploading...');
 
-      let requestBody: FormData | string;
-      let headers: HeadersInit = {};
+      // Text paste - send as JSON (PDF upload disabled)
+      const requestBody = JSON.stringify({
+        text: pasteText,
+        filename: 'pasted-text.txt',
+        type: 'paste'
+      });
       
-      if (uploadMode === 'pdf' && uploadFile) {
-        // PDF upload (currently disabled)
-        const formData = new FormData();
-        formData.append('file', uploadFile);
-        requestBody = formData;
-      } else if (uploadMode === 'paste') {
-        // Text paste - send as JSON
-        requestBody = JSON.stringify({
-          text: pasteText,
-          filename: 'pasted-text.txt',
-          type: 'paste'
-        });
-        headers['Content-Type'] = 'application/json';
-      } else {
-        alert('Invalid upload mode');
-        return;
-      }
+      const headers: HeadersInit = {
+        'Content-Type': 'application/json'
+      };
 
       setUploadProgress('Processing document...');
       
