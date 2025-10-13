@@ -3,15 +3,8 @@
  * Extract text from PDFs page by page
  */
 
-// Dynamic import to handle CommonJS module
-let pdfParse: any;
-try {
-  pdfParse = require('pdf-parse');
-} catch (e) {
-  console.error('Failed to load pdf-parse:', e);
-}
-
-const pdf = pdfParse;
+// Import pdf-parse with proper typing
+const pdfParse = require('pdf-parse') as (dataBuffer: Buffer, options?: any) => Promise<any>;
 
 export interface PDFExtraction {
   text: string;
@@ -34,7 +27,7 @@ export interface PDFExtraction {
  */
 export async function extractPDFText(buffer: Buffer): Promise<PDFExtraction> {
   try {
-    const data = await pdf(buffer, {
+    const data = await pdfParse(buffer, {
       // Options for better text extraction
       max: 0, // Extract all pages
       version: 'default'
@@ -48,7 +41,7 @@ export async function extractPDFText(buffer: Buffer): Promise<PDFExtraction> {
       // Try to extract pages individually
       for (let i = 1; i <= data.numpages; i++) {
         try {
-          const pageData = await pdf(buffer, {
+          const pageData = await pdfParse(buffer, {
             max: 1,
             pagerender: (pageData: any) => {
               return pageData.getTextContent()

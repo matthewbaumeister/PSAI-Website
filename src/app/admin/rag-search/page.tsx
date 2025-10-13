@@ -104,8 +104,8 @@ export default function RAGSearchPage() {
           : '1 hour';
         
         setUploadProgress(
-          `✅ Processed! ${data.stats.chunkCount} chunks, ${data.stats.embeddingCount} embeddings\n` +
-          `🔒 EPHEMERAL: Auto-deletes after search or at ${expiresAt}`
+          `Processed! ${data.stats.chunkCount} chunks, ${data.stats.embeddingCount} embeddings\n` +
+          `EPHEMERAL: Auto-deletes after search or at ${expiresAt}`
         );
         
         // Reset form
@@ -162,7 +162,7 @@ export default function RAGSearchPage() {
         
         // Show security notification
         if (data.security?.action) {
-          console.log(`🔒 EPHEMERAL MODE: ${data.security.action}`);
+          console.log(`EPHEMERAL MODE: ${data.security.action}`);
         }
       } else {
         alert(`Search failed: ${data.error}`);
@@ -210,7 +210,7 @@ export default function RAGSearchPage() {
       const data = await response.json();
 
       if (data.success) {
-        alert(`✅ Cleanup complete: ${data.deleted} expired files deleted`);
+        alert(`Cleanup complete: ${data.deleted} expired files deleted`);
         await loadFiles();
       } else {
         alert(`Cleanup failed: ${data.error}`);
@@ -251,7 +251,7 @@ export default function RAGSearchPage() {
             fontWeight: '700', 
             marginBottom: '10px'
           }}>
-            🔍 Document Intelligence Search
+            Document Intelligence Search
           </h1>
           
           <p style={{ color: '#94a3b8', fontSize: '16px', marginBottom: '16px' }}>
@@ -268,7 +268,6 @@ export default function RAGSearchPage() {
             alignItems: 'flex-start',
             gap: '12px'
           }}>
-            <div style={{ fontSize: '24px' }}>🔒</div>
             <div>
               <div style={{ 
                 color: '#fbbf24', 
@@ -298,7 +297,7 @@ export default function RAGSearchPage() {
           marginBottom: '24px'
         }}>
           <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px' }}>
-            📤 Upload Capabilities Document
+            Upload Capabilities Document
           </h2>
 
           {/* Mode Selector */}
@@ -314,7 +313,7 @@ export default function RAGSearchPage() {
                 cursor: 'pointer'
               }}
             >
-              📄 Upload PDF
+              Upload PDF
             </button>
             <button
               onClick={() => setUploadMode('paste')}
@@ -327,7 +326,7 @@ export default function RAGSearchPage() {
                 cursor: 'pointer'
               }}
             >
-              📝 Paste Text
+              Paste Text
             </button>
           </div>
 
@@ -384,7 +383,7 @@ export default function RAGSearchPage() {
               cursor: uploading ? 'not-allowed' : 'pointer'
             }}
           >
-            {uploading ? uploadProgress : '🚀 Process & Index'}
+            {uploading ? uploadProgress : 'Process & Index'}
           </button>
         </div>
 
@@ -398,7 +397,7 @@ export default function RAGSearchPage() {
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', gap: '12px' }}>
             <h2 style={{ fontSize: '20px', fontWeight: '600' }}>
-              ⏱️ Temporary Documents ({uploadedFiles.length})
+              Temporary Documents ({uploadedFiles.length})
             </h2>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <button
@@ -418,7 +417,7 @@ export default function RAGSearchPage() {
                 onMouseEnter={(e) => !cleaningUp && (e.currentTarget.style.background = 'rgba(239, 68, 68, 0.3)')}
                 onMouseLeave={(e) => !cleaningUp && (e.currentTarget.style.background = 'rgba(239, 68, 68, 0.2)')}
               >
-                {cleaningUp ? '🗑️ Cleaning...' : '🗑️ Cleanup Expired'}
+                {cleaningUp ? 'Cleaning...' : 'Cleanup Expired'}
               </button>
               <div style={{
                 padding: '6px 12px',
@@ -442,7 +441,6 @@ export default function RAGSearchPage() {
               padding: '32px',
               color: '#94a3b8'
             }}>
-              <div style={{ fontSize: '48px', marginBottom: '12px' }}>🔒</div>
               <p>No temporary documents. Upload above to search.</p>
               <p style={{ fontSize: '13px', marginTop: '8px', color: '#64748b' }}>
                 Documents are ephemeral - they don't persist
@@ -486,7 +484,7 @@ export default function RAGSearchPage() {
                         cursor: 'pointer'
                       }}
                     >
-                      🔍 Search
+                      Search
                     </button>
                     <button
                       onClick={() => handleDeleteFile(file.id)}
@@ -500,7 +498,7 @@ export default function RAGSearchPage() {
                         cursor: 'pointer'
                       }}
                     >
-                      🗑️ Delete
+                      Delete
                     </button>
                   </div>
                 </div>
@@ -518,7 +516,7 @@ export default function RAGSearchPage() {
           marginBottom: '24px'
         }}>
           <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px' }}>
-            🔍 Search SBIR Database
+            Search SBIR Database
           </h2>
 
           <div style={{ display: 'flex', gap: '10px', marginBottom: '16px' }}>
@@ -555,7 +553,7 @@ export default function RAGSearchPage() {
                 cursor: searching ? 'not-allowed' : 'pointer'
               }}
             >
-              {searching ? '🔍 Searching...' : '🔍 Search'}
+              {searching ? 'Searching...' : 'Search'}
             </button>
           </div>
 
@@ -583,7 +581,6 @@ export default function RAGSearchPage() {
                 alignItems: 'center',
                 gap: '8px'
               }}>
-                <span>🔒</span>
                 <span>Ephemeral mode: This search was not logged. Document data will be deleted automatically.</span>
               </div>
             </>
@@ -598,9 +595,9 @@ export default function RAGSearchPage() {
             borderRadius: '12px',
             padding: '24px'
           }}>
-            <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px' }}>
-              📊 Results ({searchResults.length})
-            </h2>
+          <h2 style={{ fontSize: '20px', fontWeight: '600', marginBottom: '16px' }}>
+            Results ({searchResults.length})
+          </h2>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {searchResults.map((result, index) => (
