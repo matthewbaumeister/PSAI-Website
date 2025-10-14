@@ -4,18 +4,68 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface SBIRRecord {
+  // Core identification
   topic_number: string;
   topic_id: string;
   title: string;
   component: string;
   status: string;
   program_type: string;
+  
+  // Dates
   open_date: string;
   close_date: string;
+  pre_release_start?: string;
+  pre_release_end?: string;
+  modified_date: string;
+  
+  // Descriptions
   description: string;
+  objective?: string;
+  description_3?: string; // Phase I description
+  description_4?: string; // Phase II description
+  description_5?: string; // Phase III description
+  
+  // Technology & Keywords
   keywords: string;
   technology_areas: string;
-  modified_date: string;
+  modernization_priorities?: string;
+  primary_technology_area?: string;
+  
+  // TPOC (Technical Point of Contact)
+  tpoc_names?: string;
+  tpoc_emails?: string;
+  tpoc_centers?: string;
+  tpoc_count?: string;
+  
+  // Q&A
+  total_questions?: string;
+  published_questions?: string;
+  qa_start?: string;
+  qanda_status_topicqastatus?: string;
+  
+  // Security
+  itar_controlled?: string;
+  security_export?: string;
+  
+  // References & Resources
+  references_data?: string;
+  reference_count?: string;
+  topic_pdf_download?: string;
+  solicitation_instructions_download?: string;
+  
+  // Solicitation info
+  cycle_name?: string;
+  release_number?: string;
+  solicitation_number?: string;
+  
+  // xTech
+  is_xtech_xtech_keyword_search_duplicate?: string;
+  prize_gating?: string;
+  
+  // Ownership
+  owner?: string;
+  internal_lead?: string;
 }
 
 interface FilterOptions {
@@ -173,6 +223,21 @@ export default function SBIRDatabaseBrowser() {
 
   const toggleRow = (topicId: string) => {
     setExpandedRow(expandedRow === topicId ? null : topicId);
+  };
+
+  // Handle clicking on a value to add it as a search filter
+  const handleClickToSearch = (value: string, label: string) => {
+    if (!value || value === 'N/A') return;
+    
+    // Add the value to search
+    setSearchText(value);
+    setCurrentPage(0);
+    
+    // Trigger new search
+    fetchRecords();
+    
+    // Scroll to top to see results
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Handle smart search
@@ -966,47 +1031,343 @@ Our company specializes in artificial intelligence and machine learning for defe
                             borderBottom: '1px solid rgba(51, 65, 85, 0.3)'
                           }}>
                             <div style={{ color: '#cbd5e1', lineHeight: '1.6' }}>
-                              <div style={{ marginBottom: '12px' }}>
-                                <strong style={{ color: '#ffffff' }}>Description:</strong>
-                                <p style={{ marginTop: '6px', color: '#94a3b8' }}>
-                                  {record.description?.substring(0, 500) || 'No description available'}
-                                  {record.description?.length > 500 && '...'}
-                                </p>
-                              </div>
-                              {record.keywords && (
-                                <div style={{ marginBottom: '12px' }}>
-                                  <strong style={{ color: '#ffffff' }}>Keywords:</strong>
-                                  <p style={{ marginTop: '6px', color: '#94a3b8' }}>
-                                    {record.keywords.substring(0, 200)}
-                                    {record.keywords.length > 200 && '...'}
-                                  </p>
-                                </div>
-                              )}
-                              {record.technology_areas && (
-                                <div style={{ marginBottom: '12px' }}>
-                                  <strong style={{ color: '#ffffff' }}>Technology Areas:</strong>
-                                  <p style={{ marginTop: '6px', color: '#94a3b8' }}>
-                                    {record.technology_areas}
-                                  </p>
-                                </div>
-                              )}
+                              {/* Organized multi-section detailed view */}
                               <div style={{ 
-                                display: 'flex', 
-                                gap: '20px', 
-                                marginTop: '16px',
-                                fontSize: '14px'
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+                                gap: '24px'
                               }}>
+                                
+                                {/* LEFT COLUMN */}
                                 <div>
-                                  <strong style={{ color: '#ffffff' }}>Open:</strong>{' '}
-                                  <span style={{ color: '#94a3b8' }}>{record.open_date || 'N/A'}</span>
+                                  {/* Descriptions Section */}
+                                  <div style={{ marginBottom: '20px' }}>
+                                    <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Descriptions</h4>
+                                    
+                                    {record.objective && (
+                                      <div style={{ marginBottom: '12px' }}>
+                                        <strong style={{ color: '#ffffff', fontSize: '13px' }}>Objective:</strong>
+                                        <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '13px' }}>
+                                          {record.objective.substring(0, 300)}
+                                          {record.objective.length > 300 && '...'}
+                                        </p>
+                                      </div>
+                                    )}
+                                    
+                                    <div style={{ marginBottom: '12px' }}>
+                                      <strong style={{ color: '#ffffff', fontSize: '13px' }}>Description:</strong>
+                                      <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '13px' }}>
+                                        {record.description?.substring(0, 400) || 'No description available'}
+                                        {record.description?.length > 400 && '...'}
+                                      </p>
+                                    </div>
+                                    
+                                    {record.description_3 && (
+                                      <div style={{ marginBottom: '12px' }}>
+                                        <strong style={{ color: '#ffffff', fontSize: '13px' }}>Phase I:</strong>
+                                        <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '13px' }}>
+                                          {record.description_3.substring(0, 200)}
+                                          {record.description_3.length > 200 && '...'}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
+
+                                  {/* Technology & Keywords Section */}
+                                  <div style={{ marginBottom: '20px' }}>
+                                    <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Technology & Keywords</h4>
+                                    
+                                    {record.technology_areas && (
+                                      <div style={{ marginBottom: '10px' }}>
+                                        <strong style={{ color: '#ffffff', fontSize: '13px' }}>Technology Areas:</strong>
+                                        <div style={{ marginTop: '6px', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                          {record.technology_areas.split(',').slice(0, 5).map((area, idx) => (
+                                            <span 
+                                              key={idx}
+                                              onClick={() => handleClickToSearch(area.trim(), 'Technology Area')}
+                                              style={{ 
+                                                padding: '4px 10px',
+                                                background: 'rgba(16, 185, 129, 0.1)',
+                                                border: '1px solid rgba(16, 185, 129, 0.3)',
+                                                borderRadius: '4px',
+                                                fontSize: '12px',
+                                                color: '#10b981',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.2s'
+                                              }}
+                                              onMouseOver={(e) => e.currentTarget.style.background = 'rgba(16, 185, 129, 0.2)'}
+                                              onMouseOut={(e) => e.currentTarget.style.background = 'rgba(16, 185, 129, 0.1)'}
+                                            >
+                                              {area.trim()}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    )}
+                                    
+                                    {record.modernization_priorities && (
+                                      <div style={{ marginBottom: '10px' }}>
+                                        <strong style={{ color: '#ffffff', fontSize: '13px' }}>Modernization:</strong>
+                                        <div style={{ marginTop: '6px', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                          {record.modernization_priorities.split('|').slice(0, 3).map((pri, idx) => (
+                                            <span 
+                                              key={idx}
+                                              onClick={() => handleClickToSearch(pri.trim(), 'Modernization')}
+                                              style={{ 
+                                                padding: '4px 10px',
+                                                background: 'rgba(168, 85, 247, 0.1)',
+                                                border: '1px solid rgba(168, 85, 247, 0.3)',
+                                                borderRadius: '4px',
+                                                fontSize: '12px',
+                                                color: '#a855f7',
+                                                cursor: 'pointer'
+                                              }}
+                                            >
+                                              {pri.trim()}
+                                            </span>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    )}
+                                    
+                                    {record.keywords && (
+                                      <div style={{ marginBottom: '10px' }}>
+                                        <strong style={{ color: '#ffffff', fontSize: '13px' }}>Keywords:</strong>
+                                        <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '12px' }}>
+                                          {record.keywords.substring(0, 200)}
+                                          {record.keywords.length > 200 && '...'}
+                                        </p>
+                                      </div>
+                                    )}
+                                  </div>
+
+                                  {/* TPOC Section */}
+                                  {(record.tpoc_names || record.tpoc_emails) && (
+                                    <div style={{ marginBottom: '20px' }}>
+                                      <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Technical Point of Contact (TPOC)</h4>
+                                      
+                                      {record.tpoc_names && (
+                                        <div style={{ marginBottom: '8px' }}>
+                                          <strong style={{ color: '#ffffff', fontSize: '13px' }}>Names:</strong>
+                                          <div style={{ marginTop: '4px' }}>
+                                            {record.tpoc_names.split(',').map((name, idx) => (
+                                              <span 
+                                                key={idx}
+                                                onClick={() => handleClickToSearch(name.trim(), 'TPOC')}
+                                                style={{ 
+                                                  display: 'inline-block',
+                                                  marginRight: '8px',
+                                                  marginBottom: '6px',
+                                                  padding: '3px 8px',
+                                                  background: 'rgba(251, 191, 36, 0.1)',
+                                                  border: '1px solid rgba(251, 191, 36, 0.3)',
+                                                  borderRadius: '4px',
+                                                  fontSize: '12px',
+                                                  color: '#fbbf24',
+                                                  cursor: 'pointer'
+                                                }}
+                                              >
+                                                {name.trim()}
+                                              </span>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      )}
+                                      
+                                      {record.tpoc_emails && (
+                                        <div style={{ marginBottom: '8px' }}>
+                                          <strong style={{ color: '#ffffff', fontSize: '13px' }}>Email:</strong>
+                                          <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '12px', wordBreak: 'break-all' }}>
+                                            {record.tpoc_emails}
+                                          </p>
+                                        </div>
+                                      )}
+                                      
+                                      {record.tpoc_centers && (
+                                        <div style={{ marginBottom: '8px' }}>
+                                          <strong style={{ color: '#ffffff', fontSize: '13px' }}>Centers:</strong>
+                                          <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '12px' }}>
+                                            {record.tpoc_centers}
+                                          </p>
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
                                 </div>
+
+                                {/* RIGHT COLUMN */}
                                 <div>
-                                  <strong style={{ color: '#ffffff' }}>Close:</strong>{' '}
-                                  <span style={{ color: '#94a3b8' }}>{record.close_date || 'N/A'}</span>
-                                </div>
-                                <div>
-                                  <strong style={{ color: '#ffffff' }}>Last Updated:</strong>{' '}
-                                  <span style={{ color: '#94a3b8' }}>{record.modified_date || 'N/A'}</span>
+                                  {/* Dates & Timeline */}
+                                  <div style={{ marginBottom: '20px' }}>
+                                    <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Dates & Timeline</h4>
+                                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', fontSize: '13px' }}>
+                                      <div>
+                                        <strong style={{ color: '#ffffff' }}>Open:</strong>
+                                        <p style={{ color: '#94a3b8' }}>{record.open_date || 'N/A'}</p>
+                                      </div>
+                                      <div>
+                                        <strong style={{ color: '#ffffff' }}>Close:</strong>
+                                        <p style={{ color: '#94a3b8' }}>{record.close_date || 'N/A'}</p>
+                                      </div>
+                                      {record.pre_release_start && (
+                                        <div>
+                                          <strong style={{ color: '#ffffff' }}>Pre-Release Start:</strong>
+                                          <p style={{ color: '#94a3b8' }}>{record.pre_release_start}</p>
+                                        </div>
+                                      )}
+                                      {record.pre_release_end && (
+                                        <div>
+                                          <strong style={{ color: '#ffffff' }}>Pre-Release End:</strong>
+                                          <p style={{ color: '#94a3b8' }}>{record.pre_release_end}</p>
+                                        </div>
+                                      )}
+                                      {record.qa_start && (
+                                        <div>
+                                          <strong style={{ color: '#ffffff' }}>Q&A Start:</strong>
+                                          <p style={{ color: '#94a3b8' }}>{record.qa_start}</p>
+                                        </div>
+                                      )}
+                                      <div>
+                                        <strong style={{ color: '#ffffff' }}>Modified:</strong>
+                                        <p style={{ color: '#94a3b8' }}>{record.modified_date || 'N/A'}</p>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  {/* Security & Compliance */}
+                                  {(record.itar_controlled || record.is_xtech_xtech_keyword_search_duplicate) && (
+                                    <div style={{ marginBottom: '20px' }}>
+                                      <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Security & Special Programs</h4>
+                                      {record.itar_controlled && (
+                                        <div style={{ marginBottom: '8px' }}>
+                                          <strong style={{ color: '#ffffff', fontSize: '13px' }}>ITAR Controlled:</strong>
+                                          <span style={{ 
+                                            marginLeft: '8px',
+                                            padding: '3px 10px',
+                                            background: record.itar_controlled === 'Yes' ? 'rgba(239, 68, 68, 0.2)' : 'rgba(34, 197, 94, 0.2)',
+                                            border: record.itar_controlled === 'Yes' ? '1px solid rgba(239, 68, 68, 0.3)' : '1px solid rgba(34, 197, 94, 0.3)',
+                                            borderRadius: '4px',
+                                            fontSize: '12px',
+                                            color: record.itar_controlled === 'Yes' ? '#ef4444' : '#22c55e'
+                                          }}>
+                                            {record.itar_controlled}
+                                          </span>
+                                        </div>
+                                      )}
+                                      {record.is_xtech_xtech_keyword_search_duplicate && (
+                                        <div style={{ marginBottom: '8px' }}>
+                                          <strong style={{ color: '#ffffff', fontSize: '13px' }}>xTech:</strong>
+                                          <span style={{ 
+                                            marginLeft: '8px',
+                                            padding: '3px 10px',
+                                            background: 'rgba(99, 102, 241, 0.2)',
+                                            border: '1px solid rgba(99, 102, 241, 0.3)',
+                                            borderRadius: '4px',
+                                            fontSize: '12px',
+                                            color: '#6366f1'
+                                          }}>
+                                            {record.is_xtech_xtech_keyword_search_duplicate}
+                                          </span>
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
+
+                                  {/* Q&A Engagement */}
+                                  {(record.total_questions || record.published_questions) && (
+                                    <div style={{ marginBottom: '20px' }}>
+                                      <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Q&A Engagement</h4>
+                                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', fontSize: '13px' }}>
+                                        {record.total_questions && (
+                                          <div>
+                                            <strong style={{ color: '#ffffff' }}>Total Questions:</strong>
+                                            <p style={{ color: '#94a3b8' }}>{record.total_questions}</p>
+                                          </div>
+                                        )}
+                                        {record.published_questions && (
+                                          <div>
+                                            <strong style={{ color: '#ffffff' }}>Published:</strong>
+                                            <p style={{ color: '#94a3b8' }}>{record.published_questions}</p>
+                                          </div>
+                                        )}
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  {/* Resources & Links */}
+                                  {(record.topic_pdf_download || record.solicitation_instructions_download || record.references_data) && (
+                                    <div style={{ marginBottom: '20px' }}>
+                                      <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Resources & Links</h4>
+                                      {record.topic_pdf_download && (
+                                        <div style={{ marginBottom: '8px' }}>
+                                          <a 
+                                            href={record.topic_pdf_download} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            style={{ 
+                                              color: '#60a5fa',
+                                              fontSize: '13px',
+                                              textDecoration: 'underline',
+                                              cursor: 'pointer'
+                                            }}
+                                          >
+                                            Topic PDF Download
+                                          </a>
+                                        </div>
+                                      )}
+                                      {record.solicitation_instructions_download && (
+                                        <div style={{ marginBottom: '8px' }}>
+                                          <a 
+                                            href={record.solicitation_instructions_download} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            style={{ 
+                                              color: '#60a5fa',
+                                              fontSize: '13px',
+                                              textDecoration: 'underline',
+                                              cursor: 'pointer'
+                                            }}
+                                          >
+                                            Solicitation Instructions
+                                          </a>
+                                        </div>
+                                      )}
+                                      {record.references_data && (
+                                        <div style={{ marginBottom: '8px' }}>
+                                          <strong style={{ color: '#ffffff', fontSize: '13px' }}>References:</strong>
+                                          <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '12px' }}>
+                                            {record.references_data.substring(0, 150)}
+                                            {record.references_data.length > 150 && '...'}
+                                          </p>
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
+
+                                  {/* Metadata */}
+                                  <div style={{ marginBottom: '20px' }}>
+                                    <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Metadata</h4>
+                                    <div style={{ fontSize: '13px' }}>
+                                      {record.cycle_name && (
+                                        <div style={{ marginBottom: '6px' }}>
+                                          <strong style={{ color: '#ffffff' }}>Cycle:</strong>
+                                          <span style={{ marginLeft: '8px', color: '#94a3b8' }}>{record.cycle_name}</span>
+                                        </div>
+                                      )}
+                                      {record.solicitation_number && (
+                                        <div style={{ marginBottom: '6px' }}>
+                                          <strong style={{ color: '#ffffff' }}>Solicitation #:</strong>
+                                          <span style={{ marginLeft: '8px', color: '#94a3b8' }}>{record.solicitation_number}</span>
+                                        </div>
+                                      )}
+                                      {record.release_number && (
+                                        <div style={{ marginBottom: '6px' }}>
+                                          <strong style={{ color: '#ffffff' }}>Release #:</strong>
+                                          <span style={{ marginLeft: '8px', color: '#94a3b8' }}>{record.release_number}</span>
+                                        </div>
+                                      )}
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
