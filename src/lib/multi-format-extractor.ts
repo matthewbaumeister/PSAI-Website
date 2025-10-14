@@ -141,7 +141,9 @@ async function extractImageOcr(buffer: Buffer, filename: string): Promise<string
     console.log('  Using OCR.space API for image text extraction...');
     
     const formData = new FormData();
-    const blob = new Blob([buffer]);
+    // Convert Buffer to ArrayBuffer for Blob compatibility
+    const arrayBuffer = buffer.buffer.slice(buffer.byteOffset, buffer.byteOffset + buffer.byteLength);
+    const blob = new Blob([arrayBuffer]);
     formData.append('file', blob, filename);
     formData.append('apikey', OCR_API_KEY);
     formData.append('language', 'eng');
