@@ -106,30 +106,31 @@ async function extractPptx(buffer: Buffer): Promise<string> {
 }
 
 /**
- * Extract text from PDF (simple text-based PDFs only)
+ * Extract text from PDF using pdf-parse-fork
  */
 async function extractPdf(buffer: Buffer): Promise<string> {
   try {
-    // Try simple text extraction first
-    const pdfText = buffer.toString('utf-8');
-    const textMatches = pdfText.match(/BT\s+(.*?)\s+ET/gs);
+    // Use pdf-parse-fork for better PDF text extraction
+    const pdfParse = require('pdf-parse-fork');
+    const data = await pdfParse(buffer);
     
-    if (textMatches && textMatches.length > 0) {
-      const extractedText = textMatches
-        .map(match => match.replace(/BT\s+|\s+ET/g, ''))
-        .join(' ')
-        .replace(/\s+/g, ' ')
-        .trim();
-      
-      if (extractedText.length > 50) {
-        return extractedText;
+    if (!data.text || data.text.trim().length < 50) {
+      throw new Error('PDF appears to be image-based or contains no readable text. Try: 1) Save PDF as images, 2) Upload as PNG/JPG for OCR');
+    }
+    
+    return data.text.trim();
+  } catch (error) {
+    // More helpful error messages
+    if (error instanceof Error) {
+      if (error.message.includes('image-based')) {
+        throw error; // Pass our custom message through
+      }
+      if (error.message.includes('password') || error.message.includes('encrypted')) {
+        throw new Error('PDF is password-protected or encrypted. Please remove protection and try again.');
       }
     }
     
-    // If simple extraction fails, suggest OCR
-    throw new Error('PDF appears to be image-based or encrypted. Try uploading as an image (PNG/JPG) for OCR.');
-  } catch (error) {
-    throw new Error(`PDF extraction failed: ${error instanceof Error ? error.message : 'Try converting to image format'}`);
+    throw new Error('PDF extraction failed. The file may be corrupted, image-based, or use an unsupported format. Try converting to PNG/JPG for OCR.');
   }
 }
 
@@ -276,7 +277,7 @@ export async function extractTextFromFile(
     // PDF
     else if (SUPPORTED_FORMATS.pdf.includes(ext)) {
       text = await extractPdf(buffer);
-      method = 'pdf-simple';
+      method = 'pdf-parse-fork';
     }
     
     // Images (OCR)

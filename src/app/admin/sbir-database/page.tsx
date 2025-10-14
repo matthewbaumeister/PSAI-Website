@@ -241,6 +241,15 @@ export default function SBIRDatabaseBrowser() {
   const handleFileUpload = async () => {
     if (!uploadedFile) return;
 
+    // File size validation (5MB limit for Vercel)
+    const maxSizeMB = 5;
+    const maxSizeBytes = maxSizeMB * 1024 * 1024;
+    
+    if (uploadedFile.size > maxSizeBytes) {
+      alert(`File too large. Maximum size: ${maxSizeMB}MB\n\nYour file: ${(uploadedFile.size / 1024 / 1024).toFixed(2)}MB\n\nTip: Compress images or reduce PDF quality before uploading.`);
+      return;
+    }
+
     setFileProcessing(true);
     setFilePreview('');
 
@@ -248,7 +257,7 @@ export default function SBIRDatabaseBrowser() {
       const formData = new FormData();
       formData.append('file', uploadedFile);
 
-      console.log('Uploading file:', uploadedFile.name);
+      console.log('Uploading file:', uploadedFile.name, `(${(uploadedFile.size / 1024).toFixed(0)}KB)`);
 
       const response = await fetch('/api/admin/sbir/extract-file', {
         method: 'POST',
