@@ -131,12 +131,19 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
     const priorities = scrapedTopic.modernizationPriorities.split('|');
     mapped.modernization_priority_count = String(priorities.length);
   }
+  
+  // Keywords - SINGLE FIELD, populate all keyword columns with same data for consistency
   if (scrapedTopic.keywords) {
-    mapped.keywords = scrapedTopic.keywords;
-    mapped.keywords_1 = scrapedTopic.keywords;
-    const kws = scrapedTopic.keywords.split(';');
+    const cleanKeywords = scrapedTopic.keywords;
+    mapped.keywords = cleanKeywords;
+    mapped.keywords_1 = cleanKeywords;
+    mapped.keywords_2 = cleanKeywords; // Same data, different column names
+    mapped.keywords_3 = cleanKeywords;
+    mapped.keywords_4 = cleanKeywords;
+    
+    const kws = cleanKeywords.split(';').map((k: string) => k.trim()).filter(Boolean);
     mapped.keywords_count = String(kws.length);
-    if (kws.length > 0) mapped.primary_keyword = kws[0].trim();
+    if (kws.length > 0) mapped.primary_keyword = kws[0];
   }
 
   // ITAR
@@ -146,23 +153,47 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
     mapped.requiresitar_1_if_itar_is_yes_else_0 = scrapedTopic.itarControlled === 'Yes' ? '1' : '0';
   }
 
-  // Descriptions
+  // Descriptions - Consolidate into main fields
   if (scrapedTopic.objective) {
     mapped.objective = scrapedTopic.objective;
     mapped.objective_1 = scrapedTopic.objective;
-    mapped.objective_word_count = String(scrapedTopic.objective.split(' ').length);
+    mapped.objective_word_count = String(scrapedTopic.objective.split(' ').filter(Boolean).length);
   }
+  
+  // Main description
   if (scrapedTopic.description) {
     mapped.description = scrapedTopic.description;
     mapped.description_1 = scrapedTopic.description;
-    mapped.description_word_count = String(scrapedTopic.description.split(' ').length);
+    mapped.description_word_count = String(scrapedTopic.description.split(' ').filter(Boolean).length);
     mapped.description_length = String(scrapedTopic.description.length);
   }
-  if (scrapedTopic.phase1Description) mapped.description_3 = scrapedTopic.phase1Description;
-  if (scrapedTopic.phase2Description) mapped.description_4 = scrapedTopic.phase2Description;
+  
+  // Phase-specific descriptions (keep separate for clarity)
+  if (scrapedTopic.phase1Description) {
+    mapped.description_3 = scrapedTopic.phase1Description;
+    mapped.phase_i_description = scrapedTopic.phase1Description;
+  }
+  if (scrapedTopic.phase2Description) {
+    mapped.description_4 = scrapedTopic.phase2Description;
+    mapped.phase_ii_description = scrapedTopic.phase2Description;
+  }
   if (scrapedTopic.phase3Description) {
     mapped.description_5 = scrapedTopic.phase3Description;
     mapped.description_6 = scrapedTopic.phase3Description;
+    mapped.phase_iii_dual_use = scrapedTopic.phase3Description;
+  }
+  
+  // Consolidated full description (all phases combined) - useful for search
+  const allDescriptions = [
+    scrapedTopic.objective,
+    scrapedTopic.description,
+    scrapedTopic.phase1Description,
+    scrapedTopic.phase2Description,
+    scrapedTopic.phase3Description
+  ].filter(Boolean).join('\n\n---\n\n');
+  
+  if (allDescriptions) {
+    mapped.description_2 = allDescriptions; // Full consolidated text
   }
 
   // xTech detection
@@ -193,6 +224,30 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   // Phase information
   if (scrapedTopic.phases_available) mapped.phases_available = scrapedTopic.phases_available;
   if (scrapedTopic.isDirectToPhaseII) mapped.is_direct_to_phase_ii = scrapedTopic.isDirectToPhaseII;
+  
+  // Funding - Assumed amounts based on phase (actual amounts not in public API)
+  // Phase I: ~$250,000 (6 figures), Phase II: ~$1,750,000 (7 figures)
+  if (scrapedTopic.phase1Description) {
+    mapped.award_amount_phase_i = '250000';
+    mapped.award_duration_phase_i = '6'; // months
+    mapped.funding_max_text = 'Phase I: Up to $250,000 for 6 months';
+  }
+  if (scrapedTopic.phase2Description) {
+    mapped.award_amount_phase_ii = '1750000';
+    mapped.award_duration_phase_ii = '24'; // months
+    if (mapped.funding_max_text) {
+      mapped.funding_max_text += ' | Phase II: Up to $1,750,000 for 24 months';
+    } else {
+      mapped.funding_max_text = 'Phase II: Up to $1,750,000 for 24 months';
+    }
+  }
+  
+  // Calculate total potential award
+  const phase1 = scrapedTopic.phase1Description ? 250000 : 0;
+  const phase2 = scrapedTopic.phase2Description ? 1750000 : 0;
+  if (phase1 + phase2 > 0) {
+    mapped.total_potential_award = String(phase1 + phase2);
+  }
   
   // PDF and instructions
   if (scrapedTopic.topicPdfDownload) {
