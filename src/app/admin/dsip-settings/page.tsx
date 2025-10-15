@@ -182,12 +182,13 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       })
     }, 1500)
     
-    // Update step messages
-    setTimeout(() => setScraperCurrentStep('📡 Connecting to SBIR API...'), 2000)
-    setTimeout(() => setScraperCurrentStep(' Fetching active topics...'), 8000)
-    setTimeout(() => setScraperCurrentStep(' Processing topic data...'), 15000)
-    setTimeout(() => setScraperCurrentStep(' Mapping to database columns...'), 25000)
-    setTimeout(() => setScraperCurrentStep(' Updating Supabase database...'), 35000)
+    // Update step messages (estimated progress - actual details in Vercel logs)
+    setTimeout(() => setScraperCurrentStep('📡 Step 1/3: Fetching active topics from DSIP API...'), 2000)
+    setTimeout(() => setScraperCurrentStep(' Step 2/3: Processing topics (~0.5s per topic)...'), 8000)
+    setTimeout(() => setScraperCurrentStep('   Extracting: tech areas, keywords, TPOC, descriptions, Q&A...'), 12000)
+    setTimeout(() => setScraperCurrentStep('   Cleaning HTML, mapping to 159 database columns...'), 18000)
+    setTimeout(() => setScraperCurrentStep(' Step 3/3: Upserting to Supabase database...'), 28000)
+    setTimeout(() => setScraperCurrentStep('   Finalizing... almost done!'), 35000)
     
     try {
       const response = await fetch('/api/admin/sbir/trigger-scraper', {
@@ -215,7 +216,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
 • Updated Records: ${details.updatedRecords || 0}
 • Unchanged: ${details.skippedRecords || 0}
 
-${details.totalTopics === 0 ? ' No active topics found. Check Vercel logs for details.' : ''}
+For detailed logs (shows each topic name, extracted fields, and step-by-step progress), check Vercel Function Logs.
         `.trim();
         
         showNotification(
