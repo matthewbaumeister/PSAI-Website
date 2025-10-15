@@ -1,6 +1,7 @@
 /**
- * SBIR Column Mapper
- * Maps scraper output field names to actual Supabase sbir_final table column names
+ * SBIR Column Mapper - CLEAN SCHEMA VERSION
+ * Maps scraper output to modern sbir_final table with proper data types
+ * Uses BOOLEAN for yes/no, INTEGER for numbers, TIMESTAMPTZ for dates
  */
 
 export interface ScraperTopic {
@@ -9,10 +10,17 @@ export interface ScraperTopic {
 
 /**
  * Map scraper output to sbir_final table columns
- * This ensures exact column name matching for Supabase inserts
+ * Modern schema with proper data types
  */
 export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string, any> {
   const mapped: Record<string, any> = {};
+  
+  // Helper function to convert "Yes"/"No" strings to boolean
+  const toBoolean = (val: any): boolean => {
+    if (typeof val === 'boolean') return val;
+    if (typeof val === 'string') return val.toLowerCase() === 'yes' || val === '1' || val === 'true';
+    return false;
+  };
 
   // Core identification fields
   if (scrapedTopic.topicCode) mapped.topic_number = scrapedTopic.topicCode;
@@ -39,17 +47,13 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   }
 
   // Solicitation info
-  if (scrapedTopic.solicitationTitle) mapped.title_1 = scrapedTopic.solicitationTitle;
+  if (scrapedTopic.solicitationTitle) mapped.solicitation_title = scrapedTopic.solicitationTitle;
   if (scrapedTopic.solicitationNumber) mapped.solicitation_number = scrapedTopic.solicitationNumber;
   if (scrapedTopic.cycleName) mapped.cycle_name = scrapedTopic.cycleName;
   if (scrapedTopic.releaseNumber) mapped.release_number = String(scrapedTopic.releaseNumber);
 
-  // Status fields
-  if (scrapedTopic.topicStatus) {
-    mapped.status_topicstatus = scrapedTopic.topicStatus;
-    mapped.topic_status = scrapedTopic.topicStatus;
-    mapped.status = scrapedTopic.topicStatus;
-  }
+  // Status fields (simplified - no duplicates)
+  if (scrapedTopic.topicStatus) mapped.status = scrapedTopic.topicStatus;
 
   // Date fields
   if (scrapedTopic.topicStartDate) {
@@ -84,73 +88,51 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   if (scrapedTopic.proposal_window_status) mapped.proposal_window_status = scrapedTopic.proposal_window_status;
   if (scrapedTopic.solicitation_phase) mapped.solicitation_phase = scrapedTopic.solicitation_phase;
 
-  // Q&A fields
-  if (scrapedTopic.topicQAStartDate) {
-    mapped.qanda_start_topicqastartdate = formatDate(scrapedTopic.topicQAStartDate);
-    mapped.qa_start = formatDate(scrapedTopic.topicQAStartDate);
-  }
-  if (scrapedTopic.topicQAEndDate) {
-    mapped.qanda_end_topicqaenddate = formatDate(scrapedTopic.topicQAEndDate);
-  }
-  if (scrapedTopic.topicQAStatus) mapped.qanda_status_topicqastatus = scrapedTopic.topicQAStatus;
-  if (scrapedTopic.topicQAStatusDisplay) mapped.qanda_status_display_topicqastatusdisplay = scrapedTopic.topicQAStatusDisplay;
-  if (scrapedTopic.topicQAOpen !== undefined) {
-    mapped.qanda_open_topicqaopen_boolean = scrapedTopic.topicQAOpen ? 'Yes' : 'No';
-  }
-  if (scrapedTopic.topicQuestionCount !== undefined) {
-    mapped.total_questions = String(scrapedTopic.topicQuestionCount);
-    mapped.qa_data = String(scrapedTopic.topicQuestionCount);
-    mapped.hasqa_1_if_topicquestioncount_gt_0 = scrapedTopic.topicQuestionCount > 0 ? '1' : '0';
-  }
+  // Q&A fields (clean - with proper types)
+  if (scrapedTopic.topicQAStartDate) mapped.qa_start = formatDate(scrapedTopic.topicQAStartDate);
+  if (scrapedTopic.topicQAEndDate) mapped.qa_end = formatDate(scrapedTopic.topicQAEndDate);
+  if (scrapedTopic.topicQAStatus) mapped.qa_status = scrapedTopic.topicQAStatus;
+  if (scrapedTopic.topicQAOpen !== undefined) mapped.qa_open = toBoolean(scrapedTopic.topicQAOpen);
+  if (scrapedTopic.topicQuestionCount !== undefined) mapped.total_questions = parseInt(scrapedTopic.topicQuestionCount) || 0;
   if (scrapedTopic.noOfPublishedQuestions !== undefined && scrapedTopic.noOfPublishedQuestions !== null) {
-    mapped.published_questions = String(scrapedTopic.noOfPublishedQuestions);
-    mapped.published_questions_1 = String(scrapedTopic.noOfPublishedQuestions);
+    mapped.published_questions = parseInt(scrapedTopic.noOfPublishedQuestions) || 0;
   }
-  // Q&A Content (formatted questions and answers)
-  if (scrapedTopic.qaContent) {
-    mapped.qa_content = scrapedTopic.qaContent;
-  }
+  if (scrapedTopic.qaContent) mapped.qa_content = scrapedTopic.qaContent;
   
-  // Q&A calculated fields
-  if (scrapedTopic.days_until_qa_close !== undefined) mapped.days_until_qa_close = String(scrapedTopic.days_until_qa_close);
-  if (scrapedTopic.qa_response_rate_percentage !== undefined) mapped.qa_response_rate_percentage = String(scrapedTopic.qa_response_rate_percentage);
-  if (scrapedTopic.qa_window_active) mapped.qa_window_active = scrapedTopic.qa_window_active;
-  if (scrapedTopic.qa_content_fetched) mapped.qa_content_fetched = scrapedTopic.qa_content_fetched;
+  // Q&A calculated fields (proper types)
+  if (scrapedTopic.days_until_qa_close !== undefined) mapped.days_until_qa_close = parseInt(scrapedTopic.days_until_qa_close);
+  if (scrapedTopic.qa_response_rate_percentage !== undefined) mapped.qa_response_rate_percentage = parseInt(scrapedTopic.qa_response_rate_percentage);
+  if (scrapedTopic.qa_window_active) mapped.qa_window_active = toBoolean(scrapedTopic.qa_window_active);
+  if (scrapedTopic.qa_content_fetched) mapped.qa_content_fetched = toBoolean(scrapedTopic.qa_content_fetched);
   if (scrapedTopic.qa_last_updated) mapped.qa_last_updated = scrapedTopic.qa_last_updated;
 
-  // Technology and keywords
+  // Technology and keywords (clean - proper types)
   if (scrapedTopic.technologyAreas) {
     mapped.technology_areas = scrapedTopic.technologyAreas;
-    const areas = scrapedTopic.technologyAreas.split(',');
-    mapped.technology_areas_count = String(areas.length);
-    if (areas.length > 0) mapped.primary_technology_area = areas[0].trim();
+    const areas = scrapedTopic.technologyAreas.split(',').map((a: string) => a.trim()).filter(Boolean);
+    mapped.technology_areas_count = areas.length;
+    if (areas.length > 0) mapped.primary_technology_area = areas[0];
   }
   if (scrapedTopic.modernizationPriorities) {
-    mapped.tech_modernization = scrapedTopic.modernizationPriorities;
     mapped.modernization_priorities = scrapedTopic.modernizationPriorities;
-    const priorities = scrapedTopic.modernizationPriorities.split('|');
-    mapped.modernization_priority_count = String(priorities.length);
+    const priorities = scrapedTopic.modernizationPriorities.split('|').map((p: string) => p.trim()).filter(Boolean);
+    mapped.modernization_priority_count = priorities.length;
   }
   
-  // Keywords - SINGLE FIELD, populate all keyword columns with same data for consistency
+  // Keywords - SINGLE SOURCE (clean)
   if (scrapedTopic.keywords) {
     const cleanKeywords = scrapedTopic.keywords;
     mapped.keywords = cleanKeywords;
-    mapped.keywords_1 = cleanKeywords;
-    mapped.keywords_2 = cleanKeywords; // Same data, different column names
-    mapped.keywords_3 = cleanKeywords;
-    mapped.keywords_4 = cleanKeywords;
     
     const kws = cleanKeywords.split(';').map((k: string) => k.trim()).filter(Boolean);
-    mapped.keywords_count = String(kws.length);
+    mapped.keywords_count = kws.length;
     if (kws.length > 0) mapped.primary_keyword = kws[0];
   }
 
-  // ITAR
-  if (scrapedTopic.itarControlled) {
-    mapped.itar_controlled = scrapedTopic.itarControlled;
+  // ITAR (boolean)
+  if (scrapedTopic.itarControlled !== undefined) {
+    mapped.itar_controlled = toBoolean(scrapedTopic.itarControlled);
     mapped.security_export = scrapedTopic.itarControlled;
-    mapped.requiresitar_1_if_itar_is_yes_else_0 = scrapedTopic.itarControlled === 'Yes' ? '1' : '0';
   }
 
   // Descriptions - Consolidate into main fields
