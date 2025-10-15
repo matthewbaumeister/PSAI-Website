@@ -225,6 +225,9 @@ export default function SBIRDatabaseBrowser() {
     setExpandedRow(expandedRow === topicId ? null : topicId);
   };
 
+  // Active filters state
+  const [activeFilters, setActiveFilters] = useState<Array<{type: string; value: string; label: string}>>([]);
+
   // Handle clicking on a value to add it as a search filter
   const handleClickToSearch = (value: string, label: string) => {
     if (!value || value === 'N/A') return;
@@ -233,11 +236,69 @@ export default function SBIRDatabaseBrowser() {
     setSearchText(value);
     setCurrentPage(0);
     
+    // Add to active filters
+    const newFilter = { type: 'search', value, label };
+    setActiveFilters(prev => {
+      // Remove duplicates
+      const filtered = prev.filter(f => !(f.type === 'search' && f.value === value));
+      return [...filtered, newFilter];
+    });
+    
     // Trigger new search
     fetchRecords();
     
     // Scroll to top to see results
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Handle clicking on component badge
+  const handleClickComponent = (component: string) => {
+    if (!component) return;
+    setSelectedComponent(component);
+    setCurrentPage(0);
+    setActiveFilters(prev => {
+      const filtered = prev.filter(f => f.type !== 'component');
+      return [...filtered, { type: 'component', value: component, label: `Component: ${component}` }];
+    });
+    fetchRecords();
+  };
+
+  // Handle clicking on status badge
+  const handleClickStatus = (status: string) => {
+    if (!status) return;
+    setSelectedStatuses([status]);
+    setCurrentPage(0);
+    setActiveFilters(prev => {
+      const filtered = prev.filter(f => f.type !== 'status');
+      return [...filtered, { type: 'status', value: status, label: `Status: ${status}` }];
+    });
+    fetchRecords();
+  };
+
+  // Remove active filter
+  const removeFilter = (filter: {type: string; value: string}) => {
+    if (filter.type === 'search') {
+      setSearchText('');
+    } else if (filter.type === 'component') {
+      setSelectedComponent('all');
+    } else if (filter.type === 'status') {
+      setSelectedStatuses([]);
+    }
+    
+    setActiveFilters(prev => prev.filter(f => !(f.type === filter.type && f.value === filter.value)));
+    setCurrentPage(0);
+    fetchRecords();
+  };
+
+  // Clear all filters
+  const clearAllFilters = () => {
+    setSearchText('');
+    setSelectedComponent('all');
+    setSelectedStatuses([]);
+    setSelectedProgramType('all');
+    setActiveFilters([]);
+    setCurrentPage(0);
+    fetchRecords();
   };
 
   // Handle smart search
@@ -851,6 +912,89 @@ Our company specializes in artificial intelligence and machine learning for defe
         </div>
 
         {/* Results Summary */}
+        {/* Active Filters Badges */}
+        {activeFilters.length > 0 && (
+          <div style={{
+            marginBottom: '20px',
+            padding: '16px',
+            background: 'rgba(59, 130, 246, 0.1)',
+            border: '1px solid rgba(59, 130, 246, 0.3)',
+            borderRadius: '8px'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              marginBottom: '12px'
+            }}>
+              <span style={{ color: '#60a5fa', fontSize: '14px', fontWeight: '600' }}>
+                Active Filters ({activeFilters.length})
+              </span>
+              <button
+                onClick={clearAllFilters}
+                style={{
+                  padding: '6px 12px',
+                  background: 'rgba(239, 68, 68, 0.2)',
+                  border: '1px solid rgba(239, 68, 68, 0.4)',
+                  borderRadius: '6px',
+                  color: '#ef4444',
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+                onMouseOver={(e) => e.currentTarget.style.background = 'rgba(239, 68, 68, 0.3)'}
+                onMouseOut={(e) => e.currentTarget.style.background = 'rgba(239, 68, 68, 0.2)'}
+              >
+                Clear All
+              </button>
+            </div>
+            
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              {activeFilters.map((filter, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '8px 12px',
+                    background: 'rgba(59, 130, 246, 0.15)',
+                    border: '1px solid rgba(59, 130, 246, 0.4)',
+                    borderRadius: '6px',
+                    color: '#60a5fa',
+                    fontSize: '13px'
+                  }}
+                >
+                  <span>{filter.label}</span>
+                  <button
+                    onClick={() => removeFilter(filter)}
+                    style={{
+                      background: 'rgba(59, 130, 246, 0.3)',
+                      border: 'none',
+                      borderRadius: '50%',
+                      width: '20px',
+                      height: '20px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#ffffff',
+                      fontSize: '12px',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      transition: 'all 0.2s'
+                    }}
+                    onMouseOver={(e) => e.currentTarget.style.background = 'rgba(239, 68, 68, 0.5)'}
+                    onMouseOut={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'}
+                  >
+                    ×
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
@@ -979,24 +1123,47 @@ Our company specializes in artificial intelligence and machine learning for defe
                           </div>
                         </td>
                         <td style={cellStyle}>
-                          <span style={{
-                            padding: '4px 10px',
-                            background: 'rgba(59, 130, 246, 0.2)',
-                            borderRadius: '4px',
-                            fontSize: '12px',
-                            fontWeight: '500'
-                          }}>
+                          <span 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleClickComponent(record.component);
+                            }}
+                            style={{
+                              padding: '4px 10px',
+                              background: 'rgba(59, 130, 246, 0.2)',
+                              borderRadius: '4px',
+                              fontSize: '12px',
+                              fontWeight: '500',
+                              cursor: 'pointer',
+                              transition: 'all 0.2s'
+                            }}
+                            onMouseOver={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'}
+                            onMouseOut={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'}
+                            title="Click to filter by this component"
+                          >
                             {record.component}
                           </span>
                         </td>
                         <td style={cellStyle}>
-                          <span style={{
-                            padding: '4px 10px',
-                            background: getStatusColor(record.status),
-                            borderRadius: '4px',
-                            fontSize: '12px',
-                            fontWeight: '500'
-                          }}>
+                          <span 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleClickStatus(record.status);
+                            }}
+                            style={{
+                              padding: '4px 10px',
+                              background: getStatusColor(record.status),
+                              borderRadius: '4px',
+                              fontSize: '12px',
+                              fontWeight: '500',
+                              cursor: 'pointer',
+                              transition: 'all 0.2s',
+                              opacity: 0.9
+                            }}
+                            onMouseOver={(e) => e.currentTarget.style.opacity = '1'}
+                            onMouseOut={(e) => e.currentTarget.style.opacity = '0.9'}
+                            title="Click to filter by this status"
+                          >
                             {record.status}
                           </span>
                         </td>
@@ -1133,10 +1300,28 @@ Our company specializes in artificial intelligence and machine learning for defe
                                     {record.keywords && (
                                       <div style={{ marginBottom: '10px' }}>
                                         <strong style={{ color: '#ffffff', fontSize: '13px' }}>Keywords:</strong>
-                                        <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '12px' }}>
-                                          {record.keywords.substring(0, 200)}
-                                          {record.keywords.length > 200 && '...'}
-                                        </p>
+                                        <div style={{ marginTop: '6px', display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                                          {record.keywords.split(/[;,]/).slice(0, 10).map((kw, idx) => kw.trim()).filter(Boolean).map((kw, idx) => (
+                                            <span
+                                              key={idx}
+                                              onClick={() => handleClickToSearch(kw, 'Keyword')}
+                                              style={{
+                                                padding: '4px 10px',
+                                                background: 'rgba(59, 130, 246, 0.1)',
+                                                border: '1px solid rgba(59, 130, 246, 0.3)',
+                                                borderRadius: '4px',
+                                                fontSize: '12px',
+                                                color: '#60a5fa',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.2s'
+                                              }}
+                                              onMouseOver={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'}
+                                              onMouseOut={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'}
+                                            >
+                                              {kw}
+                                            </span>
+                                          ))}
+                                        </div>
                                       </div>
                                     )}
                                   </div>
