@@ -10,4 +10,4 @@ FROM (
     ORDER BY last_scraped DESC
     LIMIT 2
 ) t;
-
+ 

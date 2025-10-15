@@ -294,6 +294,137 @@ async function processTopics(topics: any[], baseUrl: string) {
       // Merge basic list data with detailed data
       const fullTopic = { ...topic, ...detailedTopic };
       
+      // ========================================
+      // CALCULATED FIELDS
+      // ========================================
+      
+      const now = new Date();
+      
+      // Calculate date-based fields
+      if (topic.topicStartDate) {
+        const openDate = new Date(topic.topicStartDate);
+        fullTopic.days_since_open = Math.floor((now.getTime() - openDate.getTime()) / (1000 * 60 * 60 * 24));
+      }
+      
+      if (topic.topicEndDate) {
+        const closeDate = new Date(topic.topicEndDate);
+        fullTopic.days_until_close = Math.floor((closeDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+        
+        // Urgency level based on days until close
+        if (fullTopic.days_until_close <= 7) fullTopic.urgency_level = 'Critical';
+        else if (fullTopic.days_until_close <= 14) fullTopic.urgency_level = 'High';
+        else if (fullTopic.days_until_close <= 30) fullTopic.urgency_level = 'Medium';
+        else fullTopic.urgency_level = 'Low';
+      }
+      
+      // Duration between open and close
+      if (topic.topicStartDate && topic.topicEndDate) {
+        const openDate = new Date(topic.topicStartDate);
+        const closeDate = new Date(topic.topicEndDate);
+        fullTopic.duration_days = Math.floor((closeDate.getTime() - openDate.getTime()) / (1000 * 60 * 60 * 24));
+      }
+      
+      // Pre-release duration
+      if (topic.topicPreReleaseStartDate && topic.topicPreReleaseEndDate) {
+        const preStart = new Date(topic.topicPreReleaseStartDate);
+        const preEnd = new Date(topic.topicPreReleaseEndDate);
+        fullTopic.pre_release_duration = Math.floor((preEnd.getTime() - preStart.getTime()) / (1000 * 60 * 60 * 24));
+      }
+      
+      // Q&A window calculations
+      if (topic.topicQAEndDate) {
+        const qaEndDate = new Date(topic.topicQAEndDate);
+        fullTopic.days_until_qa_close = Math.floor((qaEndDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+      }
+      
+      // Q&A response rate
+      if (topic.topicQuestionCount && topic.noOfPublishedQuestions) {
+        const total = parseInt(topic.topicQuestionCount) || 0;
+        const published = parseInt(topic.noOfPublishedQuestions) || 0;
+        if (total > 0) {
+          fullTopic.qa_response_rate_percentage = Math.round((published / total) * 100);
+        }
+      }
+      
+      // Last activity date (max of updated, modified, qa end)
+      const activityDates = [
+        topic.updatedDate,
+        topic.modifiedDate,
+        topic.topicQAEndDate
+      ].filter(Boolean).map(d => new Date(d).getTime());
+      
+      if (activityDates.length > 0) {
+        fullTopic.last_activity_date = new Date(Math.max(...activityDates)).toISOString();
+      }
+      
+      // Proposal window status
+      if (topic.topicStartDate && topic.topicEndDate) {
+        const openDate = new Date(topic.topicStartDate);
+        const closeDate = new Date(topic.topicEndDate);
+        if (now < openDate) fullTopic.proposal_window_status = 'Not Open';
+        else if (now > closeDate) fullTopic.proposal_window_status = 'Closed';
+        else fullTopic.proposal_window_status = 'Open';
+      }
+      
+      // Q&A window active
+      if (topic.topicQAStartDate && topic.topicQAEndDate) {
+        const qaStart = new Date(topic.topicQAStartDate);
+        const qaEnd = new Date(topic.topicQAEndDate);
+        fullTopic.qa_window_active = (now >= qaStart && now <= qaEnd) ? 'Yes' : 'No';
+      }
+      
+      // Extract solicitation phase from cycle_name (e.g., "DOD_SBIR_2025_P1_C4" -> "Phase I")
+      if (topic.cycleName) {
+        const phaseMatch = topic.cycleName.match(/_P(\d+)_/);
+        if (phaseMatch) {
+          const phaseNum = phaseMatch[1];
+          fullTopic.solicitation_phase = `Phase ${phaseNum === '1' ? 'I' : phaseNum === '2' ? 'II' : phaseNum === '3' ? 'III' : phaseNum}`;
+        }
+      }
+      
+      // Parse phase information from descriptions
+      const allText = `${detailedTopic.description || ''} ${detailedTopic.phase1Description || ''} ${detailedTopic.phase2Description || ''}`.toLowerCase();
+      
+      // Check for Direct to Phase II
+      if (allText.includes('direct to phase ii') || allText.includes('direct phase ii') || allText.includes('dtp2')) {
+        fullTopic.isDirectToPhaseII = 'Yes';
+      } else {
+        fullTopic.isDirectToPhaseII = fullTopic.isDirectToPhaseII || 'No';
+      }
+      
+      // Determine phases available
+      const phasesAvailable: string[] = [];
+      if (detailedTopic.phase1Description) phasesAvailable.push('Phase I');
+      if (detailedTopic.phase2Description) phasesAvailable.push('Phase II');
+      if (detailedTopic.phase3Description) phasesAvailable.push('Phase III');
+      if (phasesAvailable.length > 0) {
+        fullTopic.phases_available = phasesAvailable.join(', ');
+      }
+      
+      // Set xTech default to "No" if not detected
+      if (!fullTopic.isXTech) {
+        fullTopic.isXTech = 'No';
+      }
+      
+      // Set prize_gating default
+      if (!fullTopic.prize_gating) {
+        fullTopic.prize_gating = fullTopic.isXTech === 'Yes' ? 'Yes' : 'No';
+      }
+      
+      // Construct PDF link (standard DSIP format)
+      if (topic.topicId && topic.topicCode) {
+        fullTopic.topic_pdf_download = `https://www.dodsbirsttr.mil/topics-app/topic-print?topicId=${topic.topicId}`;
+        fullTopic.pdf_link = fullTopic.topic_pdf_download;
+      }
+      
+      // Q&A content tracking
+      if (detailedTopic.qaContent) {
+        fullTopic.qa_content_fetched = 'Yes';
+        fullTopic.qa_last_updated = now.toISOString();
+      } else {
+        fullTopic.qa_content_fetched = 'No';
+      }
+      
       // Add timestamp for last_scraped
       fullTopic.last_scraped = new Date().toISOString();
       

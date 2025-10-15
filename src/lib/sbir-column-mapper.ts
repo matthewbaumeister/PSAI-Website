@@ -73,6 +73,16 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   if (scrapedTopic.createdDate) mapped.created_date = formatDate(scrapedTopic.createdDate);
   if (scrapedTopic.updatedDate) mapped.updated_date = formatDate(scrapedTopic.updatedDate);
   if (scrapedTopic.modifiedDate) mapped.modified_date = formatDate(scrapedTopic.modifiedDate);
+  
+  // Calculated date fields
+  if (scrapedTopic.days_until_close !== undefined) mapped.days_until_close = String(scrapedTopic.days_until_close);
+  if (scrapedTopic.days_since_open !== undefined) mapped.days_since_open = String(scrapedTopic.days_since_open);
+  if (scrapedTopic.duration_days !== undefined) mapped.duration_days = String(scrapedTopic.duration_days);
+  if (scrapedTopic.pre_release_duration !== undefined) mapped.pre_release_duration = String(scrapedTopic.pre_release_duration);
+  if (scrapedTopic.last_activity_date) mapped.last_activity_date = scrapedTopic.last_activity_date;
+  if (scrapedTopic.urgency_level) mapped.urgency_level = scrapedTopic.urgency_level;
+  if (scrapedTopic.proposal_window_status) mapped.proposal_window_status = scrapedTopic.proposal_window_status;
+  if (scrapedTopic.solicitation_phase) mapped.solicitation_phase = scrapedTopic.solicitation_phase;
 
   // Q&A fields
   if (scrapedTopic.topicQAStartDate) {
@@ -100,6 +110,13 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   if (scrapedTopic.qaContent) {
     mapped.qa_content = scrapedTopic.qaContent;
   }
+  
+  // Q&A calculated fields
+  if (scrapedTopic.days_until_qa_close !== undefined) mapped.days_until_qa_close = String(scrapedTopic.days_until_qa_close);
+  if (scrapedTopic.qa_response_rate_percentage !== undefined) mapped.qa_response_rate_percentage = String(scrapedTopic.qa_response_rate_percentage);
+  if (scrapedTopic.qa_window_active) mapped.qa_window_active = scrapedTopic.qa_window_active;
+  if (scrapedTopic.qa_content_fetched) mapped.qa_content_fetched = scrapedTopic.qa_content_fetched;
+  if (scrapedTopic.qa_last_updated) mapped.qa_last_updated = scrapedTopic.qa_last_updated;
 
   // Technology and keywords
   if (scrapedTopic.technologyAreas) {
@@ -173,11 +190,25 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
     mapped.is_direct_to_phase_ii = scrapedTopic.isDirectToPhaseII;
   }
 
+  // Phase information
+  if (scrapedTopic.phases_available) mapped.phases_available = scrapedTopic.phases_available;
+  if (scrapedTopic.isDirectToPhaseII) mapped.is_direct_to_phase_ii = scrapedTopic.isDirectToPhaseII;
+  
   // PDF and instructions
   if (scrapedTopic.topicPdfDownload) {
     mapped.topic_pdf_download = scrapedTopic.topicPdfDownload;
     mapped.pdf_link = scrapedTopic.topicPdfDownload;
     mapped.pdf_link_1 = scrapedTopic.topicPdfDownload;
+  }
+  if (scrapedTopic.topic_pdf_download) {
+    mapped.topic_pdf_download = scrapedTopic.topic_pdf_download;
+    mapped.pdf_link = scrapedTopic.topic_pdf_download;
+    mapped.pdf_link_1 = scrapedTopic.topic_pdf_download;
+  }
+  if (scrapedTopic.pdf_link) {
+    mapped.topic_pdf_download = scrapedTopic.pdf_link;
+    mapped.pdf_link = scrapedTopic.pdf_link;
+    mapped.pdf_link_1 = scrapedTopic.pdf_link;
   }
   if (scrapedTopic.solicitationInstructionsDownload) {
     mapped.solicitation_instructions_download = scrapedTopic.solicitationInstructionsDownload;
