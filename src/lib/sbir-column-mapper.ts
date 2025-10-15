@@ -92,7 +92,7 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
     mapped.qa_data = String(scrapedTopic.topicQuestionCount);
     mapped.hasqa_1_if_topicquestioncount_gt_0 = scrapedTopic.topicQuestionCount > 0 ? '1' : '0';
   }
-  if (scrapedTopic.noOfPublishedQuestions !== undefined) {
+  if (scrapedTopic.noOfPublishedQuestions !== undefined && scrapedTopic.noOfPublishedQuestions !== null) {
     mapped.published_questions = String(scrapedTopic.noOfPublishedQuestions);
     mapped.published_questions_1 = String(scrapedTopic.noOfPublishedQuestions);
   }
@@ -183,6 +183,9 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
     mapped.solicitation_instructions_download = scrapedTopic.solicitationInstructionsDownload;
     mapped.solicitationinstructionsurl_solicitation_download_duplicate = scrapedTopic.solicitationInstructionsDownload;
     mapped.has_solicitation_instructions = scrapedTopic.solicitationInstructionsDownload ? '1' : '0';
+  }
+  if (scrapedTopic.componentInstructionsDownload) {
+    mapped.component_instructions_download = scrapedTopic.componentInstructionsDownload;
   }
   if (scrapedTopic.solicitationInstructionsVersion) mapped.title_2 = scrapedTopic.solicitationInstructionsVersion;
   if (scrapedTopic.componentInstructionsVersion) mapped.component_4 = scrapedTopic.componentInstructionsVersion;

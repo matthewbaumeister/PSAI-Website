@@ -268,6 +268,29 @@ async function processTopics(topics: any[], baseUrl: string) {
       // Fetch detailed information for this topic
       const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
       
+      // Extract TPOC from initial topic list if not in detailed data
+      if (!detailedTopic.tpocNames && topic.topicManagers && Array.isArray(topic.topicManagers)) {
+        const names: string[] = [];
+        const emails: string[] = [];
+        const centers: string[] = [];
+        
+        topic.topicManagers.forEach((manager: any) => {
+          if (manager.topicManagerName) names.push(manager.topicManagerName);
+          if (manager.topicManagerEmail) emails.push(manager.topicManagerEmail);
+          if (manager.topicManagerCenter) centers.push(manager.topicManagerCenter);
+        });
+        
+        if (names.length > 0) detailedTopic.tpocNames = names.join('; ');
+        if (emails.length > 0) detailedTopic.tpocEmails = emails.join('; ');
+        if (centers.length > 0) detailedTopic.tpocCenters = centers.join('; ');
+        detailedTopic.tpocCount = names.length;
+        detailedTopic.showTpoc = names.length > 0;
+        
+        if (emails.length > 0 && emails[0].includes('@')) {
+          detailedTopic.tpocEmailDomain = emails[0].split('@')[1];
+        }
+      }
+      
       // Merge basic list data with detailed data
       const fullTopic = { ...topic, ...detailedTopic };
       
@@ -285,7 +308,8 @@ async function processTopics(topics: any[], baseUrl: string) {
       const hasKeywords = !!detailedTopic.keywords;
       const hasDesc = !!detailedTopic.description;
       const hasQA = !!detailedTopic.qaContent;
-      console.log(`       ✓ Extracted: tech=${hasTech}, keywords=${hasKeywords}, desc=${hasDesc}, qa=${hasQA}`);
+      const hasTPOC = !!detailedTopic.tpocNames;
+      console.log(`       ✓ Extracted: tech=${hasTech}, keywords=${hasKeywords}, desc=${hasDesc}, qa=${hasQA}, tpoc=${hasTPOC}`);
       
       // Rate limiting - don't hammer the API
       if (i < topics.length - 1) {
@@ -359,13 +383,16 @@ async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: st
         detailedData.modernizationPriorities = focusAreas.join(' | ');
       }
       
-      // Extract and clean keywords
+      // Extract and clean keywords (REMOVE HTML TAGS!)
       if (details.keywords) {
+        let keywordText = '';
         if (Array.isArray(details.keywords)) {
-          detailedData.keywords = details.keywords.join('; ');
+          keywordText = details.keywords.join('; ');
         } else {
-          detailedData.keywords = String(details.keywords).replace(/;/g, '; ').replace(/  /g, ' ').trim();
+          keywordText = String(details.keywords);
         }
+        // Clean HTML tags from keywords
+        detailedData.keywords = cleanHtml(keywordText).replace(/;/g, '; ').replace(/  /g, ' ').trim();
       }
       
       // ITAR status
@@ -415,8 +442,61 @@ async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: st
         detailedData.baaInstructionFiles = baaFiles.join('; ');
       }
       
+      // TPOC (Technical Point of Contact) - Extract from topicManagers
+      if (details.topicManagers && Array.isArray(details.topicManagers)) {
+        const names: string[] = [];
+        const emails: string[] = [];
+        const centers: string[] = [];
+        
+        details.topicManagers.forEach((manager: any) => {
+          if (manager.topicManagerName) names.push(manager.topicManagerName);
+          if (manager.topicManagerEmail) emails.push(manager.topicManagerEmail);
+          if (manager.topicManagerCenter) centers.push(manager.topicManagerCenter);
+        });
+        
+        if (names.length > 0) detailedData.tpocNames = names.join('; ');
+        if (emails.length > 0) detailedData.tpocEmails = emails.join('; ');
+        if (centers.length > 0) detailedData.tpocCenters = centers.join('; ');
+        detailedData.tpocCount = names.length;
+        detailedData.showTpoc = names.length > 0;
+        
+        // Extract email domain from first email
+        if (emails.length > 0 && emails[0].includes('@')) {
+          detailedData.tpocEmailDomain = emails[0].split('@')[1];
+        }
+      }
+      
+      // Additional fields from details endpoint
+      if (details.owner) detailedData.owner = details.owner;
+      if (details.internalLead) detailedData.internalLead = details.internalLead;
+      if (details.sponsorComponent) detailedData.sponsorComponent = details.sponsorComponent;
+      if (details.selectionCriteria) detailedData.selectionCriteria = cleanHtml(details.selectionCriteria);
+      if (details.proposalRequirements) detailedData.proposalRequirements = cleanHtml(details.proposalRequirements);
+      if (details.submissionInstructions) detailedData.submissionInstructions = cleanHtml(details.submissionInstructions);
+      if (details.eligibilityRequirements) detailedData.eligibilityRequirements = cleanHtml(details.eligibilityRequirements);
+      
+      // Phase II specific
+      if (details.isDirectToPhaseII !== undefined) {
+        detailedData.isDirectToPhaseII = details.isDirectToPhaseII ? 'Yes' : 'No';
+      }
+      
+      // PDF and download links
+      if (details.topicPdfDownload) detailedData.topicPdfDownload = details.topicPdfDownload;
+      if (details.solicitationInstructionsDownload) {
+        detailedData.solicitationInstructionsDownload = details.solicitationInstructionsDownload;
+      }
+      if (details.componentInstructionsDownload) {
+        detailedData.componentInstructionsDownload = details.componentInstructionsDownload;
+      }
+      if (details.solicitationInstructionsVersion) {
+        detailedData.solicitationInstructionsVersion = details.solicitationInstructionsVersion;
+      }
+      if (details.componentInstructionsVersion) {
+        detailedData.componentInstructionsVersion = details.componentInstructionsVersion;
+      }
+      
       // Log success for first topic
-      console.log(`    ✓ Details: tech=${!!detailedData.technologyAreas}, keywords=${!!detailedData.keywords}, desc=${!!detailedData.description}`);
+      console.log(`    ✓ Details: tech=${!!detailedData.technologyAreas}, keywords=${!!detailedData.keywords}, desc=${!!detailedData.description}, tpoc=${!!detailedData.tpocNames}`);
       
     } else {
       console.error(`    Failed to fetch details: ${detailsResponse.status}`);
