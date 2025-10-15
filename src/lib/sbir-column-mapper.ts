@@ -96,6 +96,10 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
     mapped.published_questions = String(scrapedTopic.noOfPublishedQuestions);
     mapped.published_questions_1 = String(scrapedTopic.noOfPublishedQuestions);
   }
+  // Q&A Content (formatted questions and answers)
+  if (scrapedTopic.qaContent) {
+    mapped.qa_content = scrapedTopic.qaContent;
+  }
 
   // Technology and keywords
   if (scrapedTopic.technologyAreas) {
@@ -157,6 +161,11 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
     mapped.references_1_data = scrapedTopic.references;
     const refs = scrapedTopic.references.split(';');
     mapped.reference_count = String(refs.length);
+  }
+  
+  // BAA Instruction Files
+  if (scrapedTopic.baaInstructionFiles) {
+    mapped.baa_instruction_files = scrapedTopic.baaInstructionFiles;
   }
 
   // Direct to Phase II

@@ -256,7 +256,7 @@ async function processTopics(topics: any[], baseUrl: string) {
     try {
       // Fetch detailed information for this topic
       console.log(`   [${i + 1}/${topics.length}] Fetching details for ${topic.topicCode}...`);
-      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId);
+      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topic.topicCode);
       
       // Merge basic list data with detailed data
       const fullTopic = { ...topic, ...detailedTopic };
@@ -284,9 +284,33 @@ async function processTopics(topics: any[], baseUrl: string) {
   return processedTopics;
 }
 
-async function fetchTopicDetails(baseUrl: string, topicId: string) {
+/**
+ * Clean HTML tags from text (matching Python scraper exactly)
+ */
+function cleanHtml(text: string): string {
+  if (!text) return '';
+  
+  let clean = text.replace(/<.*?>/g, '');
+  clean = clean.replace(/&nbsp;/g, ' ');
+  clean = clean.replace(/&amp;/g, '&');
+  clean = clean.replace(/&lt;/g, '<');
+  clean = clean.replace(/&gt;/g, '>');
+  clean = clean.replace(/&quot;/g, '"');
+  clean = clean.replace(/&#39;/g, "'");
+  clean = clean.replace(/&emsp;/g, '  ');
+  clean = clean.replace(/&rsquo;/g, "'");
+  clean = clean.replace(/&mdash;/g, '-');
+  clean = clean.replace(/\s+/g, ' ');
+  
+  return clean.trim();
+}
+
+async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: string) {
+  const detailedData: any = {};
+  
   try {
-    const response = await fetch(`${baseUrl}/core/api/public/topics/${topicId}`, {
+    // STEP 1: Fetch detailed information (CORRECT endpoint from Python)
+    const detailsResponse = await fetch(`${baseUrl}/topics/api/public/topics/${topicId}/details`, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'Accept': 'application/json',
@@ -296,31 +320,138 @@ async function fetchTopicDetails(baseUrl: string, topicId: string) {
       }
     });
 
-    if (!response.ok) {
-      console.error(`   Failed to fetch details for ${topicId}: ${response.status}`);
-      return {};
+    if (detailsResponse.ok) {
+      const details = await detailsResponse.json();
+      
+      // Extract and process technology areas
+      if (details.technologyAreas && Array.isArray(details.technologyAreas)) {
+        const areas = details.technologyAreas.map((area: any) => 
+          typeof area === 'object' ? area.name : String(area)
+        ).filter(Boolean);
+        detailedData.technologyAreas = areas.join(', ');
+      }
+      
+      // Extract focusAreas → modernization_priorities (CRITICAL MAPPING!)
+      if (details.focusAreas && Array.isArray(details.focusAreas)) {
+        const focusAreas = details.focusAreas.map((area: any) => 
+          typeof area === 'object' ? area.name : String(area)
+        ).filter(Boolean);
+        detailedData.modernizationPriorities = focusAreas.join(' | ');
+      }
+      
+      // Extract and clean keywords
+      if (details.keywords) {
+        if (Array.isArray(details.keywords)) {
+          detailedData.keywords = details.keywords.join('; ');
+        } else {
+          detailedData.keywords = String(details.keywords).replace(/;/g, '; ').replace(/  /g, ' ').trim();
+        }
+      }
+      
+      // ITAR status
+      if ('itar' in details) {
+        detailedData.itarControlled = details.itar ? 'Yes' : 'No';
+      }
+      
+      // Clean descriptions (remove HTML)
+      if (details.objective) {
+        detailedData.objective = cleanHtml(details.objective);
+      }
+      
+      if (details.description) {
+        detailedData.description = cleanHtml(details.description);
+        // Check for xTech
+        if (detailedData.description.toLowerCase().includes('xtech') || 
+            detailedData.description.toLowerCase().includes('x-tech')) {
+          detailedData.isXTech = 'Yes';
+        }
+      }
+      
+      if (details.phase1Description) {
+        detailedData.phase1Description = cleanHtml(details.phase1Description);
+      }
+      
+      if (details.phase2Description) {
+        detailedData.phase2Description = cleanHtml(details.phase2Description);
+      }
+      
+      if (details.phase3Description) {
+        detailedData.phase3Description = cleanHtml(details.phase3Description);
+      }
+      
+      // Extract references
+      if (details.referenceDocuments && Array.isArray(details.referenceDocuments)) {
+        const refs = details.referenceDocuments
+          .map((ref: any) => cleanHtml(ref.referenceTitle || ''))
+          .filter(Boolean);
+        detailedData.references = refs.join('; ');
+      }
+      
+      // BAA Instructions
+      if (details.baaInstructions && Array.isArray(details.baaInstructions)) {
+        const baaFiles = details.baaInstructions
+          .map((instruction: any) => instruction.fileName)
+          .filter(Boolean);
+        detailedData.baaInstructionFiles = baaFiles.join('; ');
+      }
+      
+      // Log success for first topic
+      console.log(`    ✓ Details: tech=${!!detailedData.technologyAreas}, keywords=${!!detailedData.keywords}, desc=${!!detailedData.description}`);
+      
+    } else {
+      console.error(`    Failed to fetch details: ${detailsResponse.status}`);
     }
-
-    const data = await response.json();
-    
-    // Log sample of fields for first topic
-    if (topicId === topicId) { // Always true, but keeps the logging clean
-      const sampleFields = {
-        hasTechnologyAreas: !!data.technologyAreas,
-        hasKeywords: !!data.keywords,
-        hasTPOC: !!data.tpocNames,
-        hasDescription: !!data.description,
-        hasObjective: !!data.objective
-      };
-      console.log(`    Sample fields:`, sampleFields);
-    }
-    
-    return data;
     
   } catch (error) {
-    console.error(`   Error fetching details for ${topicId}:`, error);
-    return {};
+    console.error(`    Error fetching details:`, error);
   }
+  
+  // STEP 2: Fetch Q&A data if available
+  try {
+    const qaResponse = await fetch(`${baseUrl}/topics/api/public/topics/${topicId}/questions`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': `${baseUrl}/topics-app/`,
+        'Origin': baseUrl
+      }
+    });
+    
+    if (qaResponse.ok) {
+      const qaData = await qaResponse.json();
+      if (qaData && Array.isArray(qaData) && qaData.length > 0) {
+        const qaFormatted: string[] = [];
+        
+        for (const q of qaData) {
+          const questionText = (q.question || '').replace(/<p>/g, '').replace(/<\/p>/g, '').trim();
+          const questionNo = q.questionNo || '';
+          
+          let answerText = '';
+          if (q.answers && Array.isArray(q.answers) && q.answers.length > 0) {
+            try {
+              const answerData = JSON.parse(q.answers[0].answer || '{}');
+              answerText = (answerData.content || '').replace(/<p>/g, '').replace(/<\/p>/g, '').trim();
+            } catch {
+              answerText = q.answers[0].answer || '';
+            }
+          }
+          
+          if (questionText) {
+            qaFormatted.push(`Q${questionNo}: ${questionText}\nA: ${answerText}`);
+          }
+        }
+        
+        detailedData.qaContent = qaFormatted.join('\n\n');
+        console.log(`    ✓ Q&A: ${qaData.length} questions`);
+      }
+    }
+    
+  } catch (error) {
+    // Q&A fetch is optional, don't log error
+  }
+  
+  return detailedData;
 }
 
 async function updateDatabase(topics: any[]) {
