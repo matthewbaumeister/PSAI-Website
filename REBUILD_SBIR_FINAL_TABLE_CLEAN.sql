@@ -138,16 +138,6 @@ CREATE TABLE sbir_final (
     is_direct_to_phase_ii BOOLEAN DEFAULT FALSE,
     
     -- ========================================
-    -- FUNDING (estimated amounts)
-    -- ========================================
-    award_amount_phase_i DECIMAL(15,2),
-    award_amount_phase_ii DECIMAL(15,2),
-    award_duration_phase_i INTEGER,
-    award_duration_phase_ii INTEGER,
-    funding_max_text TEXT,
-    total_potential_award DECIMAL(15,2),
-    
-    -- ========================================
     -- PDF & DOWNLOADS
     -- ========================================
     topic_pdf_download TEXT,

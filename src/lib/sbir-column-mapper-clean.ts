@@ -183,22 +183,6 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
   m.phases_available = topic.phases_available || null;
   m.is_direct_to_phase_ii = topic.isDirectToPhaseII !== undefined ? toBoolean(topic.isDirectToPhaseII) : false;
 
-  // ==== FUNDING (estimated) ====
-  if (topic.phase1Description) {
-    m.award_amount_phase_i = 250000;
-    m.award_duration_phase_i = 6;
-    m.funding_max_text = 'Phase I: Up to $250,000 for 6 months';
-  }
-  if (topic.phase2Description) {
-    m.award_amount_phase_ii = 1750000;
-    m.award_duration_phase_ii = 24;
-    if (m.funding_max_text) m.funding_max_text += ' | Phase II: Up to $1,750,000 for 24 months';
-    else m.funding_max_text = 'Phase II: Up to $1,750,000 for 24 months';
-  }
-  if (m.award_amount_phase_i || m.award_amount_phase_ii) {
-    m.total_potential_award = (m.award_amount_phase_i || 0) + (m.award_amount_phase_ii || 0);
-  }
-
   // ==== PDF & DOWNLOADS ====
   m.topic_pdf_download = topic.topic_pdf_download || topic.topicPdfDownload || topic.pdf_link || null;
   m.pdf_link = m.topic_pdf_download;
