@@ -127,7 +127,7 @@ CREATE TABLE sbir_final (
     -- ========================================
     -- REFERENCES & DOCUMENTS
     -- ========================================
-    references TEXT,
+    reference_docs TEXT,
     reference_count INTEGER,
     baa_instruction_files TEXT,
     

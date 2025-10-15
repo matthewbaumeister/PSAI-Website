@@ -174,7 +174,7 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
 
   // ==== REFERENCES & DOCUMENTS ====
   if (topic.references) {
-    m.references = topic.references;
+    m.reference_docs = topic.references;
     m.reference_count = topic.references.split(';').filter(Boolean).length;
   }
   m.baa_instruction_files = topic.baaInstructionFiles || null;
