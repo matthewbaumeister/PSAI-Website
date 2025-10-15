@@ -249,26 +249,78 @@ async function fetchActiveTopics(baseUrl: string) {
 async function processTopics(topics: any[], baseUrl: string) {
   const processedTopics = [];
   
-  console.log(` Processing ${topics.length} topics with column mapper...`);
+  console.log(` Processing ${topics.length} topics - fetching detailed info...`);
   
-  for (const topic of topics) {
+  for (let i = 0; i < topics.length; i++) {
+    const topic = topics[i];
     try {
+      // Fetch detailed information for this topic
+      console.log(`   [${i + 1}/${topics.length}] Fetching details for ${topic.topicCode}...`);
+      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId);
+      
+      // Merge basic list data with detailed data
+      const fullTopic = { ...topic, ...detailedTopic };
+      
       // Add timestamp for last_scraped
-      topic.last_scraped = new Date().toISOString();
+      fullTopic.last_scraped = new Date().toISOString();
       
       // Use the mapper to convert API response to Supabase column names
-      const mappedTopic = mapToSupabaseColumns(topic);
+      const mappedTopic = mapToSupabaseColumns(fullTopic);
       
       processedTopics.push(mappedTopic);
       
+      // Rate limiting - don't hammer the API
+      if (i < topics.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
+      
     } catch (error) {
-      console.error(` Error processing topic ${topic.topicId}:`, error);
+      console.error(`  Error processing topic ${topic.topicId}:`, error);
       continue;
     }
   }
 
   console.log(` Successfully mapped ${processedTopics.length} topics to Supabase format`);
   return processedTopics;
+}
+
+async function fetchTopicDetails(baseUrl: string, topicId: string) {
+  try {
+    const response = await fetch(`${baseUrl}/core/api/public/topics/${topicId}`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': `${baseUrl}/topics-app/`,
+        'Origin': baseUrl
+      }
+    });
+
+    if (!response.ok) {
+      console.error(`   Failed to fetch details for ${topicId}: ${response.status}`);
+      return {};
+    }
+
+    const data = await response.json();
+    
+    // Log sample of fields for first topic
+    if (topicId === topicId) { // Always true, but keeps the logging clean
+      const sampleFields = {
+        hasTechnologyAreas: !!data.technologyAreas,
+        hasKeywords: !!data.keywords,
+        hasTPOC: !!data.tpocNames,
+        hasDescription: !!data.description,
+        hasObjective: !!data.objective
+      };
+      console.log(`    Sample fields:`, sampleFields);
+    }
+    
+    return data;
+    
+  } catch (error) {
+    console.error(`   Error fetching details for ${topicId}:`, error);
+    return {};
+  }
 }
 
 async function updateDatabase(topics: any[]) {
