@@ -44,9 +44,11 @@ export async function POST(request: NextRequest) {
 
   } catch (error) {
     console.error(' Manual scraper trigger error:', error);
+    console.error(' Error stack:', error instanceof Error ? error.stack : 'No stack trace');
     return NextResponse.json({ 
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error' 
+      error: error instanceof Error ? error.message : 'Unknown error',
+      errorDetails: error instanceof Error ? error.stack : String(error)
     }, { status: 500 });
   }
 }

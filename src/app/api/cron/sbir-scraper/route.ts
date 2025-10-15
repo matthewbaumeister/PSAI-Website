@@ -43,18 +43,19 @@ async function scrapeAndUpdateSBIR() {
   
   try {
     // Step 1: Fetch all active/open/pre-release topics
-    console.log('📡 Fetching active/open/pre-release topics...');
+    console.log('📡 Step 1/3: Fetching active/open/pre-release topics...');
     const topics = await fetchActiveTopics(baseUrl);
-    console.log(` Found ${topics.length} active topics`);
+    console.log(` ✓ Found ${topics.length} active topics`);
 
-    // Step 2: Process and format topics
-    console.log(' Processing topics...');
+    // Step 2: Process and format topics with detailed info
+    console.log(` Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
     const processedTopics = await processTopics(topics, baseUrl);
-    console.log(` Processed ${processedTopics.length} topics`);
+    console.log(` ✓ Successfully processed ${processedTopics.length} topics with full metadata`);
 
     // Step 3: Update database with incremental changes
-    console.log(' Updating Supabase database...');
+    console.log(` Step 3/3: Updating Supabase database...`);
     const updateResult = await updateDatabase(processedTopics);
+    console.log(` ✓ Database update complete: ${updateResult.newRecords} new, ${updateResult.updatedRecords} updated, ${updateResult.skippedRecords} skipped`);
     
     return {
       totalTopics: topics.length,
@@ -66,7 +67,8 @@ async function scrapeAndUpdateSBIR() {
     };
 
   } catch (error) {
-    console.error('Scraping error:', error);
+    console.error(' Scraping error:', error);
+    console.error(' Error details:', error instanceof Error ? error.stack : String(error));
     throw error;
   }
 }
@@ -248,15 +250,23 @@ async function fetchActiveTopics(baseUrl: string) {
 
 async function processTopics(topics: any[], baseUrl: string) {
   const processedTopics = [];
+  let successCount = 0;
+  let errorCount = 0;
   
-  console.log(` Processing ${topics.length} topics - fetching detailed info...`);
+  console.log(`   Starting detailed extraction for ${topics.length} topics...`);
+  console.log(`   ${'='.repeat(60)}`);
   
   for (let i = 0; i < topics.length; i++) {
     const topic = topics[i];
+    const topicCode = topic.topicCode || 'UNKNOWN';
+    const topicTitle = (topic.topicTitle || 'No title').substring(0, 60);
+    
     try {
+      // Show progress with topic details
+      console.log(`   [${i + 1}/${topics.length}] ${topicCode}: ${topicTitle}...`);
+      
       // Fetch detailed information for this topic
-      console.log(`   [${i + 1}/${topics.length}] Fetching details for ${topic.topicCode}...`);
-      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topic.topicCode);
+      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
       
       // Merge basic list data with detailed data
       const fullTopic = { ...topic, ...detailedTopic };
@@ -268,6 +278,14 @@ async function processTopics(topics: any[], baseUrl: string) {
       const mappedTopic = mapToSupabaseColumns(fullTopic);
       
       processedTopics.push(mappedTopic);
+      successCount++;
+      
+      // Show summary of what was extracted
+      const hasTech = !!detailedTopic.technologyAreas;
+      const hasKeywords = !!detailedTopic.keywords;
+      const hasDesc = !!detailedTopic.description;
+      const hasQA = !!detailedTopic.qaContent;
+      console.log(`       ✓ Extracted: tech=${hasTech}, keywords=${hasKeywords}, desc=${hasDesc}, qa=${hasQA}`);
       
       // Rate limiting - don't hammer the API
       if (i < topics.length - 1) {
@@ -275,12 +293,14 @@ async function processTopics(topics: any[], baseUrl: string) {
       }
       
     } catch (error) {
-      console.error(`  Error processing topic ${topic.topicId}:`, error);
+      errorCount++;
+      console.error(`       ✗ Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
       continue;
     }
   }
 
-  console.log(` Successfully mapped ${processedTopics.length} topics to Supabase format`);
+  console.log(`   ${'='.repeat(60)}`);
+  console.log(`   ✓ Processing complete: ${successCount} success, ${errorCount} errors`);
   return processedTopics;
 }
 
@@ -460,14 +480,9 @@ async function updateDatabase(topics: any[]) {
   let skippedRecords = 0;
 
   try {
-    console.log(` Upserting ${topics.length} topics to database...`);
+    console.log(`   Upserting ${topics.length} topics to database...`);
     
     // Get existing records with their modified dates to track actual changes
-    const topicKeys = topics.map(t => ({ 
-      topic_number: t.topic_number, 
-      cycle_name: t.cycle_name 
-    }));
-    
     const { data: existingRecords } = await supabase
       .from('sbir_final')
       .select('topic_number, cycle_name, modified_date')
@@ -480,40 +495,66 @@ async function updateDatabase(topics: any[]) {
       ]) || []
     );
     
-    // Count records before
-    const countBefore = existingMap.size;
+    console.log(`   Found ${existingMap.size} existing records in database`);
     
     // Use upsert with onConflict to handle duplicates automatically
     const { error: upsertError } = await supabase
       .from('sbir_final')
       .upsert(topics, {
         onConflict: 'topic_number,cycle_name',
-        ignoreDuplicates: false
+        ignoreDuplicates: false  // This will UPDATE existing records
       });
 
     if (upsertError) {
-      console.error(' Error upserting topics:', upsertError);
-      throw upsertError;
+      console.error('   Upsert error details:');
+      console.error('   - Code:', upsertError.code);
+      console.error('   - Message:', upsertError.message);
+      console.error('   - Details:', upsertError.details);
+      console.error('   - Hint:', upsertError.hint);
+      
+      // If it's a duplicate key error, log but don't fail
+      if (upsertError.code === '23505' || upsertError.message?.includes('duplicate')) {
+        console.log('   ⚠ Duplicate key constraint - attempting individual updates...');
+        
+        // Try individual upserts
+        for (const topic of topics) {
+          try {
+            await supabase
+              .from('sbir_final')
+              .upsert([topic], {
+                onConflict: 'topic_number,cycle_name'
+              });
+            updatedRecords++;
+          } catch {
+            skippedRecords++;
+          }
+        }
+        
+        console.log(`   ✓ Individual updates complete: ${updatedRecords} updated, ${skippedRecords} skipped`);
+      } else {
+        throw upsertError;
+      }
+    } else {
+      // Success - determine new vs updated by checking which existed before
+      topics.forEach(topic => {
+        const key = `${topic.topic_number}_${topic.cycle_name}`;
+        const existingModifiedDate = existingMap.get(key);
+        
+        if (!existingModifiedDate) {
+          newRecords++;
+        } else if (topic.modified_date && topic.modified_date !== existingModifiedDate) {
+          updatedRecords++;
+        } else {
+          skippedRecords++;
+        }
+      });
+
+      console.log(`   ✓ Database upsert complete: ${newRecords} new, ${updatedRecords} updated, ${skippedRecords} unchanged`);
     }
 
-    // Determine new vs updated by checking which existed before
-    topics.forEach(topic => {
-      const key = `${topic.topic_number}_${topic.cycle_name}`;
-      const existingModifiedDate = existingMap.get(key);
-      
-      if (!existingModifiedDate) {
-        newRecords++;
-      } else if (topic.modified_date && topic.modified_date !== existingModifiedDate) {
-        updatedRecords++;
-      } else {
-        skippedRecords++;
-      }
-    });
-
-    console.log(` Database upsert complete: ${newRecords} new, ${updatedRecords} updated, ${skippedRecords} unchanged`);
-
   } catch (error) {
-    console.error(' Database update error:', error);
+    console.error('   Database update error:', error);
+    console.error('   Error stack:', error instanceof Error ? error.stack : String(error));
     throw error;
   }
 
