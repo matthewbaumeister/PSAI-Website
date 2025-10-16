@@ -103,9 +103,17 @@ export default function SignupPage() {
           acceptTerms: false
         })
         
+        // Check for returnUrl parameter to pass along to login page
+        const urlParams = new URLSearchParams(window.location.search)
+        const returnUrl = urlParams.get('returnUrl')
+        
         // Redirect to login page after 3 seconds
         setTimeout(() => {
-          window.location.href = '/auth/login'
+          if (returnUrl) {
+            window.location.href = `/auth/login?returnUrl=${encodeURIComponent(returnUrl)}`
+          } else {
+            window.location.href = '/auth/login'
+          }
         }, 3000)
       } else {
         setSubmitStatus('error')

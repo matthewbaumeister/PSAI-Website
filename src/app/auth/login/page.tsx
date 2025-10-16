@@ -60,7 +60,20 @@ export default function LoginPage() {
       if (result.success) {
         setSubmitStatus('success')
         setSubmitMessage('Login successful! Redirecting...')
-        setTimeout(() => router.push('/'), 1500)
+        
+        // Check for returnUrl parameter for shared search redirects
+        const urlParams = new URLSearchParams(window.location.search)
+        const returnUrl = urlParams.get('returnUrl')
+        
+        setTimeout(() => {
+          if (returnUrl) {
+            // Redirect to the return URL (shared search)
+            window.location.href = decodeURIComponent(returnUrl)
+          } else {
+            // Default redirect to home
+            router.push('/')
+          }
+        }, 1500)
       } else {
         setSubmitStatus('error')
         // Display the specific error message from the backend

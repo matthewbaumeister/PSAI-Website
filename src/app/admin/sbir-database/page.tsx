@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useAuth } from '@/lib/auth-context';
 
 interface SBIRRecord {
   // Core identification
@@ -80,6 +82,9 @@ interface FilterOptions {
 }
 
 export default function SBIRDatabaseBrowser() {
+  const { user, isLoading: authLoading } = useAuth();
+  const router = useRouter();
+  
   const [records, setRecords] = useState<SBIRRecord[]>([]);
   const [loading, setLoading] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -111,8 +116,67 @@ export default function SBIRDatabaseBrowser() {
   // Find Similar state
   const [showSimilarOptions, setShowSimilarOptions] = useState<string | null>(null);
   const [findingSimilar, setFindingSimilar] = useState(false);
+  
+  // Share Search state
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [shareUrl, setShareUrl] = useState('');
+  const [copiedToClipboard, setCopiedToClipboard] = useState(false);
 
   const pageSize = 25;
+
+  // Authentication check and redirect with return URL
+  useEffect(() => {
+    if (!authLoading && !user) {
+      // Check if there are search params (shared search)
+      const currentUrl = window.location.href;
+      const hasSearchParams = window.location.search.length > 0;
+      
+      if (hasSearchParams) {
+        // Redirect to login with return URL for shared search
+        const returnUrl = encodeURIComponent(currentUrl);
+        router.push(`/auth/login?returnUrl=${returnUrl}`);
+      } else {
+        // Regular redirect to login
+        router.push('/auth/login');
+      }
+    }
+  }, [user, authLoading, router]);
+
+  // Load shared search from URL parameters on mount
+  useEffect(() => {
+    // Only load shared search if user is authenticated
+    if (!user) return;
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const sharedSearch = urlParams.get('search');
+    const sharedComponent = urlParams.get('component');
+    const sharedStatuses = urlParams.get('statuses');
+    const sharedProgramType = urlParams.get('program');
+    const sharedPage = urlParams.get('page');
+    const sharedSortBy = urlParams.get('sortBy');
+    const sharedSortOrder = urlParams.get('sortOrder');
+    
+    // Check if this is a shared search (has any search params)
+    const isSharedSearch = sharedSearch || sharedComponent || sharedStatuses || sharedProgramType;
+    
+    if (isSharedSearch) {
+      // Apply shared search parameters
+      if (sharedSearch) setSearchText(sharedSearch);
+      if (sharedComponent && sharedComponent !== 'all') setSelectedComponent(sharedComponent);
+      if (sharedStatuses) {
+        try {
+          const statusArray = JSON.parse(decodeURIComponent(sharedStatuses));
+          setSelectedStatuses(statusArray);
+        } catch (e) {
+          console.error('Failed to parse statuses:', e);
+        }
+      }
+      if (sharedProgramType && sharedProgramType !== 'all') setSelectedProgramType(sharedProgramType);
+      if (sharedPage) setCurrentPage(parseInt(sharedPage));
+      if (sharedSortBy) setSortBy(sharedSortBy);
+      if (sharedSortOrder === 'asc' || sharedSortOrder === 'desc') setSortOrder(sharedSortOrder);
+    }
+  }, [user]); // Only run when user is loaded
 
   // Detect smart search intent
   useEffect(() => {
@@ -339,6 +403,54 @@ export default function SBIRDatabaseBrowser() {
       alert('Failed to find similar records. Please try again.');
     } finally {
       setFindingSimilar(false);
+    }
+  };
+
+  // Generate shareable URL with current search parameters
+  const generateShareUrl = () => {
+    const baseUrl = window.location.origin + window.location.pathname;
+    const params = new URLSearchParams();
+    
+    // Add search parameters
+    if (searchText) params.append('search', searchText);
+    if (selectedComponent !== 'all') params.append('component', selectedComponent);
+    if (selectedStatuses.length > 0) {
+      params.append('statuses', encodeURIComponent(JSON.stringify(selectedStatuses)));
+    }
+    if (selectedProgramType !== 'all') params.append('program', selectedProgramType);
+    if (currentPage > 0) params.append('page', currentPage.toString());
+    if (sortBy !== 'modified_date') params.append('sortBy', sortBy);
+    if (sortOrder !== 'desc') params.append('sortOrder', sortOrder);
+    
+    const queryString = params.toString();
+    return queryString ? `${baseUrl}?${queryString}` : baseUrl;
+  };
+
+  // Handle sharing the current search
+  const handleShareSearch = () => {
+    const url = generateShareUrl();
+    setShareUrl(url);
+    setShowShareModal(true);
+    setCopiedToClipboard(false);
+  };
+
+  // Copy share URL to clipboard
+  const copyShareUrl = async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopiedToClipboard(true);
+      setTimeout(() => setCopiedToClipboard(false), 3000);
+    } catch (error) {
+      console.error('Failed to copy:', error);
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = shareUrl;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      setCopiedToClipboard(true);
+      setTimeout(() => setCopiedToClipboard(false), 3000);
     }
   };
 
@@ -1092,13 +1204,46 @@ Our company specializes in artificial intelligence and machine learning for defe
           alignItems: 'center',
           marginBottom: '16px',
           color: '#94a3b8',
-          fontSize: '14px'
+          fontSize: '14px',
+          flexWrap: 'wrap',
+          gap: '12px'
         }}>
           <div>
             {loading ? 'Loading...' : `Showing ${records.length} of ${totalRecords.toLocaleString()} results`}
           </div>
-          <div>
-            Page {currentPage + 1} of {totalPages || 1}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <button
+              onClick={handleShareSearch}
+              style={{
+                padding: '8px 16px',
+                background: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
+                border: 'none',
+                borderRadius: '6px',
+                color: '#ffffff',
+                fontSize: '13px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                transition: 'all 0.2s',
+                boxShadow: '0 2px 8px rgba(6, 182, 212, 0.3)'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              Share Search
+            </button>
+            <div>
+              Page {currentPage + 1} of {totalPages || 1}
+            </div>
           </div>
         </div>
 
@@ -1927,6 +2072,194 @@ Our company specializes in artificial intelligence and machine learning for defe
             >
               Next
             </button>
+          </div>
+        )}
+
+        {/* Share Search Modal */}
+        {showShareModal && (
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'rgba(0, 0, 0, 0.7)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 9999,
+              padding: '20px'
+            }}
+            onClick={() => setShowShareModal(false)}
+          >
+            <div 
+              style={{
+                background: 'linear-gradient(to bottom, #1e293b, #0f172a)',
+                border: '2px solid rgba(6, 182, 212, 0.4)',
+                borderRadius: '16px',
+                padding: '32px',
+                maxWidth: '600px',
+                width: '100%',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)'
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                <h3 style={{ 
+                  color: '#06b6d4', 
+                  fontSize: '24px', 
+                  fontWeight: '700',
+                  margin: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px'
+                }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                  </svg>
+                  Share This Search
+                </h3>
+                <button
+                  onClick={() => setShowShareModal(false)}
+                  style={{
+                    background: 'rgba(100, 116, 139, 0.2)',
+                    border: 'none',
+                    borderRadius: '50%',
+                    width: '36px',
+                    height: '36px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#cbd5e1',
+                    fontSize: '20px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.background = 'rgba(239, 68, 68, 0.3)'}
+                  onMouseOut={(e) => e.currentTarget.style.background = 'rgba(100, 116, 139, 0.2)'}
+                >
+                  ×
+                </button>
+              </div>
+
+              <p style={{ 
+                color: '#94a3b8', 
+                fontSize: '14px', 
+                lineHeight: '1.6',
+                marginBottom: '20px'
+              }}>
+                Share this search with colleagues or save it for later. Anyone with this link will be prompted to sign in before viewing the results.
+              </p>
+
+              <div style={{
+                background: 'rgba(15, 23, 42, 0.6)',
+                border: '1px solid rgba(71, 85, 105, 0.5)',
+                borderRadius: '8px',
+                padding: '14px',
+                marginBottom: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px'
+              }}>
+                <input
+                  type="text"
+                  value={shareUrl}
+                  readOnly
+                  style={{
+                    flex: 1,
+                    background: 'transparent',
+                    border: 'none',
+                    color: '#e2e8f0',
+                    fontSize: '13px',
+                    outline: 'none',
+                    fontFamily: 'monospace'
+                  }}
+                  onClick={(e) => (e.target as HTMLInputElement).select()}
+                />
+              </div>
+
+              <div style={{ display: 'flex', gap: '12px' }}>
+                <button
+                  onClick={copyShareUrl}
+                  style={{
+                    flex: 1,
+                    padding: '12px 20px',
+                    background: copiedToClipboard 
+                      ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
+                      : 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
+                    border: 'none',
+                    borderRadius: '8px',
+                    color: '#ffffff',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    transition: 'all 0.2s',
+                    boxShadow: copiedToClipboard
+                      ? '0 4px 12px rgba(16, 185, 129, 0.4)'
+                      : '0 4px 12px rgba(6, 182, 212, 0.4)'
+                  }}
+                  onMouseOver={(e) => !copiedToClipboard && (e.currentTarget.style.transform = 'translateY(-2px)')}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                >
+                  {copiedToClipboard ? (
+                    <>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                      </svg>
+                      Copied to Clipboard
+                    </>
+                  ) : (
+                    <>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                      Copy Link
+                    </>
+                  )}
+                </button>
+                <button
+                  onClick={() => setShowShareModal(false)}
+                  style={{
+                    padding: '12px 20px',
+                    background: 'rgba(100, 116, 139, 0.2)',
+                    border: '1px solid rgba(100, 116, 139, 0.3)',
+                    borderRadius: '8px',
+                    color: '#cbd5e1',
+                    fontSize: '15px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.background = 'rgba(100, 116, 139, 0.3)'}
+                  onMouseOut={(e) => e.currentTarget.style.background = 'rgba(100, 116, 139, 0.2)'}
+                >
+                  Close
+                </button>
+              </div>
+
+              <div style={{
+                marginTop: '20px',
+                padding: '12px',
+                background: 'rgba(6, 182, 212, 0.1)',
+                border: '1px solid rgba(6, 182, 212, 0.3)',
+                borderRadius: '8px',
+                fontSize: '12px',
+                color: '#06b6d4',
+                lineHeight: '1.5'
+              }}>
+                <strong>Note:</strong> Recipients will need to sign in to view the search results. If they don't have an account, they'll be prompted to create one and then automatically redirected to this search.
+              </div>
+            </div>
           </div>
         )}
       </div>
