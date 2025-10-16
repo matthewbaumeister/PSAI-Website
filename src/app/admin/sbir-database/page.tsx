@@ -234,15 +234,15 @@ export default function SBIRDatabaseBrowser() {
   const [activeFilters, setActiveFilters] = useState<Array<{type: string; value: string; label: string}>>([]);
 
   // Handle clicking on a value to add it as a search filter
-  const handleClickToSearch = (value: string, label: string) => {
+  const handleClickToSearch = (value: string, labelPrefix: string) => {
     if (!value || value === 'N/A') return;
     
     // Add the value to search
     setSearchText(value);
     setCurrentPage(0);
     
-    // Add to active filters
-    const newFilter = { type: 'search', value, label };
+    // Add to active filters with the actual value in the label
+    const newFilter = { type: 'search', value, label: `${labelPrefix}: ${value}` };
     setActiveFilters(prev => {
       // Remove duplicates
       const filtered = prev.filter(f => !(f.type === 'search' && f.value === value));
@@ -254,6 +254,21 @@ export default function SBIRDatabaseBrowser() {
     
     // Scroll to top to see results
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Helper function to strip HTML tags and decode HTML entities
+  const stripHtmlAndDecode = (html: string): string => {
+    if (!html) return '';
+    
+    // First decode HTML entities
+    const textarea = document.createElement('textarea');
+    textarea.innerHTML = html;
+    let decoded = textarea.value;
+    
+    // Then strip HTML tags
+    const tmp = document.createElement('div');
+    tmp.innerHTML = decoded;
+    return tmp.textContent || tmp.innerText || '';
   };
 
   // Handle clicking on component badge
@@ -1485,13 +1500,13 @@ Our company specializes in artificial intelligence and machine learning for defe
                                   )}
 
                                   {/* Downloads Section */}
-                                  {(record.topic_pdf_download || record.solicitation_instructions_download || record.component_instructions_download) && (
+                                  {(record.topic_id || record.solicitation_instructions_download || record.component_instructions_download) && (
                                     <div style={{ marginBottom: '20px' }}>
                                       <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Downloads</h4>
                                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                                        {record.topic_pdf_download && (
+                                        {record.topic_id && (
                                           <a 
-                                            href={record.topic_pdf_download} 
+                                            href={`https://www.dodsbirsttr.mil/topics/api/public/topics/${record.topic_id}/download/PDF`}
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             style={{ 
@@ -1610,7 +1625,7 @@ Our company specializes in artificial intelligence and machine learning for defe
                                           margin: 0,
                                           fontFamily: 'inherit'
                                         }}>
-                                          {record.qa_content}
+                                          {stripHtmlAndDecode(record.qa_content)}
                                         </pre>
                                       </div>
                                       {record.qa_status && (
