@@ -435,6 +435,20 @@ export default function SBIRDatabaseBrowser() {
   // Handle sharing the current search
   const handleShareSearch = () => {
     const url = generateShareUrl();
+    
+    // Debug log to console (you can remove this later)
+    console.log('Share Search - Current State:', {
+      searchText,
+      selectedComponent,
+      selectedStatuses,
+      selectedProgramType,
+      currentPage,
+      pageSize,
+      sortBy,
+      sortOrder
+    });
+    console.log('Generated URL:', url);
+    
     setShareUrl(url);
     setShowShareModal(true);
     setCopiedToClipboard(false);
@@ -2216,10 +2230,44 @@ Our company specializes in artificial intelligence and machine learning for defe
                 color: '#94a3b8', 
                 fontSize: '14px', 
                 lineHeight: '1.6',
-                marginBottom: '20px'
+                marginBottom: '16px'
               }}>
                 Share this search with colleagues or save it for later. Anyone with this link will be prompted to sign in before viewing the results.
               </p>
+
+              {/* Show what's being captured */}
+              <div style={{
+                marginBottom: '16px',
+                padding: '12px',
+                background: 'rgba(59, 130, 246, 0.1)',
+                border: '1px solid rgba(59, 130, 246, 0.3)',
+                borderRadius: '8px'
+              }}>
+                <div style={{ 
+                  fontSize: '12px', 
+                  fontWeight: '600', 
+                  color: '#60a5fa', 
+                  marginBottom: '8px' 
+                }}>
+                  Included in this link:
+                </div>
+                <div style={{ fontSize: '12px', color: '#94a3b8', lineHeight: '1.6' }}>
+                  {searchText && <div>• Search: "{searchText}"</div>}
+                  {selectedComponent !== 'all' && <div>• Component: {selectedComponent}</div>}
+                  {selectedStatuses.length > 0 && <div>• Status: {selectedStatuses.join(', ')}</div>}
+                  {selectedProgramType !== 'all' && <div>• Program: {selectedProgramType}</div>}
+                  {pageSize !== 25 && <div>• Results per page: {pageSize}</div>}
+                  {currentPage > 0 && <div>• Page: {currentPage + 1}</div>}
+                  {sortBy !== 'modified_date' && <div>• Sorted by: {sortBy} ({sortOrder})</div>}
+                  {!searchText && selectedComponent === 'all' && selectedStatuses.length === 0 && 
+                   selectedProgramType === 'all' && pageSize === 25 && currentPage === 0 && 
+                   sortBy === 'modified_date' && (
+                    <div style={{ color: '#f59e0b', fontStyle: 'italic' }}>
+                      No filters applied - sharing default view
+                    </div>
+                  )}
+                </div>
+              </div>
 
               <div style={{
                 background: 'rgba(15, 23, 42, 0.6)',
