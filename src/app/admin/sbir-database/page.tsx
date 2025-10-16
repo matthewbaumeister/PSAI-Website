@@ -53,6 +53,11 @@ interface SBIRRecord {
   reference_count?: string;
   topic_pdf_download?: string;
   solicitation_instructions_download?: string;
+  component_instructions_download?: string;
+  
+  // Q&A
+  qa_content?: string;
+  qa_status?: string;
   
   // Solicitation info
   cycle_name?: string;
@@ -1479,53 +1484,150 @@ Our company specializes in artificial intelligence and machine learning for defe
                                     </div>
                                   )}
 
-                                  {/* Resources & Links */}
-                                  {(record.topic_pdf_download || record.solicitation_instructions_download || record.references_data) && (
+                                  {/* Downloads Section */}
+                                  {(record.topic_pdf_download || record.solicitation_instructions_download || record.component_instructions_download) && (
                                     <div style={{ marginBottom: '20px' }}>
-                                      <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Resources & Links</h4>
-                                      {record.topic_pdf_download && (
-                                        <div style={{ marginBottom: '8px' }}>
+                                      <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Downloads</h4>
+                                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                                        {record.topic_pdf_download && (
                                           <a 
                                             href={record.topic_pdf_download} 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             style={{ 
-                                              color: '#60a5fa',
+                                              display: 'inline-flex',
+                                              alignItems: 'center',
+                                              gap: '8px',
+                                              padding: '10px 16px',
+                                              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+                                              border: 'none',
+                                              borderRadius: '6px',
+                                              color: '#ffffff',
                                               fontSize: '13px',
-                                              textDecoration: 'underline',
-                                              cursor: 'pointer'
+                                              fontWeight: '600',
+                                              textDecoration: 'none',
+                                              cursor: 'pointer',
+                                              transition: 'all 0.2s',
+                                              boxShadow: '0 2px 8px rgba(239, 68, 68, 0.3)'
                                             }}
+                                            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                                            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                                           >
-                                            Topic PDF Download
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                              <polyline points="14 2 14 8 20 8"></polyline>
+                                              <line x1="16" y1="13" x2="8" y2="13"></line>
+                                              <line x1="16" y1="17" x2="8" y2="17"></line>
+                                              <polyline points="10 9 9 9 8 9"></polyline>
+                                            </svg>
+                                            Topic PDF
                                           </a>
-                                        </div>
-                                      )}
-                                      {record.solicitation_instructions_download && (
-                                        <div style={{ marginBottom: '8px' }}>
+                                        )}
+                                        {record.solicitation_instructions_download && (
                                           <a 
                                             href={record.solicitation_instructions_download} 
                                             target="_blank" 
                                             rel="noopener noreferrer"
                                             style={{ 
-                                              color: '#60a5fa',
+                                              display: 'inline-flex',
+                                              alignItems: 'center',
+                                              gap: '8px',
+                                              padding: '10px 16px',
+                                              background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                                              border: 'none',
+                                              borderRadius: '6px',
+                                              color: '#ffffff',
                                               fontSize: '13px',
-                                              textDecoration: 'underline',
-                                              cursor: 'pointer'
+                                              fontWeight: '600',
+                                              textDecoration: 'none',
+                                              cursor: 'pointer',
+                                              transition: 'all 0.2s',
+                                              boxShadow: '0 2px 8px rgba(59, 130, 246, 0.3)'
                                             }}
+                                            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                                            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
                                           >
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                              <polyline points="14 2 14 8 20 8"></polyline>
+                                            </svg>
                                             Solicitation Instructions
                                           </a>
+                                        )}
+                                        {record.component_instructions_download && (
+                                          <a 
+                                            href={record.component_instructions_download} 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            style={{ 
+                                              display: 'inline-flex',
+                                              alignItems: 'center',
+                                              gap: '8px',
+                                              padding: '10px 16px',
+                                              background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                                              border: 'none',
+                                              borderRadius: '6px',
+                                              color: '#ffffff',
+                                              fontSize: '13px',
+                                              fontWeight: '600',
+                                              textDecoration: 'none',
+                                              cursor: 'pointer',
+                                              transition: 'all 0.2s',
+                                              boxShadow: '0 2px 8px rgba(16, 185, 129, 0.3)'
+                                            }}
+                                            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+                                            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                                          >
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                              <polyline points="14 2 14 8 20 8"></polyline>
+                                            </svg>
+                                            Component Instructions
+                                          </a>
+                                        )}
+                                      </div>
+                                    </div>
+                                  )}
+
+                                  {/* Q&A Section */}
+                                  {record.qa_content && (
+                                    <div style={{ marginBottom: '20px' }}>
+                                      <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>Questions & Answers</h4>
+                                      <div style={{
+                                        padding: '16px',
+                                        background: 'rgba(59, 130, 246, 0.05)',
+                                        border: '1px solid rgba(59, 130, 246, 0.2)',
+                                        borderRadius: '8px',
+                                        maxHeight: '400px',
+                                        overflowY: 'auto'
+                                      }}>
+                                        <pre style={{
+                                          color: '#cbd5e1',
+                                          fontSize: '12px',
+                                          lineHeight: '1.6',
+                                          whiteSpace: 'pre-wrap',
+                                          wordWrap: 'break-word',
+                                          margin: 0,
+                                          fontFamily: 'inherit'
+                                        }}>
+                                          {record.qa_content}
+                                        </pre>
+                                      </div>
+                                      {record.qa_status && (
+                                        <div style={{ marginTop: '8px', fontSize: '12px', color: '#94a3b8' }}>
+                                          Status: {record.qa_status}
                                         </div>
                                       )}
-                                      {record.references_data && (
-                                        <div style={{ marginBottom: '8px' }}>
-                                          <strong style={{ color: '#ffffff', fontSize: '13px' }}>References:</strong>
-                                          <p style={{ marginTop: '4px', color: '#94a3b8', fontSize: '12px' }}>
-                                            {record.references_data.substring(0, 150)}
-                                            {record.references_data.length > 150 && '...'}
-                                          </p>
-                                        </div>
-                                      )}
+                                    </div>
+                                  )}
+
+                                  {/* References */}
+                                  {record.references_data && (
+                                    <div style={{ marginBottom: '20px' }}>
+                                      <h4 style={{ color: '#60a5fa', marginBottom: '12px', fontSize: '15px', fontWeight: '600' }}>References</h4>
+                                      <p style={{ color: '#94a3b8', fontSize: '12px', lineHeight: '1.6' }}>
+                                        {record.references_data}
+                                      </p>
                                     </div>
                                   )}
 
