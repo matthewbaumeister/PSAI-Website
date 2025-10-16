@@ -251,7 +251,7 @@ export class DSIPRealScraper {
     topics: DSIPTopic[], 
     progressCallback?: (progress: ScraperProgress) => void
   ): Promise<DSIPTopic[]> {
-    this.log(' Fetching detailed information for active topics...');
+    this.log(` Fetching FULL DETAILS for ${topics.length} active opportunities...`);
     this.progress.phase = 'fetching_details';
     
     const detailedTopics: DSIPTopic[] = [];
@@ -259,50 +259,63 @@ export class DSIPRealScraper {
     for (let i = 0; i < topics.length; i++) {
       const topic = topics[i];
       const topicId = topic.topicId;
+      const topicCode = topic.topicCode || 'Unknown';
+      const topicTitle = (topic.topicTitle || 'Unknown Title').substring(0, 60);
       
       if (!topicId) continue;
       
-      // Progress update every 10 topics
-      if (i % 10 === 0) {
-        this.log(`   [${i}/${topics.length}] Fetching details...`);
-      }
+      // Calculate progress percentage
+      const progressPct = Math.floor(((i + 1) / topics.length) * 100);
+      
+      // Detailed progress for EVERY topic
+      this.log(`   [${progressPct}%] Processing ${i + 1}/${topics.length}: ${topicCode} - ${topicTitle}...`);
       
       try {
         // Fetch detailed information
-        const detailsUrl = `${this.baseUrl}/topics/api/public/topics/${topicId}/details`;
+        const detailsUrl = `${this.baseUrl}/topics/api/public/topics/${topicId}`;
         const response = await fetch(detailsUrl, { 
-          headers: this.headers
+          headers: this.headers,
+          signal: AbortSignal.timeout(20000) // 20 second timeout
         });
 
         if (response.ok) {
           const details = await response.json();
-          topic.detailed_info = details;
+          // Merge detailed data with basic topic
+          Object.assign(topic, details);
           this.progress.topicsWithDetails++;
+          this.log(`      ✓ Fetched detailed data`);
+        } else {
+          this.log(`      ⚠ Could not fetch details (status ${response.status})`);
         }
 
         // Fetch Q&A if available
         if (topic.topicQuestionCount && topic.topicQuestionCount > 0) {
           const qaUrl = `${this.baseUrl}/topics/api/public/topics/${topicId}/questions`;
           const qaResponse = await fetch(qaUrl, { 
-            headers: this.headers
+            headers: this.headers,
+            signal: AbortSignal.timeout(15000) // 15 second timeout
           });
 
           if (qaResponse.ok) {
             const qaData = await qaResponse.json();
             topic.qa_data = qaData;
+            const qaCount = Array.isArray(qaData) ? qaData.length : 0;
+            this.log(`      ✓ Fetched ${qaCount} Q&A items`);
           }
         }
 
         detailedTopics.push(topic);
         
+        // Update progress after each topic
+        this.progress.processedTopics = i + 1;
         if (progressCallback) {
           progressCallback({ ...this.progress });
         }
 
-        await this.delay(150); // Rate limiting
+        await this.delay(200); // Rate limiting between requests
 
       } catch (error) {
-        this.logError(`Error fetching details for topic ${topicId}: ${error}`);
+        this.logError(`      ⚠ Error fetching details: ${error}`);
         // Continue with basic info even if details fail
         detailedTopics.push(topic);
       }

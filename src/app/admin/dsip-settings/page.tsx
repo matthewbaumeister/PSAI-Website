@@ -1986,24 +1986,45 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                         <div style={{
                           marginTop: '20px',
                           padding: '16px',
-                          background: 'rgba(0, 0, 0, 0.3)',
+                          background: 'rgba(0, 0, 0, 0.4)',
+                          border: '1px solid rgba(78, 205, 196, 0.3)',
                           borderRadius: '12px',
-                          maxHeight: '150px',
+                          maxHeight: '400px',
                           overflowY: 'auto'
                         }}>
-                          <p style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '8px', fontWeight: '600' }}>
-                            Recent Logs:
-                          </p>
-                          {activeScraperProgress.logs.slice(-5).map((log: string, idx: number) => (
-                            <p key={idx} style={{ 
-                              color: '#94a3b8', 
-                              fontSize: '12px',
-                              marginBottom: '4px',
-                              fontFamily: 'monospace'
-                            }}>
-                              {log.split(': ')[1] || log}
+                          <div style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            marginBottom: '12px'
+                          }}>
+                            <p style={{ color: '#4ecdc4', fontSize: '13px', fontWeight: '700', margin: 0 }}>
+                              Detailed Progress Log ({activeScraperProgress.logs.length} entries)
                             </p>
-                          ))}
+                            <span style={{ color: '#10b981', fontSize: '11px', fontWeight: '600' }}>
+                              LIVE
+                            </span>
+                          </div>
+                          {activeScraperProgress.logs.slice(-50).reverse().map((log: string, idx: number) => {
+                            const cleanLog = log.split(': ').slice(1).join(': ') || log;
+                            const isProgress = cleanLog.includes('[') && cleanLog.includes('%]');
+                            const isSuccess = cleanLog.includes('✓');
+                            const isWarning = cleanLog.includes('⚠');
+                            
+                            return (
+                              <p key={idx} style={{ 
+                                color: isSuccess ? '#10b981' : isWarning ? '#f59e0b' : '#94a3b8',
+                                fontSize: isProgress ? '13px' : '12px',
+                                marginBottom: '6px',
+                                fontFamily: 'monospace',
+                                fontWeight: isProgress ? '600' : '400',
+                                lineHeight: '1.4',
+                                paddingLeft: cleanLog.startsWith('      ') ? '20px' : '0'
+                              }}>
+                                {cleanLog}
+                              </p>
+                            );
+                          })}
                         </div>
                       )}
                     </>
