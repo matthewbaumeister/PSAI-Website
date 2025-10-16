@@ -93,6 +93,20 @@ def format_date(timestamp):
             return ""
     return ""
 
+def strip_html(html_text):
+    """Remove HTML tags and decode entities"""
+    if not html_text:
+        return ''
+    import html
+    import re
+    # Decode HTML entities
+    text = html.unescape(str(html_text))
+    # Remove HTML tags
+    text = re.sub(r'<[^>]+>', '', text)
+    # Clean up whitespace
+    text = re.sub(r'\\s+', ' ', text).strip()
+    return text
+
 def calculate_days_until(timestamp):
     if not timestamp:
         return ''
@@ -261,21 +275,63 @@ while True:
         print(f"   Error on page {page}: {e}")
         break
 
-print(f"\\n Processing {len(all_topics)} topics...")
+print(f"\\n Filtering for ACTIVE opportunities only...")
 
-# Process topics (simplified for speed)
+# Filter for ONLY Open and Pre-Release topics
+active_topics = [t for t in all_topics if t.get('topicStatus') in ['Open', 'Pre-Release']]
+print(f"   ✓ Found {len(active_topics)} active opportunities (Open/Pre-Release)")
+print(f"   Skipping {len(all_topics) - len(active_topics)} closed opportunities")
+
+# Process topics with FULL DETAILED DATA
 formatted_topics = []
 start_time = time.time()
 
-for idx, topic in enumerate(all_topics):
-    if idx % 1000 == 0:
-        print(f"   Processing topic {idx + 1}/{len(all_topics)}...")
-
+print(f"\\n Fetching FULL DETAILS for each opportunity...")
+for idx, topic in enumerate(active_topics):
     topic_id = topic.get('topicId', '')
+    topic_code = topic.get('topicCode', 'Unknown')
+    
     if not topic_id:
         continue
-
-    # Basic processing (skip detailed fetching for speed)
+    
+    # Calculate progress percentage
+    progress_pct = int(((idx + 1) / len(active_topics)) * 100)
+    print(f"   [{progress_pct}%] Processing {idx + 1}/{len(active_topics)}: {topic_code} - {topic.get('topicTitle', '')[:60]}...")
+    
+    # FETCH DETAILED TOPIC DATA
+    try:
+        detail_url = f"{base_url}/topics/api/public/topics/{topic_id}"
+        detail_response = session.get(detail_url, timeout=20)
+        
+        if detail_response.status_code == 200:
+            detailed = detail_response.json()
+            # Merge detailed data with basic topic data
+            topic.update(detailed if isinstance(detailed, dict) else {})
+            print(f"      ✓ Fetched detailed data")
+        else:
+            print(f"      ⚠ Could not fetch details (status {detail_response.status_code})")
+    except Exception as e:
+        print(f"      ⚠ Error fetching details: {e}")
+    
+    # FETCH Q&A CONTENT if questions exist
+    qa_content = ''
+    if topic.get('topicQuestionCount', 0) > 0:
+        try:
+            qa_url = f"{base_url}/topics/api/public/topics/{topic_id}/questions"
+            qa_response = session.get(qa_url, timeout=15)
+            
+            if qa_response.status_code == 200:
+                qa_data = qa_response.json()
+                if isinstance(qa_data, list) and len(qa_data) > 0:
+                    qa_content = '\\n\\n'.join([
+                        f"Q: {q.get('question', '')}\\nA: {q.get('answer', '')}"
+                        for q in qa_data if q.get('question')
+                    ])
+                    print(f"      ✓ Fetched {len(qa_data)} Q&A items")
+        except Exception as e:
+            print(f"      ⚠ Error fetching Q&A: {e}")
+    
+    # Calculate fields
     days_until_close = calculate_days_until(topic.get('topicEndDate'))
     days_since_open = calculate_days_since(topic.get('topicStartDate'))
     proposal_window_status = get_window_status(topic.get('topicStartDate'), topic.get('topicEndDate'))
@@ -328,40 +384,54 @@ for idx, topic in enumerate(all_topics):
         'qa_response_rate_percentage': '',
         'hasqa_1_if_topicquestioncount_gt_0': '1' if (topic.get('topicQuestionCount', 0) if topic.get('topicQuestionCount') is not None else 0) > 0 else '0',
         'qa_data_topicquestioncount_duplicate': str(topic.get('topicQuestionCount', 0) if topic.get('topicQuestionCount') is not None else 0),
-        'qa_content_fetched': '',  # Skip Q&A content for speed
-        'qa_last_updated': '',
-        'technology_areas_details_technologyareas_array_joined': '',
-        'technology_areas_count_count_of_comma_separated_values': '0',
-        'primary_technology_area_first_item_in_technologyareas': '',
-        'tech_modernization_details_focusareas_mapped': '',
-        'modernization_priorities_details_focusareas_array_joined': '',
-        'modernization_priority_count_count_of_pipe_separated_values': '0',
-        'keywords_details_keywords': '',
-        'keywords_count_count_of_semicolon_separated_values': '0',
-        'primary_keyword_first_keyword_before_semicolon': '',
-        'itar_controlled_details_itar_boolean_to_yes_no': '',
-        'requiresitar_1_if_itar_is_yes_else_0': '0',
-        'security_export_details_itar_duplicate': '',
-        'security_clearance_required_keywords_in_description': '',
-        'objective_details_objective_with_html_removed': '',
-        'objective_word_count_space_separated_word_count': '0',
-        'key_requirements_details_objective_duplicate': '',
-        'description_details_description_with_html_removed': '',
-        'description_word_count_space_separated_word_count': '0',
-        'description_length_character_count': '0',
-        'has_technical_details_1_if_description_gt_500_chars': '0',
-        'isxtech_xtech_mentioned_in_description': 'No',
-        'is_xtech_xtech_keyword_search_duplicate': 'No',
-        'prize_gating_yes_if_xtech_detected': 'No',
-        'competition_type_based_on_xtech_and_dp2_detection': '',
-        'phase_i_description_details_phase1description_with_html_removed': '',
-        'phase_ii_description_details_phase2description_with_html_removed': '',
-        'phase_iii_dual_use_details_phase3description_with_html_removed': '',
-        'has_commercial_potential_1_if_phase3description_exists': '0',
-        'references_details_referencedocuments_array_formatted': '',
-        'reference_docs_details_referencedocuments_duplicate': '',
-        'reference_count_count_of_semicolon_separated_refs': '0',
-        'has_references_1_if_references_exist': '0',
+        'qa_content_fetched': qa_content,
+        'qa_last_updated': format_date(topic.get('updatedDate')) if qa_content else '',
+        
+        # TECHNOLOGY AREAS - Extract from detailed data
+        'technology_areas_details_technologyareas_array_joined': ', '.join([ta.get('name', '') for ta in topic.get('technologyAreas', [])]) if topic.get('technologyAreas') else '',
+        'technology_areas_count_count_of_comma_separated_values': str(len(topic.get('technologyAreas', []))),
+        'primary_technology_area_first_item_in_technologyareas': topic.get('technologyAreas', [{}])[0].get('name', '') if topic.get('technologyAreas') else '',
+        
+        # MODERNIZATION PRIORITIES
+        'tech_modernization_details_focusareas_mapped': ' | '.join([fa.get('name', '') for fa in topic.get('focusAreas', [])]) if topic.get('focusAreas') else '',
+        'modernization_priorities_details_focusareas_array_joined': ' | '.join([fa.get('name', '') for fa in topic.get('focusAreas', [])]) if topic.get('focusAreas') else '',
+        'modernization_priority_count_count_of_pipe_separated_values': str(len(topic.get('focusAreas', []))),
+        
+        # KEYWORDS
+        'keywords_details_keywords': '; '.join([kw.get('name', '') or str(kw) for kw in (topic.get('keywords', []) if isinstance(topic.get('keywords'), list) else [])]) if topic.get('keywords') else '',
+        'keywords_count_count_of_semicolon_separated_values': str(len(topic.get('keywords', []) if isinstance(topic.get('keywords'), list) else [])),
+        'primary_keyword_first_keyword_before_semicolon': (topic.get('keywords', [{}])[0].get('name', '') if isinstance(topic.get('keywords'), list) and len(topic.get('keywords', [])) > 0 else ''),
+        
+        # ITAR / SECURITY
+        'itar_controlled_details_itar_boolean_to_yes_no': 'Yes' if topic.get('itar') else 'No',
+        'requiresitar_1_if_itar_is_yes_else_0': '1' if topic.get('itar') else '0',
+        'security_export_details_itar_duplicate': 'Yes' if topic.get('itar') else 'No',
+        'security_clearance_required_keywords_in_description': 'Yes' if ('clearance' in str(topic.get('description', '')).lower() or 'secret' in str(topic.get('description', '')).lower()) else 'No',
+        
+        # DESCRIPTIONS - Remove HTML
+        'objective_details_objective_with_html_removed': strip_html(topic.get('objective', '')),
+        'objective_word_count_space_separated_word_count': str(len(strip_html(topic.get('objective', '')).split())) if topic.get('objective') else '0',
+        'key_requirements_details_objective_duplicate': strip_html(topic.get('objective', '')),
+        'description_details_description_with_html_removed': strip_html(topic.get('description', '')),
+        'description_word_count_space_separated_word_count': str(len(strip_html(topic.get('description', '')).split())) if topic.get('description') else '0',
+        'description_length_character_count': str(len(strip_html(topic.get('description', '')))) if topic.get('description') else '0',
+        'has_technical_details_1_if_description_gt_500_chars': '1' if len(strip_html(topic.get('description', ''))) > 500 else '0',
+        'isxtech_xtech_mentioned_in_description': 'Yes' if 'xtech' in str(topic.get('description', '')).lower() else 'No',
+        'is_xtech_xtech_keyword_search_duplicate': 'Yes' if 'xtech' in str(topic.get('description', '')).lower() or 'xtech' in str(topic.get('title', '')).lower() else 'No',
+        'prize_gating_yes_if_xtech_detected': 'Yes' if 'xtech' in str(topic.get('description', '')).lower() else 'No',
+        'competition_type_based_on_xtech_and_dp2_detection': 'xTech' if 'xtech' in str(topic.get('description', '')).lower() else ('DP2' if 'direct to phase ii' in str(topic.get('description', '')).lower() else 'Standard'),
+        
+        # PHASE DESCRIPTIONS
+        'phase_i_description_details_phase1description_with_html_removed': strip_html(topic.get('phase1Description', '')),
+        'phase_ii_description_details_phase2description_with_html_removed': strip_html(topic.get('phase2Description', '')),
+        'phase_iii_dual_use_details_phase3description_with_html_removed': strip_html(topic.get('phase3Description', '')),
+        'has_commercial_potential_1_if_phase3description_exists': '1' if topic.get('phase3Description') else '0',
+        
+        # REFERENCES
+        'references_details_referencedocuments_array_formatted': '; '.join([ref.get('title', '') or ref.get('name', '') or str(ref) for ref in (topic.get('referenceDocuments', []) if isinstance(topic.get('referenceDocuments'), list) else [])]) if topic.get('referenceDocuments') else '',
+        'reference_docs_details_referencedocuments_duplicate': '; '.join([ref.get('title', '') or ref.get('name', '') or str(ref) for ref in (topic.get('referenceDocuments', []) if isinstance(topic.get('referenceDocuments'), list) else [])]) if topic.get('referenceDocuments') else '',
+        'reference_count_count_of_semicolon_separated_refs': str(len(topic.get('referenceDocuments', []) if isinstance(topic.get('referenceDocuments'), list) else [])),
+        'has_references_1_if_references_exist': '1' if topic.get('referenceDocuments') and len(topic.get('referenceDocuments', [])) > 0 else '0',
         'phase_phasehierarchy_parsed_or_default_phase_i': '',
         'phases_available_phasehierarchy_config_displayvalue_joined': '',
         'phase_types_phasehierarchy_parsed_pipe_separated': '',
@@ -375,23 +445,28 @@ for idx, topic in enumerate(all_topics):
         'award_duration_phase_ii_months_from_phase2description': '',
         'total_potential_award_sum_of_all_phase_amounts_found': '',
         'funding_type_cost_plus_or_fixed_price_keywords': '',
+        # PDF DOWNLOADS
         'topic_pdf_download_topics_api_public_topics_id_download_pdf': f"{base_url}/topics/api/public/topics/{topic_id}/download/PDF" if topic_id else '',
         'pdf_link_topic_pdf_duplicate': f"{base_url}/topics/api/public/topics/{topic_id}/download/PDF" if topic_id else '',
-        'solicitation_instructions_download_submissions_api_public_download_url': '',
-        'solicitationinstructionsurl_solicitation_download_duplicate': '',
-        'component_instructions_download_component_specific_download_url': '',
-        'componentinstructionsurl_component_download_duplicate': '',
+        
+        # SOLICITATION & COMPONENT INSTRUCTIONS
+        'solicitation_instructions_download_submissions_api_public_download_url': topic.get('solicitationInstructionsUrl', ''),
+        'solicitationinstructionsurl_solicitation_download_duplicate': topic.get('solicitationInstructionsUrl', ''),
+        'component_instructions_download_component_specific_download_url': topic.get('componentInstructionsUrl', ''),
+        'componentinstructionsurl_component_download_duplicate': topic.get('componentInstructionsUrl', ''),
         'has_pdf_1_if_pdf_link_exists': '1' if topic_id else '0',
-        'has_solicitation_instructions_1_if_solicitation_link_exists': '0',
-        'has_component_instructions_1_if_component_link_exists': '0',
-        'solicitation_instructions_version_baaprefaceuploadtitle': '',
-        'component_instructions_version_baainstructions_filename_match': '',
-        'tpoc_topicmanagers_where_assignmenttype_tpoc_names_joined': '',
-        'tpoc_names_topicmanagers_name_array': '',
-        'tpoc_emails_topicmanagers_email_array': '',
-        'tpoc_centers_topicmanagers_center_array': '',
-        'tpoc_count_number_of_tpocs': '0',
-        'has_tpoc_1_if_tpoc_exists': '0',
+        'has_solicitation_instructions_1_if_solicitation_link_exists': '1' if topic.get('solicitationInstructionsUrl') else '0',
+        'has_component_instructions_1_if_component_link_exists': '1' if topic.get('componentInstructionsUrl') else '0',
+        'solicitation_instructions_version_baaprefaceuploadtitle': topic.get('baaPrefaceUploadTitle', ''),
+        'component_instructions_version_baainstructions_filename_match': ', '.join([instr.get('fileName', '') for instr in (topic.get('baaInstructions', []) if isinstance(topic.get('baaInstructions'), list) else [])]) if topic.get('baaInstructions') else '',
+        
+        # TPOC (Technical Point of Contact) - Extract from topicManagers
+        'tpoc_topicmanagers_where_assignmenttype_tpoc_names_joined': ', '.join([tm.get('name', '') for tm in (topic.get('topicManagers', []) if isinstance(topic.get('topicManagers'), list) else []) if tm.get('assignmentType') == 'TPOC']),
+        'tpoc_names_topicmanagers_name_array': ', '.join([tm.get('name', '') for tm in (topic.get('topicManagers', []) if isinstance(topic.get('topicManagers'), list) else [])]) if topic.get('topicManagers') else '',
+        'tpoc_emails_topicmanagers_email_array': ', '.join([tm.get('email', '') for tm in (topic.get('topicManagers', []) if isinstance(topic.get('topicManagers'), list) else []) if tm.get('email')]) if topic.get('topicManagers') else '',
+        'tpoc_centers_topicmanagers_center_array': ', '.join([tm.get('center', '') for tm in (topic.get('topicManagers', []) if isinstance(topic.get('topicManagers'), list) else []) if tm.get('center')]) if topic.get('topicManagers') else '',
+        'tpoc_count_number_of_tpocs': str(len([tm for tm in (topic.get('topicManagers', []) if isinstance(topic.get('topicManagers'), list) else []) if tm.get('assignmentType') == 'TPOC'])),
+        'has_tpoc_1_if_tpoc_exists': '1' if any(tm.get('assignmentType') == 'TPOC' for tm in (topic.get('topicManagers', []) if isinstance(topic.get('topicManagers'), list) else [])) else '0',
         'show_tpoc_showtpoc_boolean': 'Yes' if topic.get('showTpoc') else 'No',
         'tpoc_email_domain_domain_from_first_tpoc_email': '',
         'owner_owner_field': topic.get('owner', ''),
