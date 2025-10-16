@@ -548,93 +548,60 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
   // Real active scraper function
   const startRealActiveScraper = async () => {
     try {
-      console.log('[Active Scraper] Starting...')
+      console.log('[Active Scraper] Starting synchronous scraper...')
       setIsScrapingActive(true)
-      showNotification(' Starting real DSIP scraper for active opportunities...', 'info')
+      setActiveScraperProgress({
+        phase: 'starting',
+        processedTopics: 0,
+        activeTopicsFound: 0,
+        logs: [' Starting DSIP scraper for active opportunities...', '⏳ This may take 30-60 seconds...']
+      })
+      showNotification(' Starting DSIP scraper - this will take 30-60 seconds...', 'info')
       
       const response = await fetch('/api/dsip/scrape-active', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'start' })
+        headers: { 'Content-Type': 'application/json' }
       })
       
       console.log('[Active Scraper] Response status:', response.status)
       
       if (response.ok) {
         const data = await response.json()
-        console.log('[Active Scraper] Job started:', data)
-        setActiveScraperJobId(data.jobId)
-        showNotification(' Scraper started! Fetching active opportunities from DSIP...', 'success')
+        console.log('[Active Scraper] Completed:', data)
         
-        // Start monitoring progress
-        monitorActiveScraperProgress(data.jobId)
+        setIsScrapingActive(false)
+        setActiveScraperData(data.data || [])
+        setActiveScraperProgress(data.progress || {
+          phase: 'completed',
+          processedTopics: data.totalRecords,
+          activeTopicsFound: data.totalRecords,
+          logs: data.logs || []
+        })
+        
+        showNotification(
+          ` Scraping completed! Found ${data.totalRecords} active opportunities`,
+          'success',
+          {
+            totalRecords: data.totalRecords,
+            message: 'Data is ready to import to Supabase'
+          }
+        )
+        
+        // Auto-refresh stats after scraper completes
+        console.log('[Active Scraper] Auto-refreshing statistics...')
+        loadSbirStats()
+        checkSbirScraperStatus()
       } else {
         const errorText = await response.text()
         console.error('[Active Scraper] Failed:', response.status, errorText)
-        showNotification(` Failed to start scraper: ${response.status}`, 'error')
+        showNotification(` Failed to run scraper: ${response.status}`, 'error')
         setIsScrapingActive(false)
       }
     } catch (error) {
       console.error('[Active Scraper] Error:', error)
-      showNotification(` Error starting scraper: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+      showNotification(` Error running scraper: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
       setIsScrapingActive(false)
     }
-  }
-  
-  const monitorActiveScraperProgress = async (jobId: string) => {
-    console.log('[Active Scraper Monitor] Starting to monitor job:', jobId)
-    const interval = setInterval(async () => {
-      try {
-        const response = await fetch('/api/dsip/scrape-active', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'status', jobId })
-        })
-        
-        if (response.ok) {
-          const data = await response.json()
-          const job = data.job
-          
-          console.log('[Active Scraper Monitor] Job status update:', job)
-          
-          if (job) {
-            setActiveScraperProgress(job.progress)
-            
-            if (job.status === 'completed') {
-              clearInterval(interval)
-              setIsScrapingActive(false)
-              setActiveScraperData(job.data || [])
-              
-              console.log('[Active Scraper Monitor] Completed! Total records:', job.totalRecords)
-              showNotification(
-                ` Scraping completed! Found ${job.totalRecords} active opportunities`,
-                'success',
-                {
-                  totalRecords: job.totalRecords,
-                  activeTopics: job.progress?.activeTopicsFound,
-                  processedTopics: job.progress?.processedTopics,
-                  message: 'Data is ready to import to Supabase'
-                }
-              )
-              
-              // Auto-refresh stats after scraper completes
-              console.log('[Active Scraper Monitor] Auto-refreshing statistics...')
-              loadSbirStats()
-              checkSbirScraperStatus()
-            } else if (job.status === 'failed') {
-              clearInterval(interval)
-              setIsScrapingActive(false)
-              console.error('[Active Scraper Monitor] Failed:', job.error)
-              showNotification(` Scraping failed: ${job.error}`, 'error')
-            }
-          }
-        } else {
-          console.error('[Active Scraper Monitor] Status check failed:', response.status)
-        }
-      } catch (error) {
-        console.error('[Active Scraper Monitor] Error:', error)
-      }
-    }, 2000) // Check every 2 seconds
   }
   
   const testScraperSystem = async () => {

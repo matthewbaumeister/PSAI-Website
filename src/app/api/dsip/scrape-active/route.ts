@@ -2,11 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/auth-middleware';
 import { DSIPRealScraper } from '@/lib/dsip-real-scraper';
 
-// Configure route for dynamic behavior
+// Configure route for dynamic behavior and extended timeout
 export const dynamic = 'force-dynamic';
-
-// Store active scraping jobs in memory
-const activeJobs = new Map<string, any>();
+export const maxDuration = 60; // Maximum execution time for Vercel Pro
 
 export async function POST(request: NextRequest) {
   console.log('=== Scrape-active POST called ===');
@@ -20,94 +18,35 @@ export async function POST(request: NextRequest) {
       return authResult;
     }
     
-    console.log('Step 2: Parsing request body...');
-    const body = await request.json();
-    const { action } = body;
+    console.log('Step 2: Running synchronous scraper (no job queue needed)...');
     
-    console.log('Step 3: Action received:', action);
-
-    if (action === 'start') {
-      // Create a new scraping job
-      const jobId = `active_scrape_${Date.now()}`;
-      
-      // Initialize job
-      activeJobs.set(jobId, {
-        id: jobId,
-        status: 'running',
-        progress: {
-          phase: 'starting',
-          processedTopics: 0,
-          activeTopicsFound: 0,
-          logs: [' Starting active opportunities scraper...']
-        },
-        startTime: new Date().toISOString()
-      });
-
-      // Start scraping in background
-      startRealScraping(jobId).catch(error => {
-        console.error('Scraping error:', error);
-        const job = activeJobs.get(jobId);
-        if (job) {
-          job.status = 'failed';
-          job.error = error.message;
-        }
-      });
-
-      return NextResponse.json({ 
-        success: true, 
-        jobId,
-        message: 'Active opportunities scraper started'
-      });
-    }
-
-    if (action === 'status') {
-      const { jobId } = body;
-      const job = activeJobs.get(jobId);
-      
-      if (!job) {
-        return NextResponse.json({ 
-          success: false, 
-          error: 'Job not found' 
-        }, { status: 404 });
+    // Run scraper synchronously and collect progress logs
+    const scraper = new DSIPRealScraper();
+    const progressLogs: string[] = [];
+    let latestProgress: any = null;
+    
+    const results = await scraper.scrapeActiveOpportunities((progress) => {
+      latestProgress = progress;
+      // Store the latest log entries
+      if (progress.logs) {
+        progressLogs.push(...progress.logs.slice(-5)); // Keep last 5 logs
       }
+      console.log(`[Scraper Progress] ${progress.phase}: ${progress.processedTopics}/${progress.totalTopics || 0}`);
+    });
 
-      return NextResponse.json({ 
-        success: true, 
-        job 
-      });
-    }
-
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Invalid action' 
-    }, { status: 400 });
-
-  } catch (error) {
-    console.error('API error:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: error instanceof Error ? error.message : 'Unknown error' 
-    }, { status: 500 });
-  }
-}
-
-export async function GET(request: NextRequest) {
-  try {
-    const authResult = await requireAdmin(request);
-    
-    if (authResult instanceof NextResponse) {
-      return authResult;
-    }
-
-    // Return all active jobs
-    const jobs = Array.from(activeJobs.values());
+    console.log('Step 3: Scraping completed successfully');
     
     return NextResponse.json({ 
       success: true, 
-      jobs 
+      message: 'Active opportunities scraper completed',
+      totalRecords: results.length,
+      data: results,
+      progress: latestProgress,
+      logs: progressLogs
     });
 
   } catch (error) {
+    console.error('Scraper API error:', error);
     return NextResponse.json({ 
       success: false, 
       error: error instanceof Error ? error.message : 'Unknown error' 
@@ -115,45 +54,5 @@ export async function GET(request: NextRequest) {
   }
 }
 
-async function startRealScraping(jobId: string) {
-  const scraper = new DSIPRealScraper();
-  
-  try {
-    // Update job status
-    const updateJob = (update: any) => {
-      const job = activeJobs.get(jobId);
-      if (job) {
-        Object.assign(job, update);
-      }
-    };
-
-    // Scrape with progress updates
-    const results = await scraper.scrapeActiveOpportunities((progress) => {
-      updateJob({ progress });
-    });
-
-    // Store the data in memory (will be displayed in admin portal)
-    updateJob({
-      status: 'completed',
-      endTime: new Date().toISOString(),
-      totalRecords: results.length,
-      data: results, // Store the actual data
-      progress: {
-        ...scraper.getProgress(),
-        phase: 'completed'
-      }
-    });
-
-  } catch (error) {
-    console.error(`Scraping failed for job ${jobId}:`, error);
-    
-    const job = activeJobs.get(jobId);
-    if (job) {
-      job.status = 'failed';
-      job.error = error instanceof Error ? error.message : 'Unknown error';
-      job.endTime = new Date().toISOString();
-    }
-  }
-}
 
 
