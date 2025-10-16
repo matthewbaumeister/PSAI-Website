@@ -121,8 +121,9 @@ export default function SBIRDatabaseBrowser() {
   const [showShareModal, setShowShareModal] = useState(false);
   const [shareUrl, setShareUrl] = useState('');
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
-
-  const pageSize = 25;
+  
+  // Results per page
+  const [pageSize, setPageSize] = useState(25);
 
   // Authentication check and redirect with return URL
   useEffect(() => {
@@ -153,6 +154,7 @@ export default function SBIRDatabaseBrowser() {
     const sharedStatuses = urlParams.get('statuses');
     const sharedProgramType = urlParams.get('program');
     const sharedPage = urlParams.get('page');
+    const sharedPageSize = urlParams.get('pageSize');
     const sharedSortBy = urlParams.get('sortBy');
     const sharedSortOrder = urlParams.get('sortOrder');
     
@@ -173,6 +175,9 @@ export default function SBIRDatabaseBrowser() {
       }
       if (sharedProgramType && sharedProgramType !== 'all') setSelectedProgramType(sharedProgramType);
       if (sharedPage) setCurrentPage(parseInt(sharedPage));
+      if (sharedPageSize && ['25', '50', '100'].includes(sharedPageSize)) {
+        setPageSize(parseInt(sharedPageSize));
+      }
       if (sharedSortBy) setSortBy(sharedSortBy);
       if (sharedSortOrder === 'asc' || sharedSortOrder === 'desc') setSortOrder(sharedSortOrder);
     }
@@ -189,10 +194,10 @@ export default function SBIRDatabaseBrowser() {
     setSmartSearchMode(wordCount > 50 ? 'doc' : 'query');
   }, [smartSearchInput]);
 
-  // Fetch data when filters, page, or sort changes
+  // Fetch data when filters, page, sort, or page size changes
   useEffect(() => {
     fetchRecords();
-  }, [currentPage, selectedComponent, selectedStatuses, selectedProgramType, sortBy, sortOrder]);
+  }, [currentPage, selectedComponent, selectedStatuses, selectedProgramType, sortBy, sortOrder, pageSize]);
 
   const fetchRecords = async () => {
     setLoading(true);
@@ -419,6 +424,7 @@ export default function SBIRDatabaseBrowser() {
     }
     if (selectedProgramType !== 'all') params.append('program', selectedProgramType);
     if (currentPage > 0) params.append('page', currentPage.toString());
+    if (pageSize !== 25) params.append('pageSize', pageSize.toString());
     if (sortBy !== 'modified_date') params.append('sortBy', sortBy);
     if (sortOrder !== 'desc') params.append('sortOrder', sortOrder);
     
@@ -2023,57 +2029,116 @@ Our company specializes in artificial intelligence and machine learning for defe
           </div>
         </div>
 
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div style={{ 
-            marginTop: '24px', 
-            display: 'flex', 
-            justifyContent: 'center', 
-            gap: '8px' 
-          }}>
-            <button
-              onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
-              disabled={currentPage === 0 || loading}
-              style={{
-                padding: '10px 16px',
-                background: currentPage === 0 ? 'rgba(51, 65, 85, 0.3)' : 'rgba(59, 130, 246, 0.2)',
-                border: '1px solid rgba(59, 130, 246, 0.3)',
-                borderRadius: '6px',
-                color: currentPage === 0 ? '#64748b' : '#60a5fa',
-                fontWeight: '500',
-                cursor: currentPage === 0 ? 'not-allowed' : 'pointer',
-                fontSize: '14px'
-              }}
-            >
-              Previous
-            </button>
+        {/* Pagination and Results Per Page */}
+        <div style={{
+          marginTop: '24px',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '16px'
+        }}>
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
             <div style={{ 
-              padding: '10px 16px', 
-              color: '#cbd5e1',
-              display: 'flex',
-              alignItems: 'center',
-              fontSize: '14px'
+              display: 'flex', 
+              justifyContent: 'center', 
+              gap: '8px' 
             }}>
-              Page {currentPage + 1} of {totalPages}
-            </div>
-            <button
-              onClick={() => setCurrentPage(Math.min(totalPages - 1, currentPage + 1))}
-              disabled={currentPage >= totalPages - 1 || loading}
-              style={{
-                padding: '10px 16px',
-                background: currentPage >= totalPages - 1 ? 'rgba(51, 65, 85, 0.3)' : 'rgba(59, 130, 246, 0.2)',
-                border: '1px solid rgba(59, 130, 246, 0.3)',
-                borderRadius: '6px',
-                color: currentPage >= totalPages - 1 ? '#64748b' : '#60a5fa',
-                fontWeight: '500',
-                cursor: currentPage >= totalPages - 1 ? 'not-allowed' : 'pointer',
+              <button
+                onClick={() => setCurrentPage(Math.max(0, currentPage - 1))}
+                disabled={currentPage === 0 || loading}
+                style={{
+                  padding: '10px 16px',
+                  background: currentPage === 0 ? 'rgba(51, 65, 85, 0.3)' : 'rgba(59, 130, 246, 0.2)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                  borderRadius: '6px',
+                  color: currentPage === 0 ? '#64748b' : '#60a5fa',
+                  fontWeight: '500',
+                  cursor: currentPage === 0 ? 'not-allowed' : 'pointer',
+                  fontSize: '14px'
+                }}
+              >
+                Previous
+              </button>
+              <div style={{ 
+                padding: '10px 16px', 
+                color: '#cbd5e1',
+                display: 'flex',
+                alignItems: 'center',
                 fontSize: '14px'
-              }}
-            >
-              Next
-            </button>
+              }}>
+                Page {currentPage + 1} of {totalPages}
+              </div>
+              <button
+                onClick={() => setCurrentPage(Math.min(totalPages - 1, currentPage + 1))}
+                disabled={currentPage >= totalPages - 1 || loading}
+                style={{
+                  padding: '10px 16px',
+                  background: currentPage >= totalPages - 1 ? 'rgba(51, 65, 85, 0.3)' : 'rgba(59, 130, 246, 0.2)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                  borderRadius: '6px',
+                  color: currentPage >= totalPages - 1 ? '#64748b' : '#60a5fa',
+                  fontWeight: '500',
+                  cursor: currentPage >= totalPages - 1 ? 'not-allowed' : 'pointer',
+                  fontSize: '14px'
+                }}
+              >
+                Next
+              </button>
+            </div>
+          )}
+
+          {/* Results Per Page Selector */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            color: '#94a3b8',
+            fontSize: '14px'
+          }}>
+            <span style={{ fontWeight: '500' }}>Results per page:</span>
+            <div style={{ display: 'flex', gap: '8px' }}>
+              {[25, 50, 100].map((size) => (
+                <button
+                  key={size}
+                  onClick={() => {
+                    setPageSize(size);
+                    setCurrentPage(0); // Reset to first page
+                  }}
+                  disabled={loading}
+                  style={{
+                    padding: '8px 16px',
+                    background: pageSize === size 
+                      ? 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)'
+                      : 'rgba(100, 116, 139, 0.2)',
+                    border: `1px solid ${pageSize === size ? 'rgba(139, 92, 246, 0.5)' : 'rgba(100, 116, 139, 0.3)'}`,
+                    borderRadius: '6px',
+                    color: pageSize === size ? '#ffffff' : '#cbd5e1',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    cursor: loading ? 'not-allowed' : 'pointer',
+                    transition: 'all 0.2s',
+                    boxShadow: pageSize === size ? '0 2px 8px rgba(139, 92, 246, 0.3)' : 'none'
+                  }}
+                  onMouseOver={(e) => {
+                    if (pageSize !== size && !loading) {
+                      e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)';
+                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.4)';
+                    }
+                  }}
+                  onMouseOut={(e) => {
+                    if (pageSize !== size) {
+                      e.currentTarget.style.background = 'rgba(100, 116, 139, 0.2)';
+                      e.currentTarget.style.borderColor = 'rgba(100, 116, 139, 0.3)';
+                    }
+                  }}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
           </div>
-        )}
+        </div>
 
         {/* Share Search Modal */}
         {showShareModal && (
