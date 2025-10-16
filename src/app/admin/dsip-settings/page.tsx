@@ -116,7 +116,16 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   // Check scraper status on mount
   const checkScraperStatus = async () => {
     try {
-      const response = await fetch('/api/dsip/scraper')
+      // Add timeout to prevent hanging
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+      
+      const response = await fetch('/api/dsip/scraper', {
+        signal: controller.signal
+      })
+      
+      clearTimeout(timeoutId)
+      
       if (response.ok) {
         const data = await response.json()
         setIsScraperRunning(data.isRunning)
@@ -125,23 +134,42 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       }
     } catch (error) {
       console.error('Error checking scraper status:', error)
+      // Set defaults to allow page to load
+      setIsScraperRunning(false)
+      setScraperStatus('idle')
     }
   }
 
   const loadSbirStats = async () => {
     setIsLoadingStats(true)
     try {
-      const response = await fetch('/api/admin/sbir/stats')
+      // Add timeout to prevent hanging
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 second timeout
+      
+      const response = await fetch('/api/admin/sbir/stats', {
+        signal: controller.signal
+      })
+      
+      clearTimeout(timeoutId)
+      
       if (response.ok) {
         const data = await response.json()
         setSbirStats(data)
         setLastUpdate(data.lastUpdate || null)
       } else {
+        console.warn('Failed to load SBIR statistics:', response.status)
         setMessage('Failed to load SBIR statistics')
       }
     } catch (error) {
       console.error('Failed to load SBIR stats:', error)
-      setMessage('Failed to load SBIR statistics')
+      setMessage('Failed to load SBIR statistics (timeout or network error)')
+      // Set default stats to allow page to load
+      setSbirStats({
+        totalRecords: 0,
+        openRecords: 0,
+        recentlyUpdated: 0
+      })
     } finally {
       setIsLoadingStats(false)
     }
@@ -150,16 +178,26 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const checkSbirScraperStatus = async () => {
     setIsLoadingScraper(true)
     try {
-      const response = await fetch('/api/admin/sbir/scraper')
+      // Add timeout to prevent hanging
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+      
+      const response = await fetch('/api/admin/sbir/scraper', {
+        signal: controller.signal
+      })
+      
+      clearTimeout(timeoutId)
+      
       if (response.ok) {
         const data = await response.json()
         setSbirScraperStatus(data)
       } else {
-        setMessage('Failed to check scraper status')
+        console.warn('Failed to check scraper status:', response.status)
       }
     } catch (error) {
       console.error('Failed to check scraper status:', error)
-      setMessage('Failed to check scraper status')
+      // Set default status to allow page to load
+      setSbirScraperStatus({ status: 'unknown' })
     } finally {
       setIsLoadingScraper(false)
     }
@@ -578,6 +616,11 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                   message: 'Data is ready to import to Supabase'
                 }
               )
+              
+              // Auto-refresh stats after scraper completes
+              console.log('[Active Scraper Monitor] Auto-refreshing statistics...')
+              loadSbirStats()
+              checkSbirScraperStatus()
             } else if (job.status === 'failed') {
               clearInterval(interval)
               setIsScrapingActive(false)
