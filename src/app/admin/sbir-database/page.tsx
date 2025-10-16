@@ -107,6 +107,10 @@ export default function SBIRDatabaseBrowser() {
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [fileProcessing, setFileProcessing] = useState(false);
   const [filePreview, setFilePreview] = useState<string>('');
+  
+  // Find Similar state
+  const [showSimilarOptions, setShowSimilarOptions] = useState<string | null>(null);
+  const [findingSimilar, setFindingSimilar] = useState(false);
 
   const pageSize = 25;
 
@@ -269,6 +273,73 @@ export default function SBIRDatabaseBrowser() {
     const tmp = document.createElement('div');
     tmp.innerHTML = decoded;
     return tmp.textContent || tmp.innerText || '';
+  };
+
+  // Find similar records based on key details
+  const handleFindSimilar = async (record: SBIRRecord, includeClosedRecords: boolean) => {
+    setFindingSimilar(true);
+    setShowSimilarOptions(null);
+    
+    try {
+      // Build search query from key details
+      const searchTerms: string[] = [];
+      
+      // Extract top keywords (limit to avoid too broad search)
+      if (record.keywords) {
+        const keywords = record.keywords.split(/[;,]/).slice(0, 5).map(k => k.trim()).filter(Boolean);
+        searchTerms.push(...keywords);
+      }
+      
+      // Extract top technology areas
+      if (record.technology_areas) {
+        const techAreas = record.technology_areas.split(',').slice(0, 3).map(t => t.trim()).filter(Boolean);
+        searchTerms.push(...techAreas);
+      }
+      
+      // Add modernization priorities
+      if (record.modernization_priorities) {
+        const modPriorities = record.modernization_priorities.split('|').slice(0, 2).map(m => m.trim()).filter(Boolean);
+        searchTerms.push(...modPriorities);
+      }
+      
+      // Join search terms
+      const searchQuery = searchTerms.join(' ');
+      
+      // Set search text
+      setSearchText(searchQuery);
+      
+      // Set status filter
+      if (includeClosedRecords) {
+        setSelectedStatuses([]); // All statuses
+      } else {
+        setSelectedStatuses(['Open', 'Pre-Release']); // Only open
+      }
+      
+      // Reset other filters
+      setSelectedComponent('all');
+      setSelectedProgramType('all');
+      setCurrentPage(0);
+      
+      // Add to active filters
+      setActiveFilters([
+        { type: 'search', value: searchQuery, label: `Similar to: ${record.topic_number}` }
+      ]);
+      
+      // Fetch results
+      await fetchRecords();
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Close expanded row
+      setExpandedRow(null);
+      
+    } catch (error) {
+      console.error('Find similar error:', error);
+      alert('Failed to find similar records. Please try again.');
+    } finally {
+      setFindingSimilar(false);
+    }
   };
 
   // Handle clicking on component badge
@@ -1218,6 +1289,129 @@ Our company specializes in artificial intelligence and machine learning for defe
                             borderBottom: '1px solid rgba(51, 65, 85, 0.3)'
                           }}>
                             <div style={{ color: '#cbd5e1', lineHeight: '1.6' }}>
+                              {/* Find Similar Button Section */}
+                              <div style={{ 
+                                marginBottom: '24px',
+                                paddingBottom: '16px',
+                                borderBottom: '1px solid rgba(71, 85, 105, 0.3)'
+                              }}>
+                                <div style={{ position: 'relative', display: 'inline-block' }}>
+                                  <button
+                                    onClick={() => setShowSimilarOptions(showSimilarOptions === record.topic_id ? null : record.topic_id)}
+                                    disabled={findingSimilar}
+                                    style={{
+                                      padding: '10px 20px',
+                                      background: findingSimilar 
+                                        ? 'rgba(100, 116, 139, 0.3)'
+                                        : 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                                      border: 'none',
+                                      borderRadius: '8px',
+                                      color: '#ffffff',
+                                      fontSize: '14px',
+                                      fontWeight: '600',
+                                      cursor: findingSimilar ? 'not-allowed' : 'pointer',
+                                      display: 'flex',
+                                      alignItems: 'center',
+                                      gap: '8px',
+                                      boxShadow: '0 2px 8px rgba(139, 92, 246, 0.3)',
+                                      transition: 'all 0.2s'
+                                    }}
+                                    onMouseOver={(e) => !findingSimilar && (e.currentTarget.style.transform = 'translateY(-2px)')}
+                                    onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+                                  >
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                      <circle cx="11" cy="11" r="8"></circle>
+                                      <path d="m21 21-4.35-4.35"></path>
+                                    </svg>
+                                    {findingSimilar ? 'Finding Similar...' : 'Find Similar Topics'}
+                                  </button>
+                                  
+                                  {/* Dropdown Options */}
+                                  {showSimilarOptions === record.topic_id && !findingSimilar && (
+                                    <div style={{
+                                      position: 'absolute',
+                                      top: '100%',
+                                      left: 0,
+                                      marginTop: '8px',
+                                      background: 'rgba(15, 23, 42, 0.95)',
+                                      border: '1px solid rgba(139, 92, 246, 0.4)',
+                                      borderRadius: '8px',
+                                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
+                                      minWidth: '220px',
+                                      zIndex: 1000,
+                                      overflow: 'hidden'
+                                    }}>
+                                      <div style={{ padding: '8px 0' }}>
+                                        <button
+                                          onClick={() => handleFindSimilar(record, false)}
+                                          style={{
+                                            width: '100%',
+                                            padding: '12px 16px',
+                                            background: 'transparent',
+                                            border: 'none',
+                                            color: '#10b981',
+                                            fontSize: '13px',
+                                            fontWeight: '500',
+                                            cursor: 'pointer',
+                                            textAlign: 'left',
+                                            transition: 'background 0.2s',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px'
+                                          }}
+                                          onMouseOver={(e) => e.currentTarget.style.background = 'rgba(16, 185, 129, 0.1)'}
+                                          onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                                        >
+                                          <div style={{
+                                            width: '8px',
+                                            height: '8px',
+                                            borderRadius: '50%',
+                                            background: '#10b981'
+                                          }}></div>
+                                          Open Only
+                                        </button>
+                                        <button
+                                          onClick={() => handleFindSimilar(record, true)}
+                                          style={{
+                                            width: '100%',
+                                            padding: '12px 16px',
+                                            background: 'transparent',
+                                            border: 'none',
+                                            color: '#60a5fa',
+                                            fontSize: '13px',
+                                            fontWeight: '500',
+                                            cursor: 'pointer',
+                                            textAlign: 'left',
+                                            transition: 'background 0.2s',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '8px'
+                                          }}
+                                          onMouseOver={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'}
+                                          onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                                        >
+                                          <div style={{
+                                            width: '8px',
+                                            height: '8px',
+                                            borderRadius: '50%',
+                                            background: '#60a5fa'
+                                          }}></div>
+                                          Open and Closed
+                                        </button>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                                <p style={{ 
+                                  marginTop: '8px',
+                                  fontSize: '12px',
+                                  color: '#94a3b8',
+                                  fontStyle: 'italic'
+                                }}>
+                                  Search for topics with similar keywords, technology areas, and modernization priorities
+                                </p>
+                              </div>
+
                               {/* Organized multi-section detailed view */}
                               <div style={{ 
                                 display: 'grid',
