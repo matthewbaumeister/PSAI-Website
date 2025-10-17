@@ -42,9 +42,9 @@ export class DSIPRealScraper {
   
   private headers = {
     'Accept': 'application/json, text/plain, */*',
-    'Authorization': 'Bearer null',
     'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+    'Accept-Language': 'en-US,en;q=0.9'
   };
 
   /**
@@ -122,39 +122,46 @@ export class DSIPRealScraper {
     console.log('[DSIP Scraper] Starting topic fetch with early termination after', maxConsecutivePagesWithoutActive, 'pages without active');
     
     while (true) {
-      const searchParams = {
-        searchText: null,
-        components: null,
-        programYear: null,
-        solicitationCycleNames: null,
-        releaseNumbers: [],
-        topicReleaseStatus: [],
-        modernizationPriorities: [],
-        sortBy: "modifiedDate,desc", // Start with most recently modified
-        technologyAreaIds: [],
-        component: null,
-        program: null
-      };
-
-      const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
-      const searchUrl = `${this.baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${size}&page=${page}`;
+      // Try simpler endpoint first - just list all topics sorted by modified date
+      const searchUrl = `${this.baseUrl}/topics/api/public/topics?page=${page}&size=${size}&sort=modifiedDate,desc`;
 
       if (page % 10 === 0) {
         this.log(`   Fetching page ${page + 1}...`);
+      }
+      
+      if (page === 0) {
+        console.log('[DSIP Scraper] First request URL:', searchUrl.substring(0, 200) + '...');
+        console.log('[DSIP Scraper] Headers:', JSON.stringify(this.headers, null, 2));
       }
 
       try {
         const response = await fetch(searchUrl, { 
           headers: this.headers
         });
+        
+        if (page === 0) {
+          console.log('[DSIP Scraper] First response status:', response.status, response.statusText);
+        }
 
         if (response.ok) {
           const data = await response.json();
           console.log(`[DSIP Scraper] Page ${page}: API returned`, typeof data, data ? Object.keys(data) : 'null');
 
-          if (data && typeof data === 'object' && 'data' in data) {
-            const topics = data.data;
-            const total = data.total || 0;
+          // Handle both response formats: {data: [], total: X} or {content: [], totalElements: X}
+          let topics: any[] = [];
+          let total = 0;
+          
+          if (data && typeof data === 'object') {
+            if ('data' in data) {
+              topics = data.data;
+              total = data.total || 0;
+            } else if ('content' in data) {
+              topics = data.content;
+              total = data.totalElements || data.total || 0;
+            }
+          }
+
+          if (topics && topics.length > 0) {
 
             if (page === 0) {
               this.log(`   ✓ Total topics available: ${total}`);
@@ -203,7 +210,8 @@ export class DSIPRealScraper {
             page++;
             await this.delay(200); // Small delay between requests
           } else {
-            console.error('[DSIP Scraper] Unexpected data format from API:', data);
+            // No topics in response
+            console.log('[DSIP Scraper] No topics in this page response, ending pagination');
             break;
           }
         } else {
