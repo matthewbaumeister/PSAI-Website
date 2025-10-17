@@ -122,16 +122,16 @@ export class DSIPRealScraper {
     console.log('[DSIP Scraper] Starting topic fetch with early termination after', maxConsecutivePagesWithoutActive, 'pages without active');
     
     while (true) {
-      // Search with filter for ONLY active topics (Open/Pre-Release)
+      // Sort by most recently modified - active topics will be at the top
       const searchParams = {
         searchText: null,
         components: null,
         programYear: null,
         solicitationCycleNames: null,
         releaseNumbers: [],
-        topicReleaseStatus: ["Open", "Pre-Release"], // FILTER FOR ACTIVE ONLY
+        topicReleaseStatus: [], // Empty - let API return all, we filter client-side
         modernizationPriorities: [],
-        sortBy: "modifiedDate,desc", // Sort by most recently modified
+        sortBy: "modifiedDate,desc", // Most recently modified first
         technologyAreaIds: [],
         component: null,
         program: null
@@ -199,6 +199,16 @@ export class DSIPRealScraper {
             }
 
             // Check if this page has any active opportunities
+            // Log first topic's status for debugging
+            if (page === 0 && topics.length > 0) {
+              console.log('[DSIP Scraper] Sample topic statuses from first page:', 
+                topics.slice(0, 5).map((t: any) => ({ 
+                  code: t.topicCode, 
+                  status: t.topicStatus 
+                }))
+              );
+            }
+            
             const activeInThisPage = topics.filter((t: any) => 
               t.topicStatus === 'Open' || 
               t.topicStatus === 'Pre-Release' || 
