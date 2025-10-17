@@ -122,16 +122,16 @@ export class DSIPRealScraper {
     console.log('[DSIP Scraper] Starting topic fetch with early termination after', maxConsecutivePagesWithoutActive, 'pages without active');
     
     while (true) {
-      // Use the EXACT same endpoint and parameters as the Python scraper
+      // Search with filter for ONLY active topics (Open/Pre-Release)
       const searchParams = {
         searchText: null,
         components: null,
         programYear: null,
         solicitationCycleNames: null,
         releaseNumbers: [],
-        topicReleaseStatus: [],
+        topicReleaseStatus: ["Open", "Pre-Release"], // FILTER FOR ACTIVE ONLY
         modernizationPriorities: [],
-        sortBy: "finalTopicCode,asc",
+        sortBy: "modifiedDate,desc", // Sort by most recently modified
         technologyAreaIds: [],
         component: null,
         program: null
