@@ -42,9 +42,9 @@ export class DSIPRealScraper {
   
   private headers = {
     'Accept': 'application/json, text/plain, */*',
+    'Authorization': 'Bearer null',
     'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
-    'Accept-Language': 'en-US,en;q=0.9'
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36'
   };
 
   /**
@@ -122,8 +122,23 @@ export class DSIPRealScraper {
     console.log('[DSIP Scraper] Starting topic fetch with early termination after', maxConsecutivePagesWithoutActive, 'pages without active');
     
     while (true) {
-      // Try simpler endpoint first - just list all topics sorted by modified date
-      const searchUrl = `${this.baseUrl}/topics/api/public/topics?page=${page}&size=${size}&sort=modifiedDate,desc`;
+      // Use the EXACT same endpoint and parameters as the Python scraper
+      const searchParams = {
+        searchText: null,
+        components: null,
+        programYear: null,
+        solicitationCycleNames: null,
+        releaseNumbers: [],
+        topicReleaseStatus: [],
+        modernizationPriorities: [],
+        sortBy: "finalTopicCode,asc",
+        technologyAreaIds: [],
+        component: null,
+        program: null
+      };
+
+      const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
+      const searchUrl = `${this.baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${size}&page=${page}`;
 
       if (page % 10 === 0) {
         this.log(`   Fetching page ${page + 1}...`);
