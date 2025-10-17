@@ -284,6 +284,14 @@ export class DSIPRealScraper {
           Object.assign(topic, details);
           this.progress.topicsWithDetails++;
           this.log(`      ✓ Fetched detailed data`);
+          
+          // Log instruction URLs if present (for debugging)
+          if (details.solicitationInstructionsUrl) {
+            this.log(`      📄 Solicitation instructions: ${details.solicitationInstructionsUrl.substring(0, 50)}...`);
+          }
+          if (details.componentInstructionsUrl) {
+            this.log(`      📄 Component instructions: ${details.componentInstructionsUrl.substring(0, 50)}...`);
+          }
         } else {
           this.log(`      ⚠ Could not fetch details (status ${response.status})`);
         }
@@ -357,16 +365,16 @@ export class DSIPRealScraper {
       return Math.floor((end - start) / (1000 * 60 * 60 * 24)).toString();
     };
 
-    // Extract all fields (matching Python scraper's 159 columns)
+    // Extract all fields (using snake_case keys matching database schema)
     return {
       // Basic Info
-      'Topic Number (API: topicCode)': topic.topicCode || '',
-      'Topic ID (API: topicId)': topic.topicId || '',
-      'Title (API: topicTitle)': topic.topicTitle || '',
-      'Short Title (Derived: First 50 chars)': (topic.topicTitle || '').substring(0, 50),
+      'topic_number': topic.topicCode || '',
+      'topic_id': topic.topicId || '',
+      'title': topic.topicTitle || '',
+      'short_title': (topic.topicTitle || '').substring(0, 50),
       
       // Organization
-      'Component (API: component)': topic.component || '',
+      'component': topic.component || '',
       'Component Full Name (Derived: Expanded)': this.expandComponentName(topic.component),
       'Command (API: command)': topic.command || '',
       'Program (API: program)': topic.program || '',
@@ -427,14 +435,25 @@ export class DSIPRealScraper {
       'TPOC Emails': this.extractTPOC(topic.topicManagers, 'email'),
       'TPOC Centers': this.extractTPOC(topic.topicManagers, 'center'),
       
-      // Links
-      'Topic PDF Download': `${this.baseUrl}/topics/api/public/topics/${topic.topicId}/download/PDF`,
+      // Links & Downloads (matching database schema)
+      'topic_pdf_download': `${this.baseUrl}/topics/api/public/topics/${topic.topicId}/download/PDF`,
+      'pdf_link': `${this.baseUrl}/topics/api/public/topics/${topic.topicId}/download/PDF`,
+      'solicitation_instructions_download': topic.solicitationInstructionsUrl || '',
+      'solicitation_instructions_url': topic.solicitationInstructionsUrl || '',
+      'component_instructions_download': topic.componentInstructionsUrl || '',
+      'component_instructions_url': topic.componentInstructionsUrl || '',
+      'has_pdf': topic.topicId ? true : false,
+      'has_solicitation_instructions': topic.solicitationInstructionsUrl ? true : false,
+      'has_component_instructions': topic.componentInstructionsUrl ? true : false,
+      'solicitation_instructions_version': topic.baaPrefaceUploadTitle || '',
+      'component_instructions_version': topic.baaInstructions && Array.isArray(topic.baaInstructions) 
+        ? topic.baaInstructions.map((i: any) => i.fileName || '').join(', ') 
+        : '',
       
       // System
-      'Last Scraped': now.toISOString(),
+      'last_scraped': now.toISOString(),
       
-      // ... (Continue with all 159 columns from Python scraper)
-      // For now, storing the rest as JSON to preserve all data
+      // Store raw API data for debugging
       '_raw_data': JSON.stringify(topic)
     };
   }
