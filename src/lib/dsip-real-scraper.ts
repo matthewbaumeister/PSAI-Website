@@ -135,17 +135,31 @@ export class DSIPRealScraper {
       }
 
       try {
+        console.log(`[DSIP Scraper] About to fetch page ${page}...`);
         const response = await fetch(searchUrl, { 
-          headers: this.headers
+          headers: this.headers,
+          signal: AbortSignal.timeout(30000) // 30 second timeout
         });
         
+        console.log(`[DSIP Scraper] Page ${page} response status:`, response.status, response.statusText);
+        
         if (page === 0) {
-          console.log('[DSIP Scraper] First response status:', response.status, response.statusText);
+          console.log('[DSIP Scraper] First response OK, attempting to parse JSON...');
         }
 
         if (response.ok) {
-          const data = await response.json();
-          console.log(`[DSIP Scraper] Page ${page}: API returned`, typeof data, data ? Object.keys(data) : 'null');
+          console.log(`[DSIP Scraper] Page ${page} response is OK, parsing JSON...`);
+          let data;
+          try {
+            data = await response.json();
+            console.log(`[DSIP Scraper] Page ${page}: Successfully parsed JSON, type:`, typeof data);
+            console.log(`[DSIP Scraper] Page ${page}: JSON keys:`, data ? Object.keys(data) : 'null');
+          } catch (jsonError) {
+            console.error(`[DSIP Scraper] Page ${page}: Failed to parse JSON:`, jsonError);
+            const text = await response.text();
+            console.error(`[DSIP Scraper] Page ${page}: Response text preview:`, text.substring(0, 500));
+            throw new Error(`Failed to parse JSON: ${jsonError}`);
+          }
 
           // Handle both response formats: {data: [], total: X} or {content: [], totalElements: X}
           let topics: any[] = [];
@@ -222,6 +236,14 @@ export class DSIPRealScraper {
       } catch (error) {
         this.logError(`Error on page ${page}: ${error}`);
         console.error(`[DSIP Scraper] Exception on page ${page}:`, error);
+        console.error(`[DSIP Scraper] Error name:`, error instanceof Error ? error.name : 'Unknown');
+        console.error(`[DSIP Scraper] Error message:`, error instanceof Error ? error.message : String(error));
+        console.error(`[DSIP Scraper] Error stack:`, error instanceof Error ? error.stack : 'No stack');
+        
+        // If this is the first page and it failed, throw the error
+        if (page === 0) {
+          throw error;
+        }
         break;
       }
     }
