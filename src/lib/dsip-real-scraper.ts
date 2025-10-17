@@ -116,8 +116,10 @@ export class DSIPRealScraper {
     let page = 0;
     const size = 100;
     let consecutivePagesWithoutActive = 0;
-    const maxConsecutivePagesWithoutActive = 10; // Stop after 10 pages with no active opportunities
+    const maxConsecutivePagesWithoutActive = 50; // Increased to scan more pages for active topics
     let totalActiveFound = 0;
+    
+    console.log('[DSIP Scraper] Starting topic fetch with early termination after', maxConsecutivePagesWithoutActive, 'pages without active');
     
     while (true) {
       const searchParams = {
@@ -148,6 +150,7 @@ export class DSIPRealScraper {
 
         if (response.ok) {
           const data = await response.json();
+          console.log(`[DSIP Scraper] Page ${page}: API returned`, typeof data, data ? Object.keys(data) : 'null');
 
           if (data && typeof data === 'object' && 'data' in data) {
             const topics = data.data;
@@ -156,6 +159,7 @@ export class DSIPRealScraper {
             if (page === 0) {
               this.log(`   ✓ Total topics available: ${total}`);
               this.progress.totalTopics = total;
+              console.log(`[DSIP Scraper] First page: ${topics.length} topics, ${total} total in database`);
             }
 
             // Check if this page has any active opportunities
@@ -192,24 +196,29 @@ export class DSIPRealScraper {
             }
 
             if (topics.length < size || allTopics.length >= total) {
+              console.log(`[DSIP Scraper] Reached end: topics.length=${topics.length}, size=${size}, allTopics=${allTopics.length}, total=${total}`);
               break;
             }
 
             page++;
             await this.delay(200); // Small delay between requests
           } else {
+            console.error('[DSIP Scraper] Unexpected data format from API:', data);
             break;
           }
         } else {
           this.logError(`API request failed: ${response.status}`);
+          console.error(`[DSIP Scraper] API error on page ${page}: ${response.status}`);
           break;
         }
       } catch (error) {
         this.logError(`Error on page ${page}: ${error}`);
+        console.error(`[DSIP Scraper] Exception on page ${page}:`, error);
         break;
       }
     }
 
+    console.log(`[DSIP Scraper] Fetch complete: ${allTopics.length} total topics, ${totalActiveFound} marked as active during fetch`);
     return allTopics;
   }
 

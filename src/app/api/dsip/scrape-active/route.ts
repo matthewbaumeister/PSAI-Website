@@ -31,10 +31,19 @@ export async function POST(request: NextRequest) {
       if (progress.logs) {
         progressLogs.push(...progress.logs.slice(-5)); // Keep last 5 logs
       }
-      console.log(`[Scraper Progress] ${progress.phase}: ${progress.processedTopics}/${progress.totalTopics || 0}`);
+      console.log(`[Scraper Progress] ${progress.phase}: ${progress.processedTopics}/${progress.totalTopics || 0} active: ${progress.activeTopicsFound}`);
     });
 
-    console.log('Step 3: Scraping completed successfully');
+    console.log(`Step 3: Scraping completed - found ${results.length} records`);
+    console.log(`Latest progress:`, JSON.stringify(latestProgress, null, 2));
+    
+    // Debug: log first result if any
+    if (results.length > 0) {
+      console.log('First result sample:', JSON.stringify(results[0], null, 2).substring(0, 500));
+    } else {
+      console.warn('WARNING: Scraper returned 0 results!');
+      console.log('All progress logs:', progressLogs);
+    }
     
     return NextResponse.json({ 
       success: true, 
