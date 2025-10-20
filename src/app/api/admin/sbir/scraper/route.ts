@@ -449,16 +449,16 @@ for idx, topic in enumerate(active_topics):
         'topic_pdf_download_topics_api_public_topics_id_download_pdf': f"{base_url}/topics/api/public/topics/{topic_id}/download/PDF" if topic_id else '',
         'pdf_link_topic_pdf_duplicate': f"{base_url}/topics/api/public/topics/{topic_id}/download/PDF" if topic_id else '',
         
-        # SOLICITATION & COMPONENT INSTRUCTIONS
-        'solicitation_instructions_download_submissions_api_public_download_url': topic.get('solicitationInstructionsUrl', ''),
-        'solicitationinstructionsurl_solicitation_download_duplicate': topic.get('solicitationInstructionsUrl', ''),
-        'component_instructions_download_component_specific_download_url': topic.get('componentInstructionsUrl', ''),
-        'componentinstructionsurl_component_download_duplicate': topic.get('componentInstructionsUrl', ''),
-        'has_pdf_1_if_pdf_link_exists': '1' if topic_id else '0',
-        'has_solicitation_instructions_1_if_solicitation_link_exists': '1' if topic.get('solicitationInstructionsUrl') else '0',
-        'has_component_instructions_1_if_component_link_exists': '1' if topic.get('componentInstructionsUrl') else '0',
-        'solicitation_instructions_version_baaprefaceuploadtitle': topic.get('baaPrefaceUploadTitle', ''),
-        'component_instructions_version_baainstructions_filename_match': ', '.join([instr.get('fileName', '') for instr in (topic.get('baaInstructions', []) if isinstance(topic.get('baaInstructions'), list) else [])]) if topic.get('baaInstructions') else '',
+        # SOLICITATION & COMPONENT INSTRUCTIONS (using database schema names)
+        'solicitation_instructions_download': topic.get('solicitationInstructionsUrl', ''),
+        'solicitation_instructions_url': topic.get('solicitationInstructionsUrl', ''),
+        'component_instructions_download': topic.get('componentInstructionsUrl', ''),
+        'component_instructions_url': topic.get('componentInstructionsUrl', ''),
+        'has_pdf': '1' if topic_id else '0',
+        'has_solicitation_instructions': '1' if topic.get('solicitationInstructionsUrl') else '0',
+        'has_component_instructions': '1' if topic.get('componentInstructionsUrl') else '0',
+        'solicitation_instructions_version': topic.get('baaPrefaceUploadTitle', ''),
+        'component_instructions_version': ', '.join([instr.get('fileName', '') for instr in (topic.get('baaInstructions', []) if isinstance(topic.get('baaInstructions'), list) else [])]) if topic.get('baaInstructions') else '',
         
         # TPOC (Technical Point of Contact) - Extract from topicManagers
         'tpoc_topicmanagers_where_assignmenttype_tpoc_names_joined': ', '.join([tm.get('name', '') for tm in (topic.get('topicManagers', []) if isinstance(topic.get('topicManagers'), list) else []) if tm.get('assignmentType') == 'TPOC']),
