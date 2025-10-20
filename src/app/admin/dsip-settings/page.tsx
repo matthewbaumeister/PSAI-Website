@@ -1630,9 +1630,9 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    startRealActiveScraper();
+                    triggerSbirScraper();
                   }}
-                  disabled={isScrapingActive}
+                  disabled={isTriggeringSbirScraper}
                   style={{
                     background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
                     color: 'white',
@@ -1641,11 +1641,11 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                     borderRadius: '8px',
                     fontSize: '14px',
                     fontWeight: '600',
-                    cursor: isScrapingActive ? 'not-allowed' : 'pointer',
-                    opacity: isScrapingActive ? 0.6 : 1
+                    cursor: isTriggeringSbirScraper ? 'not-allowed' : 'pointer',
+                    opacity: isTriggeringSbirScraper ? 0.6 : 1
                   }}
                 >
-                  {isScrapingActive ? ' Running Scraper...' : ' Trigger Manual Scrape'}
+                  {isTriggeringSbirScraper ? ' Running Scraper...' : ' Trigger Manual Scrape'}
                 </button>
                 
                 <button
