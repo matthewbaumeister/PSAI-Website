@@ -572,6 +572,15 @@ async function processCSV(csvPath: string) {
     const headers = lines[0].split(',');
 
     console.log(`Found ${lines.length - 1} records to process`);
+    console.log('CSV Headers (first 10):', headers.slice(0, 10));
+    
+    // Check if instruction columns exist in CSV
+    const hasInstructionCols = headers.some(h => h.includes('instruction'));
+    console.log('Has instruction columns in CSV:', hasInstructionCols);
+    if (hasInstructionCols) {
+      const instructionHeaders = headers.filter(h => h.toLowerCase().includes('instruction'));
+      console.log('Instruction-related headers:', instructionHeaders);
+    }
 
     // Clear existing data
     console.log('Clearing existing SBIR data...');
@@ -610,12 +619,23 @@ async function processCSV(csvPath: string) {
       }
 
       if (records.length > 0) {
+        // Debug: Log first record's instruction fields
+        if (i === 1 && records.length > 0) {
+          const firstRecord = records[0];
+          console.log('Sample record instruction fields:', {
+            solicitation_instructions_download: firstRecord.solicitation_instructions_download,
+            component_instructions_download: firstRecord.component_instructions_download,
+            topic_number: firstRecord.topic_number
+          });
+        }
+        
         const { error: insertError } = await supabase
           .from('sbir_final')
           .insert(records);
 
         if (insertError) {
           console.error(`Error inserting batch ${Math.floor(i / batchSize) + 1}:`, insertError);
+          console.error('Sample failed record keys:', Object.keys(records[0] || {}));
           continue;
         }
 
