@@ -12,6 +12,10 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
+// Configure for long-running operations
+export const dynamic = 'force-dynamic';
+export const maxDuration = 300; // 5 minutes for Vercel Pro (maximum allowed)
+
 // GET - Check scraper status
 export async function GET(request: NextRequest) {
   try {
