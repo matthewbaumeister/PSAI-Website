@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { mapToSupabaseColumns } from '@/lib/sbir-column-mapper-clean';
+import { smartUpsertTopics } from '@/lib/smart-upsert-logic';
 
 export const maxDuration = 300; // 5 minutes
 
@@ -79,22 +80,25 @@ async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo
       processedTopics: 0,
       newRecords: 0,
       updatedRecords: 0,
-      skippedRecords: 0
+      preservedRecords: 0
     };
   }
 
   log(`📋 Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
   const processedTopics = await processTopics(topics, baseUrl);
 
-  log(`💾 Step 3/3: Updating Supabase database...`);
-  const { newRecords, updatedRecords, skippedRecords } = await updateDatabase(processedTopics);
+  log(`💾 Step 3/3: Updating Supabase database with smart upsert...`);
+  const { newRecords, updatedRecords, preservedRecords } = await smartUpsertTopics(processedTopics, {
+    scraperType: 'historical',
+    logFn: log
+  });
 
   return {
     totalTopics: topics.length,
     processedTopics: processedTopics.length,
     newRecords,
     updatedRecords,
-    skippedRecords
+    preservedRecords
   };
 }
 
@@ -425,6 +429,9 @@ async function processTopics(topics: any[], baseUrl: string) {
       }
       
       fullTopic.last_scraped = new Date().toISOString();
+      
+      // Tag with scraper source for smart upsert logic
+      fullTopic.scraper_source = 'historical';
       
       // Use the comprehensive mapper
       const mappedTopic = mapToSupabaseColumns(fullTopic);

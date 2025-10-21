@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { mapToSupabaseColumns } from '@/lib/sbir-column-mapper-clean';
+import { smartUpsertTopics } from '@/lib/smart-upsert-logic';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -68,17 +69,20 @@ async function scrapeAndUpdateSBIR() {
     log(` ✓ Processing complete: ${processedTopics.length} success, ${topics.length - processedTopics.length} errors`);
     log(` ✓ Successfully processed ${processedTopics.length} topics with full metadata`);
 
-    // Step 3: Update database with incremental changes
-    log(` Step 3/3: Updating Supabase database...`);
-    const updateResult = await updateDatabase(processedTopics);
-    log(` ✓ Database update complete: ${updateResult.newRecords} new, ${updateResult.updatedRecords} updated, ${updateResult.skippedRecords} skipped`);
+    // Step 3: Update database with smart upsert logic
+    log(` Step 3/3: Updating Supabase database with smart upsert...`);
+    const updateResult = await smartUpsertTopics(processedTopics, {
+      scraperType: 'active',
+      logFn: log
+    });
+    log(` Database update complete: ${updateResult.newRecords} new, ${updateResult.updatedRecords} updated, ${updateResult.preservedRecords} preserved`);
     
     return {
       totalTopics: topics.length,
       processedTopics: processedTopics.length,
       newRecords: updateResult.newRecords,
       updatedRecords: updateResult.updatedRecords,
-      skippedRecords: updateResult.skippedRecords,
+      preservedRecords: updateResult.preservedRecords,
       timestamp: new Date().toISOString()
     };
 
@@ -502,6 +506,9 @@ async function processTopics(topics: any[], baseUrl: string) {
       
       // Add timestamp for last_scraped
       fullTopic.last_scraped = new Date().toISOString();
+      
+      // Tag with scraper source for smart upsert logic
+      fullTopic.scraper_source = 'active';
       
       // Use the mapper to convert API response to Supabase column names
       const mappedTopic = mapToSupabaseColumns(fullTopic);

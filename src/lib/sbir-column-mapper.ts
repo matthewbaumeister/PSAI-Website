@@ -55,24 +55,24 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   // Status fields (simplified - no duplicates)
   if (scrapedTopic.topicStatus) mapped.status = scrapedTopic.topicStatus;
 
-  // Date fields
+  // Date fields - OUTPUT AS ISO STRINGS for PostgreSQL DATE/TIMESTAMP columns
   if (scrapedTopic.topicStartDate) {
-    mapped.open_date = formatDate(scrapedTopic.topicStartDate);
-    mapped.open_datetime = formatDate(scrapedTopic.topicStartDate);
-    // Add timestamp for proper chronological sorting
-    mapped.open_date_ts = new Date(scrapedTopic.topicStartDate).toISOString();
+    const openDate = new Date(scrapedTopic.topicStartDate);
+    mapped.open_date = openDate.toISOString().split('T')[0]; // YYYY-MM-DD for DATE column
+    mapped.open_datetime = openDate.toISOString(); // Full ISO for TIMESTAMPTZ column
   }
   if (scrapedTopic.topicEndDate) {
-    mapped.close_date = formatDate(scrapedTopic.topicEndDate);
-    mapped.close_datetime = formatDate(scrapedTopic.topicEndDate);
-    // Add timestamp for proper chronological sorting
-    mapped.close_date_ts = new Date(scrapedTopic.topicEndDate).toISOString();
+    const closeDate = new Date(scrapedTopic.topicEndDate);
+    mapped.close_date = closeDate.toISOString().split('T')[0]; // YYYY-MM-DD for DATE column
+    mapped.close_datetime = closeDate.toISOString(); // Full ISO for TIMESTAMPTZ column
   }
   if (scrapedTopic.topicPreReleaseStartDate) {
-    mapped.pre_release_start = formatDate(scrapedTopic.topicPreReleaseStartDate);
+    const preStart = new Date(scrapedTopic.topicPreReleaseStartDate);
+    mapped.pre_release_date = preStart.toISOString().split('T')[0];
   }
   if (scrapedTopic.topicPreReleaseEndDate) {
-    mapped.pre_release_end = formatDate(scrapedTopic.topicPreReleaseEndDate);
+    const preEnd = new Date(scrapedTopic.topicPreReleaseEndDate);
+    mapped.pre_release_date_close = preEnd.toISOString().split('T')[0];
   }
   if (scrapedTopic.createdDate) mapped.created_date = formatDate(scrapedTopic.createdDate);
   if (scrapedTopic.updatedDate) mapped.updated_date = formatDate(scrapedTopic.updatedDate);
@@ -89,8 +89,13 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   if (scrapedTopic.solicitation_phase) mapped.solicitation_phase = scrapedTopic.solicitation_phase;
 
   // Q&A fields (clean - with proper types)
-  if (scrapedTopic.topicQAStartDate) mapped.qa_start = formatDate(scrapedTopic.topicQAStartDate);
-  if (scrapedTopic.topicQAEndDate) mapped.qa_end = formatDate(scrapedTopic.topicQAEndDate);
+  if (scrapedTopic.topicQAStartDate) {
+    mapped.qa_start_date = new Date(scrapedTopic.topicQAStartDate).toISOString().split('T')[0];
+  }
+  if (scrapedTopic.topicQAEndDate) {
+    const qaEnd = new Date(scrapedTopic.topicQAEndDate);
+    mapped.qa_close_date = qaEnd.toISOString().split('T')[0];
+  }
   if (scrapedTopic.topicQAStatus) mapped.qa_status = scrapedTopic.topicQAStatus;
   if (scrapedTopic.topicQAOpen !== undefined) mapped.qa_open = toBoolean(scrapedTopic.topicQAOpen);
   if (scrapedTopic.topicQuestionCount !== undefined) mapped.total_questions = parseInt(scrapedTopic.topicQuestionCount) || 0;
@@ -341,6 +346,20 @@ export function mapToSupabaseColumns(scrapedTopic: ScraperTopic): Record<string,
   // **CRITICAL: Last scraped timestamp**
   if (scrapedTopic.last_scraped) {
     mapped.last_scraped = scrapedTopic.last_scraped;
+  }
+
+  // **METADATA for smart updates**
+  // Track which scraper created/updated this record
+  if (scrapedTopic.scraper_source) {
+    mapped.scraper_source = scrapedTopic.scraper_source; // 'active' or 'historical'
+  }
+  
+  // Track data freshness (determines update priority)
+  if (scrapedTopic.status) {
+    // If status is Open/Pre-Release/Active → live data
+    // If status is Closed → archived data
+    const isLive = ['Open', 'Pre-Release', 'Active'].includes(scrapedTopic.status);
+    mapped.data_freshness = isLive ? 'live' : 'archived';
   }
 
   return mapped;
