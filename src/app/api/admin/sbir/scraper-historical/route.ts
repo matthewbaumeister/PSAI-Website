@@ -358,7 +358,7 @@ async function processTopics(topics: any[]) {
   return processedTopics;
 }
 
-async function fetchTopicDetails(topicId: string) {
+async function fetchTopicDetails(topicId: string): Promise<any> {
   try {
     const response = await fetch(`${baseUrl}/topics/api/public/topics/${topicId}`, {
       headers: {
