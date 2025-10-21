@@ -188,10 +188,20 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
     }
     
     let matchingTopicsInPage = 0;
+    let allTopicsBeforeRange = true;
+    
     for (const topic of topics) {
       const topicDate = topic.topicEndDate ? new Date(topic.topicEndDate) : 
                         topic.topicStartDate ? new Date(topic.topicStartDate) : 
                         topic.modifiedDate ? new Date(topic.modifiedDate) : null;
+      
+      // Check if this topic is before our date range
+      if (topicDate && topicDate < startDate) {
+        // Topic is before range, continue checking
+      } else {
+        // Topic is within or after range
+        allTopicsBeforeRange = false;
+      }
       
       if (topicDate && topicDate >= startDate && topicDate <= endDate) {
         allTopics.push(topic);
@@ -200,6 +210,14 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
     }
     
     log(`   ✓ Page ${pageNum + 1}: Found ${matchingTopicsInPage} matching topics (total: ${allTopics.length})`);
+    
+    // Smart early termination: if ALL topics on this page are before our start date,
+    // and we're sorted by date descending, we've passed the date range entirely
+    if (allTopicsBeforeRange && topics.length > 0) {
+      log(`   ✅ Date range fully searched - all remaining topics are before ${startDate.toISOString().split('T')[0]}`);
+      log(`   Stopping pagination (found ${allTopics.length} total matches)`);
+      break;
+    }
     
     if (matchingTopicsInPage === 0) {
       consecutivePagesWithoutMatch++;
