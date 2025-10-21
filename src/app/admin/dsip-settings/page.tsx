@@ -210,23 +210,11 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
     setScraperProgress(0)
     setScraperCurrentStep('Initializing scraper...')
     
+    // Initialize logs array for displaying real-time progress
+    const logs: string[] = ['Starting SBIR scraper...']
+    setActiveScraperProgress({ phase: 'starting', processedTopics: 0, activeTopicsFound: 0, logs })
+    
     showNotification(' Starting SBIR scraper...', 'info')
-    
-    // Simulate progress updates
-    const progressInterval = setInterval(() => {
-      setScraperProgress(prev => {
-        if (prev < 90) return prev + 5
-        return prev
-      })
-    }, 1500)
-    
-    // Update step messages (estimated progress - actual details in Vercel logs)
-    setTimeout(() => setScraperCurrentStep('📡 Step 1/3: Fetching active topics from DSIP API...'), 2000)
-    setTimeout(() => setScraperCurrentStep(' Step 2/3: Processing topics (~0.5s per topic)...'), 8000)
-    setTimeout(() => setScraperCurrentStep('   Extracting: tech areas, keywords, TPOC, descriptions, Q&A...'), 12000)
-    setTimeout(() => setScraperCurrentStep('   Cleaning HTML, mapping to 159 database columns...'), 18000)
-    setTimeout(() => setScraperCurrentStep(' Step 3/3: Upserting to Supabase database...'), 28000)
-    setTimeout(() => setScraperCurrentStep('   Finalizing... almost done!'), 35000)
     
     try {
       const response = await fetch('/api/admin/sbir/trigger-scraper', {
@@ -236,12 +224,23 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
         }
       })
       
-      clearInterval(progressInterval)
       setScraperProgress(100)
       setScraperCurrentStep(' Scraper completed!')
       
       const result = await response.json()
       console.log('[SBIR Scraper] Full Response:', JSON.stringify(result, null, 2))
+      
+      // Display the detailed logs from the scraper
+      if (result.detailedLogs && result.detailedLogs.length > 0) {
+        console.log('[SBIR Scraper] Received', result.detailedLogs.length, 'detailed log entries')
+        setActiveScraperProgress({
+          phase: 'completed',
+          processedTopics: result.processedTopics || 0,
+          activeTopicsFound: result.totalTopics || 0,
+          logs: result.detailedLogs
+        })
+      }
+      
       setSbirScraperResult(result)
       
       if (response.ok) {
