@@ -686,19 +686,22 @@ async function updateDatabase(topics: any[]) {
       .select('topic_number, cycle_name, last_scraped')
       .in('topic_number', topicNumbers);
     
-    const existingTopicNumbers = new Set(
-      existingRecords?.map(r => r.topic_number) || []
+    // Create a Set of composite keys (topic_number + cycle_name) for accurate matching
+    const existingCompositeKeys = new Set(
+      existingRecords?.map(r => `${r.topic_number}||${r.cycle_name || ''}`) || []
     );
     
-    log(`   Found ${existingTopicNumbers.size} existing records in database`);
+    log(`   Found ${existingCompositeKeys.size} existing records in database`);
     
     if (topics.length > 0 && existingRecords && existingRecords.length > 0) {
-      log(`   Sample scraped topic_number: "${topics[0].topic_number}"`);
-      log(`   Sample existing topic_number: "${existingRecords[0].topic_number}"`);
+      log(`   Sample scraped: "${topics[0].topic_number}" + "${topics[0].cycle_name}"`);
+      log(`   Sample existing: "${existingRecords[0].topic_number}" + "${existingRecords[0].cycle_name}"`);
     }
     
+    // Check each topic against the composite key (topic_number + cycle_name)
     topics.forEach(topic => {
-      if (existingTopicNumbers.has(topic.topic_number)) {
+      const compositeKey = `${topic.topic_number}||${topic.cycle_name || ''}`;
+      if (existingCompositeKeys.has(compositeKey)) {
         updatedRecords++;
       } else {
         newRecords++;
