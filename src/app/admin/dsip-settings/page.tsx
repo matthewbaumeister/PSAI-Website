@@ -208,9 +208,31 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
     
     // Initialize logs array for displaying real-time progress
     const logs: string[] = ['Starting SBIR scraper...']
-    setActiveScraperProgress({ phase: 'starting', processedTopics: 0, activeTopicsFound: 0, logs })
+    setActiveScraperProgress({ phase: 'Initializing session with DSIP...', processedTopics: 0, activeTopicsFound: 0, logs })
     
     showNotification(' Starting SBIR scraper...', 'info')
+    
+    // Simulate progress phases while waiting for API response
+    const startTime = Date.now();
+    const progressInterval = setInterval(() => {
+      setActiveScraperProgress((prev: any) => {
+        if (!prev) return prev;
+        
+        const elapsed = Date.now() - startTime;
+        const seconds = Math.floor(elapsed / 1000);
+        
+        // Simulate different phases based on elapsed time
+        if (seconds < 10) {
+          return { ...prev, phase: 'Initializing session with DSIP...' };
+        } else if (seconds < 20) {
+          return { ...prev, phase: 'Fetching active SBIR opportunities...' };
+        } else if (seconds < 40) {
+          return { ...prev, phase: 'Processing topic details (tech areas, keywords, Q&A)...' };
+        } else {
+          return { ...prev, phase: 'Updating database...' };
+        }
+      });
+    }, 1000);
     
     try {
       const response = await fetch('/api/admin/sbir/trigger-scraper', {
@@ -219,6 +241,9 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
           'Content-Type': 'application/json'
         }
       })
+      
+      // Clear the progress simulation interval
+      clearInterval(progressInterval)
       
       setScraperProgress(100)
       setScraperCurrentStep(' Scraper completed!')
@@ -289,9 +314,11 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
         showNotification(` Failed to trigger SBIR scraper: ${result.error}`, 'error')
       }
     } catch (error) {
+      clearInterval(progressInterval)
       console.error('[SBIR Scraper] Error:', error)
       showNotification(' Failed to trigger SBIR scraper', 'error')
     } finally {
+      clearInterval(progressInterval)
       setIsTriggeringSbirScraper(false)
     }
   }
