@@ -21,19 +21,20 @@ export async function POST(request: Request) {
   detailedLogs.length = 0; // Clear previous logs
   
   try {
-    const { month, year } = await request.json();
+    const { monthFrom, yearFrom, monthTo, yearTo } = await request.json();
     
-    if (!month || !year) {
+    if (!monthFrom || !yearFrom || !monthTo || !yearTo) {
       return NextResponse.json({
         success: false,
-        message: 'Month and year are required'
+        message: 'All date fields (from and to) are required'
       }, { status: 400 });
     }
     
-    log(`🗓️ Starting historical SBIR scraper for ${month} ${year}...`);
-    log(`📡 Step 1/3: Fetching topics from ${month} ${year}...`);
+    const dateRange = `${monthFrom} ${yearFrom} to ${monthTo} ${yearTo}`;
+    log(`🗓️ Starting historical SBIR scraper for ${dateRange}...`);
+    log(`📡 Step 1/3: Fetching topics from ${dateRange}...`);
     
-    const result = await scrapeHistoricalData(month, year);
+    const result = await scrapeHistoricalData(monthFrom, yearFrom, monthTo, yearTo);
     
     return NextResponse.json({
       success: true,
@@ -53,21 +54,25 @@ export async function POST(request: Request) {
   }
 }
 
-async function scrapeHistoricalData(month: string, year: string) {
-  // Calculate date range for the selected month/year
-  const monthIndex = [
+async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo: string, yearTo: string) {
+  // Calculate date range from start month/year to end month/year
+  const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
-  ].indexOf(month);
+  ];
   
-  const startDate = new Date(parseInt(year), monthIndex, 1);
-  const endDate = new Date(parseInt(year), monthIndex + 1, 0, 23, 59, 59);
+  const monthIndexFrom = monthNames.indexOf(monthFrom);
+  const monthIndexTo = monthNames.indexOf(monthTo);
+  
+  const startDate = new Date(parseInt(yearFrom), monthIndexFrom, 1);
+  const endDate = new Date(parseInt(yearTo), monthIndexTo + 1, 0, 23, 59, 59);
   
   log(`📅 Date range: ${startDate.toISOString()} to ${endDate.toISOString()}`);
   
-  // Step 1: Fetch all topics from the selected month/year
+  // Step 1: Fetch all topics from the selected date range
   const topics = await fetchTopicsByDateRange(startDate, endDate);
-  log(`✓ Found ${topics.length} topics from ${month} ${year}`);
+  const dateRange = `${monthFrom} ${yearFrom} to ${monthTo} ${yearTo}`;
+  log(`✓ Found ${topics.length} topics from ${dateRange}`);
   
   if (topics.length === 0) {
     return {

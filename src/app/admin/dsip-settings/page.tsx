@@ -76,8 +76,10 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [isScrapingActive, setIsScrapingActive] = useState(false)
   
   // State for historical scraper
-  const [selectedMonth, setSelectedMonth] = useState<string>('')
-  const [selectedYear, setSelectedYear] = useState<string>('')
+  const [selectedMonthFrom, setSelectedMonthFrom] = useState<string>('')
+  const [selectedYearFrom, setSelectedYearFrom] = useState<string>('')
+  const [selectedMonthTo, setSelectedMonthTo] = useState<string>('')
+  const [selectedYearTo, setSelectedYearTo] = useState<string>('')
   const [isScrapingHistorical, setIsScrapingHistorical] = useState(false)
   const [historicalScraperResult, setHistoricalScraperResult] = useState<any>(null)
   
@@ -184,25 +186,11 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const checkSbirScraperStatus = async () => {
     setIsLoadingScraper(true)
     try {
-      // Add timeout to prevent hanging
-      const controller = new AbortController()
-      const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
-      
-      const response = await fetch('/api/admin/sbir/scraper', {
-        signal: controller.signal
-      })
-      
-      clearTimeout(timeoutId)
-      
-      if (response.ok) {
-        const data = await response.json()
-        setSbirScraperStatus(data)
-      } else {
-        console.warn('Failed to check scraper status:', response.status)
-      }
+      // Just load the stats - the old scraper endpoint was removed
+      await loadSbirStats()
+      setSbirScraperStatus({ status: 'idle', message: 'Ready' })
     } catch (error) {
       console.error('Failed to check scraper status:', error)
-      // Set default status to allow page to load
       setSbirScraperStatus({ status: 'unknown' })
     } finally {
       setIsLoadingScraper(false)
@@ -288,21 +276,22 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
   }
   
   const triggerHistoricalScraper = async () => {
-    if (!selectedMonth || !selectedYear) {
-      showNotification('Please select both month and year', 'warning')
+    if (!selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo) {
+      showNotification('Please select both start and end dates', 'warning')
       return
     }
     
-    console.log('[Historical Scraper] Starting scrape for', selectedMonth, selectedYear)
+    const dateRange = `${selectedMonthFrom} ${selectedYearFrom} to ${selectedMonthTo} ${selectedYearTo}`;
+    console.log('[Historical Scraper] Starting scrape for', dateRange)
     setIsScrapingHistorical(true)
     setHistoricalScraperResult(null)
     setScraperProgress(0)
     setScraperCurrentStep('Initializing historical scraper...')
     
-    const logs: string[] = [`Starting historical scrape for ${selectedMonth} ${selectedYear}...`]
+    const logs: string[] = [`Starting historical scrape for ${dateRange}...`]
     setActiveScraperProgress({ phase: 'starting', processedTopics: 0, activeTopicsFound: 0, logs })
     
-    showNotification(` Scraping ${selectedMonth} ${selectedYear} opportunities...`, 'info')
+    showNotification(` Scraping ${dateRange} opportunities...`, 'info')
     
     try {
       const response = await fetch('/api/admin/sbir/scraper-historical', {
@@ -311,8 +300,10 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          month: selectedMonth,
-          year: selectedYear
+          monthFrom: selectedMonthFrom,
+          yearFrom: selectedYearFrom,
+          monthTo: selectedMonthTo,
+          yearTo: selectedYearTo
         })
       })
       
@@ -336,9 +327,9 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
       setHistoricalScraperResult(result)
       
       if (response.ok) {
-        const details = result.result || {};
+        const details = result.result || result;
         const message = `
- Historical Scrape Results (${selectedMonth} ${selectedYear}):
+ Historical Scrape Results (${dateRange}):
 • Total Topics Found: ${details.totalTopics || 0}
 • Processed: ${details.processedTopics || 0}
 • New Records: ${details.newRecords || 0}
@@ -368,36 +359,7 @@ For detailed logs, check Vercel Function Logs.
     }
   }
 
-  const startSbirScraper = async () => {
-    setIsRefreshingData(true)
-    setMessage('')
-    try {
-      const response = await fetch('/api/admin/sbir/scraper', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ action: 'start' }),
-      })
-
-      if (response.ok) {
-        setMessage('SBIR data refresh started successfully!')
-        // Refresh stats after a short delay
-        setTimeout(() => {
-          loadSbirStats()
-          checkSbirScraperStatus()
-        }, 2000)
-      } else {
-        const errorData = await response.json()
-        setMessage(`Failed to start scraper: ${errorData.message}`)
-      }
-    } catch (error) {
-      console.error('Failed to start scraper:', error)
-      setMessage('Failed to start scraper')
-    } finally {
-      setIsRefreshingData(false)
-    }
-  }
+  // Removed old startSbirScraper function - use triggerSbirScraper instead
 
   const testSearch = async () => {
     if (!searchQuery.trim()) {
@@ -1999,16 +1961,17 @@ For detailed logs, check Vercel Function Logs.
               </p>
               
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'flex-end', marginBottom: '16px' }}>
-                <div style={{ minWidth: '150px' }}>
+                {/* FROM date */}
+                <div>
                   <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
-                    Month
+                    From Month
                   </label>
                   <select
-                    value={selectedMonth}
-                    onChange={(e) => setSelectedMonth(e.target.value)}
+                    value={selectedMonthFrom}
+                    onChange={(e) => setSelectedMonthFrom(e.target.value)}
                     disabled={isScrapingHistorical}
                     style={{
-                      width: '100%',
+                      minWidth: '140px',
                       padding: '10px 12px',
                       background: 'rgba(15, 23, 42, 0.8)',
                       border: '1px solid rgba(148, 163, 184, 0.3)',
@@ -2019,7 +1982,7 @@ For detailed logs, check Vercel Function Logs.
                       opacity: isScrapingHistorical ? 0.6 : 1
                     }}
                   >
-                    <option value="">Select Month</option>
+                    <option value="">Month</option>
                     <option value="January">January</option>
                     <option value="February">February</option>
                     <option value="March">March</option>
@@ -2035,16 +1998,16 @@ For detailed logs, check Vercel Function Logs.
                   </select>
                 </div>
                 
-                <div style={{ minWidth: '150px' }}>
+                <div>
                   <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
-                    Year
+                    From Year
                   </label>
                   <select
-                    value={selectedYear}
-                    onChange={(e) => setSelectedYear(e.target.value)}
+                    value={selectedYearFrom}
+                    onChange={(e) => setSelectedYearFrom(e.target.value)}
                     disabled={isScrapingHistorical}
                     style={{
-                      width: '100%',
+                      minWidth: '100px',
                       padding: '10px 12px',
                       background: 'rgba(15, 23, 42, 0.8)',
                       border: '1px solid rgba(148, 163, 184, 0.3)',
@@ -2055,7 +2018,75 @@ For detailed logs, check Vercel Function Logs.
                       opacity: isScrapingHistorical ? 0.6 : 1
                     }}
                   >
-                    <option value="">Select Year</option>
+                    <option value="">Year</option>
+                    {Array.from({ length: 6 }, (_, i) => new Date().getFullYear() - i).map(year => (
+                      <option key={year} value={year}>{year}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <div style={{ padding: '0 8px', marginBottom: '10px', color: '#94a3b8', fontSize: '20px', fontWeight: 'bold' }}>
+                  →
+                </div>
+                
+                {/* TO date */}
+                <div>
+                  <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
+                    To Month
+                  </label>
+                  <select
+                    value={selectedMonthTo}
+                    onChange={(e) => setSelectedMonthTo(e.target.value)}
+                    disabled={isScrapingHistorical}
+                    style={{
+                      minWidth: '140px',
+                      padding: '10px 12px',
+                      background: 'rgba(15, 23, 42, 0.8)',
+                      border: '1px solid rgba(148, 163, 184, 0.3)',
+                      borderRadius: '6px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                      opacity: isScrapingHistorical ? 0.6 : 1
+                    }}
+                  >
+                    <option value="">Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
+                    To Year
+                  </label>
+                  <select
+                    value={selectedYearTo}
+                    onChange={(e) => setSelectedYearTo(e.target.value)}
+                    disabled={isScrapingHistorical}
+                    style={{
+                      minWidth: '100px',
+                      padding: '10px 12px',
+                      background: 'rgba(15, 23, 42, 0.8)',
+                      border: '1px solid rgba(148, 163, 184, 0.3)',
+                      borderRadius: '6px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                      opacity: isScrapingHistorical ? 0.6 : 1
+                    }}
+                  >
+                    <option value="">Year</option>
                     {Array.from({ length: 6 }, (_, i) => new Date().getFullYear() - i).map(year => (
                       <option key={year} value={year}>{year}</option>
                     ))}
@@ -2070,9 +2101,9 @@ For detailed logs, check Vercel Function Logs.
                     e.stopPropagation();
                     triggerHistoricalScraper();
                   }}
-                  disabled={isScrapingHistorical || !selectedMonth || !selectedYear}
+                  disabled={isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo}
                   style={{
-                    background: isScrapingHistorical || !selectedMonth || !selectedYear 
+                    background: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo
                       ? 'rgba(148, 163, 184, 0.3)'
                       : 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
                     color: 'white',
@@ -2081,8 +2112,8 @@ For detailed logs, check Vercel Function Logs.
                     borderRadius: '8px',
                     fontSize: '14px',
                     fontWeight: '600',
-                    cursor: isScrapingHistorical || !selectedMonth || !selectedYear ? 'not-allowed' : 'pointer',
-                    opacity: isScrapingHistorical || !selectedMonth || !selectedYear ? 0.6 : 1
+                    cursor: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo ? 'not-allowed' : 'pointer',
+                    opacity: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo ? 0.6 : 1
                   }}
                 >
                   {isScrapingHistorical ? ' Scraping Historical Data...' : ' Scrape Historical Data'}
@@ -2138,7 +2169,7 @@ For detailed logs, check Vercel Function Logs.
                   How It Works
                 </h4>
                 <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
-                  1. Select a month and year to scrape (e.g., January 2024)
+                  1. Select a date range (e.g., January 2024 to December 2024)
                 </p>
                 <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
                   2. The scraper will fetch all opportunities from that time period
@@ -2148,6 +2179,9 @@ For detailed logs, check Vercel Function Logs.
                 </p>
                 <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
                   4. Results are added/updated in your database automatically
+                </p>
+                <p style={{ color: '#cbd5e1', margin: '4px 0 8px 0', fontSize: '13px', fontStyle: 'italic', opacity: 0.8 }}>
+                  Tip: Use the same from/to dates to scrape a single month, or set "to current" for everything up until now
                 </p>
               </div>
             </div>
