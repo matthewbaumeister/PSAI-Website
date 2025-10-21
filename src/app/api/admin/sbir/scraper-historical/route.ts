@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { mapToSupabaseColumns } from '@/lib/sbir-column-mapper-clean';
 
 export const maxDuration = 300; // 5 minutes
 
