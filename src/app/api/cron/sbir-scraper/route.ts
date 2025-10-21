@@ -293,6 +293,22 @@ async function processTopics(topics: any[], baseUrl: string) {
         );
         if (topicInstrKeys.length > 0) {
           log(`      DEBUG: Initial topic data has keys: ${topicInstrKeys.join(', ')}`);
+          // Show the actual values
+          topicInstrKeys.forEach(key => {
+            const value = topic[key];
+            if (value && typeof value === 'string') {
+              log(`      DEBUG: ${key} = "${value}"`);
+            } else if (Array.isArray(value)) {
+              log(`      DEBUG: ${key} = [array with ${value.length} items]`);
+              if (value.length > 0) {
+                log(`      DEBUG: ${key}[0] = ${JSON.stringify(value[0]).substring(0, 150)}`);
+              }
+            } else if (value && typeof value === 'object') {
+              log(`      DEBUG: ${key} = ${JSON.stringify(value).substring(0, 150)}`);
+            } else {
+              log(`      DEBUG: ${key} = ${value}`);
+            }
+          });
         }
       }
       
