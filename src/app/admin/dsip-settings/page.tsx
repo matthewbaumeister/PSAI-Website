@@ -2171,128 +2171,142 @@ For detailed logs, check Vercel Function Logs.
                 </button>
               </div>
 
-              {/* Historical Scraper Live Progress */}
+              {/* Historical Scraper Live Progress - Matches Manual Scraper Style */}
               {isScrapingHistorical && historicalScraperProgress && (
                 <div style={{
-                  background: 'rgba(139, 92, 246, 0.1)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
-                  borderRadius: '8px',
-                  padding: '20px',
-                  marginTop: '16px'
+                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%)',
+                  border: '2px solid #10b981',
+                  borderRadius: '16px',
+                  padding: '28px',
+                  marginTop: '20px',
+                  boxShadow: '0 8px 32px rgba(16, 185, 129, 0.25)',
+                  position: 'relative',
+                  overflow: 'hidden'
                 }}>
-                  <h3 style={{
-                    color: '#8b5cf6',
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    margin: '0 0 16px 0',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px'
-                  }}>
-                    <span>Scraping Historical Data...</span>
-                    <span style={{
-                      display: 'inline-block',
-                      width: '8px',
-                      height: '8px',
-                      borderRadius: '50%',
-                      background: '#8b5cf6',
-                      animation: 'pulse 2s infinite'
-                    }}></span>
-                  </h3>
+                  {/* Animated background shimmer */}
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: '-100%',
+                    width: '100%',
+                    height: '100%',
+                    background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
+                    animation: 'shimmer 2s infinite'
+                  }} />
                   
-                  {historicalScraperProgress.totalTopics > 0 && (
-                    <>
-                      <div style={{
-                        width: '100%',
-                        height: '16px',
-                        background: 'rgba(148, 163, 184, 0.2)',
-                        borderRadius: '8px',
-                        overflow: 'hidden',
-                        marginBottom: '16px'
-                      }}>
-                        <div style={{
-                          width: `${historicalScraperProgress.processedTopics && historicalScraperProgress.totalTopics 
-                            ? (historicalScraperProgress.processedTopics / historicalScraperProgress.totalTopics * 100) 
-                            : 10}%`,
-                          height: '100%',
-                          background: 'linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%)',
-                          transition: 'width 0.5s ease',
-                          animation: 'pulse 2s infinite'
-                        }}></div>
-                      </div>
-
-                      <div style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: '1.8' }}>
-                        <p style={{ marginBottom: '12px' }}>
-                          <strong style={{ color: '#8b5cf6' }}>Phase:</strong> {historicalScraperProgress.phase || 'Starting...'}
-                        </p>
-                        <p style={{ marginBottom: '12px' }}>
-                          <strong style={{ color: '#8b5cf6' }}>Progress:</strong> {historicalScraperProgress.processedTopics || 0} / {historicalScraperProgress.totalTopics} topics
-                        </p>
-                      </div>
-                    </>
-                  )}
-                  
-                  {historicalScraperProgress.logs && historicalScraperProgress.logs.length > 0 && (
-                    <div style={{
-                      marginTop: '20px',
-                      padding: '16px',
-                      background: 'rgba(0, 0, 0, 0.4)',
-                      border: '1px solid rgba(139, 92, 246, 0.3)',
-                      borderRadius: '6px',
-                      maxHeight: '400px',
-                      overflowY: 'auto'
-                    }}>
-                      <div style={{
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+                      <h4 style={{ 
+                        color: '#10b981', 
+                        margin: 0, 
+                        fontSize: '18px',
+                        fontWeight: '700',
                         display: 'flex',
                         alignItems: 'center',
-                        justifyContent: 'space-between',
-                        marginBottom: '12px',
-                        paddingBottom: '8px',
-                        borderBottom: '1px solid rgba(139, 92, 246, 0.3)'
+                        gap: '8px'
                       }}>
-                        <p style={{ color: '#8b5cf6', fontSize: '13px', fontWeight: '700', margin: 0 }}>
-                          Detailed Progress Log ({historicalScraperProgress.logs.length} entries)
-                        </p>
-                        <span style={{ color: '#10b981', fontSize: '11px', fontWeight: '600' }}>
-                          LIVE
-                        </span>
+                        <span style={{ animation: 'spin 2s linear infinite', display: 'inline-block' }}>🔄</span>
+                        Historical Scraper Running
+                      </h4>
+                      <div style={{
+                        background: 'rgba(16, 185, 129, 0.3)',
+                        padding: '8px 16px',
+                        borderRadius: '8px',
+                        fontWeight: '700',
+                        fontSize: '20px',
+                        color: '#10b981',
+                        minWidth: '80px',
+                        textAlign: 'center',
+                        boxShadow: '0 2px 8px rgba(16, 185, 129, 0.3)'
+                      }}>
+                        {historicalScraperProgress.processedTopics && historicalScraperProgress.totalTopics 
+                          ? Math.round((historicalScraperProgress.processedTopics / historicalScraperProgress.totalTopics) * 100)
+                          : 0}%
                       </div>
-                      {historicalScraperProgress.logs.slice(-50).reverse().map((log: string, idx: number) => {
-                        const cleanLog = log.split(': ').slice(1).join(': ') || log;
-                        const isProgress = cleanLog.includes('[') && cleanLog.includes('%]');
-                        const isSuccess = cleanLog.includes('✓');
-                        const isWarning = cleanLog.includes('⚠');
-
-                        return (
-                          <div
-                            key={idx}
-                            style={{
-                              padding: '6px 10px',
-                              marginBottom: '4px',
-                              background: isProgress ? 'rgba(139, 92, 246, 0.15)' : 
-                                         isSuccess ? 'rgba(16, 185, 129, 0.1)' : 
-                                         isWarning ? 'rgba(251, 191, 36, 0.1)' : 
-                                         'transparent',
-                              borderLeft: isProgress ? '3px solid #8b5cf6' : 
-                                         isSuccess ? '3px solid #10b981' : 
-                                         isWarning ? '3px solid #fbbf24' : 
-                                         '3px solid transparent',
-                              borderRadius: '4px',
-                              fontSize: '12px',
-                              lineHeight: '1.6',
-                              color: isProgress ? '#c4b5fd' : 
-                                    isSuccess ? '#6ee7b7' : 
-                                    isWarning ? '#fcd34d' : 
-                                    '#94a3b8',
-                              fontFamily: 'ui-monospace, monospace'
-                            }}
-                          >
-                            {cleanLog}
-                          </div>
-                        )
-                      })}
                     </div>
-                  )}
+                    
+                    {/* Progress Bar */}
+                    <div style={{
+                      width: '100%',
+                      height: '12px',
+                      background: 'rgba(148, 163, 184, 0.2)',
+                      borderRadius: '6px',
+                      overflow: 'hidden',
+                      marginBottom: '20px',
+                      boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.2)'
+                    }}>
+                      <div style={{
+                        width: `${historicalScraperProgress.processedTopics && historicalScraperProgress.totalTopics 
+                          ? (historicalScraperProgress.processedTopics / historicalScraperProgress.totalTopics * 100) 
+                          : 5}%`,
+                        height: '100%',
+                        background: 'linear-gradient(90deg, #10b981 0%, #059669 50%, #10b981 100%)',
+                        backgroundSize: '200% 100%',
+                        transition: 'width 0.3s ease',
+                        animation: 'gradientMove 3s ease infinite',
+                        boxShadow: '0 0 10px rgba(16, 185, 129, 0.5)'
+                      }}></div>
+                    </div>
+
+                    {/* Status Info */}
+                    <div style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.8', marginBottom: '16px' }}>
+                      <p style={{ marginBottom: '8px', display: 'flex', justifyContent: 'space-between' }}>
+                        <span><strong style={{ color: '#10b981' }}>Phase:</strong> {historicalScraperProgress.phase || 'Starting...'}</span>
+                        {historicalScraperProgress.totalTopics > 0 && (
+                          <span style={{ color: '#10b981', fontWeight: '600' }}>
+                            {historicalScraperProgress.processedTopics || 0} / {historicalScraperProgress.totalTopics} topics
+                          </span>
+                        )}
+                      </p>
+                    </div>
+                    
+                    {/* Detailed Logs */}
+                    {historicalScraperProgress.logs && historicalScraperProgress.logs.length > 0 && (
+                      <div style={{
+                        marginTop: '20px',
+                        padding: '16px',
+                        background: 'rgba(0, 0, 0, 0.4)',
+                        border: '1px solid rgba(16, 185, 129, 0.3)',
+                        borderRadius: '12px',
+                        maxHeight: '400px',
+                        overflowY: 'auto'
+                      }}>
+                        <div style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          marginBottom: '12px'
+                        }}>
+                          <p style={{ color: '#10b981', fontSize: '13px', fontWeight: '700', margin: 0 }}>
+                            Detailed Progress Log ({historicalScraperProgress.logs.length} entries)
+                          </p>
+                          <span style={{ color: '#10b981', fontSize: '11px', fontWeight: '600' }}>
+                            LIVE
+                          </span>
+                        </div>
+                        {historicalScraperProgress.logs.slice(-50).reverse().map((log: string, idx: number) => {
+                          const cleanLog = log.split(': ').slice(1).join(': ') || log;
+                          const isProgress = cleanLog.includes('[') && cleanLog.includes('%]');
+                          const isSuccess = cleanLog.includes('✓');
+                          const isWarning = cleanLog.includes('⚠');
+
+                          return (
+                            <p key={idx} style={{ 
+                              color: isSuccess ? '#10b981' : isWarning ? '#f59e0b' : '#94a3b8',
+                              fontSize: isProgress ? '13px' : '12px',
+                              marginBottom: '6px',
+                              fontFamily: 'monospace',
+                              fontWeight: isProgress ? '600' : '400',
+                              lineHeight: '1.4',
+                              paddingLeft: cleanLog.startsWith('      ') ? '20px' : '0'
+                            }}>
+                              {cleanLog}
+                            </p>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 </div>
               )}
 
