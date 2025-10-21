@@ -370,6 +370,11 @@ async function processTopics(topics: any[], baseUrl: string) {
       
       const now = new Date();
       
+      // Set sponsor_component from component field
+      if (topic.component) {
+        fullTopic.sponsorComponent = topic.component;
+      }
+      
       // Calculate date-based fields
       if (topic.topicStartDate) {
         const openDate = new Date(topic.topicStartDate);
