@@ -64,8 +64,7 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
   m.topic_id = topic.topicId || null;
   m.title = topic.topicTitle || null;
   m.short_title = topic.topicTitle ? topic.topicTitle.substring(0, 50) : null;
-  m.record_id = (topic.topicCode && topic.topicId) ? `${topic.topicCode}_${topic.topicId.substring(0, 8)}` : null;
-  m.unique_id = (topic.cycleName && topic.topicCode) ? `${topic.cycleName}_${topic.topicCode}` : null;
+  // Removed obsolete fields not in new schema: record_id, unique_id
 
   // ==== COMPONENT & PROGRAM ====
   m.component = topic.component || null;
@@ -213,11 +212,8 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
 
   // ==== ACTIONS & FLAGS ====
   m.applicable_actions = topic.applicableActions || null;
-  m.is_active = topic.isActive !== undefined ? toBoolean(topic.isActive) : null;
-  m.is_archived = topic.isArchived !== undefined ? toBoolean(topic.isArchived) : false;
-  m.is_draft = topic.isDraft !== undefined ? toBoolean(topic.isDraft) : false;
-  m.is_published = topic.isPublished !== undefined ? toBoolean(topic.isPublished) : true;
-  m.allow_proposal_submission = topic.allowProposalSubmission !== undefined ? toBoolean(topic.allowProposalSubmission) : null;
+  // Removed obsolete fields not in new schema:
+  // is_active, is_archived, is_draft, is_published, allow_proposal_submission
 
   // ==== METADATA ====
   m.year = new Date().getFullYear();
