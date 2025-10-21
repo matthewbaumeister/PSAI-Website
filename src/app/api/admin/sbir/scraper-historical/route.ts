@@ -154,13 +154,14 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
       releaseNumbers: [],
       topicReleaseStatus: [],
       modernizationPriorities: [],
-      sortBy: 'modifiedDate,desc',
+      sortBy: "topicEndDate,desc",
       technologyAreaIds: [],
       component: null,
       program: null
     };
     
-    const url = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodeURIComponent(JSON.stringify(searchParams))}&page=${pageNum}&size=${pageSize}`;
+    const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
+    const url = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${pageSize}&page=${pageNum}`;
     
     const response = await fetch(url, {
       headers: {
