@@ -85,6 +85,9 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [historicalScraperResult, setHistoricalScraperResult] = useState<any>(null)
   const [historicalScraperProgress, setHistoricalScraperProgress] = useState<any>(null)
   
+  // State for unified scraper mode
+  const [scraperMode, setScraperMode] = useState<'active' | 'historical'>('active')
+  
   // State for floating notifications
   const [notification, setNotification] = useState<{
     show: boolean
@@ -1772,7 +1775,7 @@ For detailed logs, check Vercel Function Logs.
               </button>
             </div>
 
-            {/* Scraper Controls */}
+            {/* Unified Scraper Controls */}
             <div className="scraper-controls" style={{
               background: 'rgba(15, 23, 42, 0.6)',
               borderRadius: '12px',
@@ -1781,33 +1784,77 @@ For detailed logs, check Vercel Function Logs.
               marginBottom: '24px'
             }}>
               <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 16px 0', color: '#ffffff' }}>
-                Automated Scraper Controls
+                SBIR/STTR Scraper
               </h3>
               
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '16px' }}>
+              {/* Scraper Mode Toggle */}
+              <div style={{ marginBottom: '20px', display: 'flex', gap: '12px' }}>
                 <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    triggerSbirScraper();
-                  }}
-                  disabled={isTriggeringSbirScraper}
+                  onClick={() => setScraperMode('active')}
+                  disabled={isTriggeringSbirScraper || isScrapingHistorical}
                   style={{
-                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                    color: 'white',
                     padding: '12px 24px',
-                    border: 'none',
+                    background: scraperMode === 'active' ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' : 'rgba(16, 185, 129, 0.1)',
+                    color: scraperMode === 'active' ? 'white' : '#10b981',
+                    border: `2px solid ${scraperMode === 'active' ? '#10b981' : 'rgba(16, 185, 129, 0.3)'}`,
                     borderRadius: '8px',
                     fontSize: '14px',
                     fontWeight: '600',
-                    cursor: isTriggeringSbirScraper ? 'not-allowed' : 'pointer',
-                    opacity: isTriggeringSbirScraper ? 0.6 : 1
+                    cursor: (isTriggeringSbirScraper || isScrapingHistorical) ? 'not-allowed' : 'pointer',
+                    opacity: (isTriggeringSbirScraper || isScrapingHistorical) ? 0.6 : 1,
+                    transition: 'all 0.2s ease'
                   }}
                 >
-                  {isTriggeringSbirScraper ? ' Running Scraper...' : ' Trigger Manual Scrape'}
+                  Quick Scrape (Active Only)
                 </button>
+                
+                <button
+                  onClick={() => setScraperMode('historical')}
+                  disabled={isTriggeringSbirScraper || isScrapingHistorical}
+                  style={{
+                    padding: '12px 24px',
+                    background: scraperMode === 'historical' ? 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)' : 'rgba(139, 92, 246, 0.1)',
+                    color: scraperMode === 'historical' ? 'white' : '#8b5cf6',
+                    border: `2px solid ${scraperMode === 'historical' ? '#8b5cf6' : 'rgba(139, 92, 246, 0.3)'}`,
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: (isTriggeringSbirScraper || isScrapingHistorical) ? 'not-allowed' : 'pointer',
+                    opacity: (isTriggeringSbirScraper || isScrapingHistorical) ? 0.6 : 1,
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  Scrape via Date Range
+                </button>
+              </div>
+              
+              {/* Active Scraper Mode */}
+              {scraperMode === 'active' && (
+                <>
+                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '16px' }}>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        triggerSbirScraper();
+                      }}
+                      disabled={isTriggeringSbirScraper}
+                      style={{
+                        background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                        color: 'white',
+                        padding: '12px 24px',
+                        border: 'none',
+                        borderRadius: '8px',
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        cursor: isTriggeringSbirScraper ? 'not-allowed' : 'pointer',
+                        opacity: isTriggeringSbirScraper ? 0.6 : 1
+                      }}
+                    >
+                      {isTriggeringSbirScraper ? ' Running Scraper...' : ' Trigger Manual Scrape'}
+                    </button>
                 
                 <button
                   type="button"
@@ -2056,33 +2103,205 @@ For detailed logs, check Vercel Function Logs.
                   It fetches only active, open, and pre-release opportunities to keep the database current.
                 </p>
               </div>
-            </div>
-
-            {/* Historical Scraper Controls */}
-            <div className="scraper-controls" style={{
-              background: 'rgba(15, 23, 42, 0.6)',
-              borderRadius: '12px',
-              padding: '24px',
-              border: '1px solid rgba(148, 163, 184, 0.2)',
-              marginTop: '24px'
-            }}>
-              <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 8px 0', color: '#ffffff' }}>
-                Historical Data Scraper
-              </h3>
-              <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 16px 0' }}>
-                Scrape and backfill historical SBIR/STTR opportunities from any month/year. Pulls all the same detailed data as the active scraper.
-              </p>
+                </>
+              )}
               
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'flex-end', marginBottom: '16px' }}>
-                {/* FROM date */}
-                <div>
-                  <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
-                    From Month
-                  </label>
-                  <select
-                    value={selectedMonthFrom}
-                    onChange={(e) => setSelectedMonthFrom(e.target.value)}
-                    disabled={isScrapingHistorical}
+              {/* Historical Scraper Mode */}
+              {scraperMode === 'historical' && (
+                <>
+                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 16px 0' }}>
+                    Scrape and backfill historical SBIR/STTR opportunities from any month/year. Pulls all the same detailed data as the active scraper.
+                  </p>
+                  
+                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'flex-end', marginBottom: '16px' }}>
+                    {/* FROM date */}
+                    <div>
+                      <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
+                        From Month
+                      </label>
+                      <select
+                        value={selectedMonthFrom}
+                        onChange={(e) => setSelectedMonthFrom(e.target.value)}
+                        disabled={isScrapingHistorical}
+                        style={{
+                          minWidth: '140px',
+                          padding: '10px 12px',
+                          background: 'rgba(15, 23, 42, 0.8)',
+                          border: '1px solid rgba(148, 163, 184, 0.3)',
+                          borderRadius: '6px',
+                          color: '#ffffff',
+                          fontSize: '14px',
+                          cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                          opacity: isScrapingHistorical ? 0.6 : 1
+                        }}
+                      >
+                        <option value="">Month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                      </select>
+                    </div>
+                    
+                    <div>
+                      <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
+                        From Year
+                      </label>
+                      <select
+                        value={selectedYearFrom}
+                        onChange={(e) => setSelectedYearFrom(e.target.value)}
+                        disabled={isScrapingHistorical}
+                        style={{
+                          minWidth: '100px',
+                          padding: '10px 12px',
+                          background: 'rgba(15, 23, 42, 0.8)',
+                          border: '1px solid rgba(148, 163, 184, 0.3)',
+                          borderRadius: '6px',
+                          color: '#ffffff',
+                          fontSize: '14px',
+                          cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                          opacity: isScrapingHistorical ? 0.6 : 1
+                        }}
+                      >
+                        <option value="">Year</option>
+                        {Array.from({ length: 6 }, (_, i) => new Date().getFullYear() - i).map(year => (
+                          <option key={year} value={year}>{year}</option>
+                        ))}
+                      </select>
+                    </div>
+                    
+                    <div style={{ padding: '0 8px', marginBottom: '10px', color: '#94a3b8', fontSize: '20px', fontWeight: 'bold' }}>
+                      →
+                    </div>
+                    
+                    {/* TO date */}
+                    <div>
+                      <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
+                        To Month
+                      </label>
+                      <select
+                        value={selectedMonthTo}
+                        onChange={(e) => setSelectedMonthTo(e.target.value)}
+                        disabled={isScrapingHistorical || useToCurrent}
+                        style={{
+                          minWidth: '140px',
+                          padding: '10px 12px',
+                          background: 'rgba(15, 23, 42, 0.8)',
+                          border: '1px solid rgba(148, 163, 184, 0.3)',
+                          borderRadius: '6px',
+                          color: '#ffffff',
+                          fontSize: '14px',
+                          cursor: isScrapingHistorical || useToCurrent ? 'not-allowed' : 'pointer',
+                          opacity: isScrapingHistorical || useToCurrent ? 0.6 : 1
+                        }}
+                      >
+                        <option value="">Month</option>
+                        <option value="January">January</option>
+                        <option value="February">February</option>
+                        <option value="March">March</option>
+                        <option value="April">April</option>
+                        <option value="May">May</option>
+                        <option value="June">June</option>
+                        <option value="July">July</option>
+                        <option value="August">August</option>
+                        <option value="September">September</option>
+                        <option value="October">October</option>
+                        <option value="November">November</option>
+                        <option value="December">December</option>
+                      </select>
+                    </div>
+                    
+                    <div>
+                      <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
+                        To Year
+                      </label>
+                      <select
+                        value={selectedYearTo}
+                        onChange={(e) => setSelectedYearTo(e.target.value)}
+                        disabled={isScrapingHistorical || useToCurrent}
+                        style={{
+                          minWidth: '100px',
+                          padding: '10px 12px',
+                          background: 'rgba(15, 23, 42, 0.8)',
+                          border: '1px solid rgba(148, 163, 184, 0.3)',
+                          borderRadius: '6px',
+                          color: '#ffffff',
+                          fontSize: '14px',
+                          cursor: isScrapingHistorical || useToCurrent ? 'not-allowed' : 'pointer',
+                          opacity: isScrapingHistorical || useToCurrent ? 0.6 : 1
+                        }}
+                      >
+                        <option value="">Year</option>
+                        {Array.from({ length: 6 }, (_, i) => new Date().getFullYear() - i).map(year => (
+                          <option key={year} value={year}>{year}</option>
+                        ))}
+                      </select>
+                    </div>
+                    
+                    {/* To Current Checkbox */}
+                    <div style={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '10px' }}>
+                      <label style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        color: '#cbd5e1',
+                        fontSize: '14px',
+                        cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                        opacity: isScrapingHistorical ? 0.6 : 1,
+                        userSelect: 'none'
+                      }}>
+                        <input
+                          type="checkbox"
+                          checked={useToCurrent}
+                          onChange={(e) => {
+                            setUseToCurrent(e.target.checked);
+                            if (e.target.checked) {
+                              setSelectedMonthTo('');
+                              setSelectedYearTo('');
+                            }
+                          }}
+                          disabled={isScrapingHistorical}
+                          style={{
+                            width: '18px',
+                            height: '18px',
+                            cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                            accentColor: '#8b5cf6'
+                          }}
+                        />
+                        <span style={{ fontWeight: '500' }}>To Current</span>
+                      </label>
+                    </div>
+                    
+                    <button
+                      type="button"
+                      onClick={triggerHistoricalScraper}
+                      disabled={isScrapingHistorical}
+                      style={{
+                        background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                        color: 'white',
+                        padding: '12px 24px',
+                        border: 'none',
+                        borderRadius: '8px',
+                        fontSize: '14px',
+                        fontWeight: '600',
+                        cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                        opacity: isScrapingHistorical ? 0.6 : 1
+                      }}
+                    >
+                      {isScrapingHistorical ? ' Scraping...' : ' Scrape Historical Data'}
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
                     style={{
                       minWidth: '140px',
                       padding: '10px 12px',
