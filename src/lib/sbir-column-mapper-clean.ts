@@ -91,14 +91,14 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
   // ==== DATES ====
   if (topic.topicStartDate) {
     m.open_date = formatDate(topic.topicStartDate);
-    m.open_date_ts = new Date(topic.topicStartDate).toISOString();
+    m.open_datetime = new Date(topic.topicStartDate).toISOString();
   }
   if (topic.topicEndDate) {
     m.close_date = formatDate(topic.topicEndDate);
-    m.close_date_ts = new Date(topic.topicEndDate).toISOString();
+    m.close_datetime = new Date(topic.topicEndDate).toISOString();
   }
-  m.pre_release_start = topic.topicPreReleaseStartDate ? formatDate(topic.topicPreReleaseStartDate) : null;
-  m.pre_release_end = topic.topicPreReleaseEndDate ? formatDate(topic.topicPreReleaseEndDate) : null;
+  m.pre_release_date = topic.topicPreReleaseStartDate ? formatDate(topic.topicPreReleaseStartDate) : null;
+  m.pre_release_date_close = topic.topicPreReleaseEndDate ? formatDate(topic.topicPreReleaseEndDate) : null;
   m.created_date = topic.createdDate ? formatDate(topic.createdDate) : null;
   m.updated_date = topic.updatedDate ? formatDate(topic.updatedDate) : null;
   m.modified_date = topic.modifiedDate ? formatDate(topic.modifiedDate) : null;
@@ -112,13 +112,10 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
   m.pre_release_duration = topic.pre_release_duration !== undefined ? parseInt(topic.pre_release_duration) : null;
 
   // ==== Q&A INFORMATION ====
-  m.qa_start = topic.topicQAStartDate ? formatDate(topic.topicQAStartDate) : null;
-  m.qa_end = topic.topicQAEndDate ? formatDate(topic.topicQAEndDate) : null;
-  m.qa_status = topic.topicQAStatus || null;
-  m.qa_open = topic.topicQAOpen !== undefined ? toBoolean(topic.topicQAOpen) : false;
+  m.qa_close_date = topic.topicQAEndDate ? formatDate(topic.topicQAEndDate) : null;
   m.qa_window_active = topic.qa_window_active !== undefined ? toBoolean(topic.qa_window_active) : false;
-  m.total_questions = topic.topicQuestionCount !== undefined ? parseInt(topic.topicQuestionCount) || 0 : 0;
-  m.published_questions = (topic.noOfPublishedQuestions !== undefined && topic.noOfPublishedQuestions !== null) ? parseInt(topic.noOfPublishedQuestions) || 0 : 0;
+  m.topic_question_count = topic.topicQuestionCount !== undefined ? parseInt(topic.topicQuestionCount) || 0 : 0;
+  m.no_of_published_questions = (topic.noOfPublishedQuestions !== undefined && topic.noOfPublishedQuestions !== null) ? parseInt(topic.noOfPublishedQuestions) || 0 : 0;
   m.qa_response_rate_percentage = topic.qa_response_rate_percentage !== undefined ? parseInt(topic.qa_response_rate_percentage) : null;
   m.days_until_qa_close = topic.days_until_qa_close !== undefined ? parseInt(topic.days_until_qa_close) : null;
   m.qa_content = topic.qaContent || null;
@@ -158,9 +155,9 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
     m.description_word_count = topic.description.split(' ').filter(Boolean).length;
     m.description_length = topic.description.length;
   }
-  m.phase_i_description = topic.phase1Description || null;
-  m.phase_ii_description = topic.phase2Description || null;
-  m.phase_iii_description = topic.phase3Description || null;
+  m.phase_1_description = topic.phase1Description || null;
+  m.phase_2_description = topic.phase2Description || null;
+  m.phase_3_description = topic.phase3Description || null;
 
   // Consolidated description for full-text search
   const allDescs = [topic.objective, topic.description, topic.phase1Description, topic.phase2Description, topic.phase3Description].filter(Boolean);
@@ -172,10 +169,7 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
   m.competition_type = topic.competition_type || null;
 
   // ==== REFERENCES & DOCUMENTS ====
-  if (topic.references) {
-    m.reference_docs = topic.references;
-    m.reference_count = topic.references.split(';').filter(Boolean).length;
-  }
+  m.references = topic.references || null;
   m.baa_instruction_files = topic.baaInstructionFiles || null;
 
   // ==== PHASE INFORMATION ====
@@ -216,6 +210,15 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
 
   // ==== METADATA ====
   m.year = new Date().getFullYear();
+  
+  // ==== SCRAPER METADATA (CRITICAL FOR SMART UPSERT) ====
+  m.scraper_source = topic.scraper_source || 'active'; // 'active' or 'historical'
+  // Determine data freshness based on status
+  const isLive = ['Open', 'Pre-Release', 'Active'].includes(topic.topicStatus || '');
+  m.data_freshness = isLive ? 'live' : 'archived';
+  
+  // ==== SOLICITATION BRANCH ====
+  m.solicitation_branch = topic.solicitation_branch || topic.solicitation || topic.solicitationTitle || null;
 
   // FILTER: Only return fields that exist in new schema
   const allowedFields = new Set([
