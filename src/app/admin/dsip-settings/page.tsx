@@ -1787,16 +1787,19 @@ For detailed logs, check Vercel Function Logs.
                 SBIR/STTR Scraper
               </h3>
               
-              {/* Scraper Mode Toggle */}
-              <div style={{ marginBottom: '20px', display: 'flex', gap: '12px' }}>
+              {/* Scraper Controls - All on one line */}
+              <div style={{ marginBottom: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
                 <button
-                  onClick={() => setScraperMode('active')}
+                  onClick={() => {
+                    setScraperMode('active');
+                    triggerSbirScraper();
+                  }}
                   disabled={isTriggeringSbirScraper || isScrapingHistorical}
                   style={{
                     padding: '12px 24px',
-                    background: scraperMode === 'active' ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)' : 'rgba(16, 185, 129, 0.1)',
-                    color: scraperMode === 'active' ? 'white' : '#10b981',
-                    border: `2px solid ${scraperMode === 'active' ? '#10b981' : 'rgba(16, 185, 129, 0.3)'}`,
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    color: 'white',
+                    border: '2px solid #10b981',
                     borderRadius: '8px',
                     fontSize: '14px',
                     fontWeight: '600',
@@ -1805,7 +1808,7 @@ For detailed logs, check Vercel Function Logs.
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  Quick Scrape (Active Only)
+                  {isTriggeringSbirScraper ? ' Running...' : 'Quick Scrape (Active Only)'}
                 </button>
                 
                 <button
@@ -1826,58 +1829,30 @@ For detailed logs, check Vercel Function Logs.
                 >
                   Scrape via Date Range
                 </button>
-              </div>
-              
-              {/* Active Scraper Mode */}
-              {scraperMode === 'active' && (
-                <>
-                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '16px' }}>
-                    <button
-                      type="button"
-                      className="btn btn-primary"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        triggerSbirScraper();
-                      }}
-                      disabled={isTriggeringSbirScraper}
-                      style={{
-                        background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                        color: 'white',
-                        padding: '12px 24px',
-                        border: 'none',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        fontWeight: '600',
-                        cursor: isTriggeringSbirScraper ? 'not-allowed' : 'pointer',
-                        opacity: isTriggeringSbirScraper ? 0.6 : 1
-                      }}
-                    >
-                      {isTriggeringSbirScraper ? ' Running Scraper...' : ' Trigger Manual Scrape'}
-                    </button>
                 
                 <button
                   type="button"
-                  className="btn btn-outline"
                   onClick={loadSbirStats}
                   disabled={isLoadingStats}
                   style={{
                     color: '#3b82f6',
-                    border: '1px solid #3b82f6',
+                    background: 'rgba(59, 130, 246, 0.1)',
+                    border: '2px solid rgba(59, 130, 246, 0.3)',
                     padding: '12px 24px',
                     borderRadius: '8px',
                     fontSize: '14px',
                     fontWeight: '600',
                     cursor: isLoadingStats ? 'not-allowed' : 'pointer',
-                    opacity: isLoadingStats ? 0.6 : 1
+                    opacity: isLoadingStats ? 0.6 : 1,
+                    transition: 'all 0.2s ease'
                   }}
                 >
                   {isLoadingStats ? 'Loading...' : 'Refresh Statistics'}
                 </button>
               </div>
-
+              
               {/* Scraper Status */}
-              {sbirScraperStatus && (
+              {sbirScraperStatus && scraperMode === 'active' && (
                 <div style={{
                   background: 'rgba(0, 0, 0, 0.2)',
                   borderRadius: '8px',
@@ -2103,8 +2078,6 @@ For detailed logs, check Vercel Function Logs.
                   It fetches only active, open, and pre-release opportunities to keep the database current.
                 </p>
               </div>
-                </>
-              )}
               
               {/* Historical Scraper Mode */}
               {scraperMode === 'historical' && (
