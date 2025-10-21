@@ -75,6 +75,12 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [activeScraperProgress, setActiveScraperProgress] = useState<any>(null)
   const [isScrapingActive, setIsScrapingActive] = useState(false)
   
+  // State for historical scraper
+  const [selectedMonth, setSelectedMonth] = useState<string>('')
+  const [selectedYear, setSelectedYear] = useState<string>('')
+  const [isScrapingHistorical, setIsScrapingHistorical] = useState(false)
+  const [historicalScraperResult, setHistoricalScraperResult] = useState<any>(null)
+  
   // State for floating notifications
   const [notification, setNotification] = useState<{
     show: boolean
@@ -278,6 +284,87 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
       showNotification(' Failed to trigger SBIR scraper', 'error')
     } finally {
       setIsTriggeringSbirScraper(false)
+    }
+  }
+  
+  const triggerHistoricalScraper = async () => {
+    if (!selectedMonth || !selectedYear) {
+      showNotification('Please select both month and year', 'warning')
+      return
+    }
+    
+    console.log('[Historical Scraper] Starting scrape for', selectedMonth, selectedYear)
+    setIsScrapingHistorical(true)
+    setHistoricalScraperResult(null)
+    setScraperProgress(0)
+    setScraperCurrentStep('Initializing historical scraper...')
+    
+    const logs: string[] = [`Starting historical scrape for ${selectedMonth} ${selectedYear}...`]
+    setActiveScraperProgress({ phase: 'starting', processedTopics: 0, activeTopicsFound: 0, logs })
+    
+    showNotification(` Scraping ${selectedMonth} ${selectedYear} opportunities...`, 'info')
+    
+    try {
+      const response = await fetch('/api/admin/sbir/scraper-historical', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          month: selectedMonth,
+          year: selectedYear
+        })
+      })
+      
+      setScraperProgress(100)
+      setScraperCurrentStep(' Historical scrape completed!')
+      
+      const result = await response.json()
+      console.log('[Historical Scraper] Full Response:', JSON.stringify(result, null, 2))
+      
+      // Display the detailed logs from the scraper
+      if (result.detailedLogs && result.detailedLogs.length > 0) {
+        console.log('[Historical Scraper] Received', result.detailedLogs.length, 'detailed log entries')
+        setActiveScraperProgress({
+          phase: 'completed',
+          processedTopics: result.processedTopics || 0,
+          activeTopicsFound: result.totalTopics || 0,
+          logs: result.detailedLogs
+        })
+      }
+      
+      setHistoricalScraperResult(result)
+      
+      if (response.ok) {
+        const details = result.result || {};
+        const message = `
+ Historical Scrape Results (${selectedMonth} ${selectedYear}):
+• Total Topics Found: ${details.totalTopics || 0}
+• Processed: ${details.processedTopics || 0}
+• New Records: ${details.newRecords || 0}
+• Updated Records: ${details.updatedRecords || 0}
+• Unchanged: ${details.skippedRecords || 0}
+
+For detailed logs, check Vercel Function Logs.
+        `
+        showNotification(message, 'success', {
+          totalTopics: details.totalTopics || 0,
+          newRecords: details.newRecords || 0,
+          updatedRecords: details.updatedRecords || 0
+        })
+        
+        // Auto-refresh stats after scrape completes
+        console.log('[Historical Scraper] Auto-refreshing statistics...')
+        await loadSbirStats()
+        await checkSbirScraperStatus()
+      } else {
+        showNotification(` Historical scrape failed: ${result.message || 'Unknown error'}`, 'error')
+      }
+    } catch (error) {
+      console.error('[Historical Scraper] Error:', error)
+      showNotification(` Historical scrape error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+    } finally {
+      setIsScrapingHistorical(false)
     }
   }
 
@@ -1892,6 +1979,175 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                 </p>
                 <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
                   It fetches only active, open, and pre-release opportunities to keep the database current.
+                </p>
+              </div>
+            </div>
+
+            {/* Historical Scraper Controls */}
+            <div className="scraper-controls" style={{
+              background: 'rgba(15, 23, 42, 0.6)',
+              borderRadius: '12px',
+              padding: '24px',
+              border: '1px solid rgba(148, 163, 184, 0.2)',
+              marginTop: '24px'
+            }}>
+              <h3 style={{ fontSize: '16px', fontWeight: '600', margin: '0 0 8px 0', color: '#ffffff' }}>
+                Historical Data Scraper
+              </h3>
+              <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 16px 0' }}>
+                Scrape and backfill historical SBIR/STTR opportunities from any month/year. Pulls all the same detailed data as the active scraper.
+              </p>
+              
+              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'flex-end', marginBottom: '16px' }}>
+                <div style={{ minWidth: '150px' }}>
+                  <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
+                    Month
+                  </label>
+                  <select
+                    value={selectedMonth}
+                    onChange={(e) => setSelectedMonth(e.target.value)}
+                    disabled={isScrapingHistorical}
+                    style={{
+                      width: '100%',
+                      padding: '10px 12px',
+                      background: 'rgba(15, 23, 42, 0.8)',
+                      border: '1px solid rgba(148, 163, 184, 0.3)',
+                      borderRadius: '6px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                      opacity: isScrapingHistorical ? 0.6 : 1
+                    }}
+                  >
+                    <option value="">Select Month</option>
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </select>
+                </div>
+                
+                <div style={{ minWidth: '150px' }}>
+                  <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
+                    Year
+                  </label>
+                  <select
+                    value={selectedYear}
+                    onChange={(e) => setSelectedYear(e.target.value)}
+                    disabled={isScrapingHistorical}
+                    style={{
+                      width: '100%',
+                      padding: '10px 12px',
+                      background: 'rgba(15, 23, 42, 0.8)',
+                      border: '1px solid rgba(148, 163, 184, 0.3)',
+                      borderRadius: '6px',
+                      color: '#ffffff',
+                      fontSize: '14px',
+                      cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                      opacity: isScrapingHistorical ? 0.6 : 1
+                    }}
+                  >
+                    <option value="">Select Year</option>
+                    {Array.from({ length: 6 }, (_, i) => new Date().getFullYear() - i).map(year => (
+                      <option key={year} value={year}>{year}</option>
+                    ))}
+                  </select>
+                </div>
+                
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    triggerHistoricalScraper();
+                  }}
+                  disabled={isScrapingHistorical || !selectedMonth || !selectedYear}
+                  style={{
+                    background: isScrapingHistorical || !selectedMonth || !selectedYear 
+                      ? 'rgba(148, 163, 184, 0.3)'
+                      : 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                    color: 'white',
+                    padding: '12px 24px',
+                    border: 'none',
+                    borderRadius: '8px',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: isScrapingHistorical || !selectedMonth || !selectedYear ? 'not-allowed' : 'pointer',
+                    opacity: isScrapingHistorical || !selectedMonth || !selectedYear ? 0.6 : 1
+                  }}
+                >
+                  {isScrapingHistorical ? ' Scraping Historical Data...' : ' Scrape Historical Data'}
+                </button>
+              </div>
+
+              {/* Historical Scraper Results */}
+              {!isScrapingHistorical && historicalScraperResult && (
+                <div style={{
+                  background: historicalScraperResult.success ? 'rgba(139, 92, 246, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                  border: `1px solid ${historicalScraperResult.success ? '#8b5cf6' : '#ef4444'}`,
+                  borderRadius: '8px',
+                  padding: '16px',
+                  marginTop: '16px'
+                }}>
+                  <h4 style={{ 
+                    color: historicalScraperResult.success ? '#8b5cf6' : '#ef4444', 
+                    margin: '0 0 8px 0', 
+                    fontSize: '14px' 
+                  }}>
+                    {historicalScraperResult.success ? 'Historical Scrape Completed Successfully' : 'Historical Scrape Failed'}
+                  </h4>
+                  {historicalScraperResult.result && (
+                    <div style={{ color: '#cbd5e1', fontSize: '14px' }}>
+                      <p style={{ margin: '4px 0' }}>
+                        Total Topics: {historicalScraperResult.result.totalTopics || 0}
+                      </p>
+                      <p style={{ margin: '4px 0' }}>
+                        Processed: {historicalScraperResult.result.processedTopics || 0}
+                      </p>
+                      <p style={{ margin: '4px 0' }}>
+                         New Records: {historicalScraperResult.result.newRecords || 0}
+                      </p>
+                      <p style={{ margin: '4px 0' }}>
+                         Updated Records: {historicalScraperResult.result.updatedRecords || 0}
+                      </p>
+                      <p style={{ margin: '4px 0' }}>
+                         Unchanged: {historicalScraperResult.result.skippedRecords || 0}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div style={{ 
+                background: 'rgba(139, 92, 246, 0.1)', 
+                border: '1px solid rgba(139, 92, 246, 0.3)', 
+                borderRadius: '8px', 
+                padding: '16px',
+                marginTop: '16px'
+              }}>
+                <h4 style={{ color: '#8b5cf6', margin: '0 0 8px 0', fontSize: '14px' }}>
+                  How It Works
+                </h4>
+                <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                  1. Select a month and year to scrape (e.g., January 2024)
+                </p>
+                <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                  2. The scraper will fetch all opportunities from that time period
+                </p>
+                <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                  3. All data is extracted (tech areas, descriptions, Q&A, TPOCs, links, etc.)
+                </p>
+                <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
+                  4. Results are added/updated in your database automatically
                 </p>
               </div>
             </div>
