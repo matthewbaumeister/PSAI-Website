@@ -481,9 +481,9 @@ async function processTopics(topics: any[], baseUrl: string) {
         fullTopic.prize_gating = fullTopic.isXTech === 'Yes' ? 'Yes' : 'No';
       }
       
-      // Construct PDF link (standard DSIP format)
+      // Construct PDF link (correct API format)
       if (topic.topicId && topic.topicCode) {
-        fullTopic.topic_pdf_download = `https://www.dodsbirsttr.mil/topics-app/topic-print?topicId=${topic.topicId}`;
+        fullTopic.topic_pdf_download = `https://www.dodsbirsttr.mil/topics/api/public/topics/${topic.topicId}/download/PDF`;
         fullTopic.pdf_link = fullTopic.topic_pdf_download;
       }
       
