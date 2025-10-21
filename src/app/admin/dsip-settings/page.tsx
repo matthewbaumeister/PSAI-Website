@@ -2786,7 +2786,6 @@ For detailed logs, check Vercel Function Logs.
           </div>
         </div>
       )}
-      
         </div>
       </div>
       
@@ -2850,5 +2849,6 @@ For detailed logs, check Vercel Function Logs.
           }
         }
       `}</style>
+    </div>
   )
 }
