@@ -170,7 +170,8 @@ export function mapToSupabaseColumns(topic: ScraperTopic): Record<string, any> {
 
   // ==== REFERENCES & DOCUMENTS ====
   m.references = topic.references || null;
-  m.baa_instruction_files = topic.baaInstructionFiles || null;
+  // BAA instruction files should be the same as solicitation instructions download
+  m.baa_instruction_files = topic.solicitationInstructionsDownload || topic.baaInstructionFiles || null;
 
   // ==== PHASE INFORMATION ====
   m.phases_available = topic.phases_available || null;

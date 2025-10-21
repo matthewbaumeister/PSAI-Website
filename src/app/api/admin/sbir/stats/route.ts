@@ -22,8 +22,8 @@ export async function GET(request: NextRequest) {
     // Get component breakdown
     const { data: componentData, error: componentError } = await supabase
       .from('sbir_final')
-      .select('component')
-      .not('component', 'is', null);
+      .select('sponsor_component')
+      .not('sponsor_component', 'is', null);
 
     if (componentError) {
       console.error('Error fetching component data:', componentError);
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
     // Process component data
     const componentCounts: { [key: string]: number } = {};
     componentData?.forEach(row => {
-      const component = row.component || 'Unknown';
+      const component = (row as any).sponsor_component || 'Unknown';
       componentCounts[component] = (componentCounts[component] || 0) + 1;
     });
 

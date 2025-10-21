@@ -143,9 +143,9 @@ async function getFilterOptions() {
     // Get unique components
     const { data: components } = await supabase
       .from('sbir_final')
-      .select('component')
-      .not('component', 'is', null)
-      .order('component');
+      .select('sponsor_component')
+      .not('sponsor_component', 'is', null)
+      .order('sponsor_component');
 
     // Get unique statuses
     const { data: statuses } = await supabase
@@ -162,7 +162,7 @@ async function getFilterOptions() {
       .order('program_type');
 
     // Get unique values
-    const uniqueComponents = [...new Set(components?.map(c => c.component).filter(Boolean))];
+    const uniqueComponents = [...new Set(components?.map((c: any) => c.sponsor_component).filter(Boolean))];
     const uniqueStatuses = [...new Set(statuses?.map(s => s.status).filter(Boolean))];
     const uniqueProgramTypes = [...new Set(programTypes?.map(p => p.program_type).filter(Boolean))];
 
