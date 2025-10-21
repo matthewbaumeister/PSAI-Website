@@ -83,6 +83,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [useToCurrent, setUseToCurrent] = useState<boolean>(false)
   const [isScrapingHistorical, setIsScrapingHistorical] = useState(false)
   const [historicalScraperResult, setHistoricalScraperResult] = useState<any>(null)
+  const [historicalScraperProgress, setHistoricalScraperProgress] = useState<any>(null)
   
   // State for floating notifications
   const [notification, setNotification] = useState<{
@@ -304,7 +305,7 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
     setScraperCurrentStep('Initializing historical scraper...')
     
     const logs: string[] = [`Starting historical scrape for ${dateRange}...`]
-    setActiveScraperProgress({ phase: 'starting', processedTopics: 0, activeTopicsFound: 0, logs })
+    setHistoricalScraperProgress({ phase: 'starting', processedTopics: 0, totalTopics: 0, logs })
     
     showNotification(` Scraping ${dateRange} opportunities...`, 'info')
     
@@ -331,10 +332,10 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
       // Display the detailed logs from the scraper
       if (result.detailedLogs && result.detailedLogs.length > 0) {
         console.log('[Historical Scraper] Received', result.detailedLogs.length, 'detailed log entries')
-        setActiveScraperProgress({
+        setHistoricalScraperProgress({
           phase: 'completed',
           processedTopics: result.processedTopics || 0,
-          activeTopicsFound: result.totalTopics || 0,
+          totalTopics: result.totalTopics || 0,
           logs: result.detailedLogs
         })
       }
@@ -2169,6 +2170,131 @@ For detailed logs, check Vercel Function Logs.
                   {isScrapingHistorical ? ' Scraping Historical Data...' : ' Scrape Historical Data'}
                 </button>
               </div>
+
+              {/* Historical Scraper Live Progress */}
+              {isScrapingHistorical && historicalScraperProgress && (
+                <div style={{
+                  background: 'rgba(139, 92, 246, 0.1)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  borderRadius: '8px',
+                  padding: '20px',
+                  marginTop: '16px'
+                }}>
+                  <h3 style={{
+                    color: '#8b5cf6',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    margin: '0 0 16px 0',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px'
+                  }}>
+                    <span>Scraping Historical Data...</span>
+                    <span style={{
+                      display: 'inline-block',
+                      width: '8px',
+                      height: '8px',
+                      borderRadius: '50%',
+                      background: '#8b5cf6',
+                      animation: 'pulse 2s infinite'
+                    }}></span>
+                  </h3>
+                  
+                  {historicalScraperProgress.totalTopics > 0 && (
+                    <>
+                      <div style={{
+                        width: '100%',
+                        height: '16px',
+                        background: 'rgba(148, 163, 184, 0.2)',
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                        marginBottom: '16px'
+                      }}>
+                        <div style={{
+                          width: `${historicalScraperProgress.processedTopics && historicalScraperProgress.totalTopics 
+                            ? (historicalScraperProgress.processedTopics / historicalScraperProgress.totalTopics * 100) 
+                            : 10}%`,
+                          height: '100%',
+                          background: 'linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%)',
+                          transition: 'width 0.5s ease',
+                          animation: 'pulse 2s infinite'
+                        }}></div>
+                      </div>
+
+                      <div style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: '1.8' }}>
+                        <p style={{ marginBottom: '12px' }}>
+                          <strong style={{ color: '#8b5cf6' }}>Phase:</strong> {historicalScraperProgress.phase || 'Starting...'}
+                        </p>
+                        <p style={{ marginBottom: '12px' }}>
+                          <strong style={{ color: '#8b5cf6' }}>Progress:</strong> {historicalScraperProgress.processedTopics || 0} / {historicalScraperProgress.totalTopics} topics
+                        </p>
+                      </div>
+                    </>
+                  )}
+                  
+                  {historicalScraperProgress.logs && historicalScraperProgress.logs.length > 0 && (
+                    <div style={{
+                      marginTop: '20px',
+                      padding: '16px',
+                      background: 'rgba(0, 0, 0, 0.4)',
+                      border: '1px solid rgba(139, 92, 246, 0.3)',
+                      borderRadius: '6px',
+                      maxHeight: '400px',
+                      overflowY: 'auto'
+                    }}>
+                      <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        marginBottom: '12px',
+                        paddingBottom: '8px',
+                        borderBottom: '1px solid rgba(139, 92, 246, 0.3)'
+                      }}>
+                        <p style={{ color: '#8b5cf6', fontSize: '13px', fontWeight: '700', margin: 0 }}>
+                          Detailed Progress Log ({historicalScraperProgress.logs.length} entries)
+                        </p>
+                        <span style={{ color: '#10b981', fontSize: '11px', fontWeight: '600' }}>
+                          LIVE
+                        </span>
+                      </div>
+                      {historicalScraperProgress.logs.slice(-50).reverse().map((log: string, idx: number) => {
+                        const cleanLog = log.split(': ').slice(1).join(': ') || log;
+                        const isProgress = cleanLog.includes('[') && cleanLog.includes('%]');
+                        const isSuccess = cleanLog.includes('✓');
+                        const isWarning = cleanLog.includes('⚠');
+
+                        return (
+                          <div
+                            key={idx}
+                            style={{
+                              padding: '6px 10px',
+                              marginBottom: '4px',
+                              background: isProgress ? 'rgba(139, 92, 246, 0.15)' : 
+                                         isSuccess ? 'rgba(16, 185, 129, 0.1)' : 
+                                         isWarning ? 'rgba(251, 191, 36, 0.1)' : 
+                                         'transparent',
+                              borderLeft: isProgress ? '3px solid #8b5cf6' : 
+                                         isSuccess ? '3px solid #10b981' : 
+                                         isWarning ? '3px solid #fbbf24' : 
+                                         '3px solid transparent',
+                              borderRadius: '4px',
+                              fontSize: '12px',
+                              lineHeight: '1.6',
+                              color: isProgress ? '#c4b5fd' : 
+                                    isSuccess ? '#6ee7b7' : 
+                                    isWarning ? '#fcd34d' : 
+                                    '#94a3b8',
+                              fontFamily: 'ui-monospace, monospace'
+                            }}
+                          >
+                            {cleanLog}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Historical Scraper Results */}
               {!isScrapingHistorical && historicalScraperResult && (
