@@ -2302,9 +2302,10 @@ For detailed logs, check Vercel Function Logs.
                 </>
               )}
             </div>
-        {/* Active Opportunities Scraped Data Section */}
-        {(isScrapingActive || activeScraperData.length > 0) && (
-          <div style={{
+
+            {/* Active Opportunities Scraped Data Section */}
+            {(isScrapingActive || activeScraperData.length > 0) && (
+              <div style={{
             background: 'rgba(30, 41, 59, 0.6)',
             backdropFilter: 'blur(20px)',
             border: '1px solid rgba(148, 163, 184, 0.2)',
@@ -2786,6 +2787,9 @@ For detailed logs, check Vercel Function Logs.
         </div>
       )}
       
+        </div>
+      </div>
+      
       <style jsx global>{`
         @keyframes slideInFromRight {
           from {
@@ -2846,6 +2850,5 @@ For detailed logs, check Vercel Function Logs.
           }
         }
       `}</style>
-    </div>
   )
 }
