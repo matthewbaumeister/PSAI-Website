@@ -74,8 +74,8 @@ CREATE TABLE sbir_final (
   component_instructions_version TEXT,
   baa_instruction_files TEXT,
   
-  -- References
-  references TEXT,
+  -- References (quoted because it's a reserved keyword)
+  "references" TEXT,
   
   -- Calculated fields (numeric)
   days_since_open INTEGER,
