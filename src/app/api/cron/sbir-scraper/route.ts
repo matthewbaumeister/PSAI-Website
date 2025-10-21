@@ -49,7 +49,11 @@ async function scrapeAndUpdateSBIR() {
 
     // Step 2: Process and format topics with detailed info
     console.log(` Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
+    console.log(`   Starting detailed extraction for ${topics.length} topics...`);
+    console.log('   ============================================================');
     const processedTopics = await processTopics(topics, baseUrl);
+    console.log('   ============================================================');
+    console.log(` ✓ Processing complete: ${processedTopics.length} success, ${topics.length - processedTopics.length} errors`);
     console.log(` ✓ Successfully processed ${processedTopics.length} topics with full metadata`);
 
     // Step 3: Update database with incremental changes
@@ -262,11 +266,17 @@ async function processTopics(topics: any[], baseUrl: string) {
     const topicTitle = (topic.topicTitle || 'No title').substring(0, 60);
     
     try {
-      // Show progress with topic details
-      console.log(`   [${i + 1}/${topics.length}] ${topicCode}: ${topicTitle}...`);
+      // Show progress percentage and topic details
+      const progress = Math.floor(((i + 1) / topics.length) * 100);
+      console.log(`   [${progress}%] [${i + 1}/${topics.length}] ${topicCode}: ${topicTitle}...`);
       
       // Fetch detailed information for this topic
       const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
+      
+      // Log what was successfully extracted
+      const hasSolInstr = !!detailedTopic.solicitationInstructionsDownload;
+      const hasCompInstr = !!detailedTopic.componentInstructionsDownload;
+      console.log(`      ✓ Extracted: tech=${!!detailedTopic.technologyAreas}, keywords=${!!detailedTopic.keywords}, desc=${!!detailedTopic.description}, qa=${!!detailedTopic.qaContent}, tpoc=${!!detailedTopic.tpocNames}, sol_instr=${hasSolInstr}, comp_instr=${hasCompInstr}`);
       
       // Extract TPOC from initial topic list if not in detailed data
       if (!detailedTopic.tpocNames && topic.topicManagers && Array.isArray(topic.topicManagers)) {
@@ -628,9 +638,6 @@ async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: st
         detailedData.componentInstructionsVersion = details.baaInstructions
           .map((i: any) => i.fileName || '').join(', ');
       }
-      
-      // Log success for first topic
-      console.log(`    ✓ Details: tech=${!!detailedData.technologyAreas}, keywords=${!!detailedData.keywords}, desc=${!!detailedData.description}, tpoc=${!!detailedData.tpocNames}`);
       
     } else {
       console.error(`    Failed to fetch details: ${detailsResponse.status}`);
