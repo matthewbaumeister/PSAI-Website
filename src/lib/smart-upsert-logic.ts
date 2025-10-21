@@ -51,10 +51,10 @@ export async function smartUpsertTopics(
       return { newRecords: 0, updatedRecords: 0, preservedRecords: 0 };
     }
     
-    // Fetch existing records with their metadata
+    // Fetch existing records with their metadata and fields we might preserve
     const { data: existingRecords } = await supabase
       .from('sbir_final')
-      .select('topic_number, cycle_name, data_freshness, scraper_source, qa_content, last_scraped')
+      .select('topic_number, cycle_name, data_freshness, scraper_source, qa_content, last_scraped, description, objective, phase_1_description, phase_2_description, phase_3_description')
       .or(compositeKeys.map(k => 
         `and(topic_number.eq.${k.topic_number},cycle_name.eq.${k.cycle_name})`
       ).join(','));
