@@ -315,6 +315,24 @@ async function processTopics(topics: any[], baseUrl: string) {
       // Fetch detailed information for this topic
       const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
       
+      // Extract instruction URLs from initial topic data (not in detailed endpoint!)
+      if (topic.baaPrefaceUploadId) {
+        const solUrl = `https://www.dodsbirsttr.mil/submissions/api/public/download/${topic.baaPrefaceUploadId}`;
+        detailedTopic.solicitationInstructionsDownload = solUrl;
+        detailedTopic.solicitationInstructionsVersion = topic.baaPrefaceUploadTitle || '';
+        if (i === 0) log(`      DEBUG: Constructed solicitation URL: ${solUrl}`);
+      }
+      
+      if (topic.baaInstructions && Array.isArray(topic.baaInstructions) && topic.baaInstructions.length > 0) {
+        const compInstruction = topic.baaInstructions[0];
+        if (compInstruction.uploadId) {
+          const compUrl = `https://www.dodsbirsttr.mil/submissions/api/public/download/${compInstruction.uploadId}`;
+          detailedTopic.componentInstructionsDownload = compUrl;
+          detailedTopic.componentInstructionsVersion = compInstruction.fileName || '';
+          if (i === 0) log(`      DEBUG: Constructed component URL: ${compUrl}`);
+        }
+      }
+      
       // Log what was successfully extracted
       const hasSolInstr = !!detailedTopic.solicitationInstructionsDownload;
       const hasCompInstr = !!detailedTopic.componentInstructionsDownload;
