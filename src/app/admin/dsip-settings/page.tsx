@@ -80,6 +80,7 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [selectedYearFrom, setSelectedYearFrom] = useState<string>('')
   const [selectedMonthTo, setSelectedMonthTo] = useState<string>('')
   const [selectedYearTo, setSelectedYearTo] = useState<string>('')
+  const [useToCurrent, setUseToCurrent] = useState<boolean>(false)
   const [isScrapingHistorical, setIsScrapingHistorical] = useState(false)
   const [historicalScraperResult, setHistoricalScraperResult] = useState<any>(null)
   
@@ -276,12 +277,26 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
   }
   
   const triggerHistoricalScraper = async () => {
-    if (!selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo) {
-      showNotification('Please select both start and end dates', 'warning')
+    if (!selectedMonthFrom || !selectedYearFrom) {
+      showNotification('Please select a start date', 'warning')
       return
     }
     
-    const dateRange = `${selectedMonthFrom} ${selectedYearFrom} to ${selectedMonthTo} ${selectedYearTo}`;
+    if (!useToCurrent && (!selectedMonthTo || !selectedYearTo)) {
+      showNotification('Please select an end date or check "To Current"', 'warning')
+      return
+    }
+    
+    // Get current month and year if "To Current" is checked
+    const currentDate = new Date();
+    const currentMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const currentMonth = currentMonthNames[currentDate.getMonth()];
+    const currentYear = currentDate.getFullYear().toString();
+    
+    const monthTo = useToCurrent ? currentMonth : selectedMonthTo;
+    const yearTo = useToCurrent ? currentYear : selectedYearTo;
+    
+    const dateRange = `${selectedMonthFrom} ${selectedYearFrom} to ${useToCurrent ? 'Current' : `${monthTo} ${yearTo}`}`;
     console.log('[Historical Scraper] Starting scrape for', dateRange)
     setIsScrapingHistorical(true)
     setHistoricalScraperResult(null)
@@ -302,8 +317,8 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
         body: JSON.stringify({
           monthFrom: selectedMonthFrom,
           yearFrom: selectedYearFrom,
-          monthTo: selectedMonthTo,
-          yearTo: selectedYearTo
+          monthTo: monthTo,
+          yearTo: yearTo
         })
       })
       
@@ -2037,7 +2052,7 @@ For detailed logs, check Vercel Function Logs.
                   <select
                     value={selectedMonthTo}
                     onChange={(e) => setSelectedMonthTo(e.target.value)}
-                    disabled={isScrapingHistorical}
+                    disabled={isScrapingHistorical || useToCurrent}
                     style={{
                       minWidth: '140px',
                       padding: '10px 12px',
@@ -2046,8 +2061,8 @@ For detailed logs, check Vercel Function Logs.
                       borderRadius: '6px',
                       color: '#ffffff',
                       fontSize: '14px',
-                      cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
-                      opacity: isScrapingHistorical ? 0.6 : 1
+                      cursor: isScrapingHistorical || useToCurrent ? 'not-allowed' : 'pointer',
+                      opacity: isScrapingHistorical || useToCurrent ? 0.6 : 1
                     }}
                   >
                     <option value="">Month</option>
@@ -2073,7 +2088,7 @@ For detailed logs, check Vercel Function Logs.
                   <select
                     value={selectedYearTo}
                     onChange={(e) => setSelectedYearTo(e.target.value)}
-                    disabled={isScrapingHistorical}
+                    disabled={isScrapingHistorical || useToCurrent}
                     style={{
                       minWidth: '100px',
                       padding: '10px 12px',
@@ -2082,8 +2097,8 @@ For detailed logs, check Vercel Function Logs.
                       borderRadius: '6px',
                       color: '#ffffff',
                       fontSize: '14px',
-                      cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
-                      opacity: isScrapingHistorical ? 0.6 : 1
+                      cursor: isScrapingHistorical || useToCurrent ? 'not-allowed' : 'pointer',
+                      opacity: isScrapingHistorical || useToCurrent ? 0.6 : 1
                     }}
                   >
                     <option value="">Year</option>
@@ -2091,6 +2106,41 @@ For detailed logs, check Vercel Function Logs.
                       <option key={year} value={year}>{year}</option>
                     ))}
                   </select>
+                </div>
+                
+                {/* To Current Checkbox */}
+                <div style={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '10px' }}>
+                  <label style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    color: '#cbd5e1',
+                    fontSize: '14px',
+                    cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                    opacity: isScrapingHistorical ? 0.6 : 1,
+                    userSelect: 'none'
+                  }}>
+                    <input
+                      type="checkbox"
+                      checked={useToCurrent}
+                      onChange={(e) => {
+                        setUseToCurrent(e.target.checked);
+                        if (e.target.checked) {
+                          // Clear manual selections when "To Current" is checked
+                          setSelectedMonthTo('');
+                          setSelectedYearTo('');
+                        }
+                      }}
+                      disabled={isScrapingHistorical}
+                      style={{
+                        width: '18px',
+                        height: '18px',
+                        cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
+                        accentColor: '#8b5cf6'
+                      }}
+                    />
+                    <span style={{ fontWeight: '500' }}>To Current</span>
+                  </label>
                 </div>
                 
                 <button
@@ -2101,9 +2151,9 @@ For detailed logs, check Vercel Function Logs.
                     e.stopPropagation();
                     triggerHistoricalScraper();
                   }}
-                  disabled={isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo}
+                  disabled={isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || (!useToCurrent && (!selectedMonthTo || !selectedYearTo))}
                   style={{
-                    background: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo
+                    background: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || (!useToCurrent && (!selectedMonthTo || !selectedYearTo))
                       ? 'rgba(148, 163, 184, 0.3)'
                       : 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
                     color: 'white',
@@ -2112,8 +2162,8 @@ For detailed logs, check Vercel Function Logs.
                     borderRadius: '8px',
                     fontSize: '14px',
                     fontWeight: '600',
-                    cursor: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo ? 'not-allowed' : 'pointer',
-                    opacity: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || !selectedMonthTo || !selectedYearTo ? 0.6 : 1
+                    cursor: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || (!useToCurrent && (!selectedMonthTo || !selectedYearTo)) ? 'not-allowed' : 'pointer',
+                    opacity: isScrapingHistorical || !selectedMonthFrom || !selectedYearFrom || (!useToCurrent && (!selectedMonthTo || !selectedYearTo)) ? 0.6 : 1
                   }}
                 >
                   {isScrapingHistorical ? ' Scraping Historical Data...' : ' Scrape Historical Data'}
@@ -2181,7 +2231,7 @@ For detailed logs, check Vercel Function Logs.
                   4. Results are added/updated in your database automatically
                 </p>
                 <p style={{ color: '#cbd5e1', margin: '4px 0 8px 0', fontSize: '13px', fontStyle: 'italic', opacity: 0.8 }}>
-                  Tip: Use the same from/to dates to scrape a single month, or set "to current" for everything up until now
+                  Tip: Use the same from/to dates to scrape a single month, or check "To Current" for everything up until now
                 </p>
               </div>
             </div>
