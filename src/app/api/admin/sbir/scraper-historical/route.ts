@@ -114,34 +114,39 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
   
   log(`📡 Fetching topics page by page...`);
   
-  // Initialize session
+  // Initialize session - MATCH WORKING ACTIVE SCRAPER
   log(`🔐 Initializing session with multi-step process...`);
-  log(`   Step 1: Visiting main page...`);
-  const mainPageResponse = await fetch(`${baseUrl}/`, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
-      'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-      'Accept-Language': 'en-US,en;q=0.5',
-      'Connection': 'keep-alive'
-    }
-  });
   
-  log(`   ✓ Main page loaded (status: ${mainPageResponse.status})`);
-  await new Promise(resolve => setTimeout(resolve, 500));
+  try {
+    log(`   Step 1: Visiting main page...`);
+    const initResponse = await fetch(`${baseUrl}/topics-app/`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+      }
+    });
+    log(`   ✓ Main page loaded (status: ${initResponse.status})`);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    log(`   Step 2: Fetching component dropdown...`);
+    const compResponse = await fetch(`${baseUrl}/core/api/public/dropdown/components`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Authorization': 'Bearer null',
+        'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+      }
+    });
+    log(`   ✓ Component API called (status: ${compResponse.status})`);
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    log(`   Session fully initialized - ready for topic search`);
+  } catch (error) {
+    log(`   ⚠ Session initialization had issues: ${error}`);
+  }
   
-  log(`   Step 2: Fetching component instructions...`);
-  const componentResponse = await fetch(`${baseUrl}/submissions/api/public/component-instructions`, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
-      'Accept': 'application/json',
-      'Referer': `${baseUrl}/`,
-      'Origin': baseUrl
-    }
-  });
-  
-  log(`   ✓ Component API called (status: ${componentResponse.status})`);
-  await new Promise(resolve => setTimeout(resolve, 500));
-  log(`   Session fully initialized - ready for topic search`);
   log(`   Waiting 3 seconds before search...`);
   await new Promise(resolve => setTimeout(resolve, 3000));
   
@@ -166,10 +171,12 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
     
     const response = await fetch(url, {
       headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
         'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
         'Authorization': 'Bearer null',
-        'Referer': `${baseUrl}/topics-app/`,
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36'
+        'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+        'Origin': 'https://www.dodsbirsttr.mil'
       }
     });
     
