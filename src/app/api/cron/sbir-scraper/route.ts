@@ -316,21 +316,21 @@ async function processTopics(topics: any[], baseUrl: string) {
       const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
       
       // Extract instruction URLs from initial topic data (not in detailed endpoint!)
-      if (topic.baaPrefaceUploadId) {
-        const solUrl = `https://www.dodsbirsttr.mil/submissions/api/public/download/${topic.baaPrefaceUploadId}`;
+      // URLs format: /submissions/api/public/download/solicitationDocuments?solicitation=DOD_SBIR_2025_P1_C4&release=12&documentType=RELEASE_PREFACE
+      if (topic.cycleName && topic.releaseNumber && topic.component) {
+        // Construct solicitation instructions URL (BAA Preface)
+        const solUrl = `${baseUrl}/submissions/api/public/download/solicitationDocuments?solicitation=${topic.cycleName}&release=${topic.releaseNumber}&documentType=RELEASE_PREFACE`;
         detailedTopic.solicitationInstructionsDownload = solUrl;
         detailedTopic.solicitationInstructionsVersion = topic.baaPrefaceUploadTitle || '';
         if (i === 0) log(`      DEBUG: Constructed solicitation URL: ${solUrl}`);
-      }
-      
-      if (topic.baaInstructions && Array.isArray(topic.baaInstructions) && topic.baaInstructions.length > 0) {
-        const compInstruction = topic.baaInstructions[0];
-        if (compInstruction.uploadId) {
-          const compUrl = `https://www.dodsbirsttr.mil/submissions/api/public/download/${compInstruction.uploadId}`;
-          detailedTopic.componentInstructionsDownload = compUrl;
-          detailedTopic.componentInstructionsVersion = compInstruction.fileName || '';
-          if (i === 0) log(`      DEBUG: Constructed component URL: ${compUrl}`);
+        
+        // Construct component instructions URL
+        const compUrl = `${baseUrl}/submissions/api/public/download/solicitationDocuments?solicitation=${topic.cycleName}&documentType=INSTRUCTIONS&component=${topic.component}&release=${topic.releaseNumber}`;
+        detailedTopic.componentInstructionsDownload = compUrl;
+        if (topic.baaInstructions && Array.isArray(topic.baaInstructions) && topic.baaInstructions.length > 0) {
+          detailedTopic.componentInstructionsVersion = topic.baaInstructions[0].fileName || '';
         }
+        if (i === 0) log(`      DEBUG: Constructed component URL: ${compUrl}`);
       }
       
       // Log what was successfully extracted
