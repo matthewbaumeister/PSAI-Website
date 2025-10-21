@@ -15,15 +15,15 @@ export async function POST(request: NextRequest) {
 
     console.log(' Manual SBIR scraper trigger initiated by admin');
 
-    // Trigger the admin scraper endpoint (not the cron one - it's outdated)
-    const scraperUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/admin/sbir/scraper`;
+    // Trigger the cron scraper endpoint (TypeScript-based, no Python needed)
+    const scraperUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/cron/sbir-scraper`;
     
     const response = await fetch(scraperUrl, {
-      method: 'POST',
+      method: 'GET',
       headers: {
+        'Authorization': `Bearer ${process.env.CRON_SECRET}`,
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ action: 'start_scraper' })
+      }
     });
 
     const result = await response.json();

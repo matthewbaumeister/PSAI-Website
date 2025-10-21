@@ -611,19 +611,22 @@ async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: st
         detailedData.isDirectToPhaseII = details.isDirectToPhaseII ? 'Yes' : 'No';
       }
       
-      // PDF and download links
+      // PDF and download links (using correct API field names)
       if (details.topicPdfDownload) detailedData.topicPdfDownload = details.topicPdfDownload;
-      if (details.solicitationInstructionsDownload) {
-        detailedData.solicitationInstructionsDownload = details.solicitationInstructionsDownload;
+      
+      // Instruction URLs - API returns "Url" not "Download"
+      if (details.solicitationInstructionsUrl) {
+        detailedData.solicitationInstructionsDownload = details.solicitationInstructionsUrl;
       }
-      if (details.componentInstructionsDownload) {
-        detailedData.componentInstructionsDownload = details.componentInstructionsDownload;
+      if (details.componentInstructionsUrl) {
+        detailedData.componentInstructionsDownload = details.componentInstructionsUrl;
       }
-      if (details.solicitationInstructionsVersion) {
-        detailedData.solicitationInstructionsVersion = details.solicitationInstructionsVersion;
+      if (details.baaPrefaceUploadTitle) {
+        detailedData.solicitationInstructionsVersion = details.baaPrefaceUploadTitle;
       }
-      if (details.componentInstructionsVersion) {
-        detailedData.componentInstructionsVersion = details.componentInstructionsVersion;
+      if (details.baaInstructions && Array.isArray(details.baaInstructions)) {
+        detailedData.componentInstructionsVersion = details.baaInstructions
+          .map((i: any) => i.fileName || '').join(', ');
       }
       
       // Log success for first topic
