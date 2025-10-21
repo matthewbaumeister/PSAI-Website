@@ -226,13 +226,32 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       const result = await response.json()
       console.log('[SBIR Scraper] Full Response:', JSON.stringify(result, null, 2))
       
-      // Display the detailed logs from the scraper
+      // Display the detailed logs from the scraper and parse progress
       if (result.detailedLogs && result.detailedLogs.length > 0) {
         console.log('[SBIR Scraper] Received', result.detailedLogs.length, 'detailed log entries')
+        
+        // Parse the logs to extract the highest progress percentage and topic counts
+        let maxProcessed = 0;
+        let maxTotal = 0;
+        
+        result.detailedLogs.forEach((log: string) => {
+          // Look for patterns like "[6%] [30/455]"
+          const progressMatch = log.match(/\[(\d+)%\]\s*\[(\d+)\/(\d+)\]/);
+          if (progressMatch) {
+            const processed = parseInt(progressMatch[2]);
+            const total = parseInt(progressMatch[3]);
+            if (processed > maxProcessed) {
+              maxProcessed = processed;
+              maxTotal = total;
+            }
+          }
+        });
+        
         setActiveScraperProgress({
           phase: 'completed',
-          processedTopics: result.processedTopics || 0,
-          activeTopicsFound: result.totalTopics || 0,
+          processedTopics: maxProcessed || result.processedTopics || 0,
+          activeTopicsFound: maxTotal || result.totalTopics || 0,
+          totalTopics: maxTotal || result.totalTopics || 0,
           logs: result.detailedLogs
         })
       }
@@ -329,13 +348,31 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
       const result = await response.json()
       console.log('[Historical Scraper] Full Response:', JSON.stringify(result, null, 2))
       
-      // Display the detailed logs from the scraper
+      // Display the detailed logs from the scraper and parse progress
       if (result.detailedLogs && result.detailedLogs.length > 0) {
         console.log('[Historical Scraper] Received', result.detailedLogs.length, 'detailed log entries')
+        
+        // Parse the logs to extract the highest progress percentage and topic counts
+        let maxProcessed = 0;
+        let maxTotal = 0;
+        
+        result.detailedLogs.forEach((log: string) => {
+          // Look for patterns like "[6%] [30/455]"
+          const progressMatch = log.match(/\[(\d+)%\]\s*\[(\d+)\/(\d+)\]/);
+          if (progressMatch) {
+            const processed = parseInt(progressMatch[2]);
+            const total = parseInt(progressMatch[3]);
+            if (processed > maxProcessed) {
+              maxProcessed = processed;
+              maxTotal = total;
+            }
+          }
+        });
+        
         setHistoricalScraperProgress({
           phase: 'completed',
-          processedTopics: result.processedTopics || 0,
-          totalTopics: result.totalTopics || 0,
+          processedTopics: maxProcessed || result.processedTopics || 0,
+          totalTopics: maxTotal || result.totalTopics || 0,
           logs: result.detailedLogs
         })
       }
