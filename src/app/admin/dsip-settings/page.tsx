@@ -218,22 +218,34 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
     // Simulate progress phases while waiting for API response
     const startTime = Date.now();
     const progressInterval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const seconds = Math.floor(elapsed / 1000);
+      
+      // Calculate simulated progress (0-95%, leave 5% for completion)
+      const simulatedProgress = Math.min(95, Math.floor((seconds / 60) * 95)); // 60 seconds to reach 95%
+      setScraperProgress(simulatedProgress);
+      
+      // Update phase text and activeScraperProgress
       setActiveScraperProgress((prev: any) => {
         if (!prev) return prev;
         
-        const elapsed = Date.now() - startTime;
-        const seconds = Math.floor(elapsed / 1000);
-        
+        let phaseText = '';
         // Simulate different phases based on elapsed time
         if (seconds < 10) {
-          return { ...prev, phase: 'Initializing session with DSIP...' };
+          phaseText = 'Initializing session with DSIP...';
+          setScraperCurrentStep(' Initializing session...');
         } else if (seconds < 20) {
-          return { ...prev, phase: 'Fetching active SBIR opportunities...' };
+          phaseText = 'Fetching active SBIR opportunities...';
+          setScraperCurrentStep(' Fetching active topics...');
         } else if (seconds < 40) {
-          return { ...prev, phase: 'Processing topic details (tech areas, keywords, Q&A)...' };
+          phaseText = 'Processing topic details (tech areas, keywords, Q&A)...';
+          setScraperCurrentStep(` Processing topics (${simulatedProgress}%)...`);
         } else {
-          return { ...prev, phase: 'Updating database...' };
+          phaseText = 'Updating database...';
+          setScraperCurrentStep(' Updating database...');
         }
+        
+        return { ...prev, phase: phaseText };
       });
     }, 1000);
     
@@ -361,28 +373,44 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
     // Simulate progress phases while waiting for API response
     const startTime = Date.now();
     const progressInterval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const seconds = Math.floor(elapsed / 1000);
+      
+      // Calculate simulated progress (0-95%, leave 5% for completion)
+      // Historical scrapes typically take longer, so use a 4-minute timeline
+      const simulatedProgress = Math.min(95, Math.floor((seconds / 240) * 95)); // 240 seconds to reach 95%
+      setScraperProgress(simulatedProgress);
+      
+      // Update phase text and historicalScraperProgress
       setHistoricalScraperProgress((prev: any) => {
         if (!prev) return prev;
         
-        const elapsed = Date.now() - startTime;
-        const seconds = Math.floor(elapsed / 1000);
-        
+        let phaseText = '';
         // Simulate different phases based on elapsed time
         if (seconds < 10) {
-          return { ...prev, phase: 'Initializing session with DSIP...' };
+          phaseText = 'Initializing session with DSIP...';
+          setScraperCurrentStep(' Initializing session...');
         } else if (seconds < 30) {
-          return { ...prev, phase: 'Fetching topics from date range...' };
+          phaseText = 'Fetching topics from date range...';
+          setScraperCurrentStep(` Fetching topics (${simulatedProgress}%)...`);
         } else if (seconds < 60) {
-          return { ...prev, phase: 'Found topics, starting detailed extraction...' };
+          phaseText = 'Found topics, starting detailed extraction...';
+          setScraperCurrentStep(` Starting extraction (${simulatedProgress}%)...`);
         } else if (seconds < 120) {
-          return { ...prev, phase: 'Processing topic details (tech areas, keywords, Q&A)...' };
+          phaseText = 'Processing topic details (tech areas, keywords, Q&A)...';
+          setScraperCurrentStep(` Processing topics (${simulatedProgress}%)...`);
         } else if (seconds < 180) {
-          return { ...prev, phase: 'Continuing detailed extraction...' };
+          phaseText = 'Continuing detailed extraction...';
+          setScraperCurrentStep(` Extracting details (${simulatedProgress}%)...`);
         } else if (seconds < 240) {
-          return { ...prev, phase: 'Finalizing topic processing...' };
+          phaseText = 'Finalizing topic processing...';
+          setScraperCurrentStep(` Finalizing (${simulatedProgress}%)...`);
         } else {
-          return { ...prev, phase: 'Updating database with results...' };
+          phaseText = 'Updating database with results...';
+          setScraperCurrentStep(' Updating database...');
         }
+        
+        return { ...prev, phase: phaseText };
       });
     }, 2000); // Update every 2 seconds
     
