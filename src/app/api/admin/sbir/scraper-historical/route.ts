@@ -56,7 +56,6 @@ export async function POST(request: Request) {
 }
 
 async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo: string, yearTo: string) {
-  // Calculate date range from start month/year to end month/year
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
@@ -70,7 +69,6 @@ async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo
   
   log(`📅 Date range: ${startDate.toISOString()} to ${endDate.toISOString()}`);
   
-  // Step 1: Fetch all topics from the selected date range
   const topics = await fetchTopicsByDateRange(startDate, endDate);
   const dateRange = `${monthFrom} ${yearFrom} to ${monthTo} ${yearTo}`;
   log(`✓ Found ${topics.length} topics from ${dateRange}`);
@@ -81,28 +79,22 @@ async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo
       processedTopics: 0,
       newRecords: 0,
       updatedRecords: 0,
-      skippedRecords: 0,
-      timestamp: new Date().toISOString()
+      skippedRecords: 0
     };
   }
-  
-  // Step 2: Process topics with detailed data extraction
-  log(` Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
-  const processedTopics = await processTopics(topics);
-  
-  // Step 3: Update database
-  log(` Step 3/3: Updating Supabase database...`);
-  const dbResult = await updateDatabase(processedTopics);
-  
-  log(`✓ Historical scrape complete: ${dbResult.newRecords} new, ${dbResult.updatedRecords} updated, ${dbResult.skippedRecords} skipped`);
-  
+
+  log(`📋 Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
+  const processedTopics = await processTopics(topics, baseUrl);
+
+  log(`💾 Step 3/3: Updating Supabase database...`);
+  const { newRecords, updatedRecords, skippedRecords } = await updateDatabase(processedTopics);
+
   return {
     totalTopics: topics.length,
     processedTopics: processedTopics.length,
-    newRecords: dbResult.newRecords,
-    updatedRecords: dbResult.updatedRecords,
-    skippedRecords: dbResult.skippedRecords,
-    timestamp: new Date().toISOString()
+    newRecords,
+    updatedRecords,
+    skippedRecords
   };
 }
 
@@ -194,8 +186,7 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
       break;
     }
     
-    // Filter topics by date range
-    let matchingTopics = 0;
+    let matchingTopicsInPage = 0;
     for (const topic of topics) {
       const topicDate = topic.topicEndDate ? new Date(topic.topicEndDate) : 
                         topic.topicStartDate ? new Date(topic.topicStartDate) : 
@@ -203,13 +194,13 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
       
       if (topicDate && topicDate >= startDate && topicDate <= endDate) {
         allTopics.push(topic);
-        matchingTopics++;
+        matchingTopicsInPage++;
       }
     }
     
-    log(`   ✓ Page ${pageNum + 1}: Found ${matchingTopics} matching topics (total: ${allTopics.length})`);
+    log(`   ✓ Page ${pageNum + 1}: Found ${matchingTopicsInPage} matching topics (total: ${allTopics.length})`);
     
-    if (matchingTopics === 0) {
+    if (matchingTopicsInPage === 0) {
       consecutivePagesWithoutMatch++;
       if (consecutivePagesWithoutMatch >= maxConsecutivePagesWithoutMatch) {
         log(`   Early termination: No matching topics in last ${maxConsecutivePagesWithoutMatch} pages`);
@@ -228,80 +219,66 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
   return allTopics;
 }
 
-async function processTopics(topics: any[]) {
-  const processedTopics: any[] = [];
+// ========================================
+// COMPREHENSIVE DATA PROCESSING FROM ACTIVE SCRAPER
+// ========================================
+
+async function processTopics(topics: any[], baseUrl: string) {
+  const processedTopics = [];
   let successCount = 0;
   let errorCount = 0;
   
   log(`   Starting detailed extraction for ${topics.length} topics...`);
-  log(`   ============================================================`);
+  log(`   ${'='.repeat(60)}`);
   
   for (let i = 0; i < topics.length; i++) {
     const topic = topics[i];
-    const percentage = Math.round(((i + 1) / topics.length) * 100);
-    const topicCode = topic.topicCode || 'Unknown';
-    const topicTitle = topic.topicTitle || '';
-    const truncatedTitle = topicTitle.length > 50 ? topicTitle.substring(0, 50) + '...' : topicTitle;
-    
-    log(`   [${percentage}%] [${i + 1}/${topics.length}] ${topicCode}: ${truncatedTitle}...`);
+    const topicCode = topic.topicCode || 'UNKNOWN';
+    const topicTitle = (topic.topicTitle || 'No title').substring(0, 60);
     
     try {
-      // Log instruction-related fields from initial topic data for first topic only
-      if (i === 0) {
-        const topicKeys = Object.keys(topic);
-        const topicInstrKeys = topicKeys.filter(key => 
-          key.toLowerCase().includes('instruction') || 
-          key.toLowerCase().includes('baa') ||
-          key.toLowerCase().includes('solicitation') ||
-          key.toLowerCase().includes('component')
-        );
-        if (topicInstrKeys.length > 0) {
-          log(`      DEBUG: Initial topic data has keys: ${topicInstrKeys.join(', ')}`);
-          topicInstrKeys.forEach(key => {
-            const value = topic[key];
-            if (value && typeof value === 'string') {
-              log(`      DEBUG: ${key} = "${value}"`);
-            } else if (Array.isArray(value)) {
-              log(`      DEBUG: ${key} = [array with ${value.length} items]`);
-              if (value.length > 0) {
-                log(`      DEBUG: ${key}[0] = ${JSON.stringify(value[0]).substring(0, 150)}`);
-              }
-            } else if (value && typeof value === 'object') {
-              log(`      DEBUG: ${key} = ${JSON.stringify(value).substring(0, 150)}`);
-            } else {
-              log(`      DEBUG: ${key} = ${value}`);
-            }
-          });
-        }
-      }
+      const progress = Math.floor(((i + 1) / topics.length) * 100);
+      log(`   [${progress}%] [${i + 1}/${topics.length}] ${topicCode}: ${topicTitle}...`);
       
-      // Fetch detailed information
-      const detailedTopic = await fetchTopicDetails(topic.topicId);
+      // Fetch detailed information for this topic
+      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
       
-      // Extract instruction URLs from initial topic data (not in detailed endpoint!)
+      // Extract instruction URLs from initial topic data
       if (topic.cycleName && topic.releaseNumber && topic.component) {
         const solUrl = `${baseUrl}/submissions/api/public/download/solicitationDocuments?solicitation=${topic.cycleName}&release=${topic.releaseNumber}&documentType=RELEASE_PREFACE`;
         detailedTopic.solicitationInstructionsDownload = solUrl;
         detailedTopic.solicitationInstructionsVersion = topic.baaPrefaceUploadTitle || '';
-        if (i === 0) log(`      DEBUG: Constructed solicitation URL: ${solUrl}`);
         
         const compUrl = `${baseUrl}/submissions/api/public/download/solicitationDocuments?solicitation=${topic.cycleName}&documentType=INSTRUCTIONS&component=${topic.component}&release=${topic.releaseNumber}`;
         detailedTopic.componentInstructionsDownload = compUrl;
         if (topic.baaInstructions && Array.isArray(topic.baaInstructions) && topic.baaInstructions.length > 0) {
           detailedTopic.componentInstructionsVersion = topic.baaInstructions[0].fileName || '';
         }
-        if (i === 0) log(`      DEBUG: Constructed component URL: ${compUrl}`);
       }
       
-      // Fetch Q&A
-      const qaContent = await fetchTopicQA(topic.topicId);
-      if (qaContent) {
-        detailedTopic.qaContent = qaContent;
-      }
+      // Log extraction status
+      const hasSolInstr = !!detailedTopic.solicitationInstructionsDownload;
+      const hasCompInstr = !!detailedTopic.componentInstructionsDownload;
+      log(`      ✓ Extracted: tech=${!!detailedTopic.technologyAreas}, keywords=${!!detailedTopic.keywords}, desc=${!!detailedTopic.description}, qa=${!!detailedTopic.qaContent}, tpoc=${!!detailedTopic.tpocNames}, sol_instr=${hasSolInstr}, comp_instr=${hasCompInstr}`);
       
-      // Extract TPOC email domain
-      if (detailedTopic.tpocEmail) {
-        const emails = detailedTopic.tpocEmail.split(/[,;]/).map((e: string) => e.trim());
+      // Extract TPOC from initial topic list if not in detailed data
+      if (!detailedTopic.tpocNames && topic.topicManagers && Array.isArray(topic.topicManagers)) {
+        const names: string[] = [];
+        const emails: string[] = [];
+        const centers: string[] = [];
+        
+        topic.topicManagers.forEach((manager: any) => {
+          if (manager.topicManagerName) names.push(manager.topicManagerName);
+          if (manager.topicManagerEmail) emails.push(manager.topicManagerEmail);
+          if (manager.topicManagerCenter) centers.push(manager.topicManagerCenter);
+        });
+        
+        if (names.length > 0) detailedTopic.tpocNames = names.join('; ');
+        if (emails.length > 0) detailedTopic.tpocEmails = emails.join('; ');
+        if (centers.length > 0) detailedTopic.tpocCenters = centers.join('; ');
+        detailedTopic.tpocCount = names.length;
+        detailedTopic.showTpoc = names.length > 0;
+        
         if (emails.length > 0 && emails[0].includes('@')) {
           detailedTopic.tpocEmailDomain = emails[0].split('@')[1];
         }
@@ -316,12 +293,10 @@ async function processTopics(topics: any[]) {
       
       const now = new Date();
       
-      // Set sponsor_component from component field
       if (topic.component) {
         fullTopic.sponsorComponent = topic.component;
       }
       
-      // Calculate date-based fields
       if (topic.topicStartDate) {
         const openDate = new Date(topic.topicStartDate);
         fullTopic.days_since_open = Math.floor((now.getTime() - openDate.getTime()) / (1000 * 60 * 60 * 24));
@@ -330,132 +305,346 @@ async function processTopics(topics: any[]) {
       if (topic.topicEndDate) {
         const closeDate = new Date(topic.topicEndDate);
         fullTopic.days_until_close = Math.floor((closeDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
-        fullTopic.is_closing_soon = fullTopic.days_until_close <= 30 && fullTopic.days_until_close >= 0;
-        fullTopic.is_recently_opened = fullTopic.days_since_open <= 30;
+        
+        if (fullTopic.days_until_close <= 7) fullTopic.urgency_level = 'Critical';
+        else if (fullTopic.days_until_close <= 14) fullTopic.urgency_level = 'High';
+        else if (fullTopic.days_until_close <= 30) fullTopic.urgency_level = 'Medium';
+        else fullTopic.urgency_level = 'Low';
       }
       
-      // Set PDF download link
+      if (topic.topicStartDate && topic.topicEndDate) {
+        const openDate = new Date(topic.topicStartDate);
+        const closeDate = new Date(topic.topicEndDate);
+        fullTopic.duration_days = Math.floor((closeDate.getTime() - openDate.getTime()) / (1000 * 60 * 60 * 24));
+      }
+      
+      if (topic.topicPreReleaseStartDate && topic.topicPreReleaseEndDate) {
+        const preStart = new Date(topic.topicPreReleaseStartDate);
+        const preEnd = new Date(topic.topicPreReleaseEndDate);
+        fullTopic.pre_release_duration = Math.floor((preEnd.getTime() - preStart.getTime()) / (1000 * 60 * 60 * 24));
+      }
+      
+      if (topic.topicQAEndDate) {
+        const qaEndDate = new Date(topic.topicQAEndDate);
+        fullTopic.days_until_qa_close = Math.floor((qaEndDate.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+      }
+      
+      if (topic.topicQuestionCount && topic.noOfPublishedQuestions) {
+        const total = parseInt(topic.topicQuestionCount) || 0;
+        const published = parseInt(topic.noOfPublishedQuestions) || 0;
+        if (total > 0) {
+          fullTopic.qa_response_rate_percentage = Math.round((published / total) * 100);
+        }
+      }
+      
+      const activityDates = [
+        topic.updatedDate,
+        topic.modifiedDate,
+        topic.topicQAEndDate
+      ].filter(Boolean).map(d => new Date(d).getTime());
+      
+      if (activityDates.length > 0) {
+        fullTopic.last_activity_date = new Date(Math.max(...activityDates)).toISOString();
+      }
+      
+      if (topic.topicStartDate && topic.topicEndDate) {
+        const openDate = new Date(topic.topicStartDate);
+        const closeDate = new Date(topic.topicEndDate);
+        if (now < openDate) fullTopic.proposal_window_status = 'Not Open';
+        else if (now > closeDate) fullTopic.proposal_window_status = 'Closed';
+        else fullTopic.proposal_window_status = 'Open';
+      }
+      
+      if (topic.topicQAStartDate && topic.topicQAEndDate) {
+        const qaStart = new Date(topic.topicQAStartDate);
+        const qaEnd = new Date(topic.topicQAEndDate);
+        fullTopic.qa_window_active = (now >= qaStart && now <= qaEnd) ? 'Yes' : 'No';
+      }
+      
+      if (topic.cycleName) {
+        const phaseMatch = topic.cycleName.match(/_P(\d+)_/);
+        if (phaseMatch) {
+          const phaseNum = phaseMatch[1];
+          fullTopic.solicitation_phase = `Phase ${phaseNum === '1' ? 'I' : phaseNum === '2' ? 'II' : phaseNum === '3' ? 'III' : phaseNum}`;
+        }
+      }
+      
+      const allText = `${detailedTopic.description || ''} ${detailedTopic.phase1Description || ''} ${detailedTopic.phase2Description || ''}`.toLowerCase();
+      
+      if (allText.includes('direct to phase ii') || allText.includes('direct phase ii') || allText.includes('dtp2')) {
+        fullTopic.isDirectToPhaseII = 'Yes';
+      } else {
+        fullTopic.isDirectToPhaseII = fullTopic.isDirectToPhaseII || 'No';
+      }
+      
+      const phasesAvailable: string[] = [];
+      if (detailedTopic.phase1Description) phasesAvailable.push('Phase I');
+      if (detailedTopic.phase2Description) phasesAvailable.push('Phase II');
+      if (detailedTopic.phase3Description) phasesAvailable.push('Phase III');
+      if (phasesAvailable.length > 0) {
+        fullTopic.phases_available = phasesAvailable.join(', ');
+      }
+      
+      if (!fullTopic.isXTech) {
+        fullTopic.isXTech = 'No';
+      }
+      
+      if (!fullTopic.prize_gating) {
+        fullTopic.prize_gating = fullTopic.isXTech === 'Yes' ? 'Yes' : 'No';
+      }
+      
       if (topic.topicId && topic.topicCode) {
-        fullTopic.topic_pdf_download = `${baseUrl}/topics/api/public/topics/${topic.topicId}/download/PDF`;
+        fullTopic.topic_pdf_download = `https://www.dodsbirsttr.mil/topics/api/public/topics/${topic.topicId}/download/PDF`;
         fullTopic.pdf_link = fullTopic.topic_pdf_download;
       }
       
-      // Map to database columns
-      const mappedTopic = mapToDatabase(fullTopic);
+      if (detailedTopic.qaContent) {
+        fullTopic.qa_content_fetched = 'Yes';
+        fullTopic.qa_last_updated = now.toISOString();
+      } else {
+        fullTopic.qa_content_fetched = 'No';
+      }
+      
+      fullTopic.last_scraped = new Date().toISOString();
+      
+      // Use the comprehensive mapper
+      const mappedTopic = mapToSupabaseColumns(fullTopic);
+      
       processedTopics.push(mappedTopic);
       successCount++;
       
-      const statusFlags = [
-        detailedTopic.technologyAreas ? 'tech=true' : 'tech=false',
-        detailedTopic.keywords ? 'keywords=true' : 'keywords=false',
-        detailedTopic.description ? 'desc=true' : 'desc=false',
-        qaContent ? 'qa=true' : 'qa=false',
-        detailedTopic.tpocEmail ? 'tpoc=true' : 'tpoc=false',
-        detailedTopic.solicitationInstructionsDownload ? 'sol_instr=true' : 'sol_instr=false',
-        detailedTopic.componentInstructionsDownload ? 'comp_instr=true' : 'comp_instr=false'
-      ].join(', ');
-      log(`      ✓ Extracted: ${statusFlags}`);
+      if (i < topics.length - 1) {
+        await new Promise(resolve => setTimeout(resolve, 300));
+      }
       
     } catch (error) {
-      log(`      ❌ Error processing topic: ${error instanceof Error ? error.message : String(error)}`);
       errorCount++;
+      log(`       ✗ Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      continue;
     }
   }
-  
-  log(`   ============================================================`);
+
+  log(`   ${'='.repeat(60)}`);
   log(`   ✓ Processing complete: ${successCount} success, ${errorCount} errors`);
-  log(`   ============================================================`);
-  log(` ✓ Processing complete: ${successCount} success, ${errorCount} errors`);
-  log(` ✓ Successfully processed ${successCount} topics with full metadata`);
-  
   return processedTopics;
 }
 
-async function fetchTopicDetails(topicId: string): Promise<any> {
-  try {
-    const response = await fetch(`${baseUrl}/topics/api/public/topics/${topicId}`, {
-      headers: {
-        'Accept': 'application/json',
-        'Referer': `${baseUrl}/topics-app/`,
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
-      },
-      signal: AbortSignal.timeout(10000)
-    });
-    
-    if (!response.ok) return {};
-    
-    const details = await response.json();
-    
-    return {
-      description: details.topicDescription || '',
-      technologyAreas: details.technologyAreas?.map((ta: any) => ta.name).join(', ') || '',
-      keywords: details.keywords?.map((kw: any) => kw.name).join(', ') || '',
-      tpocName: details.topicManagers?.[0]?.name || '',
-      tpocEmail: details.topicManagers?.[0]?.email || '',
-      tpocPhone: details.topicManagers?.[0]?.phone || ''
-    };
-  } catch (error) {
-    return {};
-  }
+function cleanHtml(text: string): string {
+  if (!text) return '';
+  
+  let clean = text.replace(/<.*?>/g, '');
+  clean = clean.replace(/&nbsp;/g, ' ');
+  clean = clean.replace(/&amp;/g, '&');
+  clean = clean.replace(/&lt;/g, '<');
+  clean = clean.replace(/&gt;/g, '>');
+  clean = clean.replace(/&quot;/g, '"');
+  clean = clean.replace(/&#39;/g, "'");
+  clean = clean.replace(/&apos;/g, "'");
+  clean = clean.replace(/&emsp;/g, '  ');
+  clean = clean.replace(/&rsquo;/g, "'");
+  clean = clean.replace(/&mdash;/g, '-');
+  clean = clean.replace(/\s+/g, ' ');
+  
+  return clean.trim();
 }
 
-async function fetchTopicQA(topicId: string) {
+async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: string) {
+  const detailedData: any = {};
+  
   try {
-    const response = await fetch(`${baseUrl}/topics/api/public/topics/${topicId}/questions-and-answers`, {
+    // STEP 1: Fetch detailed information from /details endpoint
+    const detailsResponse = await fetch(`${baseUrl}/topics/api/public/topics/${topicId}/details`, {
       headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
         'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
         'Referer': `${baseUrl}/topics-app/`,
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
-      },
-      signal: AbortSignal.timeout(10000)
+        'Origin': baseUrl
+      }
+    });
+
+    if (detailsResponse.ok) {
+      const details = await detailsResponse.json();
+      
+      // Extract and process technology areas
+      if (details.technologyAreas && Array.isArray(details.technologyAreas)) {
+        const areas = details.technologyAreas.map((area: any) => 
+          typeof area === 'object' ? area.name : String(area)
+        ).filter(Boolean);
+        detailedData.technologyAreas = areas.join(', ');
+      }
+      
+      // Extract focusAreas → modernization_priorities
+      if (details.focusAreas && Array.isArray(details.focusAreas)) {
+        const focusAreas = details.focusAreas.map((area: any) => 
+          typeof area === 'object' ? area.name : String(area)
+        ).filter(Boolean);
+        detailedData.modernizationPriorities = focusAreas.join(' | ');
+      }
+      
+      // Extract and clean keywords
+      if (details.keywords) {
+        let keywordText = '';
+        if (Array.isArray(details.keywords)) {
+          keywordText = details.keywords.join('; ');
+        } else {
+          keywordText = String(details.keywords);
+        }
+        detailedData.keywords = cleanHtml(keywordText).replace(/;/g, '; ').replace(/  /g, ' ').trim();
+      }
+      
+      // ITAR status
+      if ('itar' in details) {
+        detailedData.itarControlled = details.itar ? 'Yes' : 'No';
+      }
+      
+      // Clean descriptions
+      if (details.objective) {
+        detailedData.objective = cleanHtml(details.objective);
+      }
+      
+      if (details.description) {
+        detailedData.description = cleanHtml(details.description);
+        if (detailedData.description.toLowerCase().includes('xtech') || 
+            detailedData.description.toLowerCase().includes('x-tech')) {
+          detailedData.isXTech = 'Yes';
+        }
+      }
+      
+      if (details.phase1Description) {
+        detailedData.phase1Description = cleanHtml(details.phase1Description);
+      }
+      
+      if (details.phase2Description) {
+        detailedData.phase2Description = cleanHtml(details.phase2Description);
+      }
+      
+      if (details.phase3Description) {
+        detailedData.phase3Description = cleanHtml(details.phase3Description);
+      }
+      
+      // Extract references
+      if (details.referenceDocuments && Array.isArray(details.referenceDocuments)) {
+        const refs = details.referenceDocuments
+          .map((ref: any) => cleanHtml(ref.referenceTitle || ''))
+          .filter(Boolean);
+        detailedData.references = refs.join('; ');
+      }
+      
+      // BAA Instructions
+      if (details.baaInstructions && Array.isArray(details.baaInstructions)) {
+        const baaFiles = details.baaInstructions
+          .map((instruction: any) => instruction.fileName)
+          .filter(Boolean);
+        detailedData.baaInstructionFiles = baaFiles.join('; ');
+      }
+      
+      // TPOC extraction
+      if (details.topicManagers && Array.isArray(details.topicManagers)) {
+        const names: string[] = [];
+        const emails: string[] = [];
+        const centers: string[] = [];
+        
+        details.topicManagers.forEach((manager: any) => {
+          if (manager.topicManagerName) names.push(manager.topicManagerName);
+          if (manager.topicManagerEmail) emails.push(manager.topicManagerEmail);
+          if (manager.topicManagerCenter) centers.push(manager.topicManagerCenter);
+        });
+        
+        if (names.length > 0) detailedData.tpocNames = names.join('; ');
+        if (emails.length > 0) detailedData.tpocEmails = emails.join('; ');
+        if (centers.length > 0) detailedData.tpocCenters = centers.join('; ');
+        detailedData.tpocCount = names.length;
+        detailedData.showTpoc = names.length > 0;
+        
+        if (emails.length > 0 && emails[0].includes('@')) {
+          detailedData.tpocEmailDomain = emails[0].split('@')[1];
+        }
+      }
+      
+      // Additional fields
+      if (details.owner) detailedData.owner = details.owner;
+      if (details.internalLead) detailedData.internalLead = details.internalLead;
+      if (details.sponsorComponent) detailedData.sponsorComponent = details.sponsorComponent;
+      if (details.selectionCriteria) detailedData.selectionCriteria = cleanHtml(details.selectionCriteria);
+      if (details.proposalRequirements) detailedData.proposalRequirements = cleanHtml(details.proposalRequirements);
+      if (details.submissionInstructions) detailedData.submissionInstructions = cleanHtml(details.submissionInstructions);
+      if (details.eligibilityRequirements) detailedData.eligibilityRequirements = cleanHtml(details.eligibilityRequirements);
+      
+      if (details.isDirectToPhaseII !== undefined) {
+        detailedData.isDirectToPhaseII = details.isDirectToPhaseII ? 'Yes' : 'No';
+      }
+      
+      if (details.topicPdfDownload) detailedData.topicPdfDownload = details.topicPdfDownload;
+      
+      if (details.solicitationInstructionsUrl) {
+        detailedData.solicitationInstructionsDownload = details.solicitationInstructionsUrl;
+      }
+      if (details.componentInstructionsUrl) {
+        detailedData.componentInstructionsDownload = details.componentInstructionsUrl;
+      }
+      if (details.baaPrefaceUploadTitle) {
+        detailedData.solicitationInstructionsVersion = details.baaPrefaceUploadTitle;
+      }
+      if (details.baaInstructions && Array.isArray(details.baaInstructions)) {
+        detailedData.componentInstructionsVersion = details.baaInstructions
+          .map((i: any) => i.fileName || '').join(', ');
+      }
+      
+    } else {
+      console.error(`    Failed to fetch details: ${detailsResponse.status}`);
+    }
+    
+  } catch (error) {
+    console.error(`    Error fetching details:`, error);
+  }
+  
+  // STEP 2: Fetch Q&A data
+  try {
+    const qaResponse = await fetch(`${baseUrl}/topics/api/public/topics/${topicId}/questions`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'Accept': 'application/json',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Referer': `${baseUrl}/topics-app/`,
+        'Origin': baseUrl
+      }
     });
     
-    if (!response.ok) return '';
+    if (qaResponse.ok) {
+      const qaData = await qaResponse.json();
+      if (qaData && Array.isArray(qaData) && qaData.length > 0) {
+        const qaFormatted: string[] = [];
+        
+        for (const q of qaData) {
+          const questionText = (q.question || '').replace(/<p>/g, '').replace(/<\/p>/g, '').trim();
+          const questionNo = q.questionNo || '';
+          
+          let answerText = '';
+          if (q.answers && Array.isArray(q.answers) && q.answers.length > 0) {
+            try {
+              const answerData = JSON.parse(q.answers[0].answer || '{}');
+              answerText = (answerData.content || '').replace(/<p>/g, '').replace(/<\/p>/g, '').trim();
+            } catch {
+              answerText = q.answers[0].answer || '';
+            }
+          }
+          
+          if (questionText) {
+            qaFormatted.push(`Q${questionNo}: ${questionText}\nA: ${answerText}`);
+          }
+        }
+        
+        detailedData.qaContent = qaFormatted.join('\n\n');
+        console.log(`    ✓ Q&A: ${qaData.length} questions`);
+      }
+    }
     
-    const qaData = await response.json();
-    if (!qaData || qaData.length === 0) return '';
-    
-    const qaFormatted = qaData.map((qa: any) => {
-      return `Q: ${qa.question || ''}\nA: ${qa.answer || ''}`;
-    }).join('\n\n');
-    
-    return qaFormatted;
   } catch (error) {
-    return '';
+    // Q&A fetch is optional
   }
-}
-
-function mapToDatabase(topic: any) {
-  return {
-    topic_id: topic.topicId || '',
-    topic_number: topic.topicCode || '',
-    cycle_name: topic.cycleName || topic.solicitationTitle || '',
-    title: topic.topicTitle || '',
-    sponsor_component: topic.sponsorComponent || topic.component || '',
-    technology_areas: topic.technologyAreas || '',
-    keywords: topic.keywords || '',
-    description: topic.description || topic.topicDescription || '',
-    qa_content: topic.qaContent || '',
-    tpoc_name: topic.tpocName || '',
-    tpoc_email: topic.tpocEmail || '',
-    tpoc_phone: topic.tpocPhone || '',
-    tpoc_email_domain: topic.tpocEmailDomain || '',
-    topic_status: topic.topicStatus || '',
-    topic_start_date: topic.topicStartDate || null,
-    topic_end_date: topic.topicEndDate || null,
-    days_since_open: topic.days_since_open || null,
-    days_until_close: topic.days_until_close || null,
-    is_closing_soon: topic.is_closing_soon || false,
-    is_recently_opened: topic.is_recently_opened || false,
-    topic_pdf_download: topic.topic_pdf_download || '',
-    pdf_link: topic.pdf_link || '',
-    solicitation_instructions_download: topic.solicitationInstructionsDownload || '',
-    solicitation_instructions_version: topic.solicitationInstructionsVersion || '',
-    component_instructions_download: topic.componentInstructionsDownload || '',
-    component_instructions_version: topic.componentInstructionsVersion || '',
-    last_scraped: new Date().toISOString(),
-    modernization_priorities: topic.modernizationPriorities?.map((mp: any) => mp.name).join(', ') || ''
-  };
+  
+  return detailedData;
 }
 
 async function updateDatabase(topics: any[]) {
@@ -484,7 +673,11 @@ async function updateDatabase(topics: any[]) {
     
     log(`   Found ${existingTopicNumbers.size} existing records in database`);
     
-    // Categorize records BEFORE upsert
+    if (topics.length > 0 && existingRecords && existingRecords.length > 0) {
+      log(`   Sample scraped topic_number: "${topics[0].topic_number}"`);
+      log(`   Sample existing topic_number: "${existingRecords[0].topic_number}"`);
+    }
+    
     topics.forEach(topic => {
       if (existingTopicNumbers.has(topic.topic_number)) {
         updatedRecords++;
@@ -501,27 +694,37 @@ async function updateDatabase(topics: any[]) {
       });
 
     if (upsertError) {
-      log(`   ⚠ Bulk upsert failed, trying individual inserts: ${upsertError.message}`);
+      log(`   Upsert error: ${upsertError.message}`);
+      log(`   - Code: ${upsertError.code}`);
+      log(`   - Details: ${upsertError.details}`);
+      log(`   - Hint: ${upsertError.hint}`);
       
-      for (const topic of topics) {
-        try {
-          const { error: individualError } = await supabase
-            .from('sbir_final')
-            .upsert(topic, {
-              onConflict: 'topic_number,cycle_name',
-              ignoreDuplicates: false
-            });
-          
-          if (individualError) {
-            log(`   ⚠ Failed to upsert topic ${topic.topic_number}: ${individualError.message}`);
+      if (upsertError.code === '23505' || upsertError.message?.includes('duplicate')) {
+        log('   ⚠ Duplicate key constraint - attempting individual updates...');
+        
+        let successCount = 0;
+        let failCount = 0;
+        
+        for (const topic of topics) {
+          try {
+            await supabase
+              .from('sbir_final')
+              .upsert([topic], {
+                onConflict: 'topic_number,cycle_name'
+              });
+            successCount++;
+          } catch {
+            failCount++;
           }
-        } catch (err) {
-          log(`   ⚠ Error upserting topic ${topic.topic_number}: ${err instanceof Error ? err.message : String(err)}`);
         }
+        
+        log(`   ✓ Individual updates complete: ${successCount} success, ${failCount} failed`);
+      } else {
+        throw upsertError;
       }
-    } else {
-      log(`   ✓ Database upsert complete: ${newRecords} new, ${updatedRecords} updated, ${unchangedRecords} unchanged`);
     }
+
+    log(`   ✓ Database upsert complete: ${newRecords} new, ${updatedRecords} updated, ${unchangedRecords} unchanged`);
 
   } catch (error) {
     log(`   Database update error: ${error instanceof Error ? error.message : String(error)}`);
