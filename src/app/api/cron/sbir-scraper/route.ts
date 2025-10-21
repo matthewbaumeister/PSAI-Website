@@ -282,6 +282,20 @@ async function processTopics(topics: any[], baseUrl: string) {
       const progress = Math.floor(((i + 1) / topics.length) * 100);
       log(`   [${progress}%] [${i + 1}/${topics.length}] ${topicCode}: ${topicTitle}...`);
       
+      // DEBUG: Check if instruction URLs are in initial topic data
+      if (i === 0) { // Only for first topic to avoid spam
+        const topicKeys = Object.keys(topic);
+        const topicInstrKeys = topicKeys.filter(key => 
+          key.toLowerCase().includes('instruction') || 
+          key.toLowerCase().includes('baa') ||
+          key.toLowerCase().includes('solicitation') ||
+          key.toLowerCase().includes('component')
+        );
+        if (topicInstrKeys.length > 0) {
+          log(`      DEBUG: Initial topic data has keys: ${topicInstrKeys.join(', ')}`);
+        }
+      }
+      
       // Fetch detailed information for this topic
       const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
       
@@ -511,6 +525,26 @@ async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: st
 
     if (detailsResponse.ok) {
       const details = await detailsResponse.json();
+      
+      // DEBUG: Log all available keys to find instruction URL field names
+      const allKeys = Object.keys(details);
+      const instructionKeys = allKeys.filter(key => 
+        key.toLowerCase().includes('instruction') || 
+        key.toLowerCase().includes('baa') ||
+        key.toLowerCase().includes('solicitation') ||
+        key.toLowerCase().includes('component')
+      );
+      if (instructionKeys.length > 0) {
+        log(`      DEBUG: Found instruction-related keys: ${instructionKeys.join(', ')}`);
+        instructionKeys.forEach(key => {
+          const value = details[key];
+          if (value && typeof value === 'string' && value.includes('http')) {
+            log(`      DEBUG: ${key} = ${value.substring(0, 80)}...`);
+          } else if (value && typeof value === 'object') {
+            log(`      DEBUG: ${key} = [object with keys: ${Object.keys(value).join(', ')}]`);
+          }
+        });
+      }
       
       // Extract and process technology areas
       if (details.technologyAreas && Array.isArray(details.technologyAreas)) {
