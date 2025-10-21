@@ -324,9 +324,37 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
     setScraperCurrentStep('Initializing historical scraper...')
     
     const logs: string[] = [`Starting historical scrape for ${dateRange}...`]
-    setHistoricalScraperProgress({ phase: 'starting', processedTopics: 0, totalTopics: 0, logs })
+    setHistoricalScraperProgress({ phase: 'Initializing scraper...', processedTopics: 0, totalTopics: 0, logs })
     
     showNotification(` Scraping ${dateRange} opportunities...`, 'info')
+    
+    // Simulate progress phases while waiting for API response
+    const startTime = Date.now();
+    const progressInterval = setInterval(() => {
+      setHistoricalScraperProgress((prev: any) => {
+        if (!prev) return prev;
+        
+        const elapsed = Date.now() - startTime;
+        const seconds = Math.floor(elapsed / 1000);
+        
+        // Simulate different phases based on elapsed time
+        if (seconds < 10) {
+          return { ...prev, phase: 'Initializing session with DSIP...' };
+        } else if (seconds < 30) {
+          return { ...prev, phase: 'Fetching topics from date range...' };
+        } else if (seconds < 60) {
+          return { ...prev, phase: 'Found topics, starting detailed extraction...' };
+        } else if (seconds < 120) {
+          return { ...prev, phase: 'Processing topic details (tech areas, keywords, Q&A)...' };
+        } else if (seconds < 180) {
+          return { ...prev, phase: 'Continuing detailed extraction...' };
+        } else if (seconds < 240) {
+          return { ...prev, phase: 'Finalizing topic processing...' };
+        } else {
+          return { ...prev, phase: 'Updating database with results...' };
+        }
+      });
+    }, 2000); // Update every 2 seconds
     
     try {
       const response = await fetch('/api/admin/sbir/scraper-historical', {
@@ -341,6 +369,9 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
           yearTo: yearTo
         })
       })
+      
+      // Clear the progress simulation interval
+      clearInterval(progressInterval)
       
       setScraperProgress(100)
       setScraperCurrentStep(' Historical scrape completed!')
@@ -405,9 +436,11 @@ For detailed logs, check Vercel Function Logs.
         showNotification(` Historical scrape failed: ${result.message || 'Unknown error'}`, 'error')
       }
     } catch (error) {
+      clearInterval(progressInterval)
       console.error('[Historical Scraper] Error:', error)
       showNotification(` Historical scrape error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
     } finally {
+      clearInterval(progressInterval)
       setIsScrapingHistorical(false)
     }
   }
