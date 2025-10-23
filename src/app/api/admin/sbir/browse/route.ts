@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
       keywords = '',
       page = 0,
       pageSize = 50,
-      sortBy = 'modified_date',
+      sortBy = 'last_scraped',
       sortOrder = 'desc'
     } = await request.json();
 
@@ -81,14 +81,16 @@ export async function POST(request: NextRequest) {
     }
 
     // Apply sorting
-    let sortColumn = sortBy || 'modified_date';
+    let sortColumn = sortBy || 'last_scraped';
     const order = sortOrder === 'asc' ? true : false;
     
-    // Use timestamp columns for date sorting (chronologically correct)
-    if (sortColumn === 'close_date') {
-      sortColumn = 'close_date_ts';
-    } else if (sortColumn === 'open_date') {
-      sortColumn = 'open_date_ts';
+    // Map legacy column names to actual columns in the table
+    if (sortColumn === 'modified_date') {
+      sortColumn = 'last_scraped';
+    } else if (sortColumn === 'close_date_ts') {
+      sortColumn = 'close_datetime';
+    } else if (sortColumn === 'open_date_ts') {
+      sortColumn = 'open_datetime';
     }
     
     query = query.order(sortColumn, { ascending: order, nullsFirst: false });

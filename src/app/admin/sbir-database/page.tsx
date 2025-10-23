@@ -100,7 +100,7 @@ export default function SBIRDatabaseBrowser() {
     programTypes: []
   });
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
-  const [sortBy, setSortBy] = useState('modified_date');
+  const [sortBy, setSortBy] = useState('last_scraped');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   
   // Smart search state
@@ -425,7 +425,7 @@ export default function SBIRDatabaseBrowser() {
     if (selectedProgramType !== 'all') params.append('program', selectedProgramType);
     if (currentPage > 0) params.append('page', currentPage.toString());
     if (pageSize !== 25) params.append('pageSize', pageSize.toString());
-    if (sortBy !== 'modified_date') params.append('sortBy', sortBy);
+    if (sortBy !== 'last_scraped') params.append('sortBy', sortBy);
     if (sortOrder !== 'desc') params.append('sortOrder', sortOrder);
     
     const queryString = params.toString();
@@ -2258,10 +2258,10 @@ Our company specializes in artificial intelligence and machine learning for defe
                   {selectedProgramType !== 'all' && <div>• Program: {selectedProgramType}</div>}
                   {pageSize !== 25 && <div>• Results per page: {pageSize}</div>}
                   {currentPage > 0 && <div>• Page: {currentPage + 1}</div>}
-                  {sortBy !== 'modified_date' && <div>• Sorted by: {sortBy} ({sortOrder})</div>}
+                  {sortBy !== 'last_scraped' && <div>• Sorted by: {sortBy} ({sortOrder})</div>}
                   {!searchText && selectedComponent === 'all' && selectedStatuses.length === 0 && 
                    selectedProgramType === 'all' && pageSize === 25 && currentPage === 0 && 
-                   sortBy === 'modified_date' && (
+                   sortBy === 'last_scraped' && (
                     <div style={{ color: '#f59e0b', fontStyle: 'italic' }}>
                       No filters applied - sharing default view
                     </div>
