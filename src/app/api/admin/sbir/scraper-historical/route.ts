@@ -192,23 +192,71 @@ async function scrapeHistoricalDataSync(
 
 // Synchronous version of fetchTopicsByDateRange
 async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (msg: string) => void): Promise<any[]> {
-  log('   Fetching topics from API...');
-  const apiUrl = 'https://www.dodsbirsttr.mil/submissions/api/topics/search';
+  // CRITICAL: Multi-step session initialization (required by DoD website)
+  log('   🔐 Initializing session...');
   
-  const requestBody = {
-    page: 0,
-    size: 10000,
-    sort: { field: 'openDate', direction: 'DESC' },
-    filters: {
-      topicStatus: ['Open', 'Pre-Release'],
-      solicitationType: 'SBIR'
-    }
+  try {
+    // Step 1: Visit main HTML page to establish session
+    log('      Step 1: Visiting main page...');
+    await fetchWithTimeout(`${baseUrl}/topics-app/`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+      }
+    }, FETCH_TIMEOUT);
+    log('      ✓ Main page loaded');
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Step 2: Fetch component instructions to establish API session
+    log('      Step 2: Fetching component instructions...');
+    await fetchWithTimeout(`${baseUrl}/core/api/public/dropdown/components`, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Authorization': 'Bearer null',
+        'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+      }
+    }, FETCH_TIMEOUT);
+    log('      ✓ Component API called');
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    log('   ✓ Session initialized');
+  } catch (error) {
+    log('   ⚠ Session initialization had issues (continuing anyway)');
+  }
+
+  // Wait before main search
+  log('   Waiting 2 seconds before search...');
+  await new Promise(resolve => setTimeout(resolve, 2000));
+
+  log('   Fetching topics from search API...');
+  
+  // Use the same search format as Quick Scrape
+  const searchParams = {
+    searchText: null,
+    components: null,
+    programYear: null,
+    solicitationCycleNames: null,
+    releaseNumbers: [],
+    topicReleaseStatus: [],
+    modernizationPriorities: [],
+    sortBy: "topicEndDate,desc",
+    technologyAreaIds: [],
+    component: null,
+    program: null
   };
 
-  const apiResponse = await fetchWithTimeout(apiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(requestBody)
+  const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
+  const searchUrl = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=10000&page=0`;
+
+  const apiResponse = await fetchWithTimeout(searchUrl, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+      'Accept': 'application/json, text/plain, */*',
+      'Accept-Language': 'en-US,en;q=0.9',
+    }
   }, FETCH_TIMEOUT);
 
   if (!apiResponse.ok) {
