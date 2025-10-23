@@ -371,19 +371,19 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
     const toYearInt = parseInt(yearTo)
     
     const monthlyChunks: Array<{month: string, year: string}> = []
-    let currentYear = fromYear
-    let currentMonthIndex = fromMonthIndex
+    let loopYear = fromYear
+    let loopMonthIndex = fromMonthIndex
     
-    while (currentYear < toYearInt || (currentYear === toYearInt && currentMonthIndex <= toMonthIndex)) {
+    while (loopYear < toYearInt || (loopYear === toYearInt && loopMonthIndex <= toMonthIndex)) {
       monthlyChunks.push({
-        month: monthNames[currentMonthIndex],
-        year: currentYear.toString()
+        month: monthNames[loopMonthIndex],
+        year: loopYear.toString()
       })
       
-      currentMonthIndex++
-      if (currentMonthIndex > 11) {
-        currentMonthIndex = 0
-        currentYear++
+      loopMonthIndex++
+      if (loopMonthIndex > 11) {
+        loopMonthIndex = 0
+        loopYear++
       }
     }
     
