@@ -29,6 +29,12 @@ CREATE INDEX IF NOT EXISTS idx_dsip_scraping_jobs_created_at ON dsip_scraping_jo
 -- Enable Row Level Security
 ALTER TABLE dsip_scraping_jobs ENABLE ROW LEVEL SECURITY;
 
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Admin users can view all scraping jobs" ON dsip_scraping_jobs;
+DROP POLICY IF EXISTS "Admin users can insert scraping jobs" ON dsip_scraping_jobs;
+DROP POLICY IF EXISTS "Admin users can update scraping jobs" ON dsip_scraping_jobs;
+DROP POLICY IF EXISTS "Admin users can delete scraping jobs" ON dsip_scraping_jobs;
+
 -- Create policies
 CREATE POLICY "Admin users can view all scraping jobs" ON dsip_scraping_jobs
     FOR SELECT USING (auth.role() = 'authenticated' AND auth.jwt() ->> 'isAdmin' = 'true');

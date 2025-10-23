@@ -62,6 +62,10 @@ CREATE TRIGGER update_scraping_job_timestamp
 -- Enable Row Level Security (optional, for security)
 ALTER TABLE scraping_jobs ENABLE ROW LEVEL SECURITY;
 
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Service role can do everything" ON scraping_jobs;
+DROP POLICY IF EXISTS "Authenticated users can read" ON scraping_jobs;
+
 -- Policy to allow service role to do everything
 CREATE POLICY "Service role can do everything" ON scraping_jobs
   FOR ALL
