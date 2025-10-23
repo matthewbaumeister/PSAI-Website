@@ -234,30 +234,28 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
 
   log('   Fetching topics from search API...');
   
-  // Use the same search format as Quick Scrape
-  const searchParams = {
-    searchText: null,
-    components: null,
-    programYear: null,
-    solicitationCycleNames: null,
-    releaseNumbers: [],
-    topicReleaseStatus: [],
-    modernizationPriorities: [],
-    sortBy: "topicEndDate,desc",
-    technologyAreaIds: [],
-    component: null,
-    program: null
+  // Use POST endpoint with filters for ALL topics (not just open)
+  const apiUrl = `${baseUrl}/submissions/api/topics/search`;
+  
+  const requestBody = {
+    page: 0,
+    size: 10000,
+    sort: { field: 'openDate', direction: 'DESC' },
+    filters: {
+      topicStatus: [], // Empty = get ALL statuses (Open, Closed, Pre-Release, etc.)
+      solicitationType: 'SBIR'
+    }
   };
 
-  const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
-  const searchUrl = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=10000&page=0`;
-
-  const apiResponse = await fetchWithTimeout(searchUrl, {
+  const apiResponse = await fetchWithTimeout(apiUrl, {
+    method: 'POST',
     headers: {
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
       'Accept': 'application/json, text/plain, */*',
       'Accept-Language': 'en-US,en;q=0.9',
-    }
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(requestBody)
   }, SEARCH_API_TIMEOUT);
 
   if (!apiResponse.ok) {
