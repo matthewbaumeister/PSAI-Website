@@ -234,28 +234,33 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
 
   log('   Fetching topics from search API...');
   
-  // Use POST endpoint with filters for ALL topics (not just open)
-  const apiUrl = `${baseUrl}/submissions/api/topics/search`;
-  
-  const requestBody = {
-    page: 0,
-    size: 10000,
-    sort: { field: 'openDate', direction: 'DESC' },
-    filters: {
-      topicStatus: [], // Empty = get ALL statuses (Open, Closed, Pre-Release, etc.)
-      solicitationType: 'SBIR'
-    }
+  // Use public GET endpoint but without status filter to get ALL topics
+  // Quick Scrape filters to ['Open', 'Pre-Release'] but we want EVERYTHING for historical
+  const searchParams = {
+    searchText: null,
+    components: null,
+    programYear: null,
+    solicitationCycleNames: null,
+    releaseNumbers: [],
+    topicReleaseStatus: [], // Empty array = ALL statuses (Open, Closed, Pre-Release, etc.)
+    modernizationPriorities: [],
+    sortBy: "topicEndDate,desc",
+    technologyAreaIds: [],
+    component: null,
+    program: null
   };
 
-  const apiResponse = await fetchWithTimeout(apiUrl, {
-    method: 'POST',
+  const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
+  const searchUrl = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=10000&page=0`;
+
+  log(`   🔍 Requesting ALL topics (no status filter)...`);
+  
+  const apiResponse = await fetchWithTimeout(searchUrl, {
     headers: {
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
       'Accept': 'application/json, text/plain, */*',
       'Accept-Language': 'en-US,en;q=0.9',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(requestBody)
+    }
   }, SEARCH_API_TIMEOUT);
 
   if (!apiResponse.ok) {
