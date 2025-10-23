@@ -48,6 +48,7 @@ async function updateJobProgress(
     preserved_records?: number;
     status?: string;
     error_message?: string;
+    error_details?: string;
     completed_at?: string;
     logs?: any[];
   }
