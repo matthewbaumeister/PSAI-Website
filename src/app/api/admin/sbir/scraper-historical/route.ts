@@ -275,28 +275,40 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
   log(`   ✓ Fetched ${allTopics.length} total topics from API`);
   log(`   📊 Total topics in database: ${data.total || 'unknown'}`);
 
-  // Filter for topics that were ACTIVE/AVAILABLE at any point during the date range
-  // Logic: A topic overlaps with our date range if:
-  //   - It opened on or before the range ends (openDate <= toDate)
-  //   - AND it closes on or after the range starts (closeDate >= fromDate OR closeDate is null/future)
+  // Log status distribution for debugging
+  const statusCounts: Record<string, number> = {};
+  allTopics.forEach((topic: any) => {
+    const status = topic.topicStatus || 'Unknown';
+    statusCounts[status] = (statusCounts[status] || 0) + 1;
+  });
+  log(`   📊 Status distribution: ${JSON.stringify(statusCounts)}`);
+
+  // FOCUS ON CLOSED TOPICS ONLY (Quick Scrape handles Open/Pre-Release/Active)
+  // Filter for Closed topics that closed during the date range
   const filteredTopics = allTopics.filter((topic: any) => {
-    const openDate = topic.openDate ? new Date(topic.openDate) : null;
-    const closeDate = topic.closeDate ? new Date(topic.closeDate) : null;
+    const status = topic.topicStatus;
     
-    // Skip topics with no dates
-    if (!openDate) return false;
+    // Only process Closed topics (Quick Scrape handles others)
+    if (status !== 'Closed') return false;
     
-    // Topic must have opened by the end of our date range
-    if (openDate > toDate) return false;
+    // Parse dates - check different possible field names
+    const topicCloseDate = topic.topicCloseDate || topic.closeDate || topic.endDate;
+    const topicOpenDate = topic.topicOpenDate || topic.openDate || topic.startDate;
     
-    // Topic must not have closed before our date range started
-    // (or have no close date yet, meaning still open)
-    if (closeDate && closeDate < fromDate) return false;
+    if (!topicCloseDate) return false; // Must have a close date
+    
+    const closeDate = new Date(topicCloseDate);
+    const openDate = topicOpenDate ? new Date(topicOpenDate) : null;
+    
+    // Topic must have been available at some point during our date range
+    // Logic: Topic overlaps with range if it opened before range ended AND closed after range started
+    if (openDate && openDate > toDate) return false; // Opened after range
+    if (closeDate < fromDate) return false; // Closed before range started
     
     return true;
   });
 
-  log(`   ✓ Filtered to ${filteredTopics.length} topics that were active during date range`);
+  log(`   ✓ Filtered to ${filteredTopics.length} CLOSED topics that were active during date range`);
   log(`   📊 Date range: ${fromDate.toISOString().split('T')[0]} to ${toDate.toISOString().split('T')[0]}`);
   return filteredTopics;
 }
