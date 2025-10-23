@@ -2226,7 +2226,7 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
               {/* Historical Scraper Mode */}
               {scraperMode === 'historical' && (
                 <>
-                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: '0 0 16px 0' }}>
+                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: '32px 0 16px 0' }}>
                     Scrape and backfill historical SBIR/STTR opportunities from any month/year. Pulls all the same detailed data as the active scraper.
                   </p>
                   

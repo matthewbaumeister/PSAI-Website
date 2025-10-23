@@ -11,6 +11,7 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const baseUrl = 'https://www.dodsbirsttr.mil';
 const FETCH_TIMEOUT = 30000; // 30 second timeout for each fetch
+const SEARCH_API_TIMEOUT = 300000; // 5 minutes for search API (can be slow with large results)
 
 // Helper function for fetch with timeout
 async function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number = FETCH_TIMEOUT) {
@@ -257,7 +258,7 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
       'Accept': 'application/json, text/plain, */*',
       'Accept-Language': 'en-US,en;q=0.9',
     }
-  }, FETCH_TIMEOUT);
+  }, SEARCH_API_TIMEOUT);
 
   if (!apiResponse.ok) {
     throw new Error(`Failed to fetch topics: ${apiResponse.status}`);
