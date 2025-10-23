@@ -192,14 +192,6 @@ async function scrapeHistoricalDataSync(
 
 // Synchronous version of fetchTopicsByDateRange
 async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (msg: string) => void): Promise<any[]> {
-  log('   Visiting main page...');
-  
-  const mainPageResponse = await fetchWithTimeout('https://www.dodsbirsttr.mil', {}, FETCH_TIMEOUT);
-  if (!mainPageResponse.ok) {
-    throw new Error(`Failed to load main page: ${mainPageResponse.status}`);
-  }
-  log('   ✓ Main page loaded');
-
   log('   Fetching topics from API...');
   const apiUrl = 'https://www.dodsbirsttr.mil/submissions/api/topics/search';
   
