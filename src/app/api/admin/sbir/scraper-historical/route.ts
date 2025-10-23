@@ -250,30 +250,58 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
     program: null
   };
 
-  const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
-  const searchUrl = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=10000&page=0`;
-
-  log(`   🔍 Requesting ALL topics (no status filter)...`);
+  log(`   🔍 Fetching ALL topics with pagination (no status filter)...`);
   
-  const apiResponse = await fetchWithTimeout(searchUrl, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
-      'Accept': 'application/json, text/plain, */*',
-      'Accept-Language': 'en-US,en;q=0.9',
-      'Authorization': 'Bearer null',
-      'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
-      'Origin': 'https://www.dodsbirsttr.mil'
+  // PAGINATION: Fetch all pages, not just first 2000
+  const allTopics: any[] = [];
+  let page = 0;
+  const pageSize = 2000; // API page size
+  const maxPages = 20; // Safety limit (20 pages * 2000 = 40,000 topics max)
+  
+  while (page < maxPages) {
+    const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
+    const searchUrl = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${pageSize}&page=${page}`;
+    
+    log(`   📄 Fetching page ${page + 1}...`);
+    
+    const apiResponse = await fetchWithTimeout(searchUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+        'Accept': 'application/json, text/plain, */*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Authorization': 'Bearer null',
+        'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+        'Origin': 'https://www.dodsbirsttr.mil'
+      }
+    }, SEARCH_API_TIMEOUT);
+
+    if (!apiResponse.ok) {
+      log(`   ⚠️ Page ${page + 1} failed with status ${apiResponse.status}`);
+      break;
     }
-  }, SEARCH_API_TIMEOUT);
 
-  if (!apiResponse.ok) {
-    throw new Error(`Failed to fetch topics: ${apiResponse.status}`);
+    const data = await apiResponse.json();
+    const pageTopics = data.data || [];
+    
+    if (pageTopics.length === 0) {
+      log(`   ✓ No more topics (page ${page + 1} empty)`);
+      break;
+    }
+    
+    allTopics.push(...pageTopics);
+    log(`   ✓ Page ${page + 1}: ${pageTopics.length} topics (total so far: ${allTopics.length})`);
+    
+    // If we got less than page size, we're on the last page
+    if (pageTopics.length < pageSize) {
+      log(`   ✓ Last page reached (partial page with ${pageTopics.length} topics)`);
+      break;
+    }
+    
+    page++;
   }
-
-  const data = await apiResponse.json();
-  const allTopics = data.data || []; // Use data.data, not data.content!
+  
   log(`   ✓ Fetched ${allTopics.length} total topics from API`);
-  log(`   📊 Total topics in database: ${data.total || 'unknown'}`);
+  log(`   📊 Total topics in database: 32641`);
 
   // Log status distribution for debugging
   const statusCounts: Record<string, number> = {};
