@@ -260,6 +260,9 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
       'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
       'Accept': 'application/json, text/plain, */*',
       'Accept-Language': 'en-US,en;q=0.9',
+      'Authorization': 'Bearer null',
+      'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+      'Origin': 'https://www.dodsbirsttr.mil'
     }
   }, SEARCH_API_TIMEOUT);
 
@@ -268,8 +271,9 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
   }
 
   const data = await apiResponse.json();
-  const allTopics = data.content || [];
+  const allTopics = data.data || []; // Use data.data, not data.content!
   log(`   ✓ Fetched ${allTopics.length} total topics from API`);
+  log(`   📊 Total topics in database: ${data.total || 'unknown'}`);
 
   // Filter for topics that were ACTIVE/AVAILABLE at any point during the date range
   // Logic: A topic overlaps with our date range if:
