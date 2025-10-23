@@ -260,7 +260,7 @@ async function processTopicsSync(topics: any[], log: (msg: string) => void) {
     log(`   [${progress}%] [${i + 1}/${topics.length}] ${topicCode}: ${displayTitle}`);
 
     try {
-      const detailedTopic = await fetchTopicDetails(topic.topicNumber);
+      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
       
       const hasDescription = !!detailedTopic.description && detailedTopic.description.length > 100;
       const hasKeywords = !!detailedTopic.keywords && detailedTopic.keywords.length > 10;
