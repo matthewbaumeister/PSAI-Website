@@ -26,12 +26,12 @@ export async function GET(request: NextRequest) {
 
     // Apply search filter
     if (search) {
-      query = query.or(`title.ilike.%${search}%,description.ilike.%${search}%,component.ilike.%${search}%`);
+      query = query.or(`title.ilike.%${search}%,description.ilike.%${search}%,sponsor_component.ilike.%${search}%`);
     }
 
     // Apply component filter
     if (component) {
-      query = query.eq('component', component);
+      query = query.eq('sponsor_component', component);
     }
 
     // Apply status filter

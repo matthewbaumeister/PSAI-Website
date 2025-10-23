@@ -36,8 +36,8 @@ export async function POST(request: NextRequest) {
     
     // Apply indexed filters BEFORE search (dramatically reduces search space)
     if (component && component !== 'all') {
-      query = query.eq('component', component);
-      console.log(` Filtering by component: ${component}`);
+      query = query.eq('sponsor_component', component);
+      console.log(` Filtering by sponsor_component: ${component}`);
     }
 
     // Handle multiple status filters (indexed field)
@@ -47,8 +47,8 @@ export async function POST(request: NextRequest) {
     }
 
     if (programType && programType !== 'all') {
-      query = query.eq('program_type', programType);
-      console.log(` Filtering by program_type: ${programType}`);
+      query = query.eq('solicitation_branch', programType);
+      console.log(` Filtering by solicitation_branch: ${programType}`);
     }
 
     // NOW apply search AFTER filtering (searches smaller dataset)
@@ -154,17 +154,17 @@ async function getFilterOptions() {
       .not('status', 'is', null)
       .order('status');
 
-    // Get unique program types
+    // Get unique solicitation branches (program types)
     const { data: programTypes } = await supabase
       .from('sbir_final')
-      .select('program_type')
-      .not('program_type', 'is', null)
-      .order('program_type');
+      .select('solicitation_branch')
+      .not('solicitation_branch', 'is', null)
+      .order('solicitation_branch');
 
     // Get unique values
     const uniqueComponents = [...new Set(components?.map((c: any) => c.sponsor_component).filter(Boolean))];
     const uniqueStatuses = [...new Set(statuses?.map(s => s.status).filter(Boolean))];
-    const uniqueProgramTypes = [...new Set(programTypes?.map(p => p.program_type).filter(Boolean))];
+    const uniqueProgramTypes = [...new Set(programTypes?.map(p => p.solicitation_branch).filter(Boolean))];
 
     return {
       components: uniqueComponents,

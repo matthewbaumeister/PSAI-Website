@@ -10,9 +10,9 @@ interface SBIRRecord {
   topic_number: string;
   topic_id: string;
   title: string;
-  component: string;
+  sponsor_component: string;
   status: string;
-  program_type: string;
+  solicitation_branch: string;
   
   // Dates
   open_date: string;
@@ -1382,7 +1382,7 @@ Our company specializes in artificial intelligence and machine learning for defe
                           <span 
                             onClick={(e) => {
                               e.stopPropagation();
-                              handleClickComponent(record.component);
+                              handleClickComponent(record.sponsor_component);
                             }}
                             style={{
                               padding: '4px 10px',
@@ -1397,7 +1397,7 @@ Our company specializes in artificial intelligence and machine learning for defe
                             onMouseOut={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'}
                             title="Click to filter by this component"
                           >
-                            {record.component}
+                            {record.sponsor_component}
                           </span>
                         </td>
                         <td style={cellStyle}>
@@ -1423,7 +1423,7 @@ Our company specializes in artificial intelligence and machine learning for defe
                             {record.status}
                           </span>
                         </td>
-                        <td style={cellStyle}>{record.program_type || 'N/A'}</td>
+                        <td style={cellStyle}>{record.solicitation_branch || 'N/A'}</td>
                         <td style={cellStyle}>{record.close_date || 'N/A'}</td>
                         <td style={cellStyle}>
                           <button
