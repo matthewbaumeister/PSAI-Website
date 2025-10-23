@@ -174,15 +174,18 @@ async function scrapeHistoricalDataSync(
 
   // Step 3: Update database
   log('💾 Step 3/3: Updating Supabase database with smart upsert...');
-  const upsertResult = await smartUpsertToSupabase(processedTopics, 'historical');
-  log(`✅ Database update complete: ${upsertResult.new} new, ${upsertResult.updated} updated, ${upsertResult.preserved} preserved`);
+  const upsertResult = await smartUpsertTopics(processedTopics, {
+    scraperType: 'historical',
+    logFn: log
+  });
+  log(`✅ Database update complete: ${upsertResult.newRecords} new, ${upsertResult.updatedRecords} updated, ${upsertResult.preservedRecords} preserved`);
 
   return {
     totalTopics: topics.length,
     processedTopics: successCount,
-    newRecords: upsertResult.new,
-    updatedRecords: upsertResult.updated,
-    preservedRecords: upsertResult.preserved,
+    newRecords: upsertResult.newRecords,
+    updatedRecords: upsertResult.updatedRecords,
+    preservedRecords: upsertResult.preservedRecords,
     timestamp: new Date().toISOString()
   };
 }
