@@ -10,6 +10,28 @@ const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 const baseUrl = 'https://www.dodsbirsttr.mil';
+const FETCH_TIMEOUT = 30000; // 30 second timeout for each fetch
+
+// Helper function for fetch with timeout
+async function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number = FETCH_TIMEOUT) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+  
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+    return response;
+  } catch (error) {
+    clearTimeout(timeoutId);
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new Error(`Request timeout after ${timeoutMs}ms: ${url}`);
+    }
+    throw error;
+  }
+}
 
 // Helper function to update job progress in database
 async function updateJobProgress(
@@ -126,75 +148,102 @@ export async function POST(request: Request) {
 }
 
 async function scrapeHistoricalData(jobId: string, monthFrom: string, yearFrom: string, monthTo: string, yearTo: string) {
-  const monthNames = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  
-  const monthIndexFrom = monthNames.indexOf(monthFrom);
-  const monthIndexTo = monthNames.indexOf(monthTo);
-  
-  const startDate = new Date(parseInt(yearFrom), monthIndexFrom, 1);
-  const endDate = new Date(parseInt(yearTo), monthIndexTo + 1, 0, 23, 59, 59);
-  
-  log(jobId, `📅 Date range: ${startDate.toISOString()} to ${endDate.toISOString()}`);
-  await updateJobProgress(jobId, { current_step: 'Fetching topics...' });
-  
-  const topics = await fetchTopicsByDateRange(jobId, startDate, endDate);
-  const dateRange = `${monthFrom} ${yearFrom} to ${monthTo} ${yearTo}`;
-  log(jobId, `✓ Found ${topics.length} topics from ${dateRange}`);
-  
-  await updateJobProgress(jobId, {
-    total_topics: topics.length,
-    current_step: `Found ${topics.length} topics`
-  });
-  
-  if (topics.length === 0) {
+  try {
+    const monthNames = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    
+    const monthIndexFrom = monthNames.indexOf(monthFrom);
+    const monthIndexTo = monthNames.indexOf(monthTo);
+    
+    const startDate = new Date(parseInt(yearFrom), monthIndexFrom, 1);
+    const endDate = new Date(parseInt(yearTo), monthIndexTo + 1, 0, 23, 59, 59);
+    
+    log(jobId, `📅 Date range: ${startDate.toISOString()} to ${endDate.toISOString()}`);
+    await updateJobProgress(jobId, { current_step: 'Fetching topics...' });
+    
+    let topics: any[] = [];
+    try {
+      topics = await fetchTopicsByDateRange(jobId, startDate, endDate);
+    } catch (fetchError) {
+      log(jobId, `❌ Error fetching topics: ${fetchError instanceof Error ? fetchError.message : String(fetchError)}`);
+      throw fetchError;
+    }
+    
+    const dateRange = `${monthFrom} ${yearFrom} to ${monthTo} ${yearTo}`;
+    log(jobId, `✓ Found ${topics.length} topics from ${dateRange}`);
+    
+    await updateJobProgress(jobId, {
+      total_topics: topics.length,
+      current_step: `Found ${topics.length} topics`
+    });
+    
+    if (topics.length === 0) {
+      await updateJobProgress(jobId, {
+        status: 'completed',
+        progress_percentage: 100,
+        completed_at: new Date().toISOString(),
+        current_step: 'No topics found in date range'
+      });
+      return {
+        totalTopics: 0,
+        processedTopics: 0,
+        newRecords: 0,
+        updatedRecords: 0,
+        preservedRecords: 0
+      };
+    }
+
+    log(jobId, `📋 Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
+    await updateJobProgress(jobId, { current_step: 'Processing topics...' });
+    const processedTopics = await processTopics(jobId, topics, baseUrl);
+
+    log(jobId, `💾 Step 3/3: Updating Supabase database with smart upsert...`);
+    await updateJobProgress(jobId, { current_step: 'Updating database...' });
+    
+    const { newRecords, updatedRecords, preservedRecords } = await smartUpsertTopics(processedTopics, {
+      scraperType: 'historical',
+      logFn: (msg: string) => log(jobId, msg)
+    });
+
     await updateJobProgress(jobId, {
       status: 'completed',
       progress_percentage: 100,
-      completed_at: new Date().toISOString()
+      new_records: newRecords,
+      updated_records: updatedRecords,
+      preserved_records: preservedRecords,
+      completed_at: new Date().toISOString(),
+      current_step: 'Complete!'
     });
+    
+    log(jobId, `✅ Scraping completed: ${newRecords} new, ${updatedRecords} updated, ${preservedRecords} preserved`);
+
     return {
-      totalTopics: 0,
-      processedTopics: 0,
-      newRecords: 0,
-      updatedRecords: 0,
-      preservedRecords: 0
+      totalTopics: topics.length,
+      processedTopics: processedTopics.length,
+      newRecords,
+      updatedRecords,
+      preservedRecords
     };
+  } catch (error) {
+    // Catch ANY error and update job status
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    const errorStack = error instanceof Error ? error.stack : '';
+    
+    log(jobId, `❌ FATAL ERROR: ${errorMessage}`);
+    log(jobId, `Stack: ${errorStack}`);
+    
+    await updateJobProgress(jobId, {
+      status: 'failed',
+      error_message: errorMessage,
+      error_details: errorStack,
+      completed_at: new Date().toISOString(),
+      current_step: 'Failed: ' + errorMessage
+    });
+    
+    throw error;
   }
-
-  log(jobId, `📋 Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
-  await updateJobProgress(jobId, { current_step: 'Processing topics...' });
-  const processedTopics = await processTopics(jobId, topics, baseUrl);
-
-  log(jobId, `💾 Step 3/3: Updating Supabase database with smart upsert...`);
-  await updateJobProgress(jobId, { current_step: 'Updating database...' });
-  
-  const { newRecords, updatedRecords, preservedRecords } = await smartUpsertTopics(processedTopics, {
-    scraperType: 'historical',
-    logFn: (msg: string) => log(jobId, msg)
-  });
-
-  await updateJobProgress(jobId, {
-    status: 'completed',
-    progress_percentage: 100,
-    new_records: newRecords,
-    updated_records: updatedRecords,
-    preserved_records: preservedRecords,
-    completed_at: new Date().toISOString(),
-    current_step: 'Complete!'
-  });
-  
-  log(jobId, `✅ Scraping completed: ${newRecords} new, ${updatedRecords} updated, ${preservedRecords} preserved`);
-
-  return {
-    totalTopics: topics.length,
-    processedTopics: processedTopics.length,
-    newRecords,
-    updatedRecords,
-    preservedRecords
-  };
 }
 
 async function fetchTopicsByDateRange(jobId: string, startDate: Date, endDate: Date) {
@@ -211,7 +260,7 @@ async function fetchTopicsByDateRange(jobId: string, startDate: Date, endDate: D
   
   try {
     log(jobId, `   Step 1: Visiting main page...`);
-    const initResponse = await fetch(`${baseUrl}/topics-app/`, {
+    const initResponse = await fetchWithTimeout(`${baseUrl}/topics-app/`, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
@@ -222,7 +271,7 @@ async function fetchTopicsByDateRange(jobId: string, startDate: Date, endDate: D
     await new Promise(resolve => setTimeout(resolve, 1000));
     
     log(jobId, `   Step 2: Fetching component dropdown...`);
-    const compResponse = await fetch(`${baseUrl}/core/api/public/dropdown/components`, {
+    const compResponse = await fetchWithTimeout(`${baseUrl}/core/api/public/dropdown/components`, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
         'Accept': 'application/json, text/plain, */*',
@@ -236,7 +285,8 @@ async function fetchTopicsByDateRange(jobId: string, startDate: Date, endDate: D
     
     log(jobId, `   Session fully initialized - ready for topic search`);
   } catch (error) {
-    log(jobId, `   ⚠ Session initialization had issues: ${error}`);
+    log(jobId, `   ⚠ Session initialization failed: ${error instanceof Error ? error.message : String(error)}`);
+    throw new Error(`Failed to initialize session: ${error instanceof Error ? error.message : String(error)}`);
   }
   
   log(jobId, `   Waiting 3 seconds before search...`);
@@ -262,16 +312,22 @@ async function fetchTopicsByDateRange(jobId: string, startDate: Date, endDate: D
     const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
     const url = `${baseUrl}/topics/api/public/topics/search?searchParam=${encodedParams}&size=${pageSize}&page=${pageNum}`;
     
-    const response = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
-        'Accept': 'application/json, text/plain, */*',
-        'Accept-Language': 'en-US,en;q=0.9',
-        'Authorization': 'Bearer null',
-        'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
-        'Origin': 'https://www.dodsbirsttr.mil'
-      }
-    });
+    let response;
+    try {
+      response = await fetchWithTimeout(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
+          'Accept': 'application/json, text/plain, */*',
+          'Accept-Language': 'en-US,en;q=0.9',
+          'Authorization': 'Bearer null',
+          'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
+          'Origin': 'https://www.dodsbirsttr.mil'
+        }
+      });
+    } catch (fetchError) {
+      log(jobId, `❌ Fetch timeout/error on page ${pageNum}: ${fetchError instanceof Error ? fetchError.message : String(fetchError)}`);
+      throw fetchError;
+    }
     
     if (!response.ok) {
       log(jobId, `⚠ API error on page ${pageNum}: ${response.status}`);
