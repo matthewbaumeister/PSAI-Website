@@ -268,17 +268,29 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
   const allTopics = data.content || [];
   log(`   ✓ Fetched ${allTopics.length} total topics from API`);
 
+  // Filter for topics that were ACTIVE/AVAILABLE at any point during the date range
+  // Logic: A topic overlaps with our date range if:
+  //   - It opened on or before the range ends (openDate <= toDate)
+  //   - AND it closes on or after the range starts (closeDate >= fromDate OR closeDate is null/future)
   const filteredTopics = allTopics.filter((topic: any) => {
     const openDate = topic.openDate ? new Date(topic.openDate) : null;
     const closeDate = topic.closeDate ? new Date(topic.closeDate) : null;
     
-    if (openDate && openDate >= fromDate && openDate <= toDate) return true;
-    if (closeDate && closeDate >= fromDate && closeDate <= toDate) return true;
+    // Skip topics with no dates
+    if (!openDate) return false;
     
-    return false;
+    // Topic must have opened by the end of our date range
+    if (openDate > toDate) return false;
+    
+    // Topic must not have closed before our date range started
+    // (or have no close date yet, meaning still open)
+    if (closeDate && closeDate < fromDate) return false;
+    
+    return true;
   });
 
-  log(`   ✓ Filtered to ${filteredTopics.length} topics in date range`);
+  log(`   ✓ Filtered to ${filteredTopics.length} topics that were active during date range`);
+  log(`   📊 Date range: ${fromDate.toISOString().split('T')[0]} to ${toDate.toISOString().split('T')[0]}`);
   return filteredTopics;
 }
 
