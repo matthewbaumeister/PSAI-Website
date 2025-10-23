@@ -338,6 +338,7 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
     }
   }
   
+  // NEW MONTHLY BATCHING SCRAPER - Automatically breaks into monthly chunks
   const triggerHistoricalScraper = async () => {
     if (!selectedMonthFrom || !selectedYearFrom) {
       showNotification('Please select a start date', 'warning')
@@ -351,8 +352,8 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
     
     // Get current month and year if "To Current" is checked
     const currentDate = new Date();
-    const currentMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const currentMonth = currentMonthNames[currentDate.getMonth()];
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const currentMonth = monthNames[currentDate.getMonth()];
     const currentYear = currentDate.getFullYear().toString();
     
     const monthTo = useToCurrent ? currentMonth : selectedMonthTo;
@@ -362,123 +363,157 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
     console.log('[Historical Scraper] Starting scrape for', dateRange)
     setIsScrapingHistorical(true)
     setHistoricalScraperResult(null)
-    setScraperProgress(0)
-    setScraperCurrentStep('Initializing historical scraper...')
     
-    const logs: string[] = [`Starting historical scrape for ${dateRange}...`]
-    setHistoricalScraperProgress({ phase: 'Initializing scraper...', processedTopics: 0, totalTopics: 0, logs })
+    // Break date range into monthly chunks
+    const fromMonthIndex = monthNames.indexOf(selectedMonthFrom)
+    const toMonthIndex = monthNames.indexOf(monthTo)
+    const fromYear = parseInt(selectedYearFrom)
+    const toYearInt = parseInt(yearTo)
     
-    showNotification(` Scraping ${dateRange} opportunities - running in background...`, 'info')
+    const monthlyChunks: Array<{month: string, year: string}> = []
+    let currentYear = fromYear
+    let currentMonthIndex = fromMonthIndex
     
-    try {
-      // Start the scraper - it returns immediately with a job ID
-      const response = await fetch('/api/admin/sbir/scraper-historical', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          monthFrom: selectedMonthFrom,
-          yearFrom: selectedYearFrom,
-          monthTo: monthTo,
-          yearTo: yearTo
-        })
+    while (currentYear < toYearInt || (currentYear === toYearInt && currentMonthIndex <= toMonthIndex)) {
+      monthlyChunks.push({
+        month: monthNames[currentMonthIndex],
+        year: currentYear.toString()
       })
       
-      const result = await response.json()
-      console.log('[Historical Scraper] Initial Response:', result)
-      
-      if (!response.ok || !result.jobId) {
-        showNotification(` Failed to start scraper: ${result.message || 'Unknown error'}`, 'error')
-        setIsScrapingHistorical(false)
-        return
+      currentMonthIndex++
+      if (currentMonthIndex > 11) {
+        currentMonthIndex = 0
+        currentYear++
+      }
+    }
+    
+    console.log(`[Historical Scraper] Breaking into ${monthlyChunks.length} monthly chunks:`, monthlyChunks)
+    
+    const allLogs: string[] = [` Breaking date range into ${monthlyChunks.length} monthly chunks...`]
+    setHistoricalScraperProgress({ 
+      phase: `Processing ${monthlyChunks.length} monthly chunks...`, 
+      processedTopics: 0, 
+      totalTopics: 0, 
+      logs: allLogs 
+    })
+    
+    showNotification(` Scraping ${dateRange} - processing ${monthlyChunks.length} months...`, 'info')
+    
+    // Aggregate results across all months
+    let totalTopics = 0
+    let totalProcessed = 0
+    let totalNew = 0
+    let totalUpdated = 0
+    let totalPreserved = 0
+    
+    try {
+      // Process each month sequentially
+      for (let i = 0; i < monthlyChunks.length; i++) {
+        const chunk = monthlyChunks[i]
+        const chunkProgress = Math.round(((i + 1) / monthlyChunks.length) * 100)
+        
+        allLogs.push(`\n[${chunkProgress}%] Processing ${chunk.month} ${chunk.year}...`)
+        setHistoricalScraperProgress({ 
+          phase: `[${chunkProgress}%] Processing ${chunk.month} ${chunk.year}...`, 
+          processedTopics: totalProcessed, 
+          totalTopics: totalTopics,
+          logs: [...allLogs]
+        })
+        
+        console.log(`[Historical Scraper] [${i + 1}/${monthlyChunks.length}] Scraping ${chunk.month} ${chunk.year}...`)
+        
+        const response = await fetch('/api/admin/sbir/scraper-historical', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            monthFrom: chunk.month,
+            yearFrom: chunk.year,
+            monthTo: chunk.month,
+            yearTo: chunk.year
+          })
+        })
+        
+        const result = await response.json()
+        
+        if (!response.ok || !result.success) {
+          allLogs.push(`   Error: ${result.message || 'Unknown error'}`)
+          console.error(`[Historical Scraper] Failed to scrape ${chunk.month} ${chunk.year}:`, result.message)
+          continue // Skip this month but continue with others
+        }
+        
+        // Aggregate results
+        totalTopics += result.totalTopics || 0
+        totalProcessed += result.processedTopics || 0
+        totalNew += result.newRecords || 0
+        totalUpdated += result.updatedRecords || 0
+        totalPreserved += result.preservedRecords || 0
+        
+        // Add detailed logs from this month
+        if (result.detailedLogs && Array.isArray(result.detailedLogs)) {
+          allLogs.push(...result.detailedLogs.map((log: string) => `   ${log}`))
+        }
+        
+        allLogs.push(`   Completed: ${result.totalTopics || 0} topics (${result.newRecords || 0} new, ${result.updatedRecords || 0} updated)`)
+        
+        setHistoricalScraperProgress({ 
+          phase: `[${chunkProgress}%] Completed ${chunk.month} ${chunk.year}`, 
+          processedTopics: totalProcessed, 
+          totalTopics: totalTopics,
+          logs: [...allLogs]
+        })
       }
       
-      const jobId = result.jobId
-      showNotification(` Scraper started! Monitoring real-time progress...`, 'info')
+      // All months completed
+      allLogs.push(`\n All ${monthlyChunks.length} months completed!`)
+      allLogs.push(` Total: ${totalTopics} topics, ${totalNew} new, ${totalUpdated} updated`)
       
-      // Poll for progress every 3 seconds
-      const pollInterval = setInterval(async () => {
-        try {
-          const statusResponse = await fetch(`/api/admin/sbir/scraper-status?jobId=${jobId}`)
-          
-          if (!statusResponse.ok) {
-            console.error('[Historical Scraper] Failed to fetch status')
-            return
-          }
-          
-          const statusData = await statusResponse.json()
-          const job = statusData.job
-          
-          console.log('[Historical Scraper] Progress Update:', {
-            status: job.status,
-            progress: job.progress_percentage,
-            processed: job.processed_topics,
-            total: job.total_topics,
-            currentStep: job.current_step
-          })
-          
-          // Update UI with real progress
-          setScraperProgress(job.progress_percentage || 0)
-          setScraperCurrentStep(job.current_step || 'Processing...')
-          
-          setHistoricalScraperProgress({
-            phase: job.current_step || 'Processing...',
-            processedTopics: job.processed_topics || 0,
-            totalTopics: job.total_topics || 0,
-            logs: (job.logs || []).map((log: any) => log.message)
-          })
-          
-          // Check if completed or failed
-          if (job.status === 'completed') {
-            clearInterval(pollInterval)
-            setScraperProgress(100)
-            setScraperCurrentStep(' Historical scrape completed!')
-            
-            setHistoricalScraperResult({
-              totalTopics: job.total_topics,
-              processedTopics: job.processed_topics,
-              newRecords: job.new_records,
-              updatedRecords: job.updated_records,
-              preservedRecords: job.preserved_records
-            })
-            
-            const message = `
- Historical Scrape Results (${dateRange}):
-• Total Topics Found: ${job.total_topics || 0}
-• Processed: ${job.processed_topics || 0}
-• New Records: ${job.new_records || 0}
-• Updated Records: ${job.updated_records || 0}
-• Preserved: ${job.preserved_records || 0}
-
-Check the visualizer below for detailed logs.
-            `
-            showNotification(message, 'success', {
-              totalTopics: job.total_topics || 0,
-              newRecords: job.new_records || 0,
-              updatedRecords: job.updated_records || 0
-            })
-            
-            // Auto-refresh stats after scrape completes
-            console.log('[Historical Scraper] Auto-refreshing statistics...')
-            await loadSbirStats()
-            await checkSbirScraperStatus()
-            
-            setIsScrapingHistorical(false)
-          } else if (job.status === 'failed') {
-            clearInterval(pollInterval)
-            showNotification(` Historical scrape failed: ${job.error_message || 'Unknown error'}`, 'error')
-            setIsScrapingHistorical(false)
-          }
-          
-        } catch (pollError) {
-          console.error('[Historical Scraper] Polling error:', pollError)
-        }
-      }, 3000) // Poll every 3 seconds
+      setHistoricalScraperResult({
+        totalTopics,
+        processedTopics: totalProcessed,
+        newRecords: totalNew,
+        updatedRecords: totalUpdated,
+        preservedRecords: totalPreserved
+      })
+      
+      setHistoricalScraperProgress({ 
+        phase: ' All months completed!', 
+        processedTopics: totalProcessed, 
+        totalTopics: totalTopics,
+        logs: [...allLogs]
+      })
+      
+      const message = `
+ Historical Scrape Complete (${dateRange}):
+• Total Topics Found: ${totalTopics}
+• Processed: ${totalProcessed}
+• New Records: ${totalNew}
+• Updated Records: ${totalUpdated}
+• Preserved: ${totalPreserved}
+      `
+      showNotification(message, 'success', {
+        totalTopics,
+        newRecords: totalNew,
+        updatedRecords: totalUpdated
+      })
+      
+      // Auto-refresh stats after scrape completes
+      console.log('[Historical Scraper] Auto-refreshing statistics...')
+      await loadSbirStats()
+      await checkSbirScraperStatus()
       
     } catch (error) {
       console.error('[Historical Scraper] Error:', error)
+      allLogs.push(` Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      setHistoricalScraperProgress({ 
+        phase: ' Error occurred', 
+        processedTopics: totalProcessed, 
+        totalTopics: totalTopics,
+        logs: [...allLogs]
+      })
       showNotification(` Historical scrape error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
+    } finally {
       setIsScrapingHistorical(false)
     }
   }
@@ -1858,6 +1893,107 @@ Check the visualizer below for detailed logs.
                   {isLoadingStats ? 'Loading...' : 'Refresh Statistics'}
                 </button>
               </div>
+
+              {/* Historical Scraper Progress Visualizer - Right under button */}
+              {isScrapingHistorical && historicalScraperProgress && (
+                <div style={{
+                  background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                  border: '3px solid #8b5cf6',
+                  borderRadius: '16px',
+                  padding: '36px',
+                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 100px rgba(139, 92, 246, 0.3)',
+                  marginTop: '24px',
+                  marginBottom: '24px'
+                }}>
+                  <h3 style={{ 
+                    color: '#ffffff', 
+                    fontSize: '24px', 
+                    marginBottom: '24px',
+                    textAlign: 'center'
+                  }}>
+                     Scraping Historical Opportunities
+                  </h3>
+                  
+                  {/* Progress Bar */}
+                  <div style={{
+                    width: '100%',
+                    height: '16px',
+                    background: 'rgba(148, 163, 184, 0.2)',
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    marginBottom: '20px'
+                  }}>
+                    <div style={{
+                      width: `${historicalScraperProgress.processedTopics && historicalScraperProgress.totalTopics 
+                        ? (historicalScraperProgress.processedTopics / historicalScraperProgress.totalTopics * 100) 
+                        : 10}%`,
+                      height: '100%',
+                      background: 'linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%)',
+                      transition: 'width 0.5s ease',
+                      animation: 'pulse 2s infinite'
+                    }} />
+                  </div>
+                  
+                  {/* Progress Info */}
+                  <div style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: '1.8' }}>
+                    <p style={{ marginBottom: '12px' }}>
+                      <strong style={{ color: '#8b5cf6' }}>Phase:</strong> {historicalScraperProgress.phase || 'Starting...'}
+                    </p>
+                    {historicalScraperProgress.totalTopics > 0 && (
+                      <p style={{ marginBottom: '12px' }}>
+                        <strong style={{ color: '#8b5cf6' }}>Progress:</strong> {historicalScraperProgress.processedTopics || 0} / {historicalScraperProgress.totalTopics} topics
+                      </p>
+                    )}
+                  </div>
+                  
+                  {/* Logs */}
+                  {historicalScraperProgress.logs && historicalScraperProgress.logs.length > 0 && (
+                    <div style={{
+                      marginTop: '20px',
+                      padding: '16px',
+                      background: 'rgba(0, 0, 0, 0.4)',
+                      border: '1px solid rgba(139, 92, 246, 0.3)',
+                      borderRadius: '12px',
+                      maxHeight: '400px',
+                      overflowY: 'auto'
+                    }}>
+                      <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        marginBottom: '12px'
+                      }}>
+                        <p style={{ color: '#8b5cf6', fontSize: '13px', fontWeight: '700', margin: 0 }}>
+                          Detailed Progress Log ({historicalScraperProgress.logs.length} entries)
+                        </p>
+                        <span style={{ color: '#10b981', fontSize: '11px', fontWeight: '600' }}>
+                          LIVE
+                        </span>
+                      </div>
+                      {historicalScraperProgress.logs.slice(-100).map((log: string, idx: number) => {
+                        const cleanLog = log.split(': ').slice(1).join(': ') || log;
+                        const isProgress = cleanLog.includes('[') && cleanLog.includes('%]');
+                        const isSuccess = cleanLog.includes('✓');
+                        const isWarning = cleanLog.includes('⚠');
+                        
+                        return (
+                          <p key={idx} style={{ 
+                            color: isSuccess ? '#10b981' : isWarning ? '#f59e0b' : '#94a3b8',
+                            fontSize: isProgress ? '13px' : '12px',
+                            marginBottom: '6px',
+                            fontFamily: 'monospace',
+                            fontWeight: isProgress ? '600' : '400',
+                            lineHeight: '1.4',
+                            paddingLeft: cleanLog.startsWith('      ') ? '20px' : '0'
+                          }}>
+                            {cleanLog}
+                          </p>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              )}
               
               {/* Scraper Status */}
               {sbirScraperStatus && scraperMode === 'active' && (
@@ -2284,116 +2420,6 @@ Check the visualizer below for detailed logs.
               )}
             </div>
 
-            {/* Historical Scraper Progress Visualizer */}
-            {isScrapingHistorical && historicalScraperProgress && (
-              <div style={{
-                position: 'absolute',
-                top: '120px',
-                left: '0',
-                right: '0',
-                zIndex: 1000,
-                padding: '0 20px',
-                marginBottom: '24px'
-              }}>
-                <div style={{
-                  background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-                  border: '3px solid #8b5cf6',
-                  borderRadius: '16px',
-                  padding: '36px',
-                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 100px rgba(139, 92, 246, 0.3)',
-                  maxWidth: '900px',
-                  margin: '0 auto'
-                }}>
-                  <h3 style={{ 
-                    color: '#ffffff', 
-                    fontSize: '24px', 
-                    marginBottom: '24px',
-                    textAlign: 'center'
-                  }}>
-                     Scraping Historical Opportunities
-                  </h3>
-                  
-                  {/* Progress Bar */}
-                  <div style={{
-                    width: '100%',
-                    height: '16px',
-                    background: 'rgba(148, 163, 184, 0.2)',
-                    borderRadius: '8px',
-                    overflow: 'hidden',
-                    marginBottom: '20px'
-                  }}>
-                    <div style={{
-                      width: `${historicalScraperProgress.processedTopics && historicalScraperProgress.totalTopics 
-                        ? (historicalScraperProgress.processedTopics / historicalScraperProgress.totalTopics * 100) 
-                        : 10}%`,
-                      height: '100%',
-                      background: 'linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%)',
-                      transition: 'width 0.5s ease',
-                      animation: 'pulse 2s infinite'
-                    }} />
-                  </div>
-                  
-                  {/* Progress Info */}
-                  <div style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: '1.8' }}>
-                    <p style={{ marginBottom: '12px' }}>
-                      <strong style={{ color: '#8b5cf6' }}>Phase:</strong> {historicalScraperProgress.phase || 'Starting...'}
-                    </p>
-                    {historicalScraperProgress.totalTopics > 0 && (
-                      <p style={{ marginBottom: '12px' }}>
-                        <strong style={{ color: '#8b5cf6' }}>Progress:</strong> {historicalScraperProgress.processedTopics || 0} / {historicalScraperProgress.totalTopics} topics
-                      </p>
-                    )}
-                  </div>
-                  
-                  {/* Logs */}
-                  {historicalScraperProgress.logs && historicalScraperProgress.logs.length > 0 && (
-                    <div style={{
-                      marginTop: '20px',
-                      padding: '16px',
-                      background: 'rgba(0, 0, 0, 0.4)',
-                      border: '1px solid rgba(139, 92, 246, 0.3)',
-                      borderRadius: '12px',
-                      maxHeight: '400px',
-                      overflowY: 'auto'
-                    }}>
-                      <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        marginBottom: '12px'
-                      }}>
-                        <p style={{ color: '#8b5cf6', fontSize: '13px', fontWeight: '700', margin: 0 }}>
-                          Detailed Progress Log ({historicalScraperProgress.logs.length} entries)
-                        </p>
-                        <span style={{ color: '#10b981', fontSize: '11px', fontWeight: '600' }}>
-                          LIVE
-                        </span>
-                      </div>
-                      {historicalScraperProgress.logs.slice(-50).reverse().map((log: string, idx: number) => {
-                        const cleanLog = log.split(': ').slice(1).join(': ') || log;
-                        const isProgress = cleanLog.includes('[') && cleanLog.includes('%]');
-                        const isSuccess = cleanLog.includes('✓');
-                        const isWarning = cleanLog.includes('⚠');
-                        
-                        return (
-                          <p key={idx} style={{ 
-                            color: isSuccess ? '#10b981' : isWarning ? '#f59e0b' : '#94a3b8',
-                            fontSize: isProgress ? '13px' : '12px',
-                            marginBottom: '6px',
-                            fontFamily: 'monospace',
-                            fontWeight: isProgress ? '600' : '400',
-                            lineHeight: '1.4',
-                            paddingLeft: cleanLog.startsWith('      ') ? '20px' : '0'
-                          }}>
-                            {cleanLog}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              </div>
-            )}
 
             {/* Active Opportunities Scraped Data Section */}
             {(isScrapingActive || activeScraperData.length > 0) && (
