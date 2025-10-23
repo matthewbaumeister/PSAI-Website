@@ -65,17 +65,50 @@ export async function GET(request: NextRequest) {
       console.error('Error fetching active count:', activeError);
     }
 
-    // Get last updated timestamp from most recently scraped record
+    // Get last updated timestamp - try multiple date columns as fallback
+    let lastUpdated = null;
+    
+    // Try last_scraped first (most accurate)
     const { data: lastScrapedData, error: lastScrapedError } = await supabase
       .from('sbir_final')
       .select('last_scraped')
       .not('last_scraped', 'is', null)
       .order('last_scraped', { ascending: false })
       .limit(1)
-      .single();
+      .maybeSingle();
 
-    if (lastScrapedError) {
-      console.error('Error fetching last scraped:', lastScrapedError);
+    if (!lastScrapedError && lastScrapedData) {
+      lastUpdated = lastScrapedData.last_scraped;
+    }
+    
+    // If no last_scraped, try open_datetime
+    if (!lastUpdated) {
+      const { data: openDateData } = await supabase
+        .from('sbir_final')
+        .select('open_datetime')
+        .not('open_datetime', 'is', null)
+        .order('open_datetime', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      
+      if (openDateData) {
+        lastUpdated = openDateData.open_datetime;
+      }
+    }
+    
+    // If still no date, try close_datetime
+    if (!lastUpdated) {
+      const { data: closeDateData } = await supabase
+        .from('sbir_final')
+        .select('close_datetime')
+        .not('close_datetime', 'is', null)
+        .order('close_datetime', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      
+      if (closeDateData) {
+        lastUpdated = closeDateData.close_datetime;
+      }
     }
 
     const stats = {
@@ -88,7 +121,7 @@ export async function GET(request: NextRequest) {
       statuses: Object.entries(statusCounts)
         .map(([status, count]) => ({ status, count }))
         .sort((a, b) => b.count - a.count),
-      lastUpdated: lastScrapedData?.last_scraped || null
+      lastUpdated: lastUpdated
     };
 
     return NextResponse.json(stats);
