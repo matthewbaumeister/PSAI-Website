@@ -368,53 +368,10 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
     const logs: string[] = [`Starting historical scrape for ${dateRange}...`]
     setHistoricalScraperProgress({ phase: 'Initializing scraper...', processedTopics: 0, totalTopics: 0, logs })
     
-    showNotification(` Scraping ${dateRange} opportunities...`, 'info')
-    
-    // Simulate progress phases while waiting for API response
-    const startTime = Date.now();
-    const progressInterval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const seconds = Math.floor(elapsed / 1000);
-      
-      // Calculate simulated progress (0-95%, leave 5% for completion)
-      // Historical scrapes typically take longer, so use a 4-minute timeline
-      const simulatedProgress = Math.min(95, Math.floor((seconds / 240) * 95)); // 240 seconds to reach 95%
-      setScraperProgress(simulatedProgress);
-      
-      // Update phase text and historicalScraperProgress
-      setHistoricalScraperProgress((prev: any) => {
-        if (!prev) return prev;
-        
-        let phaseText = '';
-        // Simulate different phases based on elapsed time
-        if (seconds < 10) {
-          phaseText = 'Initializing session with DSIP...';
-          setScraperCurrentStep(' Initializing session...');
-        } else if (seconds < 30) {
-          phaseText = 'Fetching topics from date range...';
-          setScraperCurrentStep(` Fetching topics (${simulatedProgress}%)...`);
-        } else if (seconds < 60) {
-          phaseText = 'Found topics, starting detailed extraction...';
-          setScraperCurrentStep(` Starting extraction (${simulatedProgress}%)...`);
-        } else if (seconds < 120) {
-          phaseText = 'Processing topic details (tech areas, keywords, Q&A)...';
-          setScraperCurrentStep(` Processing topics (${simulatedProgress}%)...`);
-        } else if (seconds < 180) {
-          phaseText = 'Continuing detailed extraction...';
-          setScraperCurrentStep(` Extracting details (${simulatedProgress}%)...`);
-        } else if (seconds < 240) {
-          phaseText = 'Finalizing topic processing...';
-          setScraperCurrentStep(` Finalizing (${simulatedProgress}%)...`);
-        } else {
-          phaseText = 'Updating database with results...';
-          setScraperCurrentStep(' Updating database...');
-        }
-        
-        return { ...prev, phase: phaseText };
-      });
-    }, 2000); // Update every 2 seconds
+    showNotification(` Scraping ${dateRange} opportunities - running in background...`, 'info')
     
     try {
+      // Start the scraper - it returns immediately with a job ID
       const response = await fetch('/api/admin/sbir/scraper-historical', {
         method: 'POST',
         headers: {
@@ -428,77 +385,100 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
         })
       })
       
-      // Clear the progress simulation interval
-      clearInterval(progressInterval)
-      
-      setScraperProgress(100)
-      setScraperCurrentStep(' Historical scrape completed!')
-      
       const result = await response.json()
-      console.log('[Historical Scraper] Full Response:', JSON.stringify(result, null, 2))
+      console.log('[Historical Scraper] Initial Response:', result)
       
-      // Display the detailed logs from the scraper and parse progress
-      if (result.detailedLogs && result.detailedLogs.length > 0) {
-        console.log('[Historical Scraper] Received', result.detailedLogs.length, 'detailed log entries')
-        
-        // Parse the logs to extract the highest progress percentage and topic counts
-        let maxProcessed = 0;
-        let maxTotal = 0;
-        
-        result.detailedLogs.forEach((log: string) => {
-          // Look for patterns like "[6%] [30/455]"
-          const progressMatch = log.match(/\[(\d+)%\]\s*\[(\d+)\/(\d+)\]/);
-          if (progressMatch) {
-            const processed = parseInt(progressMatch[2]);
-            const total = parseInt(progressMatch[3]);
-            if (processed > maxProcessed) {
-              maxProcessed = processed;
-              maxTotal = total;
-            }
+      if (!response.ok || !result.jobId) {
+        showNotification(` Failed to start scraper: ${result.message || 'Unknown error'}`, 'error')
+        setIsScrapingHistorical(false)
+        return
+      }
+      
+      const jobId = result.jobId
+      showNotification(` Scraper started! Monitoring real-time progress...`, 'info')
+      
+      // Poll for progress every 3 seconds
+      const pollInterval = setInterval(async () => {
+        try {
+          const statusResponse = await fetch(`/api/admin/sbir/scraper-status?jobId=${jobId}`)
+          
+          if (!statusResponse.ok) {
+            console.error('[Historical Scraper] Failed to fetch status')
+            return
           }
-        });
-        
-        setHistoricalScraperProgress({
-          phase: 'completed',
-          processedTopics: maxProcessed || result.processedTopics || 0,
-          totalTopics: maxTotal || result.totalTopics || 0,
-          logs: result.detailedLogs
-        })
-      }
-      
-      setHistoricalScraperResult(result)
-      
-      if (response.ok) {
-        const details = result.result || result;
-        const message = `
+          
+          const statusData = await statusResponse.json()
+          const job = statusData.job
+          
+          console.log('[Historical Scraper] Progress Update:', {
+            status: job.status,
+            progress: job.progress_percentage,
+            processed: job.processed_topics,
+            total: job.total_topics,
+            currentStep: job.current_step
+          })
+          
+          // Update UI with real progress
+          setScraperProgress(job.progress_percentage || 0)
+          setScraperCurrentStep(job.current_step || 'Processing...')
+          
+          setHistoricalScraperProgress({
+            phase: job.current_step || 'Processing...',
+            processedTopics: job.processed_topics || 0,
+            totalTopics: job.total_topics || 0,
+            logs: (job.logs || []).map((log: any) => log.message)
+          })
+          
+          // Check if completed or failed
+          if (job.status === 'completed') {
+            clearInterval(pollInterval)
+            setScraperProgress(100)
+            setScraperCurrentStep(' Historical scrape completed!')
+            
+            setHistoricalScraperResult({
+              totalTopics: job.total_topics,
+              processedTopics: job.processed_topics,
+              newRecords: job.new_records,
+              updatedRecords: job.updated_records,
+              preservedRecords: job.preserved_records
+            })
+            
+            const message = `
  Historical Scrape Results (${dateRange}):
-• Total Topics Found: ${details.totalTopics || 0}
-• Processed: ${details.processedTopics || 0}
-• New Records: ${details.newRecords || 0}
-• Updated Records: ${details.updatedRecords || 0}
-• Unchanged: ${details.skippedRecords || 0}
+• Total Topics Found: ${job.total_topics || 0}
+• Processed: ${job.processed_topics || 0}
+• New Records: ${job.new_records || 0}
+• Updated Records: ${job.updated_records || 0}
+• Preserved: ${job.preserved_records || 0}
 
-For detailed logs, check Vercel Function Logs.
-        `
-        showNotification(message, 'success', {
-          totalTopics: details.totalTopics || 0,
-          newRecords: details.newRecords || 0,
-          updatedRecords: details.updatedRecords || 0
-        })
-        
-        // Auto-refresh stats after scrape completes
-        console.log('[Historical Scraper] Auto-refreshing statistics...')
-        await loadSbirStats()
-        await checkSbirScraperStatus()
-      } else {
-        showNotification(` Historical scrape failed: ${result.message || 'Unknown error'}`, 'error')
-      }
+Check the visualizer below for detailed logs.
+            `
+            showNotification(message, 'success', {
+              totalTopics: job.total_topics || 0,
+              newRecords: job.new_records || 0,
+              updatedRecords: job.updated_records || 0
+            })
+            
+            // Auto-refresh stats after scrape completes
+            console.log('[Historical Scraper] Auto-refreshing statistics...')
+            await loadSbirStats()
+            await checkSbirScraperStatus()
+            
+            setIsScrapingHistorical(false)
+          } else if (job.status === 'failed') {
+            clearInterval(pollInterval)
+            showNotification(` Historical scrape failed: ${job.error_message || 'Unknown error'}`, 'error')
+            setIsScrapingHistorical(false)
+          }
+          
+        } catch (pollError) {
+          console.error('[Historical Scraper] Polling error:', pollError)
+        }
+      }, 3000) // Poll every 3 seconds
+      
     } catch (error) {
-      clearInterval(progressInterval)
       console.error('[Historical Scraper] Error:', error)
       showNotification(` Historical scrape error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
-    } finally {
-      clearInterval(progressInterval)
       setIsScrapingHistorical(false)
     }
   }

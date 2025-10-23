@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { mapToSupabaseColumns } from '@/lib/sbir-column-mapper-clean';
 import { smartUpsertTopics } from '@/lib/smart-upsert-logic';
 
-export const maxDuration = 300; // 5 minutes
+export const maxDuration = 300; // 5 minutes (max for Vercel)
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -11,16 +11,59 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 const baseUrl = 'https://www.dodsbirsttr.mil';
 
-// Global log collector
-const detailedLogs: string[] = [];
+// Helper function to update job progress in database
+async function updateJobProgress(
+  jobId: string, 
+  updates: {
+    total_topics?: number;
+    processed_topics?: number;
+    progress_percentage?: number;
+    current_step?: string;
+    current_topic_code?: string;
+    current_topic_title?: string;
+    new_records?: number;
+    updated_records?: number;
+    preserved_records?: number;
+    status?: string;
+    error_message?: string;
+    completed_at?: string;
+    logs?: any[];
+  }
+) {
+  try {
+    // If we're adding logs, append them to existing logs
+    if (updates.logs) {
+      const { data: existingJob } = await supabase
+        .from('scraping_jobs')
+        .select('logs')
+        .eq('id', jobId)
+        .single();
+      
+      if (existingJob) {
+        const existingLogs = existingJob.logs || [];
+        updates.logs = [...existingLogs, ...updates.logs];
+      }
+    }
+    
+    await supabase
+      .from('scraping_jobs')
+      .update(updates)
+      .eq('id', jobId);
+  } catch (error) {
+    console.error(`Failed to update job ${jobId}:`, error);
+  }
+}
 
-function log(message: string) {
+function log(jobId: string, message: string) {
   console.log(message);
-  detailedLogs.push(message);
+  // Add log to database (async, don't wait)
+  updateJobProgress(jobId, {
+    logs: [{ timestamp: new Date().toISOString(), message }]
+  }).catch(() => {});
 }
 
 export async function POST(request: Request) {
-  detailedLogs.length = 0; // Clear previous logs
+  let jobId: string | null = null;
   
   try {
     const { monthFrom, yearFrom, monthTo, yearTo } = await request.json();
@@ -33,30 +76,56 @@ export async function POST(request: Request) {
     }
     
     const dateRange = `${monthFrom} ${yearFrom} to ${monthTo} ${yearTo}`;
-    log(`🗓️ Starting historical SBIR scraper for ${dateRange}...`);
-    log(`📡 Step 1/3: Fetching topics from ${dateRange}...`);
     
-    const result = await scrapeHistoricalData(monthFrom, yearFrom, monthTo, yearTo);
+    // Create job record
+    jobId = `historical_${Date.now()}`;
+    await supabase.from('scraping_jobs').insert({
+      id: jobId,
+      type: 'historical',
+      status: 'running',
+      date_range: dateRange,
+      current_step: 'Initializing...'
+    });
     
+    log(jobId, `🗓️ Starting historical SBIR scraper for ${dateRange}...`);
+    
+    // Start scraping asynchronously (continues after HTTP response)
+    scrapeHistoricalData(jobId, monthFrom, yearFrom, monthTo, yearTo).catch(error => {
+      log(jobId!, `❌ Fatal error: ${error instanceof Error ? error.message : String(error)}`);
+      updateJobProgress(jobId!, {
+        status: 'failed',
+        error_message: error instanceof Error ? error.message : 'Unknown error',
+        completed_at: new Date().toISOString()
+      });
+    });
+    
+    // Return immediately with job ID so frontend can poll for progress
     return NextResponse.json({
       success: true,
-      message: 'Historical SBIR scraper completed successfully',
-      ...result,
-      detailedLogs: detailedLogs
+      message: 'Historical scraper started successfully',
+      jobId: jobId,
+      note: 'Scraper is running in background. Poll /api/admin/sbir/scraper-status?jobId=' + jobId + ' for progress.'
     });
+    
   } catch (error) {
-    log(`❌ Historical scraper error: ${error instanceof Error ? error.message : String(error)}`);
-    log(`📍 Error stack: ${error instanceof Error ? error.stack : String(error)}`);
+    if (jobId) {
+      log(jobId, `❌ Startup error: ${error instanceof Error ? error.message : String(error)}`);
+      await updateJobProgress(jobId, {
+        status: 'failed',
+        error_message: error instanceof Error ? error.message : 'Unknown error',
+        completed_at: new Date().toISOString()
+      });
+    }
     
     return NextResponse.json({
       success: false,
       message: error instanceof Error ? error.message : 'Unknown error occurred',
-      detailedLogs: detailedLogs
+      jobId: jobId
     }, { status: 500 });
   }
 }
 
-async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo: string, yearTo: string) {
+async function scrapeHistoricalData(jobId: string, monthFrom: string, yearFrom: string, monthTo: string, yearTo: string) {
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
@@ -68,13 +137,24 @@ async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo
   const startDate = new Date(parseInt(yearFrom), monthIndexFrom, 1);
   const endDate = new Date(parseInt(yearTo), monthIndexTo + 1, 0, 23, 59, 59);
   
-  log(`📅 Date range: ${startDate.toISOString()} to ${endDate.toISOString()}`);
+  log(jobId, `📅 Date range: ${startDate.toISOString()} to ${endDate.toISOString()}`);
+  await updateJobProgress(jobId, { current_step: 'Fetching topics...' });
   
-  const topics = await fetchTopicsByDateRange(startDate, endDate);
+  const topics = await fetchTopicsByDateRange(jobId, startDate, endDate);
   const dateRange = `${monthFrom} ${yearFrom} to ${monthTo} ${yearTo}`;
-  log(`✓ Found ${topics.length} topics from ${dateRange}`);
+  log(jobId, `✓ Found ${topics.length} topics from ${dateRange}`);
+  
+  await updateJobProgress(jobId, {
+    total_topics: topics.length,
+    current_step: `Found ${topics.length} topics`
+  });
   
   if (topics.length === 0) {
+    await updateJobProgress(jobId, {
+      status: 'completed',
+      progress_percentage: 100,
+      completed_at: new Date().toISOString()
+    });
     return {
       totalTopics: 0,
       processedTopics: 0,
@@ -84,14 +164,29 @@ async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo
     };
   }
 
-  log(`📋 Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
-  const processedTopics = await processTopics(topics, baseUrl);
+  log(jobId, `📋 Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
+  await updateJobProgress(jobId, { current_step: 'Processing topics...' });
+  const processedTopics = await processTopics(jobId, topics, baseUrl);
 
-  log(`💾 Step 3/3: Updating Supabase database with smart upsert...`);
+  log(jobId, `💾 Step 3/3: Updating Supabase database with smart upsert...`);
+  await updateJobProgress(jobId, { current_step: 'Updating database...' });
+  
   const { newRecords, updatedRecords, preservedRecords } = await smartUpsertTopics(processedTopics, {
     scraperType: 'historical',
-    logFn: log
+    logFn: (msg: string) => log(jobId, msg)
   });
+
+  await updateJobProgress(jobId, {
+    status: 'completed',
+    progress_percentage: 100,
+    new_records: newRecords,
+    updated_records: updatedRecords,
+    preserved_records: preservedRecords,
+    completed_at: new Date().toISOString(),
+    current_step: 'Complete!'
+  });
+  
+  log(jobId, `✅ Scraping completed: ${newRecords} new, ${updatedRecords} updated, ${preservedRecords} preserved`);
 
   return {
     totalTopics: topics.length,
@@ -102,20 +197,20 @@ async function scrapeHistoricalData(monthFrom: string, yearFrom: string, monthTo
   };
 }
 
-async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
+async function fetchTopicsByDateRange(jobId: string, startDate: Date, endDate: Date) {
   const allTopics: any[] = [];
   let pageNum = 0;
   const pageSize = 100;
   let consecutivePagesWithoutMatch = 0;
   const maxConsecutivePagesWithoutMatch = 10;
   
-  log(`📡 Fetching topics page by page...`);
+  log(jobId, `📡 Fetching topics page by page...`);
   
   // Initialize session - MATCH WORKING ACTIVE SCRAPER
-  log(`🔐 Initializing session with multi-step process...`);
+  log(jobId, `🔐 Initializing session with multi-step process...`);
   
   try {
-    log(`   Step 1: Visiting main page...`);
+    log(jobId, `   Step 1: Visiting main page...`);
     const initResponse = await fetch(`${baseUrl}/topics-app/`, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
@@ -123,10 +218,10 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
         'Accept-Language': 'en-US,en;q=0.9',
       }
     });
-    log(`   ✓ Main page loaded (status: ${initResponse.status})`);
+    log(jobId, `   ✓ Main page loaded (status: ${initResponse.status})`);
     await new Promise(resolve => setTimeout(resolve, 1000));
     
-    log(`   Step 2: Fetching component dropdown...`);
+    log(jobId, `   Step 2: Fetching component dropdown...`);
     const compResponse = await fetch(`${baseUrl}/core/api/public/dropdown/components`, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36',
@@ -136,19 +231,19 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
         'Referer': 'https://www.dodsbirsttr.mil/topics-app/',
       }
     });
-    log(`   ✓ Component API called (status: ${compResponse.status})`);
+    log(jobId, `   ✓ Component API called (status: ${compResponse.status})`);
     await new Promise(resolve => setTimeout(resolve, 500));
     
-    log(`   Session fully initialized - ready for topic search`);
+    log(jobId, `   Session fully initialized - ready for topic search`);
   } catch (error) {
-    log(`   ⚠ Session initialization had issues: ${error}`);
+    log(jobId, `   ⚠ Session initialization had issues: ${error}`);
   }
   
-  log(`   Waiting 3 seconds before search...`);
+  log(jobId, `   Waiting 3 seconds before search...`);
   await new Promise(resolve => setTimeout(resolve, 3000));
   
   while (true) {
-    log(`📡 Fetching page ${pageNum + 1}...`);
+    log(jobId, `📡 Fetching page ${pageNum + 1}...`);
     
     const searchParams = {
       searchText: null,
@@ -179,7 +274,7 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
     });
     
     if (!response.ok) {
-      log(`⚠ API error on page ${pageNum}: ${response.status}`);
+      log(jobId, `⚠ API error on page ${pageNum}: ${response.status}`);
       break;
     }
     
@@ -187,7 +282,7 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
     const topics = data.data || data.content || [];
     
     if (topics.length === 0) {
-      log(`   No more topics found`);
+      log(jobId, `   No more topics found`);
       break;
     }
     
@@ -213,20 +308,20 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
       }
     }
     
-    log(`   ✓ Page ${pageNum + 1}: Found ${matchingTopicsInPage} matching topics (total: ${allTopics.length})`);
+    log(jobId, `   ✓ Page ${pageNum + 1}: Found ${matchingTopicsInPage} matching topics (total: ${allTopics.length})`);
     
     // Smart early termination: if ALL topics on this page are before our start date,
     // and we're sorted by date descending, we've passed the date range entirely
     if (allTopicsBeforeRange && topics.length > 0) {
-      log(`   ✅ Date range fully searched - all remaining topics are before ${startDate.toISOString().split('T')[0]}`);
-      log(`   Stopping pagination (found ${allTopics.length} total matches)`);
+      log(jobId, `   ✅ Date range fully searched - all remaining topics are before ${startDate.toISOString().split('T')[0]}`);
+      log(jobId, `   Stopping pagination (found ${allTopics.length} total matches)`);
       break;
     }
     
     if (matchingTopicsInPage === 0) {
       consecutivePagesWithoutMatch++;
       if (consecutivePagesWithoutMatch >= maxConsecutivePagesWithoutMatch) {
-        log(`   Early termination: No matching topics in last ${maxConsecutivePagesWithoutMatch} pages`);
+        log(jobId, `   Early termination: No matching topics in last ${maxConsecutivePagesWithoutMatch} pages`);
         break;
       }
     } else {
@@ -237,7 +332,7 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
     await new Promise(resolve => setTimeout(resolve, 200));
   }
   
-  log(`   Finished fetching topics. Total matching found: ${allTopics.length}`);
+  log(jobId, `   Finished fetching topics. Total matching found: ${allTopics.length}`);
   
   return allTopics;
 }
@@ -246,13 +341,13 @@ async function fetchTopicsByDateRange(startDate: Date, endDate: Date) {
 // COMPREHENSIVE DATA PROCESSING FROM ACTIVE SCRAPER
 // ========================================
 
-async function processTopics(topics: any[], baseUrl: string) {
+async function processTopics(jobId: string, topics: any[], baseUrl: string) {
   const processedTopics = [];
   let successCount = 0;
   let errorCount = 0;
   
-  log(`   Starting detailed extraction for ${topics.length} topics...`);
-  log(`   ${'='.repeat(60)}`);
+  log(jobId, `   Starting detailed extraction for ${topics.length} topics...`);
+  log(jobId, `   ${'='.repeat(60)}`);
   
   for (let i = 0; i < topics.length; i++) {
     const topic = topics[i];
@@ -261,7 +356,18 @@ async function processTopics(topics: any[], baseUrl: string) {
     
     try {
       const progress = Math.floor(((i + 1) / topics.length) * 100);
-      log(`   [${progress}%] [${i + 1}/${topics.length}] ${topicCode}: ${topicTitle}...`);
+      log(jobId, `   [${progress}%] [${i + 1}/${topics.length}] ${topicCode}: ${topicTitle}...`);
+      
+      // Update progress in database every 10 topics
+      if (i % 10 === 0 || i === topics.length - 1) {
+        await updateJobProgress(jobId, {
+          processed_topics: i + 1,
+          progress_percentage: progress,
+          current_topic_code: topicCode,
+          current_topic_title: topicTitle,
+          current_step: `Processing topic ${i + 1}/${topics.length} (${progress}%)`
+        });
+      }
       
       // Fetch detailed information for this topic
       const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
@@ -282,7 +388,7 @@ async function processTopics(topics: any[], baseUrl: string) {
       // Log extraction status
       const hasSolInstr = !!detailedTopic.solicitationInstructionsDownload;
       const hasCompInstr = !!detailedTopic.componentInstructionsDownload;
-      log(`      ✓ Extracted: tech=${!!detailedTopic.technologyAreas}, keywords=${!!detailedTopic.keywords}, desc=${!!detailedTopic.description}, qa=${!!detailedTopic.qaContent}, tpoc=${!!detailedTopic.tpocNames}, sol_instr=${hasSolInstr}, comp_instr=${hasCompInstr}`);
+      log(jobId, `      ✓ Extracted: tech=${!!detailedTopic.technologyAreas}, keywords=${!!detailedTopic.keywords}, desc=${!!detailedTopic.description}, qa=${!!detailedTopic.qaContent}, tpoc=${!!detailedTopic.tpocNames}, sol_instr=${hasSolInstr}, comp_instr=${hasCompInstr}`);
       
       // Extract TPOC from initial topic list if not in detailed data
       if (!detailedTopic.tpocNames && topic.topicManagers && Array.isArray(topic.topicManagers)) {
@@ -445,13 +551,13 @@ async function processTopics(topics: any[], baseUrl: string) {
       
     } catch (error) {
       errorCount++;
-      log(`       ✗ Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      log(jobId, `       ✗ Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
       continue;
     }
   }
 
-  log(`   ${'='.repeat(60)}`);
-  log(`   ✓ Processing complete: ${successCount} success, ${errorCount} errors`);
+  log(jobId, `   ${'='.repeat(60)}`);
+  log(jobId, `   ✓ Processing complete: ${successCount} success, ${errorCount} errors`);
   return processedTopics;
 }
 
