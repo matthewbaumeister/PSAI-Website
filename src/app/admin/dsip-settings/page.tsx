@@ -422,47 +422,83 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
         
         console.log(`[Historical Scraper] [${i + 1}/${monthlyChunks.length}] Scraping ${chunk.month} ${chunk.year}...`)
         
-        const response = await fetch('/api/admin/sbir/scraper-historical', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            monthFrom: chunk.month,
-            yearFrom: chunk.year,
-            monthTo: chunk.month,
-            yearTo: chunk.year
+        // BATCHING: Process this month in 50-topic batches
+        let offset = 0
+        const batchSize = 50
+        let hasMore = true
+        let monthTopics = 0
+        let monthNew = 0
+        let monthUpdated = 0
+        let monthPreserved = 0
+        
+        while (hasMore) {
+          const batchNum = Math.floor(offset / batchSize) + 1
+          if (batchNum > 1) {
+            allLogs.push(`   Batch ${batchNum}: Processing next ${batchSize} topics (offset ${offset})...`)
+            setHistoricalScraperProgress({ 
+              phase: `[${chunkProgress}%] ${chunk.month} ${chunk.year} - Batch ${batchNum}...`, 
+              processedTopics: totalProcessed, 
+              totalTopics: totalTopics,
+              logs: [...allLogs]
+            })
+          }
+          
+          const response = await fetch('/api/admin/sbir/scraper-historical', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              monthFrom: chunk.month,
+              yearFrom: chunk.year,
+              monthTo: chunk.month,
+              yearTo: chunk.year,
+              offset,
+              limit: batchSize
+            })
           })
-        })
-        
-        const result = await response.json()
-        
-        if (!response.ok || !result.success) {
-          allLogs.push(`   Error: ${result.message || 'Unknown error'}`)
-          console.error(`[Historical Scraper] Failed to scrape ${chunk.month} ${chunk.year}:`, result.message)
-          continue // Skip this month but continue with others
+          
+          const result = await response.json()
+          
+          if (!response.ok || !result.success) {
+            allLogs.push(`   ❌ Batch ${batchNum} Error: ${result.message || 'Unknown error'}`)
+            console.error(`[Historical Scraper] Failed batch ${batchNum} for ${chunk.month} ${chunk.year}:`, result.message)
+            break // Stop processing this month
+          }
+          
+          // Aggregate results for this batch
+          monthTopics = result.totalTopics || 0 // Total stays constant
+          monthNew += result.newRecords || 0
+          monthUpdated += result.updatedRecords || 0
+          monthPreserved += result.preservedRecords || 0
+          totalProcessed += result.processedTopics || 0
+          
+          // Add detailed logs from this batch
+          if (result.detailedLogs && Array.isArray(result.detailedLogs)) {
+            allLogs.push(...result.detailedLogs.map((log: string) => `      ${log}`))
+          }
+          
+          hasMore = result.hasMore || false
+          offset += batchSize
+          
+          // Update progress
+          setHistoricalScraperProgress({ 
+            phase: hasMore 
+              ? `[${chunkProgress}%] ${chunk.month} ${chunk.year} - Batch ${batchNum} done, ${result.remaining || 0} remaining...`
+              : `[${chunkProgress}%] Completed ${chunk.month} ${chunk.year}`, 
+            processedTopics: totalProcessed, 
+            totalTopics: totalTopics + monthTopics,
+            logs: [...allLogs]
+          })
         }
         
-        // Aggregate results
-        totalTopics += result.totalTopics || 0
-        totalProcessed += result.processedTopics || 0
-        totalNew += result.newRecords || 0
-        totalUpdated += result.updatedRecords || 0
-        totalPreserved += result.preservedRecords || 0
+        // Month completed
+        totalTopics += monthTopics
+        totalNew += monthNew
+        totalUpdated += monthUpdated
+        totalPreserved += monthPreserved
         
-        // Add detailed logs from this month
-        if (result.detailedLogs && Array.isArray(result.detailedLogs)) {
-          allLogs.push(...result.detailedLogs.map((log: string) => `   ${log}`))
-        }
-        
-        allLogs.push(`   Completed: ${result.totalTopics || 0} topics (${result.newRecords || 0} new, ${result.updatedRecords || 0} updated)`)
-        
-        setHistoricalScraperProgress({ 
-          phase: `[${chunkProgress}%] Completed ${chunk.month} ${chunk.year}`, 
-          processedTopics: totalProcessed, 
-          totalTopics: totalTopics,
-          logs: [...allLogs]
-        })
+        allLogs.push(`   ✅ ${chunk.month} complete: ${monthTopics} topics (${monthNew} new, ${monthUpdated} updated)`)
       }
       
       // All months completed

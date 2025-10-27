@@ -90,7 +90,7 @@ export async function POST(request: Request) {
   const detailedLogs: string[] = [];
   
   try {
-    const { monthFrom, yearFrom, monthTo, yearTo } = await request.json();
+    const { monthFrom, yearFrom, monthTo, yearTo, offset = 0, limit = 50 } = await request.json();
     
     if (!monthFrom || !yearFrom || !monthTo || !yearTo) {
       return NextResponse.json({
@@ -101,15 +101,15 @@ export async function POST(request: Request) {
     
     const dateRange = `${monthFrom} ${yearFrom} to ${monthTo} ${yearTo}`;
     
-    console.log(`🗓️ Starting historical SBIR scraper for ${dateRange}...`);
-    detailedLogs.push(`🗓️ Starting historical SBIR scraper for ${dateRange}...`);
+    console.log(`🗓️ Starting historical SBIR scraper for ${dateRange} (offset: ${offset}, limit: ${limit})...`);
+    detailedLogs.push(`🗓️ Starting historical SBIR scraper for ${dateRange} (batch: ${offset + 1}-${offset + limit})...`);
     
     // Run scraping synchronously - WAIT for completion
-    const result = await scrapeHistoricalDataSync(monthFrom, yearFrom, monthTo, yearTo, detailedLogs);
+    const result = await scrapeHistoricalDataSync(monthFrom, yearFrom, monthTo, yearTo, offset, limit, detailedLogs);
     
     return NextResponse.json({
       success: true,
-      message: 'Historical SBIR scraper completed successfully',
+      message: result.hasMore ? `Batch complete. ${result.remaining} topics remaining.` : 'Historical SBIR scraper completed successfully',
       ...result,
       detailedLogs: detailedLogs
     });
@@ -132,6 +132,8 @@ async function scrapeHistoricalDataSync(
   yearFrom: string, 
   monthTo: string, 
   yearTo: string,
+  offset: number,
+  limit: number,
   detailedLogs: string[]
 ) {
   const log = (message: string) => {
@@ -152,25 +154,41 @@ async function scrapeHistoricalDataSync(
 
   log(`📅 Date range: ${fromDate.toISOString()} to ${toDate.toISOString()}`);
 
-  // Step 1: Fetch topics
-  log('📡 Step 1/3: Fetching topics by date range...');
-  const topics = await fetchTopicsByDateRangeSync(fromDate, toDate, log);
-  log(`✓ Found ${topics.length} topics in date range`);
+  // Step 1: Fetch topics (only on first batch)
+  if (offset === 0) {
+    log('📡 Step 1/3: Fetching topics by date range...');
+  } else {
+    log(`📡 Resuming batch at offset ${offset}...`);
+  }
+  
+  const allTopics = await fetchTopicsByDateRangeSync(fromDate, toDate, log);
+  const totalTopics = allTopics.length;
+  
+  log(`✓ Found ${totalTopics} total topics in date range`);
 
-  if (topics.length === 0) {
+  if (totalTopics === 0) {
     log('⚠️ No topics found in this date range');
     return {
       totalTopics: 0,
       processedTopics: 0,
       newRecords: 0,
       updatedRecords: 0,
-      preservedRecords: 0
+      preservedRecords: 0,
+      hasMore: false,
+      remaining: 0
     };
   }
 
+  // Slice topics for this batch
+  const batchTopics = allTopics.slice(offset, offset + limit);
+  const hasMore = offset + limit < totalTopics;
+  const remaining = Math.max(0, totalTopics - (offset + limit));
+  
+  log(`📦 Processing batch: ${offset + 1}-${offset + batchTopics.length} of ${totalTopics} (${remaining} remaining)`);
+
   // Step 2: Process topics with detailed extraction
-  log(`📝 Step 2/3: Processing ${topics.length} topics with detailed data extraction...`);
-  const { processedTopics, successCount, errorCount } = await processTopicsSync(topics, log);
+  log(`📝 Step 2/3: Processing ${batchTopics.length} topics with detailed data extraction...`);
+  const { processedTopics, successCount, errorCount } = await processTopicsSync(batchTopics, log);
   log(`✓ Processing complete: ${successCount} success, ${errorCount} errors`);
 
   // Step 3: Update database
@@ -181,12 +199,20 @@ async function scrapeHistoricalDataSync(
   });
   log(`✅ Database update complete: ${upsertResult.newRecords} new, ${upsertResult.updatedRecords} updated, ${upsertResult.preservedRecords} preserved`);
 
+  if (hasMore) {
+    log(`⏭️ Batch complete. ${remaining} topics remaining in this month.`);
+  } else {
+    log(`🎉 Month complete! Processed all ${totalTopics} topics.`);
+  }
+
   return {
-    totalTopics: topics.length,
-    processedTopics: successCount,
+    totalTopics,
+    processedTopics: batchTopics.length,
     newRecords: upsertResult.newRecords,
     updatedRecords: upsertResult.updatedRecords,
     preservedRecords: upsertResult.preservedRecords,
+    hasMore,
+    remaining,
     timestamp: new Date().toISOString()
   };
 }
