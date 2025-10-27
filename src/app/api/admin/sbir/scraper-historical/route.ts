@@ -252,11 +252,13 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
 
   log(`   🔍 Fetching ALL topics with pagination (no status filter)...`);
   
-  // PAGINATION: Fetch all pages, not just first 2000
+  // PAGINATION: Fetch pages until we're past the date range (sorted by topicEndDate desc)
   const allTopics: any[] = [];
   let page = 0;
   const pageSize = 2000; // API page size
   const maxPages = 20; // Safety limit (20 pages * 2000 = 40,000 topics max)
+  let consecutivePagesWithNoMatches = 0;
+  const maxConsecutivePagesWithNoMatches = 2; // Stop after 2 pages with no date range matches
   
   while (page < maxPages) {
     const encodedParams = encodeURIComponent(JSON.stringify(searchParams));
@@ -288,8 +290,29 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
       break;
     }
     
+    // Check if any topics in this page are in our date range
+    const topicsInRange = pageTopics.filter((topic: any) => {
+      const topicCloseDate = topic.topicCloseDate || topic.closeDate || topic.endDate;
+      if (!topicCloseDate) return false;
+      const closeDate = new Date(topicCloseDate);
+      return closeDate >= fromDate; // Still potentially in range
+    });
+    
     allTopics.push(...pageTopics);
-    log(`   ✓ Page ${page + 1}: ${pageTopics.length} topics (total so far: ${allTopics.length})`);
+    log(`   ✓ Page ${page + 1}: ${pageTopics.length} topics (${topicsInRange.length} potentially in range, total: ${allTopics.length})`);
+    
+    // Early termination: If no topics in this page could be in our date range, count it
+    if (topicsInRange.length === 0) {
+      consecutivePagesWithNoMatches++;
+      log(`   ⚠️ No topics in date range on page ${page + 1} (${consecutivePagesWithNoMatches}/${maxConsecutivePagesWithNoMatches})`);
+      
+      if (consecutivePagesWithNoMatches >= maxConsecutivePagesWithNoMatches) {
+        log(`   ✓ Early termination: ${maxConsecutivePagesWithNoMatches} consecutive pages with no date range matches`);
+        break;
+      }
+    } else {
+      consecutivePagesWithNoMatches = 0; // Reset counter
+    }
     
     // If we got less than page size, we're on the last page
     if (pageTopics.length < pageSize) {
