@@ -290,12 +290,12 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
       break;
     }
     
-    // Check if any topics in this page are in our date range
+    // Check if any topics in this page are in our date range (use correct field names!)
     const topicsInRange = pageTopics.filter((topic: any) => {
-      const topicCloseDate = topic.topicCloseDate || topic.closeDate || topic.endDate;
-      if (!topicCloseDate) return false;
-      const closeDate = new Date(topicCloseDate);
-      return closeDate >= fromDate; // Still potentially in range
+      const topicEndTimestamp = topic.topicEndDate;
+      if (!topicEndTimestamp) return true; // No end date = still open = could be in range
+      const endDate = new Date(topicEndTimestamp);
+      return endDate >= fromDate; // Still potentially in range if ended after our start date
     });
     
     allTopics.push(...pageTopics);
@@ -353,27 +353,28 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
   // SIMPLE LOGIC: Find ALL topics that overlap with the date range (any status)
   // A topic overlaps if it was available/active at any point during our date range
   const filteredTopics = allTopics.filter((topic: any) => {
-    // Parse dates - check different possible field names
-    const topicCloseDate = topic.topicCloseDate || topic.closeDate || topic.endDate;
-    const topicOpenDate = topic.topicOpenDate || topic.openDate || topic.startDate;
+    // CORRECT FIELD NAMES: topicStartDate and topicEndDate (UNIX timestamps in milliseconds!)
+    const topicStartTimestamp = topic.topicStartDate || topic.topicPreReleaseStartDate;
+    const topicEndTimestamp = topic.topicEndDate;
     
-    // Must have an open date
-    if (!topicOpenDate) return false;
+    // Must have a start date
+    if (!topicStartTimestamp) return false;
     
-    const openDate = new Date(topicOpenDate);
-    const closeDate = topicCloseDate ? new Date(topicCloseDate) : null;
+    // Convert UNIX timestamps (milliseconds) to Date objects
+    const startDate = new Date(topicStartTimestamp);
+    const endDate = topicEndTimestamp ? new Date(topicEndTimestamp) : null;
     
     // Topic overlaps with range if:
-    // - It opened on or before the range ended (openDate <= toDate)
-    // - AND it closed on or after the range started (closeDate >= fromDate) OR is still open (no closeDate)
+    // - It started on or before the range ended (startDate <= toDate)
+    // - AND it ended on or after the range started (endDate >= fromDate) OR is still open (no endDate)
     
-    if (openDate > toDate) return false; // Opened after our range ended
+    if (startDate > toDate) return false; // Started after our range ended
     
-    if (closeDate) {
-      // Has a close date - must have closed during or after our range started
-      if (closeDate < fromDate) return false; // Closed before our range started
+    if (endDate) {
+      // Has an end date - must have ended during or after our range started
+      if (endDate < fromDate) return false; // Ended before our range started
     }
-    // else: No close date = still open = definitely overlaps if it opened before range ended
+    // else: No end date = still open = definitely overlaps if it started before range ended
     
     return true;
   });
@@ -384,7 +385,9 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
   // Log sample of filtered topics for debugging
   if (filteredTopics.length > 0) {
     const sample = filteredTopics[0];
-    log(`   📋 Sample topic: ${sample.topicCode || 'No code'} - Status: ${sample.topicStatus} - Open: ${sample.topicOpenDate || 'N/A'} - Close: ${sample.topicCloseDate || 'Still open'}`);
+    const startDate = sample.topicStartDate ? new Date(sample.topicStartDate).toISOString().split('T')[0] : 'N/A';
+    const endDate = sample.topicEndDate ? new Date(sample.topicEndDate).toISOString().split('T')[0] : 'Still open';
+    log(`   📋 Sample topic: ${sample.topicCode || 'No code'} - Status: ${sample.topicStatus} - Start: ${startDate} - End: ${endDate}`);
   }
   
   return filteredTopics;
