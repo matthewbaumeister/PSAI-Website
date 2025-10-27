@@ -334,61 +334,22 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
   });
   log(`   📊 Status distribution: ${JSON.stringify(statusCounts)}`);
 
-  // DEBUG: Show actual field names for first topic to identify date fields
-  if (allTopics.length > 0) {
-    const sampleTopic = allTopics[0];
-    const dateRelatedFields = Object.keys(sampleTopic).filter(key => 
-      key.toLowerCase().includes('date') || 
-      key.toLowerCase().includes('open') || 
-      key.toLowerCase().includes('close')
-    );
-    log(`   🔍 Sample topic date fields: ${JSON.stringify(dateRelatedFields)}`);
-    const dateValues: any = {};
-    dateRelatedFields.forEach(field => {
-      dateValues[field] = sampleTopic[field];
-    });
-    log(`   🔍 Sample topic date values: ${JSON.stringify(dateValues)}`);
-  }
-
-  // SIMPLE LOGIC: Find ALL topics that overlap with the date range (any status)
-  // A topic overlaps if it was available/active at any point during our date range
+  // SIMPLE DATE FILTER: Keep topics that overlap with date range
   const filteredTopics = allTopics.filter((topic: any) => {
-    // CORRECT FIELD NAMES: topicStartDate and topicEndDate (UNIX timestamps in milliseconds!)
-    const topicStartTimestamp = topic.topicStartDate || topic.topicPreReleaseStartDate;
-    const topicEndTimestamp = topic.topicEndDate;
+    const startTimestamp = topic.topicStartDate || topic.topicPreReleaseStartDate;
+    const endTimestamp = topic.topicEndDate;
     
-    // Must have a start date
-    if (!topicStartTimestamp) return false;
+    if (!startTimestamp) return false; // No start date = skip
     
-    // Convert UNIX timestamps (milliseconds) to Date objects
-    const startDate = new Date(topicStartTimestamp);
-    const endDate = topicEndTimestamp ? new Date(topicEndTimestamp) : null;
+    const startDate = new Date(startTimestamp);
+    const endDate = endTimestamp ? new Date(endTimestamp) : new Date(2099, 11, 31); // No end = future
     
-    // Topic overlaps with range if:
-    // - It started on or before the range ended (startDate <= toDate)
-    // - AND it ended on or after the range started (endDate >= fromDate) OR is still open (no endDate)
-    
-    if (startDate > toDate) return false; // Started after our range ended
-    
-    if (endDate) {
-      // Has an end date - must have ended during or after our range started
-      if (endDate < fromDate) return false; // Ended before our range started
-    }
-    // else: No end date = still open = definitely overlaps if it started before range ended
-    
-    return true;
+    // Overlap check: topic active at any point during our range
+    return startDate <= toDate && endDate >= fromDate;
   });
 
-  log(`   ✓ Filtered to ${filteredTopics.length} topics that were active during date range`);
+  log(`   ✓ Filtered to ${filteredTopics.length} topics in date range`);
   log(`   📊 Date range: ${fromDate.toISOString().split('T')[0]} to ${toDate.toISOString().split('T')[0]}`);
-  
-  // Log sample of filtered topics for debugging
-  if (filteredTopics.length > 0) {
-    const sample = filteredTopics[0];
-    const startDate = sample.topicStartDate ? new Date(sample.topicStartDate).toISOString().split('T')[0] : 'N/A';
-    const endDate = sample.topicEndDate ? new Date(sample.topicEndDate).toISOString().split('T')[0] : 'Still open';
-    log(`   📋 Sample topic: ${sample.topicCode || 'No code'} - Status: ${sample.topicStatus} - Start: ${startDate} - End: ${endDate}`);
-  }
   
   return filteredTopics;
 }
