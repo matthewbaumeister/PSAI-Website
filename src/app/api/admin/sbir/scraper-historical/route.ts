@@ -193,6 +193,13 @@ async function scrapeHistoricalDataSync(
 
   // Step 3: Update database
   log('💾 Step 3/3: Updating Supabase database with smart upsert...');
+  
+  // DEBUG: Show sample topic keys to verify cycleName is present
+  if (processedTopics.length > 0) {
+    const sampleTopic = processedTopics[0];
+    log(`   🔍 Sample topic after mapping: topicCode=${sampleTopic.topicCode}, cycleName=${sampleTopic.cycleName}, program=${sampleTopic.program}`);
+  }
+  
   const upsertResult = await smartUpsertTopics(processedTopics, {
     scraperType: 'historical',
     logFn: log
@@ -416,7 +423,9 @@ async function processTopicsSync(topics: any[], log: (msg: string) => void) {
       
       log(`      ✓ Extracted: tech=${hasTechnology}, keywords=${hasKeywords}, desc=${hasDescription}, qa=${hasQA}, tpoc=false, sol_instr=${hasSolicitationInstructions}, comp_instr=${hasComponentInstructions}`);
       
-      processedTopics.push(detailedTopic);
+      // CRITICAL: Merge original topic (has cycleName, topicCode, etc.) with detailed data
+      const mergedTopic = { ...topic, ...detailedTopic };
+      processedTopics.push(mergedTopic);
       successCount++;
     } catch (error) {
       log(`      ✗ Error: ${error instanceof Error ? error.message : String(error)}`);
