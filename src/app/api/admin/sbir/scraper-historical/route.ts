@@ -359,6 +359,12 @@ async function processTopicsSync(topics: any[], log: (msg: string) => void) {
   log(`   Starting detailed extraction for ${topics.length} topics...`);
   log('   ============================================================');
   
+  // DEBUG: Show field names for first topic
+  if (topics.length > 0) {
+    const sampleKeys = Object.keys(topics[0]).slice(0, 20);
+    log(`   🔍 Sample topic fields: ${JSON.stringify(sampleKeys)}`);
+  }
+  
   const processedTopics: any[] = [];
   let successCount = 0;
   let errorCount = 0;
@@ -366,14 +372,14 @@ async function processTopicsSync(topics: any[], log: (msg: string) => void) {
   for (let i = 0; i < topics.length; i++) {
     const topic = topics[i];
     const progress = Math.round(((i + 1) / topics.length) * 100);
-    const topicCode = topic.topicNumber || 'Unknown';
-    const topicTitle = topic.title || 'No title';
+    const topicCode = topic.topicCode || topic.topicNumber || 'Unknown';
+    const topicTitle = topic.topicTitle || topic.title || 'No title';
     const displayTitle = topicTitle.length > 60 ? topicTitle.substring(0, 60) + '...' : topicTitle;
     
     log(`   [${progress}%] [${i + 1}/${topics.length}] ${topicCode}: ${displayTitle}`);
 
     try {
-      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId, topicCode);
+      const detailedTopic = await fetchTopicDetails(baseUrl, topic.topicId || topic.id, topicCode);
       
       const hasDescription = !!detailedTopic.description && detailedTopic.description.length > 100;
       const hasKeywords = !!detailedTopic.keywords && detailedTopic.keywords.length > 10;
