@@ -248,9 +248,28 @@ while page < max_pages:
     
     print(f"   📄 Fetching page {page + 1}...")
     
+    # Retry logic for timeouts
+    max_retries = 3
+    retry_count = 0
+    response = None
+    
+    while retry_count < max_retries:
+        try:
+            response = session.get(search_url, headers=api_headers, timeout=120)  # 2 minute timeout
+            break  # Success, exit retry loop
+        except Exception as e:
+            retry_count += 1
+            if retry_count < max_retries:
+                print(f"   ⚠️ Timeout on attempt {retry_count}, retrying in 5 seconds...")
+                time.sleep(5)
+            else:
+                print(f"   ❌ Failed after {max_retries} attempts: {e}")
+                response = None
+    
+    if response is None:
+        break
+    
     try:
-        response = session.get(search_url, headers=api_headers, timeout=60)
-        
         if response.status_code != 200:
             print(f"   ❌ Non-200 response: {response.status_code}")
             break
@@ -700,6 +719,8 @@ for idx, topic in enumerate(all_topics):
 
 print(f"\n💾 Saving {len(formatted_topics):,} topics to CSV...")
 
+# Get current timestamp for filename
+now_eastern = datetime.now(pytz.timezone('US/Eastern'))
 output_file = f"sbir_TEST_JAN2025_{now_eastern.strftime('%Y%m%d_%H%M%S')}.csv"
 
 # Get all unique keys from all records
