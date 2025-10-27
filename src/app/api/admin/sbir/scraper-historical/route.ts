@@ -334,6 +334,22 @@ async function fetchTopicsByDateRangeSync(fromDate: Date, toDate: Date, log: (ms
   });
   log(`   📊 Status distribution: ${JSON.stringify(statusCounts)}`);
 
+  // DEBUG: Show actual field names for first topic to identify date fields
+  if (allTopics.length > 0) {
+    const sampleTopic = allTopics[0];
+    const dateRelatedFields = Object.keys(sampleTopic).filter(key => 
+      key.toLowerCase().includes('date') || 
+      key.toLowerCase().includes('open') || 
+      key.toLowerCase().includes('close')
+    );
+    log(`   🔍 Sample topic date fields: ${JSON.stringify(dateRelatedFields)}`);
+    const dateValues: any = {};
+    dateRelatedFields.forEach(field => {
+      dateValues[field] = sampleTopic[field];
+    });
+    log(`   🔍 Sample topic date values: ${JSON.stringify(dateValues)}`);
+  }
+
   // SIMPLE LOGIC: Find ALL topics that overlap with the date range (any status)
   // A topic overlaps if it was available/active at any point during our date range
   const filteredTopics = allTopics.filter((topic: any) => {
