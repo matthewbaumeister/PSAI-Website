@@ -165,11 +165,12 @@ def to_boolean(val):
 # ============================================================================
 
 print("="*70)
-print("🚀 SBIR HISTORICAL BULK SCRAPER - GOOGLE COLAB VERSION")
+print("🧪 SBIR TEST SCRAPER - JANUARY 2025 ONLY")
 print("="*70)
 print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-print("Matches: sbir_final table schema")
-print("Output: CSV for Supabase import")
+print("Testing: January 2025 topics only (~195 topics)")
+print("Purpose: Verify format before full import")
+print("Estimated: ~3-5 minutes")
 print("="*70)
 
 base_url = "https://www.dodsbirsttr.mil"
@@ -282,6 +283,41 @@ while page < max_pages:
         break
 
 print(f"\n✅ Retrieved {len(all_topics):,} topics")
+
+# ============================================================================
+# FILTER FOR JANUARY 2025 ONLY (TEST MODE)
+# ============================================================================
+
+print(f"\n🔍 Filtering for January 2025 topics only...")
+
+# Date range: January 1 - January 31, 2025
+jan_start = datetime(2025, 1, 1, 0, 0, 0, tzinfo=pytz.timezone('US/Eastern'))
+jan_end = datetime(2025, 1, 31, 23, 59, 59, tzinfo=pytz.timezone('US/Eastern'))
+
+jan_start_ts = int(jan_start.timestamp() * 1000)
+jan_end_ts = int(jan_end.timestamp() * 1000)
+
+# Filter topics that were active at any point during January 2025
+jan_topics = []
+for topic in all_topics:
+    start_ts = topic.get('topicStartDate') or topic.get('topicPreReleaseStartDate')
+    end_ts = topic.get('topicEndDate')
+    
+    if not start_ts:
+        continue
+    
+    # If no end date, assume it's still open (use far future date)
+    if not end_ts:
+        end_ts = datetime(2099, 12, 31).timestamp() * 1000
+    
+    # Check overlap: topic active at any point during January 2025
+    if start_ts <= jan_end_ts and end_ts >= jan_start_ts:
+        jan_topics.append(topic)
+
+print(f"   ✓ Found {len(jan_topics):,} topics active in January 2025")
+
+# Replace all_topics with filtered list
+all_topics = jan_topics
 
 # ============================================================================
 # PROCESS TOPICS WITH DETAILED EXTRACTION
@@ -664,7 +700,7 @@ for idx, topic in enumerate(all_topics):
 
 print(f"\n💾 Saving {len(formatted_topics):,} topics to CSV...")
 
-output_file = f"sbir_historical_bulk_{now_eastern.strftime('%Y%m%d_%H%M%S')}.csv"
+output_file = f"sbir_TEST_JAN2025_{now_eastern.strftime('%Y%m%d_%H%M%S')}.csv"
 
 # Get all unique keys from all records
 all_keys = set()
@@ -686,15 +722,16 @@ file_size_mb = os.path.getsize(output_file) / (1024 * 1024)
 elapsed = time.time() - start_time
 
 print("\n" + "="*70)
-print("✅ SCRAPING COMPLETE!")
+print("✅ TEST SCRAPING COMPLETE!")
 print("="*70)
 print(f"\n📊 Statistics:")
-print(f"   Total topics: {len(formatted_topics):,}")
+print(f"   January 2025 topics: {len(formatted_topics):,}")
 print(f"   Details fetched: {details_fetched:,}")
 print(f"   Q&A fetched: {qa_fetched:,}")
 print(f"   Columns: {len(all_keys)}")
-print(f"\n⏱️  Runtime: {elapsed/60:.1f} minutes ({elapsed/3600:.1f} hours)")
+print(f"\n⏱️  Runtime: {elapsed/60:.1f} minutes")
 print(f"💾 Output: {output_file} ({file_size_mb:.1f} MB)")
+print(f"\n🧪 THIS IS A TEST FILE - January 2025 only!")
 
 # ============================================================================
 # GOOGLE COLAB AUTO-DOWNLOAD
@@ -709,11 +746,16 @@ except:
     print("\n⚠️ Not running in Google Colab - file saved locally")
     print(f"   Location: {os.path.abspath(output_file)}")
 
-print(f"\n📋 Next Steps:")
+print(f"\n📋 Next Steps - TEST IMPORT:")
 print(f"   1. Open Supabase Table Editor → sbir_final")
 print(f"   2. Click 'Import data via CSV'")
 print(f"   3. Upload {output_file}")
 print(f"   4. Map columns (should auto-match)")
-print(f"   5. Import!")
+print(f"   5. Import (this is just January 2025 - ~195 records)")
+print(f"")
+print(f"   ✅ If import works correctly:")
+print(f"      → Delete these test records from Supabase")
+print(f"      → Run the FULL scraper (sbir_historical_bulk_scraper.py)")
+print(f"      → Or modify this script to remove date filter")
 print("\n✨ Done!")
 
