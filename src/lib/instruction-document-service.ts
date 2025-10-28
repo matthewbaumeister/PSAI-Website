@@ -35,6 +35,17 @@ export interface GenerationResult {
   topicNumber: string;
   pdfUrl?: string;
   error?: string;
+  debug?: {
+    componentUrl?: string;
+    solicitationUrl?: string;
+    componentParsed: boolean;
+    solicitationParsed: boolean;
+    volumesExtracted: number;
+    checklistItemsExtracted: number;
+    plainTextLength: number;
+    componentPages: number;
+    solicitationPages: number;
+  };
 }
 
 export class InstructionDocumentService {
@@ -105,7 +116,18 @@ export class InstructionDocumentService {
         success: true,
         opportunityId,
         topicNumber: opportunity.topic_number,
-        pdfUrl
+        pdfUrl,
+        debug: {
+          componentUrl: opportunity.component_instructions_download,
+          solicitationUrl: opportunity.solicitation_instructions_download,
+          componentParsed: !!parsedDocs.componentDoc,
+          solicitationParsed: !!parsedDocs.solicitationDoc,
+          volumesExtracted: mergedData.volumes.length,
+          checklistItemsExtracted: mergedData.checklist.length,
+          plainTextLength: mergedData.plainText.length,
+          componentPages: parsedDocs.componentDoc?.pageCount || 0,
+          solicitationPages: parsedDocs.solicitationDoc?.pageCount || 0
+        }
       };
     } catch (error) {
       console.error(`Error generating instruction document for opportunity ${opportunityId}:`, error);

@@ -30,12 +30,13 @@ export async function POST(
     const result = await service.generateForOpportunity(opportunityId);
 
     if (result.success) {
-      return NextResponse.json({
-        success: true,
-        pdfUrl: result.pdfUrl,
-        topicNumber: result.topicNumber,
-        message: 'Instruction document generated successfully'
-      });
+    return NextResponse.json({
+      success: true,
+      pdfUrl: result.pdfUrl,
+      topicNumber: result.topicNumber,
+      message: 'Instruction document generated successfully',
+      debug: result.debug // Add debug info
+    });
     } else {
       return NextResponse.json(
         {
