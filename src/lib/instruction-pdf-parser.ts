@@ -3,9 +3,10 @@
  * 
  * Fetches and parses BAA and Component instruction PDFs from DSIP
  * Extracts volume requirements, checklists, and submission guidelines
+ * Uses pdfjs-dist for serverless compatibility
  */
 
-import * as pdfParse from 'pdf-parse';
+import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
 
 export interface VolumeRequirement {
   volumeNumber: number;
@@ -48,13 +49,31 @@ export class InstructionPdfParser {
       }
       
       const arrayBuffer = await response.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
       
-      // Parse PDF
-      const data = await (pdfParse as any).default(buffer);
-      const plainText = data.text;
+      // Load PDF document
+      const loadingTask = pdfjsLib.getDocument({
+        data: arrayBuffer,
+        useSystemFonts: true,
+        standardFontDataUrl: undefined
+      });
       
-      console.log(`Parsed PDF: ${data.numpages} pages, ${plainText.length} characters`);
+      const pdf = await loadingTask.promise;
+      const pageCount = pdf.numPages;
+      
+      console.log(`Loaded PDF: ${pageCount} pages`);
+      
+      // Extract text from all pages
+      let plainText = '';
+      for (let i = 1; i <= pageCount; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items
+          .map((item: any) => item.str)
+          .join(' ');
+        plainText += pageText + '\n\n';
+      }
+      
+      console.log(`Extracted ${plainText.length} characters of text`);
       
       // Extract structured information
       const volumes = this.extractVolumes(plainText);
@@ -72,7 +91,7 @@ export class InstructionPdfParser {
         keyDates,
         submissionGuidelines,
         contacts,
-        pageCount: data.numpages,
+        pageCount,
         extractedAt: new Date()
       };
     } catch (error) {
@@ -131,15 +150,6 @@ export class InstructionPdfParser {
    */
   private extractChecklist(text: string): string[] {
     const checklist: string[] = [];
-    
-    // Look for checklist sections
-    const checklistPatterns = [
-      /checklist[:\s]+([^\n]+)/gi,
-      /required documents?[:\s]+([^\n]+)/gi,
-      /submission requirements?[:\s]+([^\n]+)/gi,
-      /must include[:\s]+([^\n]+)/gi,
-      /shall include[:\s]+([^\n]+)/gi,
-    ];
     
     // Extract bullet points and numbered lists
     const lines = text.split('\n');
@@ -378,4 +388,3 @@ export class InstructionPdfParser {
     };
   }
 }
-

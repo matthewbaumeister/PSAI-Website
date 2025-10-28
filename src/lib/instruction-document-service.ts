@@ -6,6 +6,7 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
+import { InstructionPdfParser, InstructionDocument } from './instruction-pdf-parser';
 import { InstructionPdfGenerator, ConsolidatedInstructionData, OpportunityInfo } from './instruction-pdf-generator';
 
 const supabase = createClient(
@@ -37,10 +38,12 @@ export interface GenerationResult {
 }
 
 export class InstructionDocumentService {
+  private parser: InstructionPdfParser;
   private generator: InstructionPdfGenerator;
   private storageBucket = 'instruction-documents';
 
   constructor() {
+    this.parser = new InstructionPdfParser();
     this.generator = new InstructionPdfGenerator();
   }
 
@@ -73,20 +76,17 @@ export class InstructionDocumentService {
         };
       }
 
-      // For now, generate from database data instead of parsing PDFs
-      // TODO: Add PDF parsing later when serverless compatible
-      const mergedData = {
-        volumes: this.createDefaultVolumes(),
-        checklist: this.createDefaultChecklist(opportunity),
-        plainText: this.createPlainTextFromDatabase(opportunity),
-        keyDates: {
-          'Open Date': opportunity.open_date || 'N/A',
-          'Close Date': opportunity.close_date || 'N/A'
-        }
-      };
+      // Parse instruction documents from PDFs
+      const parsedDocs = await this.parseInstructionDocuments(opportunity);
+
+      // Merge instructions from both documents
+      const mergedData = await this.parser.mergeInstructions(
+        parsedDocs.componentDoc,
+        parsedDocs.solicitationDoc
+      );
 
       // Generate consolidated PDF
-      const pdfBuffer = await this.generatePdf(opportunity, mergedData);
+      const pdfBuffer = await this.generatePdf(opportunity, mergedData, parsedDocs);
 
       // Upload to Supabase Storage
       const pdfUrl = await this.uploadToStorage(opportunity.topic_number, pdfBuffer);
@@ -292,11 +292,53 @@ Document generated: ${new Date().toISOString()}
   }
 
   /**
+   * Parse instruction documents from URLs
+   */
+  private async parseInstructionDocuments(opportunity: OpportunityData): Promise<{
+    componentDoc: InstructionDocument | null;
+    solicitationDoc: InstructionDocument | null;
+  }> {
+    let componentDoc: InstructionDocument | null = null;
+    let solicitationDoc: InstructionDocument | null = null;
+
+    // Parse component instructions
+    if (opportunity.component_instructions_download) {
+      try {
+        console.log(`Parsing component instructions from: ${opportunity.component_instructions_download}`);
+        componentDoc = await this.parser.parseInstructionPdf(
+          opportunity.component_instructions_download,
+          'component'
+        );
+        console.log(`Parsed component doc: ${componentDoc.pageCount} pages, ${componentDoc.volumes.length} volumes`);
+      } catch (error) {
+        console.error('Error parsing component instructions:', error);
+      }
+    }
+
+    // Parse solicitation instructions
+    if (opportunity.solicitation_instructions_download) {
+      try {
+        console.log(`Parsing solicitation instructions from: ${opportunity.solicitation_instructions_download}`);
+        solicitationDoc = await this.parser.parseInstructionPdf(
+          opportunity.solicitation_instructions_download,
+          'solicitation'
+        );
+        console.log(`Parsed solicitation doc: ${solicitationDoc.pageCount} pages, ${solicitationDoc.volumes.length} volumes`);
+      } catch (error) {
+        console.error('Error parsing solicitation instructions:', error);
+      }
+    }
+
+    return { componentDoc, solicitationDoc };
+  }
+
+  /**
    * Generate consolidated PDF
    */
   private async generatePdf(
     opportunity: OpportunityData,
-    mergedData: any
+    mergedData: any,
+    parsedDocs: { componentDoc: InstructionDocument | null; solicitationDoc: InstructionDocument | null }
   ): Promise<Buffer> {
     const opportunityInfo: OpportunityInfo = {
       topicNumber: opportunity.topic_number,
@@ -314,7 +356,10 @@ Document generated: ${new Date().toISOString()}
       checklist: mergedData.checklist,
       keyDates: mergedData.keyDates,
       submissionGuidelines: [],
-      contacts: [],
+      contacts: [
+        ...(parsedDocs.componentDoc?.contacts || []),
+        ...(parsedDocs.solicitationDoc?.contacts || [])
+      ],
       componentInstructionsUrl: opportunity.component_instructions_download,
       solicitationInstructionsUrl: opportunity.solicitation_instructions_download,
       generatedAt: new Date()
