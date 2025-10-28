@@ -36,7 +36,10 @@ export class InstructionPdfGenerator {
    * Sanitize text to only include WinAnsi-compatible characters
    * Replaces Unicode characters that pdf-lib can't encode
    */
-  private sanitizeText(text: string): string {
+  private sanitizeText(text: string | undefined | null): string {
+    // Handle undefined/null
+    if (!text) return '';
+    
     return text
       // Replace various Unicode hyphens/dashes with regular hyphen
       .replace(/[\u2010-\u2015]/g, '-')
