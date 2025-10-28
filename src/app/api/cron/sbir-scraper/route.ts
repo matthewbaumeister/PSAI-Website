@@ -21,6 +21,9 @@ function log(message: string) {
 }
 
 export async function GET(request: NextRequest) {
+  let runId: number | null = null;
+  const startTime = Date.now();
+  
   try {
     // Verify this is a cron job request
     const authHeader = request.headers.get('authorization');
@@ -28,11 +31,61 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    // Check if this was triggered manually or by cron
+    const triggerSource = request.headers.get('x-trigger-source') || 'vercel_cron';
+    const userId = request.headers.get('x-user-id') || null;
+    const userEmail = request.headers.get('x-user-email') || null;
+    const runType = triggerSource === 'admin_ui' ? 'manual' : 'cron';
+
+    // Record the start of this run
+    const { data: runRecord, error: insertError } = await supabase
+      .from('dsip_scraper_runs')
+      .insert({
+        run_type: runType,
+        trigger_source: triggerSource,
+        user_id: userId,
+        user_email: userEmail,
+        status: 'running',
+        started_at: new Date().toISOString()
+      })
+      .select('id')
+      .single();
+
+    if (insertError) {
+      console.error(' Failed to record scraper run:', insertError);
+    } else {
+      runId = runRecord?.id || null;
+      log(` Scraper run recorded with ID: ${runId}`);
+    }
+
     // Clear previous logs
     detailedLogs.length = 0;
-    log(' Starting automated SBIR scraper...');
+    log(` Starting automated SBIR scraper (${runType})...`);
+    if (userEmail) {
+      log(` Triggered by: ${userEmail}`);
+    }
     
     const result = await scrapeAndUpdateSBIR();
+    
+    // Update the run record with results
+    if (runId) {
+      const durationSeconds = Math.floor((Date.now() - startTime) / 1000);
+      await supabase
+        .from('dsip_scraper_runs')
+        .update({
+          status: 'completed',
+          completed_at: new Date().toISOString(),
+          duration_seconds: durationSeconds,
+          total_topics: result.totalTopics || 0,
+          processed_topics: result.processedTopics || 0,
+          new_records: result.newRecords || 0,
+          updated_records: result.updatedRecords || 0,
+          preserved_records: result.preservedRecords || 0
+        })
+        .eq('id', runId);
+      
+      log(` Run completed in ${durationSeconds}s - Record updated`);
+    }
     
     return NextResponse.json({
       success: true,
@@ -43,6 +96,22 @@ export async function GET(request: NextRequest) {
 
   } catch (error) {
     console.error(' SBIR scraper error:', error);
+    
+    // Update the run record with error
+    if (runId) {
+      const durationSeconds = Math.floor((Date.now() - startTime) / 1000);
+      await supabase
+        .from('dsip_scraper_runs')
+        .update({
+          status: 'failed',
+          completed_at: new Date().toISOString(),
+          duration_seconds: durationSeconds,
+          error_message: error instanceof Error ? error.message : 'Unknown error',
+          error_details: error instanceof Error ? error.stack : String(error)
+        })
+        .eq('id', runId);
+    }
+    
     return NextResponse.json({ 
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',

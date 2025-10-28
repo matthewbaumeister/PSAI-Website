@@ -61,6 +61,7 @@ export default function DSIPSettingsPage() {
   // State for database management
 const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [lastUpdate, setLastUpdate] = useState<string | null>(null)
+  const [lastRunBy, setLastRunBy] = useState<string | null>(null)
   const [message, setMessage] = useState('')
   
   // State for SBIR scraper
@@ -74,19 +75,6 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
   const [activeScraperData, setActiveScraperData] = useState<any[]>([])
   const [activeScraperProgress, setActiveScraperProgress] = useState<any>(null)
   const [isScrapingActive, setIsScrapingActive] = useState(false)
-  
-  // State for historical scraper
-  const [selectedMonthFrom, setSelectedMonthFrom] = useState<string>('')
-  const [selectedYearFrom, setSelectedYearFrom] = useState<string>('')
-  const [selectedMonthTo, setSelectedMonthTo] = useState<string>('')
-  const [selectedYearTo, setSelectedYearTo] = useState<string>('')
-  const [useToCurrent, setUseToCurrent] = useState<boolean>(false)
-  const [isScrapingHistorical, setIsScrapingHistorical] = useState(false)
-  const [historicalScraperResult, setHistoricalScraperResult] = useState<any>(null)
-  const [historicalScraperProgress, setHistoricalScraperProgress] = useState<any>(null)
-  
-  // State for unified scraper mode
-  const [scraperMode, setScraperMode] = useState<'active' | 'historical'>('active')
   
   // State for floating notifications
   const [notification, setNotification] = useState<{
@@ -160,19 +148,26 @@ const [isRefreshingData, setIsRefreshingData] = useState(false)
       const controller = new AbortController()
       const timeoutId = setTimeout(() => controller.abort(), 10000) // 10 second timeout
       
-      const response = await fetch('/api/admin/sbir/stats', {
-        signal: controller.signal
-      })
+      // Fetch both stats and scraper status
+      const [statsResponse, scraperStatusResponse] = await Promise.all([
+        fetch('/api/admin/sbir/stats', { signal: controller.signal }),
+        fetch('/api/admin/sbir/scraper-status', { signal: controller.signal })
+      ])
       
       clearTimeout(timeoutId)
       
-      if (response.ok) {
-        const data = await response.json()
+      if (statsResponse.ok) {
+        const data = await statsResponse.json()
         setSbirStats(data)
-        setLastUpdate(data.lastUpdate || null)
       } else {
-        console.warn('Failed to load SBIR statistics:', response.status)
+        console.warn('Failed to load SBIR statistics:', statsResponse.status)
         setMessage('Failed to load SBIR statistics')
+      }
+      
+      if (scraperStatusResponse.ok) {
+        const scraperData = await scraperStatusResponse.json()
+        setLastUpdate(scraperData.lastUpdate || null)
+        setLastRunBy(scraperData.lastRunBy || null)
       }
     } catch (error) {
       console.error('Failed to load SBIR stats:', error)
@@ -337,224 +332,6 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
       setIsTriggeringSbirScraper(false)
     }
   }
-  
-  // NEW MONTHLY BATCHING SCRAPER - Automatically breaks into monthly chunks
-  const triggerHistoricalScraper = async () => {
-    if (!selectedMonthFrom || !selectedYearFrom) {
-      showNotification('Please select a start date', 'warning')
-      return
-    }
-    
-    if (!useToCurrent && (!selectedMonthTo || !selectedYearTo)) {
-      showNotification('Please select an end date or check "To Current"', 'warning')
-      return
-    }
-    
-    // Get current month and year if "To Current" is checked
-    const currentDate = new Date();
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const currentMonth = monthNames[currentDate.getMonth()];
-    const currentYear = currentDate.getFullYear().toString();
-    
-    const monthTo = useToCurrent ? currentMonth : selectedMonthTo;
-    const yearTo = useToCurrent ? currentYear : selectedYearTo;
-    
-    const dateRange = `${selectedMonthFrom} ${selectedYearFrom} to ${useToCurrent ? 'Current' : `${monthTo} ${yearTo}`}`;
-    console.log('[Historical Scraper] Starting scrape for', dateRange)
-    setIsScrapingHistorical(true)
-    setHistoricalScraperResult(null)
-    
-    // Break date range into monthly chunks
-    const fromMonthIndex = monthNames.indexOf(selectedMonthFrom)
-    const toMonthIndex = monthNames.indexOf(monthTo)
-    const fromYear = parseInt(selectedYearFrom)
-    const toYearInt = parseInt(yearTo)
-    
-    const monthlyChunks: Array<{month: string, year: string}> = []
-    let loopYear = fromYear
-    let loopMonthIndex = fromMonthIndex
-    
-    while (loopYear < toYearInt || (loopYear === toYearInt && loopMonthIndex <= toMonthIndex)) {
-      monthlyChunks.push({
-        month: monthNames[loopMonthIndex],
-        year: loopYear.toString()
-      })
-      
-      loopMonthIndex++
-      if (loopMonthIndex > 11) {
-        loopMonthIndex = 0
-        loopYear++
-      }
-    }
-    
-    console.log(`[Historical Scraper] Breaking into ${monthlyChunks.length} monthly chunks:`, monthlyChunks)
-    
-    const allLogs: string[] = [` Breaking date range into ${monthlyChunks.length} monthly chunks...`]
-    setHistoricalScraperProgress({ 
-      phase: `Processing ${monthlyChunks.length} monthly chunks...`, 
-      processedTopics: 0, 
-      totalTopics: 0, 
-      logs: allLogs 
-    })
-    
-    showNotification(` Scraping ${dateRange} - processing ${monthlyChunks.length} months...`, 'info')
-    
-    // Aggregate results across all months
-    let totalTopics = 0
-    let totalProcessed = 0
-    let totalNew = 0
-    let totalUpdated = 0
-    let totalPreserved = 0
-    
-    try {
-      // Process each month sequentially
-      for (let i = 0; i < monthlyChunks.length; i++) {
-        const chunk = monthlyChunks[i]
-        const chunkProgress = Math.round(((i + 1) / monthlyChunks.length) * 100)
-        
-        allLogs.push(`\n[${chunkProgress}%] Processing ${chunk.month} ${chunk.year}...`)
-        setHistoricalScraperProgress({ 
-          phase: `[${chunkProgress}%] Processing ${chunk.month} ${chunk.year}...`, 
-          processedTopics: totalProcessed, 
-          totalTopics: totalTopics,
-          logs: [...allLogs]
-        })
-        
-        console.log(`[Historical Scraper] [${i + 1}/${monthlyChunks.length}] Scraping ${chunk.month} ${chunk.year}...`)
-        
-        // BATCHING: Process this month in 50-topic batches
-        let offset = 0
-        const batchSize = 50
-        let hasMore = true
-        let monthTopics = 0
-        let monthNew = 0
-        let monthUpdated = 0
-        let monthPreserved = 0
-        
-        while (hasMore) {
-          const batchNum = Math.floor(offset / batchSize) + 1
-          if (batchNum > 1) {
-            allLogs.push(`   Batch ${batchNum}: Processing next ${batchSize} topics (offset ${offset})...`)
-            setHistoricalScraperProgress({ 
-              phase: `[${chunkProgress}%] ${chunk.month} ${chunk.year} - Batch ${batchNum}...`, 
-              processedTopics: totalProcessed, 
-              totalTopics: totalTopics,
-              logs: [...allLogs]
-            })
-          }
-          
-          const response = await fetch('/api/admin/sbir/scraper-historical', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              monthFrom: chunk.month,
-              yearFrom: chunk.year,
-              monthTo: chunk.month,
-              yearTo: chunk.year,
-              offset,
-              limit: batchSize
-            })
-          })
-          
-          const result = await response.json()
-          
-          if (!response.ok || !result.success) {
-            allLogs.push(`   ❌ Batch ${batchNum} Error: ${result.message || 'Unknown error'}`)
-            console.error(`[Historical Scraper] Failed batch ${batchNum} for ${chunk.month} ${chunk.year}:`, result.message)
-            break // Stop processing this month
-          }
-          
-          // Aggregate results for this batch
-          monthTopics = result.totalTopics || 0 // Total stays constant
-          monthNew += result.newRecords || 0
-          monthUpdated += result.updatedRecords || 0
-          monthPreserved += result.preservedRecords || 0
-          totalProcessed += result.processedTopics || 0
-          
-          // Add detailed logs from this batch
-          if (result.detailedLogs && Array.isArray(result.detailedLogs)) {
-            allLogs.push(...result.detailedLogs.map((log: string) => `      ${log}`))
-          }
-          
-          hasMore = result.hasMore || false
-          offset += batchSize
-          
-          // Update progress
-          setHistoricalScraperProgress({ 
-            phase: hasMore 
-              ? `[${chunkProgress}%] ${chunk.month} ${chunk.year} - Batch ${batchNum} done, ${result.remaining || 0} remaining...`
-              : `[${chunkProgress}%] Completed ${chunk.month} ${chunk.year}`, 
-            processedTopics: totalProcessed, 
-            totalTopics: totalTopics + monthTopics,
-            logs: [...allLogs]
-          })
-        }
-        
-        // Month completed
-        totalTopics += monthTopics
-        totalNew += monthNew
-        totalUpdated += monthUpdated
-        totalPreserved += monthPreserved
-        
-        allLogs.push(`   ✅ ${chunk.month} complete: ${monthTopics} topics (${monthNew} new, ${monthUpdated} updated)`)
-      }
-      
-      // All months completed
-      allLogs.push(`\n All ${monthlyChunks.length} months completed!`)
-      allLogs.push(` Total: ${totalTopics} topics, ${totalNew} new, ${totalUpdated} updated`)
-      
-      setHistoricalScraperResult({
-        totalTopics,
-        processedTopics: totalProcessed,
-        newRecords: totalNew,
-        updatedRecords: totalUpdated,
-        preservedRecords: totalPreserved
-      })
-      
-      setHistoricalScraperProgress({ 
-        phase: ' All months completed!', 
-        processedTopics: totalProcessed, 
-        totalTopics: totalTopics,
-        logs: [...allLogs]
-      })
-      
-      const message = `
- Historical Scrape Complete (${dateRange}):
-• Total Topics Found: ${totalTopics}
-• Processed: ${totalProcessed}
-• New Records: ${totalNew}
-• Updated Records: ${totalUpdated}
-• Preserved: ${totalPreserved}
-      `
-      showNotification(message, 'success', {
-        totalTopics,
-        newRecords: totalNew,
-        updatedRecords: totalUpdated
-      })
-      
-      // Auto-refresh stats after scrape completes
-      console.log('[Historical Scraper] Auto-refreshing statistics...')
-      await loadSbirStats()
-      await checkSbirScraperStatus()
-      
-    } catch (error) {
-      console.error('[Historical Scraper] Error:', error)
-      allLogs.push(` Error: ${error instanceof Error ? error.message : 'Unknown error'}`)
-      setHistoricalScraperProgress({ 
-        phase: ' Error occurred', 
-        processedTopics: totalProcessed, 
-        totalTopics: totalTopics,
-        logs: [...allLogs]
-      })
-      showNotification(` Historical scrape error: ${error instanceof Error ? error.message : 'Unknown error'}`, 'error')
-    } finally {
-      setIsScrapingHistorical(false)
-    }
-  }
-
-  // Removed old startSbirScraper function - use triggerSbirScraper instead
 
   const testSearch = async () => {
     if (!searchQuery.trim()) {
@@ -1762,7 +1539,7 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
         {/* SBIR Database Management Section */}
         <div className="settings-section">
           <h2>SBIR Database Management</h2>
-          <p>Manage automated SBIR data scraping and database updates. The scraper runs once daily at noon to fetch active/open/pre-release opportunities.</p>
+          <p>Manage automated SBIR data scraping and database updates. The scraper runs once daily at 12:00 UTC (7:00 AM EST / 8:00 AM EDT) to fetch active/open/pre-release opportunities.</p>
           
           <div className="sbir-management">
             {/* SBIR Statistics */}
@@ -1810,9 +1587,14 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                   <h3 style={{ fontSize: '14px', fontWeight: '600', margin: '0 0 8px 0', color: '#e2e8f0' }}>
                     Last Updated
                   </h3>
-                  <p style={{ fontSize: '14px', margin: '0', color: '#94a3b8' }}>
+                  <p style={{ fontSize: '14px', margin: '0 0 4px 0', color: '#94a3b8' }}>
                     {lastUpdate ? new Date(lastUpdate).toLocaleString() : 'Never'}
                   </p>
+                  {lastRunBy && (
+                    <p style={{ fontSize: '12px', margin: '0', color: '#64748b' }}>
+                      Run by: {lastRunBy}
+                    </p>
+                  )}
                 </div>
               </div>
             )}
@@ -1869,11 +1651,8 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
               {/* Scraper Controls - All on one line */}
               <div style={{ marginBottom: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
                 <button
-                  onClick={() => {
-                    setScraperMode('active');
-                    triggerSbirScraper();
-                  }}
-                  disabled={isTriggeringSbirScraper || isScrapingHistorical}
+                  onClick={triggerSbirScraper}
+                  disabled={isTriggeringSbirScraper}
                   style={{
                     padding: '12px 24px',
                     background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
@@ -1882,31 +1661,12 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                     borderRadius: '8px',
                     fontSize: '14px',
                     fontWeight: '600',
-                    cursor: (isTriggeringSbirScraper || isScrapingHistorical) ? 'not-allowed' : 'pointer',
-                    opacity: (isTriggeringSbirScraper || isScrapingHistorical) ? 0.6 : 1,
+                    cursor: isTriggeringSbirScraper ? 'not-allowed' : 'pointer',
+                    opacity: isTriggeringSbirScraper ? 0.6 : 1,
                     transition: 'all 0.2s ease'
                   }}
                 >
                   {isTriggeringSbirScraper ? ' Running...' : 'Quick Scrape (Active Only)'}
-                </button>
-                
-                <button
-                  onClick={() => setScraperMode('historical')}
-                  disabled={isTriggeringSbirScraper || isScrapingHistorical}
-                  style={{
-                    padding: '12px 24px',
-                    background: scraperMode === 'historical' ? 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)' : 'rgba(139, 92, 246, 0.1)',
-                    color: scraperMode === 'historical' ? 'white' : '#8b5cf6',
-                    border: `2px solid ${scraperMode === 'historical' ? '#8b5cf6' : 'rgba(139, 92, 246, 0.3)'}`,
-                    borderRadius: '8px',
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    cursor: (isTriggeringSbirScraper || isScrapingHistorical) ? 'not-allowed' : 'pointer',
-                    opacity: (isTriggeringSbirScraper || isScrapingHistorical) ? 0.6 : 1,
-                    transition: 'all 0.2s ease'
-                  }}
-                >
-                  Scrape via Date Range
                 </button>
                 
                 <button
@@ -1929,110 +1689,9 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                   {isLoadingStats ? 'Loading...' : 'Refresh Statistics'}
                 </button>
               </div>
-
-              {/* Historical Scraper Progress Visualizer - Right under button */}
-              {isScrapingHistorical && historicalScraperProgress && (
-                <div style={{
-                  background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
-                  border: '3px solid #8b5cf6',
-                  borderRadius: '16px',
-                  padding: '36px',
-                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8), 0 0 100px rgba(139, 92, 246, 0.3)',
-                  marginTop: '24px',
-                  marginBottom: '24px'
-                }}>
-                  <h3 style={{ 
-                    color: '#ffffff', 
-                    fontSize: '24px', 
-                    marginBottom: '24px',
-                    textAlign: 'center'
-                  }}>
-                     Scraping Historical Opportunities
-                  </h3>
-                  
-                  {/* Progress Bar */}
-                  <div style={{
-                    width: '100%',
-                    height: '16px',
-                    background: 'rgba(148, 163, 184, 0.2)',
-                    borderRadius: '8px',
-                    overflow: 'hidden',
-                    marginBottom: '20px'
-                  }}>
-                    <div style={{
-                      width: `${historicalScraperProgress.processedTopics && historicalScraperProgress.totalTopics 
-                        ? (historicalScraperProgress.processedTopics / historicalScraperProgress.totalTopics * 100) 
-                        : 10}%`,
-                      height: '100%',
-                      background: 'linear-gradient(90deg, #8b5cf6 0%, #7c3aed 100%)',
-                      transition: 'width 0.5s ease',
-                      animation: 'pulse 2s infinite'
-                    }} />
-                  </div>
-                  
-                  {/* Progress Info */}
-                  <div style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: '1.8' }}>
-                    <p style={{ marginBottom: '12px' }}>
-                      <strong style={{ color: '#8b5cf6' }}>Phase:</strong> {historicalScraperProgress.phase || 'Starting...'}
-                    </p>
-                    {historicalScraperProgress.totalTopics > 0 && (
-                      <p style={{ marginBottom: '12px' }}>
-                        <strong style={{ color: '#8b5cf6' }}>Progress:</strong> {historicalScraperProgress.processedTopics || 0} / {historicalScraperProgress.totalTopics} topics
-                      </p>
-                    )}
-                  </div>
-                  
-                  {/* Logs */}
-                  {historicalScraperProgress.logs && historicalScraperProgress.logs.length > 0 && (
-                    <div style={{
-                      marginTop: '20px',
-                      padding: '16px',
-                      background: 'rgba(0, 0, 0, 0.4)',
-                      border: '1px solid rgba(139, 92, 246, 0.3)',
-                      borderRadius: '12px',
-                      maxHeight: '400px',
-                      overflowY: 'auto'
-                    }}>
-                      <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        marginBottom: '12px'
-                      }}>
-                        <p style={{ color: '#8b5cf6', fontSize: '13px', fontWeight: '700', margin: 0 }}>
-                          Detailed Progress Log ({historicalScraperProgress.logs.length} entries)
-                        </p>
-                        <span style={{ color: '#10b981', fontSize: '11px', fontWeight: '600' }}>
-                          LIVE
-                        </span>
-                      </div>
-                      {historicalScraperProgress.logs.slice(-100).map((log: string, idx: number) => {
-                        const cleanLog = log.split(': ').slice(1).join(': ') || log;
-                        const isProgress = cleanLog.includes('[') && cleanLog.includes('%]');
-                        const isSuccess = cleanLog.includes('✓');
-                        const isWarning = cleanLog.includes('⚠');
-                        
-                        return (
-                          <p key={idx} style={{ 
-                            color: isSuccess ? '#10b981' : isWarning ? '#f59e0b' : '#94a3b8',
-                            fontSize: isProgress ? '13px' : '12px',
-                            marginBottom: '6px',
-                            fontFamily: 'monospace',
-                            fontWeight: isProgress ? '600' : '400',
-                            lineHeight: '1.4',
-                            paddingLeft: cleanLog.startsWith('      ') ? '20px' : '0'
-                          }}>
-                            {cleanLog}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              )}
               
               {/* Scraper Status */}
-              {sbirScraperStatus && scraperMode === 'active' && (
+              {sbirScraperStatus && (
                 <div style={{
                   background: 'rgba(0, 0, 0, 0.2)',
                   borderRadius: '8px',
@@ -2252,208 +1911,12 @@ For detailed logs (shows each topic name, extracted fields, and step-by-step pro
                   Automated Schedule
                 </h4>
                 <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
-                  The SBIR scraper runs automatically once daily at 12:00 PM (noon) EST.
+                  The SBIR scraper runs automatically once daily at 12:00 UTC (7:00 AM EST / 8:00 AM EDT).
                 </p>
                 <p style={{ color: '#cbd5e1', margin: '4px 0', fontSize: '14px' }}>
                   It fetches only active, open, and pre-release opportunities to keep the database current.
                 </p>
               </div>
-              
-              {/* Historical Scraper Mode */}
-              {scraperMode === 'historical' && (
-                <>
-                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: '32px 0 16px 0' }}>
-                    Scrape and backfill historical SBIR/STTR opportunities from any month/year. Pulls all the same detailed data as the active scraper.
-                  </p>
-                  
-                  <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'flex-end', marginBottom: '16px' }}>
-                    {/* FROM date */}
-                    <div>
-                      <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
-                        From Month
-                      </label>
-                      <select
-                        value={selectedMonthFrom}
-                        onChange={(e) => setSelectedMonthFrom(e.target.value)}
-                        disabled={isScrapingHistorical}
-                        style={{
-                          minWidth: '140px',
-                          padding: '10px 12px',
-                          background: 'rgba(15, 23, 42, 0.8)',
-                          border: '1px solid rgba(148, 163, 184, 0.3)',
-                          borderRadius: '6px',
-                          color: '#ffffff',
-                          fontSize: '14px',
-                          cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
-                          opacity: isScrapingHistorical ? 0.6 : 1
-                        }}
-                      >
-                        <option value="">Month</option>
-                        <option value="January">January</option>
-                        <option value="February">February</option>
-                        <option value="March">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
-                        <option value="July">July</option>
-                        <option value="August">August</option>
-                        <option value="September">September</option>
-                        <option value="October">October</option>
-                        <option value="November">November</option>
-                        <option value="December">December</option>
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
-                        From Year
-                      </label>
-                      <select
-                        value={selectedYearFrom}
-                        onChange={(e) => setSelectedYearFrom(e.target.value)}
-                        disabled={isScrapingHistorical}
-                        style={{
-                          minWidth: '100px',
-                          padding: '10px 12px',
-                          background: 'rgba(15, 23, 42, 0.8)',
-                          border: '1px solid rgba(148, 163, 184, 0.3)',
-                          borderRadius: '6px',
-                          color: '#ffffff',
-                          fontSize: '14px',
-                          cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
-                          opacity: isScrapingHistorical ? 0.6 : 1
-                        }}
-                      >
-                        <option value="">Year</option>
-                        {Array.from({ length: 6 }, (_, i) => new Date().getFullYear() - i).map(year => (
-                          <option key={year} value={year}>{year}</option>
-                        ))}
-                      </select>
-                    </div>
-                    
-                    <div style={{ padding: '0 8px', marginBottom: '10px', color: '#94a3b8', fontSize: '20px', fontWeight: 'bold' }}>
-                      →
-                    </div>
-                    
-                    {/* TO date */}
-                    <div>
-                      <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
-                        To Month
-                      </label>
-                      <select
-                        value={selectedMonthTo}
-                        onChange={(e) => setSelectedMonthTo(e.target.value)}
-                        disabled={isScrapingHistorical || useToCurrent}
-                        style={{
-                          minWidth: '140px',
-                          padding: '10px 12px',
-                          background: 'rgba(15, 23, 42, 0.8)',
-                          border: '1px solid rgba(148, 163, 184, 0.3)',
-                          borderRadius: '6px',
-                          color: '#ffffff',
-                          fontSize: '14px',
-                          cursor: isScrapingHistorical || useToCurrent ? 'not-allowed' : 'pointer',
-                          opacity: isScrapingHistorical || useToCurrent ? 0.6 : 1
-                        }}
-                      >
-                        <option value="">Month</option>
-                        <option value="January">January</option>
-                        <option value="February">February</option>
-                        <option value="March">March</option>
-                        <option value="April">April</option>
-                        <option value="May">May</option>
-                        <option value="June">June</option>
-                        <option value="July">July</option>
-                        <option value="August">August</option>
-                        <option value="September">September</option>
-                        <option value="October">October</option>
-                        <option value="November">November</option>
-                        <option value="December">December</option>
-                      </select>
-                    </div>
-                    
-                    <div>
-                      <label style={{ display: 'block', color: '#cbd5e1', fontSize: '12px', marginBottom: '6px' }}>
-                        To Year
-                      </label>
-                      <select
-                        value={selectedYearTo}
-                        onChange={(e) => setSelectedYearTo(e.target.value)}
-                        disabled={isScrapingHistorical || useToCurrent}
-                        style={{
-                          minWidth: '100px',
-                          padding: '10px 12px',
-                          background: 'rgba(15, 23, 42, 0.8)',
-                          border: '1px solid rgba(148, 163, 184, 0.3)',
-                          borderRadius: '6px',
-                          color: '#ffffff',
-                          fontSize: '14px',
-                          cursor: isScrapingHistorical || useToCurrent ? 'not-allowed' : 'pointer',
-                          opacity: isScrapingHistorical || useToCurrent ? 0.6 : 1
-                        }}
-                      >
-                        <option value="">Year</option>
-                        {Array.from({ length: 6 }, (_, i) => new Date().getFullYear() - i).map(year => (
-                          <option key={year} value={year}>{year}</option>
-                        ))}
-                      </select>
-                    </div>
-                    
-                    {/* To Current Checkbox */}
-                    <div style={{ display: 'flex', alignItems: 'flex-end', paddingBottom: '10px' }}>
-                      <label style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '8px',
-                        color: '#cbd5e1',
-                        fontSize: '14px',
-                        cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
-                        opacity: isScrapingHistorical ? 0.6 : 1,
-                        userSelect: 'none'
-                      }}>
-                        <input
-                          type="checkbox"
-                          checked={useToCurrent}
-                          onChange={(e) => {
-                            setUseToCurrent(e.target.checked);
-                            if (e.target.checked) {
-                              setSelectedMonthTo('');
-                              setSelectedYearTo('');
-                            }
-                          }}
-                          disabled={isScrapingHistorical}
-                          style={{
-                            width: '18px',
-                            height: '18px',
-                            cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
-                            accentColor: '#8b5cf6'
-                          }}
-                        />
-                        <span style={{ fontWeight: '500' }}>To Current</span>
-                      </label>
-                    </div>
-                    
-                    <button
-                      type="button"
-                      onClick={triggerHistoricalScraper}
-                      disabled={isScrapingHistorical}
-                      style={{
-                        background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
-                        color: 'white',
-                        padding: '12px 24px',
-                        border: 'none',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        fontWeight: '600',
-                        cursor: isScrapingHistorical ? 'not-allowed' : 'pointer',
-                        opacity: isScrapingHistorical ? 0.6 : 1
-                      }}
-                    >
-                      {isScrapingHistorical ? ' Scraping...' : ' Scrape Historical Data'}
-                    </button>
-                  </div>
-                </>
-              )}
             </div>
 
 

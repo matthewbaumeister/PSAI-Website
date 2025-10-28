@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Solutions - Prop Shop AI Government Contracting Tools & Services',
-  description: 'Discover our comprehensive suite of AI-powered government contracting solutions: Search, Compliance, Market Research, Writing, CRM, and Small Business tools.',
+  description: 'Discover our comprehensive suite of AI-powered government contracting solutions: MATRIX intelligence platform, Compliance, Writing, and Small Business tools.',
 }
 
 export default function SolutionsPage() {
@@ -20,7 +20,7 @@ export default function SolutionsPage() {
 
         <div className="hero-section">
           <div className="hero-content">
-            <h2>One Platform, Six Powerful Solutions</h2>
+            <h2>One Platform, Powerful Solutions</h2>
             <p>
               We've built a comprehensive ecosystem that gives you the same capabilities that 
               established companies spend millions developing. No more playing catch-up - 
@@ -34,28 +34,32 @@ export default function SolutionsPage() {
             <div className="solution-icon">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
                 <defs>
-                  <linearGradient id="searchGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{stopColor:"#ff6b35",stopOpacity:1}} />
-                    <stop offset="100%" style={{stopColor:"#f7931e",stopOpacity:1}} />
+                  <linearGradient id="matrixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{stopColor:"#3b82f6",stopOpacity:1}} />
+                    <stop offset="100%" style={{stopColor:"#8b5cf6",stopOpacity:1}} />
                   </linearGradient>
                 </defs>
-                <circle cx="20" cy="20" r="12" stroke="url(#searchGradient)" strokeWidth="3" fill="none"/>
-                <line x1="28" y1="28" x2="38" y2="38" stroke="url(#searchGradient)" strokeWidth="3" strokeLinecap="round"/>
-                <rect x="32" y="8" width="8" height="10" rx="1" fill="url(#searchGradient)" opacity="0.8"/>
+                <circle cx="20" cy="20" r="12" stroke="url(#matrixGradient)" strokeWidth="3" fill="none"/>
+                <line x1="28" y1="28" x2="38" y2="38" stroke="url(#matrixGradient)" strokeWidth="3" strokeLinecap="round"/>
+                <circle cx="12" cy="12" r="2" fill="url(#matrixGradient)"/>
+                <circle cx="28" cy="12" r="2" fill="url(#matrixGradient)"/>
+                <circle cx="12" cy="28" r="2" fill="url(#matrixGradient)"/>
+                <line x1="12" y1="12" x2="28" y2="12" stroke="url(#matrixGradient)" strokeWidth="1.5" opacity="0.6"/>
+                <line x1="12" y1="12" x2="12" y2="28" stroke="url(#matrixGradient)" strokeWidth="1.5" opacity="0.6"/>
+                <rect x="32" y="8" width="8" height="10" rx="1" fill="url(#matrixGradient)" opacity="0.8"/>
                 <line x1="34" y1="11" x2="38" y2="11" stroke="white" strokeWidth="1"/>
                 <line x1="34" y1="13" x2="38" y2="13" stroke="white" strokeWidth="1"/>
-                <line x1="34" y1="15" x2="36" y2="15" stroke="white" strokeWidth="1"/>
               </svg>
             </div>
             <div className="solution-content">
-              <h3>PS.AI Search</h3>
-              <p>DoD-wide government contract search and opportunity discovery platform. Find new work opportunities across all defense agencies with our proprietary search algorithms.</p>
+              <h3>MATRIX</h3>
+              <p>MAKE‑READY Acquisition & Technology Readiness Intelligence eXchange - our comprehensive DoD-wide search and intelligence platform combining market research, opportunity tracking, and strategic analysis.</p>
               <div className="solution-features">
-                <span className="feature-tag">Contract Discovery</span>
-                <span className="feature-tag">DoD Coverage</span>
-                <span className="feature-tag">Real-time Updates</span>
+                <span className="feature-tag">DoD-Wide Search</span>
+                <span className="feature-tag">Market Intelligence</span>
+                <span className="feature-tag">Strategic Analysis</span>
               </div>
-              <a href="/search" className="btn btn-primary">Learn More</a>
+              <a href="/matrix" className="btn btn-primary">Learn More</a>
             </div>
           </div>
 
@@ -94,22 +98,6 @@ export default function SolutionsPage() {
 
           <div className="solution-card">
             <div className="solution-icon">
-              <img src="/icons/market-research-icon.svg" alt="Market Research Icon" width="64" height="64" />
-            </div>
-            <div className="solution-content">
-              <h3>PS.AI Market Research</h3>
-              <p>Proprietary data and search platform for creating and tracking opportunities and industries. Build market intelligence that drives strategic decisions.</p>
-              <div className="solution-features">
-                <span className="feature-tag">Market Data</span>
-                <span className="feature-tag">Opportunity Tracking</span>
-                <span className="feature-tag">Strategic Insights</span>
-              </div>
-              <a href="/market-research" className="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-
-          <div className="solution-card">
-            <div className="solution-icon">
               <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
                 <defs>
                   <linearGradient id="writeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -139,38 +127,6 @@ export default function SolutionsPage() {
                 <span className="feature-tag">Manual Writing</span>
               </div>
               <a href="/write" className="btn btn-primary">Learn More</a>
-            </div>
-          </div>
-
-          <div className="solution-card">
-            <div className="solution-icon">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="64" height="64">
-                <defs>
-                  <linearGradient id="crmGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{stopColor:"#ff6b35",stopOpacity:1}} />
-                    <stop offset="100%" style={{stopColor:"#f7931e",stopOpacity:1}} />
-                  </linearGradient>
-                </defs>
-                <rect x="8" y="8" width="32" height="32" rx="4" fill="url(#crmGradient)" opacity="0.9"/>
-                <circle cx="16" cy="20" r="3" fill="white"/>
-                <circle cx="32" cy="20" r="3" fill="white"/>
-                <circle cx="24" cy="36" r="3" fill="white"/>
-                <line x1="16" y1="20" x2="24" y2="36" stroke="white" strokeWidth="2" opacity="0.8"/>
-                <line x1="32" y1="20" x2="24" y2="36" stroke="white" strokeWidth="2" opacity="0.8"/>
-                <path d="M12 16 L20 16 L20 24 L12 24 Z" fill="white" opacity="0.7"/>
-                <path d="M28 16 L36 16 L36 24 L28 24 Z" fill="white" opacity="0.7"/>
-                <path d="M20 32 L28 32 L28 40 L20 40 Z" fill="white" opacity="0.7"/>
-              </svg>
-            </div>
-            <div className="solution-content">
-              <h3>PS.AI CRM</h3>
-              <p>Customer relationship management platform designed specifically for government contracting. Track opportunities, manage relationships, and close more deals.</p>
-              <div className="solution-features">
-                <span className="feature-tag">Opportunity Tracking</span>
-                <span className="feature-tag">Relationship Management</span>
-                <span className="feature-tag">Pipeline Analytics</span>
-              </div>
-              <a href="/crm" className="btn btn-primary">Learn More</a>
             </div>
           </div>
 

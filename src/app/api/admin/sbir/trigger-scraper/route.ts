@@ -13,7 +13,8 @@ export async function POST(request: NextRequest) {
       return authResult;
     }
 
-    console.log(' Manual SBIR scraper trigger initiated by admin');
+    const { user } = authResult;
+    console.log(' Manual SBIR scraper trigger initiated by admin:', user?.email);
 
     // Trigger the cron scraper endpoint (TypeScript-based, no Python needed)
     const scraperUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/cron/sbir-scraper`;
@@ -22,7 +23,10 @@ export async function POST(request: NextRequest) {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${process.env.CRON_SECRET}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'x-trigger-source': 'admin_ui',
+        'x-user-id': user?.id || '',
+        'x-user-email': user?.email || ''
       }
     });
 

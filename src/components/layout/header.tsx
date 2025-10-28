@@ -115,20 +115,14 @@ export function Header() {
         <Link href="/small-business" className="dropdown-link" onClick={closeDropdowns}>
           Small Business
         </Link>
-        <Link href="/search" className="dropdown-link" onClick={closeDropdowns}>
-          PS.AI Search
+        <Link href="/matrix" className="dropdown-link" onClick={closeDropdowns}>
+          MATRIX
         </Link>
         <Link href="/compliance" className="dropdown-link" onClick={closeDropdowns}>
           PS.AI Compliance
         </Link>
-        <Link href="/market-research" className="dropdown-link" onClick={closeDropdowns}>
-          PS.AI Market Research
-        </Link>
         <Link href="/write" className="dropdown-link" onClick={closeDropdowns}>
           PS.AI Write
-        </Link>
-        <Link href="/crm" className="dropdown-link" onClick={closeDropdowns}>
-          PS.AI CRM
         </Link>
       </div>
     )

@@ -19,9 +19,8 @@ export function Footer() {
             <h3>Solutions</h3>
             <ul>
               <li><Link href="/small-business">Small Business</Link></li>
-              <li><Link href="/search">PS.AI Search</Link></li>
+              <li><Link href="/matrix">MATRIX</Link></li>
               <li><Link href="/compliance">PS.AI Compliance</Link></li>
-              <li><Link href="/market-research">PS.AI Market Research</Link></li>
               <li><Link href="/write">PS.AI Write</Link></li>
             </ul>
           </div>

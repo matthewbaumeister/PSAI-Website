@@ -52,35 +52,35 @@ export default function ResourcesPage() {
             <div className="product-resource">
               <div className="product-header">
                 <div className="product-icon"></div>
-                <h3>PS.AI Search</h3>
-                <p>Master DoD-wide government contract search and opportunity discovery</p>
+                <h3>MATRIX</h3>
+                <p>Master the MAKE‑READY Acquisition & Technology Readiness Intelligence eXchange platform</p>
               </div>
               <div className="resource-categories">
                 <div className="resource-category">
                   <h4>Getting Started</h4>
                   <ul>
-                    <li><a href="#" className="coming-soon">Quick Start Guide</a></li>
-                    <li><a href="#" className="coming-soon">Account Setup & Configuration</a></li>
-                    <li><a href="#" className="coming-soon">First Search Walkthrough</a></li>
-                    <li><a href="#" className="coming-soon">Understanding Search Results</a></li>
+                    <li><a href="#" className="coming-soon">Platform Overview</a></li>
+                    <li><a href="#" className="coming-soon">DoD-Wide Search Basics</a></li>
+                    <li><a href="#" className="coming-soon">First Opportunity Discovery</a></li>
+                    <li><a href="#" className="coming-soon">Understanding Intelligence Data</a></li>
                   </ul>
                 </div>
                 <div className="resource-category">
                   <h4>Advanced Features</h4>
                   <ul>
-                    <li><a href="#" className="coming-soon">Advanced Search Filters</a></li>
-                    <li><a href="#" className="coming-soon">Saved Searches & Alerts</a></li>
-                    <li><a href="#" className="coming-soon">Competitive Intelligence Analysis</a></li>
-                    <li><a href="#" className="coming-soon">Market Trend Analysis</a></li>
+                    <li><a href="#" className="coming-soon">Advanced Search & Filters</a></li>
+                    <li><a href="#" className="coming-soon">Market Intelligence Analysis</a></li>
+                    <li><a href="#" className="coming-soon">Technology Readiness Tracking</a></li>
+                    <li><a href="#" className="coming-soon">Acquisition Milestone Monitoring</a></li>
                   </ul>
                 </div>
                 <div className="resource-category">
                   <h4>Best Practices</h4>
                   <ul>
-                    <li><a href="#" className="coming-soon">Effective Search Strategies</a></li>
-                    <li><a href="#" className="coming-soon">Opportunity Qualification</a></li>
-                    <li><a href="#" className="coming-soon">Competitive Positioning</a></li>
-                    <li><a href="#" className="coming-soon">Market Entry Planning</a></li>
+                    <li><a href="#" className="coming-soon">Strategic Opportunity Discovery</a></li>
+                    <li><a href="#" className="coming-soon">Competitive Intelligence</a></li>
+                    <li><a href="#" className="coming-soon">Market Entry Strategies</a></li>
+                    <li><a href="#" className="coming-soon">Technology Positioning</a></li>
                   </ul>
                 </div>
               </div>
@@ -123,42 +123,6 @@ export default function ResourcesPage() {
               </div>
             </div>
 
-            <div className="product-resource">
-              <div className="product-header">
-                <div className="product-icon"></div>
-                <h3>PS.AI Market Research</h3>
-                <p>Master proprietary data analysis and market intelligence creation</p>
-              </div>
-              <div className="resource-categories">
-                <div className="resource-category">
-                  <h4>Getting Started</h4>
-                  <ul>
-                    <li><a href="#" className="coming-soon">Platform Navigation</a></li>
-                    <li><a href="#" className="coming-soon">Data Source Overview</a></li>
-                    <li><a href="#" className="coming-soon">First Market Analysis</a></li>
-                    <li><a href="#" className="coming-soon">Understanding Market Data</a></li>
-                  </ul>
-                </div>
-                <div className="resource-category">
-                  <h4>Advanced Features</h4>
-                  <ul>
-                    <li><a href="#" className="coming-soon">Custom Market Intelligence</a></li>
-                    <li><a href="#" className="coming-soon">Opportunity Creation Tools</a></li>
-                    <li><a href="#" className="coming-soon">Competitive Analysis</a></li>
-                    <li><a href="#" className="coming-soon">Strategic Planning Tools</a></li>
-                  </ul>
-                </div>
-                <div className="resource-category">
-                  <h4>Best Practices</h4>
-                  <ul>
-                    <li><a href="#" className="coming-soon">Market Research Methodologies</a></li>
-                    <li><a href="#" className="coming-soon">Data Interpretation</a></li>
-                    <li><a href="#" className="coming-soon">Strategic Decision Making</a></li>
-                    <li><a href="#" className="coming-soon">Market Entry Strategies</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
 
             <div className="product-resource">
               <div className="product-header">
