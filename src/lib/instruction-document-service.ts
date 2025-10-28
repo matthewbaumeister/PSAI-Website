@@ -346,6 +346,7 @@ Document generated: ${new Date().toISOString()}
       component: opportunity.component,
       program: opportunity.program,
       phase: opportunity.phase,
+      status: opportunity.status,
       openDate: opportunity.open_date,
       closeDate: opportunity.close_date
     };
