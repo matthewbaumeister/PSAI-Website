@@ -20,6 +20,7 @@ interface DSIPOpportunity {
   is_xtech: boolean
   requires_itar: boolean
   search_rank: number
+  consolidated_instructions_url?: string
 }
 
 interface SearchFilters {
@@ -1001,26 +1002,59 @@ export default function DSIPSearchPage() {
                         </span>
                       )}
                     </div>
-                    <button
-                      style={{
-                        padding: '8px 16px',
-                        background: 'rgba(139, 92, 246, 0.2)',
-                        border: '1px solid rgba(139, 92, 246, 0.3)',
-                        borderRadius: '8px',
-                        color: '#c4b5fd',
-                        fontSize: '14px',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease'
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(139, 92, 246, 0.3)'
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)'
-                      }}
-                    >
-                      View Details
-                    </button>
+                    <div style={{
+                      display: 'flex',
+                      gap: '8px'
+                    }}>
+                      {opportunity.consolidated_instructions_url && (
+                        <a
+                          href={opportunity.consolidated_instructions_url}
+                          download
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            padding: '8px 16px',
+                            background: 'rgba(34, 197, 94, 0.2)',
+                            border: '1px solid rgba(34, 197, 94, 0.3)',
+                            borderRadius: '8px',
+                            color: '#86efac',
+                            fontSize: '14px',
+                            cursor: 'pointer',
+                            transition: 'all 0.2s ease',
+                            textDecoration: 'none',
+                            display: 'inline-block'
+                          }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.background = 'rgba(34, 197, 94, 0.3)'
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.background = 'rgba(34, 197, 94, 0.2)'
+                          }}
+                        >
+                          Download Instructions
+                        </a>
+                      )}
+                      <button
+                        style={{
+                          padding: '8px 16px',
+                          background: 'rgba(139, 92, 246, 0.2)',
+                          border: '1px solid rgba(139, 92, 246, 0.3)',
+                          borderRadius: '8px',
+                          color: '#c4b5fd',
+                          fontSize: '14px',
+                          cursor: 'pointer',
+                          transition: 'all 0.2s ease'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'rgba(139, 92, 246, 0.3)'
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)'
+                        }}
+                      >
+                        View Details
+                      </button>
+                    </div>
                   </div>
                 </div>
               ))}
