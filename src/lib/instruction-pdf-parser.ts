@@ -5,7 +5,7 @@
  * Extracts volume requirements, checklists, and submission guidelines
  */
 
-import pdf from 'pdf-parse';
+import * as pdfParse from 'pdf-parse';
 
 export interface VolumeRequirement {
   volumeNumber: number;
@@ -51,7 +51,7 @@ export class InstructionPdfParser {
       const buffer = Buffer.from(arrayBuffer);
       
       // Parse PDF
-      const data = await pdf(buffer);
+      const data = await (pdfParse as any).default(buffer);
       const plainText = data.text;
       
       console.log(`Parsed PDF: ${data.numpages} pages, ${plainText.length} characters`);

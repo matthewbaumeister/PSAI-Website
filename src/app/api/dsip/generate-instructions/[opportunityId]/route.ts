@@ -11,18 +11,13 @@ import { InstructionDocumentService } from '@/lib/instruction-document-service';
 export const maxDuration = 300; // 5 minutes
 export const dynamic = 'force-dynamic';
 
-interface RouteContext {
-  params: {
-    opportunityId: string;
-  };
-}
-
 export async function POST(
   request: NextRequest,
-  context: RouteContext
+  { params }: { params: Promise<{ opportunityId: string }> }
 ) {
   try {
-    const opportunityId = parseInt(context.params.opportunityId);
+    const { opportunityId: opportunityIdParam } = await params;
+    const opportunityId = parseInt(opportunityIdParam);
 
     if (isNaN(opportunityId)) {
       return NextResponse.json(
@@ -65,10 +60,11 @@ export async function POST(
 
 export async function GET(
   request: NextRequest,
-  context: RouteContext
+  { params }: { params: Promise<{ opportunityId: string }> }
 ) {
   try {
-    const opportunityId = parseInt(context.params.opportunityId);
+    const { opportunityId: opportunityIdParam } = await params;
+    const opportunityId = parseInt(opportunityIdParam);
 
     if (isNaN(opportunityId)) {
       return NextResponse.json(
