@@ -58,10 +58,51 @@ export class InstructionPdfGenerator {
   }
 
   /**
+   * Sanitize all text in the data object
+   */
+  private sanitizeData(data: ConsolidatedInstructionData): ConsolidatedInstructionData {
+    return {
+      ...data,
+      opportunity: {
+        ...data.opportunity,
+        topicNumber: this.sanitizeText(data.opportunity.topicNumber),
+        title: this.sanitizeText(data.opportunity.title),
+        component: this.sanitizeText(data.opportunity.component),
+        program: this.sanitizeText(data.opportunity.program),
+        phase: this.sanitizeText(data.opportunity.phase),
+        status: this.sanitizeText(data.opportunity.status),
+        openDate: data.opportunity.openDate ? this.sanitizeText(data.opportunity.openDate) : undefined,
+        closeDate: data.opportunity.closeDate ? this.sanitizeText(data.opportunity.closeDate) : undefined,
+      },
+      volumes: data.volumes.map(vol => ({
+        ...vol,
+        volumeName: this.sanitizeText(vol.volumeName),
+        description: this.sanitizeText(vol.description),
+        requirements: vol.requirements.map(req => this.sanitizeText(req))
+      })),
+      checklist: data.checklist.map(item => this.sanitizeText(item)),
+      keyDates: Object.fromEntries(
+        Object.entries(data.keyDates).map(([key, value]) => [
+          this.sanitizeText(key),
+          this.sanitizeText(value)
+        ])
+      ),
+      submissionGuidelines: data.submissionGuidelines.map(g => this.sanitizeText(g)),
+      contacts: data.contacts.map(c => this.sanitizeText(c)),
+      componentInstructionsUrl: data.componentInstructionsUrl,
+      solicitationInstructionsUrl: data.solicitationInstructionsUrl,
+      generatedAt: data.generatedAt
+    };
+  }
+
+  /**
    * Generate consolidated instruction PDF
    * Returns a Buffer that can be uploaded to storage
    */
   async generateConsolidatedPdf(data: ConsolidatedInstructionData): Promise<Buffer> {
+    // Sanitize all text data before generating PDF
+    const sanitizedData = this.sanitizeData(data);
+    
     const pdfDoc = await PDFDocument.create();
     
     // Embed standard fonts (no external files needed)
@@ -76,14 +117,14 @@ export class InstructionPdfGenerator {
       title: timesRomanBoldFont,
     };
 
-    // Generate content
-    await this.addCoverPage(pdfDoc, data, fonts);
-    await this.addTableOfContents(pdfDoc, data, fonts);
-    await this.addQuickReference(pdfDoc, data, fonts);
-    await this.addVolumeRequirements(pdfDoc, data, fonts);
-    await this.addChecklist(pdfDoc, data, fonts);
-    await this.addSourceDocuments(pdfDoc, data, fonts);
-    await this.addFooters(pdfDoc, data, fonts);
+    // Generate content using sanitized data
+    await this.addCoverPage(pdfDoc, sanitizedData, fonts);
+    await this.addTableOfContents(pdfDoc, sanitizedData, fonts);
+    await this.addQuickReference(pdfDoc, sanitizedData, fonts);
+    await this.addVolumeRequirements(pdfDoc, sanitizedData, fonts);
+    await this.addChecklist(pdfDoc, sanitizedData, fonts);
+    await this.addSourceDocuments(pdfDoc, sanitizedData, fonts);
+    await this.addFooters(pdfDoc, sanitizedData, fonts);
 
     // Save as buffer
     const pdfBytes = await pdfDoc.save();
