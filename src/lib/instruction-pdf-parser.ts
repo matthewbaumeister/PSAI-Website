@@ -3,13 +3,10 @@
  * 
  * Fetches and parses BAA and Component instruction PDFs from DSIP
  * Extracts volume requirements, checklists, and submission guidelines
- * Uses pdfjs-dist for serverless compatibility
+ * Uses unpdf for serverless compatibility
  */
 
-import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
-
-// Completely disable worker for Node.js/serverless
-pdfjsLib.GlobalWorkerOptions.workerSrc = false as any;
+import { getTextExtractor } from 'unpdf';
 
 export interface VolumeRequirement {
   volumeNumber: number;
@@ -34,7 +31,7 @@ export interface InstructionDocument {
 
 export class InstructionPdfParser {
   /**
-   * Parse a PDF from URL and extract structured instruction data
+   * Parse instruction PDF from URL
    */
   async parseInstructionPdf(url: string, documentType: 'component' | 'solicitation' | 'baa'): Promise<InstructionDocument> {
     try {
@@ -52,31 +49,18 @@ export class InstructionPdfParser {
       }
       
       const arrayBuffer = await response.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
       
-      // Load PDF document
-      const loadingTask = pdfjsLib.getDocument({
-        data: arrayBuffer,
-        useSystemFonts: true,
-        standardFontDataUrl: undefined
-      });
+      console.log(`Downloaded PDF: ${buffer.length} bytes`);
       
-      const pdf = await loadingTask.promise;
-      const pageCount = pdf.numPages;
+      // Extract text using unpdf
+      const extractor = await getTextExtractor();
+      const extracted = await extractor(buffer);
       
-      console.log(`Loaded PDF: ${pageCount} pages`);
+      const plainText = extracted.text;
+      const pageCount = extracted.totalPages;
       
-      // Extract text from all pages
-      let plainText = '';
-      for (let i = 1; i <= pageCount; i++) {
-        const page = await pdf.getPage(i);
-        const textContent = await page.getTextContent();
-        const pageText = textContent.items
-          .map((item: any) => item.str)
-          .join(' ');
-        plainText += pageText + '\n\n';
-      }
-      
-      console.log(`Extracted ${plainText.length} characters of text`);
+      console.log(`Extracted ${plainText.length} characters from ${pageCount} pages`);
       
       // Extract structured information
       const volumes = this.extractVolumes(plainText);
@@ -154,51 +138,26 @@ export class InstructionPdfParser {
   private extractChecklist(text: string): string[] {
     const checklist: string[] = [];
     
-    // Extract bullet points and numbered lists
-    const lines = text.split('\n');
-    let inChecklistSection = false;
+    // Look for checklist sections
+    const checklistPatterns = [
+      /checklist[:\s]+([^]*?)(?:\n\n[A-Z]|\n\d+\.)/i,
+      /submission\s+requirements[:\s]+([^]*?)(?:\n\n[A-Z]|\n\d+\.)/i,
+      /required\s+documents[:\s]+([^]*?)(?:\n\n[A-Z]|\n\d+\.)/i,
+    ];
     
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
-      
-      // Detect checklist section headers
-      if (/checklist|required\s+documents|submission\s+requirements/i.test(line)) {
-        inChecklistSection = true;
-        continue;
-      }
-      
-      // Stop at next major section
-      if (inChecklistSection && /^[A-Z\d]+\.\s+[A-Z]/.test(line)) {
-        inChecklistSection = false;
-      }
-      
-      // Extract list items
-      if (inChecklistSection) {
-        const bulletMatch = line.match(/^[•●○▪▫-]\s*(.+)$/);
-        const numberMatch = line.match(/^\d+[\.)]\s*(.+)$/);
-        const letterMatch = line.match(/^[a-z][\.)]\s*(.+)$/i);
-        
-        if (bulletMatch || numberMatch || letterMatch) {
-          const item = (bulletMatch || numberMatch || letterMatch)?.[1]?.trim();
-          if (item && item.length > 10) {
-            checklist.push(item);
-          }
+    for (const pattern of checklistPatterns) {
+      const match = text.match(pattern);
+      if (match) {
+        const section = match[1];
+        // Extract bullet points or numbered items
+        const items = section.match(/[-•●]\s*([^\n]+)|^\d+\.\s*([^\n]+)/gm);
+        if (items) {
+          checklist.push(...items.map(item => item.replace(/^[-•●\d.]\s*/, '').trim()));
         }
       }
     }
     
-    // Also extract "must" and "shall" requirements
-    const requirementPattern = /(must|shall)\s+([^.]+\.)(?!\s*\d)/gi;
-    let match;
-    while ((match = requirementPattern.exec(text)) !== null) {
-      const requirement = match[2].trim();
-      if (requirement.length > 20 && requirement.length < 200) {
-        checklist.push(requirement);
-      }
-    }
-    
-    // Deduplicate and limit
-    return [...new Set(checklist)].slice(0, 50);
+    return [...new Set(checklist)]; // Remove duplicates
   }
 
   /**
@@ -281,61 +240,69 @@ export class InstructionPdfParser {
       'i'
     );
     
-    const volumeMatch = text.match(volumePattern);
-    if (!volumeMatch) return requirements;
+    const match = text.match(volumePattern);
+    if (!match) return requirements;
     
-    const volumeText = volumeMatch[0];
+    const volumeText = match[0];
     
-    // Extract requirements from volume section
+    // Extract requirements (bullets, numbered lists, "must include", "shall", etc.)
     const reqPatterns = [
-      /(?:shall|must|should|required to)\s+([^.]+\.)/gi,
-      /requirement[:\s]+([^.]+\.)/gi,
+      /[-•●]\s*([^\n]+)/g,
+      /^\d+\.\s*([^\n]+)/gm,
+      /(?:must|shall|should)\s+(?:include|contain|provide)[:\s]*([^\n]+)/gi,
+      /required[:\s]+([^\n]+)/gi,
     ];
     
     for (const pattern of reqPatterns) {
-      let match;
-      while ((match = pattern.exec(volumeText)) !== null) {
-        const req = match[1].trim();
-        if (req.length > 20 && req.length < 300) {
+      let reqMatch;
+      while ((reqMatch = pattern.exec(volumeText)) !== null) {
+        const req = reqMatch[1].trim();
+        if (req.length > 10 && req.length < 200) {
           requirements.push(req);
         }
       }
     }
     
-    return [...new Set(requirements)].slice(0, 20);
+    return [...new Set(requirements)].slice(0, 20); // Dedupe and limit
   }
 
   /**
-   * Extract volume description
+   * Extract description for a volume
    */
   private extractVolumeDescription(text: string, volumeNum: number): string {
     const volumePattern = new RegExp(
-      `Volume\\s+${volumeNum}[:\\s-]+([^]*?)(?=Volume\\s+\\d+|\\n\\n[A-Z]|$)`,
+      `Volume\\s+${volumeNum}[:\s-]+([^\\n]+)\\s+([^]*?)(?=Volume\\s+\\d+|$)`,
       'i'
     );
     
     const match = text.match(volumePattern);
     if (!match) return '';
     
-    // Get first paragraph
-    const firstPara = match[1].split('\n\n')[0];
-    return firstPara.trim().substring(0, 500);
+    // Get first paragraph after volume header
+    const content = match[2];
+    const firstParagraph = content.split('\n\n')[0];
+    return firstParagraph.trim().substring(0, 300);
   }
 
   /**
-   * Parse volume number (handles roman numerals and digits)
+   * Parse volume number (handles both numeric and Roman numerals)
    */
   private parseVolumeNumber(vol: string): number {
+    // Try numeric first
+    const num = parseInt(vol);
+    if (!isNaN(num)) return num;
+    
+    // Handle Roman numerals
     const romanMap: { [key: string]: number } = {
       'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5,
       'VI': 6, 'VII': 7, 'VIII': 8, 'IX': 9, 'X': 10
     };
     
-    return romanMap[vol.toUpperCase()] || parseInt(vol) || 0;
+    return romanMap[vol.toUpperCase()] || 1;
   }
 
   /**
-   * Merge component and solicitation instructions
+   * Merge instructions from component and solicitation documents
    */
   async mergeInstructions(
     componentDoc: InstructionDocument | null,
@@ -360,33 +327,25 @@ export class InstructionPdfParser {
     }
     
     if (solicitationDoc) {
-      // Merge volumes (avoid duplicates)
+      // Add volumes that don't exist yet
       for (const vol of solicitationDoc.volumes) {
-        const existing = volumes.find(v => v.volumeNumber === vol.volumeNumber);
-        if (existing) {
-          // Merge requirements
-          existing.requirements.push(...vol.requirements);
-          existing.requirements = [...new Set(existing.requirements)];
-        } else {
+        if (!volumes.find(v => v.volumeNumber === vol.volumeNumber)) {
           volumes.push(vol);
         }
       }
       
       checklist.push(...solicitationDoc.checklist);
       Object.assign(keyDates, solicitationDoc.keyDates);
-      plainText += `\n\n=== BAA/SOLICITATION INSTRUCTIONS ===\n\n${solicitationDoc.plainText}`;
+      plainText += `\n\n=== SOLICITATION INSTRUCTIONS ===\n\n${solicitationDoc.plainText}`;
     }
     
     // Deduplicate checklist
     const uniqueChecklist = [...new Set(checklist)];
     
-    // Sort volumes
-    volumes.sort((a, b) => a.volumeNumber - b.volumeNumber);
-    
     return {
-      volumes,
+      volumes: volumes.sort((a, b) => a.volumeNumber - b.volumeNumber),
       checklist: uniqueChecklist,
-      plainText,
+      plainText: plainText.trim(),
       keyDates
     };
   }

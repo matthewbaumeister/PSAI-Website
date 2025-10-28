@@ -27,11 +27,11 @@
     "mammoth": "^1.11.0",
     "next": "15.4.6",
     "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^3.11.174",
     "react": "^19",
     "react-dom": "^19",
     "tesseract.js": "^6.0.1",
     "tiktoken": "^1.0.22",
+    "unpdf": "^1.3.2",
     "xlsx": "^0.18.5",
     "xml2js": "^0.6.2"
   },
