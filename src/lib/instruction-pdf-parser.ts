@@ -301,7 +301,23 @@ export class InstructionPdfParser {
   }
 
   /**
+   * Extract context around a match (for better understanding)
+   */
+  private extractContext(text: string, matchIndex: number, contextLength: number = 150): string {
+    const start = Math.max(0, matchIndex - contextLength / 2);
+    const end = Math.min(text.length, matchIndex + contextLength);
+    let context = text.substring(start, end).trim();
+    
+    // Clean up
+    if (start > 0) context = '...' + context;
+    if (end < text.length) context = context + '...';
+    
+    return context;
+  }
+
+  /**
    * Detect cross-references and superseding language between documents
+   * Enhanced with comprehensive pattern matching and context extraction
    */
   private analyzeCrossReferences(componentText: string, solicitationText: string): {
     componentSupersedes: boolean;
@@ -309,63 +325,121 @@ export class InstructionPdfParser {
     crossReferences: string[];
   } {
     const crossReferences: string[] = [];
+    const foundPatterns = new Set<string>();
     
-    // Patterns for superseding language
-    const supersedePatterns = [
-      /component[- ]specific instructions?\s+(?:shall\s+)?(?:take precedence|supersede|override|govern)/gi,
-      /these instructions?\s+(?:shall\s+)?(?:take precedence|supersede|override)/gi,
-      /(?:in case of|when there is)\s+(?:a\s+)?(?:conflict|discrepancy),?\s+(?:the\s+)?component/gi,
-      /(?:where|if)\s+component instructions?\s+differ/gi,
+    // COMPREHENSIVE superseding patterns (component takes precedence)
+    const componentSupersedePatterns = [
+      // Direct precedence
+      /component[- ]?specific\s+instructions?\s+(?:shall|will|must)?\s*(?:take precedence|supersede|override|govern|prevail|control)/gi,
+      /these\s+(?:component\s+)?instructions?\s+(?:shall|will|must)?\s*(?:take precedence|supersede|override|govern)/gi,
+      /component\s+requirements?\s+(?:shall|will)?\s*(?:supersede|override|take precedence)/gi,
+      
+      // Conflict resolution
+      /(?:in\s+(?:the\s+)?(?:case|event)\s+of|when(?:ever)?|where|if)\s+(?:there\s+(?:is|are)\s+)?(?:a\s+|any\s+)?(?:conflict|discrepancy|difference|inconsistency)(?:,|\s+between|\s+exists).*?component/gi,
+      /(?:conflict|discrepancy|difference).*?(?:defer\s+to|follow|use|apply)\s+(?:the\s+)?component/gi,
+      
+      // Deferral language
+      /(?:see|refer to|consult|defer to)\s+(?:the\s+)?component[- ]?specific\s+instructions?\s+(?:for|regarding)/gi,
+      /component[- ]?specific\s+(?:requirements?|instructions?|guidance)\s+(?:shall\s+)?apply/gi,
+      
+      // Explicit override
+      /where\s+(?:the\s+)?component\s+instructions?\s+(?:differ|vary|deviate)/gi,
+      /unless\s+(?:otherwise\s+)?(?:specified|stated|noted)\s+(?:in|by)\s+(?:the\s+)?component/gi,
     ];
     
+    // COMPREHENSIVE solicitation/BAA patterns
     const solicitationSupersedePatterns = [
-      /(?:baa|solicitation)\s+instructions?\s+(?:shall\s+)?(?:take precedence|supersede|override|govern)/gi,
-      /(?:in case of|when there is)\s+(?:a\s+)?(?:conflict|discrepancy),?\s+(?:the\s+)?(?:baa|solicitation)/gi,
+      // Direct precedence
+      /(?:baa|solicitation|general)\s+instructions?\s+(?:shall|will|must)?\s*(?:take precedence|supersede|override|govern|prevail|control)/gi,
+      /(?:baa|solicitation)\s+requirements?\s+(?:shall|will)?\s*(?:supersede|override|take precedence)/gi,
+      
+      // Conflict resolution
+      /(?:in\s+(?:the\s+)?(?:case|event)\s+of|when(?:ever)?|where|if)\s+(?:there\s+(?:is|are)\s+)?(?:a\s+|any\s+)?(?:conflict|discrepancy|difference|inconsistency)(?:,|\s+between|\s+exists).*?(?:baa|solicitation)/gi,
+      /(?:conflict|discrepancy|difference).*?(?:defer\s+to|follow|use|apply)\s+(?:the\s+)?(?:baa|solicitation)/gi,
+      
+      // Deferral language
+      /(?:see|refer to|consult|defer to)\s+(?:the\s+)?(?:baa|solicitation)\s+(?:for|regarding)/gi,
+      /unless\s+(?:otherwise\s+)?(?:specified|stated|noted)\s+(?:in|by)\s+(?:the\s+)?(?:baa|solicitation)/gi,
     ];
     
-    // Cross-reference patterns
+    // COMPREHENSIVE cross-reference patterns
     const referencePatterns = [
-      /(?:see|refer to|consult)\s+(?:the\s+)?(?:component[- ]specific|baa|solicitation)\s+instructions?/gi,
-      /as (?:specified|detailed|described|outlined) in (?:the\s+)?(?:component|baa|solicitation)/gi,
-      /in accordance with (?:the\s+)?(?:component|baa|solicitation)/gi,
+      // Direct references
+      /(?:see|refer to|reference|consult|review|check)\s+(?:the\s+)?(?:component[- ]?specific|baa|solicitation)\s+(?:instructions?|requirements?|guidance|document)/gi,
+      
+      // Specification references
+      /as\s+(?:specified|detailed|described|outlined|defined|stated|noted)\s+(?:in|by)\s+(?:the\s+)?(?:component|baa|solicitation)/gi,
+      /in\s+accordance\s+with\s+(?:the\s+)?(?:component|baa|solicitation)/gi,
+      /(?:per|following|pursuant\s+to)\s+(?:the\s+)?(?:component|baa|solicitation)/gi,
+      
+      // Requirement references
+      /(?:must|shall|should)\s+(?:comply|conform|adhere)\s+(?:with|to)\s+(?:the\s+)?(?:component|baa|solicitation)/gi,
+      /subject\s+to\s+(?:the\s+)?(?:component|baa|solicitation)/gi,
+      
+      // Procedural references
+      /(?:follow|use|apply)\s+(?:the\s+)?(?:procedures?|instructions?|guidance)\s+(?:in|from)\s+(?:the\s+)?(?:component|baa|solicitation)/gi,
     ];
     
     let componentSupersedes = false;
     let solicitationSupersedes = false;
     
-    // Check both documents for superseding language
     const combinedText = componentText + ' ' + solicitationText;
     
-    for (const pattern of supersedePatterns) {
-      const matches = combinedText.match(pattern);
-      if (matches && matches.length > 0) {
-        componentSupersedes = true;
-        crossReferences.push(`Component-specific instructions take precedence (found: "${matches[0]}")`);
+    // Check component supersede patterns
+    for (const pattern of componentSupersedePatterns) {
+      pattern.lastIndex = 0; // Reset regex
+      let match;
+      while ((match = pattern.exec(combinedText)) !== null) {
+        const matchText = match[0].toLowerCase();
+        if (!foundPatterns.has(matchText)) {
+          componentSupersedes = true;
+          const context = this.extractContext(combinedText, match.index, 200);
+          crossReferences.push(`✓ Component precedence: "${context}"`);
+          foundPatterns.add(matchText);
+          break; // One example per pattern type
+        }
       }
     }
     
+    // Check solicitation supersede patterns
     for (const pattern of solicitationSupersedePatterns) {
-      const matches = combinedText.match(pattern);
-      if (matches && matches.length > 0) {
-        solicitationSupersedes = true;
-        crossReferences.push(`BAA/Solicitation instructions take precedence (found: "${matches[0]}")`);
+      pattern.lastIndex = 0;
+      let match;
+      while ((match = pattern.exec(combinedText)) !== null) {
+        const matchText = match[0].toLowerCase();
+        if (!foundPatterns.has(matchText)) {
+          solicitationSupersedes = true;
+          const context = this.extractContext(combinedText, match.index, 200);
+          crossReferences.push(`✓ BAA precedence: "${context}"`);
+          foundPatterns.add(matchText);
+          break;
+        }
       }
     }
     
-    // Find cross-references
+    // Find cross-references (limit to avoid spam)
+    let refCount = 0;
     for (const pattern of referencePatterns) {
-      const matches = combinedText.match(pattern);
-      if (matches && matches.length > 0) {
-        // Only add unique references
-        const uniqueMatches = [...new Set(matches)];
-        crossReferences.push(...uniqueMatches.slice(0, 3).map(m => `Cross-reference: "${m}"`));
+      if (refCount >= 3) break; // Limit cross-refs
+      
+      pattern.lastIndex = 0;
+      let match;
+      while ((match = pattern.exec(combinedText)) !== null && refCount < 3) {
+        const matchText = match[0].toLowerCase();
+        if (!foundPatterns.has(matchText)) {
+          const context = this.extractContext(combinedText, match.index, 150);
+          crossReferences.push(`→ Reference: "${context}"`);
+          foundPatterns.add(matchText);
+          refCount++;
+          break;
+        }
       }
     }
     
     return {
       componentSupersedes,
       solicitationSupersedes,
-      crossReferences: [...new Set(crossReferences)].slice(0, 5) // Limit to 5 unique references
+      crossReferences: crossReferences.slice(0, 8) // Limit total references
     };
   }
 
@@ -392,22 +466,38 @@ export class InstructionPdfParser {
     if (componentDoc && solicitationDoc) {
       const analysis = this.analyzeCrossReferences(componentDoc.plainText, solicitationDoc.plainText);
       
-      if (analysis.crossReferences.length > 0) {
-        crossRefInfo = `\n\n=== DOCUMENT RELATIONSHIP NOTES ===\n\n`;
+      if (analysis.crossReferences.length > 0 || analysis.componentSupersedes || analysis.solicitationSupersedes) {
+        crossRefInfo = `\n\n=== DOCUMENT RELATIONSHIP & PRECEDENCE ===\n\n`;
         
+        // Precedence determination
         if (analysis.componentSupersedes && analysis.solicitationSupersedes) {
-          crossRefInfo += `⚠️ CONFLICT DETECTED: Both documents claim precedence. Carefully review both.\n\n`;
+          crossRefInfo += `⚠️  PRECEDENCE CONFLICT DETECTED\n`;
+          crossRefInfo += `Both documents contain language claiming precedence.\n`;
+          crossRefInfo += `RECOMMENDATION: Review both documents carefully and contact the program office for clarification.\n\n`;
         } else if (analysis.componentSupersedes) {
-          crossRefInfo += `✓ Component-specific instructions take precedence over general BAA requirements.\n\n`;
+          crossRefInfo += `✓ PRECEDENCE: Component-Specific Instructions\n`;
+          crossRefInfo += `The component-specific instructions take precedence over general BAA requirements where they differ.\n\n`;
         } else if (analysis.solicitationSupersedes) {
-          crossRefInfo += `✓ BAA/Solicitation instructions take precedence over component requirements.\n\n`;
+          crossRefInfo += `✓ PRECEDENCE: BAA/Solicitation Instructions\n`;
+          crossRefInfo += `The BAA/Solicitation instructions take precedence over component requirements where they differ.\n\n`;
+        } else {
+          crossRefInfo += `ℹ️  No explicit precedence language detected.\n`;
+          crossRefInfo += `Both documents should be followed. Contact program office if conflicts arise.\n\n`;
         }
         
-        crossRefInfo += `Cross-References Found:\n`;
-        analysis.crossReferences.forEach(ref => {
-          crossRefInfo += `• ${ref}\n`;
-        });
-        crossRefInfo += `\n⚠️ When in conflict, consult BOTH documents and/or contact the program office.\n`;
+        // List cross-references with context
+        if (analysis.crossReferences.length > 0) {
+          crossRefInfo += `IMPORTANT CROSS-REFERENCES:\n\n`;
+          analysis.crossReferences.forEach((ref, idx) => {
+            crossRefInfo += `${idx + 1}. ${ref}\n\n`;
+          });
+        }
+        
+        crossRefInfo += `⚠️  CRITICAL REMINDER:\n`;
+        crossRefInfo += `- Always read BOTH documents in full\n`;
+        crossRefInfo += `- When in doubt, the more restrictive requirement typically applies\n`;
+        crossRefInfo += `- Contact the program office for any ambiguities\n`;
+        crossRefInfo += `- Source documents supersede this consolidated guide\n`;
       }
     }
     
