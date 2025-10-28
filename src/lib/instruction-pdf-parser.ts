@@ -49,12 +49,12 @@ export class InstructionPdfParser {
       }
       
       const arrayBuffer = await response.arrayBuffer();
-      const buffer = Buffer.from(arrayBuffer);
+      const uint8Array = new Uint8Array(arrayBuffer);
       
-      console.log(`Downloaded PDF: ${buffer.length} bytes`);
+      console.log(`Downloaded PDF: ${uint8Array.length} bytes`);
       
       // Extract text using unpdf
-      const extracted = await extractText(buffer, { mergePages: true });
+      const extracted = await extractText(uint8Array, { mergePages: true });
       
       const plainText = extracted.text;
       const pageCount = extracted.totalPages;

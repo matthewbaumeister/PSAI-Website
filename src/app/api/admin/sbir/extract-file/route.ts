@@ -45,7 +45,9 @@ async function extractTextFromFile(
   // PDF Extraction
   if (mimeType === 'application/pdf' || filename.endsWith('.pdf')) {
     try {
-      const extracted = await extractText(buffer, { mergePages: true });
+      // Convert Buffer to Uint8Array for unpdf
+      const uint8Array = new Uint8Array(buffer);
+      const extracted = await extractText(uint8Array, { mergePages: true });
       
       return {
         text: extracted.text || '',
