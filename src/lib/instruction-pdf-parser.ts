@@ -8,6 +8,9 @@
 
 import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
 
+// Disable worker for serverless compatibility
+pdfjsLib.GlobalWorkerOptions.workerSrc = '';
+
 export interface VolumeRequirement {
   volumeNumber: number;
   volumeName: string;
