@@ -14,6 +14,8 @@ export interface VolumeRequirement {
   description: string;
   requirements: string[];
   pageNumbers?: string;
+  sourceDocument?: 'component' | 'solicitation' | 'both'; // Track which doc this came from
+  sourceCitation?: string; // Exact citation
 }
 
 export interface InstructionDocument {
@@ -61,8 +63,8 @@ export class InstructionPdfParser {
       
       console.log(`Extracted ${plainText.length} characters from ${pageCount} pages`);
       
-      // Extract structured information
-      const volumes = this.extractVolumes(plainText);
+      // Extract structured information with source tracking
+      const volumes = this.extractVolumes(plainText, documentType);
       const checklist = this.extractChecklist(plainText);
       const keyDates = this.extractKeyDates(plainText);
       const submissionGuidelines = this.extractSubmissionGuidelines(plainText);
@@ -89,7 +91,7 @@ export class InstructionPdfParser {
   /**
    * Extract volume requirements (Volume 1, 2, 3, etc.)
    */
-  private extractVolumes(text: string): VolumeRequirement[] {
+  private extractVolumes(text: string, documentType?: 'component' | 'solicitation' | 'baa'): VolumeRequirement[] {
     const volumes: VolumeRequirement[] = [];
     
     // Common SBIR volume patterns
@@ -121,7 +123,9 @@ export class InstructionPdfParser {
         volumeNumber: volumeNum,
         volumeName: data.name,
         description: this.extractVolumeDescription(text, volumeNum),
-        requirements
+        requirements,
+        sourceDocument: documentType, // Track source
+        sourceCitation: `From ${documentType === 'component' ? 'Component-Specific' : 'BAA/Solicitation'} Instructions`
       });
     }
     
@@ -506,26 +510,76 @@ export class InstructionPdfParser {
       plainText += crossRefInfo;
     }
     
-    // Merge volumes (prioritize component-specific over general BAA)
+    // Merge volumes with source tracking and conflict detection
     if (componentDoc) {
-      volumes.push(...componentDoc.volumes);
-      checklist.push(...componentDoc.checklist);
+      // Add component volumes with clear source attribution
+      componentDoc.volumes.forEach(vol => {
+        volumes.push({
+          ...vol,
+          sourceDocument: 'component',
+          sourceCitation: `Source: Component-Specific Instructions`
+        });
+      });
+      
+      // Add checklist with source tags
+      componentDoc.checklist.forEach(item => {
+        checklist.push(`[Component] ${item}`);
+      });
+      
       Object.assign(keyDates, componentDoc.keyDates);
       plainText += `\n\n=== COMPONENT-SPECIFIC INSTRUCTIONS ===\n\n${componentDoc.plainText}`;
     }
     
     if (solicitationDoc) {
-      // Add volumes that don't exist yet (component takes priority)
-      for (const vol of solicitationDoc.volumes) {
-        if (!volumes.find(v => v.volumeNumber === vol.volumeNumber)) {
-          volumes.push(vol);
+      // Add BAA volumes - track conflicts and merge intelligently
+      for (const solVol of solicitationDoc.volumes) {
+        const existingVol = volumes.find(v => v.volumeNumber === solVol.volumeNumber);
+        
+        if (!existingVol) {
+          // No conflict - add BAA volume
+          volumes.push({
+            ...solVol,
+            sourceDocument: 'solicitation',
+            sourceCitation: `Source: BAA/Solicitation Instructions`
+          });
         } else {
-          // Volume exists in component doc - add note
-          console.log(`Volume ${vol.volumeNumber} defined in both docs - using component version`);
+          // CONFLICT DETECTED - merge requirements with citations
+          console.log(`Volume ${solVol.volumeNumber} defined in BOTH documents - merging with source citations`);
+          
+          // Mark this volume as coming from both sources
+          existingVol.sourceDocument = 'both';
+          existingVol.sourceCitation = `Sources: Component-Specific AND BAA/Solicitation Instructions (see individual requirements for specific sources)`;
+          
+          // Add BAA requirements with explicit [BAA] tag to distinguish from component reqs
+          solVol.requirements.forEach(req => {
+            // Check if similar requirement already exists from component
+            const similar = existingVol.requirements.find(r => 
+              r.toLowerCase().includes(req.substring(0, 30).toLowerCase())
+            );
+            
+            if (!similar) {
+              existingVol.requirements.push(`[BAA] ${req}`);
+            } else {
+              // Similar requirement exists - note the conflict
+              existingVol.requirements.push(`[BAA - may differ from Component] ${req}`);
+            }
+          });
         }
       }
       
-      checklist.push(...solicitationDoc.checklist);
+      // Add BAA checklist with source tags
+      solicitationDoc.checklist.forEach(item => {
+        const componentHasSimilar = checklist.some(c => 
+          c.toLowerCase().includes(item.substring(0, 30).toLowerCase())
+        );
+        
+        if (!componentHasSimilar) {
+          checklist.push(`[BAA] ${item}`);
+        } else {
+          checklist.push(`[BAA - verify against Component] ${item}`);
+        }
+      });
+      
       Object.assign(keyDates, solicitationDoc.keyDates);
       plainText += `\n\n=== BAA/SOLICITATION INSTRUCTIONS ===\n\n${solicitationDoc.plainText}`;
     }
