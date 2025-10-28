@@ -2,10 +2,10 @@
  * INSTRUCTION PDF GENERATOR
  * 
  * Generates consolidated instruction PDFs for SBIR/STTR opportunities
- * Includes all volumes, checklists, and submission requirements
+ * Uses pdf-lib (serverless-compatible, no font file dependencies)
  */
 
-import PDFDocument from 'pdfkit';
+import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { VolumeRequirement } from './instruction-pdf-parser';
 
 export interface OpportunityInfo {
@@ -16,6 +16,7 @@ export interface OpportunityInfo {
   openDate?: string;
   closeDate?: string;
   phase: string;
+  status: string;
 }
 
 export interface ConsolidatedInstructionData {
@@ -36,371 +37,613 @@ export class InstructionPdfGenerator {
    * Returns a Buffer that can be uploaded to storage
    */
   async generateConsolidatedPdf(data: ConsolidatedInstructionData): Promise<Buffer> {
-    return new Promise((resolve, reject) => {
-      try {
-        const doc = new PDFDocument({
-          size: 'LETTER',
-          margins: {
-            top: 50,
-            bottom: 50,
-            left: 50,
-            right: 50
-          },
-          autoFirstPage: true,
-          bufferPages: true
-        });
+    const pdfDoc = await PDFDocument.create();
+    
+    // Embed standard fonts (no external files needed)
+    const timesRomanFont = await pdfDoc.embedFont(StandardFonts.TimesRoman);
+    const timesRomanBoldFont = await pdfDoc.embedFont(StandardFonts.TimesRomanBold);
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const helveticaBoldFont = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
 
-        const chunks: Buffer[] = [];
-        
-        doc.on('data', (chunk) => chunks.push(chunk));
-        doc.on('end', () => resolve(Buffer.concat(chunks)));
-        doc.on('error', reject);
+    const fonts = {
+      normal: helveticaFont,
+      bold: helveticaBoldFont,
+      title: timesRomanBoldFont,
+    };
 
-        // Generate content
-        this.addCoverPage(doc, data);
-        this.addTableOfContents(doc, data);
-        this.addQuickReference(doc, data);
-        this.addVolumeRequirements(doc, data);
-        this.addChecklist(doc, data);
-        this.addSourceDocuments(doc, data);
-        this.addFooter(doc, data);
+    // Generate content
+    await this.addCoverPage(pdfDoc, data, fonts);
+    await this.addTableOfContents(pdfDoc, data, fonts);
+    await this.addQuickReference(pdfDoc, data, fonts);
+    await this.addVolumeRequirements(pdfDoc, data, fonts);
+    await this.addChecklist(pdfDoc, data, fonts);
+    await this.addSourceDocuments(pdfDoc, data, fonts);
+    await this.addFooters(pdfDoc, data, fonts);
 
-        doc.end();
-      } catch (error) {
-        reject(error);
-      }
-    });
+    // Save as buffer
+    const pdfBytes = await pdfDoc.save();
+    return Buffer.from(pdfBytes);
   }
 
   /**
    * Add cover page
    */
-  private addCoverPage(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
+  private async addCoverPage(
+    pdfDoc: PDFDocument,
+    data: ConsolidatedInstructionData,
+    fonts: any
+  ) {
+    const page = pdfDoc.addPage([612, 792]); // Letter size
+    const { width, height } = page.getSize();
     const { opportunity } = data;
 
-    // Title (using default fonts to avoid .afm file issues in serverless)
-    doc.fontSize(24)
-       .text('SBIR/STTR Submission Instructions', { align: 'center' });
+    let y = height - 100;
 
-    doc.moveDown(2);
+    // Title
+    page.drawText('SBIR/STTR Submission Instructions', {
+      x: 50,
+      y,
+      size: 24,
+      font: fonts.bold,
+      color: rgb(0, 0, 0),
+    });
+    y -= 80;
 
-    // Opportunity info
-    doc.fontSize(16)
-       .text(opportunity.title, { align: 'center' });
+    // Opportunity title
+    const titleLines = this.wrapText(opportunity.title, width - 100, fonts.normal, 16);
+    for (const line of titleLines) {
+      page.drawText(line, {
+        x: 50,
+        y,
+        size: 16,
+        font: fonts.normal,
+      });
+      y -= 25;
+    }
 
-    doc.moveDown(1);
+    y -= 20;
 
-    doc.fontSize(12)
-       .text(`Topic Number: ${opportunity.topicNumber}`, { align: 'center' });
+    // Topic details
+    page.drawText(`Topic Number: ${opportunity.topicNumber}`, {
+      x: 50,
+      y,
+      size: 12,
+      font: fonts.normal,
+    });
+    y -= 20;
 
-    doc.moveDown(0.5);
+    page.drawText(`Component: ${opportunity.component}`, {
+      x: 50,
+      y,
+      size: 12,
+      font: fonts.normal,
+    });
+    y -= 20;
 
-    doc.text(`Component: ${opportunity.component}`, { align: 'center' });
-    doc.text(`Program: ${opportunity.program}`, { align: 'center' });
-    doc.text(`Phase: ${opportunity.phase}`, { align: 'center' });
+    page.drawText(`Program: ${opportunity.program}`, {
+      x: 50,
+      y,
+      size: 12,
+      font: fonts.normal,
+    });
+    y -= 20;
+
+    page.drawText(`Phase: ${opportunity.phase}`, {
+      x: 50,
+      y,
+      size: 12,
+      font: fonts.normal,
+    });
+    y -= 30;
 
     if (opportunity.openDate || opportunity.closeDate) {
-      doc.moveDown(1);
       if (opportunity.openDate) {
-        doc.text(`Open Date: ${opportunity.openDate}`, { align: 'center' });
+        page.drawText(`Open Date: ${opportunity.openDate}`, {
+          x: 50,
+          y,
+          size: 12,
+          font: fonts.normal,
+        });
+        y -= 20;
       }
       if (opportunity.closeDate) {
-        doc.text(`Close Date: ${opportunity.closeDate}`, { align: 'center' });
+        page.drawText(`Close Date: ${opportunity.closeDate}`, {
+          x: 50,
+          y,
+          size: 12,
+          font: fonts.normal,
+        });
+        y -= 30;
       }
     }
 
-    doc.moveDown(3);
-
     // Warning box
-    doc.rect(doc.x - 10, doc.y, doc.page.width - 100, 120)
-       .fillAndStroke('#FEF3C7', '#F59E0B');
+    y -= 20;
+    page.drawRectangle({
+      x: 50,
+      y: y - 100,
+      width: width - 100,
+      height: 120,
+      borderColor: rgb(0.96, 0.62, 0.04),
+      borderWidth: 2,
+      color: rgb(1, 0.95, 0.78),
+    });
 
-    doc.fillColor('#92400E')
-       .fontSize(10)
-       .text('IMPORTANT NOTICE', doc.x, doc.y + 20, { align: 'center' });
+    page.drawText('IMPORTANT NOTICE', {
+      x: width / 2 - 70,
+      y: y - 30,
+      size: 12,
+      font: fonts.bold,
+      color: rgb(0.57, 0.25, 0.05),
+    });
 
-    doc.moveDown(0.5);
+    const warningText = [
+      'This document is a consolidated reference guide extracted from official BAA',
+      'and Component instructions. Always verify requirements against the original',
+      'source documents listed at the end of this guide. Instructions may be',
+      'updated after this document was generated.',
+    ];
 
-    doc.fontSize(9)
-       .text(
-         'This document is a consolidated reference guide extracted from official BAA and Component instructions. ' +
-         'Always verify requirements against the original source documents listed at the end of this guide. ' +
-         'Instructions may be updated after this document was generated.',
-         { align: 'center', width: doc.page.width - 120 }
-       );
+    let warningY = y - 50;
+    for (const line of warningText) {
+      page.drawText(line, {
+        x: 60,
+        y: warningY,
+        size: 9,
+        font: fonts.normal,
+        color: rgb(0.57, 0.25, 0.05),
+      });
+      warningY -= 12;
+    }
 
-    doc.fillColor('#000000');
+    y -= 150;
 
-    doc.moveDown(3);
-
-    doc.fontSize(8)
-       .text(`Generated: ${data.generatedAt.toLocaleString()}`, { align: 'center' });
-
-    doc.addPage();
+    page.drawText(`Generated: ${data.generatedAt.toLocaleString()}`, {
+      x: 50,
+      y,
+      size: 8,
+      font: fonts.normal,
+      color: rgb(0.4, 0.4, 0.4),
+    });
   }
 
   /**
    * Add table of contents
    */
-  private addTableOfContents(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
-    doc.fontSize(18)
-       .text('Table of Contents');
+  private async addTableOfContents(
+    pdfDoc: PDFDocument,
+    data: ConsolidatedInstructionData,
+    fonts: any
+  ) {
+    const page = pdfDoc.addPage([612, 792]);
+    const { height } = page.getSize();
 
-    doc.moveDown(1);
+    let y = height - 100;
 
-    doc.fontSize(11);
+    page.drawText('Table of Contents', {
+      x: 50,
+      y,
+      size: 18,
+      font: fonts.bold,
+    });
+    y -= 40;
 
     const toc = [
       '1. Quick Reference Guide',
       '2. Volume Requirements',
     ];
 
-    // Add each volume
     data.volumes.forEach((vol) => {
-      toc.push(`   ${vol.volumeNumber}. ${vol.volumeName}`);
+      toc.push(`   Volume ${vol.volumeNumber}: ${vol.volumeName}`);
     });
 
     toc.push('3. Submission Checklist');
     toc.push('4. Source Documents');
 
-    toc.forEach((item) => {
-      doc.text(item);
-      doc.moveDown(0.3);
-    });
-
-    doc.addPage();
+    for (const item of toc) {
+      page.drawText(item, {
+        x: 50,
+        y,
+        size: 11,
+        font: fonts.normal,
+      });
+      y -= 18;
+    }
   }
 
   /**
    * Add quick reference section
    */
-  private addQuickReference(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
-    doc.fontSize(18)
-       .text('Quick Reference Guide');
+  private async addQuickReference(
+    pdfDoc: PDFDocument,
+    data: ConsolidatedInstructionData,
+    fonts: any
+  ) {
+    const page = pdfDoc.addPage([612, 792]);
+    const { height } = page.getSize();
 
-    doc.moveDown(1);
+    let y = height - 100;
+
+    page.drawText('Quick Reference Guide', {
+      x: 50,
+      y,
+      size: 18,
+      font: fonts.bold,
+    });
+    y -= 40;
 
     // Key dates
     if (Object.keys(data.keyDates).length > 0) {
-      doc.fontSize(14)
-         .text('Key Dates');
-
-      doc.moveDown(0.5);
-
-      doc.fontSize(10);
-
-      Object.entries(data.keyDates).forEach(([key, value]) => {
-        doc.text(`${key}: ${value}`);
-        doc.moveDown(0.3);
+      page.drawText('Key Dates', {
+        x: 50,
+        y,
+        size: 14,
+        font: fonts.bold,
       });
+      y -= 25;
 
-      doc.moveDown(1);
+      for (const [key, value] of Object.entries(data.keyDates)) {
+        page.drawText(`${key}: ${value}`, {
+          x: 50,
+          y,
+          size: 10,
+          font: fonts.normal,
+        });
+        y -= 15;
+      }
+      y -= 20;
     }
 
     // Contacts
     if (data.contacts.length > 0) {
-      doc.fontSize(14)
-         .text('Contact Information');
-
-      doc.moveDown(0.5);
-
-      doc.fontSize(10);
-
-      data.contacts.forEach((contact) => {
-        doc.text(contact);
-        doc.moveDown(0.3);
+      page.drawText('Contact Information', {
+        x: 50,
+        y,
+        size: 14,
+        font: fonts.bold,
       });
+      y -= 25;
 
-      doc.moveDown(1);
+      for (const contact of data.contacts) {
+        if (y < 100) break;
+        page.drawText(contact.substring(0, 80), {
+          x: 50,
+          y,
+          size: 10,
+          font: fonts.normal,
+        });
+        y -= 15;
+      }
+      y -= 20;
     }
 
     // Volume summary
-    doc.fontSize(14)
-       .text('Volume Summary');
+    if (y > 150) {
+      page.drawText('Volume Summary', {
+        x: 50,
+        y,
+        size: 14,
+        font: fonts.bold,
+      });
+      y -= 25;
 
-    doc.moveDown(0.5);
-
-    doc.fontSize(10);
-
-    data.volumes.forEach((vol) => {
-      doc.text(`Volume ${vol.volumeNumber}: ${vol.volumeName}`);
-      doc.moveDown(0.2);
-    });
-
-    doc.addPage();
+      for (const vol of data.volumes) {
+        if (y < 100) break;
+        page.drawText(`Volume ${vol.volumeNumber}: ${vol.volumeName}`, {
+          x: 50,
+          y,
+          size: 10,
+          font: fonts.normal,
+        });
+        y -= 15;
+      }
+    }
   }
 
   /**
    * Add volume requirements section
    */
-  private addVolumeRequirements(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
-    doc.fontSize(18)
-       .text('Volume Requirements');
+  private async addVolumeRequirements(
+    pdfDoc: PDFDocument,
+    data: ConsolidatedInstructionData,
+    fonts: any
+  ) {
+    const pageWidth = 612;
+    const pageHeight = 792;
 
-    doc.moveDown(1);
+    for (let i = 0; i < data.volumes.length; i++) {
+      const volume = data.volumes[i];
+      const page = pdfDoc.addPage([pageWidth, pageHeight]);
 
-    data.volumes.forEach((volume, index) => {
+      let y = pageHeight - 100;
+
       // Volume header
-      doc.fontSize(14)
-         .fillColor('#1E40AF')
-         .text(`Volume ${volume.volumeNumber}: ${volume.volumeName}`);
-
-      doc.fillColor('#000000');
-      doc.moveDown(0.5);
+      page.drawText(`Volume ${volume.volumeNumber}: ${volume.volumeName}`, {
+        x: 50,
+        y,
+        size: 14,
+        font: fonts.bold,
+        color: rgb(0.12, 0.25, 0.69),
+      });
+      y -= 30;
 
       // Description
       if (volume.description) {
-        doc.fontSize(10)
-           .text(volume.description);
-        doc.moveDown(0.5);
+        const descLines = this.wrapText(volume.description, pageWidth - 100, fonts.normal, 10);
+        for (const line of descLines.slice(0, 3)) {
+          page.drawText(line, {
+            x: 50,
+            y,
+            size: 10,
+            font: fonts.normal,
+          });
+          y -= 15;
+        }
+        y -= 15;
       }
 
       // Requirements
       if (volume.requirements.length > 0) {
-        doc.fontSize(11)
-           .text('Requirements:');
-
-        doc.moveDown(0.3);
-
-        doc.fontSize(9);
-
-        volume.requirements.forEach((req, idx) => {
-          const bullet = String.fromCharCode(8226);
-          doc.text(`${bullet} ${req}`, {
-            indent: 10,
-            width: doc.page.width - 120
-          });
-          doc.moveDown(0.3);
+        page.drawText('Requirements:', {
+          x: 50,
+          y,
+          size: 11,
+          font: fonts.bold,
         });
+        y -= 20;
+
+        for (const req of volume.requirements) {
+          if (y < 100) break;
+          
+          const reqLines = this.wrapText(`• ${req}`, pageWidth - 120, fonts.normal, 9);
+          for (const line of reqLines) {
+            if (y < 100) break;
+            page.drawText(line, {
+              x: 60,
+              y,
+              size: 9,
+              font: fonts.normal,
+            });
+            y -= 13;
+          }
+          y -= 5;
+        }
       }
-
-      doc.moveDown(1);
-
-      // Add page break between volumes (except last)
-      if (index < data.volumes.length - 1) {
-        doc.addPage();
-      }
-    });
-
-    doc.addPage();
+    }
   }
 
   /**
    * Add submission checklist
    */
-  private addChecklist(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
-    doc.fontSize(18)
-       .text('Submission Checklist');
+  private async addChecklist(
+    pdfDoc: PDFDocument,
+    data: ConsolidatedInstructionData,
+    fonts: any
+  ) {
+    const page = pdfDoc.addPage([612, 792]);
+    const { height } = page.getSize();
 
-    doc.moveDown(1);
+    let y = height - 100;
 
-    doc.fontSize(10)
-       .text(
-         'Use this checklist to ensure your proposal includes all required elements. ' +
-         'Check the source documents for the most up-to-date requirements.'
-       );
+    page.drawText('Submission Checklist', {
+      x: 50,
+      y,
+      size: 18,
+      font: fonts.bold,
+    });
+    y -= 30;
 
-    doc.moveDown(1);
+    page.drawText('Use this checklist to ensure your proposal includes all required elements.', {
+      x: 50,
+      y,
+      size: 10,
+      font: fonts.normal,
+    });
+    y -= 15;
+    page.drawText('Check the source documents for the most up-to-date requirements.', {
+      x: 50,
+      y,
+      size: 10,
+      font: fonts.normal,
+    });
+    y -= 30;
 
     if (data.checklist.length === 0) {
-      doc.fontSize(10)
-         .text('No specific checklist items were extracted. Please refer to the source documents.');
+      page.drawText('No specific checklist items were extracted.', {
+        x: 50,
+        y,
+        size: 10,
+        font: fonts.normal,
+      });
+      y -= 15;
+      page.drawText('Please refer to the source documents.', {
+        x: 50,
+        y,
+        size: 10,
+        font: fonts.normal,
+      });
     } else {
-      doc.fontSize(10);
+      for (let i = 0; i < data.checklist.length && y > 100; i++) {
+        const item = data.checklist[i];
 
-      data.checklist.forEach((item, idx) => {
         // Checkbox
-        doc.rect(doc.x, doc.y + 2, 10, 10).stroke();
-        
-        // Item text
-        doc.text(`${idx + 1}. ${item}`, doc.x + 20, doc.y, {
-          width: doc.page.width - 140,
-          indent: -20
+        page.drawRectangle({
+          x: 50,
+          y: y - 2,
+          width: 10,
+          height: 10,
+          borderColor: rgb(0, 0, 0),
+          borderWidth: 1,
         });
 
-        doc.moveDown(0.5);
-
-        // Add page break if needed
-        if (doc.y > doc.page.height - 100) {
-          doc.addPage();
+        // Item text
+        const itemText = `${i + 1}. ${item}`;
+        const itemLines = this.wrapText(itemText, 500, fonts.normal, 10);
+        
+        let itemY = y;
+        for (const line of itemLines) {
+          if (itemY < 100) break;
+          page.drawText(line, {
+            x: 70,
+            y: itemY,
+            size: 10,
+            font: fonts.normal,
+          });
+          itemY -= 15;
         }
-      });
-    }
 
-    doc.addPage();
+        y = itemY - 10;
+      }
+    }
   }
 
   /**
    * Add source documents section
    */
-  private addSourceDocuments(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
-    doc.fontSize(18)
-       .text('Source Documents');
+  private async addSourceDocuments(
+    pdfDoc: PDFDocument,
+    data: ConsolidatedInstructionData,
+    fonts: any
+  ) {
+    const page = pdfDoc.addPage([612, 792]);
+    const { height, width } = page.getSize();
 
-    doc.moveDown(1);
+    let y = height - 100;
 
-    doc.fontSize(10)
-       .text(
-         'This consolidated guide was generated from the following official documents. ' +
-         'Always verify requirements against the original sources:'
-       );
+    page.drawText('Source Documents', {
+      x: 50,
+      y,
+      size: 18,
+      font: fonts.bold,
+    });
+    y -= 30;
 
-    doc.moveDown(1);
+    page.drawText('This consolidated guide was generated from the following official documents.', {
+      x: 50,
+      y,
+      size: 10,
+      font: fonts.normal,
+    });
+    y -= 15;
+    page.drawText('Always verify requirements against the original sources:', {
+      x: 50,
+      y,
+      size: 10,
+      font: fonts.normal,
+    });
+    y -= 30;
 
     if (data.componentInstructionsUrl) {
-      doc.fontSize(11)
-         .text('Component Instructions:');
+      page.drawText('Component Instructions:', {
+        x: 50,
+        y,
+        size: 11,
+        font: fonts.bold,
+      });
+      y -= 15;
 
-      doc.fontSize(9)
-         .fillColor('#1E40AF')
-         .text(data.componentInstructionsUrl, { link: data.componentInstructionsUrl });
-
-      doc.fillColor('#000000');
-      doc.moveDown(1);
+      const urlLines = this.wrapText(data.componentInstructionsUrl, width - 100, fonts.normal, 9);
+      for (const line of urlLines) {
+        page.drawText(line, {
+          x: 50,
+          y,
+          size: 9,
+          font: fonts.normal,
+          color: rgb(0.12, 0.25, 0.69),
+        });
+        y -= 12;
+      }
+      y -= 15;
     }
 
     if (data.solicitationInstructionsUrl) {
-      doc.fontSize(11)
-         .text('BAA/Solicitation Instructions:');
+      page.drawText('BAA/Solicitation Instructions:', {
+        x: 50,
+        y,
+        size: 11,
+        font: fonts.bold,
+      });
+      y -= 15;
 
-      doc.fontSize(9)
-         .fillColor('#1E40AF')
-         .text(data.solicitationInstructionsUrl, { link: data.solicitationInstructionsUrl });
-
-      doc.fillColor('#000000');
-      doc.moveDown(1);
+      const urlLines = this.wrapText(data.solicitationInstructionsUrl, width - 100, fonts.normal, 9);
+      for (const line of urlLines) {
+        page.drawText(line, {
+          x: 50,
+          y,
+          size: 9,
+          font: fonts.normal,
+          color: rgb(0.12, 0.25, 0.69),
+        });
+        y -= 12;
+      }
+      y -= 15;
     }
 
-    doc.moveDown(2);
+    y -= 30;
 
-    // Disclaimer
-    doc.fontSize(8)
-       .text(
-         'Note: Source document URLs may become inactive after the solicitation closes. ' +
-         'PropShop AI archives instruction content for historical reference.'
-       );
+    const disclaimerLines = [
+      'Note: Source document URLs may become inactive after the solicitation closes.',
+      'PropShop AI archives instruction content for historical reference.',
+    ];
+
+    for (const line of disclaimerLines) {
+      page.drawText(line, {
+        x: 50,
+        y,
+        size: 8,
+        font: fonts.normal,
+        color: rgb(0.4, 0.4, 0.4),
+      });
+      y -= 12;
+    }
   }
 
   /**
    * Add footer to all pages
    */
-  private addFooter(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
-    const pages = doc.bufferedPageRange();
-    
-    for (let i = 0; i < pages.count; i++) {
-      doc.switchToPage(i);
+  private async addFooters(
+    pdfDoc: PDFDocument,
+    data: ConsolidatedInstructionData,
+    fonts: any
+  ) {
+    const pages = pdfDoc.getPages();
+    const totalPages = pages.length;
 
-      doc.fontSize(8)
-         .fillColor('#666666')
-         .text(
-           `PropShop AI - ${data.opportunity.topicNumber} - Page ${i + 1} of ${pages.count}`,
-           50,
-           doc.page.height - 30,
-           { align: 'center' }
-         );
+    pages.forEach((page, index) => {
+      const { width, height } = page.getSize();
+      const footerText = `PropShop AI - ${data.opportunity.topicNumber} - Page ${index + 1} of ${totalPages}`;
 
-      doc.fillColor('#000000');
+      page.drawText(footerText, {
+        x: width / 2 - 100,
+        y: 30,
+        size: 8,
+        font: fonts.normal,
+        color: rgb(0.4, 0.4, 0.4),
+      });
+    });
+  }
+
+  /**
+   * Wrap text to fit within specified width
+   */
+  private wrapText(text: string, maxWidth: number, font: any, fontSize: number): string[] {
+    const words = text.split(' ');
+    const lines: string[] = [];
+    let currentLine = '';
+
+    for (const word of words) {
+      const testLine = currentLine ? `${currentLine} ${word}` : word;
+      const testWidth = font.widthOfTextAtSize(testLine, fontSize);
+
+      if (testWidth <= maxWidth) {
+        currentLine = testLine;
+      } else {
+        if (currentLine) lines.push(currentLine);
+        currentLine = word;
+      }
     }
+
+    if (currentLine) lines.push(currentLine);
+    return lines;
   }
 }
-
