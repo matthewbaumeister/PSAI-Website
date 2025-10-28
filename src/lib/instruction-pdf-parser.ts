@@ -301,7 +301,77 @@ export class InstructionPdfParser {
   }
 
   /**
+   * Detect cross-references and superseding language between documents
+   */
+  private analyzeCrossReferences(componentText: string, solicitationText: string): {
+    componentSupersedes: boolean;
+    solicitationSupersedes: boolean;
+    crossReferences: string[];
+  } {
+    const crossReferences: string[] = [];
+    
+    // Patterns for superseding language
+    const supersedePatterns = [
+      /component[- ]specific instructions?\s+(?:shall\s+)?(?:take precedence|supersede|override|govern)/gi,
+      /these instructions?\s+(?:shall\s+)?(?:take precedence|supersede|override)/gi,
+      /(?:in case of|when there is)\s+(?:a\s+)?(?:conflict|discrepancy),?\s+(?:the\s+)?component/gi,
+      /(?:where|if)\s+component instructions?\s+differ/gi,
+    ];
+    
+    const solicitationSupersedePatterns = [
+      /(?:baa|solicitation)\s+instructions?\s+(?:shall\s+)?(?:take precedence|supersede|override|govern)/gi,
+      /(?:in case of|when there is)\s+(?:a\s+)?(?:conflict|discrepancy),?\s+(?:the\s+)?(?:baa|solicitation)/gi,
+    ];
+    
+    // Cross-reference patterns
+    const referencePatterns = [
+      /(?:see|refer to|consult)\s+(?:the\s+)?(?:component[- ]specific|baa|solicitation)\s+instructions?/gi,
+      /as (?:specified|detailed|described|outlined) in (?:the\s+)?(?:component|baa|solicitation)/gi,
+      /in accordance with (?:the\s+)?(?:component|baa|solicitation)/gi,
+    ];
+    
+    let componentSupersedes = false;
+    let solicitationSupersedes = false;
+    
+    // Check both documents for superseding language
+    const combinedText = componentText + ' ' + solicitationText;
+    
+    for (const pattern of supersedePatterns) {
+      const matches = combinedText.match(pattern);
+      if (matches && matches.length > 0) {
+        componentSupersedes = true;
+        crossReferences.push(`Component-specific instructions take precedence (found: "${matches[0]}")`);
+      }
+    }
+    
+    for (const pattern of solicitationSupersedePatterns) {
+      const matches = combinedText.match(pattern);
+      if (matches && matches.length > 0) {
+        solicitationSupersedes = true;
+        crossReferences.push(`BAA/Solicitation instructions take precedence (found: "${matches[0]}")`);
+      }
+    }
+    
+    // Find cross-references
+    for (const pattern of referencePatterns) {
+      const matches = combinedText.match(pattern);
+      if (matches && matches.length > 0) {
+        // Only add unique references
+        const uniqueMatches = [...new Set(matches)];
+        crossReferences.push(...uniqueMatches.slice(0, 3).map(m => `Cross-reference: "${m}"`));
+      }
+    }
+    
+    return {
+      componentSupersedes,
+      solicitationSupersedes,
+      crossReferences: [...new Set(crossReferences)].slice(0, 5) // Limit to 5 unique references
+    };
+  }
+
+  /**
    * Merge instructions from component and solicitation documents
+   * Now with intelligent conflict detection
    */
   async mergeInstructions(
     componentDoc: InstructionDocument | null,
@@ -317,25 +387,57 @@ export class InstructionPdfParser {
     const keyDates: { [key: string]: string } = {};
     let plainText = '';
     
-    // Merge volumes (prioritize more specific document)
+    // Analyze cross-references if we have both documents
+    let crossRefInfo = '';
+    if (componentDoc && solicitationDoc) {
+      const analysis = this.analyzeCrossReferences(componentDoc.plainText, solicitationDoc.plainText);
+      
+      if (analysis.crossReferences.length > 0) {
+        crossRefInfo = `\n\n=== DOCUMENT RELATIONSHIP NOTES ===\n\n`;
+        
+        if (analysis.componentSupersedes && analysis.solicitationSupersedes) {
+          crossRefInfo += `⚠️ CONFLICT DETECTED: Both documents claim precedence. Carefully review both.\n\n`;
+        } else if (analysis.componentSupersedes) {
+          crossRefInfo += `✓ Component-specific instructions take precedence over general BAA requirements.\n\n`;
+        } else if (analysis.solicitationSupersedes) {
+          crossRefInfo += `✓ BAA/Solicitation instructions take precedence over component requirements.\n\n`;
+        }
+        
+        crossRefInfo += `Cross-References Found:\n`;
+        analysis.crossReferences.forEach(ref => {
+          crossRefInfo += `• ${ref}\n`;
+        });
+        crossRefInfo += `\n⚠️ When in conflict, consult BOTH documents and/or contact the program office.\n`;
+      }
+    }
+    
+    // Add relationship notes first
+    if (crossRefInfo) {
+      plainText += crossRefInfo;
+    }
+    
+    // Merge volumes (prioritize component-specific over general BAA)
     if (componentDoc) {
       volumes.push(...componentDoc.volumes);
       checklist.push(...componentDoc.checklist);
       Object.assign(keyDates, componentDoc.keyDates);
-      plainText += `\n\n=== COMPONENT INSTRUCTIONS ===\n\n${componentDoc.plainText}`;
+      plainText += `\n\n=== COMPONENT-SPECIFIC INSTRUCTIONS ===\n\n${componentDoc.plainText}`;
     }
     
     if (solicitationDoc) {
-      // Add volumes that don't exist yet
+      // Add volumes that don't exist yet (component takes priority)
       for (const vol of solicitationDoc.volumes) {
         if (!volumes.find(v => v.volumeNumber === vol.volumeNumber)) {
           volumes.push(vol);
+        } else {
+          // Volume exists in component doc - add note
+          console.log(`Volume ${vol.volumeNumber} defined in both docs - using component version`);
         }
       }
       
       checklist.push(...solicitationDoc.checklist);
       Object.assign(keyDates, solicitationDoc.keyDates);
-      plainText += `\n\n=== SOLICITATION INSTRUCTIONS ===\n\n${solicitationDoc.plainText}`;
+      plainText += `\n\n=== BAA/SOLICITATION INSTRUCTIONS ===\n\n${solicitationDoc.plainText}`;
     }
     
     // Deduplicate checklist
