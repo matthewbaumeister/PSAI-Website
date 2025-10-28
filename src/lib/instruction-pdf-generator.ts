@@ -33,6 +33,31 @@ export interface ConsolidatedInstructionData {
 
 export class InstructionPdfGenerator {
   /**
+   * Sanitize text to only include WinAnsi-compatible characters
+   * Replaces Unicode characters that pdf-lib can't encode
+   */
+  private sanitizeText(text: string): string {
+    return text
+      // Replace various Unicode hyphens/dashes with regular hyphen
+      .replace(/[\u2010-\u2015]/g, '-')
+      // Replace curly quotes with straight quotes
+      .replace(/[\u2018\u2019]/g, "'")
+      .replace(/[\u201C\u201D]/g, '"')
+      // Replace ellipsis
+      .replace(/\u2026/g, '...')
+      // Replace bullet points
+      .replace(/[\u2022\u2023\u25E6\u2043\u2219]/g, '•')
+      // Remove other non-ASCII characters or replace with space
+      .replace(/[^\x00-\x7F]/g, (char) => {
+        // Keep common printable characters, replace others with space
+        return char.charCodeAt(0) > 127 ? ' ' : char;
+      })
+      // Clean up multiple spaces
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  /**
    * Generate consolidated instruction PDF
    * Returns a Buffer that can be uploaded to storage
    */
@@ -627,7 +652,9 @@ export class InstructionPdfGenerator {
    * Wrap text to fit within specified width
    */
   private wrapText(text: string, maxWidth: number, font: any, fontSize: number): string[] {
-    const words = text.split(' ');
+    // Sanitize text first
+    const sanitized = this.sanitizeText(text);
+    const words = sanitized.split(' ');
     const lines: string[] = [];
     let currentLine = '';
 
