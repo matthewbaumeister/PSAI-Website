@@ -6,7 +6,7 @@
  * Uses unpdf for serverless compatibility
  */
 
-import { getTextExtractor } from 'unpdf';
+import { extractText, getDocumentProxy } from 'unpdf';
 
 export interface VolumeRequirement {
   volumeNumber: number;
@@ -54,8 +54,7 @@ export class InstructionPdfParser {
       console.log(`Downloaded PDF: ${buffer.length} bytes`);
       
       // Extract text using unpdf
-      const extractor = await getTextExtractor();
-      const extracted = await extractor(buffer);
+      const extracted = await extractText(buffer, { mergePages: true });
       
       const plainText = extracted.text;
       const pageCount = extracted.totalPages;

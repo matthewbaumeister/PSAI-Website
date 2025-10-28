@@ -9,7 +9,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Multi-library document extraction
-import { getTextExtractor } from 'unpdf';
+import { extractText } from 'unpdf';
 const mammoth = require('mammoth'); // DOCX
 const htmlToText = require('html-to-text');
 const xml2js = require('xml2js');
@@ -45,8 +45,7 @@ async function extractTextFromFile(
   // PDF Extraction
   if (mimeType === 'application/pdf' || filename.endsWith('.pdf')) {
     try {
-      const extractor = await getTextExtractor();
-      const extracted = await extractor(buffer);
+      const extracted = await extractText(buffer, { mergePages: true });
       
       return {
         text: extracted.text || '',
