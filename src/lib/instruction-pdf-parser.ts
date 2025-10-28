@@ -119,13 +119,16 @@ export class InstructionPdfParser {
     for (const [volumeNum, data] of volumeMatches.entries()) {
       const requirements = this.extractVolumeRequirements(text, volumeNum);
       
+      // Map documentType to sourceDocument (baa -> solicitation)
+      const source: 'component' | 'solicitation' = documentType === 'component' ? 'component' : 'solicitation';
+      
       volumes.push({
         volumeNumber: volumeNum,
         volumeName: data.name,
         description: this.extractVolumeDescription(text, volumeNum),
         requirements,
-        sourceDocument: documentType, // Track source
-        sourceCitation: `From ${documentType === 'component' ? 'Component-Specific' : 'BAA/Solicitation'} Instructions`
+        sourceDocument: source,
+        sourceCitation: `Source: ${documentType === 'component' ? 'Component-Specific' : 'BAA/Solicitation'} Instructions`
       });
     }
     
