@@ -9,7 +9,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Multi-library document extraction
-const pdfParse = require('pdf-parse');
+import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
 const mammoth = require('mammoth'); // DOCX
 const htmlToText = require('html-to-text');
 const xml2js = require('xml2js');
@@ -45,10 +45,28 @@ async function extractTextFromFile(
   // PDF Extraction
   if (mimeType === 'application/pdf' || filename.endsWith('.pdf')) {
     try {
-      const data = await pdfParse(buffer);
+      const loadingTask = pdfjsLib.getDocument({
+        data: buffer,
+        useSystemFonts: true,
+        standardFontDataUrl: undefined
+      });
+      
+      const pdf = await loadingTask.promise;
+      const pageCount = pdf.numPages;
+      
+      let text = '';
+      for (let i = 1; i <= pageCount; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items
+          .map((item: any) => item.str)
+          .join(' ');
+        text += pageText + '\n';
+      }
+      
       return {
-        text: data.text || '',
-        pageCount: data.numpages || 1
+        text: text || '',
+        pageCount: pageCount || 1
       };
     } catch (error) {
       console.error('PDF extraction error:', error);
