@@ -426,15 +426,31 @@ export class InstructionPdfGenerator {
 
       let y = pageHeight - 100;
 
-      // Volume header
+      // Volume header - color coded by source
+      const headerColor = volume.sourceDocument === 'both' ? rgb(0.85, 0.46, 0.02) : // Orange for mixed
+                         volume.sourceDocument === 'component' ? rgb(0.02, 0.59, 0.41) : // Green for component
+                         rgb(0.15, 0.39, 0.92); // Blue for BAA
+      
       page.drawText(`Volume ${volume.volumeNumber}: ${volume.volumeName}`, {
         x: 50,
         y,
         size: 14,
         font: fonts.bold,
-        color: rgb(0.12, 0.25, 0.69),
+        color: headerColor,
       });
-      y -= 30;
+      y -= 25;
+
+      // SOURCE CITATION - prominently displayed
+      if (volume.sourceCitation) {
+        page.drawText(volume.sourceCitation, {
+          x: 50,
+          y,
+          size: 9,
+          font: fonts.normal,
+          color: rgb(0.5, 0.5, 0.5),
+        });
+        y -= 20;
+      }
 
       // Description
       if (volume.description) {
@@ -451,7 +467,7 @@ export class InstructionPdfGenerator {
         y -= 15;
       }
 
-      // Requirements
+      // Requirements with source tags color-coded
       if (volume.requirements.length > 0) {
         page.drawText('Requirements:', {
           x: 50,
@@ -464,6 +480,16 @@ export class InstructionPdfGenerator {
         for (const req of volume.requirements) {
           if (y < 100) break;
           
+          // Determine color based on source tag
+          let reqColor = rgb(0, 0, 0); // Default black
+          if (req.startsWith('[BAA]')) {
+            reqColor = rgb(0.15, 0.39, 0.92); // Blue for BAA
+          } else if (req.startsWith('[Component]')) {
+            reqColor = rgb(0.02, 0.59, 0.41); // Green for Component
+          } else if (req.includes('[BAA - may differ')) {
+            reqColor = rgb(0.85, 0.46, 0.02); // Orange for conflicts
+          }
+          
           const reqLines = this.wrapText(`• ${req}`, pageWidth - 120, fonts.normal, 9);
           for (const line of reqLines) {
             if (y < 100) break;
@@ -472,6 +498,7 @@ export class InstructionPdfGenerator {
               y,
               size: 9,
               font: fonts.normal,
+              color: reqColor,
             });
             y -= 13;
           }
@@ -545,8 +572,19 @@ export class InstructionPdfGenerator {
           borderWidth: 1,
         });
 
-        // Item text
+        // Item text with source color coding
         const itemText = `${i + 1}. ${item}`;
+        
+        // Determine color based on source tag
+        let itemColor = rgb(0, 0, 0);
+        if (item.startsWith('[BAA]')) {
+          itemColor = rgb(0.15, 0.39, 0.92); // Blue for BAA
+        } else if (item.startsWith('[Component]')) {
+          itemColor = rgb(0.02, 0.59, 0.41); // Green for Component
+        } else if (item.includes('[BAA - verify')) {
+          itemColor = rgb(0.85, 0.46, 0.02); // Orange for conflicts
+        }
+        
         const itemLines = this.wrapText(itemText, 500, fonts.normal, 10);
         
         let itemY = y;
@@ -557,6 +595,7 @@ export class InstructionPdfGenerator {
             y: itemY,
             size: 10,
             font: fonts.normal,
+            color: itemColor,
           });
           itemY -= 15;
         }
