@@ -50,11 +50,15 @@ export class InstructionPdfParser {
       
       const arrayBuffer = await response.arrayBuffer();
       
-      // Load PDF document
+      // Load PDF document (without worker for serverless)
       const loadingTask = pdfjsLib.getDocument({
         data: arrayBuffer,
         useSystemFonts: true,
-        standardFontDataUrl: undefined
+        standardFontDataUrl: undefined,
+        useWorkerFetch: false,
+        isEvalSupported: false,
+        disableAutoFetch: true,
+        disableStream: true
       });
       
       const pdf = await loadingTask.promise;
