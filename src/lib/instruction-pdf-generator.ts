@@ -45,7 +45,9 @@ export class InstructionPdfGenerator {
             bottom: 50,
             left: 50,
             right: 50
-          }
+          },
+          autoFirstPage: true,
+          bufferPages: true
         });
 
         const chunks: Buffer[] = [];
@@ -76,22 +78,19 @@ export class InstructionPdfGenerator {
   private addCoverPage(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
     const { opportunity } = data;
 
-    // Title
+    // Title (using default fonts to avoid .afm file issues in serverless)
     doc.fontSize(24)
-       .font('Helvetica-Bold')
        .text('SBIR/STTR Submission Instructions', { align: 'center' });
 
     doc.moveDown(2);
 
     // Opportunity info
     doc.fontSize(16)
-       .font('Helvetica-Bold')
        .text(opportunity.title, { align: 'center' });
 
     doc.moveDown(1);
 
     doc.fontSize(12)
-       .font('Helvetica')
        .text(`Topic Number: ${opportunity.topicNumber}`, { align: 'center' });
 
     doc.moveDown(0.5);
@@ -118,13 +117,11 @@ export class InstructionPdfGenerator {
 
     doc.fillColor('#92400E')
        .fontSize(10)
-       .font('Helvetica-Bold')
        .text('IMPORTANT NOTICE', doc.x, doc.y + 20, { align: 'center' });
 
     doc.moveDown(0.5);
 
-    doc.font('Helvetica')
-       .fontSize(9)
+    doc.fontSize(9)
        .text(
          'This document is a consolidated reference guide extracted from official BAA and Component instructions. ' +
          'Always verify requirements against the original source documents listed at the end of this guide. ' +
@@ -137,7 +134,6 @@ export class InstructionPdfGenerator {
     doc.moveDown(3);
 
     doc.fontSize(8)
-       .font('Helvetica')
        .text(`Generated: ${data.generatedAt.toLocaleString()}`, { align: 'center' });
 
     doc.addPage();
@@ -148,13 +144,11 @@ export class InstructionPdfGenerator {
    */
   private addTableOfContents(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
     doc.fontSize(18)
-       .font('Helvetica-Bold')
        .text('Table of Contents');
 
     doc.moveDown(1);
 
-    doc.fontSize(11)
-       .font('Helvetica');
+    doc.fontSize(11);
 
     const toc = [
       '1. Quick Reference Guide',
@@ -182,7 +176,6 @@ export class InstructionPdfGenerator {
    */
   private addQuickReference(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
     doc.fontSize(18)
-       .font('Helvetica-Bold')
        .text('Quick Reference Guide');
 
     doc.moveDown(1);
@@ -190,13 +183,11 @@ export class InstructionPdfGenerator {
     // Key dates
     if (Object.keys(data.keyDates).length > 0) {
       doc.fontSize(14)
-         .font('Helvetica-Bold')
          .text('Key Dates');
 
       doc.moveDown(0.5);
 
-      doc.fontSize(10)
-         .font('Helvetica');
+      doc.fontSize(10);
 
       Object.entries(data.keyDates).forEach(([key, value]) => {
         doc.text(`${key}: ${value}`);
@@ -209,13 +200,11 @@ export class InstructionPdfGenerator {
     // Contacts
     if (data.contacts.length > 0) {
       doc.fontSize(14)
-         .font('Helvetica-Bold')
          .text('Contact Information');
 
       doc.moveDown(0.5);
 
-      doc.fontSize(10)
-         .font('Helvetica');
+      doc.fontSize(10);
 
       data.contacts.forEach((contact) => {
         doc.text(contact);
@@ -227,13 +216,11 @@ export class InstructionPdfGenerator {
 
     // Volume summary
     doc.fontSize(14)
-       .font('Helvetica-Bold')
        .text('Volume Summary');
 
     doc.moveDown(0.5);
 
-    doc.fontSize(10)
-       .font('Helvetica');
+    doc.fontSize(10);
 
     data.volumes.forEach((vol) => {
       doc.text(`Volume ${vol.volumeNumber}: ${vol.volumeName}`);
@@ -248,7 +235,6 @@ export class InstructionPdfGenerator {
    */
   private addVolumeRequirements(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
     doc.fontSize(18)
-       .font('Helvetica-Bold')
        .text('Volume Requirements');
 
     doc.moveDown(1);
@@ -256,7 +242,6 @@ export class InstructionPdfGenerator {
     data.volumes.forEach((volume, index) => {
       // Volume header
       doc.fontSize(14)
-         .font('Helvetica-Bold')
          .fillColor('#1E40AF')
          .text(`Volume ${volume.volumeNumber}: ${volume.volumeName}`);
 
@@ -266,7 +251,6 @@ export class InstructionPdfGenerator {
       // Description
       if (volume.description) {
         doc.fontSize(10)
-           .font('Helvetica')
            .text(volume.description);
         doc.moveDown(0.5);
       }
@@ -274,13 +258,11 @@ export class InstructionPdfGenerator {
       // Requirements
       if (volume.requirements.length > 0) {
         doc.fontSize(11)
-           .font('Helvetica-Bold')
            .text('Requirements:');
 
         doc.moveDown(0.3);
 
-        doc.fontSize(9)
-           .font('Helvetica');
+        doc.fontSize(9);
 
         volume.requirements.forEach((req, idx) => {
           const bullet = String.fromCharCode(8226);
@@ -308,13 +290,11 @@ export class InstructionPdfGenerator {
    */
   private addChecklist(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
     doc.fontSize(18)
-       .font('Helvetica-Bold')
        .text('Submission Checklist');
 
     doc.moveDown(1);
 
     doc.fontSize(10)
-       .font('Helvetica')
        .text(
          'Use this checklist to ensure your proposal includes all required elements. ' +
          'Check the source documents for the most up-to-date requirements.'
@@ -324,11 +304,9 @@ export class InstructionPdfGenerator {
 
     if (data.checklist.length === 0) {
       doc.fontSize(10)
-         .font('Helvetica-Oblique')
          .text('No specific checklist items were extracted. Please refer to the source documents.');
     } else {
-      doc.fontSize(10)
-         .font('Helvetica');
+      doc.fontSize(10);
 
       data.checklist.forEach((item, idx) => {
         // Checkbox
@@ -357,13 +335,11 @@ export class InstructionPdfGenerator {
    */
   private addSourceDocuments(doc: PDFKit.PDFDocument, data: ConsolidatedInstructionData) {
     doc.fontSize(18)
-       .font('Helvetica-Bold')
        .text('Source Documents');
 
     doc.moveDown(1);
 
     doc.fontSize(10)
-       .font('Helvetica')
        .text(
          'This consolidated guide was generated from the following official documents. ' +
          'Always verify requirements against the original sources:'
@@ -373,11 +349,9 @@ export class InstructionPdfGenerator {
 
     if (data.componentInstructionsUrl) {
       doc.fontSize(11)
-         .font('Helvetica-Bold')
          .text('Component Instructions:');
 
       doc.fontSize(9)
-         .font('Helvetica')
          .fillColor('#1E40AF')
          .text(data.componentInstructionsUrl, { link: data.componentInstructionsUrl });
 
@@ -387,11 +361,9 @@ export class InstructionPdfGenerator {
 
     if (data.solicitationInstructionsUrl) {
       doc.fontSize(11)
-         .font('Helvetica-Bold')
          .text('BAA/Solicitation Instructions:');
 
       doc.fontSize(9)
-         .font('Helvetica')
          .fillColor('#1E40AF')
          .text(data.solicitationInstructionsUrl, { link: data.solicitationInstructionsUrl });
 
@@ -403,7 +375,6 @@ export class InstructionPdfGenerator {
 
     // Disclaimer
     doc.fontSize(8)
-       .font('Helvetica-Oblique')
        .text(
          'Note: Source document URLs may become inactive after the solicitation closes. ' +
          'PropShop AI archives instruction content for historical reference.'
@@ -420,7 +391,6 @@ export class InstructionPdfGenerator {
       doc.switchToPage(i);
 
       doc.fontSize(8)
-         .font('Helvetica')
          .fillColor('#666666')
          .text(
            `PropShop AI - ${data.opportunity.topicNumber} - Page ${i + 1} of ${pages.count}`,
