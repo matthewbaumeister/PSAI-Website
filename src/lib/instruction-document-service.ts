@@ -17,16 +17,16 @@ const supabase = createClient(
 export interface OpportunityData {
   id: number;
   topic_number: string;
-  topic_id: number;
+  topic_id: string;
   title: string;
   component: string;
   program: string;
   phase: string;
-  status_topicstatus: string;  // Actual column name in database
+  status: string;
   open_date?: string;
   close_date?: string;
-  component_instructions_url?: string;
-  solicitation_instructions_url?: string;
+  component_instructions_download?: string;  // Actual column name in sbir_final
+  solicitation_instructions_download?: string;  // Actual column name in sbir_final
 }
 
 export interface GenerationResult {
@@ -56,7 +56,7 @@ export class InstructionDocumentService {
 
       // Fetch opportunity data
       const { data: opportunity, error: fetchError } = await supabase
-        .from('dsip_opportunities')
+        .from('sbir_final')
         .select('*')
         .eq('id', opportunityId)
         .single();
@@ -66,7 +66,7 @@ export class InstructionDocumentService {
       }
 
       // Check if instructions are available
-      if (!opportunity.component_instructions_url && !opportunity.solicitation_instructions_url) {
+      if (!opportunity.component_instructions_download && !opportunity.solicitation_instructions_download) {
         console.log(`No instruction URLs available for ${opportunity.topic_number}`);
         return {
           success: false,
@@ -148,11 +148,11 @@ export class InstructionDocumentService {
 
     // Fetch active opportunities without instruction documents
     const { data: opportunities, error } = await supabase
-      .from('dsip_opportunities')
-      .select('id, topic_number, status_topicstatus')
-      .in('status_topicstatus', ['Open', 'Prerelease', 'Active'])
+      .from('sbir_final')
+      .select('id, topic_number, status')
+      .in('status', ['Open', 'Prerelease', 'Active'])
       .is('consolidated_instructions_url', null)
-      .or('component_instructions_url.not.is.null,solicitation_instructions_url.not.is.null');
+      .or('component_instructions_download.not.is.null,solicitation_instructions_download.not.is.null');
 
     if (error) {
       throw new Error(`Failed to fetch opportunities: ${error.message}`);
@@ -189,11 +189,11 @@ export class InstructionDocumentService {
     let solicitationDoc: InstructionDocument | null = null;
 
     // Parse component instructions
-    if (opportunity.component_instructions_url) {
+    if (opportunity.component_instructions_download) {
       try {
-        console.log(`Parsing component instructions from: ${opportunity.component_instructions_url}`);
+        console.log(`Parsing component instructions from: ${opportunity.component_instructions_download}`);
         componentDoc = await this.parser.parseInstructionPdf(
-          opportunity.component_instructions_url,
+          opportunity.component_instructions_download,
           'component'
         );
         console.log(`Parsed component doc: ${componentDoc.pageCount} pages, ${componentDoc.volumes.length} volumes`);
@@ -203,11 +203,11 @@ export class InstructionDocumentService {
     }
 
     // Parse solicitation instructions
-    if (opportunity.solicitation_instructions_url) {
+    if (opportunity.solicitation_instructions_download) {
       try {
-        console.log(`Parsing solicitation instructions from: ${opportunity.solicitation_instructions_url}`);
+        console.log(`Parsing solicitation instructions from: ${opportunity.solicitation_instructions_download}`);
         solicitationDoc = await this.parser.parseInstructionPdf(
-          opportunity.solicitation_instructions_url,
+          opportunity.solicitation_instructions_download,
           'solicitation'
         );
         console.log(`Parsed solicitation doc: ${solicitationDoc.pageCount} pages, ${solicitationDoc.volumes.length} volumes`);
@@ -247,8 +247,8 @@ export class InstructionDocumentService {
         ...(parsedDocs.componentDoc?.contacts || []),
         ...(parsedDocs.solicitationDoc?.contacts || [])
       ],
-      componentInstructionsUrl: opportunity.component_instructions_url,
-      solicitationInstructionsUrl: opportunity.solicitation_instructions_url,
+      componentInstructionsUrl: opportunity.component_instructions_download,
+      solicitationInstructionsUrl: opportunity.solicitation_instructions_download,
       generatedAt: new Date()
     };
 
@@ -315,7 +315,7 @@ export class InstructionDocumentService {
     console.log('Updating database...');
 
     const { error } = await supabase
-      .from('dsip_opportunities')
+      .from('sbir_final')
       .update({
         consolidated_instructions_url: data.pdfUrl,
         instructions_plain_text: data.plainText,
@@ -337,8 +337,8 @@ export class InstructionDocumentService {
    */
   async needsRegeneration(opportunityId: number): Promise<boolean> {
     const { data: opportunity } = await supabase
-      .from('dsip_opportunities')
-      .select('consolidated_instructions_url, instructions_generated_at, status_topicstatus')
+      .from('sbir_final')
+      .select('consolidated_instructions_url, instructions_generated_at, status')
       .eq('id', opportunityId)
       .single();
 
@@ -348,7 +348,7 @@ export class InstructionDocumentService {
     if (!opportunity.consolidated_instructions_url) return true;
 
     // Don't regenerate for closed opportunities
-    if (!['Open', 'Prerelease', 'Active'].includes(opportunity.status_topicstatus)) return false;
+    if (!['Open', 'Prerelease', 'Active'].includes(opportunity.status)) return false;
 
     // Regenerate if older than 7 days
     if (opportunity.instructions_generated_at) {
