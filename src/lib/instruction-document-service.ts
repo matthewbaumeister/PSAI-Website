@@ -45,6 +45,7 @@ export interface GenerationResult {
     plainTextLength: number;
     componentPages: number;
     solicitationPages: number;
+    parsingErrors?: string[];
   };
 }
 
@@ -95,6 +96,11 @@ export class InstructionDocumentService {
         parsedDocs.componentDoc,
         parsedDocs.solicitationDoc
       );
+      
+      // Log parsing errors
+      if (parsedDocs.errors.length > 0) {
+        console.warn('Parsing errors occurred:', parsedDocs.errors);
+      }
 
       // Generate consolidated PDF
       const pdfBuffer = await this.generatePdf(opportunity, mergedData, parsedDocs);
@@ -126,7 +132,8 @@ export class InstructionDocumentService {
           checklistItemsExtracted: mergedData.checklist.length,
           plainTextLength: mergedData.plainText.length,
           componentPages: parsedDocs.componentDoc?.pageCount || 0,
-          solicitationPages: parsedDocs.solicitationDoc?.pageCount || 0
+          solicitationPages: parsedDocs.solicitationDoc?.pageCount || 0,
+          parsingErrors: parsedDocs.errors.length > 0 ? parsedDocs.errors : undefined
         }
       };
     } catch (error) {
@@ -319,9 +326,11 @@ Document generated: ${new Date().toISOString()}
   private async parseInstructionDocuments(opportunity: OpportunityData): Promise<{
     componentDoc: InstructionDocument | null;
     solicitationDoc: InstructionDocument | null;
+    errors: string[];
   }> {
     let componentDoc: InstructionDocument | null = null;
     let solicitationDoc: InstructionDocument | null = null;
+    const errors: string[] = [];
 
     // Parse component instructions
     if (opportunity.component_instructions_download) {
@@ -331,9 +340,15 @@ Document generated: ${new Date().toISOString()}
           opportunity.component_instructions_download,
           'component'
         );
-        console.log(`Parsed component doc: ${componentDoc.pageCount} pages, ${componentDoc.volumes.length} volumes`);
+        console.log(`✅ Parsed component doc: ${componentDoc.pageCount} pages, ${componentDoc.volumes.length} volumes`);
       } catch (error) {
-        console.error('Error parsing component instructions:', error);
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        errors.push(`Component PDF failed: ${errorMsg}`);
+        console.error('❌ Error parsing component instructions:', error);
+        if (error instanceof Error) {
+          console.error('Error message:', error.message);
+          console.error('Error stack:', error.stack);
+        }
       }
     }
 
@@ -345,13 +360,19 @@ Document generated: ${new Date().toISOString()}
           opportunity.solicitation_instructions_download,
           'solicitation'
         );
-        console.log(`Parsed solicitation doc: ${solicitationDoc.pageCount} pages, ${solicitationDoc.volumes.length} volumes`);
+        console.log(`✅ Parsed solicitation doc: ${solicitationDoc.pageCount} pages, ${solicitationDoc.volumes.length} volumes`);
       } catch (error) {
-        console.error('Error parsing solicitation instructions:', error);
+        const errorMsg = error instanceof Error ? error.message : String(error);
+        errors.push(`Solicitation PDF failed: ${errorMsg}`);
+        console.error('❌ Error parsing solicitation instructions:', error);
+        if (error instanceof Error) {
+          console.error('Error message:', error.message);
+          console.error('Error stack:', error.stack);
+        }
       }
     }
 
-    return { componentDoc, solicitationDoc };
+    return { componentDoc, solicitationDoc, errors };
   }
 
   /**
