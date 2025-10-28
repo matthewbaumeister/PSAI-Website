@@ -6,7 +6,6 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
-import { InstructionPdfParser, InstructionDocument } from './instruction-pdf-parser';
 import { InstructionPdfGenerator, ConsolidatedInstructionData, OpportunityInfo } from './instruction-pdf-generator';
 
 const supabase = createClient(
@@ -38,12 +37,10 @@ export interface GenerationResult {
 }
 
 export class InstructionDocumentService {
-  private parser: InstructionPdfParser;
   private generator: InstructionPdfGenerator;
   private storageBucket = 'instruction-documents';
 
   constructor() {
-    this.parser = new InstructionPdfParser();
     this.generator = new InstructionPdfGenerator();
   }
 
@@ -76,17 +73,20 @@ export class InstructionDocumentService {
         };
       }
 
-      // Parse instruction documents
-      const parsedDocs = await this.parseInstructionDocuments(opportunity);
-
-      // Merge instructions
-      const mergedData = await this.parser.mergeInstructions(
-        parsedDocs.componentDoc,
-        parsedDocs.solicitationDoc
-      );
+      // For now, generate from database data instead of parsing PDFs
+      // TODO: Add PDF parsing later when serverless compatible
+      const mergedData = {
+        volumes: this.createDefaultVolumes(),
+        checklist: this.createDefaultChecklist(opportunity),
+        plainText: this.createPlainTextFromDatabase(opportunity),
+        keyDates: {
+          'Open Date': opportunity.open_date || 'N/A',
+          'Close Date': opportunity.close_date || 'N/A'
+        }
+      };
 
       // Generate consolidated PDF
-      const pdfBuffer = await this.generatePdf(opportunity, mergedData, parsedDocs);
+      const pdfBuffer = await this.generatePdf(opportunity, mergedData);
 
       // Upload to Supabase Storage
       const pdfUrl = await this.uploadToStorage(opportunity.topic_number, pdfBuffer);
@@ -220,12 +220,123 @@ export class InstructionDocumentService {
   }
 
   /**
+   * Create default volumes structure from database
+   */
+  private createDefaultVolumes() {
+    return [
+      {
+        volumeNumber: 1,
+        volumeName: 'Cost Proposal',
+        description: 'Detailed cost breakdown and budget information',
+        requirements: [
+          'Provide detailed cost breakdown by task',
+          'Include labor rates and hours',
+          'List all materials and equipment costs',
+          'Specify any subcontractor costs'
+        ]
+      },
+      {
+        volumeNumber: 2,
+        volumeName: 'Technical Proposal',
+        description: 'Technical approach and innovation description',
+        requirements: [
+          'Describe technical approach and innovation',
+          'Provide work plan and timeline',
+          'List key personnel and qualifications',
+          'Describe facilities and equipment',
+          'Include related work and references'
+        ]
+      },
+      {
+        volumeNumber: 3,
+        volumeName: 'Company Information',
+        description: 'Company qualifications and certifications',
+        requirements: [
+          'Provide company overview and history',
+          'List relevant past performance',
+          'Include small business certifications',
+          'Provide corporate information'
+        ]
+      }
+    ];
+  }
+
+  /**
+   * Create default checklist from database info
+   */
+  private createDefaultChecklist(opportunity: OpportunityData) {
+    return [
+      'Complete SF 1449 form (Solicitation/Contract/Order)',
+      'Volume 1: Cost Proposal with detailed breakdown',
+      'Volume 2: Technical Proposal (page limits apply)',
+      'Volume 3: Company Commercialization Report',
+      'Small Business Administration (SBA) certifications',
+      'Past Performance references',
+      'Key Personnel resumes and qualifications',
+      'Facilities and equipment descriptions',
+      'Data rights assertions (if applicable)',
+      'Submit through official submission portal before deadline',
+      `Deadline: ${opportunity.close_date || 'See solicitation'}`,
+      'Follow formatting requirements (font, margins, page limits)',
+      'Include all required signatures and certifications'
+    ];
+  }
+
+  /**
+   * Create plain text archive from database
+   */
+  private createPlainTextFromDatabase(opportunity: OpportunityData): string {
+    return `
+SBIR/STTR SUBMISSION INSTRUCTIONS
+Topic: ${opportunity.topic_number}
+Title: ${opportunity.title}
+Component: ${opportunity.component}
+Program: ${opportunity.program}
+Phase: ${opportunity.phase}
+Status: ${opportunity.status}
+
+IMPORTANT DATES:
+Open Date: ${opportunity.open_date || 'N/A'}
+Close Date: ${opportunity.close_date || 'N/A'}
+
+INSTRUCTION SOURCES:
+Component Instructions: ${opportunity.component_instructions_download || 'Not available'}
+Solicitation Instructions: ${opportunity.solicitation_instructions_download || 'Not available'}
+
+SUBMISSION REQUIREMENTS:
+Please refer to the official BAA and component-specific instructions linked above for complete details.
+
+VOLUME 1: COST PROPOSAL
+- Detailed cost breakdown by task
+- Labor rates and hours
+- Materials and equipment costs
+- Subcontractor costs
+
+VOLUME 2: TECHNICAL PROPOSAL (PRIMARY EVALUATION VOLUME)
+- Technical approach and innovation
+- Work plan and timeline
+- Key personnel qualifications
+- Facilities and equipment
+- Related work and references
+
+VOLUME 3: COMPANY INFORMATION
+- Company overview and history
+- Past performance
+- Small business certifications
+- Corporate information
+
+For complete and authoritative instructions, always refer to the official documents linked above.
+
+Document generated: ${new Date().toISOString()}
+    `.trim();
+  }
+
+  /**
    * Generate consolidated PDF
    */
   private async generatePdf(
     opportunity: OpportunityData,
-    mergedData: any,
-    parsedDocs: { componentDoc: InstructionDocument | null; solicitationDoc: InstructionDocument | null }
+    mergedData: any
   ): Promise<Buffer> {
     const opportunityInfo: OpportunityInfo = {
       topicNumber: opportunity.topic_number,
@@ -243,10 +354,7 @@ export class InstructionDocumentService {
       checklist: mergedData.checklist,
       keyDates: mergedData.keyDates,
       submissionGuidelines: [],
-      contacts: [
-        ...(parsedDocs.componentDoc?.contacts || []),
-        ...(parsedDocs.solicitationDoc?.contacts || [])
-      ],
+      contacts: [],
       componentInstructionsUrl: opportunity.component_instructions_download,
       solicitationInstructionsUrl: opportunity.solicitation_instructions_download,
       generatedAt: new Date()
