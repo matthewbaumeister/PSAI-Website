@@ -178,46 +178,6 @@ export class InstructionDocumentService {
     };
   }
 
-  /**
-   * Parse instruction documents from URLs
-   */
-  private async parseInstructionDocuments(opportunity: OpportunityData): Promise<{
-    componentDoc: InstructionDocument | null;
-    solicitationDoc: InstructionDocument | null;
-  }> {
-    let componentDoc: InstructionDocument | null = null;
-    let solicitationDoc: InstructionDocument | null = null;
-
-    // Parse component instructions
-    if (opportunity.component_instructions_download) {
-      try {
-        console.log(`Parsing component instructions from: ${opportunity.component_instructions_download}`);
-        componentDoc = await this.parser.parseInstructionPdf(
-          opportunity.component_instructions_download,
-          'component'
-        );
-        console.log(`Parsed component doc: ${componentDoc.pageCount} pages, ${componentDoc.volumes.length} volumes`);
-      } catch (error) {
-        console.error('Error parsing component instructions:', error);
-      }
-    }
-
-    // Parse solicitation instructions
-    if (opportunity.solicitation_instructions_download) {
-      try {
-        console.log(`Parsing solicitation instructions from: ${opportunity.solicitation_instructions_download}`);
-        solicitationDoc = await this.parser.parseInstructionPdf(
-          opportunity.solicitation_instructions_download,
-          'solicitation'
-        );
-        console.log(`Parsed solicitation doc: ${solicitationDoc.pageCount} pages, ${solicitationDoc.volumes.length} volumes`);
-      } catch (error) {
-        console.error('Error parsing solicitation instructions:', error);
-      }
-    }
-
-    return { componentDoc, solicitationDoc };
-  }
 
   /**
    * Create default volumes structure from database
