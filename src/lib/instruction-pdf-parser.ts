@@ -8,8 +8,8 @@
 
 import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf.js';
 
-// Disable worker for serverless compatibility
-pdfjsLib.GlobalWorkerOptions.workerSrc = '';
+// Configure worker for serverless - use CDN for worker script
+pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js`;
 
 export interface VolumeRequirement {
   volumeNumber: number;
@@ -53,15 +53,11 @@ export class InstructionPdfParser {
       
       const arrayBuffer = await response.arrayBuffer();
       
-      // Load PDF document (without worker for serverless)
+      // Load PDF document
       const loadingTask = pdfjsLib.getDocument({
         data: arrayBuffer,
         useSystemFonts: true,
-        standardFontDataUrl: undefined,
-        useWorkerFetch: false,
-        isEvalSupported: false,
-        disableAutoFetch: true,
-        disableStream: true
+        standardFontDataUrl: undefined
       });
       
       const pdf = await loadingTask.promise;
