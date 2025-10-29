@@ -8,6 +8,8 @@ import Link from 'next/link';
 import AIInstructionAnalysis from '@/components/AIInstructionAnalysis';
 
 interface OpportunityData {
+  id?: number;
+  topic_id?: string;
   topic_number: string;
   title: string;
   status: string;
@@ -825,7 +827,7 @@ export default function OpportunityPage() {
         {/* AI Instruction Analysis - Only for Active Opportunities */}
         {isActive && hasInstructions && (
           <AIInstructionAnalysis
-            opportunityId={data.id}
+            opportunityId={data.topic_id || data.id || data.topic_number}
             topicNumber={data.topic_number}
             hasInstructions={hasInstructions}
           />
