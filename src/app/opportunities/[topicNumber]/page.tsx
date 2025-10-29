@@ -188,6 +188,39 @@ export default function OpportunityPage() {
     }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         
+        {/* Back to Database Link */}
+        <Link 
+          href="/admin/sbir-database"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '12px 20px',
+            background: 'rgba(59, 130, 246, 0.15)',
+            border: '1px solid rgba(59, 130, 246, 0.3)',
+            borderRadius: '8px',
+            color: '#60a5fa',
+            textDecoration: 'none',
+            fontSize: '14px',
+            fontWeight: '500',
+            marginBottom: '24px',
+            transition: 'all 0.2s'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(59, 130, 246, 0.25)';
+            e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(59, 130, 246, 0.15)';
+            e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+          }}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          Back to SBIR Database
+        </Link>
+        
         {/* Closed Opportunity Warning Banner */}
         {isClosed && (
           <div style={{
