@@ -1616,7 +1616,7 @@ Our company specializes in artificial intelligence and machine learning for defe
                                   
                                   <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                                     <a
-                                      href={`/admin/sbir-database/instructions/${record.topic_number}`}
+                                      href={`/opportunities/${record.topic_number}`}
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       style={{
@@ -1649,7 +1649,7 @@ Our company specializes in artificial intelligence and machine learning for defe
                                         <polyline points="15 3 21 3 21 9"></polyline>
                                         <line x1="10" y1="14" x2="21" y2="3"></line>
                                       </svg>
-                                      View Full Instructions
+                                      View Opportunity Details
                                     </a>
                                     <a
                                       href={record.consolidated_instructions_url}
