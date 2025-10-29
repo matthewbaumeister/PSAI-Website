@@ -91,7 +91,27 @@ export default function OpportunityPage() {
       const result = await response.json();
 
       if (!result.success) {
-        throw new Error(result.error || 'Failed to analyze instructions');
+        // Log full error details to console for debugging
+        console.error('Analysis failed:', result);
+        
+        // Build detailed error message
+        let errorMsg = result.error || 'Failed to analyze instructions';
+        if (result.debug) {
+          errorMsg += '\n\nDebug Info:';
+          if (result.debug.componentUrl) {
+            errorMsg += `\n• Component URL: ${result.debug.componentUrl}`;
+            if (result.debug.componentError) {
+              errorMsg += `\n  Error: ${result.debug.componentError}`;
+            }
+          }
+          if (result.debug.baaUrl) {
+            errorMsg += `\n• BAA URL: ${result.debug.baaUrl}`;
+            if (result.debug.baaError) {
+              errorMsg += `\n  Error: ${result.debug.baaError}`;
+            }
+          }
+        }
+        throw new Error(errorMsg);
       }
 
       // Refresh the page data to get the updated instructions_checklist
@@ -1544,15 +1564,28 @@ export default function OpportunityPage() {
                     </p>
                     {analysisError && (
                       <div style={{
-                        padding: '12px',
+                        padding: '16px',
                         background: 'rgba(239, 68, 68, 0.1)',
                         border: '1px solid rgba(239, 68, 68, 0.4)',
                         borderRadius: '6px',
                         marginBottom: '16px',
                         color: '#fca5a5',
-                        fontSize: '14px'
+                        fontSize: '13px',
+                        textAlign: 'left',
+                        maxWidth: '700px',
+                        margin: '0 auto 16px'
                       }}>
-                        Error: {analysisError}
+                        <pre style={{ 
+                          whiteSpace: 'pre-wrap', 
+                          wordWrap: 'break-word',
+                          margin: 0,
+                          fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                          fontSize: '13px',
+                          lineHeight: '1.6',
+                          color: '#fca5a5'
+                        }}>
+                          {analysisError}
+                        </pre>
                       </div>
                     )}
                     <button
