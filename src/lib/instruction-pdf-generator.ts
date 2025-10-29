@@ -26,6 +26,7 @@ export interface ConsolidatedInstructionData {
   keyDates: { [key: string]: string };
   submissionGuidelines: string[];
   contacts: string[];
+  plainText?: string; // Full plain text for fallback rendering
   componentInstructionsUrl?: string;
   solicitationInstructionsUrl?: string;
   generatedAt: Date;
@@ -124,7 +125,19 @@ export class InstructionPdfGenerator {
     await this.addCoverPage(pdfDoc, sanitizedData, fonts);
     await this.addTableOfContents(pdfDoc, sanitizedData, fonts);
     await this.addQuickReference(pdfDoc, sanitizedData, fonts);
-    await this.addVolumeRequirements(pdfDoc, sanitizedData, fonts);
+    
+    // Check if volumes have meaningful content, otherwise use plain text
+    const hasVolumes = sanitizedData.volumes.some(v => 
+      v.requirements.length > 0 || (v.description && v.description.length > 100)
+    );
+    
+    if (hasVolumes) {
+      await this.addVolumeRequirements(pdfDoc, sanitizedData, fonts);
+    } else if (sanitizedData.plainText && sanitizedData.plainText.length > 0) {
+      // Fallback: render the full plain text
+      await this.addPlainTextInstructions(pdfDoc, sanitizedData, fonts);
+    }
+    
     await this.addChecklist(pdfDoc, sanitizedData, fonts);
     await this.addSourceDocuments(pdfDoc, sanitizedData, fonts);
     await this.addFooters(pdfDoc, sanitizedData, fonts);
@@ -561,6 +574,89 @@ export class InstructionPdfGenerator {
           });
           y -= 20;
         }
+      }
+    }
+  }
+
+  /**
+   * Add plain text instructions (fallback when volume extraction fails)
+   */
+  private async addPlainTextInstructions(
+    pdfDoc: PDFDocument,
+    data: ConsolidatedInstructionData,
+    fonts: any
+  ) {
+    const pageWidth = 612;
+    const pageHeight = 792;
+    const marginTop = 100;
+    const marginBottom = 80;
+
+    let currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+    let y = pageHeight - marginTop;
+
+    // Title
+    currentPage.drawText('Consolidated Instructions', {
+      x: 50,
+      y,
+      size: 16,
+      font: fonts.bold,
+    });
+    y -= 30;
+
+    // Subtitle
+    currentPage.drawText('The following instructions have been extracted and consolidated from both', {
+      x: 50,
+      y,
+      size: 10,
+      font: fonts.normal,
+    });
+    y -= 15;
+    currentPage.drawText('Component-specific and BAA/Solicitation documents.', {
+      x: 50,
+      y,
+      size: 10,
+      font: fonts.normal,
+    });
+    y -= 30;
+
+    // Render the plain text with pagination
+    if (data.plainText && data.plainText.length > 0) {
+      const lines = this.wrapText(data.plainText, pageWidth - 100, fonts.normal, 8);
+      
+      // Limit to first 500 lines (about 10-15 pages) to keep PDF manageable
+      const linesToShow = Math.min(lines.length, 500);
+      const truncated = lines.length > 500;
+      
+      for (let i = 0; i < linesToShow; i++) {
+        const line = lines[i];
+        
+        // Check if we need a new page
+        if (y < marginBottom) {
+          currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+          y = pageHeight - marginTop;
+        }
+        
+        currentPage.drawText(line, {
+          x: 50,
+          y,
+          size: 8,
+          font: fonts.normal,
+        });
+        y -= 10;
+      }
+      
+      if (truncated) {
+        if (y < marginBottom) {
+          currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+          y = pageHeight - marginTop;
+        }
+        currentPage.drawText(`[... ${lines.length - 500} more lines - full text available in database]`, {
+          x: 50,
+          y,
+          size: 8,
+          font: fonts.normal,
+          color: rgb(0.5, 0.5, 0.5),
+        });
       }
     }
   }

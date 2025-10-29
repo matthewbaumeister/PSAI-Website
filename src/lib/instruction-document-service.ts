@@ -404,6 +404,7 @@ Document generated: ${new Date().toISOString()}
         ...(parsedDocs.componentDoc?.contacts || []),
         ...(parsedDocs.solicitationDoc?.contacts || [])
       ],
+      plainText: mergedData.plainText, // Add plain text for fallback rendering
       componentInstructionsUrl: opportunity.component_instructions_download,
       solicitationInstructionsUrl: opportunity.solicitation_instructions_download,
       generatedAt: new Date()
