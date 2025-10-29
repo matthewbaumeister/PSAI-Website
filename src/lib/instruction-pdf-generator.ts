@@ -588,46 +588,63 @@ export class InstructionPdfGenerator {
   ) {
     const pageWidth = 612;
     const pageHeight = 792;
-    const marginTop = 100;
-    const marginBottom = 80;
+    const marginTop = 80;
+    const marginBottom = 60;
+    const marginLeft = 50;
+    const marginRight = 50;
 
     let currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
     let y = pageHeight - marginTop;
 
     // Title
     currentPage.drawText('Consolidated Instructions', {
-      x: 50,
+      x: marginLeft,
       y,
-      size: 16,
+      size: 18,
       font: fonts.bold,
     });
-    y -= 30;
+    y -= 35;
 
-    // Subtitle
-    currentPage.drawText('The following instructions have been extracted and consolidated from both', {
-      x: 50,
+    // Subtitle with box
+    currentPage.drawRectangle({
+      x: marginLeft - 10,
+      y: y - 25,
+      width: pageWidth - marginLeft - marginRight + 20,
+      height: 60,
+      color: rgb(0.95, 0.95, 0.85),
+    });
+    
+    currentPage.drawText('This document consolidates instructions from Component-specific and', {
+      x: marginLeft,
       y,
-      size: 10,
+      size: 9,
       font: fonts.normal,
     });
-    y -= 15;
-    currentPage.drawText('Component-specific and BAA/Solicitation documents.', {
-      x: 50,
+    y -= 14;
+    currentPage.drawText('BAA/Solicitation documents. Always verify against original sources.', {
+      x: marginLeft,
       y,
-      size: 10,
+      size: 9,
       font: fonts.normal,
     });
-    y -= 30;
+    y -= 14;
+    currentPage.drawText('Full plain-text instructions saved to database for reference.', {
+      x: marginLeft,
+      y,
+      size: 9,
+      font: fonts.normal,
+      color: rgb(0.3, 0.3, 0.3),
+    });
+    y -= 40;
 
-    // Render the plain text with pagination
+    // Render ALL the plain text with pagination and sanitization
     if (data.plainText && data.plainText.length > 0) {
-      const lines = this.wrapText(data.plainText, pageWidth - 100, fonts.normal, 8);
+      // Sanitize the entire plain text first
+      const sanitizedText = this.sanitizeText(data.plainText);
+      const lines = this.wrapText(sanitizedText, pageWidth - marginLeft - marginRight, fonts.normal, 8);
       
-      // Limit to first 500 lines (about 10-15 pages) to keep PDF manageable
-      const linesToShow = Math.min(lines.length, 500);
-      const truncated = lines.length > 500;
-      
-      for (let i = 0; i < linesToShow; i++) {
+      // Show ALL lines - no truncation
+      for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
         
         // Check if we need a new page
@@ -636,28 +653,36 @@ export class InstructionPdfGenerator {
           y = pageHeight - marginTop;
         }
         
-        currentPage.drawText(line, {
-          x: 50,
-          y,
-          size: 8,
-          font: fonts.normal,
-        });
+        // Only draw non-empty lines to avoid errors
+        if (line && line.trim().length > 0) {
+          try {
+            currentPage.drawText(line, {
+              x: marginLeft,
+              y,
+              size: 8,
+              font: fonts.normal,
+            });
+          } catch (error) {
+            // If a line fails to render, skip it and log
+            console.warn(`Failed to render line ${i}:`, error);
+          }
+        }
         y -= 10;
       }
       
-      if (truncated) {
-        if (y < marginBottom) {
-          currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
-          y = pageHeight - marginTop;
-        }
-        currentPage.drawText(`[... ${lines.length - 500} more lines - full text available in database]`, {
-          x: 50,
-          y,
-          size: 8,
-          font: fonts.normal,
-          color: rgb(0.5, 0.5, 0.5),
-        });
+      // Add completion note at the end
+      if (y < marginBottom + 40) {
+        currentPage = pdfDoc.addPage([pageWidth, pageHeight]);
+        y = pageHeight - marginTop;
       }
+      y -= 20;
+      currentPage.drawText('--- End of Consolidated Instructions ---', {
+        x: marginLeft,
+        y,
+        size: 9,
+        font: fonts.bold,
+        color: rgb(0.3, 0.3, 0.3),
+      });
     }
   }
 
