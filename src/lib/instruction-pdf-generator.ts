@@ -477,8 +477,19 @@ export class InstructionPdfGenerator {
         });
         y -= 20;
 
-        for (const req of volume.requirements) {
-          if (y < 100) break;
+        // Limit to first 20 requirements to keep PDF size manageable
+        const reqsToShow = volume.requirements.slice(0, 20);
+        const hasMore = volume.requirements.length > 20;
+
+        for (const req of reqsToShow) {
+          // Check if we need a new page
+          if (y < 100) {
+            const newPage = pdfDoc.addPage([pageWidth, pageHeight]);
+            y = pageHeight - 100;
+            
+            // Continue on new page
+            page = newPage as any;
+          }
           
           // Determine color based on source tag
           let reqColor = rgb(0, 0, 0); // Default black
@@ -492,7 +503,13 @@ export class InstructionPdfGenerator {
           
           const reqLines = this.wrapText(`• ${req}`, pageWidth - 120, fonts.normal, 9);
           for (const line of reqLines) {
-            if (y < 100) break;
+            // Check for new page within requirement lines too
+            if (y < 100) {
+              const newPage = pdfDoc.addPage([pageWidth, pageHeight]);
+              y = pageHeight - 100;
+              page = newPage as any;
+            }
+            
             page.drawText(line, {
               x: 60,
               y,
@@ -503,6 +520,23 @@ export class InstructionPdfGenerator {
             y -= 13;
           }
           y -= 5;
+        }
+        
+        // Add note if there are more requirements
+        if (hasMore) {
+          if (y < 100) {
+            const newPage = pdfDoc.addPage([pageWidth, pageHeight]);
+            y = pageHeight - 100;
+            page = newPage as any;
+          }
+          page.drawText(`[... ${volume.requirements.length - 20} more requirements - see full plain-text instructions in database]`, {
+            x: 60,
+            y,
+            size: 9,
+            font: fonts.normal,
+            color: rgb(0.5, 0.5, 0.5),
+          });
+          y -= 20;
         }
       }
     }
@@ -545,25 +579,43 @@ export class InstructionPdfGenerator {
     y -= 30;
 
     if (data.checklist.length === 0) {
-      page.drawText('No specific checklist items were extracted.', {
+      page.drawText('No specific checklist items were extracted from the instruction documents.', {
+        x: 50,
+        y,
+        size: 10,
+        font: fonts.normal,
+      });
+      y -= 20;
+      page.drawText('However, the full plain-text instructions have been saved to the database.', {
         x: 50,
         y,
         size: 10,
         font: fonts.normal,
       });
       y -= 15;
-      page.drawText('Please refer to the source documents.', {
+      page.drawText('Please refer to the source documents and the volumes above for requirements.', {
         x: 50,
         y,
         size: 10,
         font: fonts.normal,
       });
     } else {
-      for (let i = 0; i < data.checklist.length && y > 100; i++) {
-        const item = data.checklist[i];
+      // Limit checklist items to keep PDF size manageable
+      let currentPage = page;
+      const itemsToShow = data.checklist.slice(0, 30);
+      const hasMore = data.checklist.length > 30;
+      
+      for (let i = 0; i < itemsToShow.length; i++) {
+        const item = itemsToShow[i];
+
+        // Check if we need a new page
+        if (y < 120) {
+          currentPage = pdfDoc.addPage([612, 792]);
+          y = 692; // Reset to top
+        }
 
         // Checkbox
-        page.drawRectangle({
+        currentPage.drawRectangle({
           x: 50,
           y: y - 2,
           width: 10,
@@ -589,8 +641,13 @@ export class InstructionPdfGenerator {
         
         let itemY = y;
         for (const line of itemLines) {
-          if (itemY < 100) break;
-          page.drawText(line, {
+          // Check for new page within item lines
+          if (itemY < 100) {
+            currentPage = pdfDoc.addPage([612, 792]);
+            itemY = 692;
+          }
+          
+          currentPage.drawText(line, {
             x: 70,
             y: itemY,
             size: 10,
@@ -601,6 +658,21 @@ export class InstructionPdfGenerator {
         }
 
         y = itemY - 10;
+      }
+      
+      // Add note if there are more checklist items
+      if (hasMore) {
+        if (y < 100) {
+          currentPage = pdfDoc.addPage([612, 792]);
+          y = 692;
+        }
+        currentPage.drawText(`[... ${data.checklist.length - 30} more checklist items - see full instructions in database]`, {
+          x: 50,
+          y,
+          size: 9,
+          font: fonts.normal,
+          color: rgb(0.5, 0.5, 0.5),
+        });
       }
     }
   }
