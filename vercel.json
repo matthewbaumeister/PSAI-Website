@@ -6,9 +6,6 @@
   "devCommand": "npm run dev",
   "regions": ["iad1"],
   "functions": {
-    "src/app/api/**/*.ts": {
-      "maxDuration": 60
-    },
     "src/app/api/cron/sbir-scraper/route.ts": {
       "maxDuration": 300
     },
@@ -21,7 +18,7 @@
     "src/app/api/admin/sbir/extract-file/route.ts": {
       "maxDuration": 180
     },
-    "src/app/api/admin/analyze-instructions/*/route.ts": {
+    "src/app/api/admin/analyze-instructions/**": {
       "maxDuration": 300
     },
     "src/app/api/admin/opportunity-chat/route.ts": {
@@ -32,6 +29,9 @@
     },
     "src/app/api/admin/rag/search/route.ts": {
       "maxDuration": 120
+    },
+    "src/app/api/**/*.ts": {
+      "maxDuration": 60
     }
   },
   "crons": [
