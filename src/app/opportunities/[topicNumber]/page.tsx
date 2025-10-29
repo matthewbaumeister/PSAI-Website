@@ -77,12 +77,20 @@ export default function OpportunityPage() {
     setAnalysisError(null);
 
     try {
+      // Get user session token for authentication
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (!session) {
+        throw new Error('You must be signed in to generate analysis');
+      }
+
       const response = await fetch(`/api/admin/analyze-instructions/${data.topic_id || data.id || data.topic_number}`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+          'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
-        }
+        },
+        credentials: 'include' // Important: send cookies
       });
 
       const result = await response.json();

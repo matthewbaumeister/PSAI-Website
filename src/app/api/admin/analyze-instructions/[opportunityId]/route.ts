@@ -29,14 +29,41 @@ export async function POST(
   context: RouteContext
 ) {
   try {
-    // Verify authorization (require service role key in header)
+    // Verify user authentication via Bearer token
     const authHeader = request.headers.get('authorization');
-    if (!authHeader || !authHeader.includes(process.env.SUPABASE_SERVICE_ROLE_KEY!)) {
+    
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
       return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
+        { success: false, error: 'Unauthorized - Please sign in to generate instructions' },
         { status: 401 }
       );
     }
+    
+    const token = authHeader.replace('Bearer ', '');
+    
+    // Verify token with Supabase (this validates the JWT)
+    const userSupabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      {
+        global: {
+          headers: {
+            Authorization: authHeader
+          }
+        }
+      }
+    );
+    
+    const { data: { user }, error: authError } = await userSupabase.auth.getUser(token);
+    
+    if (authError || !user) {
+      return NextResponse.json(
+        { success: false, error: 'Invalid or expired session. Please sign in again.' },
+        { status: 401 }
+      );
+    }
+    
+    console.log(`[LLM Analysis] Authenticated user: ${user.email}`);
 
     const { opportunityId } = await context.params;
     
