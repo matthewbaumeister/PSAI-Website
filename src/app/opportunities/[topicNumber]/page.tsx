@@ -1290,16 +1290,16 @@ export default function OpportunityPage() {
 
                 {/* AI-Generated Analysis or Generate Button */}
                 {data.instructions_checklist && typeof data.instructions_checklist === 'object' && 
-                 (data.instructions_checklist as any).compliance_checklist && 
-                 (data.instructions_checklist as any).compliance_checklist.length > 0 ? (
+                 (data.instructions_checklist as any).volumes && 
+                 (data.instructions_checklist as any).volumes.length > 0 ? (
                   // Show LLM-generated content if it exists
                   <div>
                     {(() => {
                       const analysis = data.instructions_checklist as InstructionAnalysisResult;
                       return (
                         <>
-                          {/* Superseding Notes */}
-                          {analysis.superseding_notes && analysis.superseding_notes.length > 0 && (
+                          {/* Critical Notes Banner */}
+                          {analysis.critical_notes && analysis.critical_notes.length > 0 && (
                             <div style={{ marginBottom: '28px' }}>
                               <h4 style={{ 
                                 color: '#fbbf24', 
@@ -1310,9 +1310,12 @@ export default function OpportunityPage() {
                                 alignItems: 'center',
                                 gap: '8px'
                               }}>
-                                ⚠️ Superseding Guidance Notes
+                                 Critical Compliance Notes
                               </h4>
-                              {analysis.superseding_notes.map((note, index) => (
+                              <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
+                                Important rules and superseding guidance that have been applied to the requirements below.
+                              </p>
+                              {analysis.critical_notes.map((note, index) => (
                                 <div 
                                   key={index}
                                   style={{
@@ -1333,28 +1336,25 @@ export default function OpportunityPage() {
                                       color: '#fbbf24',
                                       textTransform: 'uppercase'
                                     }}>
-                                      {note.superseding_document}
+                                      {note.category}
                                     </span>
                                   </div>
                                   <p style={{ color: '#fde68a', fontSize: '15px', fontWeight: '600', margin: '0 0 8px 0' }}>
-                                    {note.category}: {note.rule}
+                                    {note.note}
                                   </p>
-                                  {note.explanation && (
-                                    <p style={{ color: '#fef3c7', fontSize: '14px', margin: '0 0 10px 0' }}>
-                                      {note.explanation}
-                                    </p>
-                                  )}
-                                  <div style={{ fontSize: '13px', color: '#d97706' }}>
-                                    {note.component_reference && <div>Component: {note.component_reference}</div>}
-                                    {note.baa_reference && <div>BAA: {note.baa_reference}</div>}
+                                  <div style={{ fontSize: '13px', color: '#d97706', marginBottom: '8px' }}>
+                                    <strong>Citation:</strong> {note.citation}
+                                  </div>
+                                  <div style={{ fontSize: '13px', color: '#fb923c' }}>
+                                    <strong>Applies to:</strong> {note.applies_to.join(', ')}
                                   </div>
                                 </div>
                               ))}
                             </div>
                           )}
 
-                          {/* Conflicts */}
-                          {analysis.conflicts_detected && analysis.conflicts_detected.length > 0 && (
+                          {/* Quick Reference Table */}
+                          {analysis.quick_reference && analysis.quick_reference.length > 0 && (
                             <div style={{ marginBottom: '28px' }}>
                               <h4 style={{ 
                                 color: '#f87171', 
