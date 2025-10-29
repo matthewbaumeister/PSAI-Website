@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
 import { formatQAForDisplay } from '@/lib/qa-formatter';
 import Link from 'next/link';
-import AIInstructionAnalysis from '@/components/AIInstructionAnalysis';
+import type { InstructionAnalysisResult } from '@/lib/llm-instruction-analyzer';
 
 interface OpportunityData {
   id?: number;
@@ -52,6 +52,8 @@ export default function OpportunityPage() {
   const [loading, setLoading] = useState(true);
   const [instructionsExpanded, setInstructionsExpanded] = useState(false);
   const [qaExpanded, setQaExpanded] = useState(false);
+  const [generatingAnalysis, setGeneratingAnalysis] = useState(false);
+  const [analysisError, setAnalysisError] = useState<string | null>(null);
   const supabase = createClient();
 
   // Scroll to Q&A section and expand it
@@ -63,6 +65,46 @@ export default function OpportunityPage() {
         qaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }, 100);
+  };
+
+  // Generate AI analysis
+  const handleGenerateAnalysis = async () => {
+    if (!data) return;
+    
+    setGeneratingAnalysis(true);
+    setAnalysisError(null);
+
+    try {
+      const response = await fetch(`/api/admin/analyze-instructions/${data.topic_id || data.id || data.topic_number}`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        throw new Error(result.error || 'Failed to analyze instructions');
+      }
+
+      // Refresh the page data to get the updated instructions_checklist
+      const { data: oppData, error } = await supabase
+        .from('sbir_final')
+        .select('*')
+        .eq('topic_number', topicNumber)
+        .single();
+
+      if (!error && oppData) {
+        setData(oppData);
+        setInstructionsExpanded(true); // Auto-expand to show results
+      }
+    } catch (err) {
+      setAnalysisError(err instanceof Error ? err.message : 'An error occurred');
+    } finally {
+      setGeneratingAnalysis(false);
+    }
   };
 
   useEffect(() => {
@@ -824,15 +866,6 @@ export default function OpportunityPage() {
           </div>
         )}
 
-        {/* AI Instruction Analysis - Only for Active Opportunities */}
-        {isActive && hasInstructions && (
-          <AIInstructionAnalysis
-            opportunityId={data.topic_id || data.id || data.topic_number}
-            topicNumber={data.topic_number}
-            hasInstructions={hasInstructions}
-          />
-        )}
-
         {/* Consolidated Instructions Section - Collapsible */}
         {hasInstructions && (
           <div style={{ 
@@ -1032,41 +1065,357 @@ export default function OpportunityPage() {
                   </div>
                 )}
 
-                {/* Instructions Text */}
-                <div style={{ 
-                  background: 'rgba(15, 23, 42, 0.6)',
-                  border: '1px solid rgba(71, 85, 105, 0.4)',
-                  borderRadius: '8px',
-                  padding: '24px',
-                  maxHeight: '600px',
-                  overflowY: 'auto'
-                }}>
-                  <pre style={{ 
-                    whiteSpace: 'pre-wrap',
-                    wordWrap: 'break-word',
-                    margin: 0,
-                    fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
-                    fontSize: '13px',
-                    lineHeight: '1.8',
-                    color: '#cbd5e1'
-                  }}>
-                    {data.instructions_plain_text}
-                  </pre>
-                </div>
+                {/* AI-Generated Analysis or Generate Button */}
+                {data.instructions_checklist ? (
+                  // Show LLM-generated content if it exists
+                  <div>
+                    {(() => {
+                      const analysis = data.instructions_checklist as InstructionAnalysisResult;
+                      return (
+                        <>
+                          {/* Superseding Notes */}
+                          {analysis.superseding_notes && analysis.superseding_notes.length > 0 && (
+                            <div style={{ marginBottom: '28px' }}>
+                              <h4 style={{ 
+                                color: '#fbbf24', 
+                                fontSize: '18px', 
+                                fontWeight: '700', 
+                                marginBottom: '16px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px'
+                              }}>
+                                ⚠️ Superseding Guidance Notes
+                              </h4>
+                              {analysis.superseding_notes.map((note, index) => (
+                                <div 
+                                  key={index}
+                                  style={{
+                                    padding: '16px',
+                                    background: 'rgba(251, 191, 36, 0.1)',
+                                    border: '1px solid rgba(251, 191, 36, 0.3)',
+                                    borderRadius: '8px',
+                                    marginBottom: '12px'
+                                  }}
+                                >
+                                  <div style={{ marginBottom: '8px' }}>
+                                    <span style={{
+                                      padding: '4px 10px',
+                                      background: 'rgba(251, 191, 36, 0.3)',
+                                      borderRadius: '4px',
+                                      fontSize: '12px',
+                                      fontWeight: '700',
+                                      color: '#fbbf24',
+                                      textTransform: 'uppercase'
+                                    }}>
+                                      {note.superseding_document}
+                                    </span>
+                                  </div>
+                                  <p style={{ color: '#fde68a', fontSize: '15px', fontWeight: '600', margin: '0 0 8px 0' }}>
+                                    {note.category}: {note.rule}
+                                  </p>
+                                  {note.explanation && (
+                                    <p style={{ color: '#fef3c7', fontSize: '14px', margin: '0 0 10px 0' }}>
+                                      {note.explanation}
+                                    </p>
+                                  )}
+                                  <div style={{ fontSize: '13px', color: '#d97706' }}>
+                                    {note.component_reference && <div>Component: {note.component_reference}</div>}
+                                    {note.baa_reference && <div>BAA: {note.baa_reference}</div>}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
 
-                {/* Generation Info */}
-                {data.instructions_generated_at && (
-                  <div style={{ 
-                    marginTop: '16px',
-                    fontSize: '12px',
-                    color: '#64748b',
-                    fontStyle: 'italic',
-                    textAlign: 'center'
+                          {/* Conflicts */}
+                          {analysis.conflicts_detected && analysis.conflicts_detected.length > 0 && (
+                            <div style={{ marginBottom: '28px' }}>
+                              <h4 style={{ 
+                                color: '#f87171', 
+                                fontSize: '18px', 
+                                fontWeight: '700', 
+                                marginBottom: '16px'
+                              }}>
+                                ❌ Conflicts Detected ({analysis.conflicts_detected.length})
+                              </h4>
+                              {analysis.conflicts_detected.map((conflict, index) => (
+                                <div 
+                                  key={index}
+                                  style={{
+                                    padding: '18px',
+                                    background: 'rgba(239, 68, 68, 0.1)',
+                                    border: '1px solid rgba(239, 68, 68, 0.3)',
+                                    borderRadius: '8px',
+                                    marginBottom: '14px'
+                                  }}
+                                >
+                                  <h5 style={{ color: '#fca5a5', fontSize: '15px', fontWeight: '700', margin: '0 0 12px 0' }}>
+                                    {conflict.topic}
+                                  </h5>
+                                  <div style={{ marginBottom: '10px' }}>
+                                    <span style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '600' }}>Component says:</span>
+                                    <p style={{ color: '#fecaca', fontSize: '14px', margin: '4px 0', fontStyle: 'italic' }}>
+                                      "{conflict.component_says}"
+                                    </p>
+                                    <span style={{ color: '#7c2d12', fontSize: '12px' }}>{conflict.component_citation}</span>
+                                  </div>
+                                  <div style={{ marginBottom: '10px' }}>
+                                    <span style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '600' }}>BAA says:</span>
+                                    <p style={{ color: '#fecaca', fontSize: '14px', margin: '4px 0', fontStyle: 'italic' }}>
+                                      "{conflict.baa_says}"
+                                    </p>
+                                    <span style={{ color: '#7c2d12', fontSize: '12px' }}>{conflict.baa_citation}</span>
+                                  </div>
+                                  <div style={{
+                                    padding: '12px',
+                                    background: 'rgba(34, 197, 94, 0.15)',
+                                    borderRadius: '6px',
+                                    marginTop: '12px'
+                                  }}>
+                                    <span style={{ color: '#86efac', fontSize: '13px', fontWeight: '600' }}>Resolution:</span>
+                                    <p style={{ color: '#bbf7d0', fontSize: '14px', margin: '4px 0 0 0' }}>
+                                      {conflict.resolution}
+                                    </p>
+                                    <span style={{
+                                      display: 'inline-block',
+                                      marginTop: '8px',
+                                      padding: '4px 10px',
+                                      background: 'rgba(34, 197, 94, 0.3)',
+                                      borderRadius: '4px',
+                                      fontSize: '12px',
+                                      color: '#4ade80',
+                                      fontWeight: '700'
+                                    }}>
+                                      {conflict.which_supersedes} Supersedes
+                                    </span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Compliance Checklist */}
+                          {analysis.compliance_checklist && analysis.compliance_checklist.length > 0 && (
+                            <div>
+                              <h4 style={{ 
+                                color: '#60a5fa', 
+                                fontSize: '18px', 
+                                fontWeight: '700', 
+                                marginBottom: '16px'
+                              }}>
+                                ✅ Compliance Checklist ({analysis.compliance_checklist.length} requirements)
+                              </h4>
+                              {Array.from(new Set(analysis.compliance_checklist.map(item => item.volume)))
+                                .sort()
+                                .map((volume) => (
+                                  <div key={volume} style={{ marginBottom: '24px' }}>
+                                    <h5 style={{ 
+                                      color: '#93c5fd', 
+                                      fontSize: '16px', 
+                                      fontWeight: '700', 
+                                      marginBottom: '14px',
+                                      paddingBottom: '10px',
+                                      borderBottom: '2px solid rgba(59, 130, 246, 0.3)'
+                                    }}>
+                                      {volume}
+                                    </h5>
+                                    {analysis.compliance_checklist
+                                      .filter(item => item.volume === volume)
+                                      .map((item, index) => (
+                                        <div 
+                                          key={index}
+                                          style={{
+                                            padding: '14px',
+                                            background: 'rgba(59, 130, 246, 0.08)',
+                                            border: '1px solid rgba(59, 130, 246, 0.25)',
+                                            borderRadius: '6px',
+                                            marginBottom: '10px'
+                                          }}
+                                        >
+                                          <div style={{ display: 'flex', alignItems: 'start', gap: '12px' }}>
+                                            <span style={{
+                                              width: '22px',
+                                              height: '22px',
+                                              borderRadius: '4px',
+                                              border: '2px solid rgba(59, 130, 246, 0.6)',
+                                              flexShrink: 0,
+                                              marginTop: '2px'
+                                            }} />
+                                            <div style={{ flex: 1 }}>
+                                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                                                <span style={{ color: '#93c5fd', fontSize: '14px', fontWeight: '600' }}>
+                                                  {item.section}
+                                                </span>
+                                                <span style={{
+                                                  padding: '3px 8px',
+                                                  background: item.priority === 'Critical' 
+                                                    ? 'rgba(239, 68, 68, 0.3)'
+                                                    : item.priority === 'Required'
+                                                    ? 'rgba(59, 130, 246, 0.3)'
+                                                    : 'rgba(100, 116, 139, 0.3)',
+                                                  borderRadius: '4px',
+                                                  fontSize: '11px',
+                                                  fontWeight: '700',
+                                                  color: item.priority === 'Critical'
+                                                    ? '#fca5a5'
+                                                    : item.priority === 'Required'
+                                                    ? '#93c5fd'
+                                                    : '#cbd5e1',
+                                                  textTransform: 'uppercase'
+                                                }}>
+                                                  {item.priority}
+                                                </span>
+                                              </div>
+                                              <p style={{ color: '#e2e8f0', fontSize: '14px', margin: '0 0 10px 0', lineHeight: '1.6' }}>
+                                                {item.requirement}
+                                              </p>
+                                              <div style={{ fontSize: '13px', color: '#64748b' }}>
+                                                <span>Source: <strong style={{ color: '#94a3b8' }}>{item.source_document}</strong></span>
+                                                <span style={{ margin: '0 8px' }}>•</span>
+                                                <span>Citation: {item.citation}</span>
+                                              </div>
+                                              {item.notes && (
+                                                <p style={{ 
+                                                  color: '#fbbf24', 
+                                                  fontSize: '13px', 
+                                                  margin: '8px 0 0 0',
+                                                  fontStyle: 'italic'
+                                                }}>
+                                                  Note: {item.notes}
+                                                </p>
+                                              )}
+                                            </div>
+                                          </div>
+                                        </div>
+                                      ))}
+                                  </div>
+                                ))}
+                            </div>
+                          )}
+
+                          {/* Metadata */}
+                          {analysis.analysis_metadata && (
+                            <div style={{
+                              marginTop: '24px',
+                              padding: '14px',
+                              background: 'rgba(100, 116, 139, 0.1)',
+                              borderRadius: '6px',
+                              borderLeft: '3px solid rgba(100, 116, 139, 0.5)'
+                            }}>
+                              <p style={{ color: '#94a3b8', fontSize: '12px', margin: 0 }}>
+                                Analyzed with {analysis.analysis_metadata.model_used} • 
+                                {' '}{new Date(analysis.analysis_metadata.analyzed_at).toLocaleString()} • 
+                                {' '}{analysis.analysis_metadata.total_requirements_found} requirements found • 
+                                {' '}{analysis.analysis_metadata.conflicts_found} conflicts detected
+                              </p>
+                            </div>
+                          )}
+                        </>
+                      );
+                    })()}
+                  </div>
+                ) : isActive ? (
+                  // Show generate button for active opportunities without analysis
+                  <div style={{
+                    padding: '40px',
+                    textAlign: 'center',
+                    background: 'rgba(15, 23, 42, 0.6)',
+                    borderRadius: '8px',
+                    border: '1px dashed rgba(139, 92, 246, 0.4)'
                   }}>
-                    Instructions generated: {new Date(data.instructions_generated_at).toLocaleString()} • 
-                    Length: {data.instructions_plain_text?.length?.toLocaleString() || '0'} characters
+                    <div style={{ marginBottom: '20px' }}>
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2" style={{ margin: '0 auto' }}>
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5"></path>
+                        <path d="M2 12l10 5 10-5"></path>
+                      </svg>
+                    </div>
+                    <h4 style={{ color: '#e2e8f0', fontSize: '18px', fontWeight: '600', marginBottom: '12px' }}>
+                      Smart Instruction Analysis Available
+                    </h4>
+                    <p style={{ color: '#94a3b8', fontSize: '14px', marginBottom: '24px', maxWidth: '500px', margin: '0 auto 24px' }}>
+                      Generate AI-powered compliance guidance with superseding detection, conflict resolution, and comprehensive checklist
+                    </p>
+                    {analysisError && (
+                      <div style={{
+                        padding: '12px',
+                        background: 'rgba(239, 68, 68, 0.1)',
+                        border: '1px solid rgba(239, 68, 68, 0.4)',
+                        borderRadius: '6px',
+                        marginBottom: '16px',
+                        color: '#fca5a5',
+                        fontSize: '14px'
+                      }}>
+                        Error: {analysisError}
+                      </div>
+                    )}
+                    <button
+                      onClick={handleGenerateAnalysis}
+                      disabled={generatingAnalysis}
+                      style={{
+                        padding: '14px 28px',
+                        background: generatingAnalysis 
+                          ? 'rgba(100, 116, 139, 0.2)' 
+                          : 'linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)',
+                        border: 'none',
+                        borderRadius: '8px',
+                        color: '#ffffff',
+                        fontSize: '15px',
+                        fontWeight: '600',
+                        cursor: generatingAnalysis ? 'not-allowed' : 'pointer',
+                        transition: 'all 0.2s',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '10px'
+                      }}
+                    >
+                      {generatingAnalysis ? (
+                        <>
+                          <div style={{
+                            width: '16px',
+                            height: '16px',
+                            border: '2px solid rgba(255, 255, 255, 0.3)',
+                            borderTopColor: '#ffffff',
+                            borderRadius: '50%',
+                            animation: 'spin 1s linear infinite'
+                          }} />
+                          Analyzing... (10-30 seconds)
+                        </>
+                      ) : (
+                        <>Generate Smart Compliance Analysis</>
+                      )}
+                    </button>
+                  </div>
+                ) : (
+                  // Show plain text for non-active opportunities
+                  <div style={{ 
+                    background: 'rgba(15, 23, 42, 0.6)',
+                    border: '1px solid rgba(71, 85, 105, 0.4)',
+                    borderRadius: '8px',
+                    padding: '24px',
+                    maxHeight: '600px',
+                    overflowY: 'auto'
+                  }}>
+                    <pre style={{ 
+                      whiteSpace: 'pre-wrap',
+                      wordWrap: 'break-word',
+                      margin: 0,
+                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                      fontSize: '13px',
+                      lineHeight: '1.8',
+                      color: '#cbd5e1'
+                    }}>
+                      {data.instructions_plain_text}
+                    </pre>
                   </div>
                 )}
+
+                <style jsx>{`
+                  @keyframes spin {
+                    to { transform: rotate(360deg); }
+                  }
+                `}</style>
               </div>
             )}
           </div>
