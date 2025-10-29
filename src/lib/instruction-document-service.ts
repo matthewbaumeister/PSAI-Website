@@ -31,7 +31,7 @@ export interface OpportunityData {
 
 export interface GenerationResult {
   success: boolean;
-  opportunityId: number;
+  opportunityId: number | string;
   topicNumber: string;
   pdfUrl?: string;
   error?: string;
@@ -61,16 +61,18 @@ export class InstructionDocumentService {
 
   /**
    * Generate instruction document for a single opportunity
+   * @param opportunityId Can be either the numeric id or the topic_id string
    */
-  async generateForOpportunity(opportunityId: number): Promise<GenerationResult> {
+  async generateForOpportunity(opportunityId: number | string): Promise<GenerationResult> {
     try {
       console.log(`\nGenerating instruction document for opportunity ${opportunityId}...`);
 
-      // Fetch opportunity data
+      // Fetch opportunity data - handle both id (number) and topic_id (string)
+      const isNumericId = typeof opportunityId === 'number' || !isNaN(Number(opportunityId));
       const { data: opportunity, error: fetchError } = await supabase
         .from('sbir_final')
         .select('*')
-        .eq('id', opportunityId)
+        .eq(isNumericId ? 'id' : 'topic_id', opportunityId)
         .single();
 
       if (fetchError || !opportunity) {
