@@ -1691,7 +1691,7 @@ export default function OpportunityPage() {
                     >
                       {generatingAnalysis ? (
                         <>
-                          <div style={{
+                          <div style={{ 
                             width: '16px',
                             height: '16px',
                             border: '2px solid rgba(255, 255, 255, 0.3)',
@@ -1699,7 +1699,7 @@ export default function OpportunityPage() {
                             borderRadius: '50%',
                             animation: 'spin 1s linear infinite'
                           }} />
-                          Analyzing... (10-30 seconds)
+                          Analyzing Instructions... Please wait (30-90 seconds)
                         </>
                       ) : (
                         <>Generate Smart Compliance Analysis</>
