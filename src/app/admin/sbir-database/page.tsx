@@ -1583,7 +1583,7 @@ Our company specializes in artificial intelligence and machine learning for defe
                               </div>
 
                               {/* Instructions Section - Only for Active Opportunities */}
-                              {record.consolidated_instructions_url && ['Open', 'Prerelease', 'Active'].includes(record.status) && (
+                              {record.consolidated_instructions_url && record.status && ['open', 'prerelease', 'pre-release', 'active', 'prerelease'].includes(record.status.toLowerCase()) && (
                                 <div style={{
                                   padding: '20px',
                                   background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%)',

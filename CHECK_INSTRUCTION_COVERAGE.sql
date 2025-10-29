@@ -1,18 +1,22 @@
 -- Check instruction coverage for active opportunities
 
--- 1. Count active opportunities
+-- 1. Count active opportunities (case-insensitive)
 SELECT 
   'Total Active Opportunities' as metric,
   COUNT(*) as count
 FROM sbir_final
-WHERE status IN ('Open', 'Prerelease', 'Active');
+WHERE status ILIKE 'Open' 
+   OR status ILIKE 'Prerelease' 
+   OR status ILIKE 'Pre-Release' 
+   OR status ILIKE 'PreRelease'
+   OR status ILIKE 'Active';
 
 -- 2. Count active opportunities WITH component instruction URLs
 SELECT 
   'Active with Component Instructions URL' as metric,
   COUNT(*) as count
 FROM sbir_final
-WHERE status IN ('Open', 'Prerelease', 'Active')
+WHERE (status ILIKE 'Open' OR status ILIKE 'Prerelease' OR status ILIKE 'Pre-Release' OR status ILIKE 'PreRelease' OR status ILIKE 'Active')
   AND component_instructions_download IS NOT NULL
   AND component_instructions_download != '';
 
@@ -21,7 +25,7 @@ SELECT
   'Active with Solicitation Instructions URL' as metric,
   COUNT(*) as count
 FROM sbir_final
-WHERE status IN ('Open', 'Prerelease', 'Active')
+WHERE (status ILIKE 'Open' OR status ILIKE 'Prerelease' OR status ILIKE 'Pre-Release' OR status ILIKE 'PreRelease' OR status ILIKE 'Active')
   AND solicitation_instructions_download IS NOT NULL
   AND solicitation_instructions_download != '';
 
@@ -30,7 +34,7 @@ SELECT
   'Active with BOTH Instruction URLs' as metric,
   COUNT(*) as count
 FROM sbir_final
-WHERE status IN ('Open', 'Prerelease', 'Active')
+WHERE (status ILIKE 'Open' OR status ILIKE 'Prerelease' OR status ILIKE 'Pre-Release' OR status ILIKE 'PreRelease' OR status ILIKE 'Active')
   AND component_instructions_download IS NOT NULL
   AND component_instructions_download != ''
   AND solicitation_instructions_download IS NOT NULL
@@ -41,7 +45,7 @@ SELECT
   'Active with Consolidated Instructions Generated' as metric,
   COUNT(*) as count
 FROM sbir_final
-WHERE status IN ('Open', 'Prerelease', 'Active')
+WHERE (status ILIKE 'Open' OR status ILIKE 'Prerelease' OR status ILIKE 'Pre-Release' OR status ILIKE 'PreRelease' OR status ILIKE 'Active')
   AND consolidated_instructions_url IS NOT NULL
   AND instructions_plain_text IS NOT NULL;
 
@@ -55,7 +59,7 @@ SELECT
   solicitation_instructions_download IS NOT NULL AND solicitation_instructions_download != '' as has_solicitation_url,
   consolidated_instructions_url IS NOT NULL as has_consolidated
 FROM sbir_final
-WHERE status IN ('Open', 'Prerelease', 'Active')
+WHERE (status ILIKE 'Open' OR status ILIKE 'Prerelease' OR status ILIKE 'Pre-Release' OR status ILIKE 'PreRelease' OR status ILIKE 'Active')
   AND (consolidated_instructions_url IS NULL OR instructions_plain_text IS NULL)
 ORDER BY sponsor_component, topic_number
 LIMIT 50;
@@ -67,7 +71,7 @@ SELECT
   component_instructions_download,
   solicitation_instructions_download
 FROM sbir_final
-WHERE status IN ('Open', 'Prerelease', 'Active')
+WHERE (status ILIKE 'Open' OR status ILIKE 'Prerelease' OR status ILIKE 'Pre-Release' OR status ILIKE 'PreRelease' OR status ILIKE 'Active')
   AND (component_instructions_download IS NOT NULL OR solicitation_instructions_download IS NOT NULL)
   AND consolidated_instructions_url IS NULL
 LIMIT 10;

@@ -114,7 +114,8 @@ export default function OpportunityPage() {
     );
   }
 
-  const isActive = ['Open', 'Prerelease', 'Active'].includes(data.status);
+  const isActive = data.status && 
+    ['open', 'prerelease', 'pre-release', 'active', 'prelease'].includes(data.status.toLowerCase());
   const hasInstructions = data.instructions_plain_text && data.instructions_plain_text.length > 0;
 
   return (

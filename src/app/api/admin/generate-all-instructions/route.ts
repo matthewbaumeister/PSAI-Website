@@ -43,10 +43,11 @@ export async function POST(request: NextRequest) {
     console.log('🚀 Starting bulk instruction generation', { forceRegenerate, limit, onlyMissing });
 
     // Query active opportunities that need instructions
+    // Note: Using case-insensitive matching for status values
     let query = supabase
       .from('sbir_final')
       .select('topic_id, topic_number, title, status, component_instructions_download, solicitation_instructions_download, consolidated_instructions_url')
-      .in('status', ['Open', 'Prerelease', 'Active'])
+      .or('status.ilike.Open,status.ilike.Prerelease,status.ilike.Pre-Release,status.ilike.Active,status.ilike.PreRelease')
       .limit(limit);
 
     // Filter based on parameters
@@ -171,19 +172,23 @@ export async function GET(request: NextRequest) {
       const { count: activeCount } = await supabase
         .from('sbir_final')
         .select('*', { count: 'exact', head: true })
-        .in('status', ['Open', 'Prerelease', 'Active']);
+        .or('status.ilike.Open,status.ilike.Prerelease,status.ilike.Pre-Release,status.ilike.Active,status.ilike.PreRelease');
 
       const { count: withInstructions } = await supabase
         .from('sbir_final')
         .select('*', { count: 'exact', head: true })
-        .in('status', ['Open', 'Prerelease', 'Active'])
+        .or('status.ilike.Open,status.ilike.Prerelease,status.ilike.Pre-Release,status.ilike.Active,status.ilike.PreRelease')
         .not('consolidated_instructions_url', 'is', null);
 
-      const { count: withUrls } = await supabase
+      // Get count with instruction URLs - filter by status first, then by URLs
+      const { data: activeOpps } = await supabase
         .from('sbir_final')
-        .select('*', { count: 'exact', head: true })
-        .in('status', ['Open', 'Prerelease', 'Active'])
-        .or('component_instructions_download.not.is.null,solicitation_instructions_download.not.is.null');
+        .select('topic_id, component_instructions_download, solicitation_instructions_download')
+        .or('status.ilike.Open,status.ilike.Prerelease,status.ilike.Pre-Release,status.ilike.Active,status.ilike.PreRelease');
+      
+      const withUrls = activeOpps?.filter(opp => 
+        opp.component_instructions_download || opp.solicitation_instructions_download
+      ).length || 0;
 
       const totalActive = activeCount || 0;
       const totalWithUrls = withUrls || 0;
