@@ -168,30 +168,34 @@ export async function GET(request: NextRequest) {
     
     if (error) {
       // If RPC doesn't exist, do manual query
-      const { data: activeCount } = await supabase
+      const { count: activeCount } = await supabase
         .from('sbir_final')
-        .select('topic_id', { count: 'exact', head: true })
+        .select('*', { count: 'exact', head: true })
         .in('status', ['Open', 'Prerelease', 'Active']);
 
-      const { data: withInstructions } = await supabase
+      const { count: withInstructions } = await supabase
         .from('sbir_final')
-        .select('topic_id', { count: 'exact', head: true })
+        .select('*', { count: 'exact', head: true })
         .in('status', ['Open', 'Prerelease', 'Active'])
         .not('consolidated_instructions_url', 'is', null);
 
-      const { data: withUrls } = await supabase
+      const { count: withUrls } = await supabase
         .from('sbir_final')
-        .select('topic_id', { count: 'exact', head: true })
+        .select('*', { count: 'exact', head: true })
         .in('status', ['Open', 'Prerelease', 'Active'])
         .or('component_instructions_download.not.is.null,solicitation_instructions_download.not.is.null');
+
+      const totalActive = activeCount || 0;
+      const totalWithUrls = withUrls || 0;
+      const totalWithInstructions = withInstructions || 0;
 
       return NextResponse.json({
         success: true,
         stats: {
-          total_active: activeCount || 0,
-          with_instruction_urls: withUrls || 0,
-          with_consolidated_instructions: withInstructions || 0,
-          missing_instructions: (withUrls || 0) - (withInstructions || 0)
+          total_active: totalActive,
+          with_instruction_urls: totalWithUrls,
+          with_consolidated_instructions: totalWithInstructions,
+          missing_instructions: totalWithUrls - totalWithInstructions
         }
       });
     }
