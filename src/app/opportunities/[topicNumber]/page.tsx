@@ -992,11 +992,20 @@ export default function OpportunityPage() {
                     </svg>
                     <div>
                       <h4 style={{ color: '#fbbf24', fontSize: '16px', fontWeight: '600', marginBottom: '8px', margin: 0 }}>
-                        Important Notice
+                        ⚠️ Important Notice - Always Verify Original Documents
                       </h4>
                       <p style={{ color: '#fde68a', fontSize: '14px', lineHeight: '1.6', margin: '8px 0 0 0' }}>
-                        This document consolidates instructions from Component-specific and BAA/Solicitation documents with cross-reference analysis. 
-                        Always verify requirements against the original source documents.
+                        This analysis consolidates instructions from Component-specific and BAA/Solicitation documents. 
+                        <strong style={{ color: '#fbbf24' }}> Always verify against original source documents below, especially:</strong>
+                      </p>
+                      <ul style={{ color: '#fef3c7', fontSize: '13px', lineHeight: '1.6', margin: '8px 0 0 0', paddingLeft: '20px' }}>
+                        <li>Appendixes, attachments, and referenced exhibits</li>
+                        <li>Exact formatting requirements (fonts, margins, spacing)</li>
+                        <li>Forms and templates (download from original PDFs)</li>
+                        <li>Any requirements referencing "see Appendix X" or "Attachment Y"</li>
+                      </ul>
+                      <p style={{ color: '#fbbf24', fontSize: '13px', fontStyle: 'italic', margin: '8px 0 0 0' }}>
+                        Note: Appendixes may be truncated in AI analysis. Always consult original documents for complete details.
                       </p>
                     </div>
                   </div>
@@ -1004,10 +1013,27 @@ export default function OpportunityPage() {
 
                 {/* Source Documents */}
                 {(data.component_instructions_download || data.solicitation_instructions_download) && (
-                  <div style={{ marginBottom: '24px' }}>
-                    <h3 style={{ color: '#cbd5e1', fontSize: '16px', fontWeight: '600', marginBottom: '12px' }}>
-                      Original Source Documents
+                  <div style={{ 
+                    marginBottom: '24px',
+                    padding: '20px',
+                    background: 'rgba(59, 130, 246, 0.1)',
+                    border: '2px solid rgba(59, 130, 246, 0.3)',
+                    borderRadius: '10px'
+                  }}>
+                    <h3 style={{ 
+                      color: '#93c5fd', 
+                      fontSize: '17px', 
+                      fontWeight: '700', 
+                      marginBottom: '8px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px'
+                    }}>
+                      📄 Original Source Documents - Official Authority
                     </h3>
+                    <p style={{ color: '#cbd5e1', fontSize: '13px', marginBottom: '12px' }}>
+                      Download and verify all requirements, appendixes, and forms from these official documents
+                    </p>
                     <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
                       {data.component_instructions_download && (
                         <a

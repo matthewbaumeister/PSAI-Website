@@ -201,14 +201,15 @@ function buildAnalysisPrompt(
   }
 ): string {
   
-  // Truncate if needed (GPT-4o-mini has 128K context, but we'll be conservative)
-  const maxLength = 30000; // ~30K chars per doc = ~60K total
+  // Truncate if needed (GPT-4o-mini has 128K context window)
+  // Allow up to 60K chars per doc = ~120K total (leaves room for response)
+  const maxLength = 60000;
   const truncatedComponent = componentText.length > maxLength 
-    ? componentText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES]'
+    ? componentText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES - APPENDIXES MAY BE CUT OFF]'
     : componentText;
   
   const truncatedBaa = baaText.length > maxLength
-    ? baaText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES]'
+    ? baaText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES - APPENDIXES MAY BE CUT OFF]'
     : baaText;
 
   return `Analyze these SBIR instruction documents for:
@@ -232,6 +233,7 @@ ANALYSIS TASKS:
 3. Identify which document supersedes for each requirement (look for explicit superseding language)
 4. Detect conflicts where Component and BAA say different things
 5. Resolve conflicts and explain which document takes precedence
+6. When requirements reference appendixes or attachments, NOTE THIS in the requirement and cite the appendix reference
 
 Focus on:
 - Page limits
@@ -241,6 +243,12 @@ Focus on:
 - Administrative requirements (cover sheets, forms)
 - Technical content requirements
 - Submission deadlines and methods
+- Appendix references (e.g., "See Appendix A", "Attachment 1", etc.)
+
+IMPORTANT NOTES FOR APPENDIXES:
+- If a requirement references an appendix or attachment, include this in the requirement text
+- Add a note: "Refer to original document for complete appendix details"
+- Cite the appendix reference location (e.g., "References Appendix A, §4.2, p.15")
 
 Return ONLY the JSON structure defined in the system prompt. No additional text.`;
 }
