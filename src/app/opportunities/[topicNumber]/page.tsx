@@ -5,6 +5,7 @@ import { useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
 import { formatQAForDisplay } from '@/lib/qa-formatter';
 import Link from 'next/link';
+import AIInstructionAnalysis from '@/components/AIInstructionAnalysis';
 
 interface OpportunityData {
   topic_number: string;
@@ -819,6 +820,15 @@ export default function OpportunityPage() {
               </div>
             )}
           </div>
+        )}
+
+        {/* AI Instruction Analysis - Only for Active Opportunities */}
+        {isActive && hasInstructions && (
+          <AIInstructionAnalysis
+            opportunityId={data.id}
+            topicNumber={data.topic_number}
+            hasInstructions={hasInstructions}
+          />
         )}
 
         {/* Consolidated Instructions Section - Collapsible */}
