@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
 import { formatQAForDisplay } from '@/lib/qa-formatter';
@@ -56,7 +56,9 @@ export default function OpportunityPage() {
   const [phasesExpanded, setPhasesExpanded] = useState(false);
   const [generatingAnalysis, setGeneratingAnalysis] = useState(false);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
-  const supabase = createClient();
+  
+  // Memoize Supabase client to prevent "Multiple GoTrueClient" warnings
+  const supabase = useMemo(() => createClient(), []);
 
   // Scroll to Q&A section and expand it
   const scrollToQA = () => {

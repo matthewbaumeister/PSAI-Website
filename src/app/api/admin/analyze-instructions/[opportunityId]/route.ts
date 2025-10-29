@@ -83,22 +83,27 @@ export async function POST(
     let componentText = '';
     let baaText = '';
 
+    let componentError: any = null;
+    let baaError: any = null;
+
     if (componentUrl) {
       try {
-        console.log(`[LLM Analysis] Extracting component text...`);
+        console.log(`[LLM Analysis] Extracting component text from: ${componentUrl}`);
         componentText = await extractTextFromPdf(componentUrl);
         console.log(`[LLM Analysis] Component text extracted: ${componentText.length} chars`);
       } catch (error) {
+        componentError = error;
         console.error('[LLM Analysis] Failed to extract component text:', error);
       }
     }
 
     if (baaUrl) {
       try {
-        console.log(`[LLM Analysis] Extracting BAA text...`);
+        console.log(`[LLM Analysis] Extracting BAA text from: ${baaUrl}`);
         baaText = await extractTextFromPdf(baaUrl);
         console.log(`[LLM Analysis] BAA text extracted: ${baaText.length} chars`);
       } catch (error) {
+        baaError = error;
         console.error('[LLM Analysis] Failed to extract BAA text:', error);
       }
     }
@@ -108,7 +113,13 @@ export async function POST(
         { 
           success: false, 
           error: 'Failed to extract text from instruction documents',
-          message: 'Could not read PDF content from either document'
+          message: 'Could not read PDF content from either document',
+          debug: {
+            componentUrl,
+            baaUrl,
+            componentError: componentError?.message || String(componentError),
+            baaError: baaError?.message || String(baaError)
+          }
         },
         { status: 500 }
       );
