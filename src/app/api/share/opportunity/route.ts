@@ -60,8 +60,14 @@ export async function POST(request: NextRequest) {
 
     if (insertError) {
       console.error('Error creating share token:', insertError);
+      console.error('Insert details:', { token: token.substring(0, 10) + '...', topic_id, topic_number, user_id: user.id });
       return NextResponse.json(
-        { success: false, error: 'Failed to create share link' },
+        { 
+          success: false, 
+          error: 'Failed to create share link',
+          details: insertError.message,
+          code: insertError.code
+        },
         { status: 500 }
       );
     }

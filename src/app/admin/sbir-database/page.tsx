@@ -424,9 +424,7 @@ export default function SBIRDatabaseBrowser() {
           { type: 'search', value: searchQuery, label: `Similar to: ${record.topic_number}` }
         ]);
         
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        
+        // Don't scroll - keep user where they are
         // Close expanded row
         setExpandedRow(null);
       }
@@ -463,7 +461,9 @@ export default function SBIRDatabaseBrowser() {
           expiresAt: result.data.expiresAt
         });
       } else {
-        alert('Failed to generate share link: ' + result.error);
+        const errorDetails = result.details ? `\n\nDetails: ${result.details}\nCode: ${result.code}` : '';
+        alert('Failed to generate share link: ' + result.error + errorDetails);
+        console.error('Share link error:', result);
       }
     } catch (error) {
       console.error('Share opportunity error:', error);
