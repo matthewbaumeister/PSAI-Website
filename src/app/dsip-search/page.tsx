@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 
 interface DSIPOpportunity {
   id: number
+  topic_number: string
   title: string
   component: string
   program: string
@@ -49,6 +50,7 @@ export default function DSIPSearchPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [totalResults, setTotalResults] = useState(0)
+  const [expandedCardId, setExpandedCardId] = useState<number | null>(null)
   const [activeFilters, setActiveFilters] = useState<SearchFilters>({
     status: [],
     component: [],
@@ -1006,35 +1008,8 @@ export default function DSIPSearchPage() {
                       display: 'flex',
                       gap: '8px'
                     }}>
-                      {opportunity.consolidated_instructions_url && (
-                        <a
-                          href={opportunity.consolidated_instructions_url}
-                          download
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            padding: '8px 16px',
-                            background: 'rgba(34, 197, 94, 0.2)',
-                            border: '1px solid rgba(34, 197, 94, 0.3)',
-                            borderRadius: '8px',
-                            color: '#86efac',
-                            fontSize: '14px',
-                            cursor: 'pointer',
-                            transition: 'all 0.2s ease',
-                            textDecoration: 'none',
-                            display: 'inline-block'
-                          }}
-                          onMouseEnter={(e) => {
-                            e.currentTarget.style.background = 'rgba(34, 197, 94, 0.3)'
-                          }}
-                          onMouseLeave={(e) => {
-                            e.currentTarget.style.background = 'rgba(34, 197, 94, 0.2)'
-                          }}
-                        >
-                          Download Instructions
-                        </a>
-                      )}
                       <button
+                        onClick={() => setExpandedCardId(expandedCardId === opportunity.id ? null : opportunity.id)}
                         style={{
                           padding: '8px 16px',
                           background: 'rgba(139, 92, 246, 0.2)',
@@ -1052,10 +1027,120 @@ export default function DSIPSearchPage() {
                           e.currentTarget.style.background = 'rgba(139, 92, 246, 0.2)'
                         }}
                       >
-                        View Details
+                        {expandedCardId === opportunity.id ? 'Hide Details' : 'View Details'}
                       </button>
                     </div>
                   </div>
+
+                  {/* Expanded Details Section */}
+                  {expandedCardId === opportunity.id && (
+                    <div style={{
+                      marginTop: '24px',
+                      padding: '24px',
+                      background: 'rgba(30, 41, 59, 0.5)',
+                      borderRadius: '12px',
+                      border: '1px solid rgba(148, 163, 184, 0.2)'
+                    }}>
+                      <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                        gap: '16px',
+                        marginBottom: '24px'
+                      }}>
+                        <div>
+                          <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '4px' }}>Component</div>
+                          <div style={{ color: '#e2e8f0', fontSize: '14px' }}>{opportunity.component}</div>
+                        </div>
+                        <div>
+                          <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '4px' }}>Program</div>
+                          <div style={{ color: '#e2e8f0', fontSize: '14px' }}>{opportunity.program}</div>
+                        </div>
+                        <div>
+                          <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '4px' }}>Phase</div>
+                          <div style={{ color: '#e2e8f0', fontSize: '14px' }}>{opportunity.phase}</div>
+                        </div>
+                        <div>
+                          <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '4px' }}>Award Amount</div>
+                          <div style={{ color: '#e2e8f0', fontSize: '14px' }}>
+                            ${opportunity.total_potential_award?.toLocaleString() || 'N/A'}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Instructions Section - Only for Active Opportunities */}
+                      {opportunity.consolidated_instructions_url && ['Open', 'Prerelease', 'Active'].includes(opportunity.status) && (
+                        <div style={{
+                          padding: '20px',
+                          background: 'rgba(59, 130, 246, 0.1)',
+                          border: '1px solid rgba(59, 130, 246, 0.3)',
+                          borderRadius: '8px',
+                          marginTop: '16px'
+                        }}>
+                          <h4 style={{ color: '#93c5fd', fontSize: '16px', marginBottom: '12px', fontWeight: '600' }}>
+                            Submission Instructions Available
+                          </h4>
+                          <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
+                            Consolidated instructions with cross-reference analysis, superseding guidance, and submission checklist.
+                          </p>
+                          <div style={{ display: 'flex', gap: '12px' }}>
+                            <a
+                              href={`/dsip/instructions/${opportunity.topic_number}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                padding: '10px 20px',
+                                background: 'rgba(59, 130, 246, 0.2)',
+                                border: '1px solid rgba(59, 130, 246, 0.4)',
+                                borderRadius: '8px',
+                                color: '#93c5fd',
+                                fontSize: '14px',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                textDecoration: 'none',
+                                display: 'inline-block',
+                                fontWeight: '500'
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'
+                              }}
+                            >
+                              View Instructions
+                            </a>
+                            <a
+                              href={opportunity.consolidated_instructions_url}
+                              download
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              style={{
+                                padding: '10px 20px',
+                                background: 'rgba(34, 197, 94, 0.2)',
+                                border: '1px solid rgba(34, 197, 94, 0.4)',
+                                borderRadius: '8px',
+                                color: '#86efac',
+                                fontSize: '14px',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                textDecoration: 'none',
+                                display: 'inline-block',
+                                fontWeight: '500'
+                              }}
+                              onMouseEnter={(e) => {
+                                e.currentTarget.style.background = 'rgba(34, 197, 94, 0.3)'
+                              }}
+                              onMouseLeave={(e) => {
+                                e.currentTarget.style.background = 'rgba(34, 197, 94, 0.2)'
+                              }}
+                            >
+                              Download PDF
+                            </a>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
