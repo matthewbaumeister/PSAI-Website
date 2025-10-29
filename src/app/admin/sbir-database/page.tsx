@@ -146,8 +146,9 @@ export default function SBIRDatabaseBrowser() {
         const returnUrl = encodeURIComponent(currentUrl);
         router.push(`/auth/login?returnUrl=${returnUrl}`);
       } else {
-        // Regular redirect to login
-        router.push('/auth/login');
+        // Regular redirect to login with return URL
+        const currentReturnUrl = encodeURIComponent('/admin/sbir-database');
+        router.push(`/auth/login?returnUrl=${currentReturnUrl}`);
       }
     }
   }, [user, authLoading, router]);

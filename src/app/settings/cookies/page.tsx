@@ -21,7 +21,8 @@ export default function CookieSettingsPage() {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/auth/login')
+      const returnUrl = encodeURIComponent('/settings/cookies')
+      router.push(`/auth/login?returnUrl=${returnUrl}`)
     } else if (user) {
       loadCookiePreferences()
     }

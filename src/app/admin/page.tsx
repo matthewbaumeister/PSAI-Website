@@ -57,7 +57,8 @@ export default function AdminDashboard() {
   // Check if user is admin
   useEffect(() => {
     if (!isLoading && (!user || !user.isAdmin)) {
-      router.push('/auth/login')
+      const returnUrl = encodeURIComponent('/admin')
+      router.push(`/auth/login?returnUrl=${returnUrl}`)
     }
   }, [user, isLoading, router])
 

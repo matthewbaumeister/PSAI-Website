@@ -29,7 +29,8 @@ export default function UserManagementPage() {
   // Check if user is authenticated and is admin
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/auth/login')
+      const returnUrl = encodeURIComponent('/admin/user-management')
+      router.push(`/auth/login?returnUrl=${returnUrl}`)
     } else if (user && !user.isAdmin) {
       router.push('/dashboard')
     } else if (user && user.isAdmin) {

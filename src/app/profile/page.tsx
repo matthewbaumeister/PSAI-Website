@@ -31,7 +31,8 @@ export default function ProfilePage() {
   // Check if user is authenticated
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/auth/login')
+      const returnUrl = encodeURIComponent('/profile')
+      router.push(`/auth/login?returnUrl=${returnUrl}`)
     }
   }, [user, isLoading, router])
 

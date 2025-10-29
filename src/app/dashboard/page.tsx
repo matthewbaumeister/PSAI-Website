@@ -11,7 +11,9 @@ export default function DashboardPage() {
   // Check if user is authenticated
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/auth/login')
+      // Redirect to login with return URL
+      const returnUrl = encodeURIComponent('/dashboard')
+      router.push(`/auth/login?returnUrl=${returnUrl}`)
     }
   }, [user, isLoading, router])
 

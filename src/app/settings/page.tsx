@@ -22,7 +22,8 @@ export default function SettingsPage() {
   // Redirect if not logged in
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/auth/login')
+      const returnUrl = encodeURIComponent('/settings')
+      router.push(`/auth/login?returnUrl=${returnUrl}`)
     }
   }, [user, isLoading, router])
 

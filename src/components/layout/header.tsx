@@ -1,13 +1,14 @@
 "use client"
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { useAuth } from '@/contexts/AuthContext'
 
 export function Header() {
   const router = useRouter()
+  const pathname = usePathname()
   const { user, logout } = useAuth()
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false)
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false)
@@ -274,7 +275,19 @@ export function Header() {
             {!user && (
               <>
                 <Link href="/book-demo" className="btn btn-primary">Book Demo</Link>
-                <Link href="/auth/login" className="btn btn-secondary">Sign In</Link>
+                <Link 
+                  href={(() => {
+                    // Don't add returnUrl for auth pages or home to avoid loops
+                    if (!pathname || pathname === '/' || pathname.startsWith('/auth')) {
+                      return '/auth/login';
+                    }
+                    // Add current page as returnUrl
+                    return `/auth/login?returnUrl=${encodeURIComponent(pathname)}`;
+                  })()} 
+                  className="btn btn-secondary"
+                >
+                  Sign In
+                </Link>
               </>
             )}
           </div>

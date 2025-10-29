@@ -11,7 +11,9 @@ export default function PlatformPage() {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push('/auth/login')
+      // Redirect to login with return URL
+      const returnUrl = encodeURIComponent('/platform')
+      router.push(`/auth/login?returnUrl=${returnUrl}`)
     }
   }, [user, isLoading, router])
 

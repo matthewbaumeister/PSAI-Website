@@ -61,14 +61,22 @@ export default function LoginPage() {
         setSubmitStatus('success')
         setSubmitMessage('Login successful! Redirecting...')
         
-        // Check for returnUrl parameter for shared search redirects
+        // Check for returnUrl parameter (priority 1: URL param, priority 2: localStorage)
         const urlParams = new URLSearchParams(window.location.search)
-        const returnUrl = urlParams.get('returnUrl')
+        const returnUrlFromParam = urlParams.get('returnUrl')
+        const returnUrlFromStorage = localStorage.getItem('redirectAfterLogin')
+        
+        // Clear localStorage redirect after reading
+        if (returnUrlFromStorage) {
+          localStorage.removeItem('redirectAfterLogin')
+        }
+        
+        const finalReturnUrl = returnUrlFromParam || returnUrlFromStorage
         
         setTimeout(() => {
-          if (returnUrl) {
-            // Redirect to the return URL (shared search)
-            window.location.href = decodeURIComponent(returnUrl)
+          if (finalReturnUrl) {
+            // Redirect to the return URL (previous page)
+            window.location.href = decodeURIComponent(finalReturnUrl)
           } else {
             // Default redirect to home
             router.push('/')
