@@ -52,6 +52,7 @@ export default function OpportunityPage() {
   const [loading, setLoading] = useState(true);
   const [instructionsExpanded, setInstructionsExpanded] = useState(false);
   const [qaExpanded, setQaExpanded] = useState(false);
+  const [descriptionsExpanded, setDescriptionsExpanded] = useState(false);
   const [generatingAnalysis, setGeneratingAnalysis] = useState(false);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const supabase = createClient();
@@ -646,50 +647,110 @@ export default function OpportunityPage() {
         </div>
 
         {/* Description Section */}
+        {/* Opportunity Description - Collapsible */}
         {(data.description || data.objectives) && (
           <div style={{ 
-            background: 'rgba(30, 41, 59, 0.6)',
-            border: '1px solid rgba(51, 65, 85, 0.6)',
+            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%)',
+            border: '1px solid rgba(139, 92, 246, 0.4)',
             borderRadius: '12px',
-            padding: '32px',
+            overflow: 'hidden',
             marginBottom: '32px'
           }}>
-            <h2 style={{ 
-              color: '#e2e8f0',
-              fontSize: '24px',
-              fontWeight: '700',
-              marginBottom: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px'
-            }}>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" strokeWidth="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-              Opportunity Description
-            </h2>
-            {data.objectives && (
-              <div style={{ marginBottom: '24px' }}>
-                <h3 style={{ color: '#a78bfa', fontSize: '18px', fontWeight: '600', marginBottom: '12px' }}>
-                  Objectives
-                </h3>
-                <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.8' }}>
-                  {data.objectives}
-                </p>
+            {/* Collapsible Header */}
+            <button
+              onClick={() => setDescriptionsExpanded(!descriptionsExpanded)}
+              style={{
+                width: '100%',
+                padding: '28px 32px',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(139, 92, 246, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{
+                  padding: '12px',
+                  background: 'rgba(139, 92, 246, 0.3)',
+                  borderRadius: '8px'
+                }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#c4b5fd" strokeWidth="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <div style={{ textAlign: 'left' }}>
+                  <h2 style={{ 
+                    color: '#e2e8f0',
+                    fontSize: '24px',
+                    fontWeight: '700',
+                    margin: '0 0 4px 0'
+                  }}>
+                    Opportunity Description
+                  </h2>
+                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
+                    Objectives and detailed description
+                  </p>
+                </div>
               </div>
-            )}
-            {data.description && (
-              <div>
-                <h3 style={{ color: '#a78bfa', fontSize: '18px', fontWeight: '600', marginBottom: '12px' }}>
-                  Description
-                </h3>
-                <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.8', whiteSpace: 'pre-wrap' }}>
-                  {data.description}
-                </p>
+              <div style={{
+                padding: '8px',
+                background: descriptionsExpanded ? 'rgba(139, 92, 246, 0.3)' : 'rgba(71, 85, 105, 0.3)',
+                borderRadius: '6px',
+                transition: 'all 0.2s'
+              }}>
+                <svg 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke={descriptionsExpanded ? '#c4b5fd' : '#cbd5e1'}
+                  strokeWidth="2"
+                  style={{
+                    transform: descriptionsExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s'
+                  }}
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+
+            {/* Collapsible Content */}
+            {descriptionsExpanded && (
+              <div style={{ 
+                padding: '32px',
+                borderTop: '1px solid rgba(71, 85, 105, 0.3)',
+                background: 'rgba(15, 23, 42, 0.4)'
+              }}>
+                {data.objectives && (
+                  <div style={{ marginBottom: '24px' }}>
+                    <h3 style={{ color: '#a78bfa', fontSize: '18px', fontWeight: '600', marginBottom: '12px' }}>
+                      Objectives
+                    </h3>
+                    <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.8' }}>
+                      {data.objectives}
+                    </p>
+                  </div>
+                )}
+                {data.description && (
+                  <div>
+                    <h3 style={{ color: '#a78bfa', fontSize: '18px', fontWeight: '600', marginBottom: '12px' }}>
+                      Description
+                    </h3>
+                    <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.8', whiteSpace: 'pre-wrap' }}>
+                      {data.description}
+                    </p>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -770,7 +831,8 @@ export default function OpportunityPage() {
         )}
 
         {/* Q&A Section - Collapsible */}
-        {data.qa_content && (
+        {/* Show if there are questions (even if content isn't loaded yet) */}
+        {data.topic_question_count > 0 && (
           <div 
             id="qa-section"
             style={{ 
@@ -859,7 +921,22 @@ export default function OpportunityPage() {
                   overflowY: 'auto',
                   paddingRight: '8px'
                 }}>
-                  {formatQAForDisplay(data.qa_content || '')}
+                  {data.qa_content ? (
+                    formatQAForDisplay(data.qa_content)
+                  ) : (
+                    <div style={{
+                      padding: '24px',
+                      textAlign: 'center',
+                      background: 'rgba(251, 191, 36, 0.1)',
+                      border: '1px solid rgba(251, 191, 36, 0.3)',
+                      borderRadius: '8px'
+                    }}>
+                      <p style={{ color: '#fde68a', fontSize: '14px', margin: 0 }}>
+                        {data.topic_question_count} question{data.topic_question_count !== 1 ? 's' : ''} recorded, but Q&A content hasn't been scraped yet.
+                        This data will be available after the next scraper run.
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
