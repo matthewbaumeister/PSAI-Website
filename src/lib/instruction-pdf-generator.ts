@@ -452,17 +452,45 @@ export class InstructionPdfGenerator {
         y -= 20;
       }
 
-      // Description
+      // Description - show substantial content with pagination
       if (volume.description) {
-        const descLines = this.wrapText(volume.description, pageWidth - 100, fonts.normal, 10);
-        for (const line of descLines.slice(0, 3)) {
+        const descLines = this.wrapText(volume.description, pageWidth - 100, fonts.normal, 9);
+        
+        // Show up to 200 lines (about 4-5 pages worth)
+        const linesToShow = Math.min(descLines.length, 200);
+        const truncated = descLines.length > 200;
+        
+        for (let lineIdx = 0; lineIdx < linesToShow; lineIdx++) {
+          const line = descLines[lineIdx];
+          
+          // Check if we need a new page
+          if (y < 100) {
+            page = pdfDoc.addPage([pageWidth, pageHeight]);
+            y = pageHeight - 100;
+          }
+          
           page.drawText(line, {
             x: 50,
             y,
-            size: 10,
+            size: 9,
             font: fonts.normal,
           });
-          y -= 15;
+          y -= 12;
+        }
+        
+        if (truncated) {
+          if (y < 100) {
+            page = pdfDoc.addPage([pageWidth, pageHeight]);
+            y = pageHeight - 100;
+          }
+          page.drawText(`[... ${descLines.length - 200} more lines - see full plain-text in database]`, {
+            x: 50,
+            y,
+            size: 9,
+            font: fonts.normal,
+            color: rgb(0.5, 0.5, 0.5),
+          });
+          y -= 20;
         }
         y -= 15;
       }
@@ -824,3 +852,4 @@ export class InstructionPdfGenerator {
     return lines;
   }
 }
+
