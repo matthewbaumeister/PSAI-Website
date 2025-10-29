@@ -202,12 +202,29 @@ export async function POST(
 
 /**
  * Extract text from a PDF URL using unpdf
+ * Includes browser headers to bypass 403 Forbidden errors from government websites
  */
 async function extractTextFromPdf(url: string): Promise<string> {
   try {
-    const response = await fetch(url);
+    // Add browser headers to mimic a real browser request
+    // This helps bypass 403 Forbidden errors from DoD SBIR website
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'application/pdf,application/x-pdf,*/*',
+        'Accept-Language': 'en-US,en;q=0.9',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Referer': 'https://www.dodsbirsttr.mil/',
+        'Sec-Fetch-Dest': 'document',
+        'Sec-Fetch-Mode': 'navigate',
+        'Sec-Fetch-Site': 'same-origin',
+        'Upgrade-Insecure-Requests': '1'
+      }
+    });
+    
     if (!response.ok) {
-      throw new Error(`Failed to fetch PDF: ${response.statusText}`);
+      throw new Error(`Failed to fetch PDF: ${response.status} ${response.statusText}`);
     }
 
     const arrayBuffer = await response.arrayBuffer();
