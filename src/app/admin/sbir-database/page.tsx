@@ -127,6 +127,10 @@ export default function SBIRDatabaseBrowser() {
   const [shareUrl, setShareUrl] = useState('');
   const [copiedToClipboard, setCopiedToClipboard] = useState(false);
   
+  // Share Opportunity state
+  const [sharingOpportunity, setSharingOpportunity] = useState<string | null>(null);
+  const [shareModalData, setShareModalData] = useState<{topicNumber: string; shareUrl: string; expiresAt: string} | null>(null);
+  
   // Results per page
   const [pageSize, setPageSize] = useState(25);
 
@@ -433,6 +437,47 @@ export default function SBIRDatabaseBrowser() {
     } finally {
       setFindingSimilar(false);
       setLoading(false);
+    }
+  };
+
+  // Share individual opportunity (guest access link)
+  const handleShareOpportunity = async (record: SBIRRecord) => {
+    setSharingOpportunity(record.topic_id);
+    
+    try {
+      const response = await fetch('/api/share/opportunity', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          topic_id: record.topic_id,
+          topic_number: record.topic_number
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setShareModalData({
+          topicNumber: result.data.topicNumber,
+          shareUrl: result.data.shareUrl,
+          expiresAt: result.data.expiresAt
+        });
+      } else {
+        alert('Failed to generate share link: ' + result.error);
+      }
+    } catch (error) {
+      console.error('Share opportunity error:', error);
+      alert('Failed to generate share link');
+    } finally {
+      setSharingOpportunity(null);
+    }
+  };
+
+  const copyShareLink = () => {
+    if (shareModalData) {
+      navigator.clipboard.writeText(shareModalData.shareUrl);
+      setCopiedToClipboard(true);
+      setTimeout(() => setCopiedToClipboard(false), 2000);
     }
   };
 
@@ -1830,6 +1875,44 @@ Our company specializes in artificial intelligence and machine learning for defe
                                       </svg>
                                       Download PDF
                                     </a>
+                                    <button
+                                      onClick={() => handleShareOpportunity(record)}
+                                      disabled={sharingOpportunity === record.topic_id}
+                                      style={{
+                                        padding: '12px 20px',
+                                        background: 'rgba(6, 182, 212, 0.2)',
+                                        border: '1px solid rgba(6, 182, 212, 0.4)',
+                                        borderRadius: '8px',
+                                        color: '#67e8f9',
+                                        fontSize: '14px',
+                                        cursor: sharingOpportunity === record.topic_id ? 'not-allowed' : 'pointer',
+                                        transition: 'all 0.2s',
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '8px',
+                                        fontWeight: '500',
+                                        opacity: sharingOpportunity === record.topic_id ? 0.6 : 1
+                                      }}
+                                      onMouseEnter={(e) => {
+                                        if (sharingOpportunity !== record.topic_id) {
+                                          e.currentTarget.style.background = 'rgba(6, 182, 212, 0.3)';
+                                          e.currentTarget.style.transform = 'translateY(-2px)';
+                                        }
+                                      }}
+                                      onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = 'rgba(6, 182, 212, 0.2)';
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                      }}
+                                    >
+                                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <circle cx="18" cy="5" r="3"></circle>
+                                        <circle cx="6" cy="12" r="3"></circle>
+                                        <circle cx="18" cy="19" r="3"></circle>
+                                        <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                        <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                                      </svg>
+                                      {sharingOpportunity === record.topic_id ? 'Generating Link...' : 'Share Opportunity'}
+                                    </button>
                                   </div>
                                 </div>
                               )}
@@ -2629,6 +2712,170 @@ Our company specializes in artificial intelligence and machine learning for defe
               }}>
                 <strong>Note:</strong> Recipients will need to sign in to view the search results. If they don't have an account, they'll be prompted to create one and then automatically redirected to this search.
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* Share Opportunity Modal (Guest Link) */}
+        {shareModalData && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.75)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+            padding: '20px'
+          }}>
+            <div style={{
+              background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+              border: '1px solid rgba(6, 182, 212, 0.4)',
+              borderRadius: '16px',
+              padding: '32px',
+              maxWidth: '600px',
+              width: '100%',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.5)'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
+                <div style={{
+                  width: '48px',
+                  height: '48px',
+                  borderRadius: '12px',
+                  background: 'rgba(6, 182, 212, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#67e8f9" strokeWidth="2">
+                    <circle cx="18" cy="5" r="3"></circle>
+                    <circle cx="6" cy="12" r="3"></circle>
+                    <circle cx="18" cy="19" r="3"></circle>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                  </svg>
+                </div>
+                <div>
+                  <h3 style={{
+                    color: '#e2e8f0',
+                    fontSize: '20px',
+                    fontWeight: '700',
+                    margin: 0
+                  }}>
+                    Guest Share Link Generated
+                  </h3>
+                  <p style={{ color: '#94a3b8', fontSize: '13px', margin: '4px 0 0 0' }}>
+                    Topic: {shareModalData.topicNumber}
+                  </p>
+                </div>
+              </div>
+
+              <div style={{
+                background: 'rgba(15, 23, 42, 0.6)',
+                border: '1px solid rgba(71, 85, 105, 0.4)',
+                borderRadius: '8px',
+                padding: '16px',
+                marginBottom: '20px'
+              }}>
+                <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '8px' }}>
+                  Share this link:
+                </div>
+                <div style={{
+                  background: 'rgba(15, 23, 42, 0.8)',
+                  padding: '12px',
+                  borderRadius: '6px',
+                  color: '#67e8f9',
+                  fontSize: '13px',
+                  wordBreak: 'break-all',
+                  fontFamily: 'monospace',
+                  marginBottom: '12px',
+                  border: '1px solid rgba(6, 182, 212, 0.3)'
+                }}>
+                  {shareModalData.shareUrl}
+                </div>
+                <button
+                  onClick={copyShareLink}
+                  style={{
+                    width: '100%',
+                    padding: '10px 16px',
+                    background: copiedToClipboard ? 'rgba(34, 197, 94, 0.2)' : 'rgba(6, 182, 212, 0.2)',
+                    border: copiedToClipboard ? '1px solid rgba(34, 197, 94, 0.4)' : '1px solid rgba(6, 182, 212, 0.4)',
+                    borderRadius: '6px',
+                    color: copiedToClipboard ? '#86efac' : '#67e8f9',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px'
+                  }}
+                >
+                  {copiedToClipboard ? (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M20 6L9 17l-5-5"></path>
+                      </svg>
+                      Copied to Clipboard!
+                    </>
+                  ) : (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                      </svg>
+                      Copy Link
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <div style={{
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(234, 179, 8, 0.1) 100%)',
+                border: '1px solid rgba(245, 158, 11, 0.3)',
+                borderRadius: '8px',
+                padding: '16px',
+                marginBottom: '24px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" strokeWidth="2" style={{ flexShrink: 0, marginTop: '2px' }}>
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                  </svg>
+                  <div style={{ fontSize: '13px', color: '#fbbf24', lineHeight: '1.6' }}>
+                    <strong>Guest Access:</strong> This link allows anyone to view the opportunity without signing in.
+                    <br/>
+                    <strong>Expires:</strong> {new Date(shareModalData.expiresAt).toLocaleString()} (24 hours)
+                    <br/>
+                    <strong>No Sign-In Required</strong> – Perfect for sharing with potential partners, team members, or stakeholders.
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShareModalData(null)}
+                style={{
+                  width: '100%',
+                  padding: '12px',
+                  background: 'rgba(100, 116, 139, 0.2)',
+                  border: '1px solid rgba(148, 163, 184, 0.3)',
+                  borderRadius: '8px',
+                  color: '#cbd5e1',
+                  fontSize: '15px',
+                  fontWeight: '600',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+                onMouseOver={(e) => e.currentTarget.style.background = 'rgba(100, 116, 139, 0.3)'}
+                onMouseOut={(e) => e.currentTarget.style.background = 'rgba(100, 116, 139, 0.2)'}
+              >
+                Close
+              </button>
             </div>
           </div>
         )}
