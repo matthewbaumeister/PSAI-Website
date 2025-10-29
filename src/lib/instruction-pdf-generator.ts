@@ -422,7 +422,7 @@ export class InstructionPdfGenerator {
 
     for (let i = 0; i < data.volumes.length; i++) {
       const volume = data.volumes[i];
-      const page = pdfDoc.addPage([pageWidth, pageHeight]);
+      let page = pdfDoc.addPage([pageWidth, pageHeight]);
 
       let y = pageHeight - 100;
 
@@ -484,11 +484,8 @@ export class InstructionPdfGenerator {
         for (const req of reqsToShow) {
           // Check if we need a new page
           if (y < 100) {
-            const newPage = pdfDoc.addPage([pageWidth, pageHeight]);
+            page = pdfDoc.addPage([pageWidth, pageHeight]);
             y = pageHeight - 100;
-            
-            // Continue on new page
-            page = newPage as any;
           }
           
           // Determine color based on source tag
@@ -505,9 +502,8 @@ export class InstructionPdfGenerator {
           for (const line of reqLines) {
             // Check for new page within requirement lines too
             if (y < 100) {
-              const newPage = pdfDoc.addPage([pageWidth, pageHeight]);
+              page = pdfDoc.addPage([pageWidth, pageHeight]);
               y = pageHeight - 100;
-              page = newPage as any;
             }
             
             page.drawText(line, {
@@ -525,9 +521,8 @@ export class InstructionPdfGenerator {
         // Add note if there are more requirements
         if (hasMore) {
           if (y < 100) {
-            const newPage = pdfDoc.addPage([pageWidth, pageHeight]);
+            page = pdfDoc.addPage([pageWidth, pageHeight]);
             y = pageHeight - 100;
-            page = newPage as any;
           }
           page.drawText(`[... ${volume.requirements.length - 20} more requirements - see full plain-text instructions in database]`, {
             x: 60,
