@@ -30,11 +30,9 @@ export async function POST(request: NextRequest) {
   try {
     // Authenticate user
     const authResult = await requireAuth(request);
-    if (!authResult.authorized) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
+    // If authResult is a NextResponse, it means auth failed
+    if (authResult instanceof NextResponse) {
+      return authResult;
     }
 
     const body: ChatRequest = await request.json();
