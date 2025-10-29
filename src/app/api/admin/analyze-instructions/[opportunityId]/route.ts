@@ -11,6 +11,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { analyzeInstructionDocuments, formatAnalysisForDisplay, InstructionAnalysisResult } from '@/lib/llm-instruction-analyzer';
 import { extractText } from 'unpdf';
+import { requireAuth } from '@/lib/auth-middleware';
 
 // Initialize Supabase client with service role key
 const supabase = createClient(
@@ -29,36 +30,14 @@ export async function POST(
   context: RouteContext
 ) {
   try {
-    // Verify user authentication via cookies (Supabase session)
-    const cookieStore = request.cookies;
-    
-    // Create Supabase client with cookies to get the user session
-    const { createServerClient } = await import('@supabase/ssr');
-    
-    const userSupabase = createServerClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-      {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value;
-          },
-          set() {},
-          remove() {},
-        },
-      }
-    );
-    
-    const { data: { user }, error: authError } = await userSupabase.auth.getUser();
-    
-    if (authError || !user) {
-      console.log('[LLM Analysis] Auth failed:', authError?.message || 'No user session');
-      return NextResponse.json(
-        { success: false, error: 'Please sign in to generate instructions. If you are signed in, try refreshing the page.' },
-        { status: 401 }
-      );
+    // Authenticate the request using JWT auth system
+    const authResult = await requireAuth(request);
+    if (authResult instanceof NextResponse) {
+      // Auth failed - return the error response
+      return authResult;
     }
-    
+
+    const { user } = authResult;
     console.log(`[LLM Analysis] Authenticated user: ${user.email}`);
 
     const { opportunityId } = await context.params;
