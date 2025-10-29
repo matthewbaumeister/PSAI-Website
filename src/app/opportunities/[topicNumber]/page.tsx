@@ -128,6 +128,8 @@ export default function OpportunityPage() {
 
   const isActive = data.status && 
     ['open', 'prerelease', 'pre-release', 'active', 'prelease'].includes(data.status.toLowerCase());
+  const isClosed = data.status && 
+    ['closed', 'awarded', 'cancelled', 'canceled'].includes(data.status.toLowerCase());
   const hasInstructions = data.instructions_plain_text && data.instructions_plain_text.length > 0;
 
   return (
@@ -137,6 +139,57 @@ export default function OpportunityPage() {
       padding: '40px 20px'
     }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+        
+        {/* Closed Opportunity Warning Banner */}
+        {isClosed && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(251, 146, 60, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%)',
+            border: '2px solid rgba(251, 146, 60, 0.5)',
+            borderRadius: '12px',
+            padding: '24px 32px',
+            marginBottom: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '20px'
+          }}>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fb923c" strokeWidth="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <div style={{ flex: 1 }}>
+              <h3 style={{ 
+                color: '#fbbf24', 
+                fontSize: '18px', 
+                fontWeight: '700', 
+                marginBottom: '8px',
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em'
+              }}>
+                Closed Opportunity - Historical Record
+              </h3>
+              <p style={{ 
+                color: '#fcd34d', 
+                fontSize: '14px', 
+                lineHeight: '1.6',
+                margin: 0
+              }}>
+                This opportunity is no longer accepting proposals. All information shown (including submission instructions) is preserved for historical reference only and may no longer be applicable to current solicitations.
+                {data.last_scraped && (
+                  <span style={{ display: 'block', marginTop: '8px', fontSize: '13px', color: '#d97706' }}>
+                    Last Updated: {new Date(data.last_scraped).toLocaleDateString('en-US', { 
+                      month: 'short', 
+                      day: 'numeric', 
+                      year: 'numeric',
+                      hour: '2-digit',
+                      minute: '2-digit'
+                    })}
+                  </span>
+                )}
+              </p>
+            </div>
+          </div>
+        )}
         
         {/* Hero Section */}
         <div style={{ 
@@ -162,23 +215,41 @@ export default function OpportunityPage() {
           
           <div style={{ position: 'relative', zIndex: 1 }}>
             {/* Status Badge */}
-            <div style={{ marginBottom: '20px' }}>
+            <div style={{ marginBottom: '20px', display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
               <span style={{ 
                 padding: '8px 20px',
                 background: isActive 
                   ? 'linear-gradient(135deg, rgba(34, 197, 94, 0.2) 0%, rgba(16, 185, 129, 0.2) 100%)'
+                  : isClosed
+                  ? 'linear-gradient(135deg, rgba(251, 146, 60, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%)'
                   : 'rgba(100, 116, 139, 0.2)',
-                border: `1px solid ${isActive ? 'rgba(34, 197, 94, 0.4)' : 'rgba(100, 116, 139, 0.4)'}`,
+                border: `1px solid ${isActive ? 'rgba(34, 197, 94, 0.4)' : isClosed ? 'rgba(251, 146, 60, 0.4)' : 'rgba(100, 116, 139, 0.4)'}`,
                 borderRadius: '24px',
-                color: isActive ? '#86efac' : '#cbd5e1',
+                color: isActive ? '#86efac' : isClosed ? '#fbbf24' : '#cbd5e1',
                 fontSize: '14px',
                 fontWeight: '700',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
                 display: 'inline-block'
               }}>
-                {isActive && '🟢 '}{data.status}
+                {isActive && '🟢 '}{isClosed && '🔒 '}{data.status}
               </span>
+              {isClosed && (
+                <span style={{ 
+                  padding: '6px 16px',
+                  background: 'rgba(120, 113, 108, 0.2)',
+                  border: '1px solid rgba(168, 162, 158, 0.3)',
+                  borderRadius: '16px',
+                  color: '#a8a29e',
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em',
+                  display: 'inline-block'
+                }}>
+                  Historical Record
+                </span>
+              )}
             </div>
 
             {/* Title */}
@@ -833,6 +904,33 @@ export default function OpportunityPage() {
                 borderTop: '1px solid rgba(71, 85, 105, 0.3)',
                 background: 'rgba(15, 23, 42, 0.4)'
               }}>
+                {/* Historical Record Notice for Closed Opportunities */}
+                {isClosed && (
+                  <div style={{ 
+                    background: 'rgba(239, 68, 68, 0.15)',
+                    border: '2px solid rgba(239, 68, 68, 0.5)',
+                    borderRadius: '10px',
+                    padding: '20px',
+                    marginBottom: '24px'
+                  }}>
+                    <div style={{ display: 'flex', gap: '12px', alignItems: 'start' }}>
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" style={{ flexShrink: 0, marginTop: '2px' }}>
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
+                      </svg>
+                      <div>
+                        <h4 style={{ color: '#fca5a5', fontSize: '16px', fontWeight: '700', marginBottom: '8px', margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                          No Longer Accepting Proposals
+                        </h4>
+                        <p style={{ color: '#fecaca', fontSize: '14px', lineHeight: '1.6', margin: '8px 0 0 0' }}>
+                          This opportunity is <strong>closed</strong>. These instructions are preserved for historical reference and research purposes only. 
+                          They may not reflect current requirements or policies. Do not use these instructions for active proposals.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                
                 {/* Warning Notice */}
                 <div style={{ 
                   background: 'rgba(251, 191, 36, 0.15)',
