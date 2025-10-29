@@ -77,20 +77,13 @@ export default function OpportunityPage() {
     setAnalysisError(null);
 
     try {
-      // Get user session token for authentication
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      if (!session) {
-        throw new Error('You must be signed in to generate analysis');
-      }
-
+      // Call API with credentials - auth validation happens on backend
       const response = await fetch(`/api/admin/analyze-instructions/${data.topic_id || data.id || data.topic_number}`, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${session.access_token}`,
           'Content-Type': 'application/json'
         },
-        credentials: 'include' // Important: send cookies
+        credentials: 'include' // Send cookies for authentication
       });
 
       const result = await response.json();

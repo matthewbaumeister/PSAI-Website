@@ -29,36 +29,32 @@ export async function POST(
   context: RouteContext
 ) {
   try {
-    // Verify user authentication via Bearer token
-    const authHeader = request.headers.get('authorization');
+    // Verify user authentication via cookies (Supabase session)
+    const cookieStore = request.cookies;
     
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized - Please sign in to generate instructions' },
-        { status: 401 }
-      );
-    }
+    // Create Supabase client with cookies to get the user session
+    const { createServerClient } = await import('@supabase/ssr');
     
-    const token = authHeader.replace('Bearer ', '');
-    
-    // Verify token with Supabase (this validates the JWT)
-    const userSupabase = createClient(
+    const userSupabase = createServerClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
       {
-        global: {
-          headers: {
-            Authorization: authHeader
-          }
-        }
+        cookies: {
+          get(name: string) {
+            return cookieStore.get(name)?.value;
+          },
+          set() {},
+          remove() {},
+        },
       }
     );
     
-    const { data: { user }, error: authError } = await userSupabase.auth.getUser(token);
+    const { data: { user }, error: authError } = await userSupabase.auth.getUser();
     
     if (authError || !user) {
+      console.log('[LLM Analysis] Auth failed:', authError?.message || 'No user session');
       return NextResponse.json(
-        { success: false, error: 'Invalid or expired session. Please sign in again.' },
+        { success: false, error: 'Please sign in to generate instructions. If you are signed in, try refreshing the page.' },
         { status: 401 }
       );
     }
