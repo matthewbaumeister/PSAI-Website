@@ -35,6 +35,9 @@ interface OpportunityData {
   instructions_plain_text?: string;
   consolidated_instructions_url?: string;
   instructions_generated_at?: string;
+  instructions_volume_structure?: any;
+  instructions_checklist?: any;
+  qa_content?: string;
   last_scraped?: string;
 }
 
@@ -44,6 +47,7 @@ export default function OpportunityPage() {
   const [data, setData] = useState<OpportunityData | null>(null);
   const [loading, setLoading] = useState(true);
   const [instructionsExpanded, setInstructionsExpanded] = useState(false);
+  const [qaExpanded, setQaExpanded] = useState(false);
   const supabase = createClient();
 
   useEffect(() => {
@@ -258,17 +262,30 @@ export default function OpportunityPage() {
                 </div>
               )}
               {data.topic_question_count > 0 && (
-                <div>
+                <button
+                  onClick={() => setQaExpanded(!qaExpanded)}
+                  style={{
+                    background: 'rgba(59, 130, 246, 0.2)',
+                    border: '1px solid rgba(59, 130, 246, 0.4)',
+                    borderRadius: '8px',
+                    padding: '12px 16px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    width: '100%'
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'}
+                >
                   <div style={{ color: '#94a3b8', fontSize: '13px', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                     </svg>
-                    Questions
+                    Questions Available
                   </div>
                   <div style={{ color: '#60a5fa', fontSize: '16px', fontWeight: '600' }}>
-                    {data.topic_question_count}
+                    {data.topic_question_count} • Click to {qaExpanded ? 'Hide' : 'View'}
                   </div>
-                </div>
+                </button>
               )}
             </div>
 
@@ -302,40 +319,7 @@ export default function OpportunityPage() {
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                   </svg>
-                  Topic PDF
-                </a>
-              )}
-              {data.consolidated_instructions_url && (
-                <a
-                  href={data.consolidated_instructions_url}
-                  download
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    padding: '14px 28px',
-                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
-                    border: 'none',
-                    borderRadius: '10px',
-                    color: '#ffffff',
-                    fontSize: '15px',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    textDecoration: 'none',
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '10px',
-                    boxShadow: '0 4px 12px rgba(16, 185, 129, 0.4)',
-                    transition: 'transform 0.2s'
-                  }}
-                  onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
-                  onMouseLeave={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                    <polyline points="7 10 12 15 17 10"></polyline>
-                    <line x1="12" y1="15" x2="12" y2="3"></line>
-                  </svg>
-                  Download Instructions PDF
+                  Download Topic PDF
                 </a>
               )}
             </div>
@@ -633,6 +617,54 @@ export default function OpportunityPage() {
                   </p>
                 </div>
               )}
+            </div>
+          </div>
+        )}
+
+        {/* Q&A Section - Collapsible */}
+        {data.qa_content && qaExpanded && (
+          <div style={{ 
+            background: 'rgba(30, 41, 59, 0.6)',
+            border: '1px solid rgba(59, 130, 246, 0.6)',
+            borderRadius: '12px',
+            padding: '32px',
+            marginBottom: '32px'
+          }}>
+            <h2 style={{ 
+              color: '#e2e8f0',
+              fontSize: '24px',
+              fontWeight: '700',
+              marginBottom: '20px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }}>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+              Questions & Answers ({data.topic_question_count})
+            </h2>
+            <div style={{ 
+              background: 'rgba(15, 23, 42, 0.6)',
+              border: '1px solid rgba(71, 85, 105, 0.4)',
+              borderRadius: '8px',
+              padding: '24px',
+              maxHeight: '600px',
+              overflowY: 'auto'
+            }}>
+              <pre style={{ 
+                whiteSpace: 'pre-wrap',
+                wordWrap: 'break-word',
+                margin: 0,
+                fontFamily: 'system-ui, -apple-system, sans-serif',
+                fontSize: '14px',
+                lineHeight: '1.8',
+                color: '#cbd5e1'
+              }}>
+                {data.qa_content}
+              </pre>
             </div>
           </div>
         )}
