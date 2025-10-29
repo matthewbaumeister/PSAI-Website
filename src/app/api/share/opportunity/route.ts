@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase-server';
+import { createClient } from '@supabase/supabase-js';
 import { randomBytes } from 'crypto';
+import { requireAuth } from '@/lib/auth-middleware';
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 export const dynamic = 'force-dynamic';
 
@@ -11,17 +17,14 @@ export const dynamic = 'force-dynamic';
  */
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createClient();
-    
     // Check authentication
-    const { data: { user }, error: authError } = await supabase.auth.getUser();
+    const authResult = await requireAuth(request);
     
-    if (authError || !user) {
-      return NextResponse.json(
-        { success: false, error: 'Authentication required' },
-        { status: 401 }
-      );
+    if (authResult instanceof NextResponse) {
+      return authResult;
     }
+
+    const { user } = authResult;
 
     const body = await request.json();
     const { topic_id, topic_number } = body;
@@ -93,7 +96,6 @@ export async function POST(request: NextRequest) {
  */
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createClient();
     const searchParams = request.nextUrl.searchParams;
     const token = searchParams.get('token');
 
