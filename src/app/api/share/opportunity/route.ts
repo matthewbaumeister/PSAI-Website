@@ -153,10 +153,25 @@ export async function GET(request: NextRequest) {
       })
       .eq('token', token);
 
-    // Fetch the opportunity data
+    // Fetch the opportunity data with all fields including Q&A and instructions
     const { data: opportunity, error: oppError } = await supabase
       .from('sbir_final')
-      .select('*')
+      .select(`
+        topic_number,
+        topic_id,
+        title,
+        sponsor_component,
+        status,
+        open_date,
+        close_date,
+        phase_1_description,
+        phase_2_description,
+        phase_3_description,
+        qa_content,
+        topic_question_count,
+        instructions_plain_text,
+        consolidated_instructions_url
+      `)
       .eq('topic_id', shareToken.topic_id)
       .single();
 

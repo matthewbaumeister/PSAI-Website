@@ -1,11 +1,13 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { formatQAForDisplay } from '@/lib/qa-formatter';
 
 interface OpportunityData {
   topic_number: string;
+  topic_id: string;
   title: string;
   sponsor_component: string;
   status: string;
@@ -16,6 +18,8 @@ interface OpportunityData {
   phase_3_description: string;
   qa_content: string;
   topic_question_count: number;
+  instructions_plain_text: string;
+  consolidated_instructions_url: string;
 }
 
 interface ShareInfo {
@@ -25,12 +29,15 @@ interface ShareInfo {
 
 export default function SharedOpportunityPage() {
   const params = useParams();
+  const router = useRouter();
   const token = params?.token as string;
   
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [data, setData] = useState<OpportunityData | null>(null);
   const [shareInfo, setShareInfo] = useState<ShareInfo | null>(null);
+  const [qaExpanded, setQaExpanded] = useState(false);
+  const [instructionsExpanded, setInstructionsExpanded] = useState(false);
 
   useEffect(() => {
     if (!token) return;
@@ -41,8 +48,15 @@ export default function SharedOpportunityPage() {
         const result = await response.json();
 
         if (result.success) {
-          setData(result.data.opportunity);
+          const opportunityData = result.data.opportunity;
+          setData(opportunityData);
           setShareInfo(result.data.shareInfo);
+          
+          // Store share info for redirect after sign-in
+          if (opportunityData.topic_number) {
+            localStorage.setItem('share_redirect', opportunityData.topic_number);
+            localStorage.setItem('share_token', token);
+          }
         } else {
           setError(result.error || 'Failed to load opportunity');
         }
@@ -56,6 +70,16 @@ export default function SharedOpportunityPage() {
 
     fetchSharedOpportunity();
   }, [token]);
+  
+  // Handle sign-in redirect
+  const handleSignIn = () => {
+    if (data?.topic_number) {
+      // Redirect to login with return URL
+      router.push(`/auth/login?returnTo=/opportunities/${data.topic_number}`);
+    } else {
+      router.push('/auth/login');
+    }
+  };
 
   if (loading) {
     return (
@@ -174,8 +198,8 @@ export default function SharedOpportunityPage() {
               </div>
             </div>
           </div>
-          <Link
-            href="/auth/login"
+          <button
+            onClick={handleSignIn}
             style={{
               padding: '8px 16px',
               background: 'rgba(59, 130, 246, 0.2)',
@@ -184,14 +208,14 @@ export default function SharedOpportunityPage() {
               color: '#60a5fa',
               fontSize: '13px',
               fontWeight: '600',
-              textDecoration: 'none',
+              cursor: 'pointer',
               transition: 'all 0.2s'
             }}
             onMouseOver={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.3)'}
             onMouseOut={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)'}
           >
             Sign In for Full Access
-          </Link>
+          </button>
         </div>
 
         {/* Opportunity Content - Reuse same styling as main opportunity page */}
@@ -301,53 +325,211 @@ export default function SharedOpportunityPage() {
               </p>
             </div>
           )}
-
-          {/* Limited Access CTA */}
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%)',
-            border: '1px solid rgba(59, 130, 246, 0.3)',
-            borderRadius: '12px',
-            padding: '24px',
-            textAlign: 'center',
-            marginTop: '32px'
-          }}>
-            <h3 style={{
-              color: '#e2e8f0',
-              fontSize: '18px',
-              fontWeight: '600',
-              marginBottom: '12px'
-            }}>
-              Want Full Access?
-            </h3>
-            <p style={{
-              color: '#94a3b8',
-              fontSize: '14px',
-              marginBottom: '20px',
-              lineHeight: '1.6'
-            }}>
-              Sign in to Prop Shop AI to view complete details, Q&A, instructions, and track all opportunities.
-            </p>
-            <Link
-              href="/auth/login"
-              style={{
-                display: 'inline-block',
-                padding: '12px 32px',
-                background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
-                color: '#fff',
-                borderRadius: '8px',
-                textDecoration: 'none',
-                fontWeight: '600',
-                fontSize: '14px',
-                transition: 'transform 0.2s',
-                boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
-              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
-            >
-              Sign In / Create Account
-            </Link>
-          </div>
+          
+          {data.phase_2_description && (
+            <div style={{ marginBottom: '24px' }}>
+              <h2 style={{ color: '#e2e8f0', fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>
+                Phase II Description
+              </h2>
+              <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.8' }}>
+                {data.phase_2_description}
+              </p>
+            </div>
+          )}
         </div>
+
+        {/* Q&A Section - Collapsible */}
+        {data.qa_content && data.topic_question_count > 0 && (
+          <div style={{ 
+            background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%)',
+            border: '1px solid rgba(34, 197, 94, 0.4)',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            marginBottom: '32px'
+          }}>
+            <button
+              onClick={() => setQaExpanded(!qaExpanded)}
+              style={{
+                width: '100%',
+                padding: '28px 32px',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(34, 197, 94, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{
+                  padding: '12px',
+                  background: 'rgba(34, 197, 94, 0.3)',
+                  borderRadius: '8px'
+                }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#86efac" strokeWidth="2">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </div>
+                <div style={{ textAlign: 'left' }}>
+                  <h2 style={{ 
+                    color: '#e2e8f0',
+                    fontSize: '24px',
+                    fontWeight: '700',
+                    margin: '0 0 4px 0'
+                  }}>
+                    Questions & Answers ({data.topic_question_count})
+                  </h2>
+                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
+                    Community questions and official answers
+                  </p>
+                </div>
+              </div>
+              <div style={{
+                padding: '8px',
+                background: qaExpanded ? 'rgba(34, 197, 94, 0.3)' : 'rgba(71, 85, 105, 0.3)',
+                borderRadius: '6px',
+                transition: 'all 0.2s'
+              }}>
+                <svg 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke={qaExpanded ? '#86efac' : '#cbd5e1'}
+                  strokeWidth="2"
+                  style={{
+                    transform: qaExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s'
+                  }}
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+
+            {qaExpanded && (
+              <div style={{ 
+                padding: '32px',
+                borderTop: '1px solid rgba(71, 85, 105, 0.3)',
+                background: 'rgba(15, 23, 42, 0.4)'
+              }}>
+                <div style={{ 
+                  maxHeight: '800px',
+                  overflowY: 'auto',
+                  paddingRight: '8px'
+                }}>
+                  {formatQAForDisplay(data.qa_content || '')}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Instructions Section - Collapsible */}
+        {data.instructions_plain_text && (
+          <div style={{ 
+            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%)',
+            border: '1px solid rgba(59, 130, 246, 0.4)',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            marginBottom: '32px'
+          }}>
+            <button
+              onClick={() => setInstructionsExpanded(!instructionsExpanded)}
+              style={{
+                width: '100%',
+                padding: '28px 32px',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{
+                  padding: '12px',
+                  background: 'rgba(59, 130, 246, 0.3)',
+                  borderRadius: '8px'
+                }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" strokeWidth="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                  </svg>
+                </div>
+                <div style={{ textAlign: 'left' }}>
+                  <h2 style={{ 
+                    color: '#e2e8f0',
+                    fontSize: '24px',
+                    fontWeight: '700',
+                    margin: '0 0 4px 0'
+                  }}>
+                    Consolidated Submission Instructions
+                  </h2>
+                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
+                    Merged component & BAA guidance with source citations
+                  </p>
+                </div>
+              </div>
+              <div style={{
+                padding: '8px',
+                background: instructionsExpanded ? 'rgba(59, 130, 246, 0.3)' : 'rgba(71, 85, 105, 0.3)',
+                borderRadius: '6px',
+                transition: 'all 0.2s'
+              }}>
+                <svg 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke={instructionsExpanded ? '#93c5fd' : '#cbd5e1'}
+                  strokeWidth="2"
+                  style={{
+                    transform: instructionsExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s'
+                  }}
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+
+            {instructionsExpanded && (
+              <div style={{ 
+                padding: '32px',
+                borderTop: '1px solid rgba(71, 85, 105, 0.3)',
+                background: 'rgba(15, 23, 42, 0.4)'
+              }}>
+                <div style={{ 
+                  maxHeight: '800px',
+                  overflowY: 'auto',
+                  paddingRight: '8px'
+                }}>
+                  <pre style={{ 
+                    whiteSpace: 'pre-wrap',
+                    wordWrap: 'break-word',
+                    margin: 0,
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    fontSize: '14px',
+                    lineHeight: '1.8',
+                    color: '#cbd5e1'
+                  }}>
+                    {data.instructions_plain_text}
+                  </pre>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
