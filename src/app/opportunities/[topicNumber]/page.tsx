@@ -1399,6 +1399,7 @@ export default function OpportunityPage() {
                                     </div>
                                   </div>
                                 ))}
+                              </div>
                             </div>
                           )}
 
