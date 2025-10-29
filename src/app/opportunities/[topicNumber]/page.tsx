@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase';
+import { formatQAForDisplay } from '@/lib/qa-formatter';
 import Link from 'next/link';
 
 interface OpportunityData {
@@ -719,24 +720,11 @@ export default function OpportunityPage() {
                 background: 'rgba(15, 23, 42, 0.4)'
               }}>
                 <div style={{ 
-                  background: 'rgba(15, 23, 42, 0.6)',
-                  border: '1px solid rgba(71, 85, 105, 0.4)',
-                  borderRadius: '8px',
-                  padding: '24px',
-                  maxHeight: '600px',
-                  overflowY: 'auto'
+                  maxHeight: '800px',
+                  overflowY: 'auto',
+                  paddingRight: '8px'
                 }}>
-                  <pre style={{ 
-                    whiteSpace: 'pre-wrap',
-                    wordWrap: 'break-word',
-                    margin: 0,
-                    fontFamily: 'system-ui, -apple-system, sans-serif',
-                    fontSize: '14px',
-                    lineHeight: '1.8',
-                    color: '#cbd5e1'
-                  }}>
-                    {data.qa_content}
-                  </pre>
+                  {formatQAForDisplay(data.qa_content || '')}
                 </div>
               </div>
             )}
