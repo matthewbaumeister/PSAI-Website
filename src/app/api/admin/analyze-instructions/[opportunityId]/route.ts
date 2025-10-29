@@ -142,9 +142,10 @@ export async function POST(
     );
 
     console.log(`[LLM Analysis] Analysis complete!`);
-    console.log(`  - Requirements found: ${analysisResult.compliance_checklist.length}`);
-    console.log(`  - Conflicts detected: ${analysisResult.conflicts_detected.length}`);
-    console.log(`  - Superseding notes: ${analysisResult.superseding_notes.length}`);
+    console.log(`  - Volumes found: ${analysisResult.volumes.length}`);
+    console.log(`  - Total requirements: ${analysisResult.volumes.reduce((sum, vol) => sum + vol.required_sections.reduce((secSum, sec) => secSum + sec.requirements.length, 0), 0)}`);
+    console.log(`  - Critical notes: ${analysisResult.critical_notes.length}`);
+    console.log(`  - Quick reference items: ${analysisResult.quick_reference.length}`);
 
     // Step 5: Format for display
     const formattedText = formatAnalysisForDisplay(analysisResult);
