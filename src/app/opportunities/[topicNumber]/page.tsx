@@ -53,6 +53,7 @@ export default function OpportunityPage() {
   const [instructionsExpanded, setInstructionsExpanded] = useState(false);
   const [qaExpanded, setQaExpanded] = useState(false);
   const [descriptionsExpanded, setDescriptionsExpanded] = useState(false);
+  const [phasesExpanded, setPhasesExpanded] = useState(false);
   const [generatingAnalysis, setGeneratingAnalysis] = useState(false);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const supabase = createClient();
@@ -756,77 +757,136 @@ export default function OpportunityPage() {
           </div>
         )}
 
-        {/* Phase Descriptions */}
+        {/* Phase Descriptions - Collapsible */}
         {(data.phase_1_description || data.phase_2_description || data.phase_3_description) && (
           <div style={{ 
-            background: 'rgba(30, 41, 59, 0.6)',
-            border: '1px solid rgba(51, 65, 85, 0.6)',
+            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(16, 185, 129, 0.15) 100%)',
+            border: '1px solid rgba(59, 130, 246, 0.4)',
             borderRadius: '12px',
-            padding: '32px',
+            overflow: 'hidden',
             marginBottom: '32px'
           }}>
-            <h2 style={{ 
-              color: '#e2e8f0',
-              fontSize: '24px',
-              fontWeight: '700',
-              marginBottom: '24px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px'
-            }}>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <polyline points="19 12 12 19 5 12"></polyline>
-              </svg>
-              Phase Descriptions
-            </h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-              {data.phase_1_description && (
+            {/* Collapsible Header */}
+            <button
+              onClick={() => setPhasesExpanded(!phasesExpanded)}
+              style={{
+                width: '100%',
+                padding: '28px 32px',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                 <div style={{
-                  padding: '20px',
-                  background: 'rgba(59, 130, 246, 0.1)',
-                  border: '1px solid rgba(59, 130, 246, 0.3)',
-                  borderRadius: '10px'
+                  padding: '12px',
+                  background: 'rgba(59, 130, 246, 0.3)',
+                  borderRadius: '8px'
                 }}>
-                  <h3 style={{ color: '#60a5fa', fontSize: '16px', fontWeight: '700', marginBottom: '10px' }}>
-                    Phase I
-                  </h3>
-                  <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7', whiteSpace: 'pre-wrap' }}>
-                    {data.phase_1_description}
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <polyline points="19 12 12 19 5 12"></polyline>
+                  </svg>
+                </div>
+                <div style={{ textAlign: 'left' }}>
+                  <h2 style={{ 
+                    color: '#e2e8f0',
+                    fontSize: '24px',
+                    fontWeight: '700',
+                    margin: '0 0 4px 0'
+                  }}>
+                    Phase Descriptions
+                  </h2>
+                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
+                    {[data.phase_1_description && 'Phase I', data.phase_2_description && 'Phase II', data.phase_3_description && 'Phase III'].filter(Boolean).join(', ')} details
                   </p>
                 </div>
-              )}
-              {data.phase_2_description && (
-                <div style={{
-                  padding: '20px',
-                  background: 'rgba(139, 92, 246, 0.1)',
-                  border: '1px solid rgba(139, 92, 246, 0.3)',
-                  borderRadius: '10px'
-                }}>
-                  <h3 style={{ color: '#a78bfa', fontSize: '16px', fontWeight: '700', marginBottom: '10px' }}>
-                    Phase II
-                  </h3>
-                  <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7', whiteSpace: 'pre-wrap' }}>
-                    {data.phase_2_description}
-                  </p>
+              </div>
+              <div style={{
+                padding: '8px',
+                background: phasesExpanded ? 'rgba(59, 130, 246, 0.3)' : 'rgba(71, 85, 105, 0.3)',
+                borderRadius: '6px',
+                transition: 'all 0.2s'
+              }}>
+                <svg 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke={phasesExpanded ? '#60a5fa' : '#cbd5e1'}
+                  strokeWidth="2"
+                  style={{
+                    transform: phasesExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s'
+                  }}
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+
+            {/* Collapsible Content */}
+            {phasesExpanded && (
+              <div style={{ 
+                padding: '32px',
+                borderTop: '1px solid rgba(71, 85, 105, 0.3)',
+                background: 'rgba(15, 23, 42, 0.4)'
+              }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                  {data.phase_1_description && (
+                    <div style={{
+                      padding: '20px',
+                      background: 'rgba(59, 130, 246, 0.1)',
+                      border: '1px solid rgba(59, 130, 246, 0.3)',
+                      borderRadius: '10px'
+                    }}>
+                      <h3 style={{ color: '#60a5fa', fontSize: '16px', fontWeight: '700', marginBottom: '10px' }}>
+                        Phase I
+                      </h3>
+                      <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7', whiteSpace: 'pre-wrap' }}>
+                        {data.phase_1_description}
+                      </p>
+                    </div>
+                  )}
+                  {data.phase_2_description && (
+                    <div style={{
+                      padding: '20px',
+                      background: 'rgba(139, 92, 246, 0.1)',
+                      border: '1px solid rgba(139, 92, 246, 0.3)',
+                      borderRadius: '10px'
+                    }}>
+                      <h3 style={{ color: '#a78bfa', fontSize: '16px', fontWeight: '700', marginBottom: '10px' }}>
+                        Phase II
+                      </h3>
+                      <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7', whiteSpace: 'pre-wrap' }}>
+                        {data.phase_2_description}
+                      </p>
+                    </div>
+                  )}
+                  {data.phase_3_description && (
+                    <div style={{
+                      padding: '20px',
+                      background: 'rgba(236, 72, 153, 0.1)',
+                      border: '1px solid rgba(236, 72, 153, 0.3)',
+                      borderRadius: '10px'
+                    }}>
+                      <h3 style={{ color: '#f472b6', fontSize: '16px', fontWeight: '700', marginBottom: '10px' }}>
+                        Phase III
+                      </h3>
+                      <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7', whiteSpace: 'pre-wrap' }}>
+                        {data.phase_3_description}
+                      </p>
+                    </div>
+                  )}
                 </div>
-              )}
-              {data.phase_3_description && (
-                <div style={{
-                  padding: '20px',
-                  background: 'rgba(236, 72, 153, 0.1)',
-                  border: '1px solid rgba(236, 72, 153, 0.3)',
-                  borderRadius: '10px'
-                }}>
-                  <h3 style={{ color: '#f472b6', fontSize: '16px', fontWeight: '700', marginBottom: '10px' }}>
-                    Phase III
-                  </h3>
-                  <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7', whiteSpace: 'pre-wrap' }}>
-                    {data.phase_3_description}
-                  </p>
-                </div>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         )}
 
