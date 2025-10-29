@@ -379,40 +379,60 @@ export default function SBIRDatabaseBrowser() {
       // Join search terms
       const searchQuery = searchTerms.join(' ');
       
-      // Set search text
-      setSearchText(searchQuery);
+      // Determine status filter
+      const statuses = includeClosedRecords ? [] : ['Open', 'Pre-Release'];
       
-      // Set status filter
-      if (includeClosedRecords) {
-        setSelectedStatuses([]); // All statuses
-      } else {
-        setSelectedStatuses(['Open', 'Pre-Release']); // Only open
+      // Fetch results directly with new parameters (don't rely on state)
+      setLoading(true);
+      const response = await fetch('/api/admin/sbir/browse', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          searchText: searchQuery,
+          component: 'all',
+          statuses: statuses,
+          programType: 'all',
+          page: 0,
+          pageSize,
+          sortBy,
+          sortOrder
+        })
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        // Update records
+        setRecords(result.data);
+        setTotalRecords(result.total);
+        setTotalPages(result.totalPages);
+        setFilterOptions(result.filterOptions);
+        
+        // Now update state for UI
+        setSearchText(searchQuery);
+        setSelectedStatuses(statuses);
+        setSelectedComponent('all');
+        setSelectedProgramType('all');
+        setCurrentPage(0);
+        
+        // Add to active filters
+        setActiveFilters([
+          { type: 'search', value: searchQuery, label: `Similar to: ${record.topic_number}` }
+        ]);
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // Close expanded row
+        setExpandedRow(null);
       }
-      
-      // Reset other filters
-      setSelectedComponent('all');
-      setSelectedProgramType('all');
-      setCurrentPage(0);
-      
-      // Add to active filters
-      setActiveFilters([
-        { type: 'search', value: searchQuery, label: `Similar to: ${record.topic_number}` }
-      ]);
-      
-      // Fetch results
-      await fetchRecords();
-      
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      
-      // Close expanded row
-      setExpandedRow(null);
       
     } catch (error) {
       console.error('Find similar error:', error);
       alert('Failed to find similar records. Please try again.');
     } finally {
       setFindingSimilar(false);
+      setLoading(false);
     }
   };
 
@@ -1219,6 +1239,129 @@ Our company specializes in artificial intelligence and machine learning for defe
                   </button>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* Filter Stats Banner */}
+        {(searchText || selectedComponent !== 'all' || selectedStatuses.length > 0 || selectedProgramType !== 'all' || totalRecords > 0) && (
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%)',
+            border: '1px solid rgba(59, 130, 246, 0.3)',
+            borderRadius: '12px',
+            padding: '20px 24px',
+            marginBottom: '20px'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div style={{
+                  width: '40px',
+                  height: '40px',
+                  borderRadius: '8px',
+                  background: 'rgba(59, 130, 246, 0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
+                }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2">
+                    <path d="M3 3v18h18"></path>
+                    <path d="m19 9-5 5-4-4-3 3"></path>
+                  </svg>
+                </div>
+                <div>
+                  <div style={{ 
+                    fontSize: '24px', 
+                    fontWeight: '700', 
+                    color: '#e2e8f0',
+                    lineHeight: 1
+                  }}>
+                    {loading ? '...' : totalRecords.toLocaleString()}
+                  </div>
+                  <div style={{ 
+                    fontSize: '13px', 
+                    color: '#94a3b8', 
+                    marginTop: '4px' 
+                  }}>
+                    {totalRecords === 1 ? 'Opportunity Found' : 'Opportunities Found'}
+                  </div>
+                </div>
+              </div>
+              
+              {/* Active Filters Summary */}
+              {(searchText || selectedComponent !== 'all' || selectedStatuses.length > 0 || selectedProgramType !== 'all') && (
+                <>
+                  <div style={{ 
+                    width: '1px', 
+                    height: '40px', 
+                    background: 'rgba(148, 163, 184, 0.3)' 
+                  }}></div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ 
+                      fontSize: '12px', 
+                      color: '#94a3b8', 
+                      marginBottom: '6px',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px'
+                    }}>
+                      Active Filters
+                    </div>
+                    <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                      {searchText && (
+                        <span style={{
+                          background: 'rgba(59, 130, 246, 0.2)',
+                          border: '1px solid rgba(59, 130, 246, 0.3)',
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          fontSize: '12px',
+                          color: '#93c5fd',
+                          fontWeight: '500'
+                        }}>
+                          Search: "{searchText.length > 30 ? searchText.substring(0, 30) + '...' : searchText}"
+                        </span>
+                      )}
+                      {selectedComponent !== 'all' && (
+                        <span style={{
+                          background: 'rgba(16, 185, 129, 0.2)',
+                          border: '1px solid rgba(16, 185, 129, 0.3)',
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          fontSize: '12px',
+                          color: '#6ee7b7',
+                          fontWeight: '500'
+                        }}>
+                          Component: {selectedComponent}
+                        </span>
+                      )}
+                      {selectedStatuses.length > 0 && (
+                        <span style={{
+                          background: 'rgba(245, 158, 11, 0.2)',
+                          border: '1px solid rgba(245, 158, 11, 0.3)',
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          fontSize: '12px',
+                          color: '#fbbf24',
+                          fontWeight: '500'
+                        }}>
+                          Status: {selectedStatuses.join(', ')}
+                        </span>
+                      )}
+                      {selectedProgramType !== 'all' && (
+                        <span style={{
+                          background: 'rgba(139, 92, 246, 0.2)',
+                          border: '1px solid rgba(139, 92, 246, 0.3)',
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          fontSize: '12px',
+                          color: '#c4b5fd',
+                          fontWeight: '500'
+                        }}>
+                          Program: {selectedProgramType}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )}
