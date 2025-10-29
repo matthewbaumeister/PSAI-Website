@@ -867,7 +867,8 @@ export default function OpportunityPage() {
         )}
 
         {/* Consolidated Instructions Section - Collapsible */}
-        {hasInstructions && (
+        {/* Show if: has instructions OR is active (to show generate button) OR has instruction URLs */}
+        {(hasInstructions || isActive || data.component_instructions_download || data.solicitation_instructions_download) && (
           <div style={{ 
             background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%)',
             border: '1px solid rgba(59, 130, 246, 0.4)',
@@ -1414,7 +1415,7 @@ export default function OpportunityPage() {
                     </button>
                   </div>
                 ) : (
-                  // Show plain text for non-active opportunities
+                  // Show plain text for non-active opportunities (or message if none available)
                   <div style={{ 
                     background: 'rgba(15, 23, 42, 0.6)',
                     border: '1px solid rgba(71, 85, 105, 0.4)',
@@ -1423,17 +1424,25 @@ export default function OpportunityPage() {
                     maxHeight: '600px',
                     overflowY: 'auto'
                   }}>
-                    <pre style={{ 
-                      whiteSpace: 'pre-wrap',
-                      wordWrap: 'break-word',
-                      margin: 0,
-                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
-                      fontSize: '13px',
-                      lineHeight: '1.8',
-                      color: '#cbd5e1'
-                    }}>
-                      {data.instructions_plain_text}
-                    </pre>
+                    {data.instructions_plain_text ? (
+                      <pre style={{ 
+                        whiteSpace: 'pre-wrap',
+                        wordWrap: 'break-word',
+                        margin: 0,
+                        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                        fontSize: '13px',
+                        lineHeight: '1.8',
+                        color: '#cbd5e1'
+                      }}>
+                        {data.instructions_plain_text}
+                      </pre>
+                    ) : (
+                      <p style={{ color: '#94a3b8', fontSize: '14px', textAlign: 'center', margin: 0 }}>
+                        No consolidated instructions available for this opportunity.
+                        {(data.component_instructions_download || data.solicitation_instructions_download) && 
+                          ' Please refer to the original source documents above.'}
+                      </p>
+                    )}
                   </div>
                 )}
 
