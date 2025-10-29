@@ -1357,163 +1357,243 @@ export default function OpportunityPage() {
                           {analysis.quick_reference && analysis.quick_reference.length > 0 && (
                             <div style={{ marginBottom: '28px' }}>
                               <h4 style={{ 
-                                color: '#f87171', 
+                                color: '#60a5fa', 
                                 fontSize: '18px', 
                                 fontWeight: '700', 
-                                marginBottom: '16px'
+                                marginBottom: '16px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px'
                               }}>
-                                ❌ Conflicts Detected ({analysis.conflicts_detected.length})
+                                 Quick Reference
                               </h4>
-                              {analysis.conflicts_detected.map((conflict, index) => (
-                                <div 
-                                  key={index}
-                                  style={{
-                                    padding: '18px',
-                                    background: 'rgba(239, 68, 68, 0.1)',
-                                    border: '1px solid rgba(239, 68, 68, 0.3)',
-                                    borderRadius: '8px',
-                                    marginBottom: '14px'
-                                  }}
-                                >
-                                  <h5 style={{ color: '#fca5a5', fontSize: '15px', fontWeight: '700', margin: '0 0 12px 0' }}>
-                                    {conflict.topic}
-                                  </h5>
-                                  <div style={{ marginBottom: '10px' }}>
-                                    <span style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '600' }}>Component says:</span>
-                                    <p style={{ color: '#fecaca', fontSize: '14px', margin: '4px 0', fontStyle: 'italic' }}>
-                                      "{conflict.component_says}"
-                                    </p>
-                                    <span style={{ color: '#7c2d12', fontSize: '12px' }}>{conflict.component_citation}</span>
+                              <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
+                                Fast lookup for key submission requirements.
+                              </p>
+                              <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                                gap: '12px'
+                              }}>
+                                {analysis.quick_reference.map((item, index) => (
+                                  <div 
+                                    key={index}
+                                    style={{
+                                      padding: '14px',
+                                      background: 'rgba(59, 130, 246, 0.08)',
+                                      border: '1px solid rgba(59, 130, 246, 0.25)',
+                                      borderRadius: '6px'
+                                    }}
+                                  >
+                                    <div style={{ fontSize: '12px', fontWeight: '600', color: '#94a3b8', marginBottom: '6px', textTransform: 'uppercase' }}>
+                                      {item.category}
+                                    </div>
+                                    <div style={{ color: '#93c5fd', fontSize: '13px', fontWeight: '600', marginBottom: '4px' }}>
+                                      {item.item}
+                                    </div>
+                                    <div style={{ color: '#e2e8f0', fontSize: '16px', fontWeight: '700', marginBottom: '8px' }}>
+                                      {item.value}
+                                    </div>
+                                    <div style={{ fontSize: '12px', color: '#64748b' }}>
+                                      {item.citation}
+                                    </div>
                                   </div>
-                                  <div style={{ marginBottom: '10px' }}>
-                                    <span style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '600' }}>BAA says:</span>
-                                    <p style={{ color: '#fecaca', fontSize: '14px', margin: '4px 0', fontStyle: 'italic' }}>
-                                      "{conflict.baa_says}"
-                                    </p>
-                                    <span style={{ color: '#7c2d12', fontSize: '12px' }}>{conflict.baa_citation}</span>
-                                  </div>
-                                  <div style={{
-                                    padding: '12px',
-                                    background: 'rgba(34, 197, 94, 0.15)',
-                                    borderRadius: '6px',
-                                    marginTop: '12px'
-                                  }}>
-                                    <span style={{ color: '#86efac', fontSize: '13px', fontWeight: '600' }}>Resolution:</span>
-                                    <p style={{ color: '#bbf7d0', fontSize: '14px', margin: '4px 0 0 0' }}>
-                                      {conflict.resolution}
-                                    </p>
-                                    <span style={{
-                                      display: 'inline-block',
-                                      marginTop: '8px',
-                                      padding: '4px 10px',
-                                      background: 'rgba(34, 197, 94, 0.3)',
-                                      borderRadius: '4px',
-                                      fontSize: '12px',
-                                      color: '#4ade80',
-                                      fontWeight: '700'
-                                    }}>
-                                      {conflict.which_supersedes} Supersedes
-                                    </span>
-                                  </div>
-                                </div>
-                              ))}
+                                ))}
                             </div>
                           )}
 
-                          {/* Compliance Checklist */}
-                          {analysis.compliance_checklist && analysis.compliance_checklist.length > 0 && (
+                          {/* Volume-by-Volume Submission Guide */}
+                          {analysis.volumes && analysis.volumes.length > 0 && (
                             <div>
                               <h4 style={{ 
                                 color: '#60a5fa', 
                                 fontSize: '18px', 
                                 fontWeight: '700', 
-                                marginBottom: '16px'
+                                marginBottom: '8px'
                               }}>
-                                ✅ Compliance Checklist ({analysis.compliance_checklist.length} requirements)
+                                 Submission Guide by Volume
                               </h4>
-                              {Array.from(new Set(analysis.compliance_checklist.map(item => item.volume)))
-                                .sort()
-                                .map((volume) => (
-                                  <div key={volume} style={{ marginBottom: '24px' }}>
-                                    <h5 style={{ 
-                                      color: '#93c5fd', 
-                                      fontSize: '16px', 
-                                      fontWeight: '700', 
-                                      marginBottom: '14px',
-                                      paddingBottom: '10px',
-                                      borderBottom: '2px solid rgba(59, 130, 246, 0.3)'
-                                    }}>
-                                      {volume}
-                                    </h5>
-                                    {analysis.compliance_checklist
-                                      .filter(item => item.volume === volume)
-                                      .map((item, index) => (
-                                        <div 
-                                          key={index}
-                                          style={{
-                                            padding: '14px',
-                                            background: 'rgba(59, 130, 246, 0.08)',
-                                            border: '1px solid rgba(59, 130, 246, 0.25)',
-                                            borderRadius: '6px',
-                                            marginBottom: '10px'
-                                          }}
-                                        >
-                                          <div style={{ display: 'flex', alignItems: 'start', gap: '12px' }}>
-                                            <span style={{
-                                              width: '22px',
-                                              height: '22px',
-                                              borderRadius: '4px',
-                                              border: '2px solid rgba(59, 130, 246, 0.6)',
-                                              flexShrink: 0,
-                                              marginTop: '2px'
-                                            }} />
-                                            <div style={{ flex: 1 }}>
-                                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                                                <span style={{ color: '#93c5fd', fontSize: '14px', fontWeight: '600' }}>
-                                                  {item.section}
+                              <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '24px' }}>
+                                Complete requirements for each volume of your proposal. All superseding rules have been applied.
+                              </p>
+                              {analysis.volumes.map((volume, volumeIndex) => (
+                                  <div key={volumeIndex} style={{ 
+                                    marginBottom: '32px',
+                                    padding: '24px',
+                                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%)',
+                                    border: '1px solid rgba(59, 130, 246, 0.3)',
+                                    borderRadius: '12px'
+                                  }}>
+                                    {/* Volume Header */}
+                                    <div style={{ marginBottom: '20px' }}>
+                                      <h5 style={{ 
+                                        color: '#93c5fd', 
+                                        fontSize: '20px', 
+                                        fontWeight: '700', 
+                                        marginBottom: '8px'
+                                      }}>
+                                        {volume.volume_number}: {volume.volume_title}
+                                      </h5>
+                                      {volume.page_limit && (
+                                        <div style={{ 
+                                          display: 'inline-block',
+                                          padding: '4px 12px',
+                                          background: 'rgba(251, 191, 36, 0.2)',
+                                          border: '1px solid rgba(251, 191, 36, 0.4)',
+                                          borderRadius: '4px',
+                                          fontSize: '13px',
+                                          fontWeight: '600',
+                                          color: '#fbbf24',
+                                          marginBottom: '12px'
+                                        }}>
+                                           Page Limit: {volume.page_limit}
+                                        </div>
+                                      )}
+                                      <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6', marginTop: '12px' }}>
+                                        {volume.description}
+                                      </p>
+                                    </div>
+
+                                    {/* Format Requirements */}
+                                    {volume.format_requirements && volume.format_requirements.length > 0 && (
+                                      <div style={{ marginBottom: '20px' }}>
+                                        <h6 style={{ color: '#a78bfa', fontSize: '14px', fontWeight: '600', marginBottom: '8px' }}>
+                                          Format Requirements:
+                                        </h6>
+                                        <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                                          {volume.format_requirements.map((req, idx) => (
+                                            <li key={idx} style={{ color: '#e2e8f0', fontSize: '13px', marginBottom: '4px' }}>
+                                              {req}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    )}
+
+                                    {/* Required Sections */}
+                                    {volume.required_sections && volume.required_sections.length > 0 && (
+                                      <div style={{ marginBottom: '20px' }}>
+                                        <h6 style={{ color: '#a78bfa', fontSize: '14px', fontWeight: '600', marginBottom: '12px' }}>
+                                          Required Sections:
+                                        </h6>
+                                        {volume.required_sections.map((section, sectionIndex) => (
+                                          <div 
+                                            key={sectionIndex}
+                                            style={{
+                                              padding: '16px',
+                                              background: 'rgba(15, 23, 42, 0.4)',
+                                              border: '1px solid rgba(59, 130, 246, 0.2)',
+                                              borderRadius: '8px',
+                                              marginBottom: '12px'
+                                            }}
+                                          >
+                                            {/* Section Header */}
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                                              <span style={{
+                                                padding: '3px 8px',
+                                                background: section.priority === 'Critical' 
+                                                  ? 'rgba(239, 68, 68, 0.3)'
+                                                  : section.priority === 'Required'
+                                                  ? 'rgba(59, 130, 246, 0.3)'
+                                                  : 'rgba(100, 116, 139, 0.3)',
+                                                borderRadius: '4px',
+                                                fontSize: '11px',
+                                                fontWeight: '700',
+                                                color: section.priority === 'Critical'
+                                                  ? '#fca5a5'
+                                                  : section.priority === 'Required'
+                                                  ? '#93c5fd'
+                                                  : '#cbd5e1',
+                                                textTransform: 'uppercase'
+                                              }}>
+                                                {section.priority}
+                                              </span>
+                                              <span style={{ color: '#93c5fd', fontSize: '15px', fontWeight: '600' }}>
+                                                {section.section_title}
+                                                {section.section_number && <span style={{ color: '#64748b', marginLeft: '6px' }}>§{section.section_number}</span>}
+                                              </span>
+                                              {section.max_pages && (
+                                                <span style={{ color: '#fbbf24', fontSize: '12px', marginLeft: 'auto' }}>
+                                                  {section.max_pages}
                                                 </span>
-                                                <span style={{
-                                                  padding: '3px 8px',
-                                                  background: item.priority === 'Critical' 
-                                                    ? 'rgba(239, 68, 68, 0.3)'
-                                                    : item.priority === 'Required'
-                                                    ? 'rgba(59, 130, 246, 0.3)'
-                                                    : 'rgba(100, 116, 139, 0.3)',
-                                                  borderRadius: '4px',
-                                                  fontSize: '11px',
-                                                  fontWeight: '700',
-                                                  color: item.priority === 'Critical'
-                                                    ? '#fca5a5'
-                                                    : item.priority === 'Required'
-                                                    ? '#93c5fd'
-                                                    : '#cbd5e1',
-                                                  textTransform: 'uppercase'
-                                                }}>
-                                                  {item.priority}
-                                                </span>
+                                              )}
+                                            </div>
+
+                                            {/* Section Description */}
+                                            <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '12px', lineHeight: '1.6' }}>
+                                              {section.description}
+                                            </p>
+
+                                            {/* Requirements List */}
+                                            {section.requirements && section.requirements.length > 0 && (
+                                              <div style={{ marginBottom: '12px' }}>
+                                                <div style={{ fontSize: '13px', fontWeight: '600', color: '#a78bfa', marginBottom: '8px' }}>
+                                                  Requirements:
+                                                </div>
+                                                <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                                                  {section.requirements.map((req, reqIdx) => (
+                                                    <li key={reqIdx} style={{ color: '#e2e8f0', fontSize: '13px', marginBottom: '6px', lineHeight: '1.5' }}>
+                                                      {req}
+                                                    </li>
+                                                  ))}
+                                                </ul>
                                               </div>
-                                              <p style={{ color: '#e2e8f0', fontSize: '14px', margin: '0 0 10px 0', lineHeight: '1.6' }}>
-                                                {item.requirement}
-                                              </p>
-                                              <div style={{ fontSize: '13px', color: '#64748b' }}>
-                                                <span>Source: <strong style={{ color: '#94a3b8' }}>{item.source_document}</strong></span>
-                                                <span style={{ margin: '0 8px' }}>•</span>
-                                                <span>Citation: {item.citation}</span>
+                                            )}
+
+                                            {/* Citation & Formatting Notes */}
+                                            <div style={{ fontSize: '12px', color: '#64748b', paddingTop: '8px', borderTop: '1px solid rgba(71, 85, 105, 0.3)' }}>
+                                              <div style={{ marginBottom: '4px' }}>
+                                                <strong>Citation:</strong> {section.citation}
                                               </div>
-                                              {item.notes && (
-                                                <p style={{ 
-                                                  color: '#fbbf24', 
-                                                  fontSize: '13px', 
-                                                  margin: '8px 0 0 0',
-                                                  fontStyle: 'italic'
-                                                }}>
-                                                  Note: {item.notes}
-                                                </p>
+                                              {section.formatting_notes && section.formatting_notes.length > 0 && (
+                                                <div>
+                                                  <strong>Formatting:</strong> {section.formatting_notes.join('; ')}
+                                                </div>
                                               )}
                                             </div>
                                           </div>
+                                        ))}
+                                      </div>
+                                    )}
+
+                                    {/* Submission Instructions */}
+                                    {volume.submission_instructions && (
+                                      <div style={{ 
+                                        padding: '12px',
+                                        background: 'rgba(34, 197, 94, 0.1)',
+                                        border: '1px solid rgba(34, 197, 94, 0.3)',
+                                        borderRadius: '6px',
+                                        marginBottom: '16px'
+                                      }}>
+                                        <div style={{ fontSize: '13px', fontWeight: '600', color: '#86efac', marginBottom: '6px' }}>
+                                          Submission:
                                         </div>
-                                      ))}
+                                        <p style={{ color: '#bbf7d0', fontSize: '13px', margin: 0 }}>
+                                          {volume.submission_instructions}
+                                        </p>
+                                      </div>
+                                    )}
+
+                                    {/* Important Notes */}
+                                    {volume.important_notes && volume.important_notes.length > 0 && (
+                                      <div style={{ 
+                                        padding: '12px',
+                                        background: 'rgba(251, 191, 36, 0.1)',
+                                        border: '1px solid rgba(251, 191, 36, 0.3)',
+                                        borderRadius: '6px'
+                                      }}>
+                                        <div style={{ fontSize: '13px', fontWeight: '600', color: '#fbbf24', marginBottom: '6px' }}>
+                                          Important Notes:
+                                        </div>
+                                        <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                                          {volume.important_notes.map((note, noteIdx) => (
+                                            <li key={noteIdx} style={{ color: '#fde68a', fontSize: '13px', marginBottom: '4px' }}>
+                                              {note}
+                                            </li>
+                                          ))}
+                                        </ul>
+                                      </div>
+                                    )}
                                   </div>
                                 ))}
                             </div>
@@ -1529,10 +1609,10 @@ export default function OpportunityPage() {
                               borderLeft: '3px solid rgba(100, 116, 139, 0.5)'
                             }}>
                               <p style={{ color: '#94a3b8', fontSize: '12px', margin: 0 }}>
-                                Analyzed with {analysis.analysis_metadata.model_used} • 
+                                 Analyzed with {analysis.analysis_metadata.model_used} • 
                                 {' '}{new Date(analysis.analysis_metadata.analyzed_at).toLocaleString()} • 
-                                {' '}{analysis.analysis_metadata.total_requirements_found} requirements found • 
-                                {' '}{analysis.analysis_metadata.conflicts_found} conflicts detected
+                                {' '}{analysis.analysis_metadata.total_volumes} volumes • 
+                                {' '}{analysis.analysis_metadata.total_requirements} total requirements
                               </p>
                             </div>
                           )}
