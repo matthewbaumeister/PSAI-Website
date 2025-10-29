@@ -72,6 +72,28 @@ export interface AnalysisMetadata {
 
 /**
  * Analyze instruction documents using GPT-4o-mini
+ * 
+ * CAPACITY NOTES:
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * - GPT-4o-mini context window: 128K tokens (~500K characters)
+ * - Current limit: 100K chars per doc = 200K total = ~50K tokens
+ * - This uses only ~40% of available capacity
+ * - Handles documents up to ~40 pages each (80 pages total analyzed)
+ * - Response needs ~4K tokens, system prompt ~4K tokens
+ * - Total usage: ~58K / 128K tokens (45% capacity)
+ * 
+ * FUTURE EXPANSION (if needed for 100+ page documents):
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * Could implement chunking strategy:
+ * 1. Analyze main body + appendixes separately
+ * 2. Merge results with conflict detection
+ * 3. Cost: 2x API calls per opportunity (~$0.02 instead of ~$0.01)
+ * 
+ * COST ESTIMATES:
+ * ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ * GPT-4o-mini pricing: $0.150 per 1M input tokens, $0.600 per 1M output
+ * - Current (50K input + 4K output): ~$0.0099 per opportunity
+ * - With chunking (2x calls): ~$0.0198 per opportunity
  */
 export async function analyzeInstructionDocuments(
   componentText: string,
@@ -201,15 +223,16 @@ function buildAnalysisPrompt(
   }
 ): string {
   
-  // Truncate if needed (GPT-4o-mini has 128K context window)
-  // Allow up to 60K chars per doc = ~120K total (leaves room for response)
-  const maxLength = 60000;
+  // Truncate if needed (GPT-4o-mini has 128K token context = ~500K chars capacity)
+  // Allow up to 100K chars per doc = ~200K total = ~50K tokens (only 40% of capacity)
+  // This covers documents up to ~40 pages each (80 pages total)
+  const maxLength = 100000;
   const truncatedComponent = componentText.length > maxLength 
-    ? componentText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES - APPENDIXES MAY BE CUT OFF]'
+    ? componentText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES - SOME APPENDIXES MAY BE CUT OFF]'
     : componentText;
   
   const truncatedBaa = baaText.length > maxLength
-    ? baaText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES - APPENDIXES MAY BE CUT OFF]'
+    ? baaText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES - SOME APPENDIXES MAY BE CUT OFF]'
     : baaText;
 
   return `Analyze these SBIR instruction documents for:
