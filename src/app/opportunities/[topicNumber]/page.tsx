@@ -1233,6 +1233,15 @@ export default function OpportunityPage() {
                 )}
 
                 {/* AI-Generated Analysis or Generate Button */}
+                {/* Temporary DEBUG */}
+                <div style={{ padding: '16px', background: 'rgba(255, 0, 0, 0.1)', border: '1px solid red', borderRadius: '8px', marginBottom: '16px', color: '#fff', fontSize: '12px' }}>
+                  DEBUG INFO:<br/>
+                  • status: {data.status || 'null'}<br/>
+                  • isActive: {isActive ? 'TRUE' : 'FALSE'}<br/>
+                  • hasChecklist: {data.instructions_checklist ? 'TRUE' : 'FALSE'}<br/>
+                  • hasInstructionURLs: {(data.component_instructions_download || data.solicitation_instructions_download) ? 'TRUE' : 'FALSE'}<br/>
+                </div>
+                
                 {data.instructions_checklist ? (
                   // Show LLM-generated content if it exists
                   <div>
