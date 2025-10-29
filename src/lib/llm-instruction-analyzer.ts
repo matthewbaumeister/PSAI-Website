@@ -26,39 +26,46 @@ function getOpenAIClient(): OpenAI {
 }
 
 export interface InstructionAnalysisResult {
-  superseding_notes: SupersedingNote[];
-  compliance_checklist: ComplianceChecklistItem[];
-  conflicts_detected: ConflictDetection[];
+  volumes: VolumeGuide[];
+  critical_notes: CriticalNote[];
+  quick_reference: QuickReferenceItem[];
   analysis_metadata: AnalysisMetadata;
 }
 
-export interface SupersedingNote {
-  category: string;
-  rule: string;
-  superseding_document: 'Component' | 'BAA' | 'Both Agree';
-  component_reference?: string;
-  baa_reference?: string;
-  explanation: string;
+export interface VolumeGuide {
+  volume_number: string;
+  volume_title: string;
+  description: string;
+  page_limit?: string;
+  format_requirements: string[];
+  required_sections: RequiredSection[];
+  submission_instructions: string;
+  important_notes: string[];
 }
 
-export interface ComplianceChecklistItem {
-  volume: string;
-  section: string;
-  requirement: string;
-  source_document: 'Component' | 'BAA' | 'Both';
+export interface RequiredSection {
+  section_title: string;
+  section_number?: string;
+  description: string;
+  requirements: string[];
   citation: string;
   priority: 'Critical' | 'Required' | 'Recommended';
-  notes?: string;
+  max_pages?: string;
+  formatting_notes?: string[];
 }
 
-export interface ConflictDetection {
-  topic: string;
-  component_says: string;
-  component_citation: string;
-  baa_says: string;
-  baa_citation: string;
-  resolution: string;
-  which_supersedes: 'Component' | 'BAA' | 'Ambiguous';
+export interface CriticalNote {
+  category: string;
+  note: string;
+  citation: string;
+  applies_to: string[];
+}
+
+export interface QuickReferenceItem {
+  category: string;
+  item: string;
+  value: string;
+  citation: string;
 }
 
 export interface AnalysisMetadata {
@@ -66,8 +73,8 @@ export interface AnalysisMetadata {
   model_used: string;
   component_doc_length: number;
   baa_doc_length: number;
-  total_requirements_found: number;
-  conflicts_found: number;
+  total_volumes: number;
+  total_requirements: number;
 }
 
 /**
@@ -139,8 +146,10 @@ export async function analyzeInstructionDocuments(
       model_used: 'gpt-4o-mini',
       component_doc_length: componentText.length,
       baa_doc_length: baaText.length,
-      total_requirements_found: result.compliance_checklist.length,
-      conflicts_found: result.conflicts_detected.length,
+      total_volumes: result.volumes.length,
+      total_requirements: result.volumes.reduce((sum, vol) => 
+        sum + vol.required_sections.reduce((secSum, sec) => secSum + sec.requirements.length, 0), 0
+      ),
     };
 
     return result;
@@ -154,61 +163,71 @@ export async function analyzeInstructionDocuments(
 /**
  * System prompt that defines the AI's role and output format
  */
-const SYSTEM_PROMPT = `You are an expert SBIR/STTR proposal compliance analyst. Your job is to analyze instruction documents from two sources:
-1. Component-specific instructions (e.g., Army, Navy, Air Force)
-2. BAA/Solicitation-level instructions
+const SYSTEM_PROMPT = `You are an expert SBIR/STTR proposal writer creating a comprehensive submission guide. Your job is to analyze Component and BAA instruction documents and produce a SINGLE, ACTIONABLE guide that someone can follow to write their proposal.
 
-Your analysis must:
-- Identify which document supersedes the other for each requirement
-- Extract all compliance requirements with precise citations
-- Detect conflicts and resolve them based on superseding language
-- Provide a structured compliance checklist organized by volume
-- Include section numbers and page references for all citations
+CRITICAL RULES:
+1. When Component and BAA conflict, APPLY the superseding rule and show ONLY the correct requirement
+2. Extract EVERY requirement with full explanatory text (not just summaries)
+3. Organize by Volume with complete descriptions of what goes in each volume
+4. Include ALL formatting requirements, page limits, section orders, etc.
+5. Cite EVERYTHING with section and page references
+6. Make it prescriptive ("You must do X") not analytical ("Component says X, BAA says Y")
 
-Output ONLY valid JSON matching this exact structure:
+Output ONLY valid JSON matching this EXACT structure:
 {
-  "superseding_notes": [
+  "volumes": [
     {
-      "category": "string",
-      "rule": "string",
-      "superseding_document": "Component|BAA|Both Agree",
-      "component_reference": "string (optional)",
-      "baa_reference": "string (optional)",
-      "explanation": "string"
+      "volume_number": "Volume 1",
+      "volume_title": "Proposal Cover Sheet",
+      "description": "Full description of this volume's purpose and contents",
+      "page_limit": "1 page" or null,
+      "format_requirements": ["Single PDF", "Must include all graphics", "12pt font minimum"],
+      "required_sections": [
+        {
+          "section_title": "Technical Abstract",
+          "section_number": "1.1",
+          "description": "Full description of what this section must contain",
+          "requirements": [
+            "Must describe the proposed R&D project",
+            "Must include anticipated benefits",
+            "Must discuss potential commercial applications",
+            "Limit to 200 words"
+          ],
+          "citation": "Component §3.7(a), p.9",
+          "priority": "Critical",
+          "max_pages": "0.5 pages",
+          "formatting_notes": ["Include as part of cover sheet", "No separate page"]
+        }
+      ],
+      "submission_instructions": "Submit via DSIP by close date",
+      "important_notes": ["This volume is required for all proposals", "Must be signed by authorized official"]
     }
   ],
-  "compliance_checklist": [
+  "critical_notes": [
     {
-      "volume": "string (e.g., 'Volume 1', 'Volume 2')",
-      "section": "string (e.g., '1.1 Cover Sheet')",
-      "requirement": "string (clear, actionable requirement)",
-      "source_document": "Component|BAA|Both",
-      "citation": "string (e.g., 'Component §2.1, p.5')",
-      "priority": "Critical|Required|Recommended",
-      "notes": "string (optional, for superseding info)"
+      "category": "Superseding Rules",
+      "note": "Component instructions take precedence for technical volume page limits. Use 7 pages, not 15.",
+      "citation": "Component §3.7(b)(2), p.10",
+      "applies_to": ["Volume 2"]
     }
   ],
-  "conflicts_detected": [
+  "quick_reference": [
     {
-      "topic": "string",
-      "component_says": "string",
-      "component_citation": "string",
-      "baa_says": "string",
-      "baa_citation": "string",
-      "resolution": "string",
-      "which_supersedes": "Component|BAA|Ambiguous"
+      "category": "Page Limits",
+      "item": "Technical Volume",
+      "value": "7 pages maximum",
+      "citation": "Component §3.7(b)(2), p.10"
     }
   ]
 }
 
-Common superseding patterns to look for:
-- "Component instructions supersede BAA for..."
-- "Except as noted in Component guidance..."
-- "Follows Component-specific requirements..."
-- "BAA requirements take precedence over..."
-- "Unless otherwise specified in..."
+When conflicts exist:
+- Apply the superseding rule
+- Show ONLY the correct requirement
+- Add a critical_note explaining the superseding rule
+- Add to quick_reference for easy lookup
 
-Be thorough, precise, and cite everything with section/page numbers.`;
+Be comprehensive - this guide should be the ONLY document needed to write the proposal.`;
 
 /**
  * Build the user prompt with context
@@ -235,7 +254,7 @@ function buildAnalysisPrompt(
     ? baaText.substring(0, maxLength) + '\n\n[TRUNCATED - DOCUMENT CONTINUES - SOME APPENDIXES MAY BE CUT OFF]'
     : baaText;
 
-  return `Analyze these SBIR instruction documents for:
+  return `Create a comprehensive SBIR proposal submission guide for:
 
 OPPORTUNITY CONTEXT:
 - Topic: ${opportunityContext.topic_number}
@@ -250,118 +269,98 @@ BAA/SOLICITATION INSTRUCTIONS:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ${truncatedBaa}
 
-ANALYSIS TASKS:
-1. Extract ALL submission requirements organized by volume (Volume 1, Volume 2, etc.)
-2. For EACH requirement, cite the exact section and page from the source document
-3. Identify which document supersedes for each requirement (look for explicit superseding language)
-4. Detect conflicts where Component and BAA say different things
-5. Resolve conflicts and explain which document takes precedence
-6. When requirements reference appendixes or attachments, NOTE THIS in the requirement and cite the appendix reference
+YOUR TASK:
+Create a complete, prescriptive submission guide organized by volume. For EACH volume:
 
-Focus on:
-- Page limits
-- Format requirements (PDF, font, margins)
-- Required sections and their order
-- Budget/cost proposal requirements
-- Administrative requirements (cover sheets, forms)
-- Technical content requirements
-- Submission deadlines and methods
-- Appendix references (e.g., "See Appendix A", "Attachment 1", etc.)
+1. **Full Description**: What is this volume? What's its purpose?
+2. **Page Limits**: Exact page limits (apply superseding rules if conflict exists)
+3. **Format Requirements**: PDF specs, fonts, margins, graphics handling
+4. **Required Sections**: For EACH section in the volume:
+   - Section title and number
+   - Full description of what must be included
+   - Every single requirement (with full text, not summaries)
+   - Exact citation (section §, page number)
+   - Priority level (Critical/Required/Recommended)
+   - Page allocation if specified
+   - Any formatting notes specific to that section
+5. **Submission Instructions**: How and when to submit
+6. **Important Notes**: Critical warnings, superseding rules applied, special instructions
 
-IMPORTANT NOTES FOR APPENDIXES:
-- If a requirement references an appendix or attachment, include this in the requirement text
-- Add a note: "Refer to original document for complete appendix details"
-- Cite the appendix reference location (e.g., "References Appendix A, §4.2, p.15")
+RESOLVE CONFLICTS AUTOMATICALLY:
+- When Component and BAA conflict, APPLY the superseding rule
+- Show ONLY the CORRECT requirement (not both versions)
+- Add a "critical_note" explaining which rule was applied and why
+- Add to "quick_reference" for easy lookup
+
+EXTRACT EVERYTHING:
+- All volumes (typically 1-7 or more)
+- All sections within each volume (with descriptions AND requirements)
+- All formatting rules
+- All submission requirements
+- All administrative requirements
+- All technical content requirements
+- All appendix references (note when appendixes are referenced)
+
+FORMATTING:
+- Write requirements as actions: "You must...", "Include...", "Provide..."
+- Be specific and detailed
+- Include word/page counts
+- Include all formatting specifications
+- Cite every single requirement
+
+The output should be so comprehensive that someone could write their entire proposal using ONLY this guide.
 
 Return ONLY the JSON structure defined in the system prompt. No additional text.`;
 }
 
 /**
- * Format the analysis result for display in the UI
+ * Format the analysis result for display in the UI (simplified - UI components handle rendering)
  */
 export function formatAnalysisForDisplay(result: InstructionAnalysisResult): string {
-  let output = '';
-
-  // Superseding notes
-  if (result.superseding_notes.length > 0) {
-    output += '📌 SUPERSEDING GUIDANCE NOTES\n';
-    output += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  let output = '📋 COMPREHENSIVE SUBMISSION GUIDE\n';
+  output += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  
+  // Volumes
+  result.volumes.forEach((volume, index) => {
+    output += `${volume.volume_number}: ${volume.volume_title}\n`;
+    output += `Page Limit: ${volume.page_limit || 'Not specified'}\n`;
+    output += `\n${volume.description}\n\n`;
     
-    const componentSupersedes = result.superseding_notes.filter(n => n.superseding_document === 'Component');
-    const baaSupersedes = result.superseding_notes.filter(n => n.superseding_document === 'BAA');
-    const bothAgree = result.superseding_notes.filter(n => n.superseding_document === 'Both Agree');
-    
-    if (componentSupersedes.length > 0) {
-      output += '⚠️ Component instructions supersede BAA for:\n';
-      componentSupersedes.forEach(note => {
-        output += `   • ${note.rule}\n`;
-        if (note.component_reference) output += `     Source: ${note.component_reference}\n`;
-        if (note.explanation) output += `     Note: ${note.explanation}\n`;
-      });
+    if (volume.format_requirements.length > 0) {
+      output += 'Format Requirements:\n';
+      volume.format_requirements.forEach(req => output += `  • ${req}\n`);
       output += '\n';
     }
     
-    if (baaSupersedes.length > 0) {
-      output += '⚠️ BAA instructions supersede Component for:\n';
-      baaSupersedes.forEach(note => {
-        output += `   • ${note.rule}\n`;
-        if (note.baa_reference) output += `     Source: ${note.baa_reference}\n`;
-        if (note.explanation) output += `     Note: ${note.explanation}\n`;
-      });
-      output += '\n';
-    }
-    
-    if (bothAgree.length > 0) {
-      output += '✅ Both documents agree on:\n';
-      bothAgree.forEach(note => {
-        output += `   • ${note.rule}\n`;
-      });
-      output += '\n';
-    }
-  }
-
-  // Conflicts
-  if (result.conflicts_detected.length > 0) {
-    output += '\n⚠️ CONFLICTS DETECTED\n';
-    output += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
-    result.conflicts_detected.forEach((conflict, index) => {
-      output += `${index + 1}. ${conflict.topic}\n`;
-      output += `   Component says: "${conflict.component_says}" (${conflict.component_citation})\n`;
-      output += `   BAA says: "${conflict.baa_says}" (${conflict.baa_citation})\n`;
-      output += `   Resolution: ${conflict.resolution}\n`;
-      output += `   Superseding: ${conflict.which_supersedes}\n\n`;
+    output += 'Required Sections:\n';
+    volume.required_sections.forEach(section => {
+      const priorityIcon = section.priority === 'Critical' ? '🔴' : section.priority === 'Required' ? '🔵' : '⚪';
+      output += `\n${priorityIcon} ${section.section_title}${section.section_number ? ` (§${section.section_number})` : ''}\n`;
+      output += `   ${section.description}\n`;
+      section.requirements.forEach(req => output += `   • ${req}\n`);
+      output += `   Citation: ${section.citation}\n`;
     });
-  }
+    
+    output += '\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  });
 
-  // Compliance checklist
-  if (result.compliance_checklist.length > 0) {
-    output += '\n🔗 COMPLIANCE CHECKLIST\n';
+  // Critical notes
+  if (result.critical_notes.length > 0) {
+    output += '\n⚠️  CRITICAL NOTES\n';
     output += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
-    
-    // Group by volume
-    const volumes = Array.from(new Set(result.compliance_checklist.map(item => item.volume)));
-    volumes.sort();
-    
-    volumes.forEach(volume => {
-      output += `${volume}:\n`;
-      const items = result.compliance_checklist.filter(item => item.volume === volume);
-      items.forEach(item => {
-        const priorityIcon = item.priority === 'Critical' ? '🔴' : item.priority === 'Required' ? '🔵' : '⚪';
-        output += `${priorityIcon} [ ] ${item.section}: ${item.requirement}\n`;
-        output += `       Source: ${item.source_document} (${item.citation})\n`;
-        if (item.notes) output += `       Note: ${item.notes}\n`;
-      });
-      output += '\n';
+    result.critical_notes.forEach(note => {
+      output += `${note.category}: ${note.note}\n`;
+      output += `Citation: ${note.citation}\n`;
+      output += `Applies to: ${note.applies_to.join(', ')}\n\n`;
     });
   }
 
   // Metadata
-  output += '\n📊 ANALYSIS METADATA\n';
-  output += '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n';
+  output += '\n📊 Analysis Metadata\n';
   output += `Generated: ${new Date(result.analysis_metadata.analyzed_at).toLocaleString()}\n`;
   output += `Model: ${result.analysis_metadata.model_used}\n`;
-  output += `Requirements Found: ${result.analysis_metadata.total_requirements_found}\n`;
-  output += `Conflicts Detected: ${result.analysis_metadata.conflicts_found}\n`;
+  output += `Total Volumes: ${result.analysis_metadata.total_volumes}\n`;
+  output += `Total Requirements: ${result.analysis_metadata.total_requirements}\n`;
 
   return output;
 }
