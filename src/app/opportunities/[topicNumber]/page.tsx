@@ -50,6 +50,17 @@ export default function OpportunityPage() {
   const [qaExpanded, setQaExpanded] = useState(false);
   const supabase = createClient();
 
+  // Scroll to Q&A section and expand it
+  const scrollToQA = () => {
+    setQaExpanded(true);
+    setTimeout(() => {
+      const qaSection = document.getElementById('qa-section');
+      if (qaSection) {
+        qaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  };
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -264,7 +275,7 @@ export default function OpportunityPage() {
               )}
               {data.topic_question_count > 0 && (
                 <button
-                  onClick={() => setQaExpanded(!qaExpanded)}
+                  onClick={scrollToQA}
                   style={{
                     background: 'rgba(59, 130, 246, 0.2)',
                     border: '1px solid rgba(59, 130, 246, 0.4)',
@@ -284,7 +295,7 @@ export default function OpportunityPage() {
                     Questions Available
                   </div>
                   <div style={{ color: '#60a5fa', fontSize: '16px', fontWeight: '600' }}>
-                    {data.topic_question_count} • Click to {qaExpanded ? 'Hide' : 'View'}
+                    {data.topic_question_count} • Click to View
                   </div>
                 </button>
               )}
@@ -623,50 +634,112 @@ export default function OpportunityPage() {
         )}
 
         {/* Q&A Section - Collapsible */}
-        {data.qa_content && qaExpanded && (
-          <div style={{ 
-            background: 'rgba(30, 41, 59, 0.6)',
-            border: '1px solid rgba(59, 130, 246, 0.6)',
-            borderRadius: '12px',
-            padding: '32px',
-            marginBottom: '32px'
-          }}>
-            <h2 style={{ 
-              color: '#e2e8f0',
-              fontSize: '24px',
-              fontWeight: '700',
-              marginBottom: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px'
-            }}>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-              Questions & Answers ({data.topic_question_count})
-            </h2>
-            <div style={{ 
-              background: 'rgba(15, 23, 42, 0.6)',
-              border: '1px solid rgba(71, 85, 105, 0.4)',
-              borderRadius: '8px',
-              padding: '24px',
-              maxHeight: '600px',
-              overflowY: 'auto'
-            }}>
-              <pre style={{ 
-                whiteSpace: 'pre-wrap',
-                wordWrap: 'break-word',
-                margin: 0,
-                fontFamily: 'system-ui, -apple-system, sans-serif',
-                fontSize: '14px',
-                lineHeight: '1.8',
-                color: '#cbd5e1'
+        {data.qa_content && (
+          <div 
+            id="qa-section"
+            style={{ 
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%)',
+              border: '1px solid rgba(59, 130, 246, 0.4)',
+              borderRadius: '12px',
+              overflow: 'hidden',
+              marginBottom: '32px'
+            }}
+          >
+            {/* Collapsible Header */}
+            <button
+              onClick={() => setQaExpanded(!qaExpanded)}
+              style={{
+                width: '100%',
+                padding: '28px 32px',
+                background: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(59, 130, 246, 0.1)'}
+              onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{
+                  padding: '12px',
+                  background: 'rgba(59, 130, 246, 0.3)',
+                  borderRadius: '8px'
+                }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#93c5fd" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                  </svg>
+                </div>
+                <div style={{ textAlign: 'left' }}>
+                  <h2 style={{ 
+                    color: '#e2e8f0',
+                    fontSize: '24px',
+                    fontWeight: '700',
+                    margin: '0 0 4px 0'
+                  }}>
+                    Questions & Answers ({data.topic_question_count})
+                  </h2>
+                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
+                    Community questions and official answers from the program office
+                  </p>
+                </div>
+              </div>
+              <div style={{
+                padding: '8px',
+                background: qaExpanded ? 'rgba(59, 130, 246, 0.3)' : 'rgba(71, 85, 105, 0.3)',
+                borderRadius: '6px',
+                transition: 'all 0.2s'
               }}>
-                {data.qa_content}
-              </pre>
-            </div>
+                <svg 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke={qaExpanded ? '#93c5fd' : '#cbd5e1'}
+                  strokeWidth="2"
+                  style={{
+                    transform: qaExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s'
+                  }}
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </div>
+            </button>
+
+            {/* Collapsible Content */}
+            {qaExpanded && (
+              <div style={{ 
+                padding: '32px',
+                borderTop: '1px solid rgba(71, 85, 105, 0.3)',
+                background: 'rgba(15, 23, 42, 0.4)'
+              }}>
+                <div style={{ 
+                  background: 'rgba(15, 23, 42, 0.6)',
+                  border: '1px solid rgba(71, 85, 105, 0.4)',
+                  borderRadius: '8px',
+                  padding: '24px',
+                  maxHeight: '600px',
+                  overflowY: 'auto'
+                }}>
+                  <pre style={{ 
+                    whiteSpace: 'pre-wrap',
+                    wordWrap: 'break-word',
+                    margin: 0,
+                    fontFamily: 'system-ui, -apple-system, sans-serif',
+                    fontSize: '14px',
+                    lineHeight: '1.8',
+                    color: '#cbd5e1'
+                  }}>
+                    {data.qa_content}
+                  </pre>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
