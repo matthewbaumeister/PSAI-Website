@@ -58,6 +58,8 @@ export default function OpportunityPage() {
   const [generatingAnalysis, setGeneratingAnalysis] = useState(false);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const [chatOpen, setChatOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // Assume true initially to prevent flash
+  const [showLoginModal, setShowLoginModal] = useState(false);
   
   // Memoize Supabase client to prevent "Multiple GoTrueClient" warnings
   const supabase = useMemo(() => createClient(), []);
@@ -172,6 +174,49 @@ export default function OpportunityPage() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [chatOpen]);
+
+  // Check authentication status
+  useEffect(() => {
+    async function checkAuth() {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        
+        if (error || !session) {
+          setIsAuthenticated(false);
+          setShowLoginModal(true);
+        } else {
+          setIsAuthenticated(true);
+          setShowLoginModal(false);
+        }
+      } catch (error) {
+        console.error('Auth check error:', error);
+        setIsAuthenticated(false);
+        setShowLoginModal(true);
+      }
+    }
+
+    // Check immediately
+    checkAuth();
+
+    // Check every 5 minutes for session expiry
+    const interval = setInterval(checkAuth, 5 * 60 * 1000);
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_OUT' || !session) {
+        setIsAuthenticated(false);
+        setShowLoginModal(true);
+      } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        setIsAuthenticated(true);
+        setShowLoginModal(false);
+      }
+    });
+
+    return () => {
+      clearInterval(interval);
+      subscription.unsubscribe();
+    };
+  }, [supabase]);
 
   if (loading) {
     return (
@@ -1831,12 +1876,152 @@ export default function OpportunityPage() {
       </div>
 
       {/* AI Chat Component */}
-      {data && (
+      {data && isAuthenticated && (
         <OpportunityChat 
           isOpen={chatOpen}
           onClose={() => setChatOpen(false)}
           opportunityData={data}
         />
+      )}
+
+      {/* Login Required Modal - Blur Overlay */}
+      {showLoginModal && (
+        <>
+          {/* Blur Backdrop */}
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.6)',
+            backdropFilter: 'blur(8px)',
+            WebkitBackdropFilter: 'blur(8px)',
+            zIndex: 9998,
+            animation: 'fadeIn 0.3s ease-out'
+          }} />
+
+          {/* Login Modal */}
+          <div style={{
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '90%',
+            maxWidth: '480px',
+            background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+            border: '2px solid rgba(239, 68, 68, 0.5)',
+            borderRadius: '16px',
+            padding: '40px 32px',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.8)',
+            zIndex: 9999,
+            animation: 'slideUp 0.3s ease-out',
+            textAlign: 'center'
+          }}>
+            {/* Lock Icon */}
+            <div style={{
+              width: '64px',
+              height: '64px',
+              margin: '0 auto 24px',
+              background: 'rgba(239, 68, 68, 0.15)',
+              border: '2px solid rgba(239, 68, 68, 0.4)',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+
+            {/* Title */}
+            <h2 style={{
+              color: '#ffffff',
+              fontSize: '24px',
+              fontWeight: '700',
+              margin: '0 0 12px 0'
+            }}>
+              Session Expired
+            </h2>
+
+            {/* Description */}
+            <p style={{
+              color: '#94a3b8',
+              fontSize: '15px',
+              lineHeight: '1.6',
+              margin: '0 0 32px 0'
+            }}>
+              Your session has expired for security reasons. Please sign in again to continue viewing this opportunity.
+            </p>
+
+            {/* Sign In Button */}
+            <Link
+              href={`/auth/login?returnUrl=${encodeURIComponent(`/opportunities/${topicNumber}`)}`}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                width: '100%',
+                padding: '14px 28px',
+                background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+                border: '1px solid rgba(239, 68, 68, 0.5)',
+                borderRadius: '8px',
+                color: '#ffffff',
+                fontSize: '16px',
+                fontWeight: '600',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                boxShadow: '0 4px 12px rgba(239, 68, 68, 0.3)'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(239, 68, 68, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.boxShadow = '0 4px 12px rgba(239, 68, 68, 0.3)';
+              }}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                <polyline points="10 17 15 12 10 7"></polyline>
+                <line x1="15" y1="12" x2="3" y2="12"></line>
+              </svg>
+              Sign In to Continue
+            </Link>
+
+            {/* Security Note */}
+            <p style={{
+              color: '#64748b',
+              fontSize: '12px',
+              margin: '20px 0 0 0'
+            }}>
+              Sessions expire after 24 hours of inactivity for your security
+            </p>
+          </div>
+
+          {/* Animations */}
+          <style jsx>{`
+            @keyframes fadeIn {
+              from { opacity: 0; }
+              to { opacity: 1; }
+            }
+            @keyframes slideUp {
+              from {
+                opacity: 0;
+                transform: translate(-50%, -45%);
+              }
+              to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+              }
+            }
+          `}</style>
+        </>
       )}
     </div>
   );
