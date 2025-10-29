@@ -253,6 +253,58 @@ export default function SharedOpportunityPage() {
           </button>
         </div>
 
+        {/* Blocked AI Chat Feature Notice */}
+        <div style={{
+          background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%)',
+          border: '1px solid rgba(139, 92, 246, 0.3)',
+          borderRadius: '12px',
+          padding: '16px 24px',
+          marginBottom: '24px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '12px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              <path d="M12 7v6"></path>
+              <circle cx="12" cy="17" r="1"></circle>
+            </svg>
+            <div>
+              <div style={{ color: '#a78bfa', fontSize: '14px', fontWeight: '600' }}>
+                AI Assistant Available with Full Access
+              </div>
+              <div style={{ color: '#cbd5e1', fontSize: '12px', marginTop: '2px' }}>
+                Ask questions about requirements, deadlines, and submission details
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={handleSignIn}
+            style={{
+              padding: '8px 16px',
+              background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+              border: '1px solid rgba(139, 92, 246, 0.4)',
+              borderRadius: '6px',
+              color: '#ffffff',
+              fontSize: '13px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)';
+            }}
+          >
+            Sign In to Use AI Chat
+          </button>
+        </div>
+
         {/* Closed Opportunity Warning Banner */}
         {isClosed && (
           <div style={{

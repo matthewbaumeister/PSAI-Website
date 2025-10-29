@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase';
 import { formatQAForDisplay } from '@/lib/qa-formatter';
 import Link from 'next/link';
 import type { InstructionAnalysisResult } from '@/lib/llm-instruction-analyzer';
+import OpportunityChat from '@/components/OpportunityChat';
 
 interface OpportunityData {
   id?: number;
@@ -56,6 +57,7 @@ export default function OpportunityPage() {
   const [phasesExpanded, setPhasesExpanded] = useState(false);
   const [generatingAnalysis, setGeneratingAnalysis] = useState(false);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
+  const [chatOpen, setChatOpen] = useState(false);
   
   // Memoize Supabase client to prevent "Multiple GoTrueClient" warnings
   const supabase = useMemo(() => createClient(), []);
@@ -153,6 +155,24 @@ export default function OpportunityPage() {
     fetchData();
   }, [topicNumber, supabase]);
 
+  // Keyboard shortcut for chat: Cmd/Ctrl + K
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Cmd+K (Mac) or Ctrl+K (Windows/Linux)
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setChatOpen(prev => !prev);
+      }
+      // Escape to close chat
+      if (e.key === 'Escape' && chatOpen) {
+        setChatOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [chatOpen]);
+
   if (loading) {
     return (
       <div style={{ 
@@ -210,38 +230,85 @@ export default function OpportunityPage() {
     }}>
       <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         
-        {/* Back to Database Link */}
-        <Link 
-          href="/admin/sbir-database"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '12px 20px',
-            background: 'rgba(59, 130, 246, 0.15)',
-            border: '1px solid rgba(59, 130, 246, 0.3)',
-            borderRadius: '8px',
-            color: '#60a5fa',
-            textDecoration: 'none',
-            fontSize: '14px',
-            fontWeight: '500',
-            marginBottom: '24px',
-            transition: 'all 0.2s'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(59, 130, 246, 0.25)';
-            e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(59, 130, 246, 0.15)';
-            e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.3)';
-          }}
-        >
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-          Back to SBIR Database
-        </Link>
+        {/* Top Navigation Bar */}
+        <div style={{ 
+          display: 'flex', 
+          gap: '12px', 
+          marginBottom: '24px',
+          flexWrap: 'wrap'
+        }}>
+          {/* Back to Database Link */}
+          <Link 
+            href="/admin/sbir-database"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px 20px',
+              background: 'rgba(59, 130, 246, 0.15)',
+              border: '1px solid rgba(59, 130, 246, 0.3)',
+              borderRadius: '8px',
+              color: '#60a5fa',
+              textDecoration: 'none',
+              fontSize: '14px',
+              fontWeight: '500',
+              transition: 'all 0.2s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(59, 130, 246, 0.25)';
+              e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(59, 130, 246, 0.15)';
+              e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+            }}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Back to SBIR Database
+          </Link>
+
+          {/* AI Chat Button */}
+          <button
+            onClick={() => setChatOpen(true)}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '12px 20px',
+              background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+              border: '1px solid rgba(139, 92, 246, 0.4)',
+              borderRadius: '8px',
+              color: '#ffffff',
+              fontSize: '14px',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              boxShadow: '0 2px 8px rgba(139, 92, 246, 0.2)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(139, 92, 246, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(139, 92, 246, 0.2)';
+            }}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            Ask AI About This Opportunity
+            <kbd style={{
+              background: 'rgba(255, 255, 255, 0.2)',
+              padding: '2px 6px',
+              borderRadius: '4px',
+              fontSize: '11px',
+              fontWeight: '500'
+            }}>⌘K</kbd>
+          </button>
+        </div>
         
         {/* Closed Opportunity Warning Banner */}
         {isClosed && (
@@ -1762,6 +1829,15 @@ export default function OpportunityPage() {
           )}
         </div>
       </div>
+
+      {/* AI Chat Component */}
+      {data && (
+        <OpportunityChat 
+          isOpen={chatOpen}
+          onClose={() => setChatOpen(false)}
+          opportunityData={data}
+        />
+      )}
     </div>
   );
 }
