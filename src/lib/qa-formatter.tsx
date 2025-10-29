@@ -3,6 +3,8 @@
  * Cleans HTML tags and formats Q&A content professionally
  */
 
+import React from 'react';
+
 interface QAPair {
   question: string;
   answer: string;
