@@ -927,13 +927,16 @@ export default function OpportunityPage() {
                     <div style={{
                       padding: '24px',
                       textAlign: 'center',
-                      background: 'rgba(251, 191, 36, 0.1)',
-                      border: '1px solid rgba(251, 191, 36, 0.3)',
+                      background: 'rgba(100, 116, 139, 0.1)',
+                      border: '1px solid rgba(100, 116, 139, 0.3)',
                       borderRadius: '8px'
                     }}>
-                      <p style={{ color: '#fde68a', fontSize: '14px', margin: 0 }}>
-                        {data.topic_question_count} question{data.topic_question_count !== 1 ? 's' : ''} recorded, but Q&A content hasn't been scraped yet.
-                        This data will be available after the next scraper run.
+                      <p style={{ color: '#cbd5e1', fontSize: '14px', margin: '0 0 8px 0' }}>
+                        DSIP reports {data.topic_question_count} question{data.topic_question_count !== 1 ? 's' : ''} for this topic, but no Q&A content is currently available.
+                      </p>
+                      <p style={{ color: '#94a3b8', fontSize: '13px', margin: 0, fontStyle: 'italic' }}>
+                        This may be due to unpublished questions, draft questions, or a data inconsistency on DSIP.
+                        Check the official DSIP page for this topic to verify Q&A availability.
                       </p>
                     </div>
                   )}

@@ -901,6 +901,14 @@ async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: st
     
     if (qaResponse.ok) {
       const qaData = await qaResponse.json();
+      const actualQACount = (qaData && Array.isArray(qaData)) ? qaData.length : 0;
+      
+      // Detect DSIP data inconsistencies (count says questions exist but API returns empty)
+      const reportedCount = detailedData.topicQuestionCount || 0;
+      if (reportedCount > 0 && actualQACount === 0) {
+        console.log(`    ⚠️  Q&A Inconsistency: DSIP reports ${reportedCount} question(s) but API returned ${actualQACount}. Likely unpublished/draft questions.`);
+      }
+      
       if (qaData && Array.isArray(qaData) && qaData.length > 0) {
         const qaFormatted: string[] = [];
         
@@ -924,12 +932,18 @@ async function fetchTopicDetails(baseUrl: string, topicId: string, topicCode: st
         }
         
         detailedData.qaContent = qaFormatted.join('\n\n');
-        console.log(`    ✓ Q&A: ${qaData.length} questions`);
+        console.log(`    ✓ Q&A: ${qaData.length} questions fetched successfully`);
+      } else if (reportedCount > 0) {
+        // Count says questions exist, but we got none - DSIP data issue
+        console.log(`    ℹ️  No Q&A content available (despite reported count of ${reportedCount})`);
       }
     }
     
   } catch (error) {
-    // Q&A fetch is optional, don't log error
+    // Q&A fetch is optional, don't log error unless count indicated questions should exist
+    if (detailedData.topicQuestionCount && detailedData.topicQuestionCount > 0) {
+      console.log(`    ⚠️  Failed to fetch Q&A (API error, but count reports ${detailedData.topicQuestionCount} questions)`);
+    }
   }
   
   return detailedData;
