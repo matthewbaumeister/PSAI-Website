@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import { mapToSupabaseColumns } from '@/lib/sbir-column-mapper-clean';
 import { smartUpsertTopics } from '@/lib/smart-upsert-logic';
+import { InstructionDocumentService } from '@/lib/instruction-document-service';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -139,12 +140,17 @@ async function scrapeAndUpdateSBIR() {
     log(` ✓ Successfully processed ${processedTopics.length} topics with full metadata`);
 
     // Step 3: Update database with smart upsert logic
-    log(` Step 3/3: Updating Supabase database with smart upsert...`);
+    log(` Step 3/4: Updating Supabase database with smart upsert...`);
     const updateResult = await smartUpsertTopics(processedTopics, {
       scraperType: 'active',
       logFn: log
     });
-    log(` Database update complete: ${updateResult.newRecords} new, ${updateResult.updatedRecords} updated, ${updateResult.preservedRecords} preserved`);
+    log(` ✓ Database update complete: ${updateResult.newRecords} new, ${updateResult.updatedRecords} updated, ${updateResult.preservedRecords} preserved`);
+    
+    // Step 4: Generate/update consolidated instructions for active opportunities
+    log(` Step 4/4: Generating consolidated instructions for active opportunities...`);
+    const instructionResult = await generateInstructionsForActiveOpportunities(log);
+    log(` ✓ Instruction generation complete: ${instructionResult.generated} generated, ${instructionResult.skipped} skipped, ${instructionResult.failed} failed`);
     
     return {
       totalTopics: topics.length,
@@ -152,6 +158,9 @@ async function scrapeAndUpdateSBIR() {
       newRecords: updateResult.newRecords,
       updatedRecords: updateResult.updatedRecords,
       preservedRecords: updateResult.preservedRecords,
+      instructionsGenerated: instructionResult.generated,
+      instructionsSkipped: instructionResult.skipped,
+      instructionsFailed: instructionResult.failed,
       timestamp: new Date().toISOString()
     };
 
@@ -159,6 +168,84 @@ async function scrapeAndUpdateSBIR() {
     log(` Scraping error: ${error instanceof Error ? error.message : String(error)}`);
     log(` Error details: ${error instanceof Error ? error.stack : String(error)}`);
     throw error;
+  }
+}
+
+/**
+ * Generate/update consolidated instructions for active opportunities
+ * Only runs for Open and Prerelease opportunities (not Closed)
+ */
+async function generateInstructionsForActiveOpportunities(log: (msg: string) => void): Promise<{
+  generated: number;
+  skipped: number;
+  failed: number;
+}> {
+  const instructionService = new InstructionDocumentService();
+  
+  try {
+    // Query active opportunities (Open/Prerelease) that have instruction URLs
+    const { data: opportunities, error } = await supabase
+      .from('sbir_final')
+      .select('id, topic_id, topic_number, status, component_instructions_download, solicitation_instructions_download, consolidated_instructions_url, instructions_generated_at')
+      .or('status.ilike.Open,status.ilike.Prerelease,status.ilike.Pre-Release,status.ilike.PreRelease')
+      .or('component_instructions_download.not.is.null,solicitation_instructions_download.not.is.null');
+
+    if (error) {
+      log(`     ⚠️ Error querying opportunities: ${error.message}`);
+      return { generated: 0, skipped: 0, failed: 0 };
+    }
+
+    if (!opportunities || opportunities.length === 0) {
+      log(`     ℹ️ No active opportunities with instruction URLs found`);
+      return { generated: 0, skipped: 0, failed: 0 };
+    }
+
+    log(`     Found ${opportunities.length} active opportunities with instruction URLs`);
+
+    let generated = 0;
+    let skipped = 0;
+    let failed = 0;
+
+    for (const opp of opportunities) {
+      try {
+        // Skip if instructions already exist and were generated recently (within 24 hours)
+        if (opp.consolidated_instructions_url && opp.instructions_generated_at) {
+          const generatedDate = new Date(opp.instructions_generated_at);
+          const hoursSince = (Date.now() - generatedDate.getTime()) / (1000 * 60 * 60);
+          
+          if (hoursSince < 24) {
+            log(`     ⏭️  ${opp.topic_number}: Skipping (generated ${Math.round(hoursSince)}h ago)`);
+            skipped++;
+            continue;
+          }
+        }
+
+        // Generate instructions
+        log(`     🔄 ${opp.topic_number}: Generating instructions...`);
+        const result = await instructionService.generateForOpportunity(opp.topic_id);
+        
+        if (result.success) {
+          log(`     ✅ ${opp.topic_number}: Instructions generated successfully`);
+          generated++;
+        } else {
+          log(`     ❌ ${opp.topic_number}: Failed - ${result.error}`);
+          failed++;
+        }
+
+        // Rate limiting - don't hammer the PDF servers
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+      } catch (error) {
+        log(`     ❌ ${opp.topic_number}: Error - ${error instanceof Error ? error.message : 'Unknown'}`);
+        failed++;
+      }
+    }
+
+    return { generated, skipped, failed };
+
+  } catch (error) {
+    log(`     ❌ Instruction generation error: ${error instanceof Error ? error.message : 'Unknown'}`);
+    return { generated: 0, skipped: 0, failed: 0 };
   }
 }
 
