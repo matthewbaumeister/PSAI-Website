@@ -9,17 +9,37 @@ interface OpportunityData {
   topic_number: string;
   topic_id: string;
   title: string;
-  sponsor_component: string;
   status: string;
+  sponsor_component: string;
+  solicitation_branch: string;
+  solicitation_title: string;
   open_date: string;
   close_date: string;
-  phase_1_description: string;
-  phase_2_description: string;
-  phase_3_description: string;
-  qa_content: string;
+  open_datetime: string;
+  close_datetime: string;
+  qa_close_date: string;
   topic_question_count: number;
-  instructions_plain_text: string;
-  consolidated_instructions_url: string;
+  phase_1_award_amount?: number;
+  phase_2_award_amount?: number;
+  phases_available: string;
+  is_direct_to_phase_ii: string;
+  phase_1_description?: string;
+  phase_2_description?: string;
+  phase_3_description?: string;
+  keywords?: string;
+  technology_areas?: string;
+  objectives?: string;
+  description?: string;
+  topic_pdf_download?: string;
+  component_instructions_download?: string;
+  solicitation_instructions_download?: string;
+  instructions_plain_text?: string;
+  consolidated_instructions_url?: string;
+  instructions_generated_at?: string;
+  instructions_volume_structure?: any;
+  instructions_checklist?: any;
+  qa_content?: string;
+  last_scraped?: string;
 }
 
 interface ShareInfo {
@@ -160,6 +180,9 @@ export default function SharedOpportunityPage() {
   const timeRemaining = expiresDate ? Math.max(0, expiresDate.getTime() - Date.now()) : 0;
   const hoursRemaining = Math.floor(timeRemaining / (1000 * 60 * 60));
   const minutesRemaining = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+  
+  // Check if opportunity is active
+  const isActive = data.status && ['open', 'prerelease', 'pre-release', 'active', 'prelease'].includes(data.status.toLowerCase());
 
   return (
     <div style={{
@@ -314,29 +337,223 @@ export default function SharedOpportunityPage() {
             )}
           </div>
 
-          {/* Phase Descriptions */}
-          {data.phase_1_description && (
-            <div style={{ marginBottom: '24px' }}>
-              <h2 style={{ color: '#e2e8f0', fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>
-                Phase I Description
-              </h2>
-              <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.8' }}>
-                {data.phase_1_description}
-              </p>
-            </div>
-          )}
-          
-          {data.phase_2_description && (
-            <div style={{ marginBottom: '24px' }}>
-              <h2 style={{ color: '#e2e8f0', fontSize: '20px', fontWeight: '600', marginBottom: '12px' }}>
-                Phase II Description
-              </h2>
-              <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.8' }}>
-                {data.phase_2_description}
-              </p>
-            </div>
-          )}
         </div>
+
+        {/* Tech Areas */}
+        {data.technology_areas && (
+          <div style={{ 
+            background: 'rgba(30, 41, 59, 0.6)',
+            border: '1px solid rgba(71, 85, 105, 0.4)',
+            borderRadius: '12px',
+            padding: '24px',
+            marginBottom: '24px'
+          }}>
+            <h2 style={{ 
+              color: '#e2e8f0',
+              fontSize: '20px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Technology Areas
+            </h2>
+            <div style={{ 
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '12px'
+            }}>
+              {data.technology_areas.split(',').map((area, index) => (
+                <span key={index} style={{
+                  padding: '8px 16px',
+                  background: 'rgba(167, 139, 250, 0.2)',
+                  border: '1px solid rgba(167, 139, 250, 0.4)',
+                  borderRadius: '8px',
+                  color: '#c4b5fd',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}>
+                  {area.trim()}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Keywords */}
+        {data.keywords && (
+          <div style={{ 
+            background: 'rgba(30, 41, 59, 0.6)',
+            border: '1px solid rgba(71, 85, 105, 0.4)',
+            borderRadius: '12px',
+            padding: '24px',
+            marginBottom: '24px'
+          }}>
+            <h2 style={{ 
+              color: '#e2e8f0',
+              fontSize: '20px',
+              fontWeight: '600',
+              marginBottom: '16px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
+              Keywords
+            </h2>
+            <div style={{ 
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '12px'
+            }}>
+              {data.keywords.split(/[;,]/).map((keyword, index) => (
+                <span key={index} style={{
+                  padding: '6px 12px',
+                  background: 'rgba(96, 165, 250, 0.2)',
+                  border: '1px solid rgba(96, 165, 250, 0.3)',
+                  borderRadius: '6px',
+                  color: '#93c5fd',
+                  fontSize: '13px',
+                  fontWeight: '500'
+                }}>
+                  {keyword.trim()}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Description Section */}
+        {(data.objectives || data.description) && (
+          <div style={{ 
+            background: 'rgba(30, 41, 59, 0.6)',
+            border: '1px solid rgba(71, 85, 105, 0.4)',
+            borderRadius: '12px',
+            padding: '28px',
+            marginBottom: '24px'
+          }}>
+            <h2 style={{ 
+              color: '#e2e8f0',
+              fontSize: '20px',
+              fontWeight: '600',
+              marginBottom: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              Opportunity Description
+            </h2>
+            {data.objectives && (
+              <div style={{ marginBottom: '24px' }}>
+                <h3 style={{ color: '#a78bfa', fontSize: '18px', fontWeight: '600', marginBottom: '12px' }}>
+                  Objectives
+                </h3>
+                <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.8' }}>
+                  {data.objectives}
+                </p>
+              </div>
+            )}
+            {data.description && (
+              <div>
+                <h3 style={{ color: '#a78bfa', fontSize: '18px', fontWeight: '600', marginBottom: '12px' }}>
+                  Description
+                </h3>
+                <p style={{ color: '#cbd5e1', fontSize: '15px', lineHeight: '1.8', whiteSpace: 'pre-wrap' }}>
+                  {data.description}
+                </p>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Phase Descriptions */}
+        {(data.phase_1_description || data.phase_2_description || data.phase_3_description) && (
+          <div style={{ 
+            background: 'rgba(30, 41, 59, 0.6)',
+            border: '1px solid rgba(71, 85, 105, 0.4)',
+            borderRadius: '12px',
+            padding: '28px',
+            marginBottom: '24px'
+          }}>
+            <h2 style={{ 
+              color: '#e2e8f0',
+              fontSize: '20px',
+              fontWeight: '600',
+              marginBottom: '24px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <polyline points="19 12 12 19 5 12"></polyline>
+              </svg>
+              Phase Descriptions
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {data.phase_1_description && (
+                <div style={{
+                  padding: '20px',
+                  background: 'rgba(16, 185, 129, 0.1)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  borderRadius: '8px'
+                }}>
+                  <h3 style={{ color: '#10b981', fontSize: '16px', fontWeight: '600', marginBottom: '12px' }}>
+                    Phase I
+                  </h3>
+                  <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7' }}>
+                    {data.phase_1_description}
+                  </p>
+                </div>
+              )}
+              {data.phase_2_description && (
+                <div style={{
+                  padding: '20px',
+                  background: 'rgba(59, 130, 246, 0.1)',
+                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                  borderRadius: '8px'
+                }}>
+                  <h3 style={{ color: '#60a5fa', fontSize: '16px', fontWeight: '600', marginBottom: '12px' }}>
+                    Phase II
+                  </h3>
+                  <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7' }}>
+                    {data.phase_2_description}
+                  </p>
+                </div>
+              )}
+              {data.phase_3_description && (
+                <div style={{
+                  padding: '20px',
+                  background: 'rgba(139, 92, 246, 0.1)',
+                  border: '1px solid rgba(139, 92, 246, 0.3)',
+                  borderRadius: '8px'
+                }}>
+                  <h3 style={{ color: '#a78bfa', fontSize: '16px', fontWeight: '600', marginBottom: '12px' }}>
+                    Phase III
+                  </h3>
+                  <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.7' }}>
+                    {data.phase_3_description}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Q&A Section - Collapsible */}
         {data.qa_content && data.topic_question_count > 0 && (
