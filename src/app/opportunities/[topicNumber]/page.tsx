@@ -841,7 +841,7 @@ export default function OpportunityPage() {
                     textAlign: 'center'
                   }}>
                     Instructions generated: {new Date(data.instructions_generated_at).toLocaleString()} • 
-                    Length: {data.instructions_plain_text.length.toLocaleString()} characters
+                    Length: {data.instructions_plain_text?.length?.toLocaleString() || '0'} characters
                   </div>
                 )}
               </div>
