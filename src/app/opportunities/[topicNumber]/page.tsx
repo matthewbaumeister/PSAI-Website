@@ -179,17 +179,33 @@ export default function OpportunityPage() {
   // Check authentication status
   useEffect(() => {
     let mounted = true;
+    let checkTimeout: NodeJS.Timeout;
 
     async function checkAuth() {
       try {
-        // Wait a moment for auth to settle (especially after redirects)
-        await new Promise(resolve => setTimeout(resolve, 500));
+        // If we just came from login redirect, wait longer for session to establish
+        const isFromLogin = document.referrer.includes('/auth/login') || 
+                           window.location.search.includes('returnUrl');
+        const waitTime = isFromLogin ? 2000 : 500;
+        
+        await new Promise(resolve => setTimeout(resolve, waitTime));
         
         if (!mounted) return;
 
         const { data: { session }, error } = await supabase.auth.getSession();
         
+        console.log('Auth check:', { hasSession: !!session, error: error?.message, isFromLogin });
+        
         if (error || !session) {
+          // Don't show modal if we just came from login - give more time
+          if (isFromLogin && !authCheckComplete) {
+            console.log('Just logged in, waiting longer before showing modal...');
+            checkTimeout = setTimeout(() => {
+              if (mounted) checkAuth();
+            }, 2000);
+            return;
+          }
+          
           setIsAuthenticated(false);
           // Only show modal after initial check is complete
           if (authCheckComplete) {
@@ -221,18 +237,20 @@ export default function OpportunityPage() {
 
     // Listen for auth state changes (sign in/out events)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log('Auth state change:', event);
+      console.log('Auth state change:', event, { hasSession: !!session });
       if (event === 'SIGNED_OUT') {
         setIsAuthenticated(false);
         setShowLoginModal(true);
       } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION') {
         setIsAuthenticated(true);
         setShowLoginModal(false);
+        setAuthCheckComplete(true);
       }
     });
 
     return () => {
       mounted = false;
+      if (checkTimeout) clearTimeout(checkTimeout);
       subscription.unsubscribe();
     };
   }, [supabase, authCheckComplete]);
