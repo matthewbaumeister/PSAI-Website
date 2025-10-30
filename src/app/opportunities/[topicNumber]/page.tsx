@@ -60,6 +60,7 @@ export default function OpportunityPage() {
   const [chatOpen, setChatOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(true); // Assume true initially to prevent flash
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [authCheckComplete, setAuthCheckComplete] = useState(false);
   
   // Memoize Supabase client to prevent "Multiple GoTrueClient" warnings
   const supabase = useMemo(() => createClient(), []);
@@ -177,46 +178,64 @@ export default function OpportunityPage() {
 
   // Check authentication status
   useEffect(() => {
+    let mounted = true;
+
     async function checkAuth() {
       try {
+        // Wait a moment for auth to settle (especially after redirects)
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        if (!mounted) return;
+
         const { data: { session }, error } = await supabase.auth.getSession();
         
         if (error || !session) {
           setIsAuthenticated(false);
-          setShowLoginModal(true);
+          // Only show modal after initial check is complete
+          if (authCheckComplete) {
+            setShowLoginModal(true);
+          } else {
+            // On first load, wait a bit longer before showing modal
+            setTimeout(() => {
+              if (mounted) {
+                setShowLoginModal(true);
+              }
+            }, 1000);
+          }
         } else {
           setIsAuthenticated(true);
           setShowLoginModal(false);
         }
+        setAuthCheckComplete(true);
       } catch (error) {
         console.error('Auth check error:', error);
-        setIsAuthenticated(false);
-        setShowLoginModal(true);
+        if (mounted) {
+          setIsAuthenticated(false);
+          setAuthCheckComplete(true);
+        }
       }
     }
 
-    // Check immediately
+    // Check once on mount
     checkAuth();
 
-    // Check every 5 minutes for session expiry
-    const interval = setInterval(checkAuth, 5 * 60 * 1000);
-
-    // Listen for auth state changes
+    // Listen for auth state changes (sign in/out events)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      if (event === 'SIGNED_OUT' || !session) {
+      console.log('Auth state change:', event);
+      if (event === 'SIGNED_OUT') {
         setIsAuthenticated(false);
         setShowLoginModal(true);
-      } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+      } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION') {
         setIsAuthenticated(true);
         setShowLoginModal(false);
       }
     });
 
     return () => {
-      clearInterval(interval);
+      mounted = false;
       subscription.unsubscribe();
     };
-  }, [supabase]);
+  }, [supabase, authCheckComplete]);
 
   if (loading) {
     return (
@@ -1963,19 +1982,20 @@ export default function OpportunityPage() {
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '8px',
-                width: '100%',
-                padding: '14px 28px',
+                gap: '6px',
+                padding: '12px 20px',
                 background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
                 border: '1px solid rgba(239, 68, 68, 0.5)',
                 borderRadius: '8px',
                 color: '#ffffff',
-                fontSize: '16px',
+                fontSize: '15px',
                 fontWeight: '600',
                 textDecoration: 'none',
                 cursor: 'pointer',
                 transition: 'all 0.2s',
-                boxShadow: '0 4px 12px rgba(239, 68, 68, 0.3)'
+                boxShadow: '0 4px 12px rgba(239, 68, 68, 0.3)',
+                maxWidth: '100%',
+                whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-2px)';
@@ -1986,7 +2006,7 @@ export default function OpportunityPage() {
                 e.currentTarget.style.boxShadow = '0 4px 12px rgba(239, 68, 68, 0.3)';
               }}
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
                 <polyline points="10 17 15 12 10 7"></polyline>
                 <line x1="15" y1="12" x2="3" y2="12"></line>
