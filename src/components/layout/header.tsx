@@ -276,14 +276,19 @@ export function Header() {
               <>
                 <Link href="/book-demo" className="btn btn-primary">Book Demo</Link>
                 <Link 
-                  href={(() => {
+                  href="/auth/login"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    // Use window.location.pathname for more reliable current page detection
+                    const currentPath = typeof window !== 'undefined' ? window.location.pathname : pathname;
                     // Don't add returnUrl for auth pages or home to avoid loops
-                    if (!pathname || pathname === '/' || pathname.startsWith('/auth')) {
-                      return '/auth/login';
+                    if (!currentPath || currentPath === '/' || currentPath.startsWith('/auth')) {
+                      window.location.href = '/auth/login';
+                    } else {
+                      // Add current page as returnUrl
+                      window.location.href = `/auth/login?returnUrl=${encodeURIComponent(currentPath)}`;
                     }
-                    // Add current page as returnUrl
-                    return `/auth/login?returnUrl=${encodeURIComponent(pathname)}`;
-                  })()} 
+                  }}
                   className="btn btn-secondary"
                 >
                   Sign In

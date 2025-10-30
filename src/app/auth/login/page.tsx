@@ -66,6 +66,11 @@ export default function LoginPage() {
         const returnUrlFromParam = urlParams.get('returnUrl')
         const returnUrlFromStorage = localStorage.getItem('redirectAfterLogin')
         
+        console.log('Login successful, checking returnUrl:', {
+          fromParam: returnUrlFromParam,
+          fromStorage: returnUrlFromStorage
+        });
+        
         // Clear localStorage redirect after reading
         if (returnUrlFromStorage) {
           localStorage.removeItem('redirectAfterLogin')
@@ -73,15 +78,18 @@ export default function LoginPage() {
         
         const finalReturnUrl = returnUrlFromParam || returnUrlFromStorage
         
+        // Show success message briefly, then redirect
         setTimeout(() => {
           if (finalReturnUrl) {
+            console.log('Redirecting to:', finalReturnUrl);
             // Redirect to the return URL (previous page)
             window.location.href = decodeURIComponent(finalReturnUrl)
           } else {
+            console.log('No returnUrl, redirecting to home');
             // Default redirect to home
             router.push('/')
           }
-        }, 1500)
+        }, 1000)
       } else {
         setSubmitStatus('error')
         // Display the specific error message from the backend
