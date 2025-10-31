@@ -45,12 +45,52 @@ export async function POST(
     console.log(`[LLM Analysis] Starting for opportunity: ${opportunityId}`);
 
     // Step 1: Fetch opportunity from database
-    const isNumericId = /^\d+$/.test(opportunityId);
-    const { data: opportunity, error: fetchError } = await supabase
+    // Try to match by topic_number first (most common from URL), then topic_id, then numeric id
+    let opportunity: any = null;
+    let fetchError: any = null;
+    
+    // Try topic_number first (from URL like /opportunities/SF254-D1205)
+    const { data: oppByTopicNumber, error: err1 } = await supabase
       .from('sbir_final')
       .select('*')
-      .eq(isNumericId ? 'id' : 'topic_id', opportunityId)
-      .single();
+      .eq('topic_number', opportunityId)
+      .maybeSingle();
+    
+    if (oppByTopicNumber) {
+      opportunity = oppByTopicNumber;
+      console.log(`[LLM Analysis] Found by topic_number: ${opportunity.topic_number}`);
+    } else {
+      // Try topic_id (UUID-like identifier)
+      const { data: oppByTopicId, error: err2 } = await supabase
+        .from('sbir_final')
+        .select('*')
+        .eq('topic_id', opportunityId)
+        .maybeSingle();
+      
+      if (oppByTopicId) {
+        opportunity = oppByTopicId;
+        console.log(`[LLM Analysis] Found by topic_id: ${opportunity.topic_number}`);
+      } else {
+        // Try numeric id as last resort
+        const isNumericId = /^\d+$/.test(opportunityId);
+        if (isNumericId) {
+          const { data: oppById, error: err3 } = await supabase
+            .from('sbir_final')
+            .select('*')
+            .eq('id', parseInt(opportunityId))
+            .maybeSingle();
+          
+          if (oppById) {
+            opportunity = oppById;
+            console.log(`[LLM Analysis] Found by id: ${opportunity.topic_number}`);
+          } else {
+            fetchError = err3 || { message: 'Not found by id' };
+          }
+        } else {
+          fetchError = err2 || { message: 'Not found by topic_id' };
+        }
+      }
+    }
 
     if (fetchError || !opportunity) {
       return NextResponse.json(
@@ -155,7 +195,7 @@ export async function POST(
     const reconciliation = reconcileMetadata(opportunity, analysisResult);
     
     // Step 7: Store in database (including corrected metadata)
-    console.log(`[LLM Analysis] Saving to database...`);
+    console.log(`[LLM Analysis] Preparing database update...`);
     const timestamp = new Date().toISOString();
     const updateData: any = {
       instructions_checklist: analysisResult as any,
@@ -163,6 +203,12 @@ export async function POST(
     };
     
     console.log(`[LLM Analysis] Setting instructions_generated_at to: ${timestamp}`);
+    console.log(`[LLM Analysis] Analysis result contains:`);
+    console.log(`  - proposal_phase: ${analysisResult.proposal_phase}`);
+    console.log(`  - TOC component_structure: ${analysisResult.toc_reconciliation.component_structure.length} items`);
+    console.log(`  - TOC baa_structure: ${analysisResult.toc_reconciliation.baa_structure.length} items`);
+    console.log(`  - volumes: ${analysisResult.volumes.length} volumes`);
+    console.log(`  - discovered_metadata.is_direct_to_phase_ii: ${analysisResult.discovered_metadata?.is_direct_to_phase_ii}`);
     
     // Apply metadata corrections if any were found
     if (reconciliation.updates && Object.keys(reconciliation.updates).length > 0) {
@@ -173,25 +219,40 @@ export async function POST(
       Object.assign(updateData, reconciliation.updates);
     }
     
-    console.log(`[LLM Analysis] Updating ${isNumericId ? 'id' : 'topic_id'} = ${opportunityId}`);
+    // Update using topic_number (most reliable identifier)
+    console.log(`[LLM Analysis] Updating opportunity with topic_number = ${opportunity.topic_number}`);
     const { data: updatedData, error: updateError } = await supabase
       .from('sbir_final')
       .update(updateData)
-      .eq(isNumericId ? 'id' : 'topic_id', opportunityId)
-      .select('instructions_generated_at, phase_1_award_amount, phase_2_award_amount, is_direct_to_phase_ii, phases_available')
+      .eq('topic_number', opportunity.topic_number)
+      .select('topic_number, instructions_generated_at, instructions_checklist, phase_1_award_amount, phase_2_award_amount, is_direct_to_phase_ii, phases_available')
       .single();
 
     if (updateError) {
-      console.error('[LLM Analysis] Failed to save to database:', updateError);
+      console.error('[LLM Analysis] Database UPDATE FAILED:', updateError);
+      console.error('[LLM Analysis] Error details:', JSON.stringify(updateError, null, 2));
       // Don't fail the request, still return the results
     } else {
-      console.log(`[LLM Analysis] Saved to database successfully`);
+      console.log(`[LLM Analysis] ✅ DATABASE UPDATE SUCCESSFUL`);
       console.log(`[LLM Analysis] Verification - Database now shows:`);
+      console.log(`  - topic_number: ${updatedData?.topic_number}`);
       console.log(`  - instructions_generated_at: ${updatedData?.instructions_generated_at}`);
       console.log(`  - phase_1_award_amount: ${updatedData?.phase_1_award_amount}`);
       console.log(`  - phase_2_award_amount: ${updatedData?.phase_2_award_amount}`);
       console.log(`  - is_direct_to_phase_ii: ${updatedData?.is_direct_to_phase_ii}`);
       console.log(`  - phases_available: ${updatedData?.phases_available}`);
+      
+      // Verify TOC structure
+      const checklist = updatedData?.instructions_checklist as any;
+      if (checklist) {
+        console.log(`  - instructions_checklist exists: YES`);
+        console.log(`  - proposal_phase: ${checklist.proposal_phase || 'MISSING'}`);
+        console.log(`  - TOC component_structure items: ${checklist.toc_reconciliation?.component_structure?.length || 0}`);
+        console.log(`  - TOC baa_structure items: ${checklist.toc_reconciliation?.baa_structure?.length || 0}`);
+        console.log(`  - volumes count: ${checklist.volumes?.length || 0}`);
+      } else {
+        console.log(`  - instructions_checklist: NULL or EMPTY`);
+      }
     }
 
     // Step 8: Return results
