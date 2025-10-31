@@ -1392,8 +1392,110 @@ export default function OpportunityPage() {
                   <div>
                     {(() => {
                       const analysis = data.instructions_checklist as InstructionAnalysisResult;
+                      const [expandedVolumes, setExpandedVolumes] = useState<Set<string>>(new Set());
+                      
+                      const toggleVolume = (volumeNumber: string) => {
+                        setExpandedVolumes(prev => {
+                          const next = new Set(prev);
+                          if (next.has(volumeNumber)) {
+                            next.delete(volumeNumber);
+                          } else {
+                            next.add(volumeNumber);
+                          }
+                          return next;
+                        });
+                      };
+                      
                       return (
                         <>
+                          {/* Proposal Phase Badge */}
+                          {analysis.proposal_phase && (
+                            <div style={{ marginBottom: '20px' }}>
+                              <span style={{
+                                padding: '8px 16px',
+                                background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+                                border: '1px solid rgba(139, 92, 246, 0.4)',
+                                borderRadius: '8px',
+                                fontSize: '14px',
+                                fontWeight: '700',
+                                color: '#ffffff',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px'
+                              }}>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M9 11l3 3L22 4"></path>
+                                  <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                {analysis.proposal_phase}
+                              </span>
+                            </div>
+                          )}
+
+                          {/* TOC Reconciliation */}
+                          {analysis.toc_reconciliation && (
+                            <div style={{
+                              marginBottom: '28px',
+                              padding: '20px',
+                              background: 'rgba(59, 130, 246, 0.1)',
+                              border: '1px solid rgba(59, 130, 246, 0.3)',
+                              borderRadius: '12px'
+                            }}>
+                              <h4 style={{
+                                color: '#60a5fa',
+                                fontSize: '18px',
+                                fontWeight: '700',
+                                marginBottom: '12px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '8px'
+                              }}>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                  <path d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                                Table of Contents Reconciliation
+                              </h4>
+                              <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
+                                How Component-specific instructions modify the BAA structure
+                              </p>
+
+                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '16px' }}>
+                                <div>
+                                  <h5 style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '700', marginBottom: '8px', textTransform: 'uppercase' }}>
+                                    BAA Structure
+                                  </h5>
+                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.8', margin: 0, paddingLeft: '20px' }}>
+                                    {analysis.toc_reconciliation.baa_structure?.map((item, i) => (
+                                      <li key={i}>{item}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                                <div>
+                                  <h5 style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '700', marginBottom: '8px', textTransform: 'uppercase' }}>
+                                    Component Structure
+                                  </h5>
+                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.8', margin: 0, paddingLeft: '20px' }}>
+                                    {analysis.toc_reconciliation.component_structure?.map((item, i) => (
+                                      <li key={i}>{item}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </div>
+
+                              {analysis.toc_reconciliation.notes && (
+                                <div style={{
+                                  padding: '12px',
+                                  background: 'rgba(59, 130, 246, 0.15)',
+                                  borderRadius: '6px'
+                                }}>
+                                  <p style={{ color: '#bfdbfe', fontSize: '14px', lineHeight: '1.6', margin: 0 }}>
+                                    {analysis.toc_reconciliation.notes}
+                                  </p>
+                                </div>
+                              )}
+                            </div>
+                          )}
+
                           {/* Critical Notes Banner */}
                           {analysis.critical_notes && analysis.critical_notes.length > 0 && (
                             <div style={{ marginBottom: '28px' }}>
@@ -1513,43 +1615,96 @@ export default function OpportunityPage() {
                               <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '24px' }}>
                                 Complete requirements for each volume of your proposal. All superseding rules have been applied.
                               </p>
-                              {analysis.volumes.map((volume, volumeIndex) => (
+                              {analysis.volumes.map((volume, volumeIndex) => {
+                                const isExpanded = expandedVolumes.has(volume.volume_number);
+                                
+                                return (
                                   <div key={volumeIndex} style={{ 
-                                    marginBottom: '32px',
-                                    padding: '24px',
-                                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%)',
+                                    marginBottom: '16px',
                                     border: '1px solid rgba(59, 130, 246, 0.3)',
-                                    borderRadius: '12px'
+                                    borderRadius: '12px',
+                                    overflow: 'hidden',
+                                    background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%)'
                                   }}>
-                                    {/* Volume Header */}
-                                    <div style={{ marginBottom: '20px' }}>
-                                      <h5 style={{ 
-                                        color: '#93c5fd', 
-                                        fontSize: '20px', 
-                                        fontWeight: '700', 
-                                        marginBottom: '8px'
-                                      }}>
-                                        {volume.volume_number}: {volume.volume_title}
-                                      </h5>
-                                      {volume.page_limit && (
-                                        <div style={{ 
-                                          display: 'inline-block',
-                                          padding: '4px 12px',
-                                          background: 'rgba(251, 191, 36, 0.2)',
-                                          border: '1px solid rgba(251, 191, 36, 0.4)',
-                                          borderRadius: '4px',
-                                          fontSize: '13px',
-                                          fontWeight: '600',
-                                          color: '#fbbf24',
-                                          marginBottom: '12px'
+                                    {/* Collapsible Volume Header */}
+                                    <div 
+                                      onClick={() => toggleVolume(volume.volume_number)}
+                                      style={{ 
+                                        padding: '20px 24px',
+                                        cursor: 'pointer',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'space-between',
+                                        transition: 'all 0.2s',
+                                        background: isExpanded ? 'rgba(59, 130, 246, 0.1)' : 'transparent'
+                                      }}
+                                      onMouseEnter={(e) => {
+                                        e.currentTarget.style.background = 'rgba(59, 130, 246, 0.15)';
+                                      }}
+                                      onMouseLeave={(e) => {
+                                        e.currentTarget.style.background = isExpanded ? 'rgba(59, 130, 246, 0.1)' : 'transparent';
+                                      }}
+                                    >
+                                      <div style={{ flex: 1 }}>
+                                        <h5 style={{ 
+                                          color: '#93c5fd', 
+                                          fontSize: '18px', 
+                                          fontWeight: '700', 
+                                          marginBottom: '6px',
+                                          display: 'flex',
+                                          alignItems: 'center',
+                                          gap: '12px'
                                         }}>
-                                           Page Limit: {volume.page_limit}
-                                        </div>
-                                      )}
-                                      <p style={{ color: '#cbd5e1', fontSize: '14px', lineHeight: '1.6', marginTop: '12px' }}>
-                                        {volume.description}
-                                      </p>
+                                          {volume.volume_number}: {volume.volume_title}
+                                          {volume.page_limit && (
+                                            <span style={{ 
+                                              padding: '4px 10px',
+                                              background: 'rgba(251, 191, 36, 0.25)',
+                                              border: '1px solid rgba(251, 191, 36, 0.4)',
+                                              borderRadius: '4px',
+                                              fontSize: '12px',
+                                              fontWeight: '600',
+                                              color: '#fbbf24'
+                                            }}>
+                                              {volume.page_limit}
+                                            </span>
+                                          )}
+                                        </h5>
+                                        <p style={{ color: '#94a3b8', fontSize: '13px', margin: 0 }}>
+                                          {volume.required_sections?.length || 0} sections • Click to {isExpanded ? 'collapse' : 'expand'}
+                                        </p>
+                                      </div>
+                                      
+                                      {/* Expand/Collapse Icon */}
+                                      <svg 
+                                        width="24" 
+                                        height="24" 
+                                        viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="#60a5fa" 
+                                        strokeWidth="2"
+                                        style={{
+                                          transition: 'transform 0.2s',
+                                          transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)'
+                                        }}
+                                      >
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                      </svg>
                                     </div>
+
+                                    {/* Collapsible Content */}
+                                    {isExpanded && (
+                                      <div style={{ padding: '0 24px 24px 24px' }}>
+                                        {/* Volume Description */}
+                                        <p style={{ 
+                                          color: '#cbd5e1', 
+                                          fontSize: '14px', 
+                                          lineHeight: '1.8', 
+                                          marginBottom: '20px',
+                                          whiteSpace: 'pre-wrap'
+                                        }}>
+                                          {volume.description}
+                                        </p>
 
                                     {/* Format Requirements */}
                                     {volume.format_requirements && volume.format_requirements.length > 0 && (
@@ -1617,7 +1772,13 @@ export default function OpportunityPage() {
                                             </div>
 
                                             {/* Section Description */}
-                                            <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '12px', lineHeight: '1.6' }}>
+                                            <p style={{ 
+                                              color: '#cbd5e1', 
+                                              fontSize: '14px', 
+                                              marginBottom: '12px', 
+                                              lineHeight: '1.8',
+                                              whiteSpace: 'pre-wrap'
+                                            }}>
                                               {section.description}
                                             </p>
 
@@ -1653,46 +1814,49 @@ export default function OpportunityPage() {
                                       </div>
                                     )}
 
-                                    {/* Submission Instructions */}
-                                    {volume.submission_instructions && (
-                                      <div style={{ 
-                                        padding: '12px',
-                                        background: 'rgba(34, 197, 94, 0.1)',
-                                        border: '1px solid rgba(34, 197, 94, 0.3)',
-                                        borderRadius: '6px',
-                                        marginBottom: '16px'
-                                      }}>
-                                        <div style={{ fontSize: '13px', fontWeight: '600', color: '#86efac', marginBottom: '6px' }}>
-                                          Submission:
-                                        </div>
-                                        <p style={{ color: '#bbf7d0', fontSize: '13px', margin: 0 }}>
-                                          {volume.submission_instructions}
-                                        </p>
-                                      </div>
-                                    )}
+                                        {/* Submission Instructions */}
+                                        {volume.submission_instructions && (
+                                          <div style={{ 
+                                            padding: '14px',
+                                            background: 'rgba(34, 197, 94, 0.1)',
+                                            border: '1px solid rgba(34, 197, 94, 0.3)',
+                                            borderRadius: '8px',
+                                            marginBottom: '16px'
+                                          }}>
+                                            <div style={{ fontSize: '13px', fontWeight: '700', color: '#86efac', marginBottom: '8px' }}>
+                                              Submission:
+                                            </div>
+                                            <p style={{ color: '#bbf7d0', fontSize: '13px', margin: 0, lineHeight: '1.6' }}>
+                                              {volume.submission_instructions}
+                                            </p>
+                                          </div>
+                                        )}
 
-                                    {/* Important Notes */}
-                                    {volume.important_notes && volume.important_notes.length > 0 && (
-                                      <div style={{ 
-                                        padding: '12px',
-                                        background: 'rgba(251, 191, 36, 0.1)',
-                                        border: '1px solid rgba(251, 191, 36, 0.3)',
-                                        borderRadius: '6px'
-                                      }}>
-                                        <div style={{ fontSize: '13px', fontWeight: '600', color: '#fbbf24', marginBottom: '6px' }}>
-                                          Important Notes:
-                                        </div>
-                                        <ul style={{ margin: 0, paddingLeft: '20px' }}>
-                                          {volume.important_notes.map((note, noteIdx) => (
-                                            <li key={noteIdx} style={{ color: '#fde68a', fontSize: '13px', marginBottom: '4px' }}>
-                                              {note}
-                                            </li>
-                                          ))}
-                                        </ul>
+                                        {/* Important Notes */}
+                                        {volume.important_notes && volume.important_notes.length > 0 && (
+                                          <div style={{ 
+                                            padding: '14px',
+                                            background: 'rgba(251, 191, 36, 0.1)',
+                                            border: '1px solid rgba(251, 191, 36, 0.3)',
+                                            borderRadius: '8px'
+                                          }}>
+                                            <div style={{ fontSize: '13px', fontWeight: '700', color: '#fbbf24', marginBottom: '8px' }}>
+                                              Important Notes:
+                                            </div>
+                                            <ul style={{ margin: 0, paddingLeft: '20px' }}>
+                                              {volume.important_notes.map((note, noteIdx) => (
+                                                <li key={noteIdx} style={{ color: '#fde68a', fontSize: '13px', marginBottom: '6px', lineHeight: '1.6' }}>
+                                                  {note}
+                                                </li>
+                                              ))}
+                                            </ul>
+                                          </div>
+                                        )}
                                       </div>
                                     )}
                                   </div>
-                                ))}
+                                );
+                              })}
                             </div>
                           )}
 
