@@ -60,6 +60,7 @@ export default function OpportunityPage() {
   const [chatOpen, setChatOpen] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(true); // Assume true initially
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [expandedVolumes, setExpandedVolumes] = useState<Set<string>>(new Set());
   
   // Memoize Supabase client to prevent "Multiple GoTrueClient" warnings
   const supabase = useMemo(() => createClient(), []);
@@ -1389,24 +1390,22 @@ export default function OpportunityPage() {
                  (data.instructions_checklist as any).volumes && 
                  (data.instructions_checklist as any).volumes.length > 0 ? (
                   // Show LLM-generated content if it exists
-                  <div>
-                    {(() => {
-                      const analysis = data.instructions_checklist as InstructionAnalysisResult;
-                      const [expandedVolumes, setExpandedVolumes] = useState<Set<string>>(new Set());
-                      
-                      const toggleVolume = (volumeNumber: string) => {
-                        setExpandedVolumes(prev => {
-                          const next = new Set(prev);
-                          if (next.has(volumeNumber)) {
-                            next.delete(volumeNumber);
-                          } else {
-                            next.add(volumeNumber);
-                          }
-                          return next;
-                        });
-                      };
-                      
-                      return (
+                  (() => {
+                    const analysis = data.instructions_checklist as InstructionAnalysisResult;
+                    
+                    const toggleVolume = (volumeNumber: string) => {
+                      setExpandedVolumes(prev => {
+                        const next = new Set(prev);
+                        if (next.has(volumeNumber)) {
+                          next.delete(volumeNumber);
+                        } else {
+                          next.add(volumeNumber);
+                        }
+                        return next;
+                      });
+                    };
+                    
+                    return (
                         <>
                           {/* Regenerate Prompt for Old Data */}
                           {(!analysis.proposal_phase || !analysis.toc_reconciliation) && (
@@ -1924,8 +1923,7 @@ export default function OpportunityPage() {
                           )}
                         </>
                       );
-                    })()}
-                  </div>
+                    })()
                 ) : isActive ? (
                   // Show generate button for active opportunities without analysis
                   <div style={{
