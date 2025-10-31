@@ -1580,49 +1580,39 @@ export default function OpportunityPage() {
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                                   <path d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
-                                Table of Contents Reconciliation
+                                Required Submission Structure
                               </h4>
                               <p style={{ color: '#cbd5e1', fontSize: '14px', marginBottom: '16px' }}>
-                                How Component-specific instructions modify the BAA structure
+                                Your proposal must follow this exact structure (Component instructions supersede BAA)
                               </p>
 
-                              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '16px' }}>
-                                <div>
-                                  <h5 style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '700', marginBottom: '8px', textTransform: 'uppercase' }}>
-                                    BAA Structure
+                              {/* Combined/Final Structure - Prominently Displayed */}
+                              <div style={{ marginBottom: '20px' }}>
+                                <div style={{
+                                  padding: '16px',
+                                  background: 'rgba(139, 92, 246, 0.15)',
+                                  border: '2px solid rgba(139, 92, 246, 0.4)',
+                                  borderRadius: '8px'
+                                }}>
+                                  <h5 style={{ 
+                                    color: '#c4b5fd', 
+                                    fontSize: '15px', 
+                                    fontWeight: '700', 
+                                    marginBottom: '12px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '8px'
+                                  }}>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                                      <polyline points="9 11 12 14 22 4"></polyline>
+                                      <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                    </svg>
+                                    Final Proposal Structure (Component-Specific)
                                   </h5>
-                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.8', margin: 0, paddingLeft: '20px', listStyle: 'none' }}>
-                                    {analysis.toc_reconciliation.baa_structure?.map((item, i) => {
-                                      // Count leading spaces to determine indentation level
-                                      const leadingSpaces = item.match(/^(\s*)/)?.[1].length || 0;
-                                      const indentLevel = Math.floor(leadingSpaces / 2); // 2 spaces = 1 level
-                                      const trimmedItem = item.trim();
-                                      
-                                      return (
-                                        <li 
-                                          key={i} 
-                                          style={{ 
-                                            paddingLeft: `${indentLevel * 20}px`,
-                                            position: 'relative',
-                                            marginBottom: '4px'
-                                          }}
-                                        >
-                                          <span style={{ opacity: 0.7, marginRight: '8px' }}>•</span>
-                                          {trimmedItem}
-                                        </li>
-                                      );
-                                    })}
-                                  </ul>
-                                </div>
-                                <div>
-                                  <h5 style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '700', marginBottom: '8px', textTransform: 'uppercase' }}>
-                                    Component Structure
-                                  </h5>
-                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.8', margin: 0, paddingLeft: '20px', listStyle: 'none' }}>
+                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.9', margin: 0, paddingLeft: '20px', listStyle: 'none' }}>
                                     {analysis.toc_reconciliation.component_structure?.map((item, i) => {
-                                      // Count leading spaces to determine indentation level
                                       const leadingSpaces = item.match(/^(\s*)/)?.[1].length || 0;
-                                      const indentLevel = Math.floor(leadingSpaces / 2); // 2 spaces = 1 level
+                                      const indentLevel = Math.floor(leadingSpaces / 2);
                                       const trimmedItem = item.trim();
                                       
                                       return (
@@ -1631,11 +1621,11 @@ export default function OpportunityPage() {
                                           style={{ 
                                             paddingLeft: `${indentLevel * 20}px`,
                                             position: 'relative',
-                                            marginBottom: '4px'
+                                            marginBottom: '5px'
                                           }}
                                         >
-                                          <span style={{ opacity: 0.7, marginRight: '8px' }}>•</span>
-                                          {trimmedItem}
+                                          <span style={{ opacity: 0.7, marginRight: '8px', color: '#a78bfa' }}>•</span>
+                                          <span style={{ fontWeight: indentLevel === 0 ? '600' : '400' }}>{trimmedItem}</span>
                                         </li>
                                       );
                                     })}
@@ -1643,17 +1633,157 @@ export default function OpportunityPage() {
                                 </div>
                               </div>
 
-                              {analysis.toc_reconciliation.notes && (
-                                <div style={{
-                                  padding: '12px',
+                              {/* Collapsible Reference Section - How it was built */}
+                              <button
+                                onClick={() => {
+                                  const section = document.getElementById('toc-reference-section');
+                                  if (section) {
+                                    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+                                  }
+                                }}
+                                style={{
+                                  width: '100%',
+                                  padding: '12px 16px',
                                   background: 'rgba(59, 130, 246, 0.15)',
-                                  borderRadius: '6px'
+                                  border: '1px solid rgba(59, 130, 246, 0.3)',
+                                  borderRadius: '6px',
+                                  color: '#93c5fd',
+                                  fontSize: '14px',
+                                  fontWeight: '600',
+                                  cursor: 'pointer',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  marginBottom: '12px',
+                                  transition: 'all 0.2s'
+                                }}
+                                onMouseEnter={(e) => {
+                                  e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)';
+                                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.5)';
+                                }}
+                                onMouseLeave={(e) => {
+                                  e.currentTarget.style.background = 'rgba(59, 130, 246, 0.15)';
+                                  e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.3)';
+                                }}
+                              >
+                                <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                    <path d="M9 18l6-6-6-6"></path>
+                                  </svg>
+                                  View Source Document Structures (BAA vs Component)
+                                </span>
+                                <span style={{ fontSize: '12px', opacity: 0.7 }}>Click to expand</span>
+                              </button>
+
+                              {/* Collapsible Reference Content */}
+                              <div id="toc-reference-section" style={{ display: 'none' }}>
+                                <div style={{ 
+                                  padding: '16px',
+                                  background: 'rgba(15, 23, 42, 0.6)',
+                                  border: '1px solid rgba(71, 85, 105, 0.3)',
+                                  borderRadius: '8px'
                                 }}>
-                                  <p style={{ color: '#bfdbfe', fontSize: '14px', lineHeight: '1.6', margin: 0 }}>
-                                    {analysis.toc_reconciliation.notes}
+                                  <p style={{ color: '#94a3b8', fontSize: '13px', marginBottom: '16px', fontStyle: 'italic' }}>
+                                    Reference: How Component-specific instructions modify the standard BAA structure
                                   </p>
+                                  
+                                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '16px' }}>
+                                    <div>
+                                      <h5 style={{ 
+                                        color: '#94a3b8', 
+                                        fontSize: '12px', 
+                                        fontWeight: '700', 
+                                        marginBottom: '8px', 
+                                        textTransform: 'uppercase',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '6px'
+                                      }}>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                          <polyline points="14 2 14 8 20 8"></polyline>
+                                        </svg>
+                                        Standard BAA Structure
+                                      </h5>
+                                      <ul style={{ color: '#cbd5e1', fontSize: '13px', lineHeight: '1.7', margin: 0, paddingLeft: '20px', listStyle: 'none' }}>
+                                        {analysis.toc_reconciliation.baa_structure?.map((item, i) => {
+                                          const leadingSpaces = item.match(/^(\s*)/)?.[1].length || 0;
+                                          const indentLevel = Math.floor(leadingSpaces / 2);
+                                          const trimmedItem = item.trim();
+                                          
+                                          return (
+                                            <li 
+                                              key={i} 
+                                              style={{ 
+                                                paddingLeft: `${indentLevel * 16}px`,
+                                                position: 'relative',
+                                                marginBottom: '3px',
+                                                opacity: 0.8
+                                              }}
+                                            >
+                                              <span style={{ opacity: 0.5, marginRight: '6px', fontSize: '11px' }}>•</span>
+                                              {trimmedItem}
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <h5 style={{ 
+                                        color: '#a78bfa', 
+                                        fontSize: '12px', 
+                                        fontWeight: '700', 
+                                        marginBottom: '8px', 
+                                        textTransform: 'uppercase',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '6px'
+                                      }}>
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                          <polyline points="14 2 14 8 20 8"></polyline>
+                                          <polyline points="9 11 12 14 22 4"></polyline>
+                                        </svg>
+                                        Component-Specific Structure (USE THIS)
+                                      </h5>
+                                      <ul style={{ color: '#e2e8f0', fontSize: '13px', lineHeight: '1.7', margin: 0, paddingLeft: '20px', listStyle: 'none' }}>
+                                        {analysis.toc_reconciliation.component_structure?.map((item, i) => {
+                                          const leadingSpaces = item.match(/^(\s*)/)?.[1].length || 0;
+                                          const indentLevel = Math.floor(leadingSpaces / 2);
+                                          const trimmedItem = item.trim();
+                                          
+                                          return (
+                                            <li 
+                                              key={i} 
+                                              style={{ 
+                                                paddingLeft: `${indentLevel * 16}px`,
+                                                position: 'relative',
+                                                marginBottom: '3px'
+                                              }}
+                                            >
+                                              <span style={{ opacity: 0.6, marginRight: '6px', fontSize: '11px', color: '#a78bfa' }}>•</span>
+                                              {trimmedItem}
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                                    </div>
+                                  </div>
+
+                                  {analysis.toc_reconciliation.notes && (
+                                    <div style={{
+                                      padding: '12px',
+                                      background: 'rgba(59, 130, 246, 0.1)',
+                                      borderRadius: '6px',
+                                      borderLeft: '3px solid rgba(59, 130, 246, 0.5)'
+                                    }}>
+                                      <p style={{ color: '#bfdbfe', fontSize: '13px', lineHeight: '1.6', margin: 0 }}>
+                                        <strong style={{ color: '#93c5fd' }}>Key Differences:</strong> {analysis.toc_reconciliation.notes}
+                                      </p>
+                                    </div>
+                                  )}
                                 </div>
-                              )}
+                              </div>
                             </div>
                           )}
 
