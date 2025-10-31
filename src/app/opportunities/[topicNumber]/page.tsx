@@ -1914,7 +1914,7 @@ export default function OpportunityPage() {
                               borderLeft: '3px solid rgba(100, 116, 139, 0.5)'
                             }}>
                               <p style={{ color: '#94a3b8', fontSize: '12px', margin: 0 }}>
-                                 Analyzed with {analysis.analysis_metadata.model_used} • 
+                                Analyzed by Make Ready MATRIX... 
                                 {' '}{new Date(analysis.analysis_metadata.analyzed_at).toLocaleString()} • 
                                 {' '}{analysis.analysis_metadata.total_volumes} volumes • 
                                 {' '}{analysis.analysis_metadata.total_requirements} total requirements
