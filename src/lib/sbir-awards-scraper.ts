@@ -119,11 +119,13 @@ export async function fetchAllAwards(
  */
 export function normalizeAward(rawAward: SBIRgovAward): Partial<SBIRAward> {
   return {
-    contract_award_number: rawAward.contract_award_number || `UNKNOWN-${Date.now()}`,
+    contract_award_number: rawAward.contract || `UNKNOWN-${Date.now()}`,
     award_year: parseInt(rawAward.award_year || '0'),
+    award_date: rawAward.proposal_award_date ? new Date(rawAward.proposal_award_date) : undefined,
     
-    topic_number: rawAward.topic_number || null,
-    solicitation_id: rawAward.solicitation_id || null,
+    topic_number: rawAward.topic_code || null,
+    solicitation_id: rawAward.solicitation_number || null,
+    solicitation_number: rawAward.solicitation_number || null,
     
     award_title: rawAward.award_title || 'Untitled',
     abstract: rawAward.abstract || null,
@@ -132,25 +134,32 @@ export function normalizeAward(rawAward: SBIRgovAward): Partial<SBIRAward> {
     award_amount: parseAwardAmount(rawAward.award_amount),
     
     agency: rawAward.agency || 'Unknown',
-    agency_id: rawAward.agency_id || 'UNKNOWN',
-    branch_of_service: rawAward.branch_of_service || null,
-    component: rawAward.component || null,
+    agency_id: rawAward.agency || 'UNKNOWN',
+    branch_of_service: rawAward.branch || null,
+    component: rawAward.branch || null,
     
-    company: rawAward.company || 'Unknown Company',
+    company: rawAward.firm || 'Unknown Company',
     duns: rawAward.duns || null,
-    firm_address: rawAward.firm_address || null,
-    firm_phone: rawAward.firm_phone || null,
-    firm_website: rawAward.firm_website || null,
+    firm_address: rawAward.address1 ? `${rawAward.address1}${rawAward.address2 ? ' ' + rawAward.address2 : ''}` : null,
+    firm_city: rawAward.city || null,
+    firm_state: rawAward.state || null,
+    firm_zip: rawAward.zip || null,
+    firm_phone: rawAward.poc_phone || null,
+    firm_website: rawAward.company_url || null,
     
     hubzone_owned: rawAward.hubzone_owned === 'Y',
-    woman_owned: rawAward.woman_owned === 'Y',
-    socially_economically_disadvantaged: rawAward.socially_and_economically_disadvantaged === 'Y',
+    woman_owned: rawAward.women_owned === 'Y', // Note: API uses "women_owned"
+    socially_economically_disadvantaged: rawAward.socially_economically_disadvantaged === 'Y',
     veteran_owned: false, // Not in API, default to false
     
-    research_institution: rawAward.ri || null,
+    research_institution: rawAward.ri_name || null,
+    ri_location: null, // Not directly in API
     
-    program_manager: rawAward.program_manager || null,
-    program_manager_email: rawAward.program_manager_email || null,
+    program_manager: rawAward.poc_name || null,
+    program_manager_email: rawAward.poc_email || null,
+    program_manager_phone: rawAward.poc_phone || null,
+    
+    keywords: rawAward.research_area_keywords ? rawAward.research_area_keywords.split(',').map(k => k.trim()) : undefined,
     
     data_source: 'sbir.gov',
     last_scraped: new Date(),

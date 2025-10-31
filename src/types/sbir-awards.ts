@@ -171,31 +171,47 @@ export interface SBIRgovAwardResponse {
 }
 
 export interface SBIRgovAward {
-  // Raw API response structure
-  agency?: string;
-  agency_id?: string;
+  // Raw API response structure (actual field names from SBIR.gov API docs)
+  firm?: string; // Company name
   award_title?: string;
+  agency?: string; // Agency abbreviation (DOD, NASA, etc.)
+  branch?: string; // Branch/component
+  phase?: string; // Phase I, II, or III
+  program?: string; // SBIR or STTR
+  agency_tracking_number?: string;
+  contract?: string; // Contract/award number
+  proposal_award_date?: string; // Award date
+  contract_end_date?: string;
+  solicitation_number?: string;
+  solicitation_year?: string;
+  topic_code?: string; // Topic number
   award_year?: string;
-  company?: string;
+  award_amount?: string; // Dollar amount (string with $ and commas)
   duns?: string;
-  phase?: string;
-  program?: string;
-  award_amount?: string; // Note: API returns as string with $ and commas
-  contract_award_number?: string;
-  topic_number?: string;
-  solicitation_id?: string;
-  branch_of_service?: string;
-  component?: string;
-  hubzone_owned?: string; // "Y" or "N"
-  woman_owned?: string; // "Y" or "N"
-  socially_and_economically_disadvantaged?: string; // "Y" or "N"
-  firm_address?: string;
-  firm_phone?: string;
-  firm_website?: string;
+  uei?: string; // Unique Entity ID
+  hubzone_owned?: string; // HUBZone status
+  socially_economically_disadvantaged?: string; // Disadvantaged status
+  women_owned?: string; // Woman-owned status (note: "women" not "woman")
+  number_employees?: string;
+  company_url?: string; // Company website
+  address1?: string;
+  address2?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
+  poc_name?: string; // Point of contact
+  poc_title?: string;
+  poc_phone?: string;
+  poc_email?: string;
+  pi_name?: string; // Principal investigator
+  pi_phone?: string;
+  pi_email?: string;
+  ri_name?: string; // Research institution
+  ri_poc_name?: string;
+  ri_poc_phone?: string;
+  research_area_keywords?: string;
   abstract?: string;
-  ri?: string; // Research Institution
-  program_manager?: string;
-  program_manager_email?: string;
+  award_link?: string;
 }
 
 // ============================================
