@@ -1408,6 +1408,51 @@ export default function OpportunityPage() {
                       
                       return (
                         <>
+                          {/* Regenerate Prompt for Old Data */}
+                          {(!analysis.proposal_phase || !analysis.toc_reconciliation) && (
+                            <div style={{
+                              marginBottom: '24px',
+                              padding: '16px 20px',
+                              background: 'rgba(59, 130, 246, 0.1)',
+                              border: '1px solid rgba(59, 130, 246, 0.3)',
+                              borderRadius: '8px',
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: '12px'
+                            }}>
+                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                              </svg>
+                              <div style={{ flex: 1 }}>
+                                <p style={{ color: '#93c5fd', fontSize: '14px', fontWeight: '600', margin: '0 0 4px 0' }}>
+                                  Updated Analysis Available
+                                </p>
+                                <p style={{ color: '#cbd5e1', fontSize: '13px', margin: 0 }}>
+                                  This analysis was generated with an older version. Regenerate to get the new detailed format with TOC reconciliation, collapsible volumes, and 5x more detail.
+                                </p>
+                              </div>
+                              <button
+                                onClick={handleGenerateAnalysis}
+                                disabled={generatingAnalysis}
+                                style={{
+                                  padding: '8px 16px',
+                                  background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                                  border: '1px solid rgba(59, 130, 246, 0.4)',
+                                  borderRadius: '6px',
+                                  color: '#ffffff',
+                                  fontSize: '13px',
+                                  fontWeight: '600',
+                                  cursor: generatingAnalysis ? 'not-allowed' : 'pointer',
+                                  whiteSpace: 'nowrap'
+                                }}
+                              >
+                                Regenerate
+                              </button>
+                            </div>
+                          )}
+
                           {/* Proposal Phase Badge */}
                           {analysis.proposal_phase && (
                             <div style={{ marginBottom: '20px' }}>
