@@ -78,14 +78,30 @@ export default function OpportunityPage() {
 
   // Generate AI analysis
   const handleGenerateAnalysis = async () => {
-    if (!data) return;
+    console.log('[Regenerate] Button clicked!');
+    if (!data) {
+      console.error('[Regenerate] No data available');
+      return;
+    }
     
+    console.log('[Regenerate] Starting analysis for:', data.topic_number);
+    
+    // Clear old analysis data and show loading state
+    setData({
+      ...data,
+      instructions_checklist: null,
+      instructions_generated_at: null
+    });
     setGeneratingAnalysis(true);
     setAnalysisError(null);
+    setInstructionsExpanded(true); // Keep dropdown open
 
     try {
+      const endpoint = `/api/admin/analyze-instructions/${data.topic_id || data.id || data.topic_number}`;
+      console.log('[Regenerate] Calling API:', endpoint);
+      
       // Call API with credentials - auth validation happens on backend
-      const response = await fetch(`/api/admin/analyze-instructions/${data.topic_id || data.id || data.topic_number}`, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -93,11 +109,13 @@ export default function OpportunityPage() {
         credentials: 'include' // Send cookies for authentication
       });
 
+      console.log('[Regenerate] Response status:', response.status);
       const result = await response.json();
+      console.log('[Regenerate] Response data:', result);
 
       if (!result.success) {
         // Log full error details to console for debugging
-        console.error('Analysis failed:', result);
+        console.error('[Regenerate] Analysis failed:', result);
         
         // Build detailed error message
         let errorMsg = result.error || 'Failed to analyze instructions';
@@ -120,11 +138,12 @@ export default function OpportunityPage() {
       }
 
       // Success! Reload the page to show fresh data
+      console.log('[Regenerate] Success! Reloading page...');
       window.location.reload();
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An error occurred';
       setAnalysisError(errorMessage);
-      console.error('Analysis error:', errorMessage);
+      console.error('[Regenerate] Error:', errorMessage);
       setGeneratingAnalysis(false);
     }
   };
@@ -1958,7 +1977,9 @@ export default function OpportunityPage() {
                             }}>
                               <p style={{ color: '#94a3b8', fontSize: '12px', margin: 0 }}>
                                 Analyzed by Make Ready MATRIX... 
-                                {' '}{new Date(analysis.analysis_metadata.analyzed_at).toLocaleString()} • 
+                                {' '}{data.instructions_generated_at 
+                                  ? new Date(data.instructions_generated_at).toLocaleString()
+                                  : new Date(analysis.analysis_metadata.analyzed_at).toLocaleString()} • 
                                 {' '}{analysis.analysis_metadata.total_volumes} volumes • 
                                 {' '}{analysis.analysis_metadata.total_requirements} total requirements
                               </p>
@@ -2101,11 +2122,26 @@ export default function OpportunityPage() {
           color: '#64748b',
           fontSize: '13px'
         }}>
-          {data.last_scraped && (
-            <p style={{ margin: 0 }}>
-              Last updated: {new Date(data.last_scraped).toLocaleString()}
-            </p>
-          )}
+          {(() => {
+            // Show the most recent update date
+            const dates = [
+              data.last_scraped ? new Date(data.last_scraped) : null,
+              data.instructions_generated_at ? new Date(data.instructions_generated_at) : null
+            ].filter(d => d !== null) as Date[];
+            
+            if (dates.length > 0) {
+              const latestDate = new Date(Math.max(...dates.map(d => d.getTime())));
+              return (
+                <p style={{ margin: 0 }}>
+                  Last updated: {latestDate.toLocaleString()}
+                  {data.instructions_generated_at && new Date(data.instructions_generated_at).getTime() === latestDate.getTime() && (
+                    <span style={{ color: '#8b5cf6', marginLeft: '8px' }}>(Instructions regenerated)</span>
+                  )}
+                </p>
+              );
+            }
+            return null;
+          })()}
         </div>
       </div>
 
