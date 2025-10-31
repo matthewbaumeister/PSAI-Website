@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
       
       if (isTopicNumber) {
         // Exact topic number search (case-insensitive)
-        console.log(` Exact topic number search: "${trimmed}"`);
+        console.log(`📍 Exact topic number search: "${trimmed}"`);
         query = query.ilike('topic_number', trimmed);
       } else {
         // Accept keywords 2+ characters (allows "AI")
@@ -71,17 +71,39 @@ export async function POST(request: NextRequest) {
           .filter((k: string) => k.length >= 2); // Minimum 2 chars (allows "AI")
         
         if (allKeywords.length > 0) {
-          // Take top 2 longest keywords for better matching
+          // Take top 3 most relevant keywords for comprehensive matching
           const topKeywords = allKeywords
             .sort((a: string, b: string) => b.length - a.length)
-            .slice(0, 2);
+            .slice(0, 3);
           
-          // Search across topic_number, title, and keywords fields
+          // COMPREHENSIVE SEARCH: Search across ALL relevant text fields in sbir_final
+          // This ensures we find opportunities based on ANY relevant information
+          const searchableFields = [
+            'topic_number',           // Topic ID (e.g., SF254-D1205)
+            'title',                  // Opportunity title
+            'description',            // Main description
+            'objectives',             // Objectives/goals
+            'keywords',               // Tagged keywords
+            'technology_areas',       // Technology focus areas
+            'primary_technology_area', // Primary tech area
+            'modernization_priorities', // DoD modernization priorities
+            'description_3',          // Phase I description
+            'description_4',          // Phase II description
+            'description_5',          // Phase III description
+            'references_data',        // Related references
+            'tpoc_names',            // Technical points of contact
+            'sponsor_component',      // Component (Air Force, Navy, etc.)
+            'solicitation_branch',    // SBIR, STTR, etc.
+            'cycle_name',            // Solicitation cycle
+            'solicitation_number'     // Solicitation tracking number
+          ];
+          
+          // Build search conditions for each keyword across all fields
           const searchConditions = topKeywords.map((keyword: string) => 
-            `topic_number.ilike.%${keyword}%,title.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
+            searchableFields.map(field => `${field}.ilike.%${keyword}%`).join(',')
           ).join(',');
           
-          console.log(` Searching for: [${topKeywords.join(', ')}] (from: "${trimmed.substring(0, 50)}")`);
+          console.log(`🔍 Comprehensive search for: [${topKeywords.join(', ')}] across ${searchableFields.length} fields (from: "${trimmed.substring(0, 50)}")`);
           query = query.or(searchConditions);
         }
       }
