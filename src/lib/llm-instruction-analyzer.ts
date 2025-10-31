@@ -212,46 +212,35 @@ Output ONLY valid JSON matching this EXACT structure:
   "proposal_phase": "Phase I" or "Direct to Phase II (DP2)" or "Phase II",
   "toc_reconciliation": {
     "baa_structure": [
-      "1. Identification and Significance of the Problem or Opportunity",
-      "2. Phase I Technical Objectives", 
-      "3. Phase I Statement of Work",
-      "4. Related Work",
-      "5. Relationship with Future Research or Research and Development",
-      "6. Commercialization Strategy",
-      "7. Key Personnel",
-      "8. Foreign Citizens",
-      "9. Facilities/Equipment",
-      "10. Subcontractors/Consultants",
-      "11. Prior, Current, or Pending Support of Similar Proposals or Awards",
-      "12. Identification and Assertion of Restrictions on the Government's Use, Release, or Disclosure of Technical Data or Computer Software"
+      // EXTRACT the ACTUAL structure from the BAA document
+      // DO NOT use this as a template - DISCOVER what's actually in the document
+      // List ALL numbered items exactly as they appear
+      // Example: "1. Problem/Opportunity", "2. Technical Objectives", etc.
     ],
     "component_structure": [
-      "Volume 2A: Feasibility Documentation (5 pages)",
-      "Volume 2B: Technical Proposal (20 pages)",
-      "  (1) Table of Contents",
-      "  (2) Glossary",
-      "  (3) Milestone Identification",
-      "  (4) Identification and Significance of the Problem or Opportunity",
-      "  (5) Phase II Technical Objectives",
-      "  (6) Work Plan",
-      "    a) 1.0 - Objective",
-      "    b) 2.0 - Scope",
-      "    c) 3.0 - Background",
-      "    d) 4.0 - Task/Technical Requirements",
-      "  (7) Deliverables",
-      "    a) Scientific and Technical Reports",
-      "      i. Final Report",
-      "      ii. Status Reports",
-      "    b) Additional Reporting",
-      "  (8) Related Work",
-      "  (9) Commercialization Potential",
-      "  (10) Relationship with Future R/R&D Efforts",
-      "  D. Key Personnel",
-      "  E. Facilities/Equipment",
-      "  F. Consultants/Subcontractors",
-      "  G. Prior, Current, or Pending Support of Similar Proposals or Awards"
+      // EXTRACT the ACTUAL structure from the Component document
+      // This will vary by component (Air Force, Navy, Army, etc.) and proposal type
+      // DISCOVER the actual structure - don't assume it matches this example
+      // 
+      // For DP2 (if applicable), you might find:
+      //   "Volume 2A: Feasibility Documentation"
+      //   "Volume 2B: Technical Proposal"
+      //     "(1) Item name"
+      //     "(2) Item name"
+      //     etc.
+      //
+      // For standard Phase I, you might find:
+      //   "1. Item name"
+      //   "2. Item name"
+      //   etc.
+      //
+      // Extract EVERY item with proper indentation to show nesting:
+      //   "6. Work Plan"
+      //   "  a) 1.0 - Objective"
+      //   "  b) 2.0 - Scope"
+      //   etc.
     ],
-    "notes": "For Direct to Phase II (DP2), Component splits Volume 2 into TWO distinct sub-volumes: 2A (Feasibility Documentation, 5 pages) proving Phase I-equivalent work was already completed, and 2B (Technical Proposal, 20 pages) following a modified BAA structure. Volume 2A is UNIQUE to DP2 and is not required for standard Phase I proposals. Volume 2B includes additional requirements: Table of Contents, Glossary, Milestone Identification (items 1-3), and uses different section numbering (4-10 then D-G) compared to standard BAA numbering (1-12). Component requires Work Plan as a separate section with specific formatting (subsections 1.0-4.0) and more detailed Deliverables section with subsections for reports and documentation. The BAA says 'Refer to the Service/Component-specific Direct to Phase II instructions' meaning Component instructions SUPERSEDE BAA for DP2 structure and requirements."
+    "notes": "DESCRIBE how the Component structure differs from BAA structure. What sections are added? Removed? Reordered? Split? Combined? Does Component supersede BAA? Explain the relationship."
   },
   "volumes": [
     {
@@ -394,63 +383,77 @@ STEP 1: DETECT PROPOSAL TYPE
 Look for keywords: "Direct to Phase II", "DP2", "Feasibility Documentation", "Phase I", "Phase II Only"
 Set proposal_phase field accordingly.
 
-STEP 2: BUILD TOC RECONCILIATION
-Extract the COMPLETE, DETAILED table of contents from BOTH documents with ALL subsections.
+STEP 2: BUILD TOC RECONCILIATION - DISCOVER THE ACTUAL STRUCTURE
+Your job is to READ and EXTRACT the ACTUAL table of contents from BOTH documents. DO NOT use templates or assumptions!
 
-BAA Structure: Extract ALL numbered items (1. Problem/Opportunity, 2. Technical Objectives, 3. SOW, 4. Related Work, etc.)
+CRITICAL: Every opportunity is different. The structure varies by:
+- Component (Air Force vs Navy vs Army)
+- Proposal type (Phase I vs Direct to Phase II vs Phase II Only)
+- Solicitation year
+- Topic-specific requirements
 
-Component Structure: Extract the COMPLETE detailed structure with ALL subsections. For example:
-- If Component has "Volume 2: Technical Volume Content" then extract ALL items under it:
+HOW TO EXTRACT:
+
+1. READ the BAA document and find its "Technical Volume Content" or "Proposal Format" section
+2. EXTRACT every numbered item EXACTLY as listed (1, 2, 3... or I, II, III... or whatever format is used)
+3. READ the Component document and find its volume/section structure
+4. EXTRACT the COMPLETE structure including ALL nested items
+
+FORMATTING RULES:
+- Use indentation (spaces) to show nesting levels
+- Preserve original numbering format (1., (1), a), i., etc.)
+- Include page limits if mentioned in headers
+- Extract ALL items - don't skip anything
+
+EXAMPLES OF WHAT YOU MIGHT FIND:
+
+Standard Phase I (typical):
   "1. Identification and Significance"
-  "2. Phase II Technical Objectives" 
-  "3. Phase II Statement of Work"
-  "4. Related Work"
-  "5. Relationship with Future R&D"
-  "6. Commercialization Strategy"
-  "7. Key Personnel"
-  "8. Foreign Citizens"
-  "9. Facilities/Equipment"
-  "10. Subcontractors/Consultants"
-  "11. Prior/Current/Pending Support"
-  "12. Assertion of Restrictions"
+  "2. Phase I Technical Objectives"
+  "3. Phase I Statement of Work"
+  [... and so on]
 
-- If DP2, extract BOTH Volume 2A AND the complete Volume 2B structure:
+Direct to Phase II (Air Force DP2):
   "Volume 2A: Feasibility Documentation (5 pages)"
-  "Volume 2B: Technical Proposal"
+  "Volume 2B: Technical Proposal (20 pages)"
   "  (1) Table of Contents"
   "  (2) Glossary"
-  "  (3) Milestone Identification"
-  "  (4) Identification and Significance"
-  "  (5) Phase II Technical Objectives"
-  "  (6) Work Plan (with subsections 1.0-4.0)"
-  "  (7) Deliverables"
-  "  (8) Related Work"
-  "  (9) Commercialization Potential"
-  "  (10) Relationship with Future R&D"
-  "  D. Key Personnel"
-  "  E. Facilities/Equipment"
-  "  F. Consultants/Subcontractors"
-  "  G. Prior/Current/Pending Support"
+  [... list EVERYTHING under 2B]
 
-DO NOT simplify to just "2B Part 1. Technical Approach" - extract ALL the detailed numbered/lettered items!
+Navy STTR (example - actual will vary):
+  "Section 4.1: Technical Proposal"
+  "Section 4.2: Management Approach"
+  "Section 4.3: Key Personnel"
+  [... whatever the document actually says]
 
-EXAMPLE OF COMPLETE EXTRACTION:
-If Component says "Work Plan" with subsections:
-  a) 1.0 - Objective: [3 paragraphs of explanation]
-  b) 2.0 - Scope: [4 paragraphs of explanation]
-  c) 3.0 - Background: [2 paragraphs of explanation]
-  d) 4.0 - Task/Technical Requirements: [5 paragraphs of explanation]
+DO NOT assume a structure - EXTRACT what's actually there!
+DO NOT simplify - if a section has 10 sub-items, list all 10!
+DO NOT skip nested items - extract a, b, c and i, ii, iii levels!
 
-Then extract ALL of this as separate component_structure items:
+NESTED ITEM EXAMPLE:
+If you find a section like "Work Plan" that has subsections, extract like this:
   "(6) Work Plan"
   "  a) 1.0 - Objective"
   "  b) 2.0 - Scope"
   "  c) 3.0 - Background"
   "  d) 4.0 - Task/Technical Requirements"
 
-And create a separate required_section for EACH subsection (1.0, 2.0, 3.0, 4.0) with their full explanations!
+DELIVERABLES NESTING EXAMPLE:
+If you find "Deliverables" with nested reports:
+  "(7) Deliverables"
+  "  a) Scientific and Technical Reports"
+  "    i. Final Report"
+  "    ii. Status Reports"
+  "  b) Additional Reporting"
 
-Notes field: Explain how Component modifies BAA (adds sections, splits volumes, changes order, supersedes requirements, adds nested subsections)
+Use indentation (2 spaces per level) to show hierarchy. Create a separate required_section entry for each item that has detailed explanations!
+
+Notes field: After extracting both structures, explain:
+- How does Component modify BAA?
+- What sections are added/removed/reordered?
+- Does Component split any volumes (e.g., Volume 2 → 2A + 2B)?
+- Does Component supersede BAA for certain requirements?
+- What's the relationship between the two documents?
 
 STEP 3: EXTRACT EACH VOLUME WITH EXTREME DETAIL
 For EACH volume, extract:
