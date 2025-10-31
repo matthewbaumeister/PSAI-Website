@@ -133,6 +133,10 @@ export default function SBIRDatabaseBrowser() {
   
   // Results per page
   const [pageSize, setPageSize] = useState(25);
+  
+  // Collapsible sections state (default: collapsed for sleek viewer)
+  const [expandedSmartSearch, setExpandedSmartSearch] = useState(false);
+  const [expandedFilters, setExpandedFilters] = useState(false);
 
   // Authentication check and redirect with return URL
   useEffect(() => {
@@ -758,35 +762,78 @@ export default function SBIRDatabaseBrowser() {
           </p>
         </div>
 
-        {/* Smart Search Section */}
+        {/* Smart Search Section - Collapsible */}
         <div style={{ 
           background: 'rgba(16, 185, 129, 0.1)',
           border: '2px solid rgba(16, 185, 129, 0.3)',
           borderRadius: '12px',
-          padding: '24px',
-          marginBottom: '24px'
+          marginBottom: '24px',
+          overflow: 'hidden'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-            <h2 style={{ 
-              fontSize: '20px', 
-              fontWeight: '600',
-              color: '#10b981',
-              margin: 0
-            }}>
-              Smart Search
-            </h2>
-            <div style={{
-              padding: '4px 10px',
-              background: 'rgba(16, 185, 129, 0.2)',
-              border: '1px solid rgba(16, 185, 129, 0.4)',
-              borderRadius: '6px',
-              fontSize: '11px',
-              fontWeight: '600',
-              color: '#10b981'
-            }}>
-              NEW
+          {/* Header - Always Visible */}
+          <button
+            onClick={() => setExpandedSmartSearch(!expandedSmartSearch)}
+            style={{
+              width: '100%',
+              padding: '20px 24px',
+              background: 'transparent',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(16, 185, 129, 0.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <h2 style={{ 
+                fontSize: '20px', 
+                fontWeight: '600',
+                color: '#10b981',
+                margin: 0
+              }}>
+                Smart Search
+              </h2>
+              <div style={{
+                padding: '4px 10px',
+                background: 'rgba(16, 185, 129, 0.2)',
+                border: '1px solid rgba(16, 185, 129, 0.4)',
+                borderRadius: '6px',
+                fontSize: '11px',
+                fontWeight: '600',
+                color: '#10b981'
+              }}>
+                NEW
+              </div>
+              <span style={{ color: '#64748b', fontSize: '14px', fontStyle: 'italic' }}>
+                AI-powered keyword extraction & document search
+              </span>
             </div>
-          </div>
+            <svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="#10b981" 
+              strokeWidth="2.5"
+              style={{
+                transform: expandedSmartSearch ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.2s'
+              }}
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          
+          {/* Content - Collapsible */}
+          {expandedSmartSearch && (
+            <div style={{ padding: '0 24px 24px 24px' }}>
 
           <div style={{
             padding: '12px',
@@ -970,16 +1017,71 @@ Our company specializes in artificial intelligence and machine learning for defe
               </div>
             )}
           </div>
+            </div>
+          )}
         </div>
 
-        {/* Search and Filters */}
+        {/* Search and Filters - Collapsible */}
         <div style={{ 
           background: 'rgba(30, 41, 59, 0.5)',
           border: '1px solid rgba(51, 65, 85, 0.6)',
           borderRadius: '12px',
-          padding: '24px',
-          marginBottom: '24px'
+          marginBottom: '24px',
+          overflow: 'hidden'
         }}>
+          {/* Header - Always Visible */}
+          <button
+            onClick={() => setExpandedFilters(!expandedFilters)}
+            style={{
+              width: '100%',
+              padding: '20px 24px',
+              background: 'transparent',
+              border: 'none',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(59, 130, 246, 0.05)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'transparent';
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <h2 style={{ 
+                fontSize: '20px', 
+                fontWeight: '600',
+                color: '#60a5fa',
+                margin: 0
+              }}>
+                Filter By
+              </h2>
+              <span style={{ color: '#64748b', fontSize: '14px', fontStyle: 'italic' }}>
+                Search & filter {totalRecords.toLocaleString()} opportunities
+              </span>
+            </div>
+            <svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              stroke="#60a5fa" 
+              strokeWidth="2.5"
+              style={{
+                transform: expandedFilters ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: 'transform 0.2s'
+              }}
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          
+          {/* Content - Collapsible */}
+          {expandedFilters && (
+            <div style={{ padding: '0 24px 24px 24px' }}>
           {/* Smart Search Bar */}
           <div style={{ marginBottom: '20px' }}>
             <label style={{ 
@@ -990,7 +1092,7 @@ Our company specializes in artificial intelligence and machine learning for defe
               marginBottom: '8px',
               fontStyle: 'italic'
             }}>
-              Filter By
+              Search
             </label>
             <div style={{ display: 'flex', gap: '10px' }}>
               <input
@@ -1203,6 +1305,8 @@ Our company specializes in artificial intelligence and machine learning for defe
               </select>
             </div>
           </div>
+            </div>
+          )}
         </div>
 
         {/* Results Summary */}
