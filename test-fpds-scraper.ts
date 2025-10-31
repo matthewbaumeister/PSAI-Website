@@ -3,8 +3,9 @@
 // FPDS Scraper - Test Script
 // ============================================
 // Tests the FPDS scraper with a small dataset
-// Run: npx ts-node test-fpds-scraper.ts
+// Run: npx tsx test-fpds-scraper.ts
 
+import 'dotenv/config';
 import {
   searchContracts,
   normalizeContract,

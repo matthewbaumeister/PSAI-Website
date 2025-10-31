@@ -3,8 +3,9 @@
 // FPDS Pilot Scrape
 // ============================================
 // Imports a small dataset (100 contracts) for testing
-// Run: npx ts-node src/scripts/fpds-pilot-scrape.ts
+// Run: npx tsx src/scripts/fpds-pilot-scrape.ts
 
+import 'dotenv/config';
 import { scrapeDateRange, getScraperStats } from '../lib/fpds-scraper';
 
 async function main() {

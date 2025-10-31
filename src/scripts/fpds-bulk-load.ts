@@ -3,13 +3,14 @@
 // FPDS Bulk Load
 // ============================================
 // Imports large datasets of federal contracts
-// Run: npx ts-node src/scripts/fpds-bulk-load.ts [--year 2024] [--months 3]
+// Run: npx tsx src/scripts/fpds-bulk-load.ts [--year=2024] [--months=3]
 //
 // Examples:
-//   npx ts-node src/scripts/fpds-bulk-load.ts
-//   npx ts-node src/scripts/fpds-bulk-load.ts --year 2024
-//   npx ts-node src/scripts/fpds-bulk-load.ts --year 2024 --months 6
+//   npx tsx src/scripts/fpds-bulk-load.ts
+//   npx tsx src/scripts/fpds-bulk-load.ts --year=2024
+//   npx tsx src/scripts/fpds-bulk-load.ts --year=2024 --months=6
 
+import 'dotenv/config';
 import { scrapeDateRange, getScraperStats } from '../lib/fpds-scraper';
 
 // Parse command line arguments
