@@ -164,10 +164,20 @@ export default function OpportunityPage() {
           console.log('[Page Load] Data fetched successfully');
           console.log('[Page Load] instructions_generated_at:', oppData.instructions_generated_at);
           console.log('[Page Load] last_scraped:', oppData.last_scraped);
-          console.log('[Page Load] phase_1_award_amount:', oppData.phase_1_award_amount);
-          console.log('[Page Load] phase_2_award_amount:', oppData.phase_2_award_amount);
           console.log('[Page Load] is_direct_to_phase_ii:', oppData.is_direct_to_phase_ii);
           console.log('[Page Load] phases_available:', oppData.phases_available);
+          
+          // Check if instructions_checklist exists and log its structure
+          if (oppData.instructions_checklist) {
+            const checklist = oppData.instructions_checklist as any;
+            console.log('[Page Load] instructions_checklist exists: YES');
+            console.log('[Page Load] proposal_phase:', checklist.proposal_phase);
+            console.log('[Page Load] TOC component items:', checklist.toc_reconciliation?.component_structure?.length || 0);
+            console.log('[Page Load] TOC baa items:', checklist.toc_reconciliation?.baa_structure?.length || 0);
+          } else {
+            console.log('[Page Load] instructions_checklist: NULL');
+          }
+          
           setData(oppData);
         }
       } catch (error) {

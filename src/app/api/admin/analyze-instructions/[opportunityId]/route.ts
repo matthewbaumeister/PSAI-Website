@@ -225,7 +225,7 @@ export async function POST(
       .from('sbir_final')
       .update(updateData)
       .eq('topic_number', opportunity.topic_number)
-      .select('topic_number, instructions_generated_at, instructions_checklist, phase_1_award_amount, phase_2_award_amount, is_direct_to_phase_ii, phases_available')
+      .select('topic_number, instructions_generated_at, instructions_checklist, is_direct_to_phase_ii, phases_available')
       .single();
 
     if (updateError) {
@@ -237,8 +237,6 @@ export async function POST(
       console.log(`[LLM Analysis] Verification - Database now shows:`);
       console.log(`  - topic_number: ${updatedData?.topic_number}`);
       console.log(`  - instructions_generated_at: ${updatedData?.instructions_generated_at}`);
-      console.log(`  - phase_1_award_amount: ${updatedData?.phase_1_award_amount}`);
-      console.log(`  - phase_2_award_amount: ${updatedData?.phase_2_award_amount}`);
       console.log(`  - is_direct_to_phase_ii: ${updatedData?.is_direct_to_phase_ii}`);
       console.log(`  - phases_available: ${updatedData?.phases_available}`);
       
@@ -325,41 +323,9 @@ function reconcileMetadata(opportunity: any, analysis: InstructionAnalysisResult
     }
   }
 
-  // Check Phase 1 Funding
-  if (discovered.phase_1_max_funding && discovered.phase_1_max_funding > 0) {
-    const existingFunding = opportunity.phase_1_award_amount;
-    if (!existingFunding || existingFunding === 0) {
-      updates.phase_1_award_amount = discovered.phase_1_max_funding;
-      changes.push(`Phase 1 Funding: $${existingFunding || 0} → $${discovered.phase_1_max_funding} (from instruction analysis)`);
-    }
-  }
-
-  // Check Phase 1 Duration
-  if (discovered.phase_1_duration_months && discovered.phase_1_duration_months > 0) {
-    const existingDuration = opportunity.phase_1_duration_months;
-    if (!existingDuration || existingDuration === 0) {
-      updates.phase_1_duration_months = discovered.phase_1_duration_months;
-      changes.push(`Phase 1 Duration: ${existingDuration || 0} → ${discovered.phase_1_duration_months} months (from instruction analysis)`);
-    }
-  }
-
-  // Check Phase 2 Funding
-  if (discovered.phase_2_max_funding && discovered.phase_2_max_funding > 0) {
-    const existingFunding = opportunity.phase_2_award_amount;
-    if (!existingFunding || existingFunding === 0) {
-      updates.phase_2_award_amount = discovered.phase_2_max_funding;
-      changes.push(`Phase 2 Funding: $${existingFunding || 0} → $${discovered.phase_2_max_funding} (from instruction analysis)`);
-    }
-  }
-
-  // Check Phase 2 Duration
-  if (discovered.phase_2_duration_months && discovered.phase_2_duration_months > 0) {
-    const existingDuration = opportunity.phase_2_duration_months;
-    if (!existingDuration || existingDuration === 0) {
-      updates.phase_2_duration_months = discovered.phase_2_duration_months;
-      changes.push(`Phase 2 Duration: ${existingDuration || 0} → ${discovered.phase_2_duration_months} months (from instruction analysis)`);
-    }
-  }
+  // NOTE: Skipping phase funding/duration updates - these columns don't exist in sbir_final
+  // Error: "Could not find the 'phase_2_award_amount' column of 'sbir_final' in the schema cache"
+  // TODO: Add these columns to database schema if metadata tracking is needed
 
   return {
     updates,
