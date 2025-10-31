@@ -9,6 +9,7 @@ import {
   normalizeFullContract,
   batchInsertFullContracts 
 } from './src/lib/fpds-scraper-full';
+import { validateContractBatch } from './src/lib/fpds-data-cleaner';
 
 async function main() {
   console.log('============================================');
@@ -116,9 +117,40 @@ async function main() {
 
     console.log(`\n✅ Enriched ${enrichedContracts.length} contracts\n`);
 
-    // Step 6: Test database insert
-    console.log('TEST 6: Inserting to database...\n');
-    const result = await batchInsertFullContracts(enrichedContracts);
+    // Step 6: Test data cleaning and quality scoring
+    console.log('TEST 6: Data Cleaning & Quality Scoring...\n');
+    const { cleaned, stats } = validateContractBatch(enrichedContracts);
+    
+    console.log('🧹 Data Cleaning Complete!');
+    console.log(`   Average Quality Score: ${stats.averageScore.toFixed(1)}/100`);
+    console.log(`   High Quality (80+): ${stats.highQuality}`);
+    console.log(`   Medium Quality (60-79): ${stats.mediumQuality}`);
+    console.log(`   Low Quality (<60): ${stats.lowQuality}`);
+    if (stats.suspicious > 0) {
+      console.log(`   ⚠️  Suspicious: ${stats.suspicious}`);
+    }
+    console.log('');
+
+    // Show a sample cleaned contract
+    const sample = cleaned[0];
+    console.log('📋 Sample Cleaned Contract:');
+    console.log(`   Vendor: ${sample.vendor_name}`);
+    console.log(`   Vendor Key: ${sample.vendor_name_key} (for fuzzy matching)`);
+    console.log(`   Amount: $${sample.current_total_value_of_award?.toLocaleString() || 'N/A'}`);
+    console.log(`   Amount Category: ${sample.amount_category || 'N/A'}`);
+    console.log(`   Quality Score: ${sample.data_quality_score}/100`);
+    if (sample.data_quality_warnings && sample.data_quality_warnings.length > 0) {
+      console.log(`   Warnings: ${sample.data_quality_warnings.join(', ')}`);
+    }
+    if (sample.data_quality_issues && sample.data_quality_issues.length > 0) {
+      console.log(`   Issues: ${sample.data_quality_issues.join(', ')}`);
+    }
+    console.log(`   Suspicious: ${sample.is_suspicious ? 'Yes' : 'No'}`);
+    console.log('');
+
+    // Step 7: Test database insert
+    console.log('TEST 7: Inserting cleaned data to database...\n');
+    const result = await batchInsertFullContracts(cleaned);
     console.log(`✅ Database insert complete:`);
     console.log(`   - Inserted: ${result.inserted}`);
     console.log(`   - Errors: ${result.errors}`);
