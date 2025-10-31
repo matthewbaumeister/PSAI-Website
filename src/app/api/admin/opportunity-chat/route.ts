@@ -54,17 +54,24 @@ export async function POST(request: NextRequest) {
     const messages: any[] = [
       {
         role: 'system',
-        content: `You are an expert AI assistant helping users understand SBIR/STTR opportunities. You have detailed information about a specific opportunity and should answer questions accurately and helpfully.
+        content: `You are Make Ready MATRIX, an expert AI assistant helping users write winning SBIR/STTR proposals. You have complete access to all opportunity data, including detailed submission instructions with exact citations.
 
-INSTRUCTIONS:
-- Answer questions directly using the provided opportunity data
-- Be concise but thorough
-- If asked about something not in the data, clearly state that
-- Format dates in a readable way (e.g., "January 15, 2026")
-- When discussing funding, include both phase amounts if available
-- Cite specific sections when relevant (e.g., "According to the Phase 1 description...")
-- If asked about submission requirements, reference both component and BAA instructions
-- Be encouraging and helpful in tone
+CRITICAL INSTRUCTIONS:
+- ALWAYS provide citations for requirements (e.g., "According to Component §2A, p.6...")
+- ALWAYS quote exact requirements word-for-word when discussing compliance
+- Be extremely detailed and thorough - users need complete, actionable answers
+- If a requirement references an appendix, note that and tell them to check the original PDF
+- When discussing page limits, formatting, or submission rules, cite the exact source
+- If asked about conflicts between documents, explain how they're resolved
+- Be encouraging but precise - proposal compliance is critical
+- If information isn't in the data, say so clearly
+
+RESPONSE STYLE:
+- Use citations: "According to [Source §X, p.Y]..."
+- Quote exact requirements: "The instructions state: '[exact quote]'"
+- Provide page limits, font sizes, and formatting details with sources
+- If referencing volumes or sections, use exact numbering from instructions
+- For DP2 opportunities, clearly distinguish between 2A (Feasibility) and 2B (Technical)
 
 OPPORTUNITY DATA:
 ${opportunityContext}`
@@ -92,7 +99,7 @@ ${opportunityContext}`
       model: 'gpt-4o-mini',
       messages: messages,
       temperature: 0.7,
-      max_tokens: 800
+      max_tokens: 2000 // Increased for detailed responses with citations
     });
 
     const answer = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.';
@@ -177,15 +184,126 @@ function buildOpportunityContext(data: any): string {
     sections.push(`\nRESTRICTIONS:\n${data.restrictions}`);
   }
 
-  // Instructions
-  if (data.component_instructions_download) {
-    sections.push(`\nCOMPONENT INSTRUCTIONS: Available (PDF)`);
-  }
-  if (data.solicitation_instructions_download) {
-    sections.push(`BAA INSTRUCTIONS: Available (PDF)`);
-  }
-  if (data.instructions_plain_text) {
-    sections.push(`\nCONSOLIDATED INSTRUCTIONS SUMMARY:\n${data.instructions_plain_text.substring(0, 2000)}${data.instructions_plain_text.length > 2000 ? '...' : ''}`);
+  // Instructions - Include FULL detailed analysis if available
+  if (data.instructions_checklist && typeof data.instructions_checklist === 'object') {
+    const analysis = data.instructions_checklist;
+    
+    sections.push(`\n${'='.repeat(80)}`);
+    sections.push(`DETAILED SUBMISSION INSTRUCTIONS WITH CITATIONS`);
+    sections.push(`${'='.repeat(80)}`);
+    
+    // Proposal Phase
+    if (analysis.proposal_phase) {
+      sections.push(`\nPROPOSAL TYPE: ${analysis.proposal_phase}`);
+    }
+    
+    // TOC Reconciliation
+    if (analysis.toc_reconciliation) {
+      sections.push(`\nTABLE OF CONTENTS RECONCILIATION:`);
+      if (analysis.toc_reconciliation.baa_structure) {
+        sections.push(`BAA Structure: ${analysis.toc_reconciliation.baa_structure}`);
+      }
+      if (analysis.toc_reconciliation.component_structure) {
+        sections.push(`Component Structure: ${analysis.toc_reconciliation.component_structure}`);
+      }
+      if (analysis.toc_reconciliation.notes) {
+        sections.push(`Notes: ${analysis.toc_reconciliation.notes}`);
+      }
+    }
+    
+    // Critical Notes
+    if (analysis.critical_notes && analysis.critical_notes.length > 0) {
+      sections.push(`\nCRITICAL COMPLIANCE NOTES:`);
+      analysis.critical_notes.forEach((note: any, idx: number) => {
+        sections.push(`\n${idx + 1}. ${note.title}`);
+        sections.push(`   ${note.description}`);
+        if (note.citation) sections.push(`   Citation: ${note.citation}`);
+        if (note.applies_to) sections.push(`   Applies to: ${note.applies_to.join(', ')}`);
+      });
+    }
+    
+    // Quick Reference
+    if (analysis.quick_reference && analysis.quick_reference.length > 0) {
+      sections.push(`\nQUICK REFERENCE:`);
+      analysis.quick_reference.forEach((item: any) => {
+        sections.push(`- ${item.category}: ${item.value} (${item.citation})`);
+      });
+    }
+    
+    // Detailed Volumes
+    if (analysis.volumes && analysis.volumes.length > 0) {
+      sections.push(`\n${'='.repeat(80)}`);
+      sections.push(`COMPLETE VOLUME-BY-VOLUME REQUIREMENTS`);
+      sections.push(`${'='.repeat(80)}`);
+      
+      analysis.volumes.forEach((volume: any) => {
+        sections.push(`\n${'-'.repeat(80)}`);
+        sections.push(`${volume.volume_number}: ${volume.volume_title}`);
+        sections.push(`Page Limit: ${volume.page_limit || 'Not specified'}`);
+        sections.push(`${'-'.repeat(80)}`);
+        
+        if (volume.volume_description) {
+          sections.push(`\nOVERVIEW:\n${volume.volume_description}`);
+        }
+        
+        if (volume.format_requirements && volume.format_requirements.length > 0) {
+          sections.push(`\nFORMAT REQUIREMENTS:`);
+          volume.format_requirements.forEach((req: string) => {
+            sections.push(`- ${req}`);
+          });
+        }
+        
+        if (volume.required_sections && volume.required_sections.length > 0) {
+          sections.push(`\nREQUIRED SECTIONS:`);
+          volume.required_sections.forEach((section: any, idx: number) => {
+            sections.push(`\nSection ${idx + 1}: ${section.section_title} [${section.priority}]`);
+            if (section.section_number) sections.push(`Section Number: ${section.section_number}`);
+            if (section.page_allocation) sections.push(`Page Allocation: ${section.page_allocation}`);
+            
+            if (section.description) {
+              sections.push(`\nDescription:\n${section.description}`);
+            }
+            
+            if (section.requirements && section.requirements.length > 0) {
+              sections.push(`\nREQUIREMENTS (Word-for-Word):`);
+              section.requirements.forEach((req: string, reqIdx: number) => {
+                sections.push(`  ${reqIdx + 1}. ${req}`);
+              });
+            }
+            
+            if (section.citation) {
+              sections.push(`\nCitation: ${section.citation}`);
+            }
+            
+            if (section.formatting_notes && section.formatting_notes.length > 0) {
+              sections.push(`Formatting Notes: ${section.formatting_notes.join('; ')}`);
+            }
+          });
+        }
+        
+        if (volume.submission_instructions) {
+          sections.push(`\nSUBMISSION INSTRUCTIONS:\n${volume.submission_instructions}`);
+        }
+        
+        if (volume.important_notes && volume.important_notes.length > 0) {
+          sections.push(`\nIMPORTANT NOTES:`);
+          volume.important_notes.forEach((note: string) => {
+            sections.push(`- ${note}`);
+          });
+        }
+      });
+    }
+  } else {
+    // Fallback to basic instructions if detailed analysis doesn't exist
+    if (data.component_instructions_download) {
+      sections.push(`\nCOMPONENT INSTRUCTIONS: Available (PDF)`);
+    }
+    if (data.solicitation_instructions_download) {
+      sections.push(`BAA INSTRUCTIONS: Available (PDF)`);
+    }
+    if (data.instructions_plain_text) {
+      sections.push(`\nCONSOLIDATED INSTRUCTIONS SUMMARY:\n${data.instructions_plain_text.substring(0, 2000)}${data.instructions_plain_text.length > 2000 ? '...' : ''}`);
+    }
   }
 
   // Direct to Phase II
