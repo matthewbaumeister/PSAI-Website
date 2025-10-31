@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth } from '@/lib/auth-middleware';
 import OpenAI from 'openai';
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 // Lazy initialize OpenAI to prevent build errors
 let openai: OpenAI | null = null;
@@ -24,6 +31,124 @@ interface ChatRequest {
   question: string;
   opportunityData: any;
   conversationHistory?: Message[];
+}
+
+// Function definitions for OpenAI function calling
+const CHAT_FUNCTIONS = [
+  {
+    name: 'search_similar_opportunities',
+    description: 'Search for similar SBIR/STTR opportunities based on keywords, technology areas, or objectives. Use this when the user asks about related work, similar opportunities, or what else aligns with the current opportunity.',
+    parameters: {
+      type: 'object',
+      properties: {
+        keywords: {
+          type: 'string',
+          description: 'Keywords or phrases to search for (e.g., "AI machine learning", "hypersonic weapons")'
+        },
+        component: {
+          type: 'string',
+          description: 'Specific DoD component to filter by (e.g., "Air Force", "Navy", "Army"). Leave empty to search all.'
+        },
+        status: {
+          type: 'string',
+          enum: ['Open', 'Closed', 'Prerelease', 'Active', 'All'],
+          description: 'Filter by status. Default is "All".'
+        },
+        limit: {
+          type: 'number',
+          description: 'Maximum number of results to return (default: 5, max: 10)'
+        }
+      },
+      required: ['keywords']
+    }
+  },
+  {
+    name: 'get_opportunity_details',
+    description: 'Get detailed information about a specific opportunity by topic number. Use this when the user asks about a specific topic or wants more details about an opportunity from search results.',
+    parameters: {
+      type: 'object',
+      properties: {
+        topic_number: {
+          type: 'string',
+          description: 'The topic number (e.g., "CBD254-011", "A254-P039")'
+        }
+      },
+      required: ['topic_number']
+    }
+  }
+];
+
+// Search for similar opportunities
+async function searchSimilarOpportunities(params: {
+  keywords: string;
+  component?: string;
+  status?: string;
+  limit?: number;
+}) {
+  const { keywords, component, status = 'All', limit = 5 } = params;
+  
+  try {
+    let query = supabase
+      .from('sbir_final')
+      .select('topic_number, title, status, sponsor_component, close_date, phase_1_award_amount, phase_2_award_amount, technology_areas, keywords, objectives')
+      .limit(Math.min(limit, 10));
+
+    // Apply filters
+    if (status !== 'All') {
+      query = query.ilike('status', status);
+    }
+    
+    if (component) {
+      query = query.ilike('sponsor_component', `%${component}%`);
+    }
+
+    // Search across multiple fields
+    const searchTerms = keywords.toLowerCase();
+    query = query.or(`title.ilike.%${searchTerms}%,keywords.ilike.%${searchTerms}%,technology_areas.ilike.%${searchTerms}%,objectives.ilike.%${searchTerms}%,description.ilike.%${searchTerms}%`);
+
+    const { data, error } = await query;
+
+    if (error) throw error;
+
+    return {
+      success: true,
+      results: data || [],
+      count: data?.length || 0
+    };
+  } catch (error) {
+    console.error('[Search Similar] Error:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Failed to search opportunities',
+      results: [],
+      count: 0
+    };
+  }
+}
+
+// Get specific opportunity details
+async function getOpportunityDetails(topicNumber: string) {
+  try {
+    const { data, error } = await supabase
+      .from('sbir_final')
+      .select('*')
+      .eq('topic_number', topicNumber)
+      .single();
+
+    if (error) throw error;
+
+    return {
+      success: true,
+      opportunity: data
+    };
+  } catch (error) {
+    console.error('[Get Opportunity] Error:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Failed to fetch opportunity',
+      opportunity: null
+    };
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -66,12 +191,21 @@ CRITICAL INSTRUCTIONS:
 - Be encouraging but precise - proposal compliance is critical
 - If information isn't in the data, say so clearly
 
+AVAILABLE TOOLS:
+You can search for similar opportunities in the database when users ask:
+- "What other opportunities are related to this?"
+- "Find similar work in [technology area]"
+- "What else aligns with this opportunity?"
+- "Show me other [component] opportunities about [topic]"
+Use the search_similar_opportunities function to help users discover related work.
+
 RESPONSE STYLE:
 - Use citations: "According to [Source §X, p.Y]..."
 - Quote exact requirements: "The instructions state: '[exact quote]'"
 - Provide page limits, font sizes, and formatting details with sources
 - If referencing volumes or sections, use exact numbering from instructions
 - For DP2 opportunities, clearly distinguish between 2A (Feasibility) and 2B (Technical)
+- When showing similar opportunities, include topic numbers, titles, status, and key details
 
 OPPORTUNITY DATA:
 ${opportunityContext}`
@@ -93,16 +227,61 @@ ${opportunityContext}`
       content: question
     });
 
-    // Call OpenAI
+    // Call OpenAI with function calling
     const client = getOpenAI();
-    const completion = await client.chat.completions.create({
+    let completion = await client.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: messages,
+      functions: CHAT_FUNCTIONS as any,
+      function_call: 'auto',
       temperature: 0.7,
       max_tokens: 2000 // Increased for detailed responses with citations
     });
 
-    const answer = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.';
+    let responseMessage = completion.choices[0]?.message;
+
+    // Handle function calls
+    if (responseMessage?.function_call) {
+      const functionName = responseMessage.function_call.name;
+      const functionArgs = JSON.parse(responseMessage.function_call.arguments || '{}');
+
+      console.log(`[Opportunity Chat] Function call: ${functionName}`, functionArgs);
+
+      // Execute the function
+      let functionResult: any;
+      if (functionName === 'search_similar_opportunities') {
+        functionResult = await searchSimilarOpportunities(functionArgs);
+      } else if (functionName === 'get_opportunity_details') {
+        functionResult = await getOpportunityDetails(functionArgs.topic_number);
+      } else {
+        functionResult = { success: false, error: 'Unknown function' };
+      }
+
+      // Add function call and result to messages
+      messages.push({
+        role: 'assistant',
+        content: null,
+        function_call: responseMessage.function_call
+      } as any);
+
+      messages.push({
+        role: 'function',
+        name: functionName,
+        content: JSON.stringify(functionResult)
+      } as any);
+
+      // Call OpenAI again with function result
+      completion = await client.chat.completions.create({
+        model: 'gpt-4o-mini',
+        messages: messages,
+        temperature: 0.7,
+        max_tokens: 2000
+      });
+
+      responseMessage = completion.choices[0]?.message;
+    }
+
+    const answer = responseMessage?.content || 'Sorry, I could not generate a response.';
 
     console.log(`[Opportunity Chat] Response generated successfully`);
 
