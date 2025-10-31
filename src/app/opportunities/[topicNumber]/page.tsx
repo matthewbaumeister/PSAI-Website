@@ -58,9 +58,8 @@ export default function OpportunityPage() {
   const [generatingAnalysis, setGeneratingAnalysis] = useState(false);
   const [analysisError, setAnalysisError] = useState<string | null>(null);
   const [chatOpen, setChatOpen] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // Assume true initially to prevent flash
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // Assume true initially
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [authCheckComplete, setAuthCheckComplete] = useState(false);
   
   // Memoize Supabase client to prevent "Multiple GoTrueClient" warnings
   const supabase = useMemo(() => createClient(), []);
@@ -176,84 +175,32 @@ export default function OpportunityPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [chatOpen]);
 
-  // Check authentication status
+  // Check authentication status - ONLY listen for sign out events
   useEffect(() => {
     let mounted = true;
-    let checkTimeout: NodeJS.Timeout;
 
-    async function checkAuth() {
-      try {
-        // If we just came from login redirect, wait longer for session to establish
-        const isFromLogin = document.referrer.includes('/auth/login') || 
-                           window.location.search.includes('returnUrl');
-        const waitTime = isFromLogin ? 2000 : 500;
-        
-        await new Promise(resolve => setTimeout(resolve, waitTime));
-        
-        if (!mounted) return;
-
-        const { data: { session }, error } = await supabase.auth.getSession();
-        
-        console.log('Auth check:', { hasSession: !!session, error: error?.message, isFromLogin });
-        
-        if (error || !session) {
-          // Don't show modal if we just came from login - give more time
-          if (isFromLogin && !authCheckComplete) {
-            console.log('Just logged in, waiting longer before showing modal...');
-            checkTimeout = setTimeout(() => {
-              if (mounted) checkAuth();
-            }, 2000);
-            return;
-          }
-          
-          setIsAuthenticated(false);
-          // Only show modal after initial check is complete
-          if (authCheckComplete) {
-            setShowLoginModal(true);
-          } else {
-            // On first load, wait a bit longer before showing modal
-            setTimeout(() => {
-              if (mounted) {
-                setShowLoginModal(true);
-              }
-            }, 1000);
-          }
-        } else {
-          setIsAuthenticated(true);
-          setShowLoginModal(false);
-        }
-        setAuthCheckComplete(true);
-      } catch (error) {
-        console.error('Auth check error:', error);
-        if (mounted) {
-          setIsAuthenticated(false);
-          setAuthCheckComplete(true);
-        }
-      }
-    }
-
-    // Check once on mount
-    checkAuth();
-
-    // Listen for auth state changes (sign in/out events)
+    // Don't do any immediate checks - assume user is authenticated
+    // Only react to explicit SIGNED_OUT events
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log('Auth state change:', event, { hasSession: !!session });
-      if (event === 'SIGNED_OUT') {
+      console.log('Auth state change on opportunity page:', event);
+      
+      // Only show modal if user explicitly signs out
+      if (event === 'SIGNED_OUT' && mounted) {
+        console.log('User signed out, showing login modal');
         setIsAuthenticated(false);
         setShowLoginModal(true);
-      } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION') {
+      } else if ((event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED' || event === 'INITIAL_SESSION') && mounted) {
+        console.log('User authenticated');
         setIsAuthenticated(true);
         setShowLoginModal(false);
-        setAuthCheckComplete(true);
       }
     });
 
     return () => {
       mounted = false;
-      if (checkTimeout) clearTimeout(checkTimeout);
       subscription.unsubscribe();
     };
-  }, [supabase, authCheckComplete]);
+  }, [supabase]);
 
   if (loading) {
     return (
