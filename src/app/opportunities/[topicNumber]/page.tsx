@@ -1200,17 +1200,68 @@ export default function OpportunityPage() {
                   </svg>
                 </div>
                 <div style={{ textAlign: 'left' }}>
-                  <h2 style={{ 
-                    color: '#e2e8f0',
-                    fontSize: '24px',
-                    fontWeight: '700',
-                    margin: '0 0 4px 0'
-                  }}>
-                    Consolidated Submission Instructions
-                  </h2>
-                  <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
-                    Cross-reference analysis, superseding guidance, and submission checklist
-                  </p>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flex: 1 }}>
+                    <div>
+                      <h2 style={{
+                        color: '#e2e8f0',
+                        fontSize: '24px',
+                        fontWeight: '700',
+                        margin: '0 0 4px 0'
+                      }}>
+                        Consolidated Submission Instructions
+                      </h2>
+                      <p style={{ color: '#94a3b8', fontSize: '14px', margin: 0 }}>
+                        Cross-reference analysis, superseding guidance, and submission checklist
+                      </p>
+                    </div>
+                    {/* Regenerate Button - only show if instructions exist and opportunity is active */}
+                    {hasInstructions && isActive && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleGenerateAnalysis();
+                        }}
+                        disabled={generatingAnalysis}
+                        style={{
+                          padding: '6px 12px',
+                          background: 'rgba(100, 116, 139, 0.3)',
+                          border: '1px solid rgba(148, 163, 184, 0.3)',
+                          borderRadius: '6px',
+                          color: '#cbd5e1',
+                          fontSize: '12px',
+                          fontWeight: '500',
+                          cursor: generatingAnalysis ? 'not-allowed' : 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          transition: 'all 0.2s',
+                          opacity: generatingAnalysis ? 0.5 : 0.7,
+                          whiteSpace: 'nowrap'
+                        }}
+                        onMouseEnter={(e) => {
+                          if (!generatingAnalysis) {
+                            e.currentTarget.style.opacity = '1';
+                            e.currentTarget.style.background = 'rgba(59, 130, 246, 0.2)';
+                            e.currentTarget.style.borderColor = 'rgba(59, 130, 246, 0.4)';
+                            e.currentTarget.style.color = '#93c5fd';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.opacity = generatingAnalysis ? '0.5' : '0.7';
+                          e.currentTarget.style.background = 'rgba(100, 116, 139, 0.3)';
+                          e.currentTarget.style.borderColor = 'rgba(148, 163, 184, 0.3)';
+                          e.currentTarget.style.color = '#cbd5e1';
+                        }}
+                        title="Regenerate analysis with latest AI improvements"
+                      >
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M23 4v6h-6M1 20v-6h6"></path>
+                          <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                        </svg>
+                        {generatingAnalysis ? 'Regenerating...' : 'Regenerate'}
+                      </button>
+                    )}
+                  </div>
                 </div>
               </div>
               <div style={{
