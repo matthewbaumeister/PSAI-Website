@@ -123,41 +123,41 @@ export function normalizeAward(rawAward: SBIRgovAward): Partial<SBIRAward> {
     award_year: parseInt(rawAward.award_year || '0'),
     award_date: rawAward.proposal_award_date ? new Date(rawAward.proposal_award_date) : undefined,
     
-    topic_number: rawAward.topic_code || null,
-    solicitation_id: rawAward.solicitation_number || null,
-    solicitation_number: rawAward.solicitation_number || null,
+    topic_number: rawAward.topic_code || undefined,
+    solicitation_id: rawAward.solicitation_number || undefined,
+    solicitation_number: rawAward.solicitation_number || undefined,
     
     award_title: rawAward.award_title || 'Untitled',
-    abstract: rawAward.abstract || null,
+    abstract: rawAward.abstract || undefined,
     phase: normalizePhase(rawAward.phase),
     program: normalizeProgram(rawAward.program),
-    award_amount: parseAwardAmount(rawAward.award_amount),
+    award_amount: parseAwardAmount(rawAward.award_amount) ?? undefined,
     
     agency: rawAward.agency || 'Unknown',
     agency_id: rawAward.agency || 'UNKNOWN',
-    branch_of_service: rawAward.branch || null,
-    component: rawAward.branch || null,
+    branch_of_service: rawAward.branch || undefined,
+    component: rawAward.branch || undefined,
     
     company: rawAward.firm || 'Unknown Company',
-    duns: rawAward.duns || null,
-    firm_address: rawAward.address1 ? `${rawAward.address1}${rawAward.address2 ? ' ' + rawAward.address2 : ''}` : null,
-    firm_city: rawAward.city || null,
-    firm_state: rawAward.state || null,
-    firm_zip: rawAward.zip || null,
-    firm_phone: rawAward.poc_phone || null,
-    firm_website: rawAward.company_url || null,
+    duns: rawAward.duns || undefined,
+    firm_address: rawAward.address1 ? `${rawAward.address1}${rawAward.address2 ? ' ' + rawAward.address2 : ''}` : undefined,
+    firm_city: rawAward.city || undefined,
+    firm_state: rawAward.state || undefined,
+    firm_zip: rawAward.zip || undefined,
+    firm_phone: rawAward.poc_phone || undefined,
+    firm_website: rawAward.company_url || undefined,
     
     hubzone_owned: rawAward.hubzone_owned === 'Y',
     woman_owned: rawAward.women_owned === 'Y', // Note: API uses "women_owned"
     socially_economically_disadvantaged: rawAward.socially_economically_disadvantaged === 'Y',
     veteran_owned: false, // Not in API, default to false
     
-    research_institution: rawAward.ri_name || null,
-    ri_location: null, // Not directly in API
+    research_institution: rawAward.ri_name || undefined,
+    ri_location: undefined, // Not directly in API
     
-    program_manager: rawAward.poc_name || null,
-    program_manager_email: rawAward.poc_email || null,
-    program_manager_phone: rawAward.poc_phone || null,
+    program_manager: rawAward.poc_name || undefined,
+    program_manager_email: rawAward.poc_email || undefined,
+    program_manager_phone: rawAward.poc_phone || undefined,
     
     keywords: rawAward.research_area_keywords ? rawAward.research_area_keywords.split(',').map(k => k.trim()) : undefined,
     
