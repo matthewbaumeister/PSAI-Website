@@ -18,7 +18,7 @@ interface OpportunityChatProps {
 function renderMarkdown(text: string) {
   // Split by lines for proper list rendering
   const lines = text.split('\n');
-  const elements: JSX.Element[] = [];
+  const elements: React.JSX.Element[] = [];
   let inList = false;
   let listItems: string[] = [];
 
