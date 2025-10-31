@@ -25,7 +25,14 @@ export default function SmallBusinessPage() {
             Choose from our suite of proprietary small business intelligence tools
           </p>
           
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', 
+            gap: '30px', 
+            maxWidth: '1200px', 
+            margin: '0 auto',
+            width: '100%'
+          }}>
             {/* Smart DSIP Search */}
             <div className="tool-card" style={{
               background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1))',
@@ -45,10 +52,12 @@ export default function SmallBusinessPage() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '20px',
-                  fontSize: '32px'
+                  marginBottom: '20px'
                 }}>
-                  🔍
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" strokeWidth="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
                 </div>
                 
                 <h3 style={{ color: '#60a5fa', fontSize: '24px', fontWeight: '700', marginBottom: '12px' }}>
@@ -96,7 +105,12 @@ export default function SmallBusinessPage() {
                     fontWeight: '600',
                     borderRadius: '8px',
                     cursor: 'pointer',
-                    transition: 'all 0.2s'
+                    transition: 'all 0.2s',
+                    textDecoration: 'none',
+                    color: '#ffffff',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
                   }}
                 >
                   Launch Smart DSIP Search →
@@ -104,7 +118,8 @@ export default function SmallBusinessPage() {
                 
                 <p style={{ 
                   textAlign: 'center', 
-                  marginTop: '12px', 
+                  marginTop: '12px',
+                  marginBottom: '0',
                   fontSize: '12px', 
                   color: '#64748b' 
                 }}>
@@ -133,10 +148,13 @@ export default function SmallBusinessPage() {
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  marginBottom: '20px',
-                  fontSize: '32px'
+                  marginBottom: '20px'
                 }}>
-                  📊
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" strokeWidth="2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
                 </div>
                 
                 <h3 style={{ color: '#a78bfa', fontSize: '24px', fontWeight: '700', marginBottom: '12px' }}>
@@ -183,7 +201,10 @@ export default function SmallBusinessPage() {
                     fontWeight: '600',
                     borderRadius: '8px',
                     cursor: 'not-allowed',
-                    color: '#a78bfa'
+                    color: '#a78bfa',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
                   }}
                 >
                   Coming Q2 2025
@@ -191,7 +212,8 @@ export default function SmallBusinessPage() {
                 
                 <p style={{ 
                   textAlign: 'center', 
-                  marginTop: '12px', 
+                  marginTop: '12px',
+                  marginBottom: '0',
                   fontSize: '12px', 
                   color: '#64748b' 
                 }}>
