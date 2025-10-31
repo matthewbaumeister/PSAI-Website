@@ -53,26 +53,37 @@ export async function POST(request: NextRequest) {
 
     // NOW apply search AFTER filtering (searches smaller dataset)
     if (searchText && searchText.trim()) {
-      // Accept keywords 2+ characters (allows "AI")
-      const allKeywords = searchText.trim()
-        .toLowerCase()
-        .replace(/[^\w\s-]/g, ' ')
-        .split(/\s+/)
-        .filter((k: string) => k.length >= 2); // Minimum 2 chars (allows "AI")
+      const trimmed = searchText.trim();
       
-      if (allKeywords.length > 0) {
-        // Take top 2 longest keywords for better matching
-        const topKeywords = allKeywords
-          .sort((a: string, b: string) => b.length - a.length)
-          .slice(0, 2);
+      // Check if it looks like a topic number (e.g., SF254-D1205, CBD254-011, A254-P039)
+      const isTopicNumber = /^[A-Z]{1,4}\d{3,4}[-_][A-Z0-9]+$/i.test(trimmed);
+      
+      if (isTopicNumber) {
+        // Exact topic number search (case-insensitive)
+        console.log(` Exact topic number search: "${trimmed}"`);
+        query = query.ilike('topic_number', trimmed);
+      } else {
+        // Accept keywords 2+ characters (allows "AI")
+        const allKeywords = trimmed
+          .toLowerCase()
+          .replace(/[^\w\s-]/g, ' ')
+          .split(/\s+/)
+          .filter((k: string) => k.length >= 2); // Minimum 2 chars (allows "AI")
         
-        // Search across title and keywords fields
-        const searchConditions = topKeywords.map((keyword: string) => 
-          `title.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
-        ).join(',');
-        
-        console.log(` Searching for: [${topKeywords.join(', ')}] (from: "${searchText.substring(0, 50)}")`);
-        query = query.or(searchConditions);
+        if (allKeywords.length > 0) {
+          // Take top 2 longest keywords for better matching
+          const topKeywords = allKeywords
+            .sort((a: string, b: string) => b.length - a.length)
+            .slice(0, 2);
+          
+          // Search across topic_number, title, and keywords fields
+          const searchConditions = topKeywords.map((keyword: string) => 
+            `topic_number.ilike.%${keyword}%,title.ilike.%${keyword}%,keywords.ilike.%${keyword}%`
+          ).join(',');
+          
+          console.log(` Searching for: [${topKeywords.join(', ')}] (from: "${trimmed.substring(0, 50)}")`);
+          query = query.or(searchConditions);
+        }
       }
     }
 
