@@ -14,6 +14,76 @@ interface OpportunityChatProps {
   opportunityData: any;
 }
 
+// Simple markdown renderer for chat messages
+function renderMarkdown(text: string) {
+  // Split by lines for proper list rendering
+  const lines = text.split('\n');
+  const elements: JSX.Element[] = [];
+  let inList = false;
+  let listItems: string[] = [];
+
+  const flushList = () => {
+    if (listItems.length > 0) {
+      elements.push(
+        <ul key={`list-${elements.length}`} style={{ margin: '8px 0', paddingLeft: '24px' }}>
+          {listItems.map((item, idx) => (
+            <li key={idx} dangerouslySetInnerHTML={{ __html: formatInline(item) }} />
+          ))}
+        </ul>
+      );
+      listItems = [];
+    }
+  };
+
+  const formatInline = (line: string) => {
+    return line
+      // Bold: **text** or __text__
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/__(.+?)__/g, '<strong>$1</strong>')
+      // Italic: *text* or _text_
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/_(.+?)_/g, '<em>$1</em>')
+      // Code: `text`
+      .replace(/`(.+?)`/g, '<code style="background: rgba(59, 130, 246, 0.2); padding: 2px 6px; border-radius: 4px; font-family: monospace;">$1</code>');
+  };
+
+  lines.forEach((line, index) => {
+    const trimmed = line.trim();
+    
+    // Bullet points: - item or • item or * item
+    if (trimmed.match(/^[-•\*]\s+/)) {
+      const content = trimmed.replace(/^[-•\*]\s+/, '');
+      listItems.push(content);
+      inList = true;
+    } else {
+      // Flush any pending list
+      if (inList) {
+        flushList();
+        inList = false;
+      }
+      
+      // Regular paragraph
+      if (trimmed) {
+        elements.push(
+          <p
+            key={index}
+            style={{ margin: '0 0 8px 0' }}
+            dangerouslySetInnerHTML={{ __html: formatInline(trimmed) }}
+          />
+        );
+      } else if (elements.length > 0) {
+        // Empty line = spacing
+        elements.push(<div key={`space-${index}`} style={{ height: '8px' }} />);
+      }
+    }
+  });
+
+  // Flush any remaining list
+  flushList();
+
+  return <div>{elements}</div>;
+}
+
 export default function OpportunityChat({ isOpen, onClose, opportunityData }: OpportunityChatProps) {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -206,10 +276,9 @@ export default function OpportunityChat({ isOpen, onClose, opportunityData }: Op
                 padding: '12px 16px',
                 color: '#ffffff',
                 fontSize: '14px',
-                lineHeight: '1.6',
-                whiteSpace: 'pre-wrap'
+                lineHeight: '1.6'
               }}>
-                {message.content}
+                {renderMarkdown(message.content)}
               </div>
             </div>
           ))}
