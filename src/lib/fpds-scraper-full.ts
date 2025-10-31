@@ -5,6 +5,7 @@
 // Much slower but WAY more comprehensive!
 
 import { createClient } from '@supabase/supabase-js';
+import { validateContractBatch } from './fpds-data-cleaner';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -323,10 +324,20 @@ export async function scrapeDateRangeWithFullDetails(
         }
       }
 
-      // Step 3: Batch insert enriched contracts
+      // Step 3: Clean and validate contracts
       if (enrichedContracts.length > 0) {
-        console.log(`[FPDS Full] Inserting ${enrichedContracts.length} enriched contracts...`);
-        const result = await batchInsertFullContracts(enrichedContracts);
+        console.log(`[FPDS Full] Cleaning and validating ${enrichedContracts.length} contracts...`);
+        const { cleaned, stats } = validateContractBatch(enrichedContracts);
+        
+        console.log(`[FPDS Full] Data Quality: ${stats.averageScore.toFixed(1)}/100 avg score`);
+        console.log(`[FPDS Full]   High Quality: ${stats.highQuality}, Medium: ${stats.mediumQuality}, Low: ${stats.lowQuality}`);
+        if (stats.suspicious > 0) {
+          console.log(`[FPDS Full]   ⚠️  Suspicious: ${stats.suspicious}`);
+        }
+        
+        // Step 4: Batch insert cleaned contracts
+        console.log(`[FPDS Full] Inserting ${cleaned.length} cleaned contracts...`);
+        const result = await batchInsertFullContracts(cleaned);
         totalInserted += result.inserted;
         totalErrors += result.errors;
       }
