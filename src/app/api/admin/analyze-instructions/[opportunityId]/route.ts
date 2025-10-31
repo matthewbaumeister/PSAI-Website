@@ -150,14 +150,26 @@ export async function POST(
     // Step 5: Format for display
     const formattedText = formatAnalysisForDisplay(analysisResult);
 
-    // Step 6: Store in database
+    // Step 6: Reconcile discovered metadata with existing data
+    console.log(`[LLM Analysis] Reconciling metadata...`);
+    const reconciliation = reconcileMetadata(opportunity, analysisResult);
+    
+    // Step 7: Store in database (including corrected metadata)
     console.log(`[LLM Analysis] Saving to database...`);
+    const updateData: any = {
+      instructions_checklist: analysisResult as any,
+      instructions_generated_at: new Date().toISOString(),
+    };
+    
+    // Apply metadata corrections if any were found
+    if (reconciliation.updates && Object.keys(reconciliation.updates).length > 0) {
+      console.log(`[LLM Analysis] Applying ${Object.keys(reconciliation.updates).length} metadata corrections:`, reconciliation.updates);
+      Object.assign(updateData, reconciliation.updates);
+    }
+    
     const { error: updateError } = await supabase
       .from('sbir_final')
-      .update({
-        instructions_checklist: analysisResult as any,
-        instructions_generated_at: new Date().toISOString(),
-      })
+      .update(updateData)
       .eq(isNumericId ? 'id' : 'topic_id', opportunityId);
 
     if (updateError) {
@@ -167,7 +179,7 @@ export async function POST(
       console.log(`[LLM Analysis] Saved to database successfully`);
     }
 
-    // Step 7: Return results
+    // Step 8: Return results
     return NextResponse.json({
       success: true,
       opportunity: {
@@ -178,6 +190,7 @@ export async function POST(
       },
       analysis: analysisResult,
       formatted_display: formattedText,
+      reconciliation: reconciliation, // Include reconciliation results
       metadata: {
         component_url: componentUrl,
         baa_url: baaUrl,
@@ -199,6 +212,85 @@ export async function POST(
       { status: 500 }
     );
   }
+}
+
+/**
+ * Reconcile LLM-discovered metadata with existing database values
+ * Returns updates to apply and change log
+ */
+function reconcileMetadata(opportunity: any, analysis: InstructionAnalysisResult) {
+  const discovered = analysis.discovered_metadata;
+  const updates: any = {};
+  const changes: string[] = [];
+  
+  if (!discovered) {
+    return { updates, changes };
+  }
+
+  // Check Direct to Phase II flag
+  if (discovered.is_direct_to_phase_ii !== undefined) {
+    const existingValue = opportunity.is_direct_to_phase_ii?.toLowerCase();
+    const discoveredValue = discovered.is_direct_to_phase_ii ? 'Yes' : 'No';
+    
+    if (existingValue !== discoveredValue.toLowerCase()) {
+      updates.is_direct_to_phase_ii = discoveredValue;
+      changes.push(`Direct to Phase II: "${existingValue || 'null'}" → "${discoveredValue}" (from instruction analysis)`);
+    }
+  }
+
+  // Check Phases Available
+  if (discovered.phases_available && discovered.phases_available.length > 0) {
+    const existingPhases = opportunity.phases_available;
+    const discoveredPhases = discovered.phases_available.join(', ');
+    
+    if (existingPhases !== discoveredPhases) {
+      updates.phases_available = discoveredPhases;
+      changes.push(`Phases Available: "${existingPhases || 'null'}" → "${discoveredPhases}" (from instruction analysis)`);
+    }
+  }
+
+  // Check Phase 1 Funding
+  if (discovered.phase_1_max_funding && discovered.phase_1_max_funding > 0) {
+    const existingFunding = opportunity.phase_1_award_amount;
+    if (!existingFunding || existingFunding === 0) {
+      updates.phase_1_award_amount = discovered.phase_1_max_funding;
+      changes.push(`Phase 1 Funding: $${existingFunding || 0} → $${discovered.phase_1_max_funding} (from instruction analysis)`);
+    }
+  }
+
+  // Check Phase 1 Duration
+  if (discovered.phase_1_duration_months && discovered.phase_1_duration_months > 0) {
+    const existingDuration = opportunity.phase_1_duration_months;
+    if (!existingDuration || existingDuration === 0) {
+      updates.phase_1_duration_months = discovered.phase_1_duration_months;
+      changes.push(`Phase 1 Duration: ${existingDuration || 0} → ${discovered.phase_1_duration_months} months (from instruction analysis)`);
+    }
+  }
+
+  // Check Phase 2 Funding
+  if (discovered.phase_2_max_funding && discovered.phase_2_max_funding > 0) {
+    const existingFunding = opportunity.phase_2_award_amount;
+    if (!existingFunding || existingFunding === 0) {
+      updates.phase_2_award_amount = discovered.phase_2_max_funding;
+      changes.push(`Phase 2 Funding: $${existingFunding || 0} → $${discovered.phase_2_max_funding} (from instruction analysis)`);
+    }
+  }
+
+  // Check Phase 2 Duration
+  if (discovered.phase_2_duration_months && discovered.phase_2_duration_months > 0) {
+    const existingDuration = opportunity.phase_2_duration_months;
+    if (!existingDuration || existingDuration === 0) {
+      updates.phase_2_duration_months = discovered.phase_2_duration_months;
+      changes.push(`Phase 2 Duration: ${existingDuration || 0} → ${discovered.phase_2_duration_months} months (from instruction analysis)`);
+    }
+  }
+
+  return {
+    updates,
+    changes,
+    data_quality_notes: discovered.data_quality_notes || [],
+    applied: changes.length > 0
+  };
 }
 
 /**

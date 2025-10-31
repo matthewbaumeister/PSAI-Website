@@ -31,7 +31,26 @@ export interface InstructionAnalysisResult {
   volumes: VolumeGuide[];
   critical_notes: CriticalNote[];
   quick_reference: QuickReferenceItem[];
+  discovered_metadata: DiscoveredMetadata; // NEW: Metadata extracted from instructions
   analysis_metadata: AnalysisMetadata;
+}
+
+// NEW: Metadata discovered by LLM from instruction documents
+export interface DiscoveredMetadata {
+  is_direct_to_phase_ii: boolean;
+  phases_available: string[]; // e.g., ["Phase I", "Phase II", "Phase III"]
+  phase_1_max_funding?: number;
+  phase_1_duration_months?: number;
+  phase_2_max_funding?: number;
+  phase_2_duration_months?: number;
+  page_limits: {
+    volume: string;
+    pages: number;
+  }[];
+  submission_deadline?: string;
+  qa_deadline?: string;
+  key_contacts?: string[];
+  data_quality_notes: string[]; // Discrepancies or clarifications
 }
 
 export interface TOCReconciliation {
@@ -247,7 +266,27 @@ Output ONLY valid JSON matching this EXACT structure:
       "value": "20 pages max",
       "citation": "Component §2B, p.6"
     }
-  ]
+  ],
+  "discovered_metadata": {
+    "is_direct_to_phase_ii": true or false (based on instruction analysis),
+    "phases_available": ["Phase I", "Phase II"] or ["Phase II"] (for DP2, list what's in the instructions),
+    "phase_1_max_funding": 250000 (if mentioned in instructions, otherwise null),
+    "phase_1_duration_months": 6 (if mentioned, otherwise null),
+    "phase_2_max_funding": 1800000 (if mentioned, otherwise null),
+    "phase_2_duration_months": 24 (if mentioned, otherwise null),
+    "page_limits": [
+      {"volume": "Volume 2A", "pages": 5},
+      {"volume": "Volume 2B", "pages": 20}
+    ],
+    "submission_deadline": "Date if explicitly stated in instructions, otherwise null",
+    "qa_deadline": "Date if explicitly stated, otherwise null",
+    "key_contacts": ["Names/emails of program managers if mentioned", "Grant officer contact if mentioned"],
+    "data_quality_notes": [
+      "If DP2, note: Scraped data may incorrectly show 'false' for Direct to Phase II",
+      "If page limits differ from typical, note the discrepancy",
+      "Any other corrections to scraped metadata based on instruction analysis"
+    ]
+  }
 }
 
 When conflicts exist:
@@ -255,6 +294,13 @@ When conflicts exist:
 - Show ONLY the correct requirement
 - Add a critical_note explaining the superseding rule
 - Add to quick_reference for easy lookup
+
+METADATA EXTRACTION:
+- Carefully analyze instructions to extract opportunity metadata
+- If DP2 structure is detected (Volume 2A + 2B), set is_direct_to_phase_ii: true
+- Extract any funding amounts, durations, deadlines mentioned in instructions
+- Note discrepancies with scraped data in data_quality_notes
+- This metadata will be used to auto-correct database records
 
 Be comprehensive - this guide should be the ONLY document needed to write the proposal.`;
 
