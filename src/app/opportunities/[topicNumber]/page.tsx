@@ -90,7 +90,7 @@ export default function OpportunityPage() {
     setData({
       ...data,
       instructions_checklist: null,
-      instructions_generated_at: null
+      instructions_generated_at: undefined
     });
     setGeneratingAnalysis(true);
     setAnalysisError(null);
