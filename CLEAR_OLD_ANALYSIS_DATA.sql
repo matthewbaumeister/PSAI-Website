@@ -21,8 +21,7 @@ SET
   instructions_checklist = NULL,
   instructions_plain_text = NULL,
   instructions_generated_at = NULL,
-  consolidated_instructions_url = NULL,
-  consolidated_instructions_metadata = NULL
+  consolidated_instructions_url = NULL
 WHERE topic_id IN (
   '47969981acfd4adfbdfeb4cfca99c1a1_86201',  -- A254-P039
   'e3f117b663cc49da851c0d266d1f43ca_86378'   -- CBD254-011
