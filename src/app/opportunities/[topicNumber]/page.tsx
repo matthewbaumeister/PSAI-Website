@@ -1591,20 +1591,54 @@ export default function OpportunityPage() {
                                   <h5 style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '700', marginBottom: '8px', textTransform: 'uppercase' }}>
                                     BAA Structure
                                   </h5>
-                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.8', margin: 0, paddingLeft: '20px' }}>
-                                    {analysis.toc_reconciliation.baa_structure?.map((item, i) => (
-                                      <li key={i}>{item}</li>
-                                    ))}
+                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.8', margin: 0, paddingLeft: '20px', listStyle: 'none' }}>
+                                    {analysis.toc_reconciliation.baa_structure?.map((item, i) => {
+                                      // Count leading spaces to determine indentation level
+                                      const leadingSpaces = item.match(/^(\s*)/)?.[1].length || 0;
+                                      const indentLevel = Math.floor(leadingSpaces / 2); // 2 spaces = 1 level
+                                      const trimmedItem = item.trim();
+                                      
+                                      return (
+                                        <li 
+                                          key={i} 
+                                          style={{ 
+                                            paddingLeft: `${indentLevel * 20}px`,
+                                            position: 'relative',
+                                            marginBottom: '4px'
+                                          }}
+                                        >
+                                          <span style={{ opacity: 0.7, marginRight: '8px' }}>•</span>
+                                          {trimmedItem}
+                                        </li>
+                                      );
+                                    })}
                                   </ul>
                                 </div>
                                 <div>
                                   <h5 style={{ color: '#94a3b8', fontSize: '13px', fontWeight: '700', marginBottom: '8px', textTransform: 'uppercase' }}>
                                     Component Structure
                                   </h5>
-                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.8', margin: 0, paddingLeft: '20px' }}>
-                                    {analysis.toc_reconciliation.component_structure?.map((item, i) => (
-                                      <li key={i}>{item}</li>
-                                    ))}
+                                  <ul style={{ color: '#e2e8f0', fontSize: '14px', lineHeight: '1.8', margin: 0, paddingLeft: '20px', listStyle: 'none' }}>
+                                    {analysis.toc_reconciliation.component_structure?.map((item, i) => {
+                                      // Count leading spaces to determine indentation level
+                                      const leadingSpaces = item.match(/^(\s*)/)?.[1].length || 0;
+                                      const indentLevel = Math.floor(leadingSpaces / 2); // 2 spaces = 1 level
+                                      const trimmedItem = item.trim();
+                                      
+                                      return (
+                                        <li 
+                                          key={i} 
+                                          style={{ 
+                                            paddingLeft: `${indentLevel * 20}px`,
+                                            position: 'relative',
+                                            marginBottom: '4px'
+                                          }}
+                                        >
+                                          <span style={{ opacity: 0.7, marginRight: '8px' }}>•</span>
+                                          {trimmedItem}
+                                        </li>
+                                      );
+                                    })}
                                   </ul>
                                 </div>
                               </div>
