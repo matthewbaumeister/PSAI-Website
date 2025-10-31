@@ -15,10 +15,11 @@ const supabase = createClient(
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { companyName: string } }
+  { params }: { params: Promise<{ companyName: string }> }
 ) {
   try {
-    const companyName = decodeURIComponent(params.companyName);
+    const { companyName: rawCompanyName } = await params;
+    const companyName = decodeURIComponent(rawCompanyName);
 
     console.log(`[Company API] Fetching profile for: ${companyName}`);
 

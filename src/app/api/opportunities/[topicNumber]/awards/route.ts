@@ -15,10 +15,10 @@ const supabase = createClient(
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { topicNumber: string } }
+  { params }: { params: Promise<{ topicNumber: string }> }
 ) {
   try {
-    const { topicNumber } = params;
+    const { topicNumber } = await params;
 
     console.log(`[Awards API] Fetching awards for topic: ${topicNumber}`);
 
