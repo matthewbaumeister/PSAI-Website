@@ -5,7 +5,7 @@
 // Imports a small dataset (100 contracts) for testing
 // Run: npx ts-node src/scripts/fpds-pilot-scrape.ts
 
-import { scrapeDateRange, getScraperStats } from '../lib/fpds-scraper.js';
+import { scrapeDateRange, getScraperStats } from '../lib/fpds-scraper';
 
 async function main() {
   console.log('============================================');

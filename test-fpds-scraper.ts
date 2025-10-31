@@ -10,7 +10,7 @@ import {
   normalizeContract,
   batchInsertContracts,
   getScraperStats
-} from './src/lib/fpds-scraper.js';
+} from './src/lib/fpds-scraper';
 
 async function main() {
   console.log('============================================');

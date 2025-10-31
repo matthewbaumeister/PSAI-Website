@@ -10,7 +10,7 @@
 //   npx ts-node src/scripts/fpds-bulk-load.ts --year 2024
 //   npx ts-node src/scripts/fpds-bulk-load.ts --year 2024 --months 6
 
-import { scrapeDateRange, getScraperStats } from '../lib/fpds-scraper.js';
+import { scrapeDateRange, getScraperStats } from '../lib/fpds-scraper';
 
 // Parse command line arguments
 const args = process.argv.slice(2);
