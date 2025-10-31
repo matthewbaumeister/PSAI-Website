@@ -33,12 +33,12 @@ async function main() {
     if (rawAwards.length > 0) {
       console.log('Sample Award:');
       console.log('-------------');
-      console.log(`Company: ${rawAwards[0].company}`);
-      console.log(`Title: ${rawAwards[0].award_title}`);
-      console.log(`Amount: ${rawAwards[0].award_amount}`);
-      console.log(`Phase: ${rawAwards[0].phase}`);
-      console.log(`Year: ${rawAwards[0].award_year}`);
-      console.log(`Topic: ${rawAwards[0].topic_number || 'N/A'}\n`);
+      console.log(`Company: ${rawAwards[0].firm || 'N/A'}`);
+      console.log(`Title: ${rawAwards[0].award_title || 'N/A'}`);
+      console.log(`Amount: ${rawAwards[0].award_amount || 'N/A'}`);
+      console.log(`Phase: ${rawAwards[0].phase || 'N/A'}`);
+      console.log(`Year: ${rawAwards[0].award_year || 'N/A'}`);
+      console.log(`Topic: ${rawAwards[0].topic_code || 'N/A'}\n`);
     }
     
     // ============================================
