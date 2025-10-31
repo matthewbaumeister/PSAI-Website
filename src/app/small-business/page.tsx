@@ -163,61 +163,182 @@ export default function SmallBusinessPage() {
         </div>
 
         <div className="content-section">
-          <h2>DSIP Smart Search Tool</h2>
-          <div className="dsip-tool-section">
-            <div className="dsip-tool-header">
-              <h3>🍪 Advanced DSIP Opportunity Search</h3>
-              <p>
-                Access our comprehensive DSIP (Defense SBIR/STTR Innovation Program) database with 
-                33,000+ opportunities and advanced search capabilities. Find the perfect SBIR/STTR 
-                opportunities for your small business.
-              </p>
-            </div>
-            
-            <div className="dsip-tool-features">
-              <div className="dsip-feature">
-                <div className="feature-icon"></div>
-                <h4>Advanced Search</h4>
-                <p>Search by keywords, technology areas, funding amounts, and more</p>
-              </div>
-              <div className="dsip-feature">
-                <div className="feature-icon"></div>
-                <h4>Smart Filters</h4>
-                <p>Filter by agency, program type, phase, status, and special requirements</p>
-              </div>
-              <div className="dsip-feature">
-                <div className="feature-icon"></div>
-                <h4>Real-time Data</h4>
-                <p>Access to the latest DSIP opportunities with automatic updates</p>
-              </div>
-              <div className="dsip-feature">
-                <div className="feature-icon"></div>
-                <h4>AI-Powered Matching</h4>
-                <p>Intelligent opportunity matching based on your capabilities</p>
+          <h2>PS.AI Small Business Tools</h2>
+          <p style={{ textAlign: 'center', marginBottom: '40px', color: '#cbd5e1', fontSize: '18px' }}>
+            Choose from our suite of proprietary small business intelligence tools
+          </p>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', maxWidth: '1200px', margin: '0 auto' }}>
+            {/* Smart DSIP Search */}
+            <div className="tool-card" style={{
+              background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1))',
+              border: '2px solid rgba(59, 130, 246, 0.3)',
+              borderRadius: '16px',
+              padding: '40px',
+              transition: 'all 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden'
+            }}>
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: 'rgba(59, 130, 246, 0.2)',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '20px',
+                  fontSize: '32px'
+                }}>
+                  🔍
+                </div>
+                
+                <h3 style={{ color: '#60a5fa', fontSize: '24px', fontWeight: '700', marginBottom: '12px' }}>
+                  Smart DSIP Search
+                </h3>
+                
+                <div style={{
+                  display: 'inline-block',
+                  background: 'rgba(34, 197, 94, 0.2)',
+                  color: '#4ade80',
+                  padding: '4px 12px',
+                  borderRadius: '12px',
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  marginBottom: '16px'
+                }}>
+                  LIVE NOW
+                </div>
+                
+                <p style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
+                  Access our comprehensive DSIP (Defense SBIR/STTR Innovation Program) database with 
+                  33,000+ opportunities. Advanced search, smart filters, and AI-powered matching.
+                </p>
+                
+                <ul style={{ color: '#94a3b8', fontSize: '14px', lineHeight: '2', marginBottom: '28px', paddingLeft: '20px' }}>
+                  <li>Search 33,000+ DSIP opportunities</li>
+                  <li>Advanced filtering and sorting</li>
+                  <li>Real-time opportunity updates</li>
+                  <li>AI-powered opportunity matching</li>
+                  <li>Full proposal instructions analysis</li>
+                  <li>Share searches and opportunities</li>
+                </ul>
+                
+                <a 
+                  href="/small-business/dsip-search" 
+                  className="btn btn-primary btn-lg"
+                  style={{
+                    width: '100%',
+                    display: 'block',
+                    textAlign: 'center',
+                    background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
+                    border: 'none',
+                    padding: '14px 28px',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    borderRadius: '8px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s'
+                  }}
+                >
+                  Launch Smart DSIP Search →
+                </a>
+                
+                <p style={{ 
+                  textAlign: 'center', 
+                  marginTop: '12px', 
+                  fontSize: '12px', 
+                  color: '#64748b' 
+                }}>
+                  Requires free account login
+                </p>
               </div>
             </div>
 
-            <div className="dsip-tool-cta">
-              <div className="dsip-tool-info">
-                <h4>Ready to Search DSIP Opportunities?</h4>
-                <p>
-                  Our DSIP Smart Search tool provides access to all active and upcoming 
-                  SBIR/STTR opportunities across all defense agencies.
+            {/* MATRIX-SB (Coming Soon) */}
+            <div className="tool-card" style={{
+              background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.1))',
+              border: '2px solid rgba(139, 92, 246, 0.3)',
+              borderRadius: '16px',
+              padding: '40px',
+              transition: 'all 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden',
+              opacity: 0.8
+            }}>
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div style={{
+                  width: '60px',
+                  height: '60px',
+                  background: 'rgba(139, 92, 246, 0.2)',
+                  borderRadius: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  marginBottom: '20px',
+                  fontSize: '32px'
+                }}>
+                  📊
+                </div>
+                
+                <h3 style={{ color: '#a78bfa', fontSize: '24px', fontWeight: '700', marginBottom: '12px' }}>
+                  MATRIX-SB
+                </h3>
+                
+                <div style={{
+                  display: 'inline-block',
+                  background: 'rgba(251, 191, 36, 0.2)',
+                  color: '#fbbf24',
+                  padding: '4px 12px',
+                  borderRadius: '12px',
+                  fontSize: '12px',
+                  fontWeight: '600',
+                  marginBottom: '16px'
+                }}>
+                  COMING SOON
+                </div>
+                
+                <p style={{ color: '#cbd5e1', fontSize: '16px', lineHeight: '1.6', marginBottom: '24px' }}>
+                  Small Business Market Research Intelligence tool. Analyze past awards, identify winning 
+                  strategies, and discover opportunities others miss.
                 </p>
-                <ul className="dsip-benefits">
-                  <li>✓ Search 33,000+ DSIP opportunities</li>
-                  <li>✓ Advanced filtering and sorting</li>
-                  <li>✓ Real-time opportunity updates</li>
-                  <li>✓ Export and save search results</li>
-                  <li>✓ AI-powered opportunity matching</li>
+                
+                <ul style={{ color: '#94a3b8', fontSize: '14px', lineHeight: '2', marginBottom: '28px', paddingLeft: '20px' }}>
+                  <li>Historical award analysis</li>
+                  <li>Winning proposal patterns</li>
+                  <li>Competitor intelligence</li>
+                  <li>Market trend forecasting</li>
+                  <li>Strategic positioning insights</li>
+                  <li>SBA program analytics</li>
                 </ul>
-              </div>
-              <div className="dsip-tool-actions">
-                <a href="/dsip-search" className="btn btn-primary btn-lg">
-                   Launch DSIP Smart Search
-                </a>
-                <p className="dsip-tool-note">
-                  <small>Requires free account login to access advanced features</small>
+                
+                <button 
+                  disabled
+                  style={{
+                    width: '100%',
+                    display: 'block',
+                    textAlign: 'center',
+                    background: 'rgba(139, 92, 246, 0.3)',
+                    border: 'none',
+                    padding: '14px 28px',
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    borderRadius: '8px',
+                    cursor: 'not-allowed',
+                    color: '#a78bfa'
+                  }}
+                >
+                  Coming Q2 2025
+                </button>
+                
+                <p style={{ 
+                  textAlign: 'center', 
+                  marginTop: '12px', 
+                  fontSize: '12px', 
+                  color: '#64748b' 
+                }}>
+                  Join waitlist for early access
                 </p>
               </div>
             </div>

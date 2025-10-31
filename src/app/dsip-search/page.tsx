@@ -8,10 +8,10 @@ export default function DSIPSearchPage() {
   const { user, isLoading } = useAuth()
   const router = useRouter()
   
-  // Redirect to admin SBIR database (where active development is happening)
+  // Redirect to Small Business DSIP Search (production location)
   useEffect(() => {
     if (!isLoading) {
-      router.push('/admin/sbir-database');
+      router.push('/small-business/dsip-search');
     }
   }, [isLoading, router]);
   

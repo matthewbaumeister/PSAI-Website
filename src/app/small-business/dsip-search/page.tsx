@@ -86,9 +86,6 @@ interface FilterOptions {
   programTypes: string[];
 }
 
-// DEPRECATED: This page has been moved to /small-business/dsip-search
-// Keeping this file for backward compatibility (redirects to new location)
-
 export default function SBIRDatabaseBrowser() {
   const { user, isLoading: authLoading } = useAuth();
   const router = useRouter();
@@ -137,19 +134,6 @@ export default function SBIRDatabaseBrowser() {
   // Results per page
   const [pageSize, setPageSize] = useState(25);
 
-  // REDIRECT: This page has moved to /small-business/dsip-search
-  useEffect(() => {
-    const currentUrl = window.location.href;
-    const currentPath = window.location.pathname;
-    const searchParams = window.location.search;
-    
-    // Preserve any search parameters (for shared searches)
-    const newUrl = `/small-business/dsip-search${searchParams}`;
-    
-    console.log(`[REDIRECT] /admin/sbir-database → ${newUrl}`);
-    router.replace(newUrl);
-  }, [router]);
-
   // Authentication check and redirect with return URL
   useEffect(() => {
     if (!authLoading && !user) {
@@ -163,7 +147,7 @@ export default function SBIRDatabaseBrowser() {
         router.push(`/auth/login?returnUrl=${returnUrl}`);
       } else {
         // Regular redirect to login with return URL
-        const currentReturnUrl = encodeURIComponent('/admin/sbir-database');
+        const currentReturnUrl = encodeURIComponent('/small-business/dsip-search');
         router.push(`/auth/login?returnUrl=${currentReturnUrl}`);
       }
     }
@@ -743,7 +727,7 @@ export default function SBIRDatabaseBrowser() {
         {/* Header */}
         <div style={{ marginBottom: '30px' }}>
           <Link 
-            href="/admin" 
+            href="/small-business" 
             style={{ 
               color: '#60a5fa', 
               textDecoration: 'none', 
@@ -754,7 +738,7 @@ export default function SBIRDatabaseBrowser() {
               marginBottom: '15px'
             }}
           >
-            ← Back to Admin Dashboard
+            ← Back to Small Business
           </Link>
           
           <h1 style={{ 
