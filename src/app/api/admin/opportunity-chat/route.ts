@@ -326,13 +326,19 @@ function buildOpportunityContext(data: any): string {
   }
 
   // Technology Areas
-  if (data.technology_areas && data.technology_areas.length > 0) {
-    sections.push(`\nTECHNOLOGY AREAS: ${data.technology_areas.join(', ')}`);
+  if (data.technology_areas) {
+    const techAreas = Array.isArray(data.technology_areas) 
+      ? data.technology_areas.join(', ')
+      : data.technology_areas;
+    sections.push(`\nTECHNOLOGY AREAS: ${techAreas}`);
   }
 
   // Keywords
-  if (data.keywords && data.keywords.length > 0) {
-    sections.push(`\nKEYWORDS: ${data.keywords.join(', ')}`);
+  if (data.keywords) {
+    const keywords = Array.isArray(data.keywords)
+      ? data.keywords.join(', ')
+      : data.keywords;
+    sections.push(`\nKEYWORDS: ${keywords}`);
   }
 
   // Objective
