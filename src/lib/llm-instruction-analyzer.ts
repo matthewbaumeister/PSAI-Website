@@ -26,10 +26,18 @@ function getOpenAIClient(): OpenAI {
 }
 
 export interface InstructionAnalysisResult {
+  proposal_phase: 'Phase I' | 'Direct to Phase II (DP2)' | 'Phase II';
+  toc_reconciliation: TOCReconciliation;
   volumes: VolumeGuide[];
   critical_notes: CriticalNote[];
   quick_reference: QuickReferenceItem[];
   analysis_metadata: AnalysisMetadata;
+}
+
+export interface TOCReconciliation {
+  baa_structure: string[];
+  component_structure: string[];
+  notes: string;
 }
 
 export interface VolumeGuide {
@@ -130,7 +138,7 @@ export async function analyzeInstructionDocuments(
       ],
       temperature: 0.1, // Low temperature for consistency
       response_format: { type: 'json_object' },
-      max_tokens: 4000,
+      max_tokens: 12000, // Increased for detailed multi-paragraph responses
     });
 
     const responseText = completion.choices[0].message.content;
@@ -163,60 +171,81 @@ export async function analyzeInstructionDocuments(
 /**
  * System prompt that defines the AI's role and output format
  */
-const SYSTEM_PROMPT = `You are an expert SBIR/STTR proposal writer creating a comprehensive submission guide. Your job is to analyze Component and BAA instruction documents and produce a SINGLE, ACTIONABLE guide that someone can follow to write their proposal.
+const SYSTEM_PROMPT = `You are an expert SBIR/STTR proposal writer creating COMPREHENSIVE submission guides. Your job is to analyze Component and BAA instruction documents and produce DETAILED, ACTIONABLE guides.
 
 CRITICAL RULES:
-1. When Component and BAA conflict, APPLY the superseding rule and show ONLY the correct requirement
-2. Extract EVERY requirement with full explanatory text (not just summaries)
-3. Organize by Volume with complete descriptions of what goes in each volume
-4. Include ALL formatting requirements, page limits, section orders, etc.
-5. Cite EVERYTHING with section and page references
-6. Make it prescriptive ("You must do X") not analytical ("Component says X, BAA says Y")
+1. DETECT proposal type: Standard Phase I, Direct to Phase II (DP2), or Phase II Only
+2. For DP2: Recognize Volume 2A (Feasibility) + Volume 2B (Technical) structure
+3. Extract 3-5 PARAGRAPHS of explanation per section (not 1-2 sentences!)
+4. When Component and BAA conflict, APPLY the superseding rule and show ONLY the correct requirement
+5. Include COMPLETE text of requirements (word-for-word from documents where possible)
+6. Build a TOC reconciliation showing how Component modifies BAA structure
+7. Cite EVERYTHING with section § and page references
+8. Make it prescriptive ("You must do X") not analytical ("Component says X, BAA says Y")
 
 Output ONLY valid JSON matching this EXACT structure:
 {
+  "proposal_phase": "Phase I" or "Direct to Phase II (DP2)" or "Phase II",
+  "toc_reconciliation": {
+    "baa_structure": ["1. Problem/Opportunity", "2. Technical Objectives", "3. SOW"...],
+    "component_structure": ["2A. Feasibility Documentation", "2B Part 1. Technical Approach"...],
+    "notes": "Component splits Volume 2 into 2A (Feasibility, 5 pages) and 2B (Technical, 20 pages). 2A is NEW for DP2. 2B follows standard BAA structure with modifications."
+  },
   "volumes": [
     {
-      "volume_number": "Volume 1",
-      "volume_title": "Proposal Cover Sheet",
-      "description": "Full description of this volume's purpose and contents",
-      "page_limit": "1 page" or null,
-      "format_requirements": ["Single PDF", "Must include all graphics", "12pt font minimum"],
+      "volume_number": "Volume 2A",
+      "volume_title": "Feasibility Documentation (DP2 Only)",
+      "description": "3-5 paragraph description of this volume's purpose, what makes it unique, when it's required, and what success looks like",
+      "page_limit": "5 pages",
+      "format_requirements": ["Single PDF", "Must include all graphics", "12pt font minimum", "References count toward limit"],
       "required_sections": [
         {
-          "section_title": "Technical Abstract",
-          "section_number": "1.1",
-          "description": "Full description of what this section must contain",
+          "section_title": "Scientific and Technical Merit Documentation",
+          "section_number": "2A.1",
+          "description": "3-4 paragraph description of what this section requires, why it's important, and what evaluators will look for. Include COMPLETE explanation from source documents.",
           "requirements": [
-            "Must describe the proposed R&D project",
-            "Must include anticipated benefits",
-            "Must discuss potential commercial applications",
-            "Limit to 200 words"
+            "You must provide documentation substantiating that the scientific and technical merit described in the Phase I section of this topic has been met",
+            "You must describe any potential commercial application of the technology",
+            "You must include all relevant information including but not limited to: technical reports (summary and citation), test data, prototype designs/models, and performance goals/results",
+            "Work submitted must have been substantially performed by your firm",
+            "Feasibility documentation CANNOT be based upon any prior or ongoing federally funded SBIR or STTR work",
+            "You must own IP or have obtained license rights to all technology referenced"
           ],
-          "citation": "Component §3.7(a), p.9",
+          "citation": "Component §2A, pp.6-7",
           "priority": "Critical",
-          "max_pages": "0.5 pages",
-          "formatting_notes": ["Include as part of cover sheet", "No separate page"]
+          "max_pages": "5 pages (includes references)",
+          "formatting_notes": ["References count toward total page limit", "Include works cited as last page"]
         }
       ],
-      "submission_instructions": "Submit via DSIP by close date",
-      "important_notes": ["This volume is required for all proposals", "Must be signed by authorized official"]
+      "submission_instructions": "Submit as separate PDF via DSIP by close date. File naming: [Company]_[Topic]_Vol2A.pdf",
+      "important_notes": [
+        "DP2 ONLY - Not required for standard Phase I proposals",
+        "If you fail to demonstrate Phase I-equivalent feasibility, entire proposal will be deemed unresponsive",
+        "Work must be substantially performed by proposer/PI",
+        "Cannot extend from prior federal SBIR/STTR work"
+      ]
     }
   ],
   "critical_notes": [
     {
-      "category": "Superseding Rules",
-      "note": "Component instructions take precedence for technical volume page limits. Use 7 pages, not 15.",
-      "citation": "Component §3.7(b)(2), p.10",
-      "applies_to": ["Volume 2"]
+      "category": "DP2 Structure",
+      "note": "For Direct to Phase II proposals, Volume 2 is split into TWO sub-volumes: 2A (Feasibility Documentation, 5 pages) and 2B (Technical Proposal, 20 pages). This differs from standard Phase I which has a single Volume 2.",
+      "citation": "Component §2A-2B, pp.6-8",
+      "applies_to": ["Volume 2A", "Volume 2B"]
     }
   ],
   "quick_reference": [
     {
-      "category": "Page Limits",
-      "item": "Technical Volume",
-      "value": "7 pages maximum",
-      "citation": "Component §3.7(b)(2), p.10"
+      "category": "DP2 Structure",
+      "item": "Volume 2A (Feasibility)",
+      "value": "5 pages max (includes references)",
+      "citation": "Component §2A, p.6"
+    },
+    {
+      "category": "DP2 Structure",
+      "item": "Volume 2B (Technical)",
+      "value": "20 pages max",
+      "citation": "Component §2B, p.6"
     }
   ]
 }
@@ -270,45 +299,94 @@ BAA/SOLICITATION INSTRUCTIONS:
 ${truncatedBaa}
 
 YOUR TASK:
-Create a complete, prescriptive submission guide organized by volume. For EACH volume:
+Create COMPREHENSIVE submission guides. Follow these steps:
 
-1. **Full Description**: What is this volume? What's its purpose?
-2. **Page Limits**: Exact page limits (apply superseding rules if conflict exists)
-3. **Format Requirements**: PDF specs, fonts, margins, graphics handling
-4. **Required Sections**: For EACH section in the volume:
-   - Section title and number
-   - Full description of what must be included
-   - Every single requirement (with full text, not summaries)
-   - Exact citation (section §, page number)
-   - Priority level (Critical/Required/Recommended)
-   - Page allocation if specified
-   - Any formatting notes specific to that section
-5. **Submission Instructions**: How and when to submit
-6. **Important Notes**: Critical warnings, superseding rules applied, special instructions
+STEP 1: DETECT PROPOSAL TYPE
+Look for keywords: "Direct to Phase II", "DP2", "Feasibility Documentation", "Phase I", "Phase II Only"
+Set proposal_phase field accordingly.
 
-RESOLVE CONFLICTS AUTOMATICALLY:
-- When Component and BAA conflict, APPLY the superseding rule
-- Show ONLY the CORRECT requirement (not both versions)
-- Add a "critical_note" explaining which rule was applied and why
-- Add to "quick_reference" for easy lookup
+STEP 2: BUILD TOC RECONCILIATION
+Compare BAA table of contents with Component table of contents.
+Note differences, additions, modifications.
+Example: "BAA lists Volume 2 as single entity. Component splits it into 2A (Feasibility) and 2B (Technical, Part 1 and Part 2)."
 
-EXTRACT EVERYTHING:
-- All volumes (typically 1-7 or more)
-- All sections within each volume (with descriptions AND requirements)
-- All formatting rules
-- All submission requirements
-- All administrative requirements
-- All technical content requirements
-- All appendix references (note when appendixes are referenced)
+STEP 3: EXTRACT EACH VOLUME WITH EXTREME DETAIL
+For EACH volume, extract:
 
-FORMATTING:
-- Write requirements as actions: "You must...", "Include...", "Provide..."
-- Be specific and detailed
-- Include word/page counts
-- Include all formatting specifications
-- Cite every single requirement
+A. **Volume Description** (3-5 PARAGRAPHS minimum):
+   - What is this volume's purpose?
+   - When is it required? (e.g., "DP2 only", "All proposals")
+   - What makes it unique?
+   - What are evaluators looking for?
+   - How does it fit into the overall proposal?
 
-The output should be so comprehensive that someone could write their entire proposal using ONLY this guide.
+B. **Page Limits** (exact numbers, apply superseding rules)
+
+C. **Format Requirements** (comprehensive list):
+   - File format (PDF, Word, etc.)
+   - Font face and size
+   - Line spacing
+   - Margins
+   - Graphics handling
+   - Reference counting
+   - File naming conventions
+
+D. **Required Sections** (for EACH section):
+   
+   i. **Section Description** (3-4 PARAGRAPHS):
+      - Extract the COMPLETE explanation from source documents
+      - Don't summarize - include full details
+      - Explain what evaluators will assess
+      - Provide context and examples if given
+   
+   ii. **Requirements List** (word-for-word extraction):
+      - Copy EXACT language from documents whenever possible
+      - Convert to prescriptive format: "You must...", "Include...", "Provide..."
+      - Include ALL requirements (major AND minor)
+      - Include word/page counts
+      - Include format specifications
+      - Include exclusions ("cannot include...", "must not...")
+   
+   iii. **Citation**: Exact section § and page number
+   
+   iv. **Priority**: Critical (rejection if missing), Required (needed for completion), Recommended (improves score)
+   
+   v. **Formatting Notes**: Section-specific format requirements
+
+E. **Submission Instructions**: How, when, where, file naming
+
+F. **Important Notes**: 
+   - Critical warnings
+   - Common mistakes to avoid
+   - Superseding rules applied
+   - Special phase-specific notes
+
+STEP 4: EXTRACT CRITICAL NOTES
+Create critical_notes for:
+- Superseding rules (Component overrides BAA)
+- DP2-specific requirements
+- Exclusions and prohibitions
+- High-risk requirements
+
+STEP 5: BUILD QUICK REFERENCE
+Extract for quick lookup:
+- All page limits
+- All deadlines
+- All format specs
+- All word/character counts
+- Key dates
+
+CRITICAL REQUIREMENTS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ Write 3-5 PARAGRAPHS for volume descriptions (not 1-2 sentences!)
+✅ Write 3-4 PARAGRAPHS for section descriptions (not 1-2 sentences!)
+✅ Extract 5-15 requirements per section (not just 2-3!)
+✅ Use word-for-word text from documents (not summaries!)
+✅ Detect DP2 structure (Volume 2A + 2B)
+✅ Build complete TOC reconciliation
+✅ Handle Phase I, DP2, and Phase II variations
+
+The output should be SO DETAILED that someone could write their entire proposal using ONLY this guide without reading the original 80-page documents.
 
 Return ONLY the JSON structure defined in the system prompt. No additional text.`;
 }
