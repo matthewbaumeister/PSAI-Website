@@ -151,16 +151,27 @@ export default function OpportunityPage() {
   useEffect(() => {
     async function fetchData() {
       try {
+        console.log('[Page Load] Fetching opportunity data for:', topicNumber);
         const { data: oppData, error } = await supabase
           .from('sbir_final')
           .select('*')
           .eq('topic_number', topicNumber)
-          .single();
+          .maybeSingle();
 
         if (error) throw error;
-        setData(oppData);
+        
+        if (oppData) {
+          console.log('[Page Load] Data fetched successfully');
+          console.log('[Page Load] instructions_generated_at:', oppData.instructions_generated_at);
+          console.log('[Page Load] last_scraped:', oppData.last_scraped);
+          console.log('[Page Load] phase_1_award_amount:', oppData.phase_1_award_amount);
+          console.log('[Page Load] phase_2_award_amount:', oppData.phase_2_award_amount);
+          console.log('[Page Load] is_direct_to_phase_ii:', oppData.is_direct_to_phase_ii);
+          console.log('[Page Load] phases_available:', oppData.phases_available);
+          setData(oppData);
+        }
       } catch (error) {
-        console.error('Error fetching opportunity:', error);
+        console.error('[Page Load] Error fetching opportunity:', error);
       } finally {
         setLoading(false);
       }

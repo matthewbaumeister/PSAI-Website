@@ -156,27 +156,42 @@ export async function POST(
     
     // Step 7: Store in database (including corrected metadata)
     console.log(`[LLM Analysis] Saving to database...`);
+    const timestamp = new Date().toISOString();
     const updateData: any = {
       instructions_checklist: analysisResult as any,
-      instructions_generated_at: new Date().toISOString(),
+      instructions_generated_at: timestamp,
     };
+    
+    console.log(`[LLM Analysis] Setting instructions_generated_at to: ${timestamp}`);
     
     // Apply metadata corrections if any were found
     if (reconciliation.updates && Object.keys(reconciliation.updates).length > 0) {
-      console.log(`[LLM Analysis] Applying ${Object.keys(reconciliation.updates).length} metadata corrections:`, reconciliation.updates);
+      console.log(`[LLM Analysis] Applying ${Object.keys(reconciliation.updates).length} metadata corrections:`);
+      for (const [key, value] of Object.entries(reconciliation.updates)) {
+        console.log(`  - ${key}: ${opportunity[key]} → ${value}`);
+      }
       Object.assign(updateData, reconciliation.updates);
     }
     
-    const { error: updateError } = await supabase
+    console.log(`[LLM Analysis] Updating ${isNumericId ? 'id' : 'topic_id'} = ${opportunityId}`);
+    const { data: updatedData, error: updateError } = await supabase
       .from('sbir_final')
       .update(updateData)
-      .eq(isNumericId ? 'id' : 'topic_id', opportunityId);
+      .eq(isNumericId ? 'id' : 'topic_id', opportunityId)
+      .select('instructions_generated_at, phase_1_award_amount, phase_2_award_amount, is_direct_to_phase_ii, phases_available')
+      .single();
 
     if (updateError) {
       console.error('[LLM Analysis] Failed to save to database:', updateError);
       // Don't fail the request, still return the results
     } else {
       console.log(`[LLM Analysis] Saved to database successfully`);
+      console.log(`[LLM Analysis] Verification - Database now shows:`);
+      console.log(`  - instructions_generated_at: ${updatedData?.instructions_generated_at}`);
+      console.log(`  - phase_1_award_amount: ${updatedData?.phase_1_award_amount}`);
+      console.log(`  - phase_2_award_amount: ${updatedData?.phase_2_award_amount}`);
+      console.log(`  - is_direct_to_phase_ii: ${updatedData?.is_direct_to_phase_ii}`);
+      console.log(`  - phases_available: ${updatedData?.phases_available}`);
     }
 
     // Step 8: Return results
