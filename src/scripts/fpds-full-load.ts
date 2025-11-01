@@ -86,12 +86,12 @@ async function main() {
         }
       );
 
-      totalInserted += result.inserted;
-      totalErrors += result.errors;
+      totalInserted += result.totalInserted;
+      totalErrors += result.totalErrors;
 
       console.log(`\n✅ ${quarter.name} complete:`);
-      console.log(`   - Inserted: ${result.inserted.toLocaleString()}`);
-      console.log(`   - Errors: ${result.errors}`);
+      console.log(`   - Inserted: ${result.totalInserted.toLocaleString()}`);
+      console.log(`   - Errors: ${result.totalErrors}`);
       console.log(`   - Running Total: ${totalInserted.toLocaleString()} contracts`);
 
       // Small delay between quarters
