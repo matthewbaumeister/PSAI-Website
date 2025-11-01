@@ -11,11 +11,19 @@ ADD COLUMN IF NOT EXISTS total_processed INTEGER DEFAULT 0,
 ADD COLUMN IF NOT EXISTS total_inserted INTEGER DEFAULT 0,
 ADD COLUMN IF NOT EXISTS total_errors INTEGER DEFAULT 0;
 
--- Add unique constraint for upsert to work
+-- Add unique constraint for upsert to work (if not exists)
 -- This allows the scraper to update existing records or insert new ones
-ALTER TABLE fpds_scraper_log 
-ADD CONSTRAINT fpds_scraper_log_unique_scrape 
-UNIQUE (scrape_type, date_range);
+DO $$ 
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint 
+    WHERE conname = 'fpds_scraper_log_unique_scrape'
+  ) THEN
+    ALTER TABLE fpds_scraper_log 
+    ADD CONSTRAINT fpds_scraper_log_unique_scrape 
+    UNIQUE (scrape_type, date_range);
+  END IF;
+END $$;
 
 -- Update existing records to have updated_at = started_at if null
 UPDATE fpds_scraper_log 
