@@ -99,20 +99,34 @@ Starting in 5 seconds...
 ╚════════════════════════════════════════════╝
 `);
 
-    try {
-      // ============================================
-      // STEP 1: Scrape the Day
-      // ============================================
+    let dayAttempts = 0;
+    const maxAttemptsPerDay = 3;
+    let scrapeResult: any = null;
 
-      console.log(`[${currentDate}] Step 1/4: Scraping contracts...`);
+    // Retry loop for this day
+    while (dayAttempts < maxAttemptsPerDay && !scrapeResult) {
+      try {
+        dayAttempts++;
 
-      const scrapeResult = await scrapeDateRangeWithFullDetails(
-        currentDate,
-        currentDate,
-        { maxContracts: 999999 }
-      );
+        if (dayAttempts > 1) {
+          console.log(`[${currentDate}] 🔄 Attempt ${dayAttempts}/${maxAttemptsPerDay} (after error)`);
+          console.log(`[${currentDate}] ⏸️  Cooling down API for 30 seconds...`);
+          await new Promise(resolve => setTimeout(resolve, 30000));
+        }
 
-      console.log(`[${currentDate}] ✅ Initial scrape: ${scrapeResult.totalInserted}/${scrapeResult.totalProcessed} succeeded`);
+        // ============================================
+        // STEP 1: Scrape the Day
+        // ============================================
+
+        console.log(`[${currentDate}] Step 1/4: Scraping contracts...`);
+
+        scrapeResult = await scrapeDateRangeWithFullDetails(
+          currentDate,
+          currentDate,
+          { maxContracts: 999999 }
+        );
+
+        console.log(`[${currentDate}] ✅ Initial scrape: ${scrapeResult.totalInserted}/${scrapeResult.totalProcessed} succeeded`);
 
       // ============================================
       // STEP 2: Pause 30 Seconds
@@ -215,23 +229,34 @@ Starting in 5 seconds...
    Remaining Failed: ${totalContractsFailed}
 `);
 
-      // ============================================
-      // Move to Previous Day
-      // ============================================
+      } catch (error) {
+        console.error(`[${currentDate}] ❌ Error on attempt ${dayAttempts}:`, error instanceof Error ? error.message : error);
+        
+        if (dayAttempts >= maxAttemptsPerDay) {
+          console.log(`[${currentDate}] ⚠️  Failed ${maxAttemptsPerDay} times - skipping to previous day\n`);
+          break; // Exit retry loop, will skip this day
+        }
+        // Loop will automatically retry with 30s cooldown
+      }
+    } // End of retry while loop
 
-      currentDate = getPreviousDay(currentDate);
-      console.log(`➡️  Moving to next day: ${currentDate}\n`);
-
-      // Brief pause between days to be gentle on API
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-    } catch (error) {
-      console.error(`[${currentDate}] ❌ Error processing day:`, error);
-      console.log(`[${currentDate}] Skipping to previous day...\n`);
+    if (!scrapeResult) {
+      console.log(`[${currentDate}] ❌ Day failed after ${maxAttemptsPerDay} attempts - moving on\n`);
       currentDate = getPreviousDay(currentDate);
       await new Promise(resolve => setTimeout(resolve, 5000));
+      continue; // Skip to next day
     }
-  }
+
+    // ============================================
+    // Move to Previous Day
+    // ============================================
+
+    currentDate = getPreviousDay(currentDate);
+    console.log(`➡️  Moving to next day: ${currentDate}\n`);
+
+    // Brief pause between days to be gentle on API
+    await new Promise(resolve => setTimeout(resolve, 2000));
+  } // End of main while loop
 
   // ============================================
   // Final Summary
