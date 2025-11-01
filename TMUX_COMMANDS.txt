@@ -1,0 +1,113 @@
+═══════════════════════════════════════════════════════════════
+  COPY/PASTE THESE COMMANDS INTO YOUR TERMINAL
+═══════════════════════════════════════════════════════════════
+
+IMPORTANT: Use -t flag (not -s) for tmux attach!
+
+
+█ START SCRAPING 2025 DATA
+══════════════════════════════════════════════════════════════
+
+Step 1: Create tmux session and start scraper (copy this entire line):
+
+tmux new-session -s fpds-2025 -d && tmux send-keys -t fpds-2025 "cd /Users/matthewbaumeister/Documents/PropShop_AI_Website && bash run-fpds-year.sh 2025 2025-01-01 2025-10-31" C-m && sleep 2 && tmux attach-session -t fpds-2025
+
+
+Step 2: Watch the scraper run (you'll see progress updates)
+
+
+Step 3: To detach and leave running in background:
+  Press: Ctrl+B  (release both keys)
+  Then press: D
+
+
+═══════════════════════════════════════════════════════════════
+
+█ MANAGING SESSIONS
+══════════════════════════════════════════════════════════════
+
+List all sessions:
+tmux list-sessions
+
+Attach to session (note: it's -t not -s):
+tmux attach-session -t fpds-2025
+
+Kill a session:
+tmux kill-session -t fpds-2025
+
+See last output without attaching:
+tmux capture-pane -t fpds-2025 -p | tail -30
+
+
+═══════════════════════════════════════════════════════════════
+
+█ START ADDITIONAL YEARS (Run in parallel)
+══════════════════════════════════════════════════════════════
+
+For 2024:
+tmux new-session -s fpds-2024 -d && tmux send-keys -t fpds-2024 "cd /Users/matthewbaumeister/Documents/PropShop_AI_Website && bash run-fpds-year.sh 2024 2024-01-01 2024-12-31" C-m && sleep 2 && tmux attach-session -t fpds-2024
+
+For 2023:
+tmux new-session -s fpds-2023 -d && tmux send-keys -t fpds-2023 "cd /Users/matthewbaumeister/Documents/PropShop_AI_Website && bash run-fpds-year.sh 2023 2023-01-01 2023-12-31" C-m && sleep 2 && tmux attach-session -t fpds-2023
+
+
+═══════════════════════════════════════════════════════════════
+
+█ WHAT YOU'LL SEE
+══════════════════════════════════════════════════════════════
+
+✅ Good signs:
+  - Page numbers increasing
+  - "Fetched X/100 details..."
+  - "Inserted 100 cleaned contracts..."
+  - "Data Quality: 89.7/100 avg score"
+
+⚠️ Normal errors (don't worry about these):
+  - "Error fetching details for CONT_AWD_..."
+  - "fetch failed"
+  - "SocketError: other side closed"
+  - "Details API error: 500"
+  
+  These happen because the government API is unstable.
+  The scraper will auto-retry and skip them.
+  You can re-run later to fill gaps.
+
+
+═══════════════════════════════════════════════════════════════
+
+█ TROUBLESHOOTING
+══════════════════════════════════════════════════════════════
+
+"command attach-session: unknown flag -s"
+  → Use -t instead: tmux attach-session -t fpds-2025
+
+"no server running"
+  → No sessions exist. Create one with the "START" command above.
+
+"session already exists"
+  → Kill it first: tmux kill-session -t fpds-2025
+  → Then create new one
+
+Session seems dead/frozen:
+  → Kill it: tmux kill-session -t fpds-2025
+  → Restart with "START" command
+  → It will resume from last completed page automatically
+
+
+═══════════════════════════════════════════════════════════════
+
+█ QUICK REFERENCE
+══════════════════════════════════════════════════════════════
+
+Correct syntax:     tmux attach-session -t fpds-2025
+Wrong syntax:       tmux attach-session -s fpds-2025  ❌
+Short version:      tmux a -t fpds-2025
+
+Detach keys:        Ctrl+B, then D
+Kill session:       Ctrl+B, then type :kill-session and press Enter
+
+
+═══════════════════════════════════════════════════════════════
+
+Ready? Copy the "START SCRAPING 2025 DATA" command above!
+
