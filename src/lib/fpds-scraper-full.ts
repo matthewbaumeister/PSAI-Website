@@ -63,27 +63,54 @@ async function saveProgress(
   totalErrors: number
 ): Promise<void> {
   try {
-    // Upsert progress to scraper log
-    const { error } = await supabase
+    const dateRangeKey = `${startDate}_to_${endDate}`;
+    
+    // Check if record exists
+    const { data: existing } = await supabase
       .from('fpds_scraper_log')
-      .upsert({
-        scrape_type: 'full_details_2025',
-        date_range: `${startDate}_to_${endDate}`,
-        records_found: totalProcessed,
-        records_inserted: totalInserted,
-        records_errors: totalErrors,
-        status: 'running',
-        started_at: new Date().toISOString(),
-        updated_at: new Date().toISOString()
-      }, {
-        onConflict: 'scrape_type,date_range',
-        ignoreDuplicates: false
-      });
-
-    if (error) {
-      console.log('[FPDS Full] ⚠️  Failed to save progress:', error.message);
+      .select('id, started_at')
+      .eq('scrape_type', 'full_details_2025')
+      .eq('date_range', dateRangeKey)
+      .single();
+    
+    if (existing) {
+      // Update existing record (preserve started_at)
+      const { error } = await supabase
+        .from('fpds_scraper_log')
+        .update({
+          records_found: totalProcessed,
+          records_inserted: totalInserted,
+          records_errors: totalErrors,
+          status: 'running',
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', existing.id);
+      
+      if (error) {
+        console.log('[FPDS Full] ⚠️  Failed to save progress:', error.message);
+      } else {
+        console.log(`[FPDS Full] 💾 Progress saved: Page ${currentPage}, ${totalInserted} contracts`);
+      }
     } else {
-      console.log(`[FPDS Full] 💾 Progress saved: Page ${currentPage}, ${totalInserted} contracts`);
+      // Insert new record
+      const { error } = await supabase
+        .from('fpds_scraper_log')
+        .insert({
+          scrape_type: 'full_details_2025',
+          date_range: dateRangeKey,
+          records_found: totalProcessed,
+          records_inserted: totalInserted,
+          records_errors: totalErrors,
+          status: 'running',
+          started_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        });
+      
+      if (error) {
+        console.log('[FPDS Full] ⚠️  Failed to create progress log:', error.message);
+      } else {
+        console.log(`[FPDS Full] 💾 Progress log created: Page ${currentPage}, ${totalInserted} contracts`);
+      }
     }
   } catch (err) {
     console.log('[FPDS Full] ⚠️  Error saving progress:', err);
