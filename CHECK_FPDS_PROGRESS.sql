@@ -28,19 +28,20 @@ SELECT
   scrape_type,
   date_range,
   status,
-  total_processed,
-  total_inserted,
-  total_errors,
-  last_page_processed,
+  records_found,
+  records_inserted,
+  records_updated,
+  records_errors,
   started_at,
-  updated_at,
+  completed_at,
+  duration_seconds,
   CASE 
-    WHEN status = 'in_progress' 
+    WHEN status = 'running' 
     THEN ROUND(EXTRACT(EPOCH FROM (NOW() - started_at)) / 60) 
     ELSE NULL 
   END as minutes_running
 FROM fpds_scraper_log
-ORDER BY updated_at DESC
+ORDER BY started_at DESC
 LIMIT 10;
 
 -- 4. Top agencies by contract count (2025 data)
@@ -97,17 +98,16 @@ ORDER BY count DESC;
 SELECT 
   scrape_type,
   date_range,
-  last_page_processed,
-  total_processed,
-  total_inserted,
-  total_errors,
-  updated_at,
+  records_found,
+  records_inserted,
+  records_errors,
+  started_at,
   '🔄 Run this to resume: npx tsx src/scripts/fpds-full-load-date-range.ts --start=' || 
   split_part(date_range, ' to ', 1) || 
   ' --end=' || 
   split_part(date_range, ' to ', 2) as resume_command
 FROM fpds_scraper_log
-WHERE status = 'in_progress'
-ORDER BY updated_at DESC
+WHERE status = 'running'
+ORDER BY started_at DESC
 LIMIT 1;
 
