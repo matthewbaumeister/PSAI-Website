@@ -109,12 +109,12 @@ async function main() {
           }
         );
 
-        yearInserted += result.inserted;
-        yearErrors += result.errors;
+        yearInserted += result.totalInserted;
+        yearErrors += result.totalErrors;
 
         console.log(`\n✅ ${year} ${quarter.name} complete:`);
-        console.log(`   - Inserted: ${result.inserted.toLocaleString()}`);
-        console.log(`   - Errors: ${result.errors}`);
+        console.log(`   - Inserted: ${result.totalInserted.toLocaleString()}`);
+        console.log(`   - Errors: ${result.totalErrors}`);
         console.log(`   - Year Total: ${yearInserted.toLocaleString()} contracts`);
 
         // Small delay between quarters
