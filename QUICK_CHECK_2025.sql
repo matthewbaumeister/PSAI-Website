@@ -9,7 +9,7 @@ SELECT
   ROUND(AVG(data_quality_score), 1) as "⭐ Avg Quality Score",
   MIN(date_signed::date) as "📅 Earliest Date",
   MAX(date_signed::date) as "📅 Latest Date",
-  SUM(total_amount::numeric)::money as "💰 Total Value"
+  SUM(base_and_exercised_options_value::numeric)::money as "💰 Total Value"
 FROM fpds_contracts
 WHERE data_source = 'usaspending.gov-full'
   AND date_signed >= '2025-01-01'

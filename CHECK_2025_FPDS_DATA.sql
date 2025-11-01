@@ -8,7 +8,7 @@ SELECT
   COUNT(*) as total_contracts,
   COUNT(DISTINCT vendor_name) as unique_vendors,
   ROUND(AVG(data_quality_score), 1) as avg_quality_score,
-  SUM(total_amount::numeric)::money as total_value,
+  SUM(base_and_exercised_options_value::numeric)::money as total_value,
   MIN(date_signed) as earliest_date,
   MAX(date_signed) as latest_date
 FROM fpds_contracts
@@ -27,7 +27,7 @@ SELECT
   END as quality_level,
   COUNT(*) as contracts,
   ROUND(AVG(data_quality_score), 1) as avg_score,
-  SUM(total_amount::numeric)::money as total_value
+  SUM(base_and_exercised_options_value::numeric)::money as total_value
 FROM fpds_contracts
 WHERE data_source = 'usaspending.gov-full'
   AND date_signed >= '2025-01-01'
@@ -48,7 +48,7 @@ SELECT
   COUNT(*) as contracts,
   COUNT(DISTINCT vendor_name) as vendors,
   ROUND(AVG(data_quality_score), 1) as avg_quality,
-  SUM(total_amount::numeric)::money as total_value
+  SUM(base_and_exercised_options_value::numeric)::money as total_value
 FROM fpds_contracts
 WHERE data_source = 'usaspending.gov-full'
   AND date_signed >= '2025-01-01'
@@ -114,7 +114,7 @@ SELECT
   '🏢 Top 10 Vendors' as section,
   vendor_name,
   COUNT(*) as contracts,
-  SUM(total_amount::numeric)::money as total_value,
+  SUM(base_and_exercised_options_value::numeric)::money as total_value,
   ROUND(AVG(data_quality_score), 1) as avg_quality
 FROM fpds_contracts
 WHERE data_source = 'usaspending.gov-full'
