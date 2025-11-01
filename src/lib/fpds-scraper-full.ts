@@ -20,6 +20,77 @@ const SEARCH_DELAY_MS = 200; // 5 searches/second
 const DETAILS_DELAY_MS = 500; // 2 details/second (more conservative)
 
 // ============================================
+// Resume Logic - Track Progress
+// ============================================
+
+async function getLastCompletedPage(startDate: string, endDate: string): Promise<number> {
+  try {
+    const { data, error } = await supabase
+      .from('fpds_scraper_log')
+      .select('records_found')
+      .eq('scrape_type', 'full_details_2025')
+      .eq('date_range', `${startDate}_to_${endDate}`)
+      .eq('status', 'running')
+      .order('updated_at', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error || !data) {
+      console.log('[FPDS Full] No previous progress found, starting from page 1');
+      return 1;
+    }
+
+    // Calculate last completed page (100 contracts per page)
+    const lastPage = Math.floor(data.records_found / 100);
+    
+    // Resume from 1 page before for safety (in case last page was partial)
+    const resumePage = Math.max(1, lastPage - 1);
+    
+    console.log(`[FPDS Full] 📍 RESUMING from page ${resumePage} (last completed: ${lastPage})`);
+    return resumePage;
+  } catch (err) {
+    console.log('[FPDS Full] Error checking progress, starting from page 1:', err);
+    return 1;
+  }
+}
+
+async function saveProgress(
+  startDate: string,
+  endDate: string,
+  currentPage: number,
+  totalProcessed: number,
+  totalInserted: number,
+  totalErrors: number
+): Promise<void> {
+  try {
+    // Upsert progress to scraper log
+    const { error } = await supabase
+      .from('fpds_scraper_log')
+      .upsert({
+        scrape_type: 'full_details_2025',
+        date_range: `${startDate}_to_${endDate}`,
+        records_found: totalProcessed,
+        records_inserted: totalInserted,
+        records_errors: totalErrors,
+        status: 'running',
+        started_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      }, {
+        onConflict: 'scrape_type,date_range',
+        ignoreDuplicates: false
+      });
+
+    if (error) {
+      console.log('[FPDS Full] ⚠️  Failed to save progress:', error.message);
+    } else {
+      console.log(`[FPDS Full] 💾 Progress saved: Page ${currentPage}, ${totalInserted} contracts`);
+    }
+  } catch (err) {
+    console.log('[FPDS Full] ⚠️  Error saving progress:', err);
+  }
+}
+
+// ============================================
 // Search Functions (Get List of Contracts)
 // ============================================
 
@@ -271,18 +342,19 @@ export async function scrapeDateRangeWithFullDetails(
     resumeFrom?: number;
   } = {}
 ) {
-  const { smallBusiness = false, maxContracts = 10000, resumeFrom = 0 } = options;
+  const { smallBusiness = false, maxContracts = 10000 } = options;
   const startTime = new Date();
 
   console.log(`[FPDS Full] Starting FULL scrape: ${startDate} to ${endDate}`);
   console.log(`[FPDS Full] Max contracts: ${maxContracts}`);
-  console.log(`[FPDS Full] Resume from: ${resumeFrom}`);
   if (smallBusiness) console.log(`[FPDS Full] Filter: Small Business only`);
+
+  // Get last completed page from database (resume logic)
+  let page = await getLastCompletedPage(startDate, endDate);
 
   let totalProcessed = 0;
   let totalInserted = 0;
   let totalErrors = 0;
-  let page = Math.floor(resumeFrom / 100) + 1;
   
   try {
     while (totalProcessed < maxContracts) {
@@ -357,6 +429,9 @@ export async function scrapeDateRangeWithFullDetails(
       console.log(`[FPDS Full] Progress: ${totalProcessed}/${maxContracts} contracts processed`);
       console.log(`[FPDS Full] Inserted: ${totalInserted}, Errors: ${totalErrors}`);
 
+      // Save progress after each successful page
+      await saveProgress(startDate, endDate, page, totalProcessed, totalInserted, totalErrors);
+
       // Check if we should continue
       if (!searchResult.hasMore || totalProcessed >= maxContracts) {
         break;
@@ -369,15 +444,27 @@ export async function scrapeDateRangeWithFullDetails(
     const endTime = new Date();
     const durationSeconds = Math.floor((endTime.getTime() - startTime.getTime()) / 1000);
 
+    // Mark scrape as completed
+    await supabase
+      .from('fpds_scraper_log')
+      .update({ status: 'completed', updated_at: new Date().toISOString() })
+      .eq('scrape_type', 'full_details_2025')
+      .eq('date_range', `${startDate}_to_${endDate}`);
+
     console.log(`\n[FPDS Full] ========================================`);
-    console.log(`[FPDS Full] Scrape Complete!`);
+    console.log(`[FPDS Full] ✅ Scrape Complete!`);
     console.log(`[FPDS Full] ========================================`);
     console.log(`[FPDS Full] Processed: ${totalProcessed} contracts`);
     console.log(`[FPDS Full] Inserted: ${totalInserted}`);
     console.log(`[FPDS Full] Errors: ${totalErrors}`);
     console.log(`[FPDS Full] Duration: ${Math.floor(durationSeconds / 60)} minutes`);
 
-    return { inserted: totalInserted, updated: 0, errors: totalErrors };
+    return { 
+      totalProcessed, 
+      totalInserted, 
+      totalErrors, 
+      avgQualityScore: 0 
+    };
     
   } catch (error) {
     console.error('[FPDS Full] Fatal error:', error);
