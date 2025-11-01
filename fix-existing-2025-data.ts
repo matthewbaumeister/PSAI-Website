@@ -32,8 +32,9 @@ async function fixExisting2025Data() {
   console.log('╚════════════════════════════════════════════╝\n');
   
   console.log(`✅ Total contracts processed: ${result.totalProcessed}`);
-  console.log(`✅ Inserted/Updated: ${result.totalInserted} contracts`);
-  console.log(`⚠️  Errors: ${result.totalErrors} contracts\n`);
+  console.log(`✅ Total inserted/updated: ${result.totalInserted}`);
+  console.log(`⚠️  Total errors: ${result.totalErrors}`);
+  console.log(`📊 Avg quality score: ${result.avgQualityScore || 'N/A'}\n`);
   
   console.log('🎯 Next Steps:');
   console.log('1. Run the Supabase queries above to verify dates/NAICS');
