@@ -25,14 +25,19 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-// Parse command line args
-const args = process.argv.slice(2);
-const dateArg = args.find(arg => arg.startsWith('--date='))?.split('=')[1];
+// ============================================
+// Main Function
+// ============================================
 
-// Default to today if no date provided
-const targetDate = dateArg || new Date().toISOString().split('T')[0];
+async function main() {
+  // Parse command line args
+  const args = process.argv.slice(2);
+  const dateArg = args.find(arg => arg.startsWith('--date='))?.split('=')[1];
 
-console.log(`
+  // Default to today if no date provided
+  const targetDate = dateArg || new Date().toISOString().split('T')[0];
+
+  console.log(`
 ╔════════════════════════════════════════════╗
 ║   FPDS Daily Scrape + Auto-Retry          ║
 ╚════════════════════════════════════════════╝
@@ -47,36 +52,36 @@ console.log(`
 Starting in 3 seconds...
 `);
 
-await new Promise(resolve => setTimeout(resolve, 3000));
+  await new Promise(resolve => setTimeout(resolve, 3000));
 
-// ============================================
-// STEP 1: Scrape the Day
-// ============================================
+  // ============================================
+  // STEP 1: Scrape the Day
+  // ============================================
 
-console.log(`
+  console.log(`
 ╔════════════════════════════════════════════╗
 ║  STEP 1: Scraping ${targetDate}           ║
 ╚════════════════════════════════════════════╝
 `);
 
-const scrapeResult = await scrapeDateRangeWithFullDetails(
-  targetDate,
-  targetDate,
-  { maxContracts: 999999 }
-);
+  const scrapeResult = await scrapeDateRangeWithFullDetails(
+    targetDate,
+    targetDate,
+    { maxContracts: 999999 }
+  );
 
-console.log(`
+  console.log(`
 ✅ Initial Scrape Complete:
    Found: ${scrapeResult.totalProcessed} contracts
    Inserted: ${scrapeResult.totalInserted} contracts
    Errors: ${scrapeResult.totalErrors} contracts
 `);
 
-// ============================================
-// STEP 2: Pause 30 Seconds
-// ============================================
+  // ============================================
+  // STEP 2: Pause 30 Seconds
+  // ============================================
 
-console.log(`
+  console.log(`
 ╔════════════════════════════════════════════╗
 ║  STEP 2: Pausing 30 Seconds (API Rest)    ║
 ╚════════════════════════════════════════════╝
@@ -84,125 +89,125 @@ console.log(`
 ⏳ Letting the API cool down...
 `);
 
-// Countdown
-for (let i = 30; i > 0; i -= 5) {
-  console.log(`   ${i} seconds remaining...`);
-  await new Promise(resolve => setTimeout(resolve, 5000));
-}
+  // Countdown
+  for (let i = 30; i > 0; i -= 5) {
+    console.log(`   ${i} seconds remaining...`);
+    await new Promise(resolve => setTimeout(resolve, 5000));
+  }
 
-console.log(`✅ Pause complete!\n`);
+  console.log(`✅ Pause complete!\n`);
 
-// ============================================
-// STEP 3: Get Failed Contracts from This Day
-// ============================================
+  // ============================================
+  // STEP 3: Get Failed Contracts from This Day
+  // ============================================
 
-console.log(`
+  console.log(`
 ╔════════════════════════════════════════════╗
 ║  STEP 3: Fetching Failed Contracts        ║
 ╚════════════════════════════════════════════╝
 `);
 
-const { data: failures, error: fetchError } = await supabase
-  .from('fpds_failed_contracts')
-  .select('contract_id, error_type, attempt_count')
-  .ilike('date_range', `%${targetDate}%`)
-  .order('created_at', { ascending: false });
+  const { data: failures, error: fetchError } = await supabase
+    .from('fpds_failed_contracts')
+    .select('contract_id, error_type, attempt_count')
+    .ilike('date_range', `%${targetDate}%`)
+    .order('created_at', { ascending: false });
 
-if (fetchError) {
-  console.error('❌ Error fetching failures:', fetchError.message);
-  process.exit(1);
-}
+  if (fetchError) {
+    console.error('❌ Error fetching failures:', fetchError.message);
+    process.exit(1);
+  }
 
-if (!failures || failures.length === 0) {
-  console.log(`
+  if (!failures || failures.length === 0) {
+    console.log(`
 🎉 NO FAILURES! All contracts succeeded on first try!
    Total Success: ${scrapeResult.totalInserted} contracts
 `);
-  process.exit(0);
-}
+    process.exit(0);
+  }
 
-const uniqueFailures = Array.from(new Set(failures.map(f => f.contract_id)));
+  const uniqueFailures = Array.from(new Set(failures.map(f => f.contract_id)));
 
-console.log(`
+  console.log(`
 📋 Found ${failures.length} failure records
 🔁 Retrying ${uniqueFailures.length} unique contract IDs
 `);
 
-// ============================================
-// STEP 4: Retry Failed Contracts
-// ============================================
+  // ============================================
+  // STEP 4: Retry Failed Contracts
+  // ============================================
 
-console.log(`
+  console.log(`
 ╔════════════════════════════════════════════╗
 ║  STEP 4: Retrying Failed Contracts        ║
 ╚════════════════════════════════════════════╝
 `);
 
-let retrySuccess = 0;
-let retryStillFailed = 0;
+  let retrySuccess = 0;
+  let retryStillFailed = 0;
 
-for (let i = 0; i < uniqueFailures.length; i++) {
-  const contractId = uniqueFailures[i];
-  
-  if ((i + 1) % 10 === 0) {
-    console.log(`   Retrying ${i + 1}/${uniqueFailures.length}...`);
-  }
-  
-  try {
-    // Fetch full details
-    const detailsUrl = `https://api.usaspending.gov/api/v2/awards/${contractId}/`;
-    const response = await fetch(detailsUrl);
+  for (let i = 0; i < uniqueFailures.length; i++) {
+    const contractId = uniqueFailures[i];
     
-    if (!response.ok) {
-      retryStillFailed++;
-      continue;
+    if ((i + 1) % 10 === 0) {
+      console.log(`   Retrying ${i + 1}/${uniqueFailures.length}...`);
     }
     
-    const fullData = await response.json();
-    
-    const normalized = normalizeFullContract(fullData);
-    const validated = validateContractBatch([normalized]);
-    const result = await batchInsertFullContracts(validated.contracts);
-    
-    if (result.inserted > 0) {
-      retrySuccess++;
+    try {
+      // Fetch full details
+      const detailsUrl = `https://api.usaspending.gov/api/v2/awards/${contractId}/`;
+      const response = await fetch(detailsUrl);
       
-      // Remove from failed contracts log (it succeeded!)
+      if (!response.ok) {
+        retryStillFailed++;
+        continue;
+      }
+      
+      const fullData = await response.json();
+      
+      const normalized = normalizeFullContract(fullData);
+      const validated = validateContractBatch([normalized]);
+      const result = await batchInsertFullContracts(validated.cleaned);
+      
+      if (result.inserted > 0) {
+        retrySuccess++;
+        
+        // Remove from failed contracts log (it succeeded!)
+        await supabase
+          .from('fpds_failed_contracts')
+          .delete()
+          .eq('contract_id', contractId);
+      } else {
+        retryStillFailed++;
+      }
+      
+      // Small delay between retries
+      await new Promise(resolve => setTimeout(resolve, 100));
+      
+    } catch (err) {
+      retryStillFailed++;
+      
+      // Update attempt count
       await supabase
         .from('fpds_failed_contracts')
-        .delete()
+        .update({ 
+          attempt_count: supabase.rpc('increment', { row_id: contractId }),
+          updated_at: new Date().toISOString()
+        })
         .eq('contract_id', contractId);
-    } else {
-      retryStillFailed++;
     }
-    
-    // Small delay between retries
-    await new Promise(resolve => setTimeout(resolve, 100));
-    
-  } catch (err) {
-    retryStillFailed++;
-    
-    // Update attempt count
-    await supabase
-      .from('fpds_failed_contracts')
-      .update({ 
-        attempt_count: supabase.rpc('increment', { row_id: contractId }),
-        updated_at: new Date().toISOString()
-      })
-      .eq('contract_id', contractId);
   }
-}
 
-// ============================================
-// FINAL REPORT
-// ============================================
+  // ============================================
+  // FINAL REPORT
+  // ============================================
 
-const totalUnique = scrapeResult.totalProcessed;
-const finalSuccess = scrapeResult.totalInserted + retrySuccess;
-const finalFailed = retryStillFailed;
-const successRate = ((finalSuccess / totalUnique) * 100).toFixed(1);
+  const totalUnique = scrapeResult.totalProcessed;
+  const finalSuccess = scrapeResult.totalInserted + retrySuccess;
+  const finalFailed = retryStillFailed;
+  const successRate = ((finalSuccess / totalUnique) * 100).toFixed(1);
 
-console.log(`
+  console.log(`
 ╔════════════════════════════════════════════╗
 ║  🎯 FINAL RESULTS for ${targetDate}     ║
 ╚════════════════════════════════════════════╝
@@ -230,11 +235,11 @@ ${finalFailed >= 10 ? '⚠️  Some contracts still failing - API might be havin
 💡 Tip: You can run this again later to retry remaining failures.
 `);
 
-// ============================================
-// Summary in Supabase
-// ============================================
+  // ============================================
+  // Summary in Supabase
+  // ============================================
 
-console.log(`
+  console.log(`
 📝 Check your data in Supabase:
 
 SELECT COUNT(*) as contracts
@@ -245,5 +250,15 @@ WHERE date_signed = '${targetDate}'
 Done! ✅
 `);
 
-process.exit(0);
+  process.exit(0);
+}
+
+// ============================================
+// Run Main
+// ============================================
+
+main().catch(err => {
+  console.error('❌ Fatal error:', err);
+  process.exit(1);
+});
 
