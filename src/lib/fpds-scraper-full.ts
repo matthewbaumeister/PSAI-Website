@@ -330,6 +330,39 @@ export async function batchInsertFullContracts(contracts: any[], batchSize: numb
 }
 
 // ============================================
+// Failed Contract Logging
+// ============================================
+
+async function logFailedContract(
+  contractId: string,
+  errorMessage: string,
+  errorType: string,
+  dateRange: string,
+  pageNumber: number,
+  scrapeRunId?: number
+) {
+  try {
+    const { error } = await supabase
+      .from('fpds_failed_contracts')
+      .insert({
+        contract_id: contractId,
+        error_message: errorMessage.substring(0, 500), // Limit message length
+        error_type: errorType,
+        date_range: dateRange,
+        page_number: pageNumber,
+        scrape_run_id: scrapeRunId,
+        attempt_count: 1
+      });
+    
+    if (error) {
+      console.error('[FPDS Full] Failed to log contract failure:', error.message);
+    }
+  } catch (err) {
+    // Silent fail - don't let logging errors stop the scraper
+  }
+}
+
+// ============================================
 // Full Scraping with Details
 // ============================================
 
@@ -393,16 +426,33 @@ export async function scrapeDateRangeWithFullDetails(
             const normalized = normalizeFullContract(fullDetails);
             enrichedContracts.push(normalized);
           } else {
-            // If details fetch fails, skip this contract
+            // If details fetch fails, log and skip this contract
             totalErrors++;
+            await logFailedContract(
+              basicContract.generated_internal_id,
+              'Failed to fetch contract details',
+              'details_fetch_failed',
+              `${startDate} to ${endDate}`,
+              page
+            );
           }
 
           // Rate limiting
           await sleep(DETAILS_DELAY_MS);
           
         } catch (error) {
+          const errorMsg = error instanceof Error ? error.message : String(error);
           console.error(`[FPDS Full] Error enriching contract ${basicContract['Award ID']}:`, error);
           totalErrors++;
+          
+          // Log failed contract
+          await logFailedContract(
+            basicContract.generated_internal_id,
+            errorMsg,
+            'enrichment_error',
+            `${startDate} to ${endDate}`,
+            page
+          );
         }
       }
 
