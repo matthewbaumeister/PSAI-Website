@@ -122,8 +122,8 @@ async function main() {
     console.log('\n╔════════════════════════════════════════════╗');
     console.log('║       DATE RANGE SCRAPE COMPLETE!          ║');
     console.log('╚════════════════════════════════════════════╝\n');
-    console.log(`Total Inserted: ${result.inserted.toLocaleString()} contracts`);
-    console.log(`Total Errors: ${result.errors}`);
+    console.log(`Total Inserted: ${result.totalInserted.toLocaleString()} contracts`);
+    console.log(`Total Errors: ${result.totalErrors}`);
     
     if (daysActual > 0) {
       console.log(`Duration: ${daysActual}d ${hoursRemaining}h ${minutes}m`);
