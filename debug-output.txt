@@ -1,0 +1,23 @@
+
+🔍 Fetching ONE 2025 contract to see raw API response...
+
+📋 Search Result (basic data):
+{
+  "internal_id": 168874577,
+  "Award ID": "ZN31",
+  "Recipient Name": "HPI FEDERAL LLC",
+  "generated_unique_award_id": null,
+  "generated_internal_id": "CONT_AWD_ZN31_9700_W91QUZ06D0004_9700"
+}
+
+================================================================================
+
+🔍 Fetching FULL details for: null
+
+SyntaxError: Unexpected token '<', "
+<!doctype "... is not valid JSON
+    at JSON.parse (<anonymous>)
+    at parseJSONFromBytes (node:internal/deps/undici/undici:6227:19)
+    at successSteps (node:internal/deps/undici/undici:6208:27)
+    at readAllBytes (node:internal/deps/undici/undici:5165:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)

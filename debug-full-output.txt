@@ -1,0 +1,273 @@
+
+🔍 Fetching ONE 2025 contract to see raw API response...
+
+📋 Search Result (basic data):
+{
+  "internal_id": 168874577,
+  "Award ID": "ZN31",
+  "Recipient Name": "HPI FEDERAL LLC",
+  "generated_unique_award_id": null,
+  "generated_internal_id": "CONT_AWD_ZN31_9700_W91QUZ06D0004_9700"
+}
+
+================================================================================
+
+🔍 Fetching FULL details for: CONT_AWD_ZN31_9700_W91QUZ06D0004_9700
+
+📦 FULL API RESPONSE:
+{
+  "id": 168874577,
+  "generated_unique_award_id": "CONT_AWD_ZN31_9700_W91QUZ06D0004_9700",
+  "piid": "ZN31",
+  "category": "contract",
+  "type": "C",
+  "type_description": "DELIVERY ORDER",
+  "description": "HPELITE DESKTOP PC ACCESSORIES, AND HP MONITOR FFP CHESS ORDER",
+  "total_obligation": 463050,
+  "subaward_count": 0,
+  "total_subaward_amount": null,
+  "date_signed": "2017-03-31",
+  "base_exercised_options": 463050,
+  "base_and_all_options": 463050,
+  "total_account_outlay": 0,
+  "total_account_obligation": 0,
+  "account_outlays_by_defc": [],
+  "account_obligations_by_defc": [],
+  "parent_award": {
+    "agency_id": 1173,
+    "agency_name": "Department of Defense",
+    "agency_slug": "department-of-defense",
+    "sub_agency_id": "9700",
+    "sub_agency_name": "Department of Defense",
+    "award_id": 169836796,
+    "generated_unique_award_id": "CONT_IDV_W91QUZ06D0004_9700",
+    "idv_type_description": "IDC",
+    "multiple_or_single_aw_desc": "MULTIPLE AWARD",
+    "piid": "W91QUZ06D0004",
+    "type_of_idc_description": "INDEFINITE DELIVERY / INDEFINITE QUANTITY"
+  },
+  "latest_transaction_contract_data": {
+    "idv_type_description": null,
+    "type_of_idc_description": null,
+    "referenced_idv_agency_iden": "9700",
+    "referenced_idv_agency_desc": "DEPT OF DEFENSE",
+    "solicitation_identifier": null,
+    "solicitation_procedures": "MAFO",
+    "number_of_offers_received": "6",
+    "extent_competed": "A",
+    "type_set_aside": null,
+    "type_set_aside_description": null,
+    "evaluated_preference": "NONE",
+    "fed_biz_opps": "X",
+    "fed_biz_opps_description": "NOT APPLICABLE",
+    "small_business_competitive": false,
+    "product_or_service_code": "7021",
+    "naics": "334119",
+    "naics_description": "OTHER COMPUTER PERIPHERAL EQUIPMENT MANUFACTURING",
+    "sea_transportation": "U",
+    "clinger_cohen_act_planning": "N",
+    "labor_standards": "X",
+    "cost_or_pricing_data": "N",
+    "domestic_or_foreign_entity": "A",
+    "foreign_funding": "X",
+    "major_program": null,
+    "program_acronym": null,
+    "subcontracting_plan": null,
+    "multi_year_contract": "N",
+    "consolidated_contract": "D",
+    "type_of_contract_pricing": "J",
+    "national_interest_action": null,
+    "multiple_or_single_award_description": null,
+    "solicitation_procedures_description": "SUBJECT TO MULTIPLE AWARD FAIR OPPORTUNITY",
+    "extent_competed_description": "FULL AND OPEN COMPETITION",
+    "other_than_full_and_open": null,
+    "other_than_full_and_open_description": null,
+    "commercial_item_acquisition": "A",
+    "commercial_item_acquisition_description": "COMMERCIAL PRODUCTS/SERVICES",
+    "commercial_item_test_program": "N",
+    "commercial_item_test_program_description": "NO",
+    "evaluated_preference_description": "NO PREFERENCE USED",
+    "fair_opportunity_limited": "OSA",
+    "fair_opportunity_limited_description": "OTHER STATUTORY AUTHORITY",
+    "product_or_service_description": "INFORMATION TECHNOLOGY CENTRAL PROCESSING UNIT (CPU, COMPUTER, DIGITAL)",
+    "dod_claimant_program": "C9E",
+    "dod_claimant_program_description": "ALL OTHERS NOT IDENTIFIABLE TO ANY OTHER PROCUREMENT PROGRAM",
+    "dod_acquisition_program": "000",
+    "dod_acquisition_program_description": "NONE",
+    "information_technology_commercial_item_category": "A",
+    "information_technology_commercial_item_category_description": "COMMERCIALLY AVAILABLE OFF-THE-SHELF (COTS) ITEM",
+    "sea_transportation_description": "UNKNOWN",
+    "clinger_cohen_act_planning_description": "NO",
+    "construction_wage_rate": "X",
+    "construction_wage_rate_description": "NOT APPLICABLE",
+    "labor_standards_description": "NOT APPLICABLE",
+    "materials_supplies": "X",
+    "materials_supplies_description": "NOT APPLICABLE",
+    "cost_or_pricing_data_description": "NO",
+    "domestic_or_foreign_entity_description": "U.S. OWNED BUSINESS",
+    "foreign_funding_description": "NOT APPLICABLE",
+    "interagency_contracting_authority": "X",
+    "interagency_contracting_authority_description": "NOT APPLICABLE",
+    "price_evaluation_adjustment": null,
+    "subcontracting_plan_description": null,
+    "multi_year_contract_description": "NO",
+    "purchase_card_as_payment_method": "N",
+    "purchase_card_as_payment_method_description": "NO",
+    "consolidated_contract_description": "NOT CONSOLIDATED",
+    "type_of_contract_pricing_description": "FIRM FIXED PRICE",
+    "national_interest_action_description": null
+  },
+  "funding_agency": {
+    "id": 1188,
+    "has_agency_page": true,
+    "toptier_agency": {
+      "name": "Department of Defense",
+      "code": "097",
+      "abbreviation": "DOD",
+      "slug": "department-of-defense"
+    },
+    "subtier_agency": {
+      "name": "Department of the Army",
+      "code": "2100",
+      "abbreviation": "USA"
+    },
+    "office_agency_name": "W0L6 USA DEP LETTERKENY"
+  },
+  "awarding_agency": {
+    "id": 1188,
+    "has_agency_page": true,
+    "toptier_agency": {
+      "name": "Department of Defense",
+      "code": "097",
+      "abbreviation": "DOD",
+      "slug": "department-of-defense"
+    },
+    "subtier_agency": {
+      "name": "Department of the Army",
+      "code": "2100",
+      "abbreviation": "USA"
+    },
+    "office_agency_name": "W6QK LAD CONTR OFF"
+  },
+  "period_of_performance": {
+    "start_date": "2017-03-31",
+    "end_date": "2017-06-01",
+    "last_modified_date": "2025-05-15",
+    "potential_end_date": "2017-06-01 00:00:00"
+  },
+  "recipient": {
+    "recipient_hash": "5854bb09-e3fb-546c-f374-0845f138f8e8-C",
+    "recipient_name": "HPI FEDERAL LLC",
+    "recipient_uei": "DJRUN4KK1HK3",
+    "recipient_unique_id": null,
+    "parent_recipient_hash": "5854bb09-e3fb-546c-f374-0845f138f8e8-P",
+    "parent_recipient_name": "HPI FEDERAL LLC",
+    "parent_recipient_uei": "DJRUN4KK1HK3",
+    "parent_recipient_unique_id": null,
+    "business_categories": [
+      "Category Business",
+      "Corporate Entity Not Tax Exempt",
+      "Limited Liability Corporation",
+      "Not Designated a Small Business",
+      "Special Designations",
+      "U.S.-Owned Business"
+    ],
+    "location": {
+      "location_country_code": "USA",
+      "country_name": "UNITED STATES",
+      "state_code": "DC",
+      "state_name": "DISTRICT OF COLUMBIA",
+      "city_name": "WASHINGTON",
+      "county_code": "001",
+      "county_name": "DISTRICT OF COLUMBIA",
+      "address_line1": "1299 PENNSYLVANIA AVE NW STE 475",
+      "address_line2": null,
+      "address_line3": null,
+      "congressional_code": "98",
+      "zip4": "2400",
+      "zip5": "20004",
+      "foreign_postal_code": null,
+      "foreign_province": null
+    }
+  },
+  "executive_details": {
+    "officers": [
+      {
+        "name": "ENRIQUE  LORES",
+        "amount": 19360127
+      },
+      {
+        "name": "TUAN  TRAN",
+        "amount": 7567246
+      },
+      {
+        "name": "ALEX  CHO",
+        "amount": 7130184
+      },
+      {
+        "name": "JULIE  JACOBS",
+        "amount": 4584891
+      },
+      {
+        "name": "ERNEST  NICOLAS",
+        "amount": 3871399
+      }
+    ]
+  },
+  "place_of_performance": {
+    "location_country_code": "USA",
+    "country_name": "UNITED STATES",
+    "county_code": "001",
+    "county_name": "DISTRICT OF COLUMBIA",
+    "city_name": "WASHINGTON",
+    "state_code": "DC",
+    "state_name": "DISTRICT OF COLUMBIA",
+    "congressional_code": "98",
+    "zip4": "2400",
+    "zip5": "20004",
+    "address_line1": null,
+    "address_line2": null,
+    "address_line3": null,
+    "foreign_province": null,
+    "foreign_postal_code": null
+  },
+  "psc_hierarchy": {
+    "toptier_code": {},
+    "midtier_code": {
+      "code": "70",
+      "description": "INFORMATION TECHNOLOGY EQUIPMENT (INCLD FIRMWARE) SOFTWARE,SUPPLIES& SUPPORT EQUIPMENT"
+    },
+    "subtier_code": {},
+    "base_code": {
+      "code": "7021",
+      "description": "INFORMATION TECHNOLOGY CENTRAL PROCESSING UNIT (CPU, COMPUTER), DIGITAL"
+    }
+  },
+  "naics_hierarchy": {
+    "toptier_code": {
+      "code": "33",
+      "description": "Manufacturing"
+    },
+    "midtier_code": {
+      "code": "3341",
+      "description": "Computer and Peripheral Equipment Manufacturing"
+    },
+    "base_code": {
+      "code": "334119",
+      "description": "Other Computer Peripheral Equipment Manufacturing"
+    }
+  },
+  "total_outlay": null
+}
+
+================================================================================
+
+🔍 KEY FIELDS TO CHECK:
+
+fiscal_year: ❌ UNDEFINED
+period_of_performance: ✅ {"start_date":"2017-03-31","end_date":"2017-06-01","last_modified_date":"2025-05-15","potential_end_date":"2017-06-01 00:00:00"}
+naics_code: ❌ UNDEFINED
+naics_description: ✅ "OTHER COMPUTER PERIPHERAL EQUIPMENT MANUFACTURING"
+action_date: ❌ UNDEFINED
+start_date: ❌ UNDEFINED
+current_end_date: ❌ UNDEFINED

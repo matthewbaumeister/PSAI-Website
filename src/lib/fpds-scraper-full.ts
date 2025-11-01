@@ -118,13 +118,13 @@ export function normalizeFullContract(fullData: any): any {
     transaction_number: fullData.generated_unique_award_id || `${fullData.piid}-${Date.now()}`,
     referenced_idv_piid: get(fullData, 'latest_transaction_contract_data.referenced_idv_agency_iden'),
     
-    // Dates
-    date_signed: get(fullData, 'period_of_performance.action_date'),
-    effective_date: get(fullData, 'period_of_performance.period_of_performance_start_date'),
-    current_completion_date: get(fullData, 'period_of_performance.period_of_performance_current_end_date'),
+    // Dates (CORRECTED PATHS)
+    date_signed: fullData.date_signed || null, // At root level, not nested
+    effective_date: get(fullData, 'period_of_performance.start_date'), // Simplified path
+    current_completion_date: get(fullData, 'period_of_performance.end_date'), // Simplified path
     ultimate_completion_date: get(fullData, 'period_of_performance.potential_end_date'),
-    period_of_performance_start: get(fullData, 'period_of_performance.period_of_performance_start_date'),
-    period_of_performance_end: get(fullData, 'period_of_performance.period_of_performance_current_end_date'),
+    period_of_performance_start: get(fullData, 'period_of_performance.start_date'), // Simplified path
+    period_of_performance_end: get(fullData, 'period_of_performance.end_date'), // Simplified path
     
     // Financial
     base_and_exercised_options_value: fullData.base_and_exercised_options_value || null,
@@ -155,8 +155,8 @@ export function normalizeFullContract(fullData: any): any {
     eight_a_program_participant: businessTypes.toLowerCase().includes('8(a)'),
     historically_black_college: businessTypes.toLowerCase().includes('historically black'),
     
-    // Classification
-    naics_code: get(fullData, 'latest_transaction_contract_data.naics_code'),
+    // Classification (CORRECTED PATHS)
+    naics_code: get(fullData, 'latest_transaction_contract_data.naics'), // Just 'naics', not 'naics_code'
     naics_description: get(fullData, 'latest_transaction_contract_data.naics_description'),
     psc_code: get(fullData, 'latest_transaction_contract_data.product_or_service_code'),
     psc_description: get(fullData, 'latest_transaction_contract_data.product_or_service_code_description'),
@@ -201,10 +201,20 @@ export function normalizeFullContract(fullData: any): any {
     
     // Metadata
     data_source: 'usaspending.gov-full',
-    fiscal_year: fullData.fiscal_year || null,
-    calendar_year: get(fullData, 'period_of_performance.period_of_performance_start_date')
-      ? new Date(get(fullData, 'period_of_performance.period_of_performance_start_date')).getFullYear()
-      : null,
+    // Calculate fiscal_year from date_signed (US fiscal year starts Oct 1)
+    fiscal_year: (() => {
+      const dateSigned = fullData.date_signed || get(fullData, 'period_of_performance.start_date');
+      if (!dateSigned) return null;
+      const date = new Date(dateSigned);
+      const year = date.getFullYear();
+      const month = date.getMonth(); // 0-11
+      // If month >= 10 (Oct, Nov, Dec), fiscal year is next year
+      return month >= 9 ? year + 1 : year;
+    })(),
+    calendar_year: (() => {
+      const startDate = fullData.date_signed || get(fullData, 'period_of_performance.start_date');
+      return startDate ? new Date(startDate).getFullYear() : null;
+    })(),
     last_modified_date: get(fullData, 'period_of_performance.last_modified_date'),
     last_scraped: new Date().toISOString(),
     created_at: new Date().toISOString(),
