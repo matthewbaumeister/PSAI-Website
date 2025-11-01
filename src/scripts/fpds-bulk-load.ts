@@ -66,12 +66,12 @@ async function main() {
         maxPages: 100 // 10,000 contracts per month
       });
 
-      totalInserted += result.totalInserted;
-      totalErrors += result.totalErrors;
+      totalInserted += result.inserted;
+      totalErrors += result.errors;
 
       console.log(`\n✅ Month ${month} complete:`);
-      console.log(`   - Inserted: ${result.totalInserted}`);
-      console.log(`   - Errors: ${result.totalErrors}`);
+      console.log(`   - Inserted: ${result.inserted}`);
+      console.log(`   - Errors: ${result.errors}`);
       console.log(`   - Total so far: ${totalInserted} contracts`);
 
       // Small delay between months
