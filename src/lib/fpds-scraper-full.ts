@@ -74,15 +74,14 @@ async function saveProgress(
       .single();
     
     if (existing) {
-      // Update existing record (preserve started_at)
+      // Update existing record (preserve started_at, updated_at auto-updated by trigger)
       const { error } = await supabase
         .from('fpds_scraper_log')
         .update({
           records_found: totalProcessed,
           records_inserted: totalInserted,
           records_errors: totalErrors,
-          status: 'running',
-          updated_at: new Date().toISOString()
+          status: 'running'
         })
         .eq('id', existing.id);
       
@@ -92,7 +91,7 @@ async function saveProgress(
         console.log(`[FPDS Full] 💾 Progress saved: Page ${currentPage}, ${totalInserted} contracts`);
       }
     } else {
-      // Insert new record
+      // Insert new record (timestamps auto-set by defaults)
       const { error } = await supabase
         .from('fpds_scraper_log')
         .insert({
@@ -101,9 +100,7 @@ async function saveProgress(
           records_found: totalProcessed,
           records_inserted: totalInserted,
           records_errors: totalErrors,
-          status: 'running',
-          started_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
+          status: 'running'
         });
       
       if (error) {
