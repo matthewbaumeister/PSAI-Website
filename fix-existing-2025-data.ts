@@ -25,7 +25,7 @@ async function fixExisting2025Data() {
   console.log(`\n📅 Re-scraping: ${startDate} to ${endDate}`);
   console.log(`📊 Max contracts: ${maxContracts}\n`);
   
-  const result = await scrapeDateRangeWithFullDetails(startDate, endDate, maxContracts);
+  const result = await scrapeDateRangeWithFullDetails(startDate, endDate, { maxContracts });
   
   console.log('\n╔════════════════════════════════════════════╗');
   console.log('║           FIX COMPLETE!                    ║');
