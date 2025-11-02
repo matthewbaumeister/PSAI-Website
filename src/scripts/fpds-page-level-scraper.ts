@@ -141,7 +141,7 @@ async function isDayComplete(date: string): Promise<boolean> {
 async function scrapePage(
   date: string,
   pageNum: number
-): Promise<{ success: boolean; found: number; inserted: number; failed: number }> {
+): Promise<{ success: boolean; found: number; inserted: number; updated: number; failed: number }> {
   
   let attempt = 0;
   const maxAttempts = 20; // Much more persistent!
@@ -175,7 +175,7 @@ async function scrapePage(
       
       if (results.length === 0) {
         console.log(`[${date}:P${pageNum}] ✅ No more contracts (end of day)`);
-        return { success: true, found: 0, inserted: 0, failed: 0 };
+        return { success: true, found: 0, inserted: 0, updated: 0, failed: 0 };
       }
 
       // Extract contract IDs from result objects
@@ -290,13 +290,14 @@ async function scrapePage(
           success: true,
           found: contractIds.length,
           inserted: result.inserted,
+          updated: result.updated,
           failed: fetchErrors
         };
       }
 
       // No contracts to insert
       await markPageComplete(date, pageNum, contractIds.length, 0, fetchErrors);
-      return { success: true, found: contractIds.length, inserted: 0, failed: fetchErrors };
+      return { success: true, found: contractIds.length, inserted: 0, updated: 0, failed: fetchErrors };
 
     } catch (error) {
       console.error(`[${date}:P${pageNum}] ❌ Attempt ${attempt} failed:`, error instanceof Error ? error.message : error);
@@ -304,14 +305,14 @@ async function scrapePage(
       if (attempt >= maxAttempts) {
         // Failed all attempts
         await markPageFailed(date, pageNum, error instanceof Error ? error.message : 'Unknown error');
-        return { success: false, found: 0, inserted: 0, failed: 0 };
+        return { success: false, found: 0, inserted: 0, updated: 0, failed: 0 };
       }
       // Loop will retry
     }
   }
 
   // Should never reach here
-  return { success: false, found: 0, inserted: 0, failed: 0 };
+  return { success: false, found: 0, inserted: 0, updated: 0, failed: 0 };
 }
 
 // ============================================
@@ -412,7 +413,8 @@ Starting in 5 seconds...
 
     // Scrape pages until we find end (page with <100 contracts)
     let currentPage = startPage;
-    let dayContracts = 0;
+    let dayNew = 0;
+    let dayUpdated = 0;
     let dayFailed = 0;
 
     while (true) {
@@ -428,23 +430,27 @@ Starting in 5 seconds...
 
       if (result.found === 0) {
         // No more contracts for this day - natural end!
-        console.log(`[${currentDate}] ✅ Day complete - ${dayContracts} contracts total\n`);
+        const dayTotal = dayNew + dayUpdated;
+        console.log(`[${currentDate}] ✅ Day complete - ${dayTotal} contracts (${dayNew} new, ${dayUpdated} updated)\n`);
         break;
       }
 
       if (result.found < 100) {
         // Found partial page - this is the last page for this day!
         totalPages++;
-        dayContracts += result.inserted;
+        dayNew += result.inserted;
+        dayUpdated += result.updated || 0;
         dayFailed += result.failed;
+        const dayTotal = dayNew + dayUpdated;
         console.log(`[${currentDate}:P${currentPage}] ℹ️  Last page (only ${result.found} contracts)`);
-        console.log(`[${currentDate}] ✅ Day complete - ${dayContracts} contracts total\n`);
+        console.log(`[${currentDate}] ✅ Day complete - ${dayTotal} contracts (${dayNew} new, ${dayUpdated} updated)\n`);
         break;
       }
 
       // Full page (100 contracts) - continue to next page
       totalPages++;
-      dayContracts += result.inserted;
+      dayNew += result.inserted;
+      dayUpdated += result.updated || 0;
       dayFailed += result.failed;
 
       // Brief pause between pages
@@ -453,7 +459,7 @@ Starting in 5 seconds...
       currentPage++;
     }
 
-    totalContracts += dayContracts;
+    totalContracts += dayNew;
     totalFailed += dayFailed;
 
     console.log(`
