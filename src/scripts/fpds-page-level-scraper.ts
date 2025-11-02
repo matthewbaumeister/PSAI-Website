@@ -187,6 +187,7 @@ async function scrapePage(
       const fullContracts: any[] = [];
       const successfulIds: string[] = [];
       let fetchErrors = 0;
+      let consecutiveErrors = 0; // Track consecutive failures
 
       for (let i = 0; i < contractIds.length; i++) {
         try {
@@ -194,9 +195,12 @@ async function scrapePage(
           if (fullData) {
             fullContracts.push(fullData);
             successfulIds.push(contractIds[i]); // Track successful fetches
+            consecutiveErrors = 0; // Reset on success
           } else {
             // Contract fetch returned null (failed)
             fetchErrors++;
+            consecutiveErrors++;
+            
             // Log the failure to database
             await supabase.from('fpds_failed_contracts').insert({
               contract_id: contractIds[i],
@@ -206,10 +210,24 @@ async function scrapePage(
               page_number: pageNum,
               attempt_count: attempt
             });
+
+            // If 3+ consecutive errors, API is having issues - abort page and retry
+            if (consecutiveErrors >= 3) {
+              console.log(`[${date}:P${pageNum}] ⚠️  ${consecutiveErrors} consecutive errors - API issue detected`);
+              throw new Error(`API instability: ${consecutiveErrors} consecutive contract failures`);
+            }
           }
         } catch (err) {
           // Exception was thrown
           fetchErrors++;
+          consecutiveErrors++;
+          
+          // Check if it's our API instability detection
+          if (err instanceof Error && err.message.includes('API instability')) {
+            // Propagate to trigger page retry
+            throw err;
+          }
+          
           // Log individual contract failure
           await supabase.from('fpds_failed_contracts').insert({
             contract_id: contractIds[i],
@@ -219,6 +237,12 @@ async function scrapePage(
             page_number: pageNum,
             attempt_count: attempt
           });
+
+          // If 3+ consecutive errors, API is having issues - abort page and retry
+          if (consecutiveErrors >= 3) {
+            console.log(`[${date}:P${pageNum}] ⚠️  ${consecutiveErrors} consecutive errors - API issue detected`);
+            throw new Error(`API instability: ${consecutiveErrors} consecutive contract failures`);
+          }
         }
 
         // Progress indicator
