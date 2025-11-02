@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import InteractiveLaunchButton from '@/components/InteractiveLaunchButton'
 
 export const metadata: Metadata = {
   title: 'PS.AI Small Business - SBIR/SBA Dedicated Search & Database Platform',
@@ -92,41 +93,12 @@ export default function SmallBusinessPage() {
                   <li>Share searches and opportunities</li>
                 </ul>
                 
-                <a 
-                  href="/small-business/dsip-search" 
-                  className="btn btn-primary btn-lg"
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
-                    border: 'none',
-                    padding: '14px 24px',
-                    fontSize: '16px',
-                    fontWeight: '600',
-                    borderRadius: '8px',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s',
-                    textDecoration: 'none',
-                    color: '#ffffff',
-                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
-                  }}
-                >
+                <InteractiveLaunchButton href="/small-business/dsip-search">
                   <span>Launch DSIP Search</span>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M5 12h14M12 5l7 7-7 7"/>
                   </svg>
-                </a>
+                </InteractiveLaunchButton>
                 
                 <p style={{ 
                   textAlign: 'center', 
@@ -200,8 +172,7 @@ export default function SmallBusinessPage() {
                   <li>SBA program analytics</li>
                 </ul>
                 
-                <button 
-                  disabled
+                <div 
                   style={{
                     width: '100%',
                     display: 'flex',
@@ -219,7 +190,7 @@ export default function SmallBusinessPage() {
                   }}
                 >
                   <span>Coming Q2 2025</span>
-                </button>
+                </div>
                 
                 <p style={{ 
                   textAlign: 'center', 
