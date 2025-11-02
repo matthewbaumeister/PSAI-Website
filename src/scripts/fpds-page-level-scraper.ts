@@ -166,13 +166,16 @@ async function scrapePage(
         limit: 100
       });
 
-      const contractIds = searchResult.results || [];
+      const results = searchResult.results || [];
       
-      if (contractIds.length === 0) {
+      if (results.length === 0) {
         console.log(`[${date}:P${pageNum}] ✅ No more contracts (end of day)`);
         return { success: true, found: 0, inserted: 0, failed: 0 };
       }
 
+      // Extract contract IDs from result objects
+      const contractIds = results.map((r: any) => r.generated_internal_id || r['Award ID']);
+      
       console.log(`[${date}:P${pageNum}] Found ${contractIds.length} contracts`);
 
       // Step 2: Fetch full details for each contract
