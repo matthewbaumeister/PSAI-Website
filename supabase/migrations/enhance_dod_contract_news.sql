@@ -143,11 +143,11 @@ CREATE TABLE IF NOT EXISTS dod_contract_teams (
 );
 
 -- Indexes for teaming table
-CREATE INDEX idx_dod_teams_contract_id ON dod_contract_teams(dod_contract_news_id);
-CREATE INDEX idx_dod_teams_prime_name ON dod_contract_teams(prime_contractor_name);
-CREATE INDEX idx_dod_teams_member_name ON dod_contract_teams(team_member_name);
-CREATE INDEX idx_dod_teams_prime_duns ON dod_contract_teams(prime_contractor_duns) WHERE prime_contractor_duns IS NOT NULL;
-CREATE INDEX idx_dod_teams_member_duns ON dod_contract_teams(team_member_duns) WHERE team_member_duns IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_dod_teams_contract_id ON dod_contract_teams(dod_contract_news_id);
+CREATE INDEX IF NOT EXISTS idx_dod_teams_prime_name ON dod_contract_teams(prime_contractor_name);
+CREATE INDEX IF NOT EXISTS idx_dod_teams_member_name ON dod_contract_teams(team_member_name);
+CREATE INDEX IF NOT EXISTS idx_dod_teams_prime_duns ON dod_contract_teams(prime_contractor_duns) WHERE prime_contractor_duns IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_dod_teams_member_duns ON dod_contract_teams(team_member_duns) WHERE team_member_duns IS NOT NULL;
 
 -- ============================================
 -- 7. CREATE: Contract Modifications Table
@@ -190,8 +190,8 @@ CREATE TABLE IF NOT EXISTS dod_contract_modifications (
   UNIQUE(base_contract_number, modification_number)
 );
 
-CREATE INDEX idx_dod_mods_base_contract ON dod_contract_modifications(base_contract_number);
-CREATE INDEX idx_dod_mods_date ON dod_contract_modifications(modification_date DESC);
+CREATE INDEX IF NOT EXISTS idx_dod_mods_base_contract ON dod_contract_modifications(base_contract_number);
+CREATE INDEX IF NOT EXISTS idx_dod_mods_date ON dod_contract_modifications(modification_date DESC);
 
 -- ============================================
 -- 8. CREATE: Cross-Reference Matching Table
@@ -235,9 +235,9 @@ CREATE TABLE IF NOT EXISTS dod_contract_cross_references (
   UNIQUE(dod_contract_news_id)
 );
 
-CREATE INDEX idx_dod_xref_fpds ON dod_contract_cross_references(fpds_transaction_number) WHERE fpds_transaction_number IS NOT NULL;
-CREATE INDEX idx_dod_xref_sbir ON dod_contract_cross_references(sbir_award_id) WHERE sbir_award_id IS NOT NULL;
-CREATE INDEX idx_dod_xref_sam ON dod_contract_cross_references(sam_uei) WHERE sam_uei IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_dod_xref_fpds ON dod_contract_cross_references(fpds_transaction_number) WHERE fpds_transaction_number IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_dod_xref_sbir ON dod_contract_cross_references(sbir_award_id) WHERE sbir_award_id IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_dod_xref_sam ON dod_contract_cross_references(sam_uei) WHERE sam_uei IS NOT NULL;
 
 -- ============================================
 -- 9. CREATE: Enhanced Views
