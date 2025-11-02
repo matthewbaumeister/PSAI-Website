@@ -315,6 +315,28 @@ async function scrapePage(
 }
 
 // ============================================
+// Find Last Working Date (for auto-resume)
+// ============================================
+
+async function findLastWorkingDate(): Promise<string> {
+  // Find the most recent date that has incomplete pages or is being worked on
+  const { data, error } = await supabase
+    .from('fpds_page_progress')
+    .select('date')
+    .order('date', { ascending: false })
+    .limit(1)
+    .single();
+
+  if (error || !data) {
+    // No progress found, start from today
+    return formatDate(new Date());
+  }
+
+  // Resume from the last date that was being worked on
+  return data.date;
+}
+
+// ============================================
 // Main Function
 // ============================================
 
@@ -323,7 +345,15 @@ async function main() {
   const startArg = args.find(arg => arg.startsWith('--start='))?.split('=')[1];
   const endArg = args.find(arg => arg.startsWith('--end='))?.split('=')[1];
 
-  const startDate = startArg || formatDate(new Date());
+  // Smart resume: Use explicit --start, or find last working date, or default to today
+  let startDate: string;
+  if (startArg) {
+    startDate = startArg;
+  } else {
+    startDate = await findLastWorkingDate();
+    console.log(`🔄 Auto-resuming from last working date: ${startDate}\n`);
+  }
+  
   const endDate = endArg || '2000-01-01';
 
   console.log(`
