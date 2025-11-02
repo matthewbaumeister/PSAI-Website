@@ -472,6 +472,10 @@ export async function scrapeSingleArticle(url: string): Promise<{
       }
     }
     
+    // Run outlier detection and quality scoring
+    console.log('[DoD] 🔍 Running quality checks and outlier detection...');
+    await runQualityChecks();
+    
     return {
       success: true,
       contractsFound: totalContracts,
@@ -481,6 +485,40 @@ export async function scrapeSingleArticle(url: string): Promise<{
   } catch (error) {
     console.error('[DoD] Error scraping article:', error);
     return { success: false, contractsFound: 0, contractsSaved: 0 };
+  }
+}
+
+// ============================================
+// Quality Checks & Outlier Detection
+// ============================================
+
+export async function runQualityChecks(): Promise<void> {
+  try {
+    const { data, error } = await supabase.rpc('detect_dod_outliers');
+    
+    if (error) {
+      console.error('[DoD] Error running quality checks:', error);
+      return;
+    }
+    
+    // Get summary stats
+    const { data: needsReview } = await supabase
+      .from('dod_contract_news')
+      .select('contract_number', { count: 'exact', head: true })
+      .eq('needs_review', true)
+      .is('reviewed_at', null);
+    
+    const { data: outliers } = await supabase
+      .from('dod_contract_news')
+      .select('contract_number', { count: 'exact', head: true })
+      .eq('is_outlier', true);
+    
+    console.log(`[DoD] 📊 Quality Check Complete:`);
+    console.log(`[DoD]   • Contracts needing review: ${needsReview?.count || 0}`);
+    console.log(`[DoD]   • Outliers detected: ${outliers?.count || 0}`);
+    
+  } catch (error) {
+    console.error('[DoD] Exception running quality checks:', error);
   }
 }
 
