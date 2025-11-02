@@ -170,8 +170,8 @@ SELECT
   COUNT(x.id) as existing_matches
 FROM dod_contract_news c
 LEFT JOIN dod_contract_cross_references x 
-  ON c.id = x.dod_contract_id 
-  AND x.reference_type = 'fpds'
+  ON c.id = x.dod_contract_news_id 
+  AND x.fpds_transaction_number IS NOT NULL
 WHERE c.contract_number IS NOT NULL
   AND LENGTH(c.contract_number) >= 10
 GROUP BY c.id, c.contract_number, c.vendor_name, c.award_amount, c.service_branch, c.published_date, c.source_url
