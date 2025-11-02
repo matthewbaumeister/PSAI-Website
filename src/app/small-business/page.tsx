@@ -27,18 +27,19 @@ export default function SmallBusinessPage() {
           
           <div style={{ 
             display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(450px, 100%), 1fr))', 
             gap: '30px', 
             maxWidth: '1200px', 
             margin: '0 auto',
-            width: '100%'
+            width: '100%',
+            padding: '0 20px'
           }}>
             {/* Smart DSIP Search */}
             <div className="tool-card" style={{
               background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1))',
               border: '2px solid rgba(59, 130, 246, 0.3)',
               borderRadius: '16px',
-              padding: '40px',
+              padding: 'clamp(24px, 5vw, 40px)',
               transition: 'all 0.3s ease',
               position: 'relative',
               overflow: 'hidden'
@@ -96,11 +97,13 @@ export default function SmallBusinessPage() {
                   className="btn btn-primary btn-lg"
                   style={{
                     width: '100%',
-                    display: 'block',
-                    textAlign: 'center',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
                     background: 'linear-gradient(135deg, #3b82f6, #6366f1)',
                     border: 'none',
-                    padding: '14px 28px',
+                    padding: '14px 24px',
                     fontSize: '16px',
                     fontWeight: '600',
                     borderRadius: '8px',
@@ -108,12 +111,21 @@ export default function SmallBusinessPage() {
                     transition: 'all 0.2s',
                     textDecoration: 'none',
                     color: '#ffffff',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis'
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
                   }}
                 >
-                  Launch Smart DSIP Search →
+                  <span>Launch DSIP Search</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
                 </a>
                 
                 <p style={{ 
@@ -133,7 +145,7 @@ export default function SmallBusinessPage() {
               background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(168, 85, 247, 0.1))',
               border: '2px solid rgba(139, 92, 246, 0.3)',
               borderRadius: '16px',
-              padding: '40px',
+              padding: 'clamp(24px, 5vw, 40px)',
               transition: 'all 0.3s ease',
               position: 'relative',
               overflow: 'hidden',
@@ -192,22 +204,21 @@ export default function SmallBusinessPage() {
                   disabled
                   style={{
                     width: '100%',
-                    display: 'block',
-                    textAlign: 'center',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
                     background: 'rgba(139, 92, 246, 0.3)',
                     border: 'none',
-                    padding: '14px 28px',
+                    padding: '14px 24px',
                     fontSize: '16px',
                     fontWeight: '600',
                     borderRadius: '8px',
                     cursor: 'not-allowed',
-                    color: '#a78bfa',
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis'
+                    color: '#a78bfa'
                   }}
                 >
-                  Coming Q2 2025
+                  <span>Coming Q2 2025</span>
                 </button>
                 
                 <p style={{ 
