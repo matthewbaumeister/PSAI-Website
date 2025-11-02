@@ -144,16 +144,21 @@ async function scrapePage(
 ): Promise<{ success: boolean; found: number; inserted: number; failed: number }> {
   
   let attempt = 0;
-  const maxAttempts = 3;
+  const maxAttempts = 20; // Much more persistent!
 
   while (attempt < maxAttempts) {
     attempt++;
 
     try {
       if (attempt > 1) {
+        // Exponential backoff: 30s, 60s, 120s, 240s, then cap at 5min
+        const cooldown = Math.min(30000 * Math.pow(2, attempt - 2), 300000);
+        const minutes = Math.floor(cooldown / 60000);
+        const seconds = Math.floor((cooldown % 60000) / 1000);
+        
         console.log(`[${date}:P${pageNum}] 🔄 Retry attempt ${attempt}/${maxAttempts}`);
-        console.log(`[${date}:P${pageNum}] ⏸️  Cooling down API for 30s...`);
-        await new Promise(resolve => setTimeout(resolve, 30000));
+        console.log(`[${date}:P${pageNum}] ⏸️  API cooldown: ${minutes}m ${seconds}s...`);
+        await new Promise(resolve => setTimeout(resolve, cooldown));
       }
 
       // Step 1: Search for contracts on this page
@@ -351,38 +356,42 @@ Starting in 5 seconds...
       console.log(`[${currentDate}] 📍 Resuming from page ${startPage} (last completed: ${lastPage})`);
     }
 
-    // Scrape pages until no more contracts
+    // Scrape pages until we find end (page with <100 contracts)
     let currentPage = startPage;
     let dayContracts = 0;
     let dayFailed = 0;
-    let consecutiveEmptyPages = 0;
 
     while (true) {
       const result = await scrapePage(currentDate, currentPage);
 
       if (!result.success) {
-        console.log(`[${currentDate}:P${currentPage}] ⚠️  Page failed after 3 attempts - moving to next page`);
-        currentPage++;
-        consecutiveEmptyPages++;
-        
-        // Stop if 3 consecutive failures
-        if (consecutiveEmptyPages >= 3) {
-          console.log(`[${currentDate}] ⚠️  3 consecutive failures - moving to previous day`);
-          break;
-        }
-        continue;
+        // Page failed after all retries - this shouldn't happen often with 20 attempts
+        // Log and continue to next day (API might be completely down)
+        console.log(`[${currentDate}:P${currentPage}] ❌ Page failed after 20 retry attempts`);
+        console.log(`[${currentDate}] ⚠️  Moving to previous day - API may be down`);
+        break;
       }
 
       if (result.found === 0) {
-        // No more contracts for this day
+        // No more contracts for this day - natural end!
         console.log(`[${currentDate}] ✅ Day complete - ${dayContracts} contracts total\n`);
         break;
       }
 
+      if (result.found < 100) {
+        // Found partial page - this is the last page for this day!
+        totalPages++;
+        dayContracts += result.inserted;
+        dayFailed += result.failed;
+        console.log(`[${currentDate}:P${currentPage}] ℹ️  Last page (only ${result.found} contracts)`);
+        console.log(`[${currentDate}] ✅ Day complete - ${dayContracts} contracts total\n`);
+        break;
+      }
+
+      // Full page (100 contracts) - continue to next page
       totalPages++;
       dayContracts += result.inserted;
       dayFailed += result.failed;
-      consecutiveEmptyPages = 0;
 
       // Brief pause between pages
       await new Promise(resolve => setTimeout(resolve, 1000));
