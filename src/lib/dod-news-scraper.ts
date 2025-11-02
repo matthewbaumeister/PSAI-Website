@@ -93,7 +93,7 @@ export interface ParsedArticle {
   articleUrl: string;
   articleTitle: string;
   publishedDate: Date;
-  contractParagraphs: string[];
+  contractParagraphs: Array<{ text: string; serviceBranch?: string }>;
   rawHTML: string;
 }
 
@@ -118,7 +118,8 @@ export function parseArticleHTML(html: string, url: string): ParsedArticle | nul
     
     // Extract contract paragraphs
     // DoD contract announcements are in paragraph format
-    const contractParagraphs: string[] = [];
+    const contractParagraphs: Array<{ text: string; serviceBranch?: string }> = [];
+    let currentServiceBranch: string | undefined = undefined;
     
     // Find all paragraphs in the article body
     // Try multiple selectors to find the content div
@@ -127,13 +128,24 @@ export function parseArticleHTML(html: string, url: string): ParsedArticle | nul
     paragraphs.each((i, elem) => {
       const text = $(elem).text().trim();
       
-      // Skip headers and very short paragraphs
-      if (text.length < 100) {
+      // Skip very short paragraphs
+      if (text.length < 10) {
         return;
       }
       
-      // Skip section headers (like "NAVY", "AIR FORCE", etc.)
-      if (text.length < 50 && /^[A-Z\s]+$/.test(text)) {
+      // Check if this is a service branch header (NAVY, AIR FORCE, ARMY, etc.)
+      // Headers are short, all caps, and match known branch names
+      const serviceBranchPattern = /^(NAVY|AIR FORCE|ARMY|MARINE CORPS|SPACE FORCE|DEFENSE LOGISTICS AGENCY|DEFENSE ADVANCED RESEARCH PROJECTS AGENCY)$/i;
+      const branchMatch = text.match(serviceBranchPattern);
+      
+      if (branchMatch) {
+        currentServiceBranch = branchMatch[1];
+        console.log(`[DoD] Found service branch header: ${currentServiceBranch}`);
+        return;
+      }
+      
+      // Skip other headers and short paragraphs
+      if (text.length < 100) {
         return;
       }
       
@@ -152,7 +164,10 @@ export function parseArticleHTML(html: string, url: string): ParsedArticle | nul
       const indicatorCount = indicators.filter(Boolean).length;
       
       if (indicatorCount >= 3) {
-        contractParagraphs.push(text);
+        contractParagraphs.push({
+          text,
+          serviceBranch: currentServiceBranch
+        });
       }
     });
     
@@ -223,18 +238,20 @@ export interface ExtractedContract {
   parsingConfidence: number;
 }
 
-export function extractContractData(paragraph: string): ExtractedContract | null {
+export function extractContractData(paragraph: string, serviceBranchFromHeader?: string): ExtractedContract | null {
   try {
     // Extract vendor name (usually at the start, before a comma or opening paren)
     // Match everything up to first comma, asterisk, or opening paren
     const vendorNameMatch = paragraph.match(/^([^,(*]+)/);
     const vendorName = vendorNameMatch ? vendorNameMatch[1].trim() : 'Unknown Vendor';
     
-    // Extract vendor location (City, ST pattern)
-    const vendorLocationMatch = paragraph.match(/([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s+([A-Z]{2})/);
+    // Extract vendor location (City, State pattern)
+    // Pattern: "City Name, State" or "City Name, ST" after the company name
+    // Look for pattern after company name with possible punctuation
+    const vendorLocationMatch = paragraph.match(/,[\s*]*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s+([A-Z][a-z]+|[A-Z]{2})\b/);
     const vendorCity = vendorLocationMatch ? vendorLocationMatch[1] : undefined;
     const vendorState = vendorLocationMatch ? vendorLocationMatch[2] : undefined;
-    const vendorLocation = vendorLocationMatch ? vendorLocationMatch[0] : undefined;
+    const vendorLocation = vendorLocationMatch ? `${vendorCity}, ${vendorState}` : undefined;
     
     // Extract award amount
     let awardAmount: number | undefined;
@@ -283,13 +300,15 @@ export function extractContractData(paragraph: string): ExtractedContract | null
     const contractingActivityMatch = paragraph.match(/(?:contracting activity is|awarded by)\s+([^.]+)/i);
     const contractingActivity = contractingActivityMatch ? contractingActivityMatch[1].trim() : undefined;
     
-    // Extract service branch
-    let serviceBranch: string | undefined;
-    if (paragraph.includes('Army')) serviceBranch = 'Army';
-    else if (paragraph.includes('Navy')) serviceBranch = 'Navy';
-    else if (paragraph.includes('Air Force')) serviceBranch = 'Air Force';
-    else if (paragraph.includes('Marine Corps')) serviceBranch = 'Marine Corps';
-    else if (paragraph.includes('Space Force')) serviceBranch = 'Space Force';
+    // Extract service branch - prefer header value, then extract from paragraph
+    let serviceBranch: string | undefined = serviceBranchFromHeader;
+    if (!serviceBranch) {
+      if (paragraph.includes('Army')) serviceBranch = 'Army';
+      else if (paragraph.includes('Navy')) serviceBranch = 'Navy';
+      else if (paragraph.includes('Air Force')) serviceBranch = 'Air Force';
+      else if (paragraph.includes('Marine Corps')) serviceBranch = 'Marine Corps';
+      else if (paragraph.includes('Space Force')) serviceBranch = 'Space Force';
+    }
     
     // Extract completion date
     let completionDate: Date | undefined;
@@ -423,13 +442,13 @@ export async function scrapeSingleArticle(url: string): Promise<{
     let sequenceNum = 1; // For fallback contract numbering
     
     // Extract and save each contract
-    for (const paragraph of parsed.contractParagraphs) {
+    for (const paragraphData of parsed.contractParagraphs) {
       // Check if this is a multiple award contract and split if needed
-      const individualParagraphs = splitMultipleAwardContract(paragraph);
+      const individualParagraphs = splitMultipleAwardContract(paragraphData.text);
       totalContracts += individualParagraphs.length;
       
       for (const individualParagraph of individualParagraphs) {
-        const contract = extractContractData(individualParagraph);
+        const contract = extractContractData(individualParagraph, paragraphData.serviceBranch);
         if (contract) {
           // If no contract number found, use fallback: ARTICLE_ID-SEQ-###
           if (!contract.contractNumber || contract.contractNumber.length < 10) {
