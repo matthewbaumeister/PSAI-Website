@@ -89,12 +89,12 @@ SELECT
       jsonb_build_object(
         'modification_number', m.modification_number,
         'modification_date', m.modification_date,
-        'value_change', m.value_change,
+        'modification_value', m.modification_value,
         'new_total_value', m.new_total_value
       )
     )
     FROM dod_contract_modifications m
-    WHERE m.dod_contract_news_id = c.id
+    WHERE m.base_dod_contract_id = c.id
     ), '[]'::jsonb
   ) as modifications
 FROM dod_contract_news c;
