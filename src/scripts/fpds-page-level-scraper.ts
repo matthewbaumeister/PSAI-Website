@@ -180,6 +180,7 @@ async function scrapePage(
 
       // Step 2: Fetch full details for each contract
       const fullContracts: any[] = [];
+      const successfulIds: string[] = [];
       let fetchErrors = 0;
 
       for (let i = 0; i < contractIds.length; i++) {
@@ -187,6 +188,7 @@ async function scrapePage(
           const fullData = await getContractFullDetails(contractIds[i]);
           if (fullData) {
             fullContracts.push(fullData);
+            successfulIds.push(contractIds[i]); // Track successful fetches
           } else {
             // Contract fetch returned null (failed)
             fetchErrors++;
@@ -197,7 +199,7 @@ async function scrapePage(
               error_type: 'details_fetch_failed',
               date_range: date,
               page_number: pageNum,
-              attempt_count: 1
+              attempt_count: attempt
             });
           }
         } catch (err) {
@@ -210,7 +212,7 @@ async function scrapePage(
             error_type: 'details_fetch_failed',
             date_range: date,
             page_number: pageNum,
-            attempt_count: 1
+            attempt_count: attempt
           });
         }
 
@@ -224,6 +226,21 @@ async function scrapePage(
       
       if (fetchErrors > 0) {
         console.log(`[${date}:P${pageNum}] ⚠️  Failed to fetch: ${fetchErrors} contracts (saved to retry log)`);
+      }
+
+      // Clean up failed_contracts table for successful fetches
+      // This handles both retries within this run AND previous failed attempts from crashed runs
+      if (successfulIds.length > 0) {
+        const { error: deleteError, count: deletedCount } = await supabase
+          .from('fpds_failed_contracts')
+          .delete({ count: 'exact' })
+          .in('contract_id', successfulIds)
+          .eq('date_range', date)
+          .eq('page_number', pageNum);
+        
+        if (!deleteError && deletedCount && deletedCount > 0) {
+          console.log(`[${date}:P${pageNum}] 🧹 Cleaned ${deletedCount} resolved failures from retry log`);
+        }
       }
 
       // Step 3: Normalize, validate, and insert
