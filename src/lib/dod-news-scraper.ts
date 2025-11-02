@@ -128,12 +128,7 @@ export function parseArticleHTML(html: string, url: string): ParsedArticle | nul
     paragraphs.each((i, elem) => {
       const text = $(elem).text().trim();
       
-      // Skip very short paragraphs
-      if (text.length < 10) {
-        return;
-      }
-      
-      // Check if this is a service branch header (NAVY, AIR FORCE, ARMY, etc.)
+      // Check for service branch headers FIRST (before skipping short paragraphs)
       // Headers are short, all caps, and match known branch names
       const serviceBranchPattern = /^(NAVY|AIR FORCE|ARMY|MARINE CORPS|SPACE FORCE|DEFENSE LOGISTICS AGENCY|DEFENSE ADVANCED RESEARCH PROJECTS AGENCY)$/i;
       const branchMatch = text.match(serviceBranchPattern);
@@ -144,7 +139,7 @@ export function parseArticleHTML(html: string, url: string): ParsedArticle | nul
         return;
       }
       
-      // Skip other headers and short paragraphs
+      // Skip very short paragraphs (after checking for service branch)
       if (text.length < 100) {
         return;
       }
