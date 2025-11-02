@@ -393,12 +393,13 @@ function extractFMSInfo(text: string): {
       const countryList = countryMatch[1]
         .split(/,\s*(?:and\s+)?|and\s+/)
         .map(c => c.trim())
+        .map(c => c.replace(/^the\s+/i, '')) // Remove "the" prefix
         .filter(c => {
           // Filter out invalid entries
           if (c.length < 3) return false;  // Too short
-          if (c.match(/will be|completed?|expect|Dec|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|fund/i)) return false;  // Sentence fragments
+          if (c.match(/will be|completed?|expect|Dec|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|fund|Navy|Army|Air Force|Marine/i)) return false;  // Sentence fragments
           if (/\d/.test(c)) return false;  // Contains numbers
-          if (c.match(/^(the|and|or|be|by|in|at|on|for|with|to)$/i)) return false;  // Common words
+          if (c.match(/^(the|and|or|be|by|in|at|on|for|with|to|is|are|was|were|this|that)$/i)) return false;  // Common words
           return true;
         });
       
@@ -410,8 +411,9 @@ function extractFMSInfo(text: string): {
       const forCountryPattern = /\bfor\s+(the\s+)?([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s+(?:Foreign Military Sales|FMS)/i;
       countryMatch = text.match(forCountryPattern);
       if (countryMatch && countryMatch[2]) {
-        const country = countryMatch[2].trim();
-        if (country.length > 2 && !/\d/.test(country)) {
+        let country = countryMatch[2].trim();
+        country = country.replace(/^the\s+/i, ''); // Remove "the" prefix
+        if (country.length > 2 && !/\d/.test(country) && !country.match(/Navy|Army|Air Force|Marine/i)) {
           countries.push(country);
         }
       }
