@@ -242,11 +242,12 @@ export function extractContractData(paragraph: string, serviceBranchFromHeader?:
     
     // Extract vendor location (City, State pattern)
     // Pattern: "City Name, State" or "City Name, ST" after the company name
-    // Look for pattern after company name with possible punctuation
-    const vendorLocationMatch = paragraph.match(/,[\s*]*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s+([A-Z][a-z]+|[A-Z]{2})\b/);
-    const vendorCity = vendorLocationMatch ? vendorLocationMatch[1] : undefined;
-    const vendorState = vendorLocationMatch ? vendorLocationMatch[2] : undefined;
-    const vendorLocation = vendorLocationMatch ? `${vendorCity}, ${vendorState}` : undefined;
+    // Handles: "Company,* City, State" or "Company, City, State"
+    // Match city-state pattern, allowing for multi-word cities and full/abbreviated states
+    const vendorLocationMatch = paragraph.match(/,[\s*,]+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+[A-Z][a-z]+)*),\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*|[A-Z]{2})(?:\s+\(|,|\s|$)/);
+    const vendorCity = vendorLocationMatch ? vendorLocationMatch[1].trim() : undefined;
+    const vendorState = vendorLocationMatch ? vendorLocationMatch[2].trim() : undefined;
+    const vendorLocation = (vendorCity && vendorState) ? `${vendorCity}, ${vendorState}` : undefined;
     
     // Extract award amount
     let awardAmount: number | undefined;
