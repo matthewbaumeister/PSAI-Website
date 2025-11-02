@@ -7,6 +7,10 @@
  * ============================================
  */
 
+// Load environment variables first (for standalone scripts)
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import puppeteer, { Browser, Page } from 'puppeteer';
 import * as cheerio from 'cheerio';
 import { createClient } from '@supabase/supabase-js';
