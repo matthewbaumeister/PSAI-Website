@@ -241,10 +241,9 @@ export function extractContractData(paragraph: string, serviceBranchFromHeader?:
     const vendorName = vendorNameMatch ? vendorNameMatch[1].trim() : 'Unknown Vendor';
     
     // Extract vendor location (City, State pattern)
-    // Pattern: "City Name, State" or "City Name, ST" after the company name
-    // Handles: "Company,* City, State" or "Company, City, State"
-    // Match city-state pattern, allowing for multi-word cities and full/abbreviated states
-    const vendorLocationMatch = paragraph.match(/,[\s*,]+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+[A-Z][a-z]+)*),\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*|[A-Z]{2})(?:\s+\(|,|\s|$)/);
+    // Pattern: "Company,* City, State (Contract)" or "Company, City, State"
+    // The asterisk denotes small business
+    const vendorLocationMatch = paragraph.match(/,\s*\*?\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*|[A-Z]{2})[\s(,]/);
     const vendorCity = vendorLocationMatch ? vendorLocationMatch[1].trim() : undefined;
     const vendorState = vendorLocationMatch ? vendorLocationMatch[2].trim() : undefined;
     const vendorLocation = (vendorCity && vendorState) ? `${vendorCity}, ${vendorState}` : undefined;
