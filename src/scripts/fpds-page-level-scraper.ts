@@ -221,6 +221,10 @@ async function scrapePage(
       }
 
       console.log(`[${date}:P${pageNum}] ✅ Fetched ${fullContracts.length}/${contractIds.length} details`);
+      
+      if (fetchErrors > 0) {
+        console.log(`[${date}:P${pageNum}] ⚠️  Failed to fetch: ${fetchErrors} contracts (saved to retry log)`);
+      }
 
       // Step 3: Normalize, validate, and insert
       if (fullContracts.length > 0) {
@@ -231,7 +235,7 @@ async function scrapePage(
         
         const result = await batchInsertFullContracts(validated.cleaned);
         
-        console.log(`[${date}:P${pageNum}] 💾 New: ${result.inserted} | Updated: ${result.updated} | Errors: ${result.errors}`);
+        console.log(`[${date}:P${pageNum}] 💾 New: ${result.inserted} | Updated: ${result.updated} | DB Errors: ${result.errors}`);
 
         // Mark page as complete
         await markPageComplete(date, pageNum, contractIds.length, result.inserted, fetchErrors);
