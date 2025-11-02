@@ -395,6 +395,11 @@ export async function saveContractToDatabase(
         parsing_confidence: contract.parsingConfidence,
         data_quality_score: Math.round(contract.parsingConfidence * 100),
         
+        // Source tracking
+        source_url: articleUrl,
+        source_type: 'dod_news',
+        scraped_from_url: articleUrl,
+        
         scraped_at: new Date().toISOString()
       });
     
