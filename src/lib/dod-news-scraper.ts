@@ -225,8 +225,9 @@ export interface ExtractedContract {
 
 export function extractContractData(paragraph: string): ExtractedContract | null {
   try {
-    // Extract vendor name (usually at the start, before a comma)
-    const vendorNameMatch = paragraph.match(/^([^,]+?(?:Inc\.|LLC|Corp\.|Corporation|Co\.|Company)?)/);
+    // Extract vendor name (usually at the start, before a comma or opening paren)
+    // Match everything up to first comma, asterisk, or opening paren
+    const vendorNameMatch = paragraph.match(/^([^,(*]+)/);
     const vendorName = vendorNameMatch ? vendorNameMatch[1].trim() : 'Unknown Vendor';
     
     // Extract vendor location (City, ST pattern)
