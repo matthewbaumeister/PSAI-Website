@@ -20,6 +20,7 @@ SELECT
 FROM fpds_contracts
 WHERE data_source = 'usaspending.gov-full'
   AND date_signed >= '2025-08-01'
+GROUP BY DATE(date_signed)
 ORDER BY day DESC;
 
 -- 3. CONTRACTS PER MONTH
