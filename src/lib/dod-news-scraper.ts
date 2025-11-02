@@ -407,21 +407,31 @@ export async function findContractNewsArticles(startDate: Date, endDate: Date): 
     await page.setViewport({ width: 1920, height: 1080 });
     await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
     
-    // Navigate to releases page
-    const indexUrl = 'https://www.defense.gov/News/Releases/';
+    // Navigate to contracts index page
+    const indexUrl = 'https://www.defense.gov/News/Contracts/';
+    console.log(`[DoD] Loading contracts index: ${indexUrl}`);
     await page.goto(indexUrl, { waitUntil: 'networkidle2', timeout: 30000 });
     
     const html = await page.content();
     const $ = cheerio.load(html);
     
-    // Find all article links with "Contracts For" in title
+    // Find all article links with "Contracts" in title
+    // These are typically in <a> tags with href and contain date patterns
     $('a').each((i, elem) => {
       const href = $(elem).attr('href');
-      const text = $(elem).text();
+      const text = $(elem).text().trim();
       
-      if (text.includes('Contracts For') && href) {
-        const fullUrl = href.startsWith('http') ? href : `https://www.defense.gov${href}`;
-        if (!articles.includes(fullUrl)) {
+      // Look for "Contracts" or "Contract" in the link text
+      if ((text.includes('Contract') || href?.includes('contract')) && href) {
+        let fullUrl = href;
+        
+        // Make absolute URL
+        if (!href.startsWith('http')) {
+          fullUrl = `https://www.defense.gov${href}`;
+        }
+        
+        // Avoid duplicates and non-article links
+        if (!articles.includes(fullUrl) && fullUrl.includes('/Article/')) {
           articles.push(fullUrl);
         }
       }
