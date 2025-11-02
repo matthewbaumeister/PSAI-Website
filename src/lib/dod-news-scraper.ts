@@ -261,8 +261,22 @@ export function extractContractData(paragraph: string): ExtractedContract | null
     }
     
     // Extract contract number (various formats)
-    const contractNumberMatch = paragraph.match(/(?:contract|modification)\s+(?:number\s+)?([A-Z0-9-]+)/i);
-    const contractNumber = contractNumberMatch ? contractNumberMatch[1] : undefined;
+    // DoD contract numbers typically: N00024-25-D-0150, W912PL-24-C-0001, etc.
+    // Format: Letters + Numbers + Dashes (minimum 10 characters)
+    const contractNumberPatterns = [
+      /\(([A-Z]\d{5}[A-Z0-9-]{4,})\)/,  // In parentheses: (N00024-25-D-0150)
+      /contract\s+(?:number\s+)?([A-Z]\d{5}[A-Z0-9-]{4,})\b/i,  // After "contract"
+      /\b([A-Z]\d{5}[A-Z0-9-]{4,})\b/  // Standalone pattern
+    ];
+    
+    let contractNumber: string | undefined;
+    for (const pattern of contractNumberPatterns) {
+      const match = paragraph.match(pattern);
+      if (match && match[1].length >= 10) {
+        contractNumber = match[1];
+        break;
+      }
+    }
     
     // Extract contracting activity
     const contractingActivityMatch = paragraph.match(/(?:contracting activity is|awarded by)\s+([^.]+)/i);
@@ -405,6 +419,7 @@ export async function scrapeSingleArticle(url: string): Promise<{
     
     let saved = 0;
     let totalContracts = 0;
+    let sequenceNum = 1; // For fallback contract numbering
     
     // Extract and save each contract
     for (const paragraph of parsed.contractParagraphs) {
@@ -415,6 +430,12 @@ export async function scrapeSingleArticle(url: string): Promise<{
       for (const individualParagraph of individualParagraphs) {
         const contract = extractContractData(individualParagraph);
         if (contract) {
+          // If no contract number found, use fallback: ARTICLE_ID-SEQ-###
+          if (!contract.contractNumber || contract.contractNumber.length < 10) {
+            contract.contractNumber = `${parsed.articleId}-SEQ-${String(sequenceNum).padStart(3, '0')}`;
+          }
+          sequenceNum++;
+          
           const success = await saveContractToDatabase(
             contract,
             parsed.articleId,
