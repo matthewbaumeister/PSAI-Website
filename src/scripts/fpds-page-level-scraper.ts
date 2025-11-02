@@ -188,9 +188,20 @@ async function scrapePage(
           if (fullData) {
             fullContracts.push(fullData);
           } else {
+            // Contract fetch returned null (failed)
             fetchErrors++;
+            // Log the failure to database
+            await supabase.from('fpds_failed_contracts').insert({
+              contract_id: contractIds[i],
+              error_message: 'Contract details fetch returned null',
+              error_type: 'details_fetch_failed',
+              date_range: date,
+              page_number: pageNum,
+              attempt_count: 1
+            });
           }
         } catch (err) {
+          // Exception was thrown
           fetchErrors++;
           // Log individual contract failure
           await supabase.from('fpds_failed_contracts').insert({
