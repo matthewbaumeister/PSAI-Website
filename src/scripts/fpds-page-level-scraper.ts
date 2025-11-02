@@ -211,8 +211,8 @@ async function scrapePage(
               attempt_count: attempt
             });
 
-            // If 3+ consecutive errors, API is having issues - abort page and retry
-            if (consecutiveErrors >= 3) {
+            // If 10+ consecutive errors, API is having issues - abort page and retry
+            if (consecutiveErrors >= 10) {
               console.log(`[${date}:P${pageNum}] ⚠️  ${consecutiveErrors} consecutive errors - API issue detected`);
               throw new Error(`API instability: ${consecutiveErrors} consecutive contract failures`);
             }
@@ -238,8 +238,8 @@ async function scrapePage(
             attempt_count: attempt
           });
 
-          // If 3+ consecutive errors, API is having issues - abort page and retry
-          if (consecutiveErrors >= 3) {
+          // If 10+ consecutive errors, API is having issues - abort page and retry
+          if (consecutiveErrors >= 10) {
             console.log(`[${date}:P${pageNum}] ⚠️  ${consecutiveErrors} consecutive errors - API issue detected`);
             throw new Error(`API instability: ${consecutiveErrors} consecutive contract failures`);
           }

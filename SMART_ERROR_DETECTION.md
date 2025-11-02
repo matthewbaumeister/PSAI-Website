@@ -3,8 +3,8 @@
 ## 🎯 **The Optimization:**
 
 **Distinguish between bad contracts vs bad API:**
-- **1-2 errors in a row** = Bad contract data → Just log it, keep going
-- **3+ errors in a row** = API issue → Stop, cool down, retry page
+- **1-9 errors in a row** = Bad contract data / cluster of bad data → Just log it, keep going
+- **10+ errors in a row** = API issue → Stop, cool down, retry page
 
 ---
 
@@ -42,7 +42,14 @@ Fetching 100 contracts:
   Contract 2: ✅ Success
   Contract 3: ❌ Error
   Contract 4: ❌ Error
-  Contract 5: ❌ Error  ← 3rd consecutive!
+  Contract 5: ❌ Error
+  Contract 6: ❌ Error
+  Contract 7: ❌ Error
+  Contract 8: ❌ Error
+  Contract 9: ❌ Error
+  Contract 10: ❌ Error
+  Contract 11: ❌ Error
+  Contract 12: ❌ Error  ← 10th consecutive!
 
 ⚠️  API instability detected!
 → Abort page processing
@@ -50,7 +57,7 @@ Fetching 100 contracts:
 → Retry entire page
 ```
 
-**Consecutive errors: 3**  
+**Consecutive errors: 10**  
 **Action:** Retry entire page with cooldown
 
 ---
@@ -67,11 +74,11 @@ for each contract:
       consecutiveErrors = 0  // Reset counter
     else:
       consecutiveErrors++
-      if consecutiveErrors >= 3:
+      if consecutiveErrors >= 10:
         throw "API instability!"
   catch:
     consecutiveErrors++
-    if consecutiveErrors >= 3:
+    if consecutiveErrors >= 10:
       throw "API instability!"
 ```
 
@@ -128,7 +135,7 @@ Page has 2 random errors
 [2025-10-29:P8] Found 100 contracts
 [2025-10-29:P8]   Fetched 10/100...
 [2025-10-29:P8]   Fetched 20/100...
-[2025-10-29:P8] ⚠️  3 consecutive errors - API issue detected
+[2025-10-29:P8] ⚠️  10 consecutive errors - API issue detected
 [2025-10-29:P8] 🔄 Retry attempt 2/20
 [2025-10-29:P8] ⏸️  API cooldown: 0m 30s...
 → Retry page with cooldown
@@ -153,17 +160,19 @@ Page has 2 random errors
 ## 🔧 **Configuration:**
 
 ```typescript
-const CONSECUTIVE_ERROR_THRESHOLD = 3;
+const CONSECUTIVE_ERROR_THRESHOLD = 10;
 
-// Why 3?
-// - 1-2 errors = Could be random bad data
-// - 3+ errors = Pattern indicates API issue
+// Why 10?
+// - 1-9 errors = Could be random bad data or cluster of bad contracts
+// - 10+ errors = Clear pattern indicates API issue
 // - Balance between efficiency and reliability
+// - Avoids false positives from data quality clusters
 ```
 
-**Can be tuned if needed:**
-- Lower (2) = More sensitive, catches issues faster but may false-positive
-- Higher (4-5) = Less sensitive, more efficient but might miss API issues
+**Tuning rationale:**
+- Lower (3-5) = More sensitive but triggers on bad data clusters
+- **Current (10)** = Balanced - catches real API issues, tolerates bad data
+- Higher (15+) = Less sensitive, might miss intermittent API issues
 
 ---
 
@@ -179,11 +188,12 @@ This makes the scraper **smarter and faster** while still being **resilient to A
 
 ## 📋 **Summary:**
 
-✅ **Detects API instability** (3+ consecutive errors)  
-✅ **Avoids unnecessary retries** (scattered errors)  
+✅ **Detects API instability** (10+ consecutive errors)  
+✅ **Avoids unnecessary retries** (scattered errors & bad data clusters)  
 ✅ **Saves time** (~30-40% fewer page retries)  
 ✅ **Maintains resilience** (still catches real API issues)  
 ✅ **Logs all failures** (for later retry if needed)  
+✅ **Tolerates bad data** (doesn't confuse data quality issues with API problems)  
 
 **Result:** Faster, smarter scraping with same data capture rate! 🚀
 
