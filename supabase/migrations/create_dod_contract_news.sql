@@ -204,9 +204,20 @@ ORDER BY published_date DESC;
 
 -- Extract state from location string
 CREATE OR REPLACE FUNCTION extract_state(location TEXT) 
-RETURNS VARCHAR(2) AS $$
+RETURNS VARCHAR(50) AS $$
+DECLARE
+  state_abbrev TEXT;
+  full_state TEXT;
 BEGIN
-  RETURN SUBSTRING(location FROM ', ([A-Z]{2})$');
+  -- First try to extract 2-letter state abbreviation
+  state_abbrev := SUBSTRING(location FROM ', ([A-Z]{2})$');
+  IF state_abbrev IS NOT NULL THEN
+    RETURN state_abbrev;
+  END IF;
+  
+  -- Fallback: extract full state name (after last comma)
+  full_state := TRIM(SUBSTRING(location FROM ',\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)$'));
+  RETURN full_state;
 END;
 $$ LANGUAGE plpgsql IMMUTABLE;
 
@@ -266,14 +277,24 @@ CREATE TRIGGER update_dod_news_updated_at
 CREATE OR REPLACE FUNCTION auto_extract_location_fields()
 RETURNS TRIGGER AS $$
 BEGIN
+  -- Only extract vendor city/state if they're NOT already set by the scraper
   IF NEW.vendor_location IS NOT NULL THEN
-    NEW.vendor_city := extract_city(NEW.vendor_location);
-    NEW.vendor_state := extract_state(NEW.vendor_location);
+    IF NEW.vendor_city IS NULL THEN
+      NEW.vendor_city := extract_city(NEW.vendor_location);
+    END IF;
+    IF NEW.vendor_state IS NULL THEN
+      NEW.vendor_state := extract_state(NEW.vendor_location);
+    END IF;
   END IF;
   
+  -- Only extract contracting office location if not already set
   IF NEW.contracting_office_location IS NOT NULL THEN
-    NEW.contracting_office_city := extract_city(NEW.contracting_office_location);
-    NEW.contracting_office_state := extract_state(NEW.contracting_office_location);
+    IF NEW.contracting_office_city IS NULL THEN
+      NEW.contracting_office_city := extract_city(NEW.contracting_office_location);
+    END IF;
+    IF NEW.contracting_office_state IS NULL THEN
+      NEW.contracting_office_state := extract_state(NEW.contracting_office_location);
+    END IF;
   END IF;
   
   RETURN NEW;
