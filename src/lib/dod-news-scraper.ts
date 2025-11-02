@@ -1271,7 +1271,7 @@ export async function saveContractToDatabase(
         
         // Performance Locations (Enhanced)
         performance_locations: contract.performanceLocations,
-        performance_location_breakdown: contract.performanceLocationBreakdown,
+        performance_location_breakdown: contract.performanceLocationBreakdown ? JSON.stringify(contract.performanceLocationBreakdown) : null,
         
         // Funding
         funding_sources: contract.fundingSources,
@@ -1379,9 +1379,9 @@ export async function saveContractToDatabase(
     }
     
     // Insert performance locations
-    if (insertedContract && insertedContract[0] && contract.performanceLocations && contract.performanceLocations.length > 0) {
+    if (insertedContract && insertedContract[0] && contract.performanceLocationBreakdown && contract.performanceLocationBreakdown.length > 0) {
       const contractId = insertedContract[0].id;
-      const locationRows = contract.performanceLocations.map((loc: any) => ({
+      const locationRows = contract.performanceLocationBreakdown.map((loc: any) => ({
         contract_id: contractId,
         contract_number: contract.contractNumber,
         location_city: loc.city,
