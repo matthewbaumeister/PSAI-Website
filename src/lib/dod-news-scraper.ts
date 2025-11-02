@@ -1202,7 +1202,7 @@ export async function saveContractToDatabase(
     
     const { data: insertedContract, error } = await supabase
       .from('dod_contract_news')
-      .insert({
+      .upsert({
         // Basic Info
         article_id: articleId,
         article_url: articleUrl,
@@ -1304,6 +1304,9 @@ export async function saveContractToDatabase(
         scraped_from_url: articleUrl,
         
         scraped_at: new Date().toISOString()
+      }, {
+        onConflict: 'article_id,contract_number',
+        ignoreDuplicates: false // Update existing records with new data
       })
       .select();
     
@@ -1496,6 +1499,91 @@ export async function scrapeSingleArticle(url: string): Promise<{
   } catch (error) {
     console.error('[DoD] Error scraping article:', error);
     return { success: false, contractsFound: 0, contractsSaved: 0 };
+  }
+}
+
+// ============================================
+// Parse Article from HTML (for production scraper)
+// ============================================
+
+export async function parseArticleAndSave(
+  html: string,
+  articleId: number,
+  articleUrl: string,
+  articleTitle: string,
+  publishedDate: Date
+): Promise<number> {
+  try {
+    // Parse HTML using Cheerio
+    const $ = cheerio.load(html);
+    
+    // Get article metadata
+    const mainContent = $('.article-body, .body-copy, .article-content, main').text();
+    
+    // Extract contract paragraphs
+    const contractParagraphs: Array<{ text: string; serviceBranch: string }> = [];
+    const branchHeaders = ['Army Contracting Command', 'Air Force District of Washington', 'Naval Sea Systems Command', 
+      'Defense Logistics Agency', 'Navy', 'Air Force', 'Army', 'Defense', 'Marine Corps', 'Space Force'];
+    
+    let currentBranch = 'UNKNOWN';
+    
+    $('p, .paragraph').each((_, el) => {
+      const text = $(el).text().trim();
+      
+      // Check if this is a branch header
+      for (const branch of branchHeaders) {
+        if (text.includes(branch)) {
+          currentBranch = branch.toUpperCase().replace(' CONTRACTING COMMAND', '').replace(' DISTRICT OF WASHINGTON', '');
+          break;
+        }
+      }
+      
+      // Check if this paragraph contains a contract (has $ and company name pattern)
+      if (text.includes('$') && text.length > 100 && /[A-Z][a-z]+/.test(text)) {
+        contractParagraphs.push({
+          text,
+          serviceBranch: currentBranch
+        });
+      }
+    });
+    
+    console.log(`[DoD] Found ${contractParagraphs.length} contract paragraphs`);
+    
+    let saved = 0;
+    let totalContracts = 0;
+    let sequenceNum = 1;
+    
+    // Extract and save each contract
+    for (const paragraphData of contractParagraphs) {
+      const individualParagraphs = splitMultipleAwardContract(paragraphData.text);
+      totalContracts += individualParagraphs.length;
+      
+      for (const individualParagraph of individualParagraphs) {
+        const contract = extractContractData(individualParagraph, paragraphData.serviceBranch);
+        if (contract) {
+          if (!contract.contractNumber || contract.contractNumber.length < 10) {
+            contract.contractNumber = `${articleId}-SEQ-${String(sequenceNum).padStart(3, '0')}`;
+          }
+          sequenceNum++;
+          
+          const success = await saveContractToDatabase(
+            contract,
+            articleId,
+            articleUrl,
+            articleTitle,
+            publishedDate
+          );
+          
+          if (success) saved++;
+        }
+      }
+    }
+    
+    return totalContracts;
+    
+  } catch (error) {
+    console.error('[DoD] Error parsing article:', error);
+    return 0;
   }
 }
 
