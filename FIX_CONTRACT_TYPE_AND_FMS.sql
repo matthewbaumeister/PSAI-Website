@@ -42,10 +42,9 @@ SELECT '========' as section, '========' as check_name, '========' as result, '=
 UNION ALL
 SELECT 
   'TOP CONTRACTS' as section,
-  vendor_name,
-  '$' || ROUND(award_amount/1000000, 1) || 'M',
-  types_list,
-  NULL,
-  NULL
+  vendor_name as check_name,
+  '$' || ROUND(award_amount/1000000, 1) || 'M' as result,
+  types_list as status,
+  NULL as sample
 FROM contract_types_detail;
 
