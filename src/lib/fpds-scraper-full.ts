@@ -330,6 +330,18 @@ export async function batchInsertFullContracts(contracts: any[], batchSize: numb
     const batch = contracts.slice(i, i + batchSize);
     
     try {
+      // Check which contracts already exist
+      const transactionNumbers = batch.map((c: any) => c.transaction_number);
+      const { data: existing, error: checkError } = await supabase
+        .from('fpds_contracts')
+        .select('transaction_number')
+        .in('transaction_number', transactionNumbers);
+      
+      const existingIds = new Set(existing?.map((e: any) => e.transaction_number) || []);
+      const newCount = batch.filter((c: any) => !existingIds.has(c.transaction_number)).length;
+      const updateCount = batch.length - newCount;
+
+      // Now do the upsert
       const { data, error } = await supabase
         .from('fpds_contracts')
         .upsert(batch, {
@@ -342,7 +354,8 @@ export async function batchInsertFullContracts(contracts: any[], batchSize: numb
         console.error(`[FPDS Full] Batch error:`, error.message);
         errors += batch.length;
       } else {
-        inserted += data?.length || 0;
+        inserted += newCount;
+        updated += updateCount;
       }
     } catch (error) {
       console.error(`[FPDS Full] Batch exception:`, error);
