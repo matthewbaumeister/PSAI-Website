@@ -220,7 +220,7 @@ async function scrapePage(
         
         const result = await batchInsertFullContracts(validated.cleaned);
         
-        console.log(`[${date}:P${pageNum}] 💾 Inserted ${result.inserted} contracts`);
+        console.log(`[${date}:P${pageNum}] 💾 New: ${result.inserted} | Updated: ${result.updated} | Errors: ${result.errors}`);
 
         // Mark page as complete
         await markPageComplete(date, pageNum, contractIds.length, result.inserted, fetchErrors);
