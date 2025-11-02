@@ -1,0 +1,440 @@
+/**
+ * ============================================
+ * DoD Contract News Scraper
+ * ============================================
+ * Scrapes daily DoD contract award announcements from defense.gov
+ * Uses Puppeteer to bypass 403 blocks + Cheerio for HTML parsing
+ * ============================================
+ */
+
+import puppeteer, { Browser, Page } from 'puppeteer';
+import * as cheerio from 'cheerio';
+import { createClient } from '@supabase/supabase-js';
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// ============================================
+// Browser Management
+// ============================================
+
+let browserInstance: Browser | null = null;
+
+export async function getBrowser(): Promise<Browser> {
+  if (!browserInstance) {
+    browserInstance = await puppeteer.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--disable-gpu'
+      ]
+    });
+  }
+  return browserInstance;
+}
+
+export async function closeBrowser(): Promise<void> {
+  if (browserInstance) {
+    await browserInstance.close();
+    browserInstance = null;
+  }
+}
+
+// ============================================
+// Fetch Article HTML with Puppeteer
+// ============================================
+
+export async function fetchArticleHTML(url: string): Promise<string | null> {
+  let page: Page | null = null;
+  
+  try {
+    const browser = await getBrowser();
+    page = await browser.newPage();
+    
+    // Set realistic browser settings
+    await page.setViewport({ width: 1920, height: 1080 });
+    await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    
+    // Navigate to article
+    const response = await page.goto(url, {
+      waitUntil: 'networkidle2',
+      timeout: 30000
+    });
+
+    if (response?.status() !== 200) {
+      console.error(`[DoD] Failed to fetch ${url}: ${response?.status()}`);
+      return null;
+    }
+
+    // Get HTML content
+    const html = await page.content();
+    return html;
+    
+  } catch (error) {
+    console.error(`[DoD] Error fetching article:`, error);
+    return null;
+  } finally {
+    if (page) {
+      await page.close();
+    }
+  }
+}
+
+// ============================================
+// Parse Article HTML
+// ============================================
+
+export interface ParsedArticle {
+  articleId: number;
+  articleUrl: string;
+  articleTitle: string;
+  publishedDate: Date;
+  contractParagraphs: string[];
+  rawHTML: string;
+}
+
+export function parseArticleHTML(html: string, url: string): ParsedArticle | null {
+  try {
+    const $ = cheerio.load(html);
+    
+    // Extract article ID from URL
+    // Example: https://www.defense.gov/News/Releases/Release/Article/3981590/
+    const articleIdMatch = url.match(/Article\/(\d+)/);
+    const articleId = articleIdMatch ? parseInt(articleIdMatch[1]) : 0;
+    
+    // Extract title
+    const articleTitle = $('h1.maintitle, h1, title').first().text().trim() || 'Unknown Title';
+    
+    // Extract published date
+    let publishedDate = new Date();
+    const dateText = $('.published-date, .date, time').first().text().trim();
+    if (dateText) {
+      publishedDate = new Date(dateText);
+    }
+    
+    // Extract contract paragraphs
+    // DoD contract announcements are in paragraph format
+    const contractParagraphs: string[] = [];
+    
+    // Find all paragraphs in the article body
+    const bodySelector = '.body-copy, .article-body, .content, main';
+    const paragraphs = $(bodySelector).find('p');
+    
+    paragraphs.each((i, elem) => {
+      const text = $(elem).text().trim();
+      
+      // Filter paragraphs that look like contract announcements
+      // They typically contain company names, locations, contract numbers, and dollar amounts
+      const looksLikeContract = (
+        text.length > 100 && // Reasonable length
+        (text.includes('contract') || text.includes('modification')) &&
+        (text.includes('$') || text.includes('million') || text.includes('billion')) &&
+        /[A-Z][a-z]+,\s+[A-Z]{2}/.test(text) // "City, ST" pattern
+      );
+      
+      if (looksLikeContract) {
+        contractParagraphs.push(text);
+      }
+    });
+    
+    return {
+      articleId,
+      articleUrl: url,
+      articleTitle,
+      publishedDate,
+      contractParagraphs,
+      rawHTML: html
+    };
+    
+  } catch (error) {
+    console.error('[DoD] Error parsing article HTML:', error);
+    return null;
+  }
+}
+
+// ============================================
+// Extract Contract Data from Paragraph
+// ============================================
+
+export interface ExtractedContract {
+  vendorName: string;
+  vendorLocation?: string;
+  vendorCity?: string;
+  vendorState?: string;
+  contractNumber?: string;
+  awardAmount?: number;
+  awardAmountText?: string;
+  contractDescription: string;
+  performanceLocations?: string[];
+  completionDate?: Date;
+  contractingActivity?: string;
+  serviceBranch?: string;
+  isSmallBusiness: boolean;
+  rawParagraph: string;
+  parsingConfidence: number;
+}
+
+export function extractContractData(paragraph: string): ExtractedContract | null {
+  try {
+    // Extract vendor name (usually at the start, before a comma)
+    const vendorNameMatch = paragraph.match(/^([^,]+?(?:Inc\.|LLC|Corp\.|Corporation|Co\.|Company)?)/);
+    const vendorName = vendorNameMatch ? vendorNameMatch[1].trim() : 'Unknown Vendor';
+    
+    // Extract vendor location (City, ST pattern)
+    const vendorLocationMatch = paragraph.match(/([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s+([A-Z]{2})/);
+    const vendorCity = vendorLocationMatch ? vendorLocationMatch[1] : undefined;
+    const vendorState = vendorLocationMatch ? vendorLocationMatch[2] : undefined;
+    const vendorLocation = vendorLocationMatch ? vendorLocationMatch[0] : undefined;
+    
+    // Extract award amount
+    let awardAmount: number | undefined;
+    let awardAmountText: string | undefined;
+    
+    // Pattern: $XX.X million/billion or $XXX,XXX,XXX
+    const amountPatterns = [
+      /\$(\d+(?:\.\d+)?)\s*(million|billion)/i,
+      /\$(\d{1,3}(?:,\d{3})+)/
+    ];
+    
+    for (const pattern of amountPatterns) {
+      const match = paragraph.match(pattern);
+      if (match) {
+        awardAmountText = match[0];
+        if (match[2] === 'billion') {
+          awardAmount = parseFloat(match[1]) * 1_000_000_000;
+        } else if (match[2] === 'million') {
+          awardAmount = parseFloat(match[1]) * 1_000_000;
+        } else {
+          awardAmount = parseFloat(match[1].replace(/,/g, ''));
+        }
+        break;
+      }
+    }
+    
+    // Extract contract number (various formats)
+    const contractNumberMatch = paragraph.match(/(?:contract|modification)\s+(?:number\s+)?([A-Z0-9-]+)/i);
+    const contractNumber = contractNumberMatch ? contractNumberMatch[1] : undefined;
+    
+    // Extract contracting activity
+    const contractingActivityMatch = paragraph.match(/(?:contracting activity is|awarded by)\s+([^.]+)/i);
+    const contractingActivity = contractingActivityMatch ? contractingActivityMatch[1].trim() : undefined;
+    
+    // Extract service branch
+    let serviceBranch: string | undefined;
+    if (paragraph.includes('Army')) serviceBranch = 'Army';
+    else if (paragraph.includes('Navy')) serviceBranch = 'Navy';
+    else if (paragraph.includes('Air Force')) serviceBranch = 'Air Force';
+    else if (paragraph.includes('Marine Corps')) serviceBranch = 'Marine Corps';
+    else if (paragraph.includes('Space Force')) serviceBranch = 'Space Force';
+    
+    // Extract completion date
+    let completionDate: Date | undefined;
+    const completionMatch = paragraph.match(/(?:expected to be completed|completion date|work is expected)\s+(?:by\s+)?([A-Z][a-z]+\s+\d{4})/i);
+    if (completionMatch) {
+      completionDate = new Date(completionMatch[1]);
+    }
+    
+    // Check if small business
+    const isSmallBusiness = /small business/i.test(paragraph);
+    
+    // Calculate parsing confidence (0.0 - 1.0)
+    let confidence = 0.5; // Base confidence
+    if (vendorName !== 'Unknown Vendor') confidence += 0.1;
+    if (vendorLocation) confidence += 0.1;
+    if (awardAmount) confidence += 0.15;
+    if (contractNumber) confidence += 0.1;
+    if (contractingActivity) confidence += 0.05;
+    
+    return {
+      vendorName,
+      vendorLocation,
+      vendorCity,
+      vendorState,
+      contractNumber,
+      awardAmount,
+      awardAmountText,
+      contractDescription: paragraph,
+      completionDate,
+      contractingActivity,
+      serviceBranch,
+      isSmallBusiness,
+      rawParagraph: paragraph,
+      parsingConfidence: Math.min(confidence, 1.0)
+    };
+    
+  } catch (error) {
+    console.error('[DoD] Error extracting contract data:', error);
+    return null;
+  }
+}
+
+// ============================================
+// Save to Database
+// ============================================
+
+export async function saveContractToDatabase(
+  contract: ExtractedContract,
+  articleId: number,
+  articleUrl: string,
+  articleTitle: string,
+  publishedDate: Date
+): Promise<boolean> {
+  try {
+    const { error } = await supabase
+      .from('dod_contract_news')
+      .insert({
+        article_id: articleId,
+        article_url: articleUrl,
+        article_title: articleTitle,
+        published_date: publishedDate.toISOString().split('T')[0],
+        
+        vendor_name: contract.vendorName,
+        vendor_location: contract.vendorLocation,
+        vendor_city: contract.vendorCity,
+        vendor_state: contract.vendorState,
+        
+        contract_number: contract.contractNumber,
+        award_amount: contract.awardAmount,
+        award_amount_text: contract.awardAmountText,
+        
+        contract_description: contract.contractDescription,
+        work_description: contract.contractDescription, // Can be refined later
+        
+        completion_date: contract.completionDate?.toISOString().split('T')[0],
+        
+        contracting_activity: contract.contractingActivity,
+        service_branch: contract.serviceBranch,
+        
+        is_small_business: contract.isSmallBusiness,
+        
+        raw_paragraph: contract.rawParagraph,
+        
+        parsing_confidence: contract.parsingConfidence,
+        data_quality_score: Math.round(contract.parsingConfidence * 100),
+        
+        scraped_at: new Date().toISOString()
+      });
+    
+    if (error) {
+      console.error('[DoD] Error saving contract:', error);
+      return false;
+    }
+    
+    return true;
+    
+  } catch (error) {
+    console.error('[DoD] Exception saving contract:', error);
+    return false;
+  }
+}
+
+// ============================================
+// Scrape Single Article
+// ============================================
+
+export async function scrapeSingleArticle(url: string): Promise<{
+  success: boolean;
+  contractsFound: number;
+  contractsSaved: number;
+}> {
+  console.log(`[DoD] Scraping article: ${url}`);
+  
+  try {
+    // Fetch HTML
+    const html = await fetchArticleHTML(url);
+    if (!html) {
+      return { success: false, contractsFound: 0, contractsSaved: 0 };
+    }
+    
+    // Parse HTML
+    const parsed = parseArticleHTML(html, url);
+    if (!parsed) {
+      return { success: false, contractsFound: 0, contractsSaved: 0 };
+    }
+    
+    console.log(`[DoD] Found ${parsed.contractParagraphs.length} contract paragraphs`);
+    
+    let saved = 0;
+    
+    // Extract and save each contract
+    for (const paragraph of parsed.contractParagraphs) {
+      const contract = extractContractData(paragraph);
+      if (contract) {
+        const success = await saveContractToDatabase(
+          contract,
+          parsed.articleId,
+          parsed.articleUrl,
+          parsed.articleTitle,
+          parsed.publishedDate
+        );
+        
+        if (success) {
+          saved++;
+          console.log(`[DoD]   ✅ ${contract.vendorName} - ${contract.awardAmountText || 'Unknown amount'}`);
+        }
+      }
+    }
+    
+    return {
+      success: true,
+      contractsFound: parsed.contractParagraphs.length,
+      contractsSaved: saved
+    };
+    
+  } catch (error) {
+    console.error('[DoD] Error scraping article:', error);
+    return { success: false, contractsFound: 0, contractsSaved: 0 };
+  }
+}
+
+// ============================================
+// Find Contract News Articles
+// ============================================
+
+export async function findContractNewsArticles(startDate: Date, endDate: Date): Promise<string[]> {
+  console.log(`[DoD] Finding articles from ${startDate.toISOString().split('T')[0]} to ${endDate.toISOString().split('T')[0]}`);
+  
+  const articles: string[] = [];
+  
+  try {
+    const browser = await getBrowser();
+    const page = await browser.newPage();
+    
+    await page.setViewport({ width: 1920, height: 1080 });
+    await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    
+    // Navigate to releases page
+    const indexUrl = 'https://www.defense.gov/News/Releases/';
+    await page.goto(indexUrl, { waitUntil: 'networkidle2', timeout: 30000 });
+    
+    const html = await page.content();
+    const $ = cheerio.load(html);
+    
+    // Find all article links with "Contracts For" in title
+    $('a').each((i, elem) => {
+      const href = $(elem).attr('href');
+      const text = $(elem).text();
+      
+      if (text.includes('Contracts For') && href) {
+        const fullUrl = href.startsWith('http') ? href : `https://www.defense.gov${href}`;
+        if (!articles.includes(fullUrl)) {
+          articles.push(fullUrl);
+        }
+      }
+    });
+    
+    await page.close();
+    
+    console.log(`[DoD] Found ${articles.length} contract news articles`);
+    return articles;
+    
+  } catch (error) {
+    console.error('[DoD] Error finding articles:', error);
+    return [];
+  }
+}
+
