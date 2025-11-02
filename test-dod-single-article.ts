@@ -8,10 +8,8 @@ async function main() {
 ╚════════════════════════════════════════════╝
 `);
 
-  // Test with a known contract announcements article (look for "Contracts For" articles)
-  // This is just a placeholder - we need to find a real "Contracts For" article
-  // Example format: "Contracts For Nov. 1, 2024"
-  const testUrl = 'https://www.defense.gov/News/Contracts/';
+  // Test with latest contract announcements article
+  const testUrl = 'https://www.defense.gov/News/Contracts/Contract/Article/4319114/';
   
   console.log(`Testing URL: ${testUrl}\n`);
   

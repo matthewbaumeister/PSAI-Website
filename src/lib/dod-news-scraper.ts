@@ -121,22 +121,37 @@ export function parseArticleHTML(html: string, url: string): ParsedArticle | nul
     const contractParagraphs: string[] = [];
     
     // Find all paragraphs in the article body
-    const bodySelector = '.body-copy, .article-body, .content, main';
-    const paragraphs = $(bodySelector).find('p');
+    // Try multiple selectors to find the content div
+    let paragraphs = $('.body p, .article-body p, .content p, .inside p, .ntext p');
     
     paragraphs.each((i, elem) => {
       const text = $(elem).text().trim();
       
-      // Filter paragraphs that look like contract announcements
-      // They typically contain company names, locations, contract numbers, and dollar amounts
-      const looksLikeContract = (
-        text.length > 100 && // Reasonable length
-        (text.includes('contract') || text.includes('modification')) &&
-        (text.includes('$') || text.includes('million') || text.includes('billion')) &&
-        /[A-Z][a-z]+,\s+[A-Z]{2}/.test(text) // "City, ST" pattern
-      );
+      // Skip headers and very short paragraphs
+      if (text.length < 100) {
+        return;
+      }
       
-      if (looksLikeContract) {
+      // Skip section headers (like "NAVY", "AIR FORCE", etc.)
+      if (text.length < 50 && /^[A-Z\s]+$/.test(text)) {
+        return;
+      }
+      
+      // Filter paragraphs that look like contract announcements
+      // They typically contain:
+      // 1. Company name with location (e.g., "Boeing, Chicago, Illinois")
+      // 2. Dollar amounts ($X or X million/billion)
+      // 3. Contract-related keywords
+      const hasCompanyLocation = /[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*,\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*,\s+[A-Z][a-z]+/.test(text); // "Company Name, City, State"
+      const hasDollarAmount = /\$[\d,]+|million|billion/.test(text);
+      const hasContractKeywords = /\b(contract|awarded|being awarded|modification|procurement|delivery)\b/i.test(text);
+      const hasContractNumber = /[A-Z]\d{5}[A-Z0-9-]+/.test(text); // Typical DoD contract number pattern
+      
+      // A paragraph is likely a contract if it has at least 3 of these indicators
+      const indicators = [hasCompanyLocation, hasDollarAmount, hasContractKeywords, hasContractNumber];
+      const indicatorCount = indicators.filter(Boolean).length;
+      
+      if (indicatorCount >= 3) {
         contractParagraphs.push(text);
       }
     });
@@ -154,6 +169,36 @@ export function parseArticleHTML(html: string, url: string): ParsedArticle | nul
     console.error('[DoD] Error parsing article HTML:', error);
     return null;
   }
+}
+
+// ============================================
+// Detect & Split Multiple Award Contracts
+// ============================================
+
+function splitMultipleAwardContract(paragraph: string): string[] {
+  // Pattern: "Company1, City, State (Contract#); Company2, City, State (Contract#); ..."
+  // This indicates a multiple award contract that should be split
+  
+  const multipleAwardPattern = /([^;]+?),\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s+([A-Z][a-z]+)\s+\(([A-Z0-9-]+)\);/g;
+  const matches = [...paragraph.matchAll(multipleAwardPattern)];
+  
+  if (matches.length >= 2) {
+    // This is a multiple award contract - split it
+    console.log(`[DoD] Detected multiple award contract with ${matches.length} vendors`);
+    
+    // Find the shared description (everything after the last semicolon and vendor list)
+    const lastVendorEnd = matches[matches.length - 1].index! + matches[matches.length - 1][0].length;
+    const sharedDescription = paragraph.substring(lastVendorEnd).trim();
+    
+    // Create individual paragraphs for each vendor
+    return matches.map(match => {
+      const [fullMatch, company, city, state, contractNum] = match;
+      return `${company}, ${city}, ${state} (${contractNum}), ${sharedDescription}`;
+    });
+  }
+  
+  // Not a multiple award contract, return as-is
+  return [paragraph];
 }
 
 // ============================================
@@ -359,29 +404,36 @@ export async function scrapeSingleArticle(url: string): Promise<{
     console.log(`[DoD] Found ${parsed.contractParagraphs.length} contract paragraphs`);
     
     let saved = 0;
+    let totalContracts = 0;
     
     // Extract and save each contract
     for (const paragraph of parsed.contractParagraphs) {
-      const contract = extractContractData(paragraph);
-      if (contract) {
-        const success = await saveContractToDatabase(
-          contract,
-          parsed.articleId,
-          parsed.articleUrl,
-          parsed.articleTitle,
-          parsed.publishedDate
-        );
-        
-        if (success) {
-          saved++;
-          console.log(`[DoD]   ✅ ${contract.vendorName} - ${contract.awardAmountText || 'Unknown amount'}`);
+      // Check if this is a multiple award contract and split if needed
+      const individualParagraphs = splitMultipleAwardContract(paragraph);
+      totalContracts += individualParagraphs.length;
+      
+      for (const individualParagraph of individualParagraphs) {
+        const contract = extractContractData(individualParagraph);
+        if (contract) {
+          const success = await saveContractToDatabase(
+            contract,
+            parsed.articleId,
+            parsed.articleUrl,
+            parsed.articleTitle,
+            parsed.publishedDate
+          );
+          
+          if (success) {
+            saved++;
+            console.log(`[DoD]   ✅ ${contract.vendorName} - ${contract.awardAmountText || 'Unknown amount'}`);
+          }
         }
       }
     }
     
     return {
       success: true,
-      contractsFound: parsed.contractParagraphs.length,
+      contractsFound: totalContracts,
       contractsSaved: saved
     };
     
