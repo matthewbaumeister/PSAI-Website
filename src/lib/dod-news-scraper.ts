@@ -507,20 +507,20 @@ export async function runQualityChecks(): Promise<void> {
     }
     
     // Get summary stats
-    const { data: needsReview } = await supabase
+    const { count: needsReviewCount } = await supabase
       .from('dod_contract_news')
-      .select('contract_number', { count: 'exact', head: true })
+      .select('*', { count: 'exact', head: true })
       .eq('needs_review', true)
       .is('reviewed_at', null);
     
-    const { data: outliers } = await supabase
+    const { count: outliersCount } = await supabase
       .from('dod_contract_news')
-      .select('contract_number', { count: 'exact', head: true })
+      .select('*', { count: 'exact', head: true })
       .eq('is_outlier', true);
     
     console.log(`[DoD] 📊 Quality Check Complete:`);
-    console.log(`[DoD]   • Contracts needing review: ${needsReview?.count || 0}`);
-    console.log(`[DoD]   • Outliers detected: ${outliers?.count || 0}`);
+    console.log(`[DoD]   • Contracts needing review: ${needsReviewCount || 0}`);
+    console.log(`[DoD]   • Outliers detected: ${outliersCount || 0}`);
     
   } catch (error) {
     console.error('[DoD] Exception running quality checks:', error);
