@@ -48,12 +48,13 @@ async function main() {
       
       parsed.contractParagraphs.slice(0, 3).forEach((para, i) => {
         console.log(`━━━ Contract ${i + 1} ━━━`);
-        console.log(para.substring(0, 300) + (para.length > 300 ? '...' : ''));
-        console.log(`\nLength: ${para.length} characters\n`);
+        console.log(`Service Branch: ${para.serviceBranch || 'Unknown'}`);
+        console.log(para.text.substring(0, 300) + (para.text.length > 300 ? '...' : ''));
+        console.log(`\nLength: ${para.text.length} characters\n`);
       });
       
       console.log(`\n💡 Total contracts found: ${parsed.contractParagraphs.length}`);
-      console.log(`📊 Avg paragraph length: ${Math.round(parsed.contractParagraphs.reduce((sum, p) => sum + p.length, 0) / parsed.contractParagraphs.length)} chars\n`);
+      console.log(`📊 Avg paragraph length: ${Math.round(parsed.contractParagraphs.reduce((sum, p) => sum + p.text.length, 0) / parsed.contractParagraphs.length)} chars\n`);
     } else {
       console.log(`⚠️  No contract paragraphs found!`);
       console.log(`   This means our parsing logic needs adjustment.\n`);
