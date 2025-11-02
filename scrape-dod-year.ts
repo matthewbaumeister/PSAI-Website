@@ -12,11 +12,26 @@
  * ============================================
  */
 
+// Load environment variables FIRST
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import puppeteer, { Browser } from 'puppeteer';
 import * as cheerio from 'cheerio';
 import * as fs from 'fs';
 import * as path from 'path';
 import { scrapeSingleArticle, closeBrowser } from './src/lib/dod-news-scraper';
+
+// ============================================
+// Environment Variable Validation
+// ============================================
+
+if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
+  console.error('❌ Missing environment variables!');
+  console.error('   Required: NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY');
+  console.error('   Make sure .env file exists with these variables.');
+  process.exit(1);
+}
 
 // ============================================
 // Configuration
