@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     
     // Run scraper
     const scraper = new DSIPRealScraper();
-    await scraper.scrapeAll();
+    await scraper.scrapeActiveOpportunities();
     const progress = scraper.getProgress();
     
     // Get count after scraping
