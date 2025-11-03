@@ -1,0 +1,679 @@
+/**
+ * ============================================
+ * Congress.gov API Client & Scraper
+ * ============================================
+ * 
+ * Fetches legislative data from Congress.gov API to provide
+ * political and lobbying context for defense contracts.
+ * 
+ * API Documentation: https://api.congress.gov/
+ * Rate Limit: 5,000 requests/hour
+ * 
+ * ============================================
+ */
+
+import 'dotenv/config';
+import { createClient } from '@supabase/supabase-js';
+import axios, { AxiosError } from 'axios';
+
+// ============================================
+// Configuration
+// ============================================
+
+const CONGRESS_GOV_API_BASE = 'https://api.congress.gov/v3';
+const CONGRESS_GOV_API_KEY = process.env.CONGRESS_GOV_API_KEY;
+const API_RATE_LIMIT = 5000; // requests per hour
+const REQUEST_DELAY_MS = 750; // ~1.3 req/sec to stay under limit
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// ============================================
+// Rate Limiting
+// ============================================
+
+class RateLimiter {
+  private requestCount = 0;
+  private resetTime = Date.now() + 3600000; // 1 hour from now
+  private queue: Array<() => Promise<any>> = [];
+  private processing = false;
+
+  async makeRequest<T>(requestFn: () => Promise<T>): Promise<T> {
+    // Check if we need to reset
+    if (Date.now() >= this.resetTime) {
+      this.requestCount = 0;
+      this.resetTime = Date.now() + 3600000;
+      console.log('[Congress.gov] Rate limit reset');
+    }
+
+    // Check if we're at limit
+    if (this.requestCount >= API_RATE_LIMIT - 100) { // Leave 100 buffer
+      const waitTime = this.resetTime - Date.now();
+      console.log(`[Congress.gov] Rate limit approaching, waiting ${Math.round(waitTime / 1000)}s`);
+      await new Promise(resolve => setTimeout(resolve, waitTime));
+      this.requestCount = 0;
+      this.resetTime = Date.now() + 3600000;
+    }
+
+    // Make request with delay
+    await new Promise(resolve => setTimeout(resolve, REQUEST_DELAY_MS));
+    this.requestCount++;
+    return await requestFn();
+  }
+}
+
+const rateLimiter = new RateLimiter();
+
+// ============================================
+// API Client
+// ============================================
+
+export async function congressGovApiCall(
+  endpoint: string,
+  params: Record<string, any> = {}
+): Promise<any> {
+  return rateLimiter.makeRequest(async () => {
+    try {
+      const url = `${CONGRESS_GOV_API_BASE}${endpoint}`;
+      const response = await axios.get(url, {
+        params: {
+          ...params,
+          api_key: CONGRESS_GOV_API_KEY,
+          format: 'json'
+        },
+        timeout: 30000,
+        headers: {
+          'User-Agent': 'PropShop-AI-Congress-Scraper/1.0'
+        }
+      });
+
+      return response.data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError;
+        if (axiosError.response?.status === 429) {
+          // Rate limit hit
+          console.error('[Congress.gov] Rate limit hit!');
+          throw new Error('Rate limit exceeded');
+        } else if (axiosError.response?.status === 404) {
+          // Not found is OK, return null
+          return null;
+        } else if (axiosError.response?.status === 500) {
+          // Server error, retry
+          console.error('[Congress.gov] Server error, retrying...');
+          await new Promise(resolve => setTimeout(resolve, 5000));
+          throw error; // Will trigger retry in caller
+        }
+      }
+      throw error;
+    }
+  });
+}
+
+// ============================================
+// Bills API
+// ============================================
+
+export interface BillSearchParams {
+  congress?: number;
+  fromDateTime?: string;
+  toDateTime?: string;
+  offset?: number;
+  limit?: number;
+  sort?: 'updateDate+desc' | 'updateDate+asc';
+}
+
+export async function searchBills(params: BillSearchParams): Promise<any> {
+  const { congress, ...otherParams } = params;
+  
+  let endpoint = '/bill';
+  if (congress) {
+    endpoint = `/bill/${congress}`;
+  }
+  
+  const result = await congressGovApiCall(endpoint, {
+    limit: 250,
+    offset: 0,
+    sort: 'updateDate+desc',
+    ...otherParams
+  });
+  
+  return result;
+}
+
+export async function fetchBill(
+  congress: number,
+  billType: string,
+  billNumber: number
+): Promise<any> {
+  const endpoint = `/bill/${congress}/${billType}/${billNumber}`;
+  const result = await congressGovApiCall(endpoint);
+  return result?.bill || null;
+}
+
+export async function fetchBillText(
+  congress: number,
+  billType: string,
+  billNumber: number
+): Promise<any> {
+  const endpoint = `/bill/${congress}/${billType}/${billNumber}/text`;
+  const result = await congressGovApiCall(endpoint);
+  return result?.textVersions || [];
+}
+
+export async function fetchBillActions(
+  congress: number,
+  billType: string,
+  billNumber: number
+): Promise<any> {
+  const endpoint = `/bill/${congress}/${billType}/${billNumber}/actions`;
+  const result = await congressGovApiCall(endpoint, { limit: 250 });
+  return result?.actions || [];
+}
+
+export async function fetchBillAmendments(
+  congress: number,
+  billType: string,
+  billNumber: number
+): Promise<any> {
+  const endpoint = `/bill/${congress}/${billType}/${billNumber}/amendments`;
+  const result = await congressGovApiCall(endpoint, { limit: 250 });
+  return result?.amendments || [];
+}
+
+export async function fetchBillCosponsors(
+  congress: number,
+  billType: string,
+  billNumber: number
+): Promise<any> {
+  const endpoint = `/bill/${congress}/${billType}/${billNumber}/cosponsors`;
+  const result = await congressGovApiCall(endpoint, { limit: 250 });
+  return result?.cosponsors || [];
+}
+
+// ============================================
+// Amendments API
+// ============================================
+
+export async function fetchAmendment(
+  congress: number,
+  amendmentType: string,
+  amendmentNumber: number
+): Promise<any> {
+  const endpoint = `/amendment/${congress}/${amendmentType}/${amendmentNumber}`;
+  const result = await congressGovApiCall(endpoint);
+  return result?.amendment || null;
+}
+
+// ============================================
+// Committee Reports API
+// ============================================
+
+export async function searchCommitteeReports(
+  congress?: number,
+  params: Record<string, any> = {}
+): Promise<any> {
+  let endpoint = '/committee-report';
+  if (congress) {
+    endpoint = `/committee-report/${congress}`;
+  }
+  
+  const result = await congressGovApiCall(endpoint, {
+    limit: 250,
+    ...params
+  });
+  
+  return result?.reports || [];
+}
+
+export async function fetchCommitteeReport(
+  congress: number,
+  reportType: string,
+  reportNumber: number
+): Promise<any> {
+  const endpoint = `/committee-report/${congress}/${reportType}/${reportNumber}`;
+  const result = await congressGovApiCall(endpoint);
+  return result?.committeeReport || null;
+}
+
+// ============================================
+// Hearings API
+// ============================================
+
+export async function searchHearings(
+  congress?: number,
+  chamber?: 'house' | 'senate',
+  params: Record<string, any> = {}
+): Promise<any> {
+  let endpoint = '/hearing';
+  if (congress) {
+    endpoint = `/hearing/${congress}`;
+    if (chamber) {
+      endpoint += `/${chamber}`;
+    }
+  }
+  
+  const result = await congressGovApiCall(endpoint, {
+    limit: 250,
+    ...params
+  });
+  
+  return result?.hearings || [];
+}
+
+// ============================================
+// Members API
+// ============================================
+
+export async function fetchMember(bioguideId: string): Promise<any> {
+  const endpoint = `/member/${bioguideId}`;
+  const result = await congressGovApiCall(endpoint);
+  return result?.member || null;
+}
+
+export async function searchMembers(
+  congress?: number,
+  params: Record<string, any> = {}
+): Promise<any> {
+  let endpoint = '/member';
+  if (congress) {
+    endpoint = `/member/congress/${congress}`;
+  }
+  
+  const result = await congressGovApiCall(endpoint, {
+    limit: 250,
+    ...params
+  });
+  
+  return result?.members || [];
+}
+
+// ============================================
+// Defense Relevance Detection
+// ============================================
+
+const DEFENSE_KEYWORDS = [
+  // General
+  'defense', 'military', 'armed forces', 'dod', 'department of defense',
+  'national security', 'pentagon', 'defense spending',
+  
+  // Branches
+  'army', 'navy', 'air force', 'marine corps', 'space force',
+  
+  // Programs
+  'procurement', 'acquisition', 'weapons system', 'combat system',
+  'fighter', 'bomber', 'submarine', 'destroyer', 'aircraft carrier',
+  'f-35', 'f-15', 'f-16', 'f-18', 'b-21', 'b-52',
+  
+  // Funding
+  'ndaa', 'national defense authorization', 'defense appropriations',
+  'military construction', 'rdt&e', 'research and development',
+  
+  // Contracts
+  'defense contract', 'defense contractor', 'defense industrial base',
+  'lockheed martin', 'boeing', 'raytheon', 'northrop grumman',
+  'general dynamics', 'l3harris', 'bae systems',
+  
+  // Small Business
+  'sbir', 'sttr', 'small business defense', 'defense innovation',
+  
+  // Technology
+  'hypersonic', 'cyber', 'space', 'unmanned', 'autonomous',
+  'artificial intelligence', 'quantum', 'directed energy'
+];
+
+const DEFENSE_COMMITTEES = [
+  'HSAS', // House Armed Services
+  'SSAS', // Senate Armed Services
+  'HSAP', // House Appropriations - Defense
+  'SSAP', // Senate Appropriations - Defense
+];
+
+export function isDefenseRelated(bill: any): boolean {
+  const textToSearch = [
+    bill.title || '',
+    bill.summary?.text || '',
+    bill.policyArea?.name || '',
+    ...(bill.subjects?.legislativeSubjects?.map((s: any) => s.name) || [])
+  ].join(' ').toLowerCase();
+
+  // Check for defense keywords
+  const hasDefenseKeyword = DEFENSE_KEYWORDS.some(keyword => 
+    textToSearch.includes(keyword.toLowerCase())
+  );
+
+  // Check for defense committee
+  const hasDefenseCommittee = bill.committees?.some((c: any) => 
+    DEFENSE_COMMITTEES.includes(c.systemCode)
+  );
+
+  return hasDefenseKeyword || hasDefenseCommittee;
+}
+
+export function calculateDefenseRelevanceScore(bill: any): number {
+  let score = 0;
+
+  const textToSearch = [
+    bill.title || '',
+    bill.summary?.text || '',
+    bill.policyArea?.name || ''
+  ].join(' ').toLowerCase();
+
+  // Keywords (up to 50 points)
+  const keywordMatches = DEFENSE_KEYWORDS.filter(keyword => 
+    textToSearch.includes(keyword.toLowerCase())
+  ).length;
+  score += Math.min(keywordMatches * 5, 50);
+
+  // Defense committee (30 points)
+  const hasDefenseCommittee = bill.committees?.some((c: any) => 
+    DEFENSE_COMMITTEES.includes(c.systemCode)
+  );
+  if (hasDefenseCommittee) score += 30;
+
+  // Title has NDAA or defense (20 points)
+  if (/ndaa|national defense authorization|defense appropriations/i.test(bill.title || '')) {
+    score += 20;
+  }
+
+  return Math.min(score, 100);
+}
+
+// ============================================
+// Extract Defense Programs
+// ============================================
+
+const DEFENSE_PROGRAMS = [
+  // Aircraft
+  'F-35', 'F-35A', 'F-35B', 'F-35C', 'Joint Strike Fighter',
+  'F-15', 'F-15EX', 'F-16', 'F-18', 'F/A-18', 'Super Hornet',
+  'B-21', 'B-21 Raider', 'B-52', 'B-1', 'B-2',
+  'KC-46', 'KC-135', 'C-130', 'C-17', 'V-22', 'Osprey',
+  
+  // Naval
+  'DDG', 'DDG-51', 'Arleigh Burke', 'destroyer',
+  'Virginia-class', 'Columbia-class', 'submarine',
+  'Ford-class', 'Nimitz-class', 'aircraft carrier',
+  'Littoral Combat Ship', 'LCS', 'FFG', 'Constellation',
+  
+  // Ground
+  'M1 Abrams', 'Bradley', 'Stryker', 'JLTV',
+  'Armored Multi-Purpose Vehicle', 'AMPV',
+  
+  // Missiles & Munitions
+  'Patriot', 'THAAD', 'Aegis', 'SM-3', 'SM-6',
+  'Tomahawk', 'JASSM', 'LRASM', 'Javelin', 'HIMARS',
+  'Hypersonic', 'ARRW', 'LRHW',
+  
+  // Space
+  'GPS', 'WGS', 'Space Force', 'satellite',
+  
+  // Technology
+  'Joint All-Domain Command and Control', 'JADC2',
+  'Next Generation Air Dominance', 'NGAD',
+  'Future Vertical Lift', 'FVL',
+  'Integrated Air and Missile Defense', 'IAMD'
+];
+
+export function extractDefensePrograms(text: string): string[] {
+  const programs: string[] = [];
+  const textLower = text.toLowerCase();
+
+  for (const program of DEFENSE_PROGRAMS) {
+    if (textLower.includes(program.toLowerCase())) {
+      programs.push(program);
+    }
+  }
+
+  return [...new Set(programs)]; // Remove duplicates
+}
+
+// ============================================
+// Extract Contractor Mentions
+// ============================================
+
+const MAJOR_CONTRACTORS = [
+  'Lockheed Martin', 'Lockheed',
+  'Boeing', 'Boeing Defense',
+  'Raytheon', 'RTX', 'Raytheon Technologies',
+  'Northrop Grumman', 'Northrop',
+  'General Dynamics', 'GD',
+  'L3Harris', 'L3 Harris', 'Harris',
+  'BAE Systems', 'BAE',
+  'Huntington Ingalls', 'HII',
+  'Leidos', 'Dynetics',
+  'SAIC', 'Science Applications International',
+  'CACI', 'Booz Allen', 'Booz Allen Hamilton',
+  'Textron', 'Bell', 'Bell Helicopter',
+  'General Electric', 'GE Aviation',
+  'Rolls-Royce', 'Pratt & Whitney',
+  'United Technologies', 'UTC',
+  'Oshkosh', 'Oshkosh Defense',
+  'AeroVironment', 'Kratos', 'Anduril'
+];
+
+export function extractContractorMentions(text: string): string[] {
+  const contractors: string[] = [];
+  const textLower = text.toLowerCase();
+
+  for (const contractor of MAJOR_CONTRACTORS) {
+    if (textLower.includes(contractor.toLowerCase())) {
+      // Add the full name (not abbreviation)
+      if (contractor.length > 5 && !contractors.includes(contractor)) {
+        contractors.push(contractor);
+      }
+    }
+  }
+
+  return [...new Set(contractors)];
+}
+
+// ============================================
+// Normalize & Save to Database
+// ============================================
+
+export interface NormalizedBill {
+  congress: number;
+  bill_type: string;
+  bill_number: number;
+  title: string;
+  short_title?: string;
+  official_title?: string;
+  introduced_date?: string;
+  latest_action_date?: string;
+  status?: string;
+  is_law: boolean;
+  summary?: string;
+  policy_area?: string;
+  legislative_subjects?: string[];
+  is_defense_related: boolean;
+  defense_relevance_score: number;
+  defense_programs_mentioned?: string[];
+  contractors_mentioned?: string[];
+  sponsor_name?: string;
+  sponsor_party?: string;
+  sponsor_state?: string;
+  sponsor_bioguide_id?: string;
+  cosponsor_count: number;
+  cosponsors?: any;
+  committees?: string[];
+  primary_committee?: string;
+  actions?: any;
+  action_count: number;
+  latest_action_text?: string;
+  congress_gov_url: string;
+  api_response: any;
+}
+
+export function normalizeBill(rawBill: any): NormalizedBill {
+  const isDefense = isDefenseRelated(rawBill);
+  const defenseScore = isDefense ? calculateDefenseRelevanceScore(rawBill) : 0;
+  
+  const fullText = [
+    rawBill.title || '',
+    rawBill.summary?.text || ''
+  ].join(' ');
+  
+  const programs = isDefense ? extractDefensePrograms(fullText) : [];
+  const contractors = isDefense ? extractContractorMentions(fullText) : [];
+
+  return {
+    congress: rawBill.congress,
+    bill_type: rawBill.type,
+    bill_number: rawBill.number,
+    title: rawBill.title || 'Untitled',
+    short_title: rawBill.titles?.find((t: any) => t.titleType === 'Short Title(s) as Introduced')?.title,
+    official_title: rawBill.titles?.find((t: any) => t.titleType === 'Official Title as Introduced')?.title,
+    introduced_date: rawBill.introducedDate ? new Date(rawBill.introducedDate).toISOString().split('T')[0] : undefined,
+    latest_action_date: rawBill.latestAction?.actionDate,
+    status: rawBill.latestAction?.text,
+    is_law: rawBill.laws?.length > 0 || false,
+    summary: rawBill.summary?.text,
+    policy_area: rawBill.policyArea?.name,
+    legislative_subjects: rawBill.subjects?.legislativeSubjects?.map((s: any) => s.name) || [],
+    is_defense_related: isDefense,
+    defense_relevance_score: defenseScore,
+    defense_programs_mentioned: programs.length > 0 ? programs : undefined,
+    contractors_mentioned: contractors.length > 0 ? contractors : undefined,
+    sponsor_name: rawBill.sponsors?.[0]?.fullName,
+    sponsor_party: rawBill.sponsors?.[0]?.party,
+    sponsor_state: rawBill.sponsors?.[0]?.state,
+    sponsor_bioguide_id: rawBill.sponsors?.[0]?.bioguideId,
+    cosponsor_count: rawBill.cosponsors?.count || 0,
+    cosponsors: rawBill.cosponsors,
+    committees: rawBill.committees?.map((c: any) => c.name) || [],
+    primary_committee: rawBill.committees?.[0]?.name,
+    actions: rawBill.actions,
+    action_count: rawBill.actions?.count || 0,
+    latest_action_text: rawBill.latestAction?.text,
+    congress_gov_url: `https://www.congress.gov/bill/${rawBill.congress}th-congress/${rawBill.type}-bill/${rawBill.number}`,
+    api_response: rawBill
+  };
+}
+
+export async function saveBill(bill: NormalizedBill): Promise<boolean> {
+  try {
+    const { data, error } = await supabase
+      .from('congressional_bills')
+      .upsert({
+        congress: bill.congress,
+        bill_type: bill.bill_type,
+        bill_number: bill.bill_number,
+        title: bill.title,
+        short_title: bill.short_title,
+        official_title: bill.official_title,
+        introduced_date: bill.introduced_date,
+        latest_action_date: bill.latest_action_date,
+        status: bill.status,
+        is_law: bill.is_law,
+        summary: bill.summary,
+        policy_area: bill.policy_area,
+        legislative_subjects: bill.legislative_subjects,
+        is_defense_related: bill.is_defense_related,
+        defense_relevance_score: bill.defense_relevance_score,
+        defense_programs_mentioned: bill.defense_programs_mentioned,
+        contractors_mentioned: bill.contractors_mentioned,
+        sponsor_name: bill.sponsor_name,
+        sponsor_party: bill.sponsor_party,
+        sponsor_state: bill.sponsor_state,
+        sponsor_bioguide_id: bill.sponsor_bioguide_id,
+        cosponsor_count: bill.cosponsor_count,
+        cosponsors: bill.cosponsors,
+        committees: bill.committees,
+        primary_committee: bill.primary_committee,
+        actions: bill.actions,
+        action_count: bill.action_count,
+        latest_action_text: bill.latest_action_text,
+        congress_gov_url: bill.congress_gov_url,
+        api_response: bill.api_response,
+        last_scraped: new Date().toISOString()
+      }, {
+        onConflict: 'congress,bill_type,bill_number',
+        ignoreDuplicates: false // Update existing records
+      });
+
+    if (error) {
+      console.error('[Congress.gov] Error saving bill:', error);
+      return false;
+    }
+
+    return true;
+  } catch (error) {
+    console.error('[Congress.gov] Exception saving bill:', error);
+    return false;
+  }
+}
+
+// ============================================
+// Batch Processing
+// ============================================
+
+export async function batchSaveBills(bills: NormalizedBill[]): Promise<{
+  saved: number;
+  failed: number;
+}> {
+  let saved = 0;
+  let failed = 0;
+
+  for (const bill of bills) {
+    const success = await saveBill(bill);
+    if (success) {
+      saved++;
+    } else {
+      failed++;
+    }
+  }
+
+  return { saved, failed };
+}
+
+// ============================================
+// Logging
+// ============================================
+
+export async function logScrapingRun(logData: {
+  scrape_type: string;
+  congress?: number;
+  date_range_start?: string;
+  date_range_end?: string;
+  status: string;
+  records_found: number;
+  records_new: number;
+  records_updated: number;
+  records_failed: number;
+  api_calls_made: number;
+  errors?: any;
+  duration_seconds?: number;
+  summary?: string;
+}): Promise<void> {
+  try {
+    await supabase.from('congressional_scraping_logs').insert({
+      ...logData,
+      completed_at: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('[Congress.gov] Error logging scraping run:', error);
+  }
+}
+
+// ============================================
+// Utility Functions
+// ============================================
+
+export function getCurrentCongress(): number {
+  // Congress 118 = 2023-2024
+  // Congress 119 = 2025-2026
+  const year = new Date().getFullYear();
+  return Math.floor((year - 1789) / 2) + 1;
+}
+
+export function getCongressYears(congress: number): { start: number; end: number } {
+  const start = 1789 + (congress - 1) * 2;
+  return { start, end: start + 1 };
+}
+
+export function delay(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
