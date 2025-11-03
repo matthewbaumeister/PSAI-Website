@@ -110,7 +110,8 @@ SELECT
   DATE(published_date) as publication_date,
   COUNT(DISTINCT article_url) as unique_articles,
   COUNT(*) as total_contracts,
-  MAX(last_scraped) as last_time_scraped
+  MAX(scraped_at) as first_scraped,
+  MAX(updated_at) as last_updated
 FROM dod_contract_news
 WHERE published_date >= '2024-09-01'
 GROUP BY DATE(published_date)

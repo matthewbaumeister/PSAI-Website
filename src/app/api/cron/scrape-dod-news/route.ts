@@ -1,10 +1,99 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendCronSuccessEmail, sendCronFailureEmail } from '@/lib/cron-notifications';
 import { createClient } from '@supabase/supabase-js';
-import { scrapeDate } from '@/scripts/dod-daily-scraper';
+import { getBrowser, closeBrowser, fetchArticleHTML, parseArticleAndSave } from '@/lib/dod-news-scraper';
+import * as cheerio from 'cheerio';
 
 // Vercel Pro timeout (5 minutes)
 export const maxDuration = 300;
+
+const BASE_URL = 'https://www.defense.gov';
+const CONTRACTS_URL = `${BASE_URL}/News/Contracts/`;
+
+/**
+ * Parse date from DoD article title
+ * E.g., "Contracts For October 31, 2024" -> 2024-10-31
+ */
+function parseDateFromTitle(title: string): Date | null {
+  const match = title.match(/Contracts\s+For\s+([A-Za-z]+)\s+(\d+),?\s+(\d{4})/i);
+  if (!match) return null;
+  
+  const [, monthStr, day, year] = match;
+  const monthNames = ['january', 'february', 'march', 'april', 'may', 'june',
+                      'july', 'august', 'september', 'october', 'november', 'december'];
+  const month = monthNames.indexOf(monthStr.toLowerCase());
+  
+  if (month === -1) return null;
+  
+  return new Date(parseInt(year), month, parseInt(day));
+}
+
+/**
+ * Fetch articles for a specific date from DoD website
+ */
+async function fetchArticlesForDate(targetDateStr: string): Promise<Array<{
+  id: number;
+  url: string;
+  title: string;
+  publishedDate: Date;
+}>> {
+  const articles: Array<{ id: number; url: string; title: string; publishedDate: Date }> = [];
+  const browser = await getBrowser();
+  const page = await browser.newPage();
+  
+  try {
+    let pageNum = 1;
+    let foundTarget = false;
+    
+    // Search through pages until we find the target date
+    while (!foundTarget && pageNum <= 100) {
+      const url = pageNum === 1 ? CONTRACTS_URL : `${CONTRACTS_URL}?page=${pageNum}`;
+      await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
+      await page.waitForTimeout(1000);
+      
+      const html = await page.content();
+      const $ = cheerio.load(html);
+      
+      let foundOnPage = 0;
+      let articleIdCounter = 1000000 + pageNum * 100;
+      
+      $('.river-list .item').each((_, element) => {
+        const $item = $(element);
+        const title = $item.find('.river-title a').text().trim();
+        const relativeUrl = $item.find('.river-title a').attr('href');
+        
+        if (!title.toLowerCase().includes('contracts for') || !relativeUrl) {
+          return;
+        }
+        
+        const articleDate = parseDateFromTitle(title);
+        if (!articleDate) return;
+        
+        const articleDateStr = articleDate.toISOString().split('T')[0];
+        
+        // Check if this is our target date
+        if (articleDateStr === targetDateStr) {
+          articles.push({
+            id: articleIdCounter++,
+            url: BASE_URL + relativeUrl,
+            title: title,
+            publishedDate: articleDate
+          });
+          foundOnPage++;
+          foundTarget = true;
+        }
+      });
+      
+      if (foundOnPage > 0) break;
+      pageNum++;
+    }
+    
+  } finally {
+    await page.close();
+  }
+  
+  return articles;
+}
 
 /**
  * DoD Contract News Daily Scraper - Vercel Cron Job
@@ -65,30 +154,60 @@ export async function GET(request: NextRequest) {
       .from('dod_contract_news')
       .select('*', { count: 'exact', head: true });
     
-    // Scrape each date
+    // Scrape each date using production scraper logic
     let totalArticles = 0;
     let totalContracts = 0;
     
     for (const date of dates) {
       try {
         console.log(`[Cron] Scraping ${date}...`);
-        const result = await scrapeDate(date);
         
-        if (result.success) {
-          totalArticles += result.articlesFound;
-          totalContracts += result.contractsInserted;
-          console.log(`[Cron] ${date}: ${result.articlesFound} articles, ${result.contractsInserted} contracts`);
-        } else {
-          console.error(`[Cron] Failed to scrape ${date}`);
+        // Find articles for this date
+        const articles = await fetchArticlesForDate(date);
+        console.log(`[Cron] ${date}: Found ${articles.length} articles`);
+        
+        if (articles.length === 0) {
+          console.log(`[Cron] ${date}: No articles found (likely weekend/holiday)`);
+          continue;
+        }
+        
+        totalArticles += articles.length;
+        
+        // Scrape each article using production parser
+        for (const article of articles) {
+          try {
+            const html = await fetchArticleHTML(article.url);
+            if (html) {
+              const contractsFound = await parseArticleAndSave(
+                html,
+                article.id,
+                article.url,
+                article.title,
+                article.publishedDate
+              );
+              totalContracts += contractsFound;
+              console.log(`[Cron]   ${article.title}: ${contractsFound} contracts`);
+            }
+          } catch (error: any) {
+            console.error(`[Cron]   Error scraping article ${article.url}:`, error.message);
+            // Continue with other articles
+          }
+          
+          // Small delay between articles
+          await new Promise(resolve => setTimeout(resolve, 1000));
         }
         
         // Small delay between dates
         await new Promise(resolve => setTimeout(resolve, 2000));
+        
       } catch (error: any) {
         console.error(`[Cron] Error scraping ${date}:`, error.message);
         // Continue with other dates even if one fails
       }
     }
+    
+    // Close browser
+    await closeBrowser();
     
     // Get count after scraping
     const { count: countAfter } = await supabase

@@ -11,6 +11,9 @@ The DoD Contract News scraper automatically checks **defense.gov/News/Contracts/
 - ✅ Article-level tracking
 - ✅ Works in Vercel serverless environment
 
+**IMPORTANT NOTE:**
+The cron endpoint currently uses the production `scrape-dod-production.ts` scraper, which has a rich parsing engine that extracts 50+ fields per contract (contract types, SBIR status, FMS data, modifications, etc.). The simplified `dod-daily-scraper.ts` needs to be updated to match the full schema before it can be used. For now, the cron calls the production scraper via `parseArticleAndSave()` from `src/lib/dod-news-scraper.ts`.
+
 ---
 
 ## How It Works
@@ -150,8 +153,8 @@ LIMIT 20;
 SELECT 
   DATE(published_date) as pub_date,
   COUNT(*) as contracts,
-  MIN(last_scraped) as first_scraped,
-  MAX(last_scraped) as last_updated
+  MIN(scraped_at) as first_scraped,
+  MAX(updated_at) as last_updated
 FROM dod_contract_news
 WHERE published_date BETWEEN '2024-09-25' AND '2024-10-05'
 GROUP BY DATE(published_date)
