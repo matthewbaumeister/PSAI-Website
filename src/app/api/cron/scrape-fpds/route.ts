@@ -58,9 +58,9 @@ export async function GET(request: NextRequest) {
       .gte('last_modified_date', `${dateStr}T00:00:00`)
       .lt('last_modified_date', `${formatDate(today)}T00:00:00`);
     
-    // Run FPDS page-level scraper
+    // Run FPDS daily scraper (optimized for single-day automated runs)
     const { stdout, stderr } = await execAsync(
-      `npx tsx src/scripts/fpds-page-level-scraper.ts --from=${dateStr} --to=${dateStr}`,
+      `npx tsx src/scripts/fpds-daily-scraper.ts --date=${dateStr}`,
       {
         cwd: process.cwd(),
         timeout: 3600000 // 1 hour timeout
