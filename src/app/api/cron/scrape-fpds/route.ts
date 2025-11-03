@@ -27,12 +27,7 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  // Calculate yesterday's date
-  const today = new Date();
-  const yesterday = new Date(today);
-  yesterday.setDate(today.getDate() - 1);
-  
-  // Format as YYYY-MM-DD for FPDS
+  // Format date helper
   const formatDate = (date: Date): string => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -40,11 +35,12 @@ export async function GET(request: NextRequest) {
     return `${year}-${month}-${day}`;
   };
   
-  const dateStr = formatDate(yesterday);
+  const today = new Date();
+  const dateStr = formatDate(today);
 
   try {
-    console.log('🚀 [Cron] Starting FPDS daily scraper...');
-    console.log(`📅 Scraping date: ${dateStr}`);
+    console.log('[Cron] Starting FPDS daily scraper...');
+    console.log('[Cron] Multi-day mode: Will scrape last 3 days to handle API delays');
     
     // Get count before scraping
     const supabase = createClient(
@@ -52,15 +48,18 @@ export async function GET(request: NextRequest) {
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
     
+    // Count contracts from last 3 days
+    const threeDaysAgo = new Date(today);
+    threeDaysAgo.setDate(today.getDate() - 3);
+    
     const { count: countBefore } = await supabase
       .from('fpds_contracts')
       .select('*', { count: 'exact', head: true })
-      .gte('last_modified_date', `${dateStr}T00:00:00`)
-      .lt('last_modified_date', `${formatDate(today)}T00:00:00`);
+      .gte('last_modified_date', `${formatDate(threeDaysAgo)}T00:00:00`);
     
-    // Run FPDS daily scraper (optimized for single-day automated runs)
+    // Run FPDS daily scraper (multi-day mode - scrapes last 3 days)
     const { stdout, stderr } = await execAsync(
-      `npx tsx src/scripts/fpds-daily-scraper.ts --date=${dateStr}`,
+      `npx tsx src/scripts/fpds-daily-scraper.ts`,
       {
         cwd: process.cwd(),
         timeout: 3600000 // 1 hour timeout
@@ -68,26 +67,25 @@ export async function GET(request: NextRequest) {
     );
     
     if (stderr && !stderr.includes('[FPDS')) {
-      console.error('⚠️  [Cron] FPDS scraper stderr:', stderr);
+      console.error('[Cron] FPDS scraper stderr:', stderr);
     }
     
     // Get count after scraping
     const { count: countAfter } = await supabase
       .from('fpds_contracts')
       .select('*', { count: 'exact', head: true })
-      .gte('last_modified_date', `${dateStr}T00:00:00`)
-      .lt('last_modified_date', `${formatDate(today)}T00:00:00`);
+      .gte('last_modified_date', `${formatDate(threeDaysAgo)}T00:00:00`);
     
     const duration = Date.now() - startTime;
-    const newContracts = (countAfter || 0) - (countBefore || 0);
     
-    // Extract stats from output
-    const lastLines = stdout.split('\n').slice(-20).join('\n');
-    const newMatch = lastLines.match(/New: (\d+)/);
-    const updatedMatch = lastLines.match(/Updated: (\d+)/);
-    const errorsMatch = lastLines.match(/Errors: (\d+)/);
+    // Extract stats from output (multi-day summary)
+    const lastLines = stdout.split('\n').slice(-30).join('\n');
+    const foundMatch = lastLines.match(/Total Found: (\d+)/);
+    const insertedMatch = lastLines.match(/Total Inserted: (\d+)/);
+    const updatedMatch = lastLines.match(/Total Updated: (\d+)/);
+    const failedMatch = lastLines.match(/Total Failed: (\d+)/);
     
-    console.log('✅ [Cron] FPDS scraping completed successfully');
+    console.log('[Cron] FPDS scraping completed successfully');
     
     // Send success email
     await sendCronSuccessEmail({
@@ -96,20 +94,24 @@ export async function GET(request: NextRequest) {
       date: dateStr,
       duration,
       stats: {
-        total_contracts: countAfter || 0,
-        new_contracts: newMatch ? parseInt(newMatch[1]) : newContracts,
+        days_scraped: 3,
+        total_found: foundMatch ? parseInt(foundMatch[1]) : 0,
+        new_contracts: insertedMatch ? parseInt(insertedMatch[1]) : 0,
         updated_contracts: updatedMatch ? parseInt(updatedMatch[1]) : 0,
-        errors: errorsMatch ? parseInt(errorsMatch[1]) : 0
+        failed: failedMatch ? parseInt(failedMatch[1]) : 0,
+        total_in_db: countAfter || 0
       }
     });
     
     return NextResponse.json({
       success: true,
-      message: `FPDS contracts scraped for ${dateStr}`,
+      message: `FPDS contracts scraped (last 3 days)`,
       date: dateStr,
       stats: {
-        total: countAfter,
-        new: newContracts
+        days_scraped: 3,
+        total_found: foundMatch ? parseInt(foundMatch[1]) : 0,
+        new: insertedMatch ? parseInt(insertedMatch[1]) : 0,
+        updated: updatedMatch ? parseInt(updatedMatch[1]) : 0
       }
     });
     
