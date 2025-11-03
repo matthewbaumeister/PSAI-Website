@@ -214,7 +214,7 @@ export async function fetchBillSummaries(
 }
 
 /**
- * Fetch bill with full details including summaries
+ * Fetch bill with full details including summaries and cosponsors
  */
 export async function fetchBillWithDetails(
   congress: number,
@@ -238,6 +238,30 @@ export async function fetchBillWithDetails(
       versionCode: latestSummary.versionCode
     };
     bill.summaries = summaries; // Keep all summaries for reference
+  }
+  
+  // Fetch cosponsors if there are any
+  if (bill.cosponsors && bill.cosponsors.count > 0) {
+    try {
+      const cosponsorsList = await fetchBillCosponsors(congress, billType, billNumber);
+      if (cosponsorsList && cosponsorsList.length > 0) {
+        // Store full cosponsor data
+        bill.cosponsors = cosponsorsList.map((c: any) => ({
+          bioguideId: c.bioguideId,
+          fullName: c.fullName,
+          firstName: c.firstName,
+          lastName: c.lastName,
+          party: c.party,
+          state: c.state,
+          district: c.district,
+          sponsorshipDate: c.sponsorshipDate,
+          isOriginalCosponsor: c.isOriginalCosponsor
+        }));
+      }
+    } catch (error) {
+      console.log(`[Congress.gov] Error fetching cosponsors for ${billType.toUpperCase()} ${billNumber}`);
+      // Keep the reference object if fetch fails
+    }
   }
   
   return bill;
@@ -641,8 +665,8 @@ export function normalizeBill(rawBill: any): NormalizedBill {
     sponsor_party: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].party : undefined,
     sponsor_state: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].state : undefined,
     sponsor_bioguide_id: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].bioguideId : undefined,
-    cosponsor_count: rawBill.cosponsors?.count || 0,
-    cosponsors: rawBill.cosponsors,
+    cosponsor_count: Array.isArray(rawBill.cosponsors) ? rawBill.cosponsors.length : (rawBill.cosponsors?.count || 0),
+    cosponsors: Array.isArray(rawBill.cosponsors) ? rawBill.cosponsors : null, // Only store if we have actual data
     committees: Array.isArray(rawBill.committees) ? rawBill.committees.map((c: any) => c.name) : [],
     primary_committee: Array.isArray(rawBill.committees) && rawBill.committees[0] ? rawBill.committees[0].name : undefined,
     actions: rawBill.actions,
