@@ -169,24 +169,37 @@ async function getArticleListPage(browser: Browser, pageNum: number = 1): Promis
     
     const articles: ArticleInfo[] = [];
     
-    $('.river-list .item').each((_, el) => {
+    // Find all links that contain "Contracts For" in the text
+    $('a').each((_, el) => {
       const $el = $(el);
-      const relativeUrl = $el.find('a').attr('href');
-      const title = $el.find('a').text().trim();
-      const dateText = $el.find('time').attr('datetime') || $el.find('.date').text().trim();
+      const title = $el.text().trim();
+      const href = $el.attr('href');
       
-      if (!relativeUrl || !title || !dateText) return;
+      // Only process links with "Contracts For" in title
+      if (!title.includes('Contracts For') || !href) return;
       
-      const fullUrl = relativeUrl.startsWith('http') 
-        ? relativeUrl 
-        : `https://www.defense.gov${relativeUrl}`;
+      // Extract date from title like "Contracts For Sept. 30, 2025"
+      const dateMatch = title.match(/Contracts For (.+)/);
+      if (!dateMatch) return;
+      
+      const dateStr = dateMatch[1].trim();
+      const publishedDate = new Date(dateStr);
+      
+      // Invalid date check
+      if (isNaN(publishedDate.getTime())) {
+        console.log(`   ⚠️  Could not parse date from: "${title}"`);
+        return;
+      }
+      
+      const fullUrl = href.startsWith('http') 
+        ? href 
+        : `https://www.defense.gov${href}`;
       
       // Extract article ID from URL: /News/Contracts/Contract/Article/4319114/
       const articleIdMatch = fullUrl.match(/\/Article\/(\d+)\//);
       if (!articleIdMatch) return;
       
       const articleId = parseInt(articleIdMatch[1]);
-      const publishedDate = new Date(dateText);
       
       articles.push({
         id: articleId,
@@ -195,6 +208,8 @@ async function getArticleListPage(browser: Browser, pageNum: number = 1): Promis
         publishedDate
       });
     });
+    
+    console.log(`   Found ${articles.length} contract articles on this page`);
     
     return articles;
   } finally {
