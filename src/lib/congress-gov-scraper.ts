@@ -214,55 +214,99 @@ export async function fetchBillSummaries(
 }
 
 /**
- * Fetch bill with full details including summaries and cosponsors
+ * COMPREHENSIVE: Fetch bill with ALL POSSIBLE data from ALL endpoints
+ * This fetches EVERYTHING Congress.gov has about a bill
  */
 export async function fetchBillWithDetails(
   congress: number,
   billType: string,
   billNumber: number
 ): Promise<any> {
+  console.log(`[Congress.gov] 📥 Fetching COMPLETE data for ${billType.toUpperCase()} ${billNumber}`);
+  
   const bill = await fetchBill(congress, billType, billNumber);
   if (!bill) return null;
   
-  // Fetch summaries separately
-  const summaries = await fetchBillSummaries(congress, billType, billNumber);
+  // Track what we're fetching for logging
+  const fetchTasks = [];
   
-  // Attach summaries to bill object
-  if (summaries && summaries.length > 0) {
-    // Get the most recent summary
-    const latestSummary = summaries[0];
-    bill.summary = {
-      text: latestSummary.text,
-      actionDate: latestSummary.actionDate,
-      updateDate: latestSummary.updateDate,
-      versionCode: latestSummary.versionCode
-    };
-    bill.summaries = summaries; // Keep all summaries for reference
-  }
-  
-  // Fetch cosponsors if there are any
-  if (bill.cosponsors && bill.cosponsors.count > 0) {
-    try {
-      const cosponsorsList = await fetchBillCosponsors(congress, billType, billNumber);
-      if (cosponsorsList && cosponsorsList.length > 0) {
-        // Store full cosponsor data
-        bill.cosponsors = cosponsorsList.map((c: any) => ({
-          bioguideId: c.bioguideId,
-          fullName: c.fullName,
-          firstName: c.firstName,
-          lastName: c.lastName,
-          party: c.party,
-          state: c.state,
-          district: c.district,
-          sponsorshipDate: c.sponsorshipDate,
-          isOriginalCosponsor: c.isOriginalCosponsor
-        }));
+  // 1. SUMMARIES - All versions with full text
+  fetchTasks.push(
+    fetchBillSummaries(congress, billType, billNumber).then(summaries => {
+      if (summaries && summaries.length > 0) {
+        const latestSummary = summaries[0];
+        bill.summary = {
+          text: latestSummary.text,
+          actionDate: latestSummary.actionDate,
+          updateDate: latestSummary.updateDate,
+          versionCode: latestSummary.versionCode
+        };
+        bill.summaries = summaries;
+        console.log(`  ✓ Summaries: ${summaries.length} versions`);
       }
-    } catch (error) {
-      console.log(`[Congress.gov] Error fetching cosponsors for ${billType.toUpperCase()} ${billNumber}`);
-      // Keep the reference object if fetch fails
-    }
+    }).catch(() => console.log('  ⚠ No summaries'))
+  );
+  
+  // 2. COSPONSORS - Full list with party, state, dates
+  if (bill.cosponsors && bill.cosponsors.count > 0) {
+    fetchTasks.push(
+      fetchBillCosponsors(congress, billType, billNumber).then(cosponsorsList => {
+        if (cosponsorsList && cosponsorsList.length > 0) {
+          bill.cosponsors = cosponsorsList.map((c: any) => ({
+            bioguideId: c.bioguideId,
+            fullName: c.fullName,
+            firstName: c.firstName,
+            lastName: c.lastName,
+            party: c.party,
+            state: c.state,
+            district: c.district,
+            sponsorshipDate: c.sponsorshipDate,
+            isOriginalCosponsor: c.isOriginalCosponsor
+          }));
+          console.log(`  ✓ Cosponsors: ${cosponsorsList.length} members`);
+        }
+      }).catch(() => console.log('  ⚠ No cosponsors'))
+    );
   }
+  
+  // 3. ACTIONS - Complete timeline of every action
+  if (bill.actions && bill.actions.count > 0) {
+    fetchTasks.push(
+      fetchBillActions(congress, billType, billNumber).then(actionsList => {
+        if (actionsList && actionsList.length > 0) {
+          bill.actions = actionsList;
+          console.log(`  ✓ Actions: ${actionsList.length} total actions`);
+        }
+      }).catch(() => console.log('  ⚠ Actions failed'))
+    );
+  }
+  
+  // 4. AMENDMENTS - All amendments with full details
+  if (bill.amendments && bill.amendments.count > 0) {
+    fetchTasks.push(
+      fetchBillAmendments(congress, billType, billNumber).then(amendmentsList => {
+        if (amendmentsList && amendmentsList.length > 0) {
+          bill.amendments = amendmentsList;
+          console.log(`  ✓ Amendments: ${amendmentsList.length} amendments`);
+        }
+      }).catch(() => console.log('  ⚠ No amendments'))
+    );
+  }
+  
+  // 5. TEXT VERSIONS - All published versions (PDF, XML, HTML links)
+  fetchTasks.push(
+    fetchBillText(congress, billType, billNumber).then(textVersions => {
+      if (textVersions && textVersions.length > 0) {
+        bill.textVersions = textVersions;
+        console.log(`  ✓ Text Versions: ${textVersions.length} versions`);
+      }
+    }).catch(() => console.log('  ⚠ No text versions'))
+  );
+  
+  // Wait for all fetches to complete
+  await Promise.all(fetchTasks);
+  
+  console.log(`[Congress.gov] ✅ Complete data fetched for ${billType.toUpperCase()} ${billNumber}`);
   
   return bill;
 }
