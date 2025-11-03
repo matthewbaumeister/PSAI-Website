@@ -1,16 +1,20 @@
 {
   "crons": [
     {
-      "path": "/api/cron/scrape-sam-gov",
-      "schedule": "0 6 * * *"
-    },
-    {
       "path": "/api/cron/scrape-fpds",
-      "schedule": "0 3 * * *"
+      "schedule": "0 12 * * *"
     },
     {
       "path": "/api/cron/scrape-dod-news",
-      "schedule": "0 4 * * *"
+      "schedule": "15 12 * * *"
+    },
+    {
+      "path": "/api/cron/scrape-sam-gov",
+      "schedule": "30 12 * * *"
+    },
+    {
+      "path": "/api/cron/scrape-dsip",
+      "schedule": "45 12 * * *"
     }
   ]
 }
