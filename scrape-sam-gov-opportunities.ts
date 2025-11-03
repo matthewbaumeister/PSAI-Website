@@ -7,9 +7,15 @@
  * Scrapes contract opportunities from SAM.gov and links them to FPDS contracts
  * 
  * Usage:
- *   npx tsx scrape-sam-gov-opportunities.ts                    # Last 30 days
- *   npx tsx scrape-sam-gov-opportunities.ts --days=90          # Last 90 days
+ *   npx tsx scrape-sam-gov-opportunities.ts                    # Last 30 days (fast mode)
+ *   npx tsx scrape-sam-gov-opportunities.ts --days=90          # Last 90 days (fast mode)
  *   npx tsx scrape-sam-gov-opportunities.ts --from=2024-01-01 --to=2024-12-31
+ *   npx tsx scrape-sam-gov-opportunities.ts --days=7 --full-details  # Full details (slower, more data)
+ * 
+ * Modes:
+ *   Fast Mode (default): Gets basic info from search API (descriptions may be truncated/links)
+ *   Full Details Mode: Fetches complete data for each opportunity (full descriptions, all attachments)
+ *                      Uses more API calls but gets complete data. Recommended for important date ranges.
  * 
  * ============================================
  */
@@ -24,12 +30,21 @@ import { scrapeSAMGovOpportunities } from './src/lib/sam-gov-opportunities-scrap
 // Parse Command Line Arguments
 // ============================================
 
+function formatDateForSAM(date: Date): string {
+  // SAM.gov API requires MM/dd/yyyy format
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${month}/${day}/${year}`;
+}
+
 function parseArgs() {
   const args = process.argv.slice(2);
   
   let days: number | null = null;
   let postedFrom: string | null = null;
   let postedTo: string | null = null;
+  let fullDetails = false;
   
   for (const arg of args) {
     if (arg.startsWith('--days=')) {
@@ -38,28 +53,38 @@ function parseArgs() {
       postedFrom = arg.split('=')[1];
     } else if (arg.startsWith('--to=')) {
       postedTo = arg.split('=')[1];
+    } else if (arg === '--full-details' || arg === '--full') {
+      fullDetails = true;
     }
   }
   
-  // Calculate dates
+  // Calculate dates in MM/dd/yyyy format for SAM.gov API
   if (days) {
     const toDate = new Date();
     const fromDate = new Date();
     fromDate.setDate(toDate.getDate() - days);
     
-    postedFrom = fromDate.toISOString().split('T')[0];
-    postedTo = toDate.toISOString().split('T')[0];
+    postedFrom = formatDateForSAM(fromDate);
+    postedTo = formatDateForSAM(toDate);
   } else if (!postedFrom || !postedTo) {
     // Default: Last 30 days
     const toDate = new Date();
     const fromDate = new Date();
     fromDate.setDate(toDate.getDate() - 30);
     
-    postedFrom = fromDate.toISOString().split('T')[0];
-    postedTo = toDate.toISOString().split('T')[0];
+    postedFrom = formatDateForSAM(fromDate);
+    postedTo = formatDateForSAM(toDate);
+  } else {
+    // Convert YYYY-MM-DD input to MM/dd/yyyy
+    if (postedFrom && postedFrom.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      postedFrom = formatDateForSAM(new Date(postedFrom));
+    }
+    if (postedTo && postedTo.match(/^\d{4}-\d{2}-\d{2}$/)) {
+      postedTo = formatDateForSAM(new Date(postedTo));
+    }
   }
   
-  return { postedFrom, postedTo };
+  return { postedFrom, postedTo, fullDetails };
 }
 
 // ============================================
@@ -90,7 +115,7 @@ function validateEnvironment() {
 async function main() {
   validateEnvironment();
   
-  const { postedFrom, postedTo } = parseArgs();
+  const { postedFrom, postedTo, fullDetails } = parseArgs();
   
   console.log(`
 ╔════════════════════════════════════════════╗
@@ -111,7 +136,8 @@ Starting in 3 seconds...
       postedFrom: postedFrom!,
       postedTo: postedTo!,
       limit: 100,
-      includeAwards: true
+      includeAwards: true,
+      fullDetails: fullDetails
     });
     
     console.log('\n✅ SAM.gov scraping completed successfully!\n');

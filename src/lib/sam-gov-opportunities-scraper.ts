@@ -115,9 +115,12 @@ export class SAMGovOpportunitiesScraper {
     });
 
     try {
+      const url = `${SAM_GOV_API_BASE}?${params}`;
       console.log(`[SAM.gov] Fetching opportunities: offset=${offset}, limit=${limit}`);
+      console.log(`[SAM.gov] URL: ${url.substring(0, 150)}...`);
+      console.log(`[SAM.gov] Date range: ${postedFrom} to ${postedTo}`);
       
-      const response = await fetch(`${SAM_GOV_API_BASE}?${params}`, {
+      const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -125,6 +128,8 @@ export class SAMGovOpportunitiesScraper {
       });
 
       if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`[SAM.gov] API Response: ${errorText.substring(0, 500)}`);
         throw new Error(`SAM.gov API error: ${response.status} ${response.statusText}`);
       }
 
@@ -165,59 +170,89 @@ export class SAMGovOpportunitiesScraper {
     }
   }
 
-  /**
-   * Normalize SAM.gov opportunity to database format
-   */
-  normalizeOpportunity(raw: SAMOpportunity): any {
+/**
+ * Normalize SAM.gov opportunity to database format
+ * @param raw - Raw opportunity data (from search or details API)
+ * @param fullDetails - Optional full details data (if fetched separately)
+ */
+  normalizeOpportunity(raw: SAMOpportunity, fullDetails?: any): any {
+    // If we have full details, merge them in
+    const data = fullDetails || raw;
+    
     // Extract department and sub-tier from fullParentPathName
-    const pathParts = raw.fullParentPathName?.split('.') || [];
+    const pathParts = data.fullParentPathName?.split('.') || [];
     const department = pathParts[0] || null;
     const subTier = pathParts[1] || null;
     const office = pathParts[2] || null;
 
-    // Extract primary contact
-    const primaryContact = raw.pointOfContact?.[0] ? {
-      fullName: raw.pointOfContact[0].fullName,
-      email: raw.pointOfContact[0].email,
-      phone: raw.pointOfContact[0].phone,
-      type: raw.pointOfContact[0].type
+    // Extract primary contact (from details or search)
+    const primaryContact = data.pointOfContact?.[0] ? {
+      fullName: data.pointOfContact[0].fullName,
+      email: data.pointOfContact[0].email,
+      phone: data.pointOfContact[0].phone,
+      type: data.pointOfContact[0].type
+    } : null;
+    
+    // Extract secondary contact (usually only in full details)
+    const secondaryContact = data.pointOfContact?.[1] ? {
+      fullName: data.pointOfContact[1].fullName,
+      email: data.pointOfContact[1].email,
+      phone: data.pointOfContact[1].phone,
+      type: data.pointOfContact[1].type
     } : null;
 
     // Extract award information if available
-    const award = raw.award || {};
+    const award = data.award || {};
+    
+    // Get FULL description from details API if available
+    // The search API often returns just a link, but details API has the full text
+    let description = null;
+    if (fullDetails?.description) {
+      description = fullDetails.description;
+    } else if (data.description && !data.description.startsWith('https://')) {
+      // Only use search description if it's actual text, not a link
+      description = data.description;
+    }
+    
+    // Get all attachments from details API (more complete than search)
+    const attachments = fullDetails?.attachments || data.links || null;
+    
+    // Get additional info text (usually only in full details)
+    const additionalInfo = fullDetails?.additionalInfoText || data.additionalInfoText || null;
 
     return {
-      notice_id: raw.noticeId,
-      solicitation_number: raw.solicitationNumber || null,
+      notice_id: data.noticeId,
+      solicitation_number: data.solicitationNumber || null,
       
-      title: raw.title,
-      notice_type: raw.type,
-      base_type: raw.baseType,
+      title: data.title,
+      notice_type: data.type,
+      base_type: data.baseType,
       
-      description: raw.description || null,
-      type_of_set_aside: raw.typeOfSetAside || null,
-      type_of_set_aside_description: raw.typeOfSetAsideDescription || null,
+      description: description,
+      type_of_set_aside: data.typeOfSetAside || null,
+      type_of_set_aside_description: data.typeOfSetAsideDescription || null,
       
-      posted_date: raw.postedDate || null,
-      response_deadline: raw.responseDeadLine || null,
-      archive_date: raw.archiveDate || null,
-      original_posted_date: raw.postedDate || null,
-      last_modified_date: raw.postedDate || null, // SAM doesn't provide modified date in search
+      posted_date: data.postedDate || null,
+      response_deadline: data.responseDeadLine || null,
+      archive_date: data.archiveDate || null,
+      original_posted_date: data.postedDate || null,
+      last_modified_date: data.lastModifiedDate || data.postedDate || null,
       
-      naics_code: raw.naicsCode || null,
-      classification_code: raw.classificationCode || null,
+      naics_code: data.naicsCode || null,
+      classification_code: data.classificationCode || null,
       
       department,
       sub_tier: subTier,
       office,
-      full_parent_path: raw.fullParentPathName,
+      full_parent_path: data.fullParentPathName,
       
       primary_contact: primaryContact,
+      secondary_contact: secondaryContact,
       
-      place_of_performance_city: raw.organizationLocationCityName || null,
-      place_of_performance_state: raw.organizationLocationStateCode || null,
-      place_of_performance_country: raw.organizationLocationCountryCode || 'USA',
-      place_of_performance_zip: raw.organizationLocationZIPCode || null,
+      place_of_performance_city: data.organizationLocationCityName || data.placeOfPerformance?.city?.name || null,
+      place_of_performance_state: data.organizationLocationStateCode || data.placeOfPerformance?.state?.code || null,
+      place_of_performance_country: data.organizationLocationCountryCode || data.placeOfPerformance?.country?.code || 'USA',
+      place_of_performance_zip: data.organizationLocationZIPCode || data.placeOfPerformance?.zip || null,
       
       award_number: award.number || null,
       award_date: award.date || null,
@@ -226,16 +261,16 @@ export class SAMGovOpportunitiesScraper {
       awardee_duns: award.awardee?.duns || null,
       awardee_uei: award.awardee?.uei || null,
       
-      ui_link: raw.uiLink || `https://sam.gov/opp/${raw.noticeId}/view`,
-      attachments: raw.links || null,
-      resource_links: raw.resourceLinks || null,
+      ui_link: data.uiLink || `https://sam.gov/opp/${data.noticeId}/view`,
+      attachments: attachments,
+      resource_links: data.resourceLinks || null,
       
-      additional_info_text: raw.additionalInfoText || null,
+      additional_info_text: additionalInfo,
       
-      active: raw.active === 'Yes',
-      is_archived: raw.archiveType ? true : false,
+      active: data.active === 'Yes',
+      is_archived: data.archiveType ? true : false,
       
-      data_source: 'sam.gov-api',
+      data_source: fullDetails ? 'sam.gov-api-full' : 'sam.gov-api-search',
       last_scraped: new Date().toISOString(),
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
@@ -318,14 +353,22 @@ export class SAMGovOpportunitiesScraper {
   // Helper Functions
   // ============================================
 
+  private formatDateForSAM(date: Date): string {
+    // SAM.gov API requires MM/dd/yyyy format
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${month}/${day}/${year}`;
+  }
+
   private getToday(): string {
-    return new Date().toISOString().split('T')[0];
+    return this.formatDateForSAM(new Date());
   }
 
   private getDateDaysAgo(days: number): string {
     const date = new Date();
     date.setDate(date.getDate() - days);
-    return date.toISOString().split('T')[0];
+    return this.formatDateForSAM(date);
   }
 }
 
@@ -333,8 +376,9 @@ export class SAMGovOpportunitiesScraper {
 // Convenience Export
 // ============================================
 
-export async function scrapeSAMGovOpportunities(options: ScraperOptions = {}): Promise<void> {
+export async function scrapeSAMGovOpportunities(options: ScraperOptions & { fullDetails?: boolean } = {}): Promise<void> {
   const scraper = new SAMGovOpportunitiesScraper();
+  const fetchFullDetails = options.fullDetails || false;
   
   console.log(`
 ╔════════════════════════════════════════════╗
@@ -342,6 +386,7 @@ export async function scrapeSAMGovOpportunities(options: ScraperOptions = {}): P
 ╚════════════════════════════════════════════╝
 
 📅 Date Range: ${options.postedFrom || 'Last 30 days'} → ${options.postedTo || 'Today'}
+${fetchFullDetails ? '🔍 Mode: FULL DETAILS (descriptions, attachments, contacts)' : '⚡ Mode: FAST (search results only)'}
 🔄 Fetching all pages...
   `);
 
@@ -361,8 +406,34 @@ export async function scrapeSAMGovOpportunities(options: ScraperOptions = {}): P
         break;
       }
 
-      // Normalize
-      const normalized = opportunities.map(o => scraper.normalizeOpportunity(o));
+      // Fetch full details if requested
+      let normalized: any[];
+      
+      if (fetchFullDetails) {
+        console.log(`[SAM.gov] Fetching full details for ${opportunities.length} opportunities...`);
+        normalized = [];
+        
+        for (let i = 0; i < opportunities.length; i++) {
+          const opp = opportunities[i];
+          
+          // Fetch full details
+          const details = await scraper.getOpportunityDetails(opp.noticeId);
+          
+          // Normalize with full details
+          normalized.push(scraper.normalizeOpportunity(opp, details));
+          
+          // Progress indicator
+          if ((i + 1) % 10 === 0 || i === opportunities.length - 1) {
+            console.log(`[SAM.gov] Fetched details: ${i + 1}/${opportunities.length}`);
+          }
+          
+          // Rate limiting between detail requests (important!)
+          await scraper.delay(1000);
+        }
+      } else {
+        // Fast mode: just use search results
+        normalized = opportunities.map(o => scraper.normalizeOpportunity(o));
+      }
       
       // Save
       const { inserted, updated, errors } = await scraper.saveOpportunities(normalized);
