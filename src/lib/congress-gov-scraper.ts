@@ -12,7 +12,9 @@
  * ============================================
  */
 
+// Load environment variables FIRST
 import 'dotenv/config';
+
 import { createClient } from '@supabase/supabase-js';
 import axios, { AxiosError } from 'axios';
 
@@ -343,10 +345,13 @@ export function isDefenseRelated(bill: any): boolean {
     textToSearch.includes(keyword.toLowerCase())
   );
 
-  // Check for defense committee
-  const hasDefenseCommittee = bill.committees?.some((c: any) => 
-    DEFENSE_COMMITTEES.includes(c.systemCode)
-  );
+  // Check for defense committee (handle various API structures)
+  let hasDefenseCommittee = false;
+  if (Array.isArray(bill.committees)) {
+    hasDefenseCommittee = bill.committees.some((c: any) => 
+      DEFENSE_COMMITTEES.includes(c.systemCode)
+    );
+  }
 
   return hasDefenseKeyword || hasDefenseCommittee;
 }
@@ -367,9 +372,12 @@ export function calculateDefenseRelevanceScore(bill: any): number {
   score += Math.min(keywordMatches * 5, 50);
 
   // Defense committee (30 points)
-  const hasDefenseCommittee = bill.committees?.some((c: any) => 
-    DEFENSE_COMMITTEES.includes(c.systemCode)
-  );
+  let hasDefenseCommittee = false;
+  if (Array.isArray(bill.committees)) {
+    hasDefenseCommittee = bill.committees.some((c: any) => 
+      DEFENSE_COMMITTEES.includes(c.systemCode)
+    );
+  }
   if (hasDefenseCommittee) score += 30;
 
   // Title has NDAA or defense (20 points)
@@ -523,27 +531,27 @@ export function normalizeBill(rawBill: any): NormalizedBill {
     bill_type: rawBill.type,
     bill_number: rawBill.number,
     title: rawBill.title || 'Untitled',
-    short_title: rawBill.titles?.find((t: any) => t.titleType === 'Short Title(s) as Introduced')?.title,
-    official_title: rawBill.titles?.find((t: any) => t.titleType === 'Official Title as Introduced')?.title,
+    short_title: Array.isArray(rawBill.titles) ? rawBill.titles.find((t: any) => t.titleType === 'Short Title(s) as Introduced')?.title : undefined,
+    official_title: Array.isArray(rawBill.titles) ? rawBill.titles.find((t: any) => t.titleType === 'Official Title as Introduced')?.title : undefined,
     introduced_date: rawBill.introducedDate ? new Date(rawBill.introducedDate).toISOString().split('T')[0] : undefined,
     latest_action_date: rawBill.latestAction?.actionDate,
     status: rawBill.latestAction?.text,
-    is_law: rawBill.laws?.length > 0 || false,
+    is_law: Array.isArray(rawBill.laws) && rawBill.laws.length > 0 || false,
     summary: rawBill.summary?.text,
     policy_area: rawBill.policyArea?.name,
-    legislative_subjects: rawBill.subjects?.legislativeSubjects?.map((s: any) => s.name) || [],
+    legislative_subjects: Array.isArray(rawBill.subjects?.legislativeSubjects) ? rawBill.subjects.legislativeSubjects.map((s: any) => s.name) : [],
     is_defense_related: isDefense,
     defense_relevance_score: defenseScore,
     defense_programs_mentioned: programs.length > 0 ? programs : undefined,
     contractors_mentioned: contractors.length > 0 ? contractors : undefined,
-    sponsor_name: rawBill.sponsors?.[0]?.fullName,
-    sponsor_party: rawBill.sponsors?.[0]?.party,
-    sponsor_state: rawBill.sponsors?.[0]?.state,
-    sponsor_bioguide_id: rawBill.sponsors?.[0]?.bioguideId,
+    sponsor_name: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].fullName : undefined,
+    sponsor_party: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].party : undefined,
+    sponsor_state: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].state : undefined,
+    sponsor_bioguide_id: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].bioguideId : undefined,
     cosponsor_count: rawBill.cosponsors?.count || 0,
     cosponsors: rawBill.cosponsors,
-    committees: rawBill.committees?.map((c: any) => c.name) || [],
-    primary_committee: rawBill.committees?.[0]?.name,
+    committees: Array.isArray(rawBill.committees) ? rawBill.committees.map((c: any) => c.name) : [],
+    primary_committee: Array.isArray(rawBill.committees) && rawBill.committees[0] ? rawBill.committees[0].name : undefined,
     actions: rawBill.actions,
     action_count: rawBill.actions?.count || 0,
     latest_action_text: rawBill.latestAction?.text,
