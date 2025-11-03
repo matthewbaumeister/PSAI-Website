@@ -348,8 +348,13 @@ const DEFENSE_KEYWORDS = [
   // Branches
   'army', 'navy', 'air force', 'marine corps', 'space force',
   
-  // Programs
-  'procurement', 'acquisition', 'weapons system', 'combat system',
+  // Contracting & Procurement
+  'defense contractor', 'defense contracting', 'federal contractor',
+  'procurement', 'acquisition', 'defense acquisition', 'procurement streamlining',
+  'defense industrial base', 'defense industry', 'weapons system', 'combat system',
+  'competition in defense', 'merger defense', 'contractor competition',
+  
+  // Weapons & Equipment
   'fighter', 'bomber', 'submarine', 'destroyer', 'aircraft carrier',
   'f-35', 'f-15', 'f-16', 'f-18', 'b-21', 'b-52',
   
@@ -426,7 +431,7 @@ export function calculateDefenseRelevanceScore(bill: any): number {
   if (hasDefenseCommittee) score += 30;
 
   // Title has NDAA or defense (20 points)
-  if (/ndaa|national defense authorization|defense appropriations/i.test(bill.title || '')) {
+  if (/ndaa|national defense authorization|defense appropriations|defense contractor|procurement/i.test(bill.title || '')) {
     score += 20;
   }
 

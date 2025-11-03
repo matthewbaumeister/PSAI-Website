@@ -324,16 +324,21 @@ async function importAllDefenseBills(congress: number): Promise<{
         // Normalize
         const normalized = normalizeBill(rawBill);
 
-        // Only save defense-related bills (score >= 10 to catch defense-adjacent bills)
-        if (normalized.is_defense_related && normalized.defense_relevance_score >= 10) {
-          const saved = await saveBill(normalized);
+        // Save ALL bills (mark defense relevance for filtering)
+        const saved = await saveBill(normalized);
 
-          if (saved) {
-            success++;
-            log(`  ✓ [${i + 1}/${bills.length}] ${normalized.bill_type.toUpperCase()} ${normalized.bill_number}: ${normalized.title.substring(0, 50)}... (score: ${normalized.defense_relevance_score})`);
+        if (saved) {
+          success++;
+          if (normalized.is_defense_related) {
+            log(`  ✓ [${i + 1}/${bills.length}] ${normalized.bill_type.toUpperCase()} ${normalized.bill_number}: ${normalized.title.substring(0, 50)}... (defense score: ${normalized.defense_relevance_score})`);
           } else {
-            failed++;
+            // Log non-defense bills more quietly
+            if ((i + 1) % 50 === 0) {
+              log(`  ℹ [${i + 1}/${bills.length}] Processed ${success} bills so far...`);
+            }
           }
+        } else {
+          failed++;
         }
 
         // Rate limiting
