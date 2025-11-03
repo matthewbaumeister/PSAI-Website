@@ -90,20 +90,22 @@ export async function GET(request: NextRequest) {
     }
     
     // Send success email notification
-    const durationMinutes = Math.floor((Date.now() - startTime) / 60000);
+    const durationSeconds = Math.floor((Date.now() - startTime) / 1000);
     await sendCronSuccessEmail({
-      scraperName: 'SBIR/DSIP Scraper',
-      recordsProcessed: result.processedTopics || 0,
-      newRecords: result.newRecords || 0,
-      updatedRecords: result.updatedRecords || 0,
-      duration: `${durationMinutes} minutes`,
-      additionalStats: [
-        `Total Active Topics: ${result.totalTopics || 0}`,
-        `Preserved Records: ${result.preservedRecords || 0}`,
-        `Instructions Generated: ${result.instructionsGenerated || 0}`,
-        `Instructions Skipped: ${result.instructionsSkipped || 0}`,
-        `Instructions Failed: ${result.instructionsFailed || 0}`
-      ]
+      jobName: 'SBIR/DSIP Scraper',
+      success: true,
+      date: new Date().toISOString().split('T')[0],
+      duration: durationSeconds,
+      stats: {
+        total_active_topics: result.totalTopics || 0,
+        processed: result.processedTopics || 0,
+        new_records: result.newRecords || 0,
+        updated_records: result.updatedRecords || 0,
+        preserved_records: result.preservedRecords || 0,
+        instructions_generated: result.instructionsGenerated || 0,
+        instructions_skipped: result.instructionsSkipped || 0,
+        instructions_failed: result.instructionsFailed || 0
+      }
     });
     
     return NextResponse.json({
@@ -133,10 +135,10 @@ export async function GET(request: NextRequest) {
     
     // Send failure email notification
     await sendCronFailureEmail({
-      scraperName: 'SBIR/DSIP Scraper',
-      errorMessage: error instanceof Error ? error.message : 'Unknown error',
-      errorStack: error instanceof Error ? error.stack : String(error),
-      additionalContext: detailedLogs.slice(-10).join('\n') // Last 10 log lines
+      jobName: 'SBIR/DSIP Scraper',
+      success: false,
+      date: new Date().toISOString().split('T')[0],
+      error: error instanceof Error ? error.message : 'Unknown error'
     });
     
     return NextResponse.json({ 
