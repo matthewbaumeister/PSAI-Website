@@ -24,6 +24,7 @@
 import 'dotenv/config';
 import {
   fetchBill,
+  fetchBillWithDetails,
   normalizeBill,
   saveBill,
   searchBills,
@@ -228,8 +229,8 @@ async function importPriorityBills(): Promise<{
       log(`[${i + 1}/${PRIORITY_BILLS.length}] Fetching: ${bill.description}`);
       log(`  Congress ${bill.congress}, ${bill.type.toUpperCase()} ${bill.number}`);
 
-      // Fetch bill details
-      const rawBill = await fetchBill(bill.congress, bill.type, bill.number);
+      // Fetch bill details with summaries
+      const rawBill = await fetchBillWithDetails(bill.congress, bill.type, bill.number);
 
       if (!rawBill) {
         log(`  ✗ Bill not found`);
@@ -308,8 +309,8 @@ async function importAllDefenseBills(congress: number): Promise<{
       const billSummary = bills[i];
 
       try {
-        // Fetch full bill
-        const rawBill = await fetchBill(
+        // Fetch full bill with summaries
+        const rawBill = await fetchBillWithDetails(
           billSummary.congress,
           billSummary.type,
           billSummary.number
@@ -323,8 +324,8 @@ async function importAllDefenseBills(congress: number): Promise<{
         // Normalize
         const normalized = normalizeBill(rawBill);
 
-        // Only save defense-related bills
-        if (normalized.is_defense_related && normalized.defense_relevance_score >= 30) {
+        // Only save defense-related bills (score >= 10 to catch defense-adjacent bills)
+        if (normalized.is_defense_related && normalized.defense_relevance_score >= 10) {
           const saved = await saveBill(normalized);
 
           if (saved) {

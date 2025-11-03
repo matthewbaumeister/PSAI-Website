@@ -194,6 +194,51 @@ export async function fetchBillCosponsors(
   return result?.cosponsors || [];
 }
 
+export async function fetchBillSummaries(
+  congress: number,
+  billType: string,
+  billNumber: number
+): Promise<any[]> {
+  try {
+    const endpoint = `/bill/${congress}/${billType}/${billNumber}/summaries`;
+    const result = await congressGovApiCall(endpoint);
+    return result?.summaries || [];
+  } catch (error) {
+    console.log(`[Congress.gov] No summaries available for ${billType.toUpperCase()} ${billNumber}`);
+    return [];
+  }
+}
+
+/**
+ * Fetch bill with full details including summaries
+ */
+export async function fetchBillWithDetails(
+  congress: number,
+  billType: string,
+  billNumber: number
+): Promise<any> {
+  const bill = await fetchBill(congress, billType, billNumber);
+  if (!bill) return null;
+  
+  // Fetch summaries separately
+  const summaries = await fetchBillSummaries(congress, billType, billNumber);
+  
+  // Attach summaries to bill object
+  if (summaries && summaries.length > 0) {
+    // Get the most recent summary
+    const latestSummary = summaries[0];
+    bill.summary = {
+      text: latestSummary.text,
+      actionDate: latestSummary.actionDate,
+      updateDate: latestSummary.updateDate,
+      versionCode: latestSummary.versionCode
+    };
+    bill.summaries = summaries; // Keep all summaries for reference
+  }
+  
+  return bill;
+}
+
 // ============================================
 // Amendments API
 // ============================================
@@ -514,6 +559,25 @@ export interface NormalizedBill {
   api_response: any;
 }
 
+/**
+ * Generate correct Congress.gov URL for a bill
+ */
+function generateCongressGovUrl(congress: number, billType: string, billNumber: number): string {
+  const typeMap: Record<string, string> = {
+    'hr': 'house-bill',
+    's': 'senate-bill',
+    'hjres': 'house-joint-resolution',
+    'sjres': 'senate-joint-resolution',
+    'hconres': 'house-concurrent-resolution',
+    'sconres': 'senate-concurrent-resolution',
+    'hres': 'house-resolution',
+    'sres': 'senate-resolution'
+  };
+  
+  const urlType = typeMap[billType.toLowerCase()] || 'bill';
+  return `https://www.congress.gov/bill/${congress}th-congress/${urlType}/${billNumber}`;
+}
+
 export function normalizeBill(rawBill: any): NormalizedBill {
   const isDefense = isDefenseRelated(rawBill);
   const defenseScore = isDefense ? calculateDefenseRelevanceScore(rawBill) : 0;
@@ -555,7 +619,7 @@ export function normalizeBill(rawBill: any): NormalizedBill {
     actions: rawBill.actions,
     action_count: rawBill.actions?.count || 0,
     latest_action_text: rawBill.latestAction?.text,
-    congress_gov_url: `https://www.congress.gov/bill/${rawBill.congress}th-congress/${rawBill.type}-bill/${rawBill.number}`,
+    congress_gov_url: generateCongressGovUrl(rawBill.congress, rawBill.type, rawBill.number),
     api_response: rawBill
   };
 }
