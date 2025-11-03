@@ -133,7 +133,7 @@ SELECT
 FROM fpds_contracts
 WHERE last_modified_date >= CURRENT_DATE - INTERVAL '60 days'
 GROUP BY piid, vendor_name
-HAVING COUNT(*) > 1 AND MAX(date_signed) - MIN(date_signed) > INTERVAL '30 days'
+HAVING COUNT(*) > 1 AND MAX(date_signed) - MIN(date_signed) > 30  -- DATE subtraction returns integer days
 ORDER BY days_between DESC
 LIMIT 20;
 
