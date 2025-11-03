@@ -122,6 +122,7 @@ LIMIT 30;
 -- 7. Find Contracts Modified After Original Award
 -- ============================================
 -- Detect contracts that were updated later
+-- Version A: Only recently scraped data (last 60 days)
 SELECT 
   piid,
   vendor_name,
@@ -129,13 +130,30 @@ SELECT
   MAX(date_signed) as latest_modification_date,
   MAX(date_signed) - MIN(date_signed) as days_between,
   COUNT(*) as number_of_mods,
-  STRING_AGG(mod_number, ' -> ' ORDER BY date_signed) as modification_sequence
+  STRING_AGG(COALESCE(mod_number, 'BASE'), ' -> ' ORDER BY date_signed) as modification_sequence,
+  MAX(last_modified_date) as last_scraped
 FROM fpds_contracts
 WHERE last_modified_date >= CURRENT_DATE - INTERVAL '60 days'
 GROUP BY piid, vendor_name
 HAVING COUNT(*) > 1 AND MAX(date_signed) - MIN(date_signed) > 30  -- DATE subtraction returns integer days
 ORDER BY days_between DESC
 LIMIT 20;
+
+-- Version B: ALL contracts with modifications (no date filter)
+SELECT 
+  piid,
+  vendor_name,
+  MIN(date_signed) as original_award_date,
+  MAX(date_signed) as latest_modification_date,
+  MAX(date_signed) - MIN(date_signed) as days_between,
+  COUNT(*) as number_of_mods,
+  STRING_AGG(COALESCE(mod_number, 'BASE'), ' -> ' ORDER BY date_signed) as modification_sequence,
+  MAX(last_modified_date) as last_scraped
+FROM fpds_contracts
+GROUP BY piid, vendor_name
+HAVING COUNT(*) > 1 AND MAX(date_signed) - MIN(date_signed) > 30
+ORDER BY days_between DESC
+LIMIT 50;
 
 -- ============================================
 -- 8. Cross-Reference FPDS with DoD News
