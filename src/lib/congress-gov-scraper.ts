@@ -24,7 +24,8 @@ import axios, { AxiosError } from 'axios';
 
 const CONGRESS_GOV_API_BASE = 'https://api.congress.gov/v3';
 const CONGRESS_GOV_API_KEY = process.env.CONGRESS_GOV_API_KEY;
-const API_RATE_LIMIT = 5000; // requests per hour
+const API_RATE_LIMIT = 5000; // requests per hour (official limit)
+const SAFE_REQUEST_LIMIT = 4000; // pause after 4000 to be safe for overnight runs
 const REQUEST_DELAY_MS = 750; // ~1.3 req/sec to stay under limit
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -46,16 +47,19 @@ class RateLimiter {
     if (Date.now() >= this.resetTime) {
       this.requestCount = 0;
       this.resetTime = Date.now() + 3600000;
-      console.log('[Congress.gov] Rate limit reset');
+      console.log('[Congress.gov] Rate limit reset - starting new hour');
     }
 
-    // Check if we're at limit
-    if (this.requestCount >= API_RATE_LIMIT - 100) { // Leave 100 buffer
+    // Check if we're at safe limit (pause after 4000 requests for overnight stability)
+    if (this.requestCount >= SAFE_REQUEST_LIMIT) {
       const waitTime = this.resetTime - Date.now();
-      console.log(`[Congress.gov] Rate limit approaching, waiting ${Math.round(waitTime / 1000)}s`);
+      const waitMinutes = Math.round(waitTime / 60000);
+      console.log(`[Congress.gov] ⏸️  PAUSING: Hit safe limit (${SAFE_REQUEST_LIMIT} requests)`);
+      console.log(`[Congress.gov] ⏰  Waiting ${waitMinutes} minutes until next hour...`);
       await new Promise(resolve => setTimeout(resolve, waitTime));
       this.requestCount = 0;
       this.resetTime = Date.now() + 3600000;
+      console.log('[Congress.gov] ▶️  RESUMING: Starting new hour');
     }
 
     // Make request with delay
@@ -341,31 +345,50 @@ export async function searchMembers(
 // ============================================
 
 const DEFENSE_KEYWORDS = [
-  // General
+  // General Defense
   'defense', 'military', 'armed forces', 'dod', 'department of defense',
-  'national security', 'pentagon', 'defense spending',
+  'national security', 'pentagon', 'defense spending', 'defense policy',
+  'warfighter', 'homeland security', 'coast guard',
   
-  // Branches
+  // Military Branches
   'army', 'navy', 'air force', 'marine corps', 'space force',
+  'national guard', 'reserve', 'joint chiefs',
   
-  // Contracting & Procurement
+  // Contracting & Procurement (COMPREHENSIVE)
   'defense contractor', 'defense contracting', 'federal contractor',
+  'government contractor', 'prime contractor', 'subcontractor',
   'procurement', 'acquisition', 'defense acquisition', 'procurement streamlining',
+  'procurement process', 'bid protest', 'sole source', 'competitive bidding',
   'defense industrial base', 'defense industry', 'weapons system', 'combat system',
   'competition in defense', 'merger defense', 'contractor competition',
+  'acquisition reform', 'procurement reform', 'far', 'dfars',
+  'cost-plus', 'fixed-price', 'contract vehicle', 'idiq',
+  'small business set-aside', '8(a)', 'hubzone', 'sdvosb', 'wosb',
   
-  // Weapons & Equipment
-  'fighter', 'bomber', 'submarine', 'destroyer', 'aircraft carrier',
-  'f-35', 'f-15', 'f-16', 'f-18', 'b-21', 'b-52',
-  
-  // Funding
+  // Bill Types & Legislative Terms
   'ndaa', 'national defense authorization', 'defense appropriations',
-  'military construction', 'rdt&e', 'research and development',
+  'military construction', 'milcon', 'rdt&e', 'research and development',
+  'operation and maintenance', 'o&m', 'personnel costs',
   
-  // Contracts
-  'defense contract', 'defense contractor', 'defense industrial base',
+  // Weapons & Programs
+  'fighter', 'bomber', 'submarine', 'destroyer', 'aircraft carrier',
+  'missile defense', 'hypersonic', 'unmanned', 'drone', 'uav',
+  'f-35', 'f-15', 'f-16', 'f-18', 'b-21', 'b-52', 'f-22',
+  'aegis', 'patriot', 'thaad', 'gbsd', 'columbia class',
+  
+  // Defense Companies (Major Primes)
   'lockheed martin', 'boeing', 'raytheon', 'northrop grumman',
-  'general dynamics', 'l3harris', 'bae systems',
+  'general dynamics', 'l3harris', 'bae systems', 'huntington ingalls',
+  'leidos', 'saic', 'booz allen', 'caci',
+  
+  // Technology & Cyber
+  'cybersecurity', 'cyber defense', 'information warfare',
+  'artificial intelligence', 'ai defense', 'autonomous systems',
+  
+  // Veterans & Personnel
+  'veteran', 'va', 'veterans affairs', 'gi bill',
+  'tricare', 'commissary', 'military housing', 'bah',
+  'active duty', 'retired military',
   
   // Small Business
   'sbir', 'sttr', 'small business defense', 'defense innovation',
@@ -430,8 +453,9 @@ export function calculateDefenseRelevanceScore(bill: any): number {
   }
   if (hasDefenseCommittee) score += 30;
 
-  // Title has NDAA or defense (20 points)
-  if (/ndaa|national defense authorization|defense appropriations|defense contractor|procurement/i.test(bill.title || '')) {
+  // Title has defense-related terms (20 points)
+  const titleRegex = /ndaa|national defense authorization|defense appropriations|defense contractor|procurement|military|armed forces|veteran|acquisition reform|defense industry|defense competition|federal contractor|defense spending/i;
+  if (titleRegex.test(bill.title || '')) {
     score += 20;
   }
 
