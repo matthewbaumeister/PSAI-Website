@@ -34,12 +34,12 @@ export async function sendCronSuccessEmail(result: CronJobResult): Promise<void>
   const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'noreply@propshop.ai';
   
   if (!toEmail) {
-    console.log('⚠️  No CRON_NOTIFICATION_EMAIL set, skipping email notification');
+    console.log('No CRON_NOTIFICATION_EMAIL set, skipping email notification');
     return;
   }
   
   if (!process.env.SENDGRID_API_KEY) {
-    console.log('⚠️  No SENDGRID_API_KEY set, skipping email notification');
+    console.log('No SENDGRID_API_KEY set, skipping email notification');
     return;
   }
 
@@ -67,7 +67,7 @@ export async function sendCronSuccessEmail(result: CronJobResult): Promise<void>
     </head>
     <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
-        <h1 style="color: white; margin: 0; font-size: 28px;">✅ Cron Job Successful</h1>
+        <h1 style="color: white; margin: 0; font-size: 28px;">Cron Job Successful</h1>
       </div>
       
       <div style="background: #f9f9f9; padding: 30px; border: 1px solid #ddd; border-top: none; border-radius: 0 0 10px 10px;">
@@ -76,13 +76,13 @@ export async function sendCronSuccessEmail(result: CronJobResult): Promise<void>
           <p style="font-size: 16px; color: #666; margin: 10px 0;">
             <strong>Date:</strong> ${date}<br>
             <strong>Duration:</strong> ${durationText}<br>
-            <strong>Status:</strong> <span style="color: #10b981; font-weight: bold;">✓ Success</span>
+            <strong>Status:</strong> <span style="color: #10b981; font-weight: bold;">Success</span>
           </p>
         </div>
         
         ${statsHtml ? `
         <div style="background: white; padding: 20px; border-radius: 8px;">
-          <h3 style="color: #667eea; margin-top: 0; font-size: 18px;">📊 Statistics</h3>
+          <h3 style="color: #667eea; margin-top: 0; font-size: 18px;">Statistics</h3>
           <ul style="list-style: none; padding: 0; margin: 0;">
             ${statsHtml}
           </ul>
@@ -91,7 +91,7 @@ export async function sendCronSuccessEmail(result: CronJobResult): Promise<void>
         
         <div style="margin-top: 20px; padding: 15px; background: #e0f2fe; border-left: 4px solid #0284c7; border-radius: 4px;">
           <p style="margin: 0; font-size: 14px; color: #0c4a6e;">
-            <strong>💡 Tip:</strong> Check your Supabase database to view the newly scraped data.
+            <strong>Tip:</strong> Check your Supabase database to view the newly scraped data.
           </p>
         </div>
       </div>
@@ -109,7 +109,7 @@ ${jobName} - Success
 
 Date: ${date}
 Duration: ${durationText}
-Status: ✓ Success
+Status: Success
 
 ${stats ? 'Statistics:\n' + Object.entries(stats).map(([k, v]) => `  ${k}: ${v}`).join('\n') : ''}
 
@@ -124,14 +124,14 @@ This is an automated notification from your Vercel cron jobs.
     await sgMail.send({
       to: toEmail,
       from: fromEmail,
-      subject: `✅ ${jobName} Completed Successfully - ${date}`,
+      subject: `${jobName} Completed Successfully - ${date}`,
       text,
       html
     });
     
-    console.log(`✅ Success email sent to ${toEmail}`);
+    console.log(`Success email sent to ${toEmail}`);
   } catch (error: any) {
-    console.error('❌ Failed to send success email:', error.message);
+    console.error('Failed to send success email:', error.message);
   }
 }
 
@@ -143,12 +143,12 @@ export async function sendCronFailureEmail(result: CronJobResult): Promise<void>
   const fromEmail = process.env.SENDGRID_FROM_EMAIL || 'noreply@propshop.ai';
   
   if (!toEmail) {
-    console.log('⚠️  No CRON_NOTIFICATION_EMAIL set, skipping email notification');
+    console.log('No CRON_NOTIFICATION_EMAIL set, skipping email notification');
     return;
   }
   
   if (!process.env.SENDGRID_API_KEY) {
-    console.log('⚠️  No SENDGRID_API_KEY set, skipping email notification');
+    console.log('No SENDGRID_API_KEY set, skipping email notification');
     return;
   }
 
@@ -166,7 +166,7 @@ export async function sendCronFailureEmail(result: CronJobResult): Promise<void>
     </head>
     <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
       <div style="background: ${isRateLimit ? 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)' : 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)'}; padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
-        <h1 style="color: white; margin: 0; font-size: 28px;">${isRateLimit ? '⚠️' : '❌'} Cron Job ${isRateLimit ? 'Rate Limited' : 'Failed'}</h1>
+        <h1 style="color: white; margin: 0; font-size: 28px;">Cron Job ${isRateLimit ? 'Rate Limited' : 'Failed'}</h1>
       </div>
       
       <div style="background: #f9f9f9; padding: 30px; border: 1px solid #ddd; border-top: none; border-radius: 0 0 10px 10px;">
@@ -175,7 +175,7 @@ export async function sendCronFailureEmail(result: CronJobResult): Promise<void>
           <p style="font-size: 16px; color: #666; margin: 10px 0;">
             <strong>Date:</strong> ${date}<br>
             <strong>Duration:</strong> ${durationText}<br>
-            <strong>Status:</strong> <span style="color: ${isRateLimit ? '#f59e0b' : '#ef4444'}; font-weight: bold;">${isRateLimit ? '⚠️ Rate Limited' : '✗ Failed'}</span>
+            <strong>Status:</strong> <span style="color: ${isRateLimit ? '#f59e0b' : '#ef4444'}; font-weight: bold;">${isRateLimit ? 'Rate Limited' : 'Failed'}</span>
           </p>
         </div>
         
@@ -187,7 +187,7 @@ export async function sendCronFailureEmail(result: CronJobResult): Promise<void>
         ${isRateLimit ? `
         <div style="margin-top: 20px; padding: 15px; background: #dbeafe; border-left: 4px solid #3b82f6; border-radius: 4px;">
           <p style="margin: 0; font-size: 14px; color: #1e40af;">
-            <strong>ℹ️ Rate Limit Info:</strong><br>
+            <strong>Rate Limit Info:</strong><br>
             The SAM.gov API has a daily quota of ~1,000 requests. This quota resets at midnight UTC.<br>
             The cron job will automatically retry tomorrow. No action needed!
           </p>
@@ -195,7 +195,7 @@ export async function sendCronFailureEmail(result: CronJobResult): Promise<void>
         ` : `
         <div style="margin-top: 20px; padding: 15px; background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 4px;">
           <p style="margin: 0; font-size: 14px; color: #991b1b;">
-            <strong>⚠️ Action Required:</strong><br>
+            <strong>Action Required:</strong><br>
             This error requires investigation. Check your Vercel logs and Supabase database.
           </p>
         </div>
@@ -215,7 +215,7 @@ ${jobName} - ${isRateLimit ? 'Rate Limited' : 'Failed'}
 
 Date: ${date}
 Duration: ${durationText}
-Status: ${isRateLimit ? '⚠️ Rate Limited' : '✗ Failed'}
+Status: ${isRateLimit ? 'Rate Limited' : 'Failed'}
 
 Error:
 ${error || 'Unknown error'}
@@ -234,14 +234,14 @@ This is an automated notification from your Vercel cron jobs.
     await sgMail.send({
       to: toEmail,
       from: fromEmail,
-      subject: `${isRateLimit ? '⚠️' : '❌'} ${jobName} ${isRateLimit ? 'Rate Limited' : 'Failed'} - ${date}`,
+      subject: `${jobName} ${isRateLimit ? 'Rate Limited' : 'Failed'} - ${date}`,
       text,
       html
     });
     
-    console.log(`✅ Failure email sent to ${toEmail}`);
+    console.log(`Failure email sent to ${toEmail}`);
   } catch (error: any) {
-    console.error('❌ Failed to send failure email:', error.message);
+    console.error('Failed to send failure email:', error.message);
   }
 }
 
@@ -261,7 +261,6 @@ export async function sendDailyDigestEmail(results: CronJobResult[]): Promise<vo
   const totalJobs = results.length;
   
   const jobsHtml = results.map(result => {
-    const icon = result.success ? '✅' : '❌';
     const color = result.success ? '#10b981' : '#ef4444';
     const statsText = result.stats ? 
       Object.entries(result.stats).map(([k, v]) => `${k}: ${v}`).join(', ') : 
@@ -269,7 +268,7 @@ export async function sendDailyDigestEmail(results: CronJobResult[]): Promise<vo
     
     return `
       <div style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid ${color};">
-        <h3 style="margin: 0 0 10px 0; color: ${color}; font-size: 16px;">${icon} ${result.jobName}</h3>
+        <h3 style="margin: 0 0 10px 0; color: ${color}; font-size: 16px;">${result.jobName}</h3>
         <p style="margin: 5px 0; font-size: 14px; color: #666;">
           <strong>Status:</strong> ${result.success ? 'Success' : 'Failed'}<br>
           ${result.stats ? `<strong>Stats:</strong> ${statsText}<br>` : ''}
@@ -288,7 +287,7 @@ export async function sendDailyDigestEmail(results: CronJobResult[]): Promise<vo
     </head>
     <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
       <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
-        <h1 style="color: white; margin: 0; font-size: 28px;">📊 Daily Scraping Digest</h1>
+        <h1 style="color: white; margin: 0; font-size: 28px;">Daily Scraping Digest</h1>
         <p style="color: white; margin: 10px 0 0 0; font-size: 16px;">${results[0]?.date || new Date().toISOString().split('T')[0]}</p>
       </div>
       
@@ -298,8 +297,8 @@ export async function sendDailyDigestEmail(results: CronJobResult[]): Promise<vo
           <div style="display: inline-block; text-align: left;">
             <p style="margin: 5px 0; font-size: 16px;">
               <strong>Total Jobs:</strong> ${totalJobs}<br>
-              <strong style="color: #10b981;">✓ Success:</strong> ${successCount}<br>
-              <strong style="color: #ef4444;">✗ Failed:</strong> ${failureCount}
+              <strong style="color: #10b981;">Success:</strong> ${successCount}<br>
+              <strong style="color: #ef4444;">Failed:</strong> ${failureCount}
             </p>
           </div>
         </div>
@@ -319,13 +318,13 @@ export async function sendDailyDigestEmail(results: CronJobResult[]): Promise<vo
     await sgMail.send({
       to: toEmail,
       from: fromEmail,
-      subject: `📊 Daily Scraping Digest - ${successCount}/${totalJobs} Successful`,
+      subject: `Daily Scraping Digest - ${successCount}/${totalJobs} Successful`,
       html
     });
     
-    console.log(`✅ Daily digest email sent to ${toEmail}`);
+    console.log(`Daily digest email sent to ${toEmail}`);
   } catch (error: any) {
-    console.error('❌ Failed to send daily digest email:', error.message);
+    console.error('Failed to send daily digest email:', error.message);
   }
 }
 
