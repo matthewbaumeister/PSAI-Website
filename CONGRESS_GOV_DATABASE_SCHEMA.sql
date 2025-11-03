@@ -41,8 +41,8 @@ CREATE TABLE congressional_bills (
   became_law_date DATE,
   vetoed_date DATE,
   
-  -- Status
-  status VARCHAR(100),
+  -- Status (TEXT to handle long status descriptions)
+  status TEXT,
   is_law BOOLEAN DEFAULT FALSE,
   is_active BOOLEAN DEFAULT TRUE,
   
@@ -155,8 +155,8 @@ CREATE TABLE congressional_amendments (
   sponsor_state VARCHAR(2),
   sponsor_bioguide_id VARCHAR(20),
   
-  -- Status
-  status VARCHAR(100),
+  -- Status (TEXT to handle long status descriptions)
+  status TEXT,
   is_adopted BOOLEAN DEFAULT FALSE,
   is_failed BOOLEAN DEFAULT FALSE,
   is_pending BOOLEAN DEFAULT TRUE,
