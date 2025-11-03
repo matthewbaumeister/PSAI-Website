@@ -90,7 +90,7 @@ interface ScraperOptions {
 
 export class SAMGovOpportunitiesScraper {
   
-  private delay(ms: number): Promise<void> {
+  delay(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
