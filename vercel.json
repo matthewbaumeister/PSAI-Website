@@ -1,76 +1,16 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": ".next",
-  "framework": "nextjs",
-  "installCommand": "npm install",
-  "devCommand": "npm run dev",
-  "regions": ["iad1"],
-  "functions": {
-    "src/app/api/cron/sbir-scraper/route.ts": {
-      "maxDuration": 300
-    },
-    "src/app/api/admin/sbir/trigger-scraper/route.ts": {
-      "maxDuration": 300
-    },
-    "src/app/api/admin/sbir/browse/route.ts": {
-      "maxDuration": 120
-    },
-    "src/app/api/admin/sbir/extract-file/route.ts": {
-      "maxDuration": 180
-    },
-    "src/app/api/admin/analyze-instructions/**": {
-      "maxDuration": 300
-    },
-    "src/app/api/admin/opportunity-chat/route.ts": {
-      "maxDuration": 60
-    },
-    "src/app/api/admin/rag/ingest/route.ts": {
-      "maxDuration": 300
-    },
-    "src/app/api/admin/rag/search/route.ts": {
-      "maxDuration": 120
-    },
-    "src/app/api/**/*.ts": {
-      "maxDuration": 60
-    }
-  },
   "crons": [
     {
-      "path": "/api/cron/sbir-scraper",
-      "schedule": "0 12 * * *"
+      "path": "/api/cron/scrape-sam-gov",
+      "schedule": "0 6 * * *"
     },
     {
-      "path": "/api/admin/rag/cleanup",
-      "schedule": "0 * * * *"
-    }
-  ],
-  "headers": [
+      "path": "/api/cron/scrape-fpds",
+      "schedule": "0 3 * * *"
+    },
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "path": "/api/cron/scrape-dod-news",
+      "schedule": "0 4 * * *"
     }
   ]
 }
