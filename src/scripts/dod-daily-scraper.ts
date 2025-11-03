@@ -102,7 +102,7 @@ async function fetchArticlesForDate(
     while (!foundTarget && pageNum <= 100) {
       const url = pageNum === 1 ? CONTRACTS_URL : `${CONTRACTS_URL}?page=${pageNum}`;
       await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
-      await page.waitForTimeout(1000);
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       const html = await page.content();
       const $ = cheerio.load(html);
@@ -227,7 +227,7 @@ async function scrapeArticle(
     log(`  Scraping: ${article.title}`);
     
     await page.goto(article.article_url, { waitUntil: 'networkidle2', timeout: 30000 });
-    await page.waitForTimeout(1000);
+    await new Promise(resolve => setTimeout(resolve, 1000));
     
     const html = await page.content();
     const contracts = parseContractsFromArticle(html, article);
