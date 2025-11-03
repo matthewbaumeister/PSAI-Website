@@ -13,7 +13,7 @@
       "schedule": "30 12 * * *"
     },
     {
-      "path": "/api/cron/scrape-dsip",
+      "path": "/api/cron/sbir-scraper",
       "schedule": "45 12 * * *"
     }
   ]

@@ -217,16 +217,17 @@ async function getArticleListPage(browser: Browser, pageNum: number = 1): Promis
   }
 }
 
-async function getArticlesForDateRange(browser: Browser, startDate: string, endDate: string): Promise<ArticleInfo[]> {
+async function getArticlesForDateRange(browser: Browser, startDate: string, endDate: string, startPage: number = 1): Promise<ArticleInfo[]> {
   console.log(`\n📋 Collecting articles from ${startDate} to ${endDate}...`);
+  console.log(`   Starting from page ${startPage}`);
   
   const start = new Date(startDate);
   const end = new Date(endDate);
   const allArticles: ArticleInfo[] = [];
-  let pageNum = 1;
+  let pageNum = startPage;
   let foundOldEnough = false;
   
-  while (!foundOldEnough && pageNum < 100) { // Safety limit
+  while (!foundOldEnough && pageNum < 300) { // Safety limit (total ~281 pages)
     const articles = await getArticleListPage(browser, pageNum);
     
     if (articles.length === 0) {
@@ -353,10 +354,12 @@ async function main() {
   const args = process.argv.slice(2);
   const startArg = args.find(arg => arg.startsWith('--start='))?.split('=')[1];
   const endArg = args.find(arg => arg.startsWith('--end='))?.split('=')[1];
+  const startPageArg = args.find(arg => arg.startsWith('--start-page='))?.split('=')[1];
   
   // Default to last 30 days if no dates specified
   const startDate = startArg || formatDate(new Date());
   const endDate = endArg || formatDate(new Date(Date.now() - 30 * 24 * 60 * 60 * 1000));
+  const startPage = startPageArg ? parseInt(startPageArg) : 1;
   
   console.log(`
 ╔════════════════════════════════════════════╗
@@ -364,6 +367,7 @@ async function main() {
 ╚════════════════════════════════════════════╝
 
 📅 Date Range: ${startDate} → ${endDate}
+📖 Starting Page: ${startPage}
 📄 Granularity: ARTICLE-LEVEL (most resilient!)
 
 ⏱️  Process per article:
@@ -381,6 +385,9 @@ async function main() {
    - Smart upsert prevents duplicates
    - Maximum data capture
 
+💡 Tip: Use --start-page to skip already-scraped data
+   Total pages available: ~281
+
 Starting in 5 seconds...
 `);
 
@@ -395,7 +402,7 @@ Starting in 5 seconds...
   
   try {
     // Get all articles in date range
-    const articles = await getArticlesForDateRange(browser, startDate, endDate);
+    const articles = await getArticlesForDateRange(browser, startDate, endDate, startPage);
     
     if (articles.length === 0) {
       console.log('ℹ️  No articles found in date range');
