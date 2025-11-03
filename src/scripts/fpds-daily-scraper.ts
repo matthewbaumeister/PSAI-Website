@@ -396,36 +396,99 @@ async function scrapeDate(date: string): Promise<{
 async function main() {
   const args = process.argv.slice(2);
   
-  // Parse date argument (default: yesterday)
-  let date = getYesterday();
+  // Check for single-date mode
+  const singleDateArg = args.find(arg => arg.startsWith('--date='));
   
-  for (const arg of args) {
-    if (arg.startsWith('--date=')) {
-      date = arg.split('=')[1];
-    }
-  }
-
-  log(`====================================`);
-  log(`FPDS Daily Scraper`);
-  log(`====================================`);
-  log(`Date: ${date}`);
-  log(`====================================`);
-
-  try {
-    const result = await scrapeDate(date);
+  if (singleDateArg) {
+    // Single date mode (for manual testing)
+    const date = singleDateArg.split('=')[1];
     
     log(`====================================`);
-    log(`SUCCESS!`);
+    log(`FPDS Daily Scraper`);
     log(`====================================`);
-    log(JSON.stringify(result, null, 2));
+    log(`Date: ${date}`);
+    log(`====================================`);
+
+    try {
+      const result = await scrapeDate(date);
+      
+      log(`====================================`);
+      log(`SUCCESS!`);
+      log(`====================================`);
+      log(JSON.stringify(result, null, 2));
+      
+      process.exit(0);
+    } catch (error: any) {
+      log(`====================================`);
+      log(`FAILED: ${error.message}`);
+      log(`====================================`);
+      console.error(error);
+      process.exit(1);
+    }
+  } else {
+    // Multi-day mode (default for cron - handles API delays)
+    log(`====================================`);
+    log(`FPDS Daily Scraper (Multi-Day Mode)`);
+    log(`====================================`);
+    log(`Scraping 3 recent days to handle API delays`);
+    log(`====================================`);
+
+    const today = new Date();
+    const dates = [];
+    
+    // Scrape today, yesterday, and 2 days ago
+    for (let i = 0; i < 3; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() - i);
+      dates.push(formatDate(date));
+    }
+    
+    log(`Dates: ${dates.join(', ')}`);
+    log(`====================================`);
+
+    const results = [];
+    let totalFound = 0;
+    let totalInserted = 0;
+    let totalUpdated = 0;
+    let totalFailed = 0;
+
+    for (const date of dates) {
+      try {
+        log(`\nProcessing ${date}...`);
+        const result = await scrapeDate(date);
+        results.push(result);
+        
+        totalFound += result.totalFound;
+        totalInserted += result.totalInserted;
+        totalUpdated += result.totalUpdated;
+        totalFailed += result.totalFailed;
+        
+        log(`${date}: ${result.totalInserted} new, ${result.totalUpdated} updated`);
+      } catch (error: any) {
+        log(`${date}: FAILED - ${error.message}`);
+        results.push({
+          date,
+          totalFound: 0,
+          totalInserted: 0,
+          totalUpdated: 0,
+          totalFailed: 0,
+          pagesProcessed: 0,
+          error: error.message
+        });
+      }
+    }
+
+    log(`====================================`);
+    log(`MULTI-DAY SUMMARY`);
+    log(`====================================`);
+    log(`Total Found: ${totalFound}`);
+    log(`Total Inserted: ${totalInserted}`);
+    log(`Total Updated: ${totalUpdated}`);
+    log(`Total Failed: ${totalFailed}`);
+    log(`====================================`);
+    log(JSON.stringify(results, null, 2));
     
     process.exit(0);
-  } catch (error: any) {
-    log(`====================================`);
-    log(`FAILED: ${error.message}`);
-    log(`====================================`);
-    console.error(error);
-    process.exit(1);
   }
 }
 
