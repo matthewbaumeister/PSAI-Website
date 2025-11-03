@@ -234,12 +234,22 @@ async function getArticlesForDateRange(browser: Browser, startDate: string, endD
       break;
     }
     
+    // Track dates on this page
+    let pageNewestDate = '';
+    let pageOldestDate = '';
+    let addedThisPage = 0;
+    
     for (const article of articles) {
       const articleDate = new Date(article.publishedDate);
+      const dateStr = formatDate(articleDate);
+      
+      if (!pageNewestDate) pageNewestDate = dateStr;
+      pageOldestDate = dateStr;
       
       // Check if article is in date range
       if (articleDate >= end && articleDate <= start) {
         allArticles.push(article);
+        addedThisPage++;
       }
       
       // Check if we've gone past the end date
@@ -249,7 +259,10 @@ async function getArticlesForDateRange(browser: Browser, startDate: string, endD
       }
     }
     
-    console.log(`   Page ${pageNum}: Found ${articles.length} articles, ${allArticles.length} in range`);
+    const dateRangeStr = pageNewestDate === pageOldestDate 
+      ? pageNewestDate 
+      : `${pageNewestDate} to ${pageOldestDate}`;
+    console.log(`   Page ${pageNum} (${dateRangeStr}): Found ${addedThisPage} articles, total ${allArticles.length} in range`);
     
     if (foundOldEnough) break;
     

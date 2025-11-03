@@ -311,6 +311,14 @@ export function normalizeFullContract(fullData: any): any {
       return startDate ? new Date(startDate).getFullYear() : null;
     })(),
     last_modified_date: get(fullData, 'period_of_performance.last_modified_date'),
+    
+    // SAM.gov search link (Phase 1 - search by solicitation_id)
+    // Note: Using search URL because SAM.gov uses internal Notice IDs, not solicitation numbers
+    sam_gov_opportunity_url: (() => {
+      const solicitationId = get(fullData, 'latest_transaction_contract_data.solicitation_identifier');
+      return solicitationId ? `https://sam.gov/search/?index=opp&q=${solicitationId}` : null;
+    })(),
+    
     last_scraped: new Date().toISOString(),
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
