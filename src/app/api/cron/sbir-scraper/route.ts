@@ -1043,3 +1043,8 @@ async function updateDatabase(topics: any[]) {
 
   return { newRecords, updatedRecords, skippedRecords: unchangedRecords };
 }
+
+// Support POST as well (for consistency with other cron endpoints)
+export async function POST(request: NextRequest) {
+  return GET(request);
+}
