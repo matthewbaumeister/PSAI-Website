@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendCronSuccessEmail, sendCronFailureEmail } from '@/lib/cron-notifications';
 import { createClient } from '@supabase/supabase-js';
-import { exec } from 'child_process';
-import { promisify } from 'util';
-
-const execAsync = promisify(exec);
+import { scrapeDate } from '@/scripts/fpds-daily-scraper';
 
 /**
  * FPDS Daily Scraper - Vercel Cron Job
@@ -13,6 +10,10 @@ const execAsync = promisify(exec);
  * 
  * Vercel Cron: 0 12 * * * (12:00 PM UTC = 8:00 AM EST / 5:00 AM PST)
  */
+
+// Set max duration to 5 minutes (300 seconds) for Pro plan
+export const maxDuration = 300;
+
 export async function GET(request: NextRequest) {
   const startTime = Date.now();
   
@@ -57,17 +58,37 @@ export async function GET(request: NextRequest) {
       .select('*', { count: 'exact', head: true })
       .gte('last_modified_date', `${formatDate(threeDaysAgo)}T00:00:00`);
     
-    // Run FPDS daily scraper (multi-day mode - scrapes last 3 days)
-    const { stdout, stderr } = await execAsync(
-      `npx tsx src/scripts/fpds-daily-scraper.ts`,
-      {
-        cwd: process.cwd(),
-        timeout: 3600000 // 1 hour timeout
-      }
-    );
+    // Scrape last 3 days (today, yesterday, 2 days ago)
+    const dates = [];
+    for (let i = 0; i < 3; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() - i);
+      dates.push(formatDate(date));
+    }
     
-    if (stderr && !stderr.includes('[FPDS')) {
-      console.error('[Cron] FPDS scraper stderr:', stderr);
+    console.log(`[Cron] Scraping dates: ${dates.join(', ')}`);
+    
+    let totalFound = 0;
+    let totalInserted = 0;
+    let totalUpdated = 0;
+    let totalFailed = 0;
+    
+    // Scrape each date
+    for (const date of dates) {
+      try {
+        console.log(`[Cron] Processing ${date}...`);
+        const result = await scrapeDate(date);
+        
+        totalFound += result.totalFound;
+        totalInserted += result.totalInserted;
+        totalUpdated += result.totalUpdated;
+        totalFailed += result.totalFailed;
+        
+        console.log(`[Cron] ${date}: ${result.totalInserted} new, ${result.totalUpdated} updated`);
+      } catch (error: any) {
+        console.error(`[Cron] Error scraping ${date}:`, error.message);
+        // Continue with other dates even if one fails
+      }
     }
     
     // Get count after scraping
@@ -78,14 +99,8 @@ export async function GET(request: NextRequest) {
     
     const duration = Date.now() - startTime;
     
-    // Extract stats from output (multi-day summary)
-    const lastLines = stdout.split('\n').slice(-30).join('\n');
-    const foundMatch = lastLines.match(/Total Found: (\d+)/);
-    const insertedMatch = lastLines.match(/Total Inserted: (\d+)/);
-    const updatedMatch = lastLines.match(/Total Updated: (\d+)/);
-    const failedMatch = lastLines.match(/Total Failed: (\d+)/);
-    
     console.log('[Cron] FPDS scraping completed successfully');
+    console.log(`[Cron] Total: ${totalFound} found, ${totalInserted} new, ${totalUpdated} updated, ${totalFailed} failed`);
     
     // Send success email
     await sendCronSuccessEmail({
@@ -95,10 +110,10 @@ export async function GET(request: NextRequest) {
       duration,
       stats: {
         days_scraped: 3,
-        total_found: foundMatch ? parseInt(foundMatch[1]) : 0,
-        new_contracts: insertedMatch ? parseInt(insertedMatch[1]) : 0,
-        updated_contracts: updatedMatch ? parseInt(updatedMatch[1]) : 0,
-        failed: failedMatch ? parseInt(failedMatch[1]) : 0,
+        total_found: totalFound,
+        new_contracts: totalInserted,
+        updated_contracts: totalUpdated,
+        failed: totalFailed,
         total_in_db: countAfter || 0
       }
     });
@@ -109,9 +124,10 @@ export async function GET(request: NextRequest) {
       date: dateStr,
       stats: {
         days_scraped: 3,
-        total_found: foundMatch ? parseInt(foundMatch[1]) : 0,
-        new: insertedMatch ? parseInt(insertedMatch[1]) : 0,
-        updated: updatedMatch ? parseInt(updatedMatch[1]) : 0
+        total_found: totalFound,
+        new: totalInserted,
+        updated: totalUpdated,
+        failed: totalFailed
       }
     });
     
