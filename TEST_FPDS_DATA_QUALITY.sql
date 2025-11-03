@@ -10,8 +10,8 @@ SELECT
   DATE(last_modified_date) as contract_date,
   COUNT(*) as total_contracts,
   COUNT(DISTINCT piid) as unique_contracts,
-  COUNT(DISTINCT awarding_agency_name) as unique_agencies,
-  AVG(total_dollars::numeric) as avg_contract_value
+  COUNT(DISTINCT contracting_agency_name) as unique_agencies,
+  AVG(current_total_value_of_award::numeric) as avg_contract_value
 FROM fpds_contracts
 WHERE last_modified_date >= CURRENT_DATE - INTERVAL '3 days'
 GROUP BY DATE(last_modified_date)
@@ -24,11 +24,11 @@ ORDER BY contract_date DESC;
 SELECT 
   COUNT(*) as total_contracts,
   COUNT(piid) as has_piid,
-  COUNT(awarding_agency_name) as has_agency,
+  COUNT(contracting_agency_name) as has_agency,
   COUNT(vendor_name) as has_vendor,
   COUNT(description) as has_description,
-  COUNT(total_dollars) as has_value,
-  COUNT(award_date) as has_award_date,
+  COUNT(current_total_value_of_award) as has_value,
+  COUNT(date_signed) as has_award_date,
   ROUND(100.0 * COUNT(piid) / COUNT(*), 2) as piid_completeness,
   ROUND(100.0 * COUNT(description) / COUNT(*), 2) as description_completeness,
   ROUND(100.0 * COUNT(vendor_name) / COUNT(*), 2) as vendor_completeness
@@ -66,14 +66,14 @@ ORDER BY date DESC;
 -- 5. Top Agencies (Last 3 Days)
 -- ============================================
 SELECT 
-  awarding_agency_name,
+  contracting_agency_name,
   COUNT(*) as contract_count,
-  SUM(total_dollars::numeric) as total_value,
-  ROUND(AVG(total_dollars::numeric), 2) as avg_value
+  SUM(current_total_value_of_award::numeric) as total_value,
+  ROUND(AVG(current_total_value_of_award::numeric), 2) as avg_value
 FROM fpds_contracts
 WHERE last_modified_date >= CURRENT_DATE - INTERVAL '3 days'
-  AND awarding_agency_name IS NOT NULL
-GROUP BY awarding_agency_name
+  AND contracting_agency_name IS NOT NULL
+GROUP BY contracting_agency_name
 ORDER BY contract_count DESC
 LIMIT 10;
 
@@ -82,17 +82,17 @@ LIMIT 10;
 -- ============================================
 SELECT 
   CASE 
-    WHEN total_dollars::numeric < 10000 THEN 'Under $10K'
-    WHEN total_dollars::numeric < 100000 THEN '$10K-$100K'
-    WHEN total_dollars::numeric < 1000000 THEN '$100K-$1M'
-    WHEN total_dollars::numeric < 10000000 THEN '$1M-$10M'
+    WHEN current_total_value_of_award::numeric < 10000 THEN 'Under $10K'
+    WHEN current_total_value_of_award::numeric < 100000 THEN '$10K-$100K'
+    WHEN current_total_value_of_award::numeric < 1000000 THEN '$100K-$1M'
+    WHEN current_total_value_of_award::numeric < 10000000 THEN '$1M-$10M'
     ELSE 'Over $10M'
   END as value_range,
   COUNT(*) as contract_count,
   ROUND(100.0 * COUNT(*) / SUM(COUNT(*)) OVER (), 2) as percentage
 FROM fpds_contracts
 WHERE last_modified_date >= CURRENT_DATE - INTERVAL '3 days'
-  AND total_dollars IS NOT NULL
+  AND current_total_value_of_award IS NOT NULL
 GROUP BY value_range
 ORDER BY 
   CASE 
@@ -152,11 +152,11 @@ ORDER BY date_range DESC, page_number;
 -- View a sample of recent contracts to verify data looks good
 SELECT 
   piid,
-  awarding_agency_name,
+  contracting_agency_name,
   vendor_name,
   LEFT(description, 100) as description_preview,
-  total_dollars,
-  award_date,
+  current_total_value_of_award,
+  date_signed,
   last_modified_date
 FROM fpds_contracts
 WHERE last_modified_date >= CURRENT_DATE - INTERVAL '3 days'
