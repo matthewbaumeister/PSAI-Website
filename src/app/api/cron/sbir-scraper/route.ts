@@ -3,6 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 import { mapToSupabaseColumns } from '@/lib/sbir-column-mapper-clean';
 import { smartUpsertTopics } from '@/lib/smart-upsert-logic';
 import { InstructionDocumentService } from '@/lib/instruction-document-service';
+import { sendCronSuccessEmail, sendCronFailureEmail } from '@/lib/cron-notifications';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -88,6 +89,23 @@ export async function GET(request: NextRequest) {
       log(` Run completed in ${durationSeconds}s - Record updated`);
     }
     
+    // Send success email notification
+    const durationMinutes = Math.floor((Date.now() - startTime) / 60000);
+    await sendCronSuccessEmail({
+      scraperName: 'SBIR/DSIP Scraper',
+      recordsProcessed: result.processedTopics || 0,
+      newRecords: result.newRecords || 0,
+      updatedRecords: result.updatedRecords || 0,
+      duration: `${durationMinutes} minutes`,
+      additionalStats: [
+        `Total Active Topics: ${result.totalTopics || 0}`,
+        `Preserved Records: ${result.preservedRecords || 0}`,
+        `Instructions Generated: ${result.instructionsGenerated || 0}`,
+        `Instructions Skipped: ${result.instructionsSkipped || 0}`,
+        `Instructions Failed: ${result.instructionsFailed || 0}`
+      ]
+    });
+    
     return NextResponse.json({
       success: true,
       message: 'SBIR scraper completed successfully',
@@ -112,6 +130,14 @@ export async function GET(request: NextRequest) {
         })
         .eq('id', runId);
     }
+    
+    // Send failure email notification
+    await sendCronFailureEmail({
+      scraperName: 'SBIR/DSIP Scraper',
+      errorMessage: error instanceof Error ? error.message : 'Unknown error',
+      errorStack: error instanceof Error ? error.stack : String(error),
+      additionalContext: detailedLogs.slice(-10).join('\n') // Last 10 log lines
+    });
     
     return NextResponse.json({ 
       success: false,
