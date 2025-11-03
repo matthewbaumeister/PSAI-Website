@@ -195,16 +195,17 @@ LIMIT 10;
 -- Find DoD news contracts that match FPDS records
 SELECT 
   d.vendor_name as dod_vendor,
-  d.contract_value as dod_value,
+  d.award_amount_text as dod_value,
   d.published_date as dod_date,
   f.piid as fpds_contract_id,
   f.current_total_value_of_award as fpds_value,
   f.mod_number,
-  f.date_signed as fpds_date
+  f.date_signed as fpds_date,
+  ABS(d.published_date - f.date_signed) as days_apart
 FROM dod_contract_news d
 LEFT JOIN fpds_contracts f 
   ON LOWER(d.vendor_name) = LOWER(f.vendor_name)
-  AND ABS(EXTRACT(EPOCH FROM (d.published_date - f.date_signed))) < 86400 * 7  -- Within 7 days
+  AND ABS(d.published_date - f.date_signed) < 7  -- Within 7 days (DATE - DATE = integer)
 WHERE d.published_date >= CURRENT_DATE - INTERVAL '30 days'
 ORDER BY d.published_date DESC
 LIMIT 50;
