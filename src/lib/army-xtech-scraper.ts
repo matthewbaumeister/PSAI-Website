@@ -809,7 +809,9 @@ export class ArmyXTechScraper {
     });
 
     if (winnersHeadingIndex === -1) {
-      this.log(`No WINNERS heading found (checked ${allHeadings.length} headings)`, 'info');
+      // Debug: show what headings we DID find
+      const headingTexts = allHeadings.slice(0, 10).map(h => $(h).text().trim());
+      this.log(`No WINNERS heading found (checked ${allHeadings.length} headings). First 10: ${JSON.stringify(headingTexts)}`, 'info');
       return winners; // No winners section found
     }
     
