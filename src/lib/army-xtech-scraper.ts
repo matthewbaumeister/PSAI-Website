@@ -316,10 +316,10 @@ export class ArmyXTechScraper {
       
       if (isProduction) {
         browser = await puppeteerCore.launch({
-          args: chromium.args,
-          defaultViewport: chromium.defaultViewport,
+          args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox'],
+          defaultViewport: { width: 1280, height: 720 },
           executablePath: await chromium.executablePath(),
-          headless: chromium.headless,
+          headless: true,
         });
       } else {
         browser = await puppeteer.launch({
