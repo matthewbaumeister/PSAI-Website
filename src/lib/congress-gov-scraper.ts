@@ -217,8 +217,8 @@ export async function fetchBillSummaries(
  * Fetch related bills for a bill
  */
 async function fetchBillRelatedBills(congress: number, billType: string, billNumber: number): Promise<any[]> {
-  const url = `${CONGRESS_GOV_API_BASE}/bill/${congress}/${billType}/${billNumber}/relatedbills`;
-  const result = await rateLimiter.execute(() => makeRequest(url, {}));
+  const endpoint = `/bill/${congress}/${billType}/${billNumber}/relatedbills`;
+  const result = await congressGovApiCall(endpoint);
   return result?.relatedBills || [];
 }
 
