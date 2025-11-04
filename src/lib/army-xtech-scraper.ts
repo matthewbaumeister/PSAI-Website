@@ -842,7 +842,7 @@ export class ArmyXTechScraper {
   }
 
   /**
-   * Extract winners/finalists/semi-finalists from page (cards or headings)
+   * Extract winners/finalists/semi-finalists from page (cards with badges)
    */
   private extractWinners($: cheerio.CheerioAPI): Winner[] {
     const winners: Winner[] = [];
@@ -858,17 +858,82 @@ export class ArmyXTechScraper {
       return null;
     };
     
-    // Try to detect finalist/winner sections by looking for section headers
-    const finalistSection = $('h2:contains("FINALIST"), h3:contains("FINALIST"), h2:contains("Finalist"), h3:contains("Finalist")').first();
-    const winnerSection = $('h2:contains("WINNER"), h3:contains("WINNER"), h2:contains("Winner"), h3:contains("Winner")').first();
+    // FIRST: Look for CARD-BASED structure with badges
+    // Find all elements that might contain "FINALIST", "WINNER", or "SEMI-FINALIST" text
+    const allElements = $('*').toArray();
+    const cardsFound: Array<{element: any, status: string, companyName: string}> = [];
     
-    if (finalistSection.length > 0 || winnerSection.length > 0) {
-      this.log('Found FINALIST/WINNER section headers, using section-based extraction', 'info');
-      // Will be handled by the heading-based extraction below
+    for (const element of allElements) {
+      const $elem = $(element);
+      const elemText = $elem.text().trim();
+      
+      // Check if this element is a badge/header (short text containing status)
+      if (elemText.length < 50) { // Badges are short
+        const status = getSubmissionStatus(elemText);
+        
+        if (status) {
+          // This is a badge! Now find the company name nearby
+          // Look for the closest parent container
+          let $container = $elem.parent();
+          
+          // Try to find company name in nearby headings within this container
+          const companyHeading = $container.find('h2, h3, h4, h5, .company-name, strong').first();
+          let companyName = companyHeading.text().trim();
+          
+          // Clean up the company name (remove the status text if it's included)
+          companyName = companyName.replace(/\b(winner|finalist|semi-?finalist)\b/gi, '').trim();
+          
+          if (companyName && companyName.length > 2 && companyName.length < 200) {
+            // Skip if it's just the badge text itself
+            if (companyName.toLowerCase() !== status.toLowerCase()) {
+              cardsFound.push({ element: $container, status, companyName });
+              this.log(`Found ${status} CARD: ${companyName}`, 'info');
+            }
+          }
+        }
+      }
     }
     
-    // Fallback to heading-based extraction (improved with status detection)
-    this.log(`Using heading-based extraction with status detection`, 'info');
+    // If we found cards with badges, extract them
+    if (cardsFound.length > 0) {
+      this.log(`Found ${cardsFound.length} company cards with badges (before dedup)`, 'info');
+      
+      // Deduplicate by company name
+      const seenCompanies = new Set<string>();
+      
+      for (const card of cardsFound) {
+        const normalizedName = card.companyName.toLowerCase().trim();
+        
+        if (seenCompanies.has(normalizedName)) {
+          continue; // Skip duplicate
+        }
+        seenCompanies.add(normalizedName);
+        
+        const $card = $(card.element);
+        
+        const winner: Winner = {
+          company_name: card.companyName,
+          location: this.extractLocation($card.text())
+        };
+        
+        // Try to extract description
+        const desc = $card.find('p').first().text().trim();
+        if (desc && desc.length > 20 && desc.length < 500) {
+          winner.description = desc;
+        }
+        
+        // Store the submission status
+        (winner as any).submission_status = card.status;
+        
+        winners.push(winner);
+      }
+      
+      this.log(`Extracted ${winners.length} unique companies with badges`, 'info');
+      return winners;
+    }
+    
+    // FALLBACK: Use heading-based extraction
+    this.log(`No badge cards found, trying heading-based extraction`, 'info');
 
     // Find section headers for WINNERS and FINALISTS
     const allHeadings = $('h2, h3, h4').toArray();
