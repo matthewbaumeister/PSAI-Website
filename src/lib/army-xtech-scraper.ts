@@ -1660,30 +1660,40 @@ export class ArmyXTechScraper {
   }
 
   /**
-   * ACTIVE MODE: Scrape all competitions (to catch both open opportunities and recently closed ones with new winners)
+   * ACTIVE MODE: Scrape only open competitions (optimized for daily cron job speed)
    */
   async scrapeActive(): Promise<ScraperStats> {
-    this.log('Starting ACTIVE scrape of XTECH competitions (open + recently closed)...', 'info');
+    this.log('Starting ACTIVE scrape of open XTECH competitions...', 'info');
     this.logId = await this.createScraperLog('active');
 
     try {
-      // Fetch main competitions page with all competitions loaded
+      // Fetch main competitions page
       const html = await this.fetchHTML(XTECH_COMPETITIONS_URL);
       const $ = cheerio.load(html);
 
-      // The page uses Essential Grid plugin - get ALL cards
-      // This includes both open and closed competitions to catch:
-      // 1. New/updated open opportunities
-      // 2. Recently closed competitions with newly announced winners
+      // The page uses Essential Grid plugin
       const allCards = $('.esg-entry-cover').toArray();
       
-      this.log(`Found ${allCards.length} total competitions (open + closed)`);
-      this.stats.competitionsFound = allCards.length;
+      // Filter for ONLY active/open competitions to keep cron job fast
+      // Historical scraper handles closed competitions with winners
+      const activeCards = allCards.filter(card => {
+        const $card = $(card);
+        const overlayClass = $card.find('.esg-overlay').attr('class') || '';
+        const statusText = $card.text().toLowerCase();
+        
+        // Check if it has the "active" class or doesn't have "closed"
+        return overlayClass.includes('active') || 
+               (statusText.includes('open') || statusText.includes('active')) ||
+               (!overlayClass.includes('closed') && !statusText.includes('closed'));
+      });
 
-      // Process each competition
-      for (let i = 0; i < allCards.length; i++) {
-        const card = allCards[i];
-        this.log(`Processing competition ${i + 1}/${allCards.length}...`);
+      this.log(`Found ${activeCards.length} active competitions (out of ${allCards.length} total)`);
+      this.stats.competitionsFound = activeCards.length;
+
+      // Process each active competition
+      for (let i = 0; i < activeCards.length; i++) {
+        const card = activeCards[i];
+        this.log(`Processing active competition ${i + 1}/${activeCards.length}...`);
 
         const competition = this.parseCompetitionCard($, card);
         if (!competition || !competition.opportunity_title) {
@@ -1710,7 +1720,7 @@ export class ArmyXTechScraper {
         await this.saveCompetition(competition as XTechCompetition);
         this.stats.competitionsProcessed++;
 
-        this.log(`Updated: ${competition.opportunity_title} (${this.stats.competitionsProcessed}/${allCards.length})`, 'success');
+        this.log(`Updated: ${competition.opportunity_title} (${this.stats.competitionsProcessed}/${activeCards.length})`, 'success');
       }
 
       await this.updateScraperLog('completed');
