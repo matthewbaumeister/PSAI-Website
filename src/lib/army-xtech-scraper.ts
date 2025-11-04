@@ -912,78 +912,78 @@ export class ArmyXTechScraper {
     };
     
     // FIRST: Look for CARD-BASED structure with badges
-    // Find all elements that might contain "FINALIST", "WINNER", or "SEMI-FINALIST" text
-    const allElements = $('*').toArray();
+    // Strategy: Find common card container patterns and check if they contain status badges
     const cardsFound: Array<{element: any, status: string, companyName: string}> = [];
     
-    for (const element of allElements) {
-      const $elem = $(element);
-      const elemText = $elem.text().trim();
+    // Common card container selectors used by WordPress/grid plugins
+    const cardSelectors = [
+      'div[class*="card"]',
+      'div[class*="item"]', 
+      'div[class*="grid"]',
+      'div[class*="column"]',
+      'div[class*="entry"]',
+      'article',
+      '.wpb_wrapper',
+      '.vc_column_container'
+    ];
+    
+    // Find all potential card containers
+    const potentialCards = $(cardSelectors.join(', ')).toArray();
+    
+    this.log(`Checking ${potentialCards.length} potential card containers`, 'info');
+    
+    for (const card of potentialCards) {
+      const $card = $(card);
+      const cardText = $card.text();
       
-      // Check if this element is a badge/header (short text containing status)
-      if (elemText.length < 50) { // Badges are short
-        const status = getSubmissionStatus(elemText);
+      // Check if this card contains a status badge
+      const status = getSubmissionStatus(cardText);
+      
+      if (status) {
+        // Find the company name (heading within this card)
+        const companyHeading = $card.find('h1, h2, h3, h4, h5, h6, strong').first();
+        let companyName = companyHeading.text().trim();
         
-        if (status) {
-          // This is a badge! Now find the company name nearby
-          // Look for the closest parent container
-          let $container = $elem.parent();
-          
-          // Try to find company name in nearby headings within this container
-          const companyHeading = $container.find('h2, h3, h4, h5, .company-name, strong').first();
-          let companyName = companyHeading.text().trim();
-          
-          // IMPORTANT: Check if this card has a company-specific description
-          // Look for a paragraph near the heading (within the same immediate parent)
-          let hasDescription = false;
-          if (companyHeading.length > 0) {
-            // Try next sibling first (most common)
-            let descPara = companyHeading.next('p');
-            
-            // If not found, try next few siblings
-            if (descPara.length === 0) {
-              const siblings = companyHeading.nextAll().slice(0, 3); // Check next 3 siblings
-              siblings.each((idx, el) => {
-                if ($(el).is('p') && !hasDescription) {
-                  descPara = $(el);
-                  return false; // Break loop
-                }
-              });
-            }
-            
-            // Validate the description
-            if (descPara.length > 0) {
-              const descText = descPara.text().trim();
-              // Company descriptions are 20-500 chars, not super long (which would be the main competition description)
-              hasDescription = descText.length > 20 && descText.length < 500;
-            }
+        if (!companyName || companyName.length < 3) {
+          continue; // No valid company name
+        }
+        
+        // Clean up company name
+        companyName = companyName.replace(/\b(winner|finalist|semi-?finalist)\b/gi, '').trim();
+        
+        // Find description within this card
+        const descriptions = $card.find('p').toArray();
+        let hasValidDescription = false;
+        
+        for (const p of descriptions) {
+          const descText = $(p).text().trim();
+          // Company descriptions are typically 20-500 chars
+          if (descText.length >= 20 && descText.length <= 500) {
+            hasValidDescription = true;
+            break;
           }
-          
-          // Clean up the company name (remove the status text if it's included)
-          companyName = companyName.replace(/\b(winner|finalist|semi-?finalist)\b/gi, '').trim();
-          
-          // Filter out noise: dates, numbers, prize text, generic text
-          const isNoise = 
-            !hasDescription || // MUST have a description to be a company card
-            companyName.length < 3 ||
-            companyName.length > 200 ||
-            companyName.toLowerCase() === status.toLowerCase() ||
-            /^\d+$/.test(companyName) || // Just a number
-            /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(companyName) || // Starts with month
-            /\d{1,2},?\s+\d{4}/.test(companyName) || // Contains date pattern
-            /^up to/i.test(companyName) || // Prize text
-            /^\$[\d,]+/i.test(companyName) || // Money amount
-            /cash prize/i.test(companyName) || // Prize text
-            /^(phase|stage|round)\s+\d/i.test(companyName) || // Phase text
-            /total money/i.test(companyName) || // Competition info
-            /submission (date|window)/i.test(companyName) || // Competition info
-            /winner announced/i.test(companyName) || // Competition info
-            /challenge topic/i.test(companyName); // Competition info
-          
-          if (companyName && !isNoise) {
-            cardsFound.push({ element: $container, status, companyName });
-            this.log(`Found ${status} CARD: ${companyName}`, 'info');
-          }
+        }
+        
+        // Filter out noise
+        const isNoise = 
+          !hasValidDescription ||
+          companyName.length > 200 ||
+          companyName.toLowerCase() === status.toLowerCase() ||
+          /^\d+$/.test(companyName) ||
+          /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(companyName) ||
+          /\d{1,2},?\s+\d{4}/.test(companyName) ||
+          /^up to/i.test(companyName) ||
+          /^\$[\d,]+/i.test(companyName) ||
+          /cash prize/i.test(companyName) ||
+          /^(phase|stage|round)\s+\d/i.test(companyName) ||
+          /total money/i.test(companyName) ||
+          /submission (date|window)/i.test(companyName) ||
+          /winner announced/i.test(companyName) ||
+          /challenge topic/i.test(companyName);
+        
+        if (!isNoise) {
+          cardsFound.push({ element: $card, status, companyName });
+          this.log(`Found ${status} CARD: ${companyName}`, 'info');
         }
       }
     }
