@@ -247,51 +247,45 @@ export async function fetchBillWithDetails(
     }).catch(() => console.log('  ⚠ No summaries'))
   );
   
-  // 2. COSPONSORS - Full list with party, state, dates
-  if (bill.cosponsors && bill.cosponsors.count > 0) {
-    fetchTasks.push(
-      fetchBillCosponsors(congress, billType, billNumber).then(cosponsorsList => {
-        if (cosponsorsList && cosponsorsList.length > 0) {
-          bill.cosponsors = cosponsorsList.map((c: any) => ({
-            bioguideId: c.bioguideId,
-            fullName: c.fullName,
-            firstName: c.firstName,
-            lastName: c.lastName,
-            party: c.party,
-            state: c.state,
-            district: c.district,
-            sponsorshipDate: c.sponsorshipDate,
-            isOriginalCosponsor: c.isOriginalCosponsor
-          }));
-          console.log(`  ✓ Cosponsors: ${cosponsorsList.length} members`);
-        }
-      }).catch(() => console.log('  ⚠ No cosponsors'))
-    );
-  }
+  // 2. COSPONSORS - Full list with party, state, dates (ALWAYS fetch)
+  fetchTasks.push(
+    fetchBillCosponsors(congress, billType, billNumber).then(cosponsorsList => {
+      if (cosponsorsList && cosponsorsList.length > 0) {
+        bill.cosponsors = cosponsorsList.map((c: any) => ({
+          bioguideId: c.bioguideId,
+          fullName: c.fullName,
+          firstName: c.firstName,
+          lastName: c.lastName,
+          party: c.party,
+          state: c.state,
+          district: c.district,
+          sponsorshipDate: c.sponsorshipDate,
+          isOriginalCosponsor: c.isOriginalCosponsor
+        }));
+        console.log(`  ✓ Cosponsors: ${cosponsorsList.length} members`);
+      }
+    }).catch(() => console.log('  ⚠ No cosponsors'))
+  );
   
-  // 3. ACTIONS - Complete timeline of every action
-  if (bill.actions && bill.actions.count > 0) {
-    fetchTasks.push(
-      fetchBillActions(congress, billType, billNumber).then(actionsList => {
-        if (actionsList && actionsList.length > 0) {
-          bill.actions = actionsList;
-          console.log(`  ✓ Actions: ${actionsList.length} total actions`);
-        }
-      }).catch(() => console.log('  ⚠ Actions failed'))
-    );
-  }
+  // 3. ACTIONS - Complete timeline of every action (ALWAYS fetch, don't rely on initial response)
+  fetchTasks.push(
+    fetchBillActions(congress, billType, billNumber).then(actionsList => {
+      if (actionsList && actionsList.length > 0) {
+        bill.actions = actionsList;
+        console.log(`  ✓ Actions: ${actionsList.length} total actions`);
+      }
+    }).catch(() => console.log('  ⚠ Actions failed'))
+  );
   
-  // 4. AMENDMENTS - All amendments with full details
-  if (bill.amendments && bill.amendments.count > 0) {
-    fetchTasks.push(
-      fetchBillAmendments(congress, billType, billNumber).then(amendmentsList => {
-        if (amendmentsList && amendmentsList.length > 0) {
-          bill.amendments = amendmentsList;
-          console.log(`  ✓ Amendments: ${amendmentsList.length} amendments`);
-        }
-      }).catch(() => console.log('  ⚠ No amendments'))
-    );
-  }
+  // 4. AMENDMENTS - All amendments with full details (ALWAYS fetch)
+  fetchTasks.push(
+    fetchBillAmendments(congress, billType, billNumber).then(amendmentsList => {
+      if (amendmentsList && amendmentsList.length > 0) {
+        bill.amendments = amendmentsList;
+        console.log(`  ✓ Amendments: ${amendmentsList.length} amendments`);
+      }
+    }).catch(() => console.log('  ⚠ No amendments'))
+  );
   
   // 5. TEXT VERSIONS - All published versions (PDF, XML, HTML links)
   fetchTasks.push(
