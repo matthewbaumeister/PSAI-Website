@@ -363,17 +363,17 @@ export class ArmyXTechScraper {
               const loadMoreButton = await page.$('.esg-loadmore');
               if (loadMoreButton) {
                 // Check if button has remaining items
-                const buttonText = await page.evaluate(el => el.textContent, loadMoreButton);
+                const buttonText = await loadMoreButton.evaluate((el: Element) => el.textContent);
                 this.log(`Found Load More button: ${buttonText}`);
                 
-                const isVisible = await page.evaluate(el => {
+                const isVisible = await loadMoreButton.evaluate((el: Element) => {
                   const style = window.getComputedStyle(el);
                   return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
-                }, loadMoreButton);
+                });
                 
                 if (isVisible && buttonText && buttonText.includes('(')) {
                   // Click the button
-                  await page.evaluate((el: Element) => (el as HTMLElement).click(), loadMoreButton);
+                  await loadMoreButton.evaluate((el: Element) => (el as HTMLElement).click());
                   clickCount++;
                   this.log(`Clicked Load More button (${clickCount} times)`);
                   await new Promise(resolve => setTimeout(resolve, 3000)); // Wait for new items to load
@@ -406,14 +406,14 @@ export class ArmyXTechScraper {
             try {
               const loadMoreButton = await page.$('.esg-loadmore');
               if (loadMoreButton) {
-                const buttonText = await page.evaluate(el => el.textContent, loadMoreButton);
-                const isVisible = await page.evaluate(el => {
+                const buttonText = await loadMoreButton.evaluate((el: Element) => el.textContent);
+                const isVisible = await loadMoreButton.evaluate((el: Element) => {
                   const style = window.getComputedStyle(el);
                   return style.display !== 'none' && style.visibility !== 'hidden';
-                }, loadMoreButton);
+                });
                 
                 if (isVisible && buttonText && buttonText.includes('(')) {
-                  await page.evaluate((el: Element) => (el as HTMLElement).click(), loadMoreButton);
+                  await loadMoreButton.evaluate((el: Element) => (el as HTMLElement).click());
                   clickCount++;
                   this.log(`Clicked Load More for active (${clickCount} times)`);
                   await new Promise(resolve => setTimeout(resolve, 3000));
