@@ -584,7 +584,7 @@ export class ArmyXTechScraper {
   /**
    * Fetch detailed competition information
    */
-  private async fetchCompetitionDetails(url: string): Promise<Partial<XTechCompetition>> {
+  private async fetchCompetitionDetails(url: string, status?: string): Promise<Partial<XTechCompetition>> {
     try {
       this.log(`Fetching details from: ${url}`);
       const html = await this.fetchHTML(url);
@@ -738,11 +738,12 @@ export class ArmyXTechScraper {
       }
       
       // Determine current competition phase based on status and dates
-      if (details.status === 'Closed') {
+      const compStatus = status || details.status || 'Unknown';
+      if (compStatus === 'Closed') {
         details.competition_phase = 'Closed/Awarded';
         (details as any).current_phase_number = (details as any).total_phases || 0;
         (details as any).phase_progress_percentage = 100;
-      } else if (details.status === 'Open' || details.status === 'Active') {
+      } else if (compStatus === 'Open' || compStatus === 'Active') {
         const currentDate = new Date();
         let currentPhaseNum = 1;
         let phaseName = 'Phase 1';
@@ -1392,7 +1393,7 @@ export class ArmyXTechScraper {
         // Fetch detailed information if URL is available
         if (competition.opportunity_url && competition.opportunity_url !== XTECH_COMPETITIONS_URL) {
           await this.delay(); // Be polite
-          const details = await this.fetchCompetitionDetails(competition.opportunity_url);
+          const details = await this.fetchCompetitionDetails(competition.opportunity_url, competition.status);
           Object.assign(competition, details);
         }
 
@@ -1468,7 +1469,7 @@ export class ArmyXTechScraper {
         // Always fetch detailed information for active competitions
         if (competition.opportunity_url && competition.opportunity_url !== XTECH_COMPETITIONS_URL) {
           await this.delay();
-          const details = await this.fetchCompetitionDetails(competition.opportunity_url);
+          const details = await this.fetchCompetitionDetails(competition.opportunity_url, competition.status);
           Object.assign(competition, details);
         }
 
