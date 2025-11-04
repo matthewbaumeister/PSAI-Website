@@ -5,12 +5,13 @@
  * ============================================
  * 
  * Lightweight scraper for automated daily cron jobs.
- * Fetches recent updates to defense-related legislation.
+ * Fetches recent updates to all legislation with comprehensive data.
  * 
  * Key Features:
- * - Updates bills from last 3 days (handles API delays)
+ * - Updates bills from last 2 days (today + yesterday)
+ * - Comprehensive data: actions, cosponsors, amendments, text versions
  * - Fetches new amendments and committee reports
- * - Tracks upcoming defense hearings
+ * - Tracks upcoming hearings
  * - Returns statistics for email notifications
  * 
  * Usage:
@@ -44,7 +45,7 @@ import {
 const MAX_BILLS_PER_RUN = 250;
 const MAX_REPORTS_PER_RUN = 50;
 const MAX_HEARINGS_PER_RUN = 30;
-const UPDATE_WINDOW_DAYS = 3; // Scrape last 3 days to catch delayed updates
+const UPDATE_WINDOW_DAYS = 2; // Scrape last 2 days (today + yesterday) for updates
 
 // ============================================
 // Helper Functions

@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
           updated_bills: result.stats.updated,
           failed_bills: result.stats.failed,
           api_calls_made: result.stats.apiCalls,
-          window: 'Last 3 days',
+          window: 'Last 2 days (today + yesterday)',
           mode: 'comprehensive',
           includes: 'summaries, actions, cosponsors, amendments, text versions, related bills'
         }
