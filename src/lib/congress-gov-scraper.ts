@@ -214,6 +214,15 @@ export async function fetchBillSummaries(
 }
 
 /**
+ * Fetch related bills for a bill
+ */
+async function fetchBillRelatedBills(congress: number, billType: string, billNumber: number): Promise<any[]> {
+  const url = `${CONGRESS_API_BASE}/bill/${congress}/${billType}/${billNumber}/relatedbills`;
+  const result = await rateLimiter.execute(() => makeRequest(url, {}));
+  return result?.relatedBills || [];
+}
+
+/**
  * COMPREHENSIVE: Fetch bill with ALL POSSIBLE data from ALL endpoints
  * This fetches EVERYTHING Congress.gov has about a bill
  */
@@ -300,6 +309,16 @@ export async function fetchBillWithDetails(
         console.log(`  ✓ Text Versions: ${textVersions.length} versions`);
       }
     }).catch(() => console.log('  ⚠ No text versions'))
+  );
+  
+  // 6. RELATED BILLS - Companion bills, similar bills, etc.
+  fetchTasks.push(
+    fetchBillRelatedBills(congress, billType, billNumber).then(relatedBillsList => {
+      if (relatedBillsList && relatedBillsList.length > 0) {
+        bill.relatedBills = relatedBillsList;
+        console.log(`  ✓ Related Bills: ${relatedBillsList.length} bills`);
+      }
+    }).catch(() => console.log('  ⚠ No related bills'))
   );
   
   // Wait for all fetches to complete
@@ -640,6 +659,10 @@ export interface NormalizedBill {
   defense_relevance_score: number;
   defense_programs_mentioned?: string[];
   contractors_mentioned?: string[];
+  military_branches?: string[];
+  authorized_amount?: number;
+  appropriated_amount?: number;
+  fiscal_years?: number[];
   sponsor_name?: string;
   sponsor_party?: string;
   sponsor_state?: string;
@@ -652,6 +675,8 @@ export interface NormalizedBill {
   action_count: number;
   amendments?: any;
   text_versions?: any;
+  related_bills?: any;
+  companion_bill_id?: string;
   latest_action_text?: string;
   congress_gov_url: string;
   api_response: any;
@@ -676,17 +701,99 @@ function generateCongressGovUrl(congress: number, billType: string, billNumber: 
   return `https://www.congress.gov/bill/${congress}th-congress/${urlType}/${billNumber}`;
 }
 
+// ============================================
+// Additional Text Extraction Functions
+// ============================================
+
+function extractMilitaryBranches(text: string): string[] {
+  const branches = new Set<string>();
+  const patterns: Record<string, RegExp> = {
+    'Army': /\b(Army|U\.?S\.?\s*Army)\b/gi,
+    'Navy': /\b(Navy|U\.?S\.?\s*Navy|Naval)\b/gi,
+    'Air Force': /\b(Air\s*Force|USAF)\b/gi,
+    'Marine Corps': /\b(Marine\s*Corps|Marines|USMC)\b/gi,
+    'Space Force': /\b(Space\s*Force|USSF)\b/gi,
+    'Coast Guard': /\b(Coast\s*Guard|USCG)\b/gi
+  };
+
+  for (const [branch, pattern] of Object.entries(patterns)) {
+    if (pattern.test(text)) branches.add(branch);
+  }
+  return Array.from(branches);
+}
+
+function extractFiscalYears(text: string): number[] {
+  const years = new Set<number>();
+  const matches = text.matchAll(/(?:fiscal\s*year|FY)\s*'?(\d{2,4})/gi);
+  
+  for (const match of matches) {
+    let year = parseInt(match[1]);
+    if (year < 100) year = 2000 + year;
+    if (year >= 2000 && year <= 2050) years.add(year);
+  }
+  return Array.from(years).sort();
+}
+
+function extractFundingAmounts(text: string): { authorized?: number; appropriated?: number } {
+  const result: { authorized?: number; appropriated?: number } = {};
+  
+  const parseAmount = (amount: string, unit: string): number => {
+    const num = parseFloat(amount.replace(/,/g, ''));
+    const multipliers: Record<string, number> = { 'million': 1e6, 'billion': 1e9, 'trillion': 1e12 };
+    return Math.round(num * (multipliers[unit.toLowerCase()] || 1));
+  };
+  
+  const authMatch = text.match(/authorized?\s+\$?([\d,]+(?:\.\d+)?)\s*(million|billion)/i);
+  if (authMatch) result.authorized = parseAmount(authMatch[1], authMatch[2]);
+  
+  const appropMatch = text.match(/appropriated?\s+\$?([\d,]+(?:\.\d+)?)\s*(million|billion)/i);
+  if (appropMatch) result.appropriated = parseAmount(appropMatch[1], appropMatch[2]);
+  
+  return result;
+}
+
 export function normalizeBill(rawBill: any, billType?: string): NormalizedBill {
   const isDefense = isDefenseRelated(rawBill);
   const defenseScore = isDefense ? calculateDefenseRelevanceScore(rawBill) : 0;
   
+  // Helper function to strip HTML tags from text
+  const stripHtml = (html: string): string => {
+    if (!html) return '';
+    return html
+      .replace(/<[^>]*>/g, '') // Remove all HTML tags
+      .replace(/&nbsp;/g, ' ') // Replace &nbsp; with space
+      .replace(/&amp;/g, '&')  // Replace &amp; with &
+      .replace(/&lt;/g, '<')   // Replace &lt; with <
+      .replace(/&gt;/g, '>')   // Replace &gt; with >
+      .replace(/&quot;/g, '"') // Replace &quot; with "
+      .replace(/&#39;/g, "'")  // Replace &#39; with '
+      .replace(/\s+/g, ' ')    // Collapse multiple spaces
+      .trim();
+  };
+  
   const fullText = [
     rawBill.title || '',
-    rawBill.summary?.text || ''
+    rawBill.summary?.text ? stripHtml(rawBill.summary.text) : ''
   ].join(' ');
   
+  // Extract all relevant information from text
   const programs = isDefense ? extractDefensePrograms(fullText) : [];
   const contractors = isDefense ? extractContractorMentions(fullText) : [];
+  const branches = isDefense ? extractMilitaryBranches(fullText) : [];
+  const fiscalYears = extractFiscalYears(fullText);
+  const fundingAmounts = extractFundingAmounts(fullText);
+  
+  // Extract companion bill from related bills
+  let companionBillId: string | undefined;
+  if (Array.isArray(rawBill.relatedBills)) {
+    const companion = rawBill.relatedBills.find((rb: any) => 
+      rb.relationshipDetails?.[0]?.type?.toLowerCase().includes('companion') ||
+      rb.type?.toLowerCase().includes('companion')
+    );
+    if (companion) {
+      companionBillId = `${companion.congress}-${companion.type}-${companion.number}`;
+    }
+  }
 
   return {
     congress: rawBill.congress,
@@ -699,13 +806,17 @@ export function normalizeBill(rawBill: any, billType?: string): NormalizedBill {
     latest_action_date: rawBill.latestAction?.actionDate,
     status: rawBill.latestAction?.text,
     is_law: Array.isArray(rawBill.laws) && rawBill.laws.length > 0 || false,
-    summary: rawBill.summary?.text,
+    summary: rawBill.summary?.text ? stripHtml(rawBill.summary.text) : undefined,
     policy_area: rawBill.policyArea?.name,
     legislative_subjects: Array.isArray(rawBill.subjects?.legislativeSubjects) ? rawBill.subjects.legislativeSubjects.map((s: any) => s.name) : [],
     is_defense_related: isDefense,
     defense_relevance_score: defenseScore,
     defense_programs_mentioned: programs.length > 0 ? programs : undefined,
     contractors_mentioned: contractors.length > 0 ? contractors : undefined,
+    military_branches: branches.length > 0 ? branches : undefined,
+    authorized_amount: fundingAmounts.authorized,
+    appropriated_amount: fundingAmounts.appropriated,
+    fiscal_years: fiscalYears.length > 0 ? fiscalYears : undefined,
     sponsor_name: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].fullName : undefined,
     sponsor_party: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].party : undefined,
     sponsor_state: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].state : undefined,
@@ -719,6 +830,8 @@ export function normalizeBill(rawBill: any, billType?: string): NormalizedBill {
     action_count: Array.isArray(rawBill.actions) ? rawBill.actions.length : (rawBill.actions?.count || 0),
     amendments: Array.isArray(rawBill.amendments) ? rawBill.amendments : null,
     text_versions: Array.isArray(rawBill.textVersions) ? rawBill.textVersions : null,
+    related_bills: Array.isArray(rawBill.relatedBills) ? rawBill.relatedBills : null,
+    companion_bill_id: companionBillId,
     latest_action_text: rawBill.latestAction?.text,
     congress_gov_url: generateCongressGovUrl(rawBill.congress, rawBill.type, rawBill.number),
     api_response: rawBill
@@ -747,6 +860,10 @@ export async function saveBill(bill: NormalizedBill): Promise<boolean> {
         defense_relevance_score: bill.defense_relevance_score,
         defense_programs_mentioned: bill.defense_programs_mentioned,
         contractors_mentioned: bill.contractors_mentioned,
+        military_branches: bill.military_branches,
+        authorized_amount: bill.authorized_amount,
+        appropriated_amount: bill.appropriated_amount,
+        fiscal_years: bill.fiscal_years,
         sponsor_name: bill.sponsor_name,
         sponsor_party: bill.sponsor_party,
         sponsor_state: bill.sponsor_state,
@@ -759,6 +876,8 @@ export async function saveBill(bill: NormalizedBill): Promise<boolean> {
         action_count: bill.action_count,
         amendments: bill.amendments,
         text_versions: bill.text_versions,
+        related_bills: bill.related_bills,
+        companion_bill_id: bill.companion_bill_id,
         latest_action_text: bill.latest_action_text,
         congress_gov_url: bill.congress_gov_url,
         api_response: bill.api_response,
