@@ -880,15 +880,33 @@ export class ArmyXTechScraper {
           const companyHeading = $container.find('h2, h3, h4, h5, .company-name, strong').first();
           let companyName = companyHeading.text().trim();
           
+          // IMPORTANT: Check if this card has a description paragraph (company cards should have descriptions)
+          const hasDescription = $container.find('p').text().trim().length > 20;
+          
           // Clean up the company name (remove the status text if it's included)
           companyName = companyName.replace(/\b(winner|finalist|semi-?finalist)\b/gi, '').trim();
           
-          if (companyName && companyName.length > 2 && companyName.length < 200) {
-            // Skip if it's just the badge text itself
-            if (companyName.toLowerCase() !== status.toLowerCase()) {
-              cardsFound.push({ element: $container, status, companyName });
-              this.log(`Found ${status} CARD: ${companyName}`, 'info');
-            }
+          // Filter out noise: dates, numbers, prize text, generic text
+          const isNoise = 
+            !hasDescription || // MUST have a description to be a company card
+            companyName.length < 3 ||
+            companyName.length > 200 ||
+            companyName.toLowerCase() === status.toLowerCase() ||
+            /^\d+$/.test(companyName) || // Just a number
+            /^(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)/i.test(companyName) || // Starts with month
+            /\d{1,2},?\s+\d{4}/.test(companyName) || // Contains date pattern
+            /^up to/i.test(companyName) || // Prize text
+            /^\$[\d,]+/i.test(companyName) || // Money amount
+            /cash prize/i.test(companyName) || // Prize text
+            /^(phase|stage|round)\s+\d/i.test(companyName) || // Phase text
+            /total money/i.test(companyName) || // Competition info
+            /submission (date|window)/i.test(companyName) || // Competition info
+            /winner announced/i.test(companyName) || // Competition info
+            /challenge topic/i.test(companyName); // Competition info
+          
+          if (companyName && !isNoise) {
+            cardsFound.push({ element: $container, status, companyName });
+            this.log(`Found ${status} CARD: ${companyName}`, 'info');
           }
         }
       }
