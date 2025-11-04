@@ -39,6 +39,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import {
   fetchBillWithDetails,
+  normalizeBill,
   saveBill,
   delay,
   getCurrentCongress
@@ -206,9 +207,12 @@ async function fetchAndSaveBill(
       return false;
     }
 
+    // Normalize the bill data before saving
+    const normalized = normalizeBill(bill, billType);
+
     // Save to database
     const saved = await apiCallWithRetry(
-      () => saveBill(bill),
+      () => saveBill(normalized),
       `Saving ${billId} to database`
     );
 
