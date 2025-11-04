@@ -132,23 +132,25 @@ export async function GET(request: NextRequest) {
   try {
     console.log('[Cron] Starting DoD contract news scraper...');
     
-    // Check last 3 days (handles gov shutdowns where old articles get updated)
+    // Initialize Supabase
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+    
+    // Check today + last 3 days (covers gov shutdown catch-up)
     const today = new Date();
     const dates = [];
-    for (let i = 1; i <= 3; i++) {
+    for (let i = 0; i <= 3; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() - i);
       dates.push(formatDate(date));
     }
     
     console.log(`[Cron] Checking dates: ${dates.join(', ')}`);
-    console.log(`[Cron] (Multi-day check handles gov shutdowns and contract mods)`);
+    console.log(`[Cron] (Today + last 3 days - handles weekends and gov shutdowns)`);
     
     // Get count before scraping
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
     
     const { count: countBefore } = await supabase
       .from('dod_contract_news')
@@ -214,22 +216,35 @@ export async function GET(request: NextRequest) {
       .from('dod_contract_news')
       .select('*', { count: 'exact', head: true });
     
+    // Get last government updated date (most recent published_date in database)
+    const { data: finalGovData } = await supabase
+      .from('dod_contract_news')
+      .select('published_date')
+      .order('published_date', { ascending: false })
+      .limit(1);
+    
+    const lastGovUpdatedDate = finalGovData && finalGovData.length > 0 
+      ? finalGovData[0].published_date 
+      : 'No data';
+    
     const durationMs = Date.now() - startTime;
     const durationSeconds = Math.floor(durationMs / 1000);
     const newContracts = (countAfter || 0) - (countBefore || 0);
     
     console.log('[Cron] DoD news scraping completed successfully');
     console.log(`[Cron] Total: ${totalArticles} articles, ${newContracts} new/updated contracts`);
+    console.log(`[Cron] Last Gov Updated Date: ${lastGovUpdatedDate}`);
     
     // Send success email
     await sendCronSuccessEmail({
       jobName: 'DoD Contract News Scraper',
       success: true,
-      date: dates[0], // Yesterday's date for display
+      date: formatDate(new Date()),
       duration: durationSeconds,
       stats: {
-        dates_checked: dates.join(', '),
-        total_contracts: countAfter || 0,
+        dates_scraped: dates.join(', '),
+        last_gov_updated_date: lastGovUpdatedDate,
+        total_contracts_in_db: countAfter || 0,
         new_updated_contracts: newContracts,
         articles_found: totalArticles,
         contracts_inserted: totalContracts

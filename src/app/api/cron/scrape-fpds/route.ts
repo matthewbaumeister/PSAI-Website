@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendCronSuccessEmail, sendCronFailureEmail } from '@/lib/cron-notifications';
 import { createClient } from '@supabase/supabase-js';
-import { scrapeDate } from '@/scripts/fpds-daily-scraper';
+import { scrapeDailyTransactions } from '@/lib/fpds-transactions-scraper';
 
 /**
  * FPDS Daily Scraper - Vercel Cron Job
  * 
- * Runs daily at 12:00 PM UTC to scrape previous day's contract awards
+ * Now uses TRANSACTIONS endpoint to get ALL contract actions (6000+ per day)
+ * Previously: Used awards endpoint (only 12 new awards per day)
+ * 
+ * Runs daily at 12:00 PM UTC to scrape contract transactions
  * 
  * Vercel Cron: 0 12 * * * (12:00 PM UTC = 8:00 AM EST / 5:00 AM PST)
  */
@@ -40,7 +43,8 @@ export async function GET(request: NextRequest) {
   const dateStr = formatDate(today);
 
   try {
-    console.log('[Cron] Starting FPDS daily scraper...');
+    console.log('[Cron] Starting FPDS TRANSACTIONS scraper...');
+    console.log('[Cron] Using transactions endpoint - will capture 6000+ daily actions');
     console.log('[Cron] Multi-day mode: Will scrape last 3 days to handle API delays');
     
     // Get count before scraping
@@ -49,14 +53,12 @@ export async function GET(request: NextRequest) {
       process.env.SUPABASE_SERVICE_ROLE_KEY!
     );
     
-    // Count contracts from last 3 days
-    const threeDaysAgo = new Date(today);
-    threeDaysAgo.setDate(today.getDate() - 3);
-    
+    // Get total count in database
     const { count: countBefore } = await supabase
       .from('fpds_contracts')
-      .select('*', { count: 'exact', head: true })
-      .gte('last_modified_date', `${formatDate(threeDaysAgo)}T00:00:00`);
+      .select('*', { count: 'exact', head: true });
+    
+    console.log(`[Cron] Database has ${countBefore} contracts before scraping`);
     
     // Scrape last 3 days (today, yesterday, 2 days ago)
     const dates = [];
@@ -73,18 +75,18 @@ export async function GET(request: NextRequest) {
     let totalUpdated = 0;
     let totalFailed = 0;
     
-    // Scrape each date
+    // Scrape each date using TRANSACTIONS endpoint
     for (const date of dates) {
       try {
-        console.log(`[Cron] Processing ${date}...`);
-        const result = await scrapeDate(date);
+        console.log(`[Cron] Processing ${date} (transactions)...`);
+        const result = await scrapeDailyTransactions(date);
         
         totalFound += result.totalFound;
         totalInserted += result.totalInserted;
         totalUpdated += result.totalUpdated;
         totalFailed += result.totalFailed;
         
-        console.log(`[Cron] ${date}: ${result.totalInserted} new, ${result.totalUpdated} updated`);
+        console.log(`[Cron] ${date}: Found ${result.totalFound}, New: ${result.totalInserted}, Updated: ${result.totalUpdated}`);
       } catch (error: any) {
         console.error(`[Cron] Error scraping ${date}:`, error.message);
         // Continue with other dates even if one fails
@@ -94,13 +96,13 @@ export async function GET(request: NextRequest) {
     // Get count after scraping
     const { count: countAfter } = await supabase
       .from('fpds_contracts')
-      .select('*', { count: 'exact', head: true })
-      .gte('last_modified_date', `${formatDate(threeDaysAgo)}T00:00:00`);
+      .select('*', { count: 'exact', head: true });
     
     const duration = Date.now() - startTime;
     
-    console.log('[Cron] FPDS scraping completed successfully');
+    console.log('[Cron] FPDS transactions scraping completed successfully');
     console.log(`[Cron] Total: ${totalFound} found, ${totalInserted} new, ${totalUpdated} updated, ${totalFailed} failed`);
+    console.log(`[Cron] Database now has ${countAfter} contracts (was ${countBefore})`);
     
     // Send success email
     await sendCronSuccessEmail({
@@ -120,14 +122,15 @@ export async function GET(request: NextRequest) {
     
     return NextResponse.json({
       success: true,
-      message: `FPDS contracts scraped (last 3 days)`,
+      message: `FPDS transactions scraped (last 3 days)`,
       date: dateStr,
       stats: {
         days_scraped: 3,
         total_found: totalFound,
         new: totalInserted,
         updated: totalUpdated,
-        failed: totalFailed
+        failed: totalFailed,
+        total_in_db: countAfter || 0
       }
     });
     
