@@ -9,7 +9,9 @@
     "lint": "next lint",
     "deploy": "vercel --prod",
     "push": "./auto-push.sh",
-    "auto-push": "git add . && git commit -m \"Auto-commit: $(date)\" && git push"
+    "auto-push": "git add . && git commit -m \"Auto-commit: $(date)\" && git push",
+    "scrape:army-innovation:historical": "tsx src/lib/army-xtech-scraper.ts historical",
+    "scrape:army-innovation:active": "tsx src/lib/army-xtech-scraper.ts active"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.81",

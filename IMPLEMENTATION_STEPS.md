@@ -1,332 +1,503 @@
-# SBA SBIR Awards Integration - Implementation Steps
+# Complete Implementation Steps: GSA MAS + GWACs
 
-## 🚀 Step-by-Step Implementation Guide
-
-Start here and follow in order. Each step builds on the previous one.
+## You Are Here
+✅ Tried to run the SQL schema (got constraint error)  
+➡️ **Next: Run the fixed schema and follow these steps**
 
 ---
 
-## PHASE 1: Database Setup (Day 1)
+## Step-by-Step Implementation
 
-### Step 1.1: Create Database Tables
+### Step 1: Run Fixed Database Schema (5 minutes)
 
-**File:** `supabase/migrations/create_sbir_awards_tables.sql`
+**Run this file in Supabase SQL Editor:**
+```
+GWAC_AND_MAS_FIXED.sql
+```
 
-Run this SQL in your Supabase SQL Editor:
+This will:
+- Drop any conflicting tables
+- Create all necessary tables for GWACs and GSA MAS
+- Create indexes and views
+- Set up helper functions
+
+**Verify it worked:**
+```sql
+-- Should return 7 tables
+SELECT table_name FROM information_schema.tables 
+WHERE table_name IN (
+  'contract_vehicles',
+  'contract_holders', 
+  'labor_rates',
+  'product_pricing',
+  'vehicle_task_orders',
+  'vehicle_company_stats',
+  'vehicle_scraper_log'
+);
+```
+
+---
+
+## Part A: GSA MAS Implementation (30 minutes)
+
+### Step 2: Test CALC+ API Connection (2 minutes)
+
+```bash
+cd /Users/matthewbaumeister/Documents/PropShop_AI_Website
+ts-node src/lib/calc-plus-scraper.ts search "Software Engineer"
+```
+
+**Expected Output:**
+```
+[CALC+] Fetching: https://calc.gsa.gov/api/rates/?q=Software+Engineer...
+[CALC+] Found 10 rates (total: 1247)
+
+=== SEARCH RESULTS ===
+Found 1247 total results
+
+First 10 results:
+  Software Engineer (3yr) - $95.50/hr - Company A (GS35F0119Y)
+  Senior Software Engineer (5yr) - $125.30/hr - Company B (GS35F0234Z)
+  ...
+```
+
+**If this works, continue. If not, let me know the error.**
+
+### Step 3: Scrape Popular Labor Categories (15 minutes)
+
+This will get you ~2,000-5,000 labor rate records across 18 popular categories.
+
+```bash
+ts-node src/lib/calc-plus-scraper.ts popular
+```
+
+**This will scrape:**
+- Software Engineer (all levels)
+- Project Manager
+- Business Analyst
+- Systems Analyst
+- Database Administrator
+- Network Engineer
+- Security Specialist
+- Cybersecurity Analyst
+- DevOps Engineer
+- Cloud Architect
+- Data Scientist
+- UX Designer
+- Technical Writer
+- Help Desk Technician
+- IT Support Specialist
+
+**Expected Output:**
+```
+[CALC+] Starting bulk scrape of 18 popular labor categories
+[CALC+] Scraping rates for labor category: Software Engineer
+[CALC+] Found 1247 rates
+[CALC+] Created vehicle record for GS35F0119Y
+[CALC+] Processed page 1, total: 100
+...
+[CALC+] Bulk scrape complete!
+  Categories Processed: 18
+  Total Rates: 3,452
+```
+
+### Step 4: Verify GSA MAS Data (5 minutes)
 
 ```sql
--- ============================================
--- SBIR Awards Integration - Database Schema
--- ============================================
+-- Check total rates imported
+SELECT COUNT(*) as total_rates FROM labor_rates;
 
--- 1. Main Awards Table
-CREATE TABLE IF NOT EXISTS sbir_awards (
-  id BIGSERIAL PRIMARY KEY,
-  
-  -- Award Identification
-  contract_award_number TEXT UNIQUE NOT NULL,
-  award_year INTEGER NOT NULL,
-  award_date DATE,
-  
-  -- Topic/Opportunity Linkage (CRITICAL for connecting to sbir_final)
-  topic_number TEXT,
-  solicitation_id TEXT,
-  solicitation_number TEXT,
-  
-  -- Award Details
-  award_title TEXT NOT NULL,
-  abstract TEXT,
-  phase TEXT NOT NULL, -- "Phase I", "Phase II", "Phase III"
-  program TEXT NOT NULL, -- "SBIR", "STTR"
-  award_amount DECIMAL(12,2),
-  
-  -- Agency Information
-  agency TEXT NOT NULL, -- "Department of Defense"
-  agency_id TEXT NOT NULL, -- "DOD"
-  branch_of_service TEXT, -- "Army", "Navy", "Air Force"
-  component TEXT, -- "ARMY", "DARPA", etc.
-  
-  -- Company Information
-  company TEXT NOT NULL,
-  duns TEXT,
-  firm_address TEXT,
-  firm_city TEXT,
-  firm_state TEXT,
-  firm_zip TEXT,
-  firm_country TEXT DEFAULT 'USA',
-  firm_phone TEXT,
-  firm_website TEXT,
-  
-  -- Diversity Flags
-  hubzone_owned BOOLEAN DEFAULT false,
-  woman_owned BOOLEAN DEFAULT false,
-  socially_economically_disadvantaged BOOLEAN DEFAULT false,
-  veteran_owned BOOLEAN DEFAULT false,
-  
-  -- Research Institution (for STTR)
-  research_institution TEXT,
-  ri_location TEXT,
-  
-  -- Program Management
-  program_manager TEXT,
-  program_manager_email TEXT,
-  program_manager_phone TEXT,
-  
-  -- Technical Details
-  keywords TEXT[],
-  technology_areas TEXT[],
-  
-  -- Metadata
-  data_source TEXT DEFAULT 'sbir.gov',
-  last_scraped TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
+-- See rate breakdown by category
+SELECT 
+  labor_category,
+  COUNT(*) as rate_count,
+  AVG(current_year_rate) as avg_rate,
+  MIN(current_year_rate) as min_rate,
+  MAX(current_year_rate) as max_rate
+FROM labor_rates
+GROUP BY labor_category
+ORDER BY rate_count DESC;
 
--- 2. Company Profiles Table
-CREATE TABLE IF NOT EXISTS sbir_companies (
-  id BIGSERIAL PRIMARY KEY,
-  
-  -- Company Identification
-  company_name TEXT UNIQUE NOT NULL,
-  duns TEXT UNIQUE,
-  
-  -- Company Details
-  address TEXT,
-  city TEXT,
-  state TEXT,
-  zip TEXT,
-  country TEXT DEFAULT 'USA',
-  phone TEXT,
-  website TEXT,
-  
-  -- Classification
-  hubzone_owned BOOLEAN DEFAULT false,
-  woman_owned BOOLEAN DEFAULT false,
-  socially_economically_disadvantaged BOOLEAN DEFAULT false,
-  veteran_owned BOOLEAN DEFAULT false,
-  
-  -- Statistics (computed)
-  total_awards INTEGER DEFAULT 0,
-  total_funding DECIMAL(15,2) DEFAULT 0,
-  phase_1_count INTEGER DEFAULT 0,
-  phase_2_count INTEGER DEFAULT 0,
-  phase_3_count INTEGER DEFAULT 0,
-  first_award_year INTEGER,
-  most_recent_award_year INTEGER,
-  
-  -- Success Metrics
-  phase_1_to_2_conversion_rate DECIMAL(5,2),
-  average_award_amount DECIMAL(12,2),
-  
-  -- Technology Focus
-  primary_technology_areas TEXT[],
-  primary_agencies TEXT[],
-  
-  -- Metadata
-  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- 3. Topic Awards Summary Table
-CREATE TABLE IF NOT EXISTS sbir_topic_awards_summary (
-  id BIGSERIAL PRIMARY KEY,
-  
-  -- Topic Linkage
-  topic_number TEXT UNIQUE NOT NULL,
-  
-  -- Award Statistics
-  total_awards INTEGER DEFAULT 0,
-  total_funding DECIMAL(15,2) DEFAULT 0,
-  phase_1_awards INTEGER DEFAULT 0,
-  phase_2_awards INTEGER DEFAULT 0,
-  phase_3_awards INTEGER DEFAULT 0,
-  
-  -- Winner Information (JSON array)
-  winners JSONB,
-  
-  -- Patterns
-  average_award_amount_phase_1 DECIMAL(12,2),
-  average_award_amount_phase_2 DECIMAL(12,2),
-  most_common_winner_state TEXT,
-  woman_owned_percentage DECIMAL(5,2),
-  
-  -- Metadata
-  last_computed TIMESTAMP WITH TIME ZONE DEFAULT NOW()
-);
-
--- 4. Scraper Log Table
-CREATE TABLE IF NOT EXISTS sbir_awards_scraper_log (
-  id BIGSERIAL PRIMARY KEY,
-  
-  scrape_type TEXT NOT NULL,
-  agency TEXT,
-  year_range TEXT,
-  
-  records_found INTEGER,
-  records_inserted INTEGER,
-  records_updated INTEGER,
-  records_skipped INTEGER,
-  
-  status TEXT NOT NULL, -- 'running', 'completed', 'failed'
-  error_message TEXT,
-  
-  started_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  completed_at TIMESTAMP WITH TIME ZONE,
-  duration_seconds INTEGER
-);
-
--- ============================================
--- INDEXES for Performance
--- ============================================
-
-CREATE INDEX IF NOT EXISTS idx_awards_topic_number ON sbir_awards(topic_number);
-CREATE INDEX IF NOT EXISTS idx_awards_company ON sbir_awards(company);
-CREATE INDEX IF NOT EXISTS idx_awards_agency ON sbir_awards(agency_id);
-CREATE INDEX IF NOT EXISTS idx_awards_year ON sbir_awards(award_year);
-CREATE INDEX IF NOT EXISTS idx_awards_phase ON sbir_awards(phase);
-CREATE INDEX IF NOT EXISTS idx_awards_contract ON sbir_awards(contract_award_number);
-
-CREATE INDEX IF NOT EXISTS idx_companies_name ON sbir_companies(company_name);
-CREATE INDEX IF NOT EXISTS idx_companies_state ON sbir_companies(state);
-CREATE INDEX IF NOT EXISTS idx_companies_total_awards ON sbir_companies(total_awards DESC);
-
-CREATE INDEX IF NOT EXISTS idx_topic_awards_topic ON sbir_topic_awards_summary(topic_number);
-
--- ============================================
--- ADD COLUMNS to sbir_final Table
--- ============================================
-
--- Add award-related columns to existing sbir_final table
-ALTER TABLE sbir_final ADD COLUMN IF NOT EXISTS has_awards BOOLEAN DEFAULT false;
-ALTER TABLE sbir_final ADD COLUMN IF NOT EXISTS total_awards INTEGER DEFAULT 0;
-ALTER TABLE sbir_final ADD COLUMN IF NOT EXISTS total_award_funding DECIMAL(15,2);
-ALTER TABLE sbir_final ADD COLUMN IF NOT EXISTS award_winners TEXT[];
-ALTER TABLE sbir_final ADD COLUMN IF NOT EXISTS last_award_date DATE;
-
--- ============================================
--- FOREIGN KEY CONSTRAINTS
--- ============================================
-
--- Link topic awards summary to sbir_final
--- Note: Only add if sbir_final has topic_number as primary/unique key
--- ALTER TABLE sbir_topic_awards_summary 
--- ADD CONSTRAINT fk_topic_awards_topic 
--- FOREIGN KEY (topic_number) REFERENCES sbir_final(topic_number);
-
--- ============================================
--- SUCCESS MESSAGE
--- ============================================
-
-DO $$
-BEGIN
-  RAISE NOTICE 'SBIR Awards tables created successfully!';
-  RAISE NOTICE 'Tables: sbir_awards, sbir_companies, sbir_topic_awards_summary, sbir_awards_scraper_log';
-  RAISE NOTICE 'Next: Test with sample data, then build scraper';
-END $$;
+-- Find cheapest vs most expensive for Senior Software Engineer
+SELECT 
+  company_name,
+  contract_number,
+  min_years_experience,
+  current_year_rate
+FROM labor_rates
+WHERE labor_category LIKE '%Senior Software Engineer%'
+ORDER BY current_year_rate
+LIMIT 10;
 ```
 
-**Action:** Copy this SQL and run it in Supabase SQL Editor.
+### Step 5: Build Rate Comparison Dashboard (Optional - 2 hours)
+
+Create a simple page to compare rates:
+
+**Example queries for dashboard:**
+```sql
+-- Rate comparison view (already created)
+SELECT * FROM labor_rate_comparison 
+WHERE labor_category = 'Senior Software Engineer'
+LIMIT 50;
+
+-- Find best value (low rate + high experience)
+SELECT 
+  company_name,
+  labor_category,
+  min_years_experience,
+  current_year_rate,
+  ROUND(current_year_rate / NULLIF(min_years_experience, 0), 2) as cost_per_year_experience
+FROM labor_rates
+WHERE labor_category LIKE '%Software Engineer%'
+  AND min_years_experience > 0
+ORDER BY cost_per_year_experience
+LIMIT 20;
+```
+
+**✅ GSA MAS IS NOW LIVE! You have pricing intelligence.**
 
 ---
 
-## PHASE 2: Test API Access (Day 1)
+## Part B: GWAC Implementation (6-10 hours)
 
-### Step 2.1: Test SBIR.gov API
+### Step 6: Add GWAC Programs (15 minutes)
 
-Open terminal and test the API:
+Run this SQL to add the major GWAC programs:
+
+```sql
+-- Insert Major GWAC Programs
+
+INSERT INTO contract_vehicles (
+  vehicle_type, program_name, program_code, contract_number, 
+  contract_type, managing_agency, status, contract_ceiling, 
+  award_date, base_period_start, base_period_end, 
+  ultimate_expiration_date, small_business_only, veteran_owned_only, 
+  eight_a_only, contract_website
+) VALUES
+
+-- 8(a) STARS III
+(
+  'GWAC', '8(a) STARS III', 'STARS3', 'GS00Q17GWD4003', 
+  'IT Services', 'GSA', 'Active', 50000000000, 
+  '2019-06-04', '2019-06-04', '2024-06-03', 
+  '2034-06-03', false, false, true,
+  'https://www.gsa.gov/buy-through-us/purchasing-programs/gsa-schedules/gsa-schedule-offerings/8a-stars-iii'
+),
+
+-- Alliant 2
+(
+  'GWAC', 'Alliant 2', 'ALLIANT2', 'GS00Q14OADU107', 
+  'IT Services', 'GSA', 'Active', 80000000000, 
+  '2018-08-16', '2018-08-16', '2023-08-15', 
+  '2033-08-15', false, false, false,
+  'https://www.gsa.gov/buy-through-us/products-and-services/information-technology/alliant-2-governmentwide-acquisition-contract'
+),
+
+-- Alliant 2 Small Business
+(
+  'GWAC', 'Alliant 2 Small Business', 'ALLIANT2_SB', 'GS00Q14OADU206', 
+  'IT Services', 'GSA', 'Active', 15000000000, 
+  '2018-08-16', '2018-08-16', '2023-08-15', 
+  '2033-08-15', true, false, false,
+  'https://www.gsa.gov/buy-through-us/products-and-services/information-technology/alliant-2-governmentwide-acquisition-contract'
+),
+
+-- VETS 2
+(
+  'GWAC', 'VETS 2', 'VETS2', 'VA11817F1001', 
+  'IT Services', 'VA', 'Active', 85000000000, 
+  '2018-03-29', '2018-03-29', '2023-03-28', 
+  '2038-03-28', false, true, false,
+  'https://www.gsa.gov/buy-through-us/products-and-services/information-technology/vets-2-gwac'
+),
+
+-- Polaris
+(
+  'GWAC', 'Polaris', 'POLARIS', '47QRAD20D', 
+  'IT Services', 'GSA', 'Active', 15000000000, 
+  '2020-12-15', '2020-12-15', '2025-12-14', 
+  '2040-12-14', true, false, false,
+  'https://www.gsa.gov/buy-through-us/products-and-services/information-technology/polaris'
+),
+
+-- OASIS+
+(
+  'GWAC', 'OASIS+', 'OASIS_PLUS', '47QRAA', 
+  'Professional Services', 'GSA', 'Active', 130000000000, 
+  '2023-01-01', '2023-01-01', '2028-01-01', 
+  '2048-01-01', false, false, false,
+  'https://www.gsa.gov/buy-through-us/products-and-services/professional-services/oasisplus'
+),
+
+-- CIO-SP4
+(
+  'GWAC', 'CIO-SP4', 'CIOSP4', 'HHSN316201900001W', 
+  'IT Services', 'NIH', 'Active', 50000000000, 
+  '2020-05-05', '2020-05-05', '2030-05-04', 
+  '2040-05-04', false, false, false,
+  'https://cio-sp4.com/'
+);
+
+-- Verify
+SELECT program_name, program_code, contract_ceiling, status 
+FROM contract_vehicles 
+WHERE vehicle_type = 'GWAC'
+ORDER BY contract_ceiling DESC;
+```
+
+### Step 7: Link FPDS Data to GWACs (15 minutes)
+
+First, identify what GWAC task orders you already have in FPDS:
 
 ```bash
-# Test 1: Get 10 recent DOD awards
-curl "https://api.www.sbir.gov/public/api/awards?agency=DOD&year=2024&rows=10&format=json" | jq .
-
-# Test 2: Get NASA awards
-curl "https://api.www.sbir.gov/public/api/awards?agency=NASA&year=2024&rows=10&format=json" | jq .
-
-# Test 3: Search by company
-curl "https://api.www.sbir.gov/public/api/awards?company=Acme&rows=5&format=json" | jq .
+ts-node src/lib/gwac-fpds-linker.ts identify
 ```
 
-**Expected Result:** JSON response with award data
+**Expected Output:**
+```
+[GWAC Identifier] Scanning FPDS for potential GWAC contracts...
+[GWAC Identifier] Scan complete!
+  Total Task Orders: 15,234
+  Unique Parent PIIDs: 8,723
+  Potential GWAC Matches:
+    8(a) STARS III: 342 task orders
+    Alliant 2: 156 task orders
+    VETS 2: 89 task orders
+    Polaris: 67 task orders
+```
 
-If you don't have `jq`, install it:
+Then link them (dry run first):
+
 ```bash
-# Mac
-brew install jq
+ts-node src/lib/gwac-fpds-linker.ts link
+```
 
-# Or just run without jq to see raw JSON
-curl "https://api.www.sbir.gov/public/api/awards?agency=DOD&year=2024&rows=10&format=json"
+If it looks good, run for real:
+
+```bash
+ts-node src/lib/gwac-fpds-linker.ts link --for-real
+```
+
+**Verify:**
+```sql
+-- Check linked task orders
+SELECT COUNT(*) as total_gwac_orders FROM vehicle_task_orders;
+
+-- Breakdown by GWAC program
+SELECT 
+  cv.program_name,
+  COUNT(vto.id) as task_orders,
+  SUM(vto.order_value) as total_value
+FROM contract_vehicles cv
+LEFT JOIN vehicle_task_orders vto ON cv.id = vto.vehicle_id
+WHERE cv.vehicle_type = 'GWAC'
+GROUP BY cv.program_name
+ORDER BY total_value DESC;
+```
+
+### Step 8: Scrape GWAC Contract Holders (4-6 hours)
+
+**Option A: Manual Entry (Faster for Testing)**
+
+Start with 8(a) STARS III (86 companies). Download the list from:
+https://www.gsa.gov/buy-through-us/purchasing-programs/gsa-schedules/gsa-schedule-offerings/8a-stars-iii
+
+Then manually insert a few to test:
+
+```sql
+-- Get STARS III vehicle ID
+SELECT id FROM contract_vehicles WHERE program_code = 'STARS3';
+-- Say it returns id = 1
+
+-- Insert sample contract holders
+INSERT INTO contract_holders (
+  vehicle_id, company_name, vendor_uei, contract_number, status
+) VALUES
+(1, 'Example Tech Company', 'ABC123DEF456', '47QTCA19D0001', 'Active'),
+(1, 'Another Company Inc', 'XYZ789GHI012', '47QTCA19D0002', 'Active');
+```
+
+**Option B: Build Web Scraper (For Full Automation)**
+
+I can help you build a scraper for each GWAC's contract holder list, but this requires:
+1. Analyzing each GWAC website's structure
+2. Building parsing logic for PDF/Excel/HTML
+3. 4-6 hours development time
+
+Let me know if you want this.
+
+### Step 9: Build GWAC Analytics Dashboard (2-3 hours)
+
+**Key Queries for Dashboard:**
+
+```sql
+-- Top GWAC performers by task order value
+SELECT 
+  ch.company_name,
+  cv.program_name,
+  COUNT(vto.id) as task_orders,
+  SUM(vto.order_value) as total_value
+FROM contract_holders ch
+JOIN contract_vehicles cv ON ch.vehicle_id = cv.id
+JOIN vehicle_task_orders vto ON ch.id = vto.contract_holder_id
+WHERE cv.vehicle_type = 'GWAC'
+GROUP BY ch.company_name, cv.program_name
+ORDER BY total_value DESC
+LIMIT 50;
+
+-- Companies with multiple GWAC positions
+SELECT 
+  company_name,
+  COUNT(DISTINCT vehicle_id) as gwac_count,
+  ARRAY_AGG(DISTINCT cv.program_name) as gwacs
+FROM contract_holders ch
+JOIN contract_vehicles cv ON ch.vehicle_id = cv.id
+WHERE cv.vehicle_type = 'GWAC'
+GROUP BY company_name
+HAVING COUNT(DISTINCT vehicle_id) > 1
+ORDER BY gwac_count DESC;
+
+-- Agency spending by GWAC
+SELECT 
+  vto.ordering_agency_name,
+  cv.program_name,
+  COUNT(vto.id) as orders,
+  SUM(vto.order_value) as total_spent
+FROM vehicle_task_orders vto
+JOIN contract_vehicles cv ON vto.vehicle_id = cv.id
+WHERE cv.vehicle_type = 'GWAC'
+GROUP BY vto.ordering_agency_name, cv.program_name
+ORDER BY total_spent DESC
+LIMIT 50;
 ```
 
 ---
 
-## PHASE 3: Build Basic Scraper (Day 2-3)
+## Part C: Automation & Maintenance
 
-### Step 3.1: Create Award Type Definitions
+### Step 10: Set Up Automated Updates
 
-**File:** `src/types/sbir-awards.ts`
+**Create cron job scripts:**
 
-I'll create this file for you next...
+#### Daily: Link New FPDS Orders to Vehicles
+```typescript
+// src/app/api/cron/link-vehicle-orders/route.ts
 
-### Step 3.2: Create Scraper Utility
+import { linkFPDSToGWAC } from '@/lib/gwac-fpds-linker';
 
-**File:** `src/lib/sbir-awards-scraper.ts`
+export async function GET(request: Request) {
+  // Link orders from last 7 days
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+  
+  const result = await linkFPDSToGWAC({
+    dateFrom: sevenDaysAgo.toISOString().split('T')[0]
+  });
+  
+  return Response.json(result);
+}
+```
 
-I'll create this file for you next...
+#### Monthly: Update CALC+ Rates
+```typescript
+// src/app/api/cron/update-calc-rates/route.ts
 
-### Step 3.3: Create Test Script
+import { scrapePopularLaborCategories } from '@/lib/calc-plus-scraper';
 
-**File:** `test-awards-scraper.ts`
+export async function GET(request: Request) {
+  const result = await scrapePopularLaborCategories();
+  return Response.json(result);
+}
+```
 
-Test with a small dataset first (100 records)
-
----
-
-## PHASE 4: Create API Endpoints (Day 4-5)
-
-### Step 4.1: Get Awards for Topic
-- `GET /api/opportunities/:topicNumber/awards`
-
-### Step 4.2: Browse All Awards
-- `GET /api/admin/sbir/awards`
-
-### Step 4.3: Get Company Profile
-- `GET /api/companies/:companyName`
-
----
-
-## PHASE 5: UI Integration (Day 6-7)
-
-### Step 5.1: Add "Past Awards" to Opportunity Pages
-- Show awards on `/opportunities/[topicNumber]`
-
-### Step 5.2: Add Award Badges to Search
-- Show award count on DSIP search results
-
-### Step 5.3: Create Company Profile Page
-- New page: `/companies/[companyName]`
+#### Weekly: Update Statistics
+```sql
+-- Run this weekly
+SELECT update_vehicle_company_stats();
+```
 
 ---
 
-## Quick Start Checklist
+## Quick Reference: What's Working Now
 
-- [ ] **Day 1 Morning:** Run SQL migration (Step 1.1)
-- [ ] **Day 1 Afternoon:** Test API access (Step 2.1)
-- [ ] **Day 2:** Build basic scraper (Step 3)
-- [ ] **Day 3:** Test scraper with 100 records
-- [ ] **Day 4-5:** Create API endpoints (Step 4)
-- [ ] **Day 6-7:** UI integration (Step 5)
-- [ ] **Week 2:** Bulk historical load
-- [ ] **Week 3:** Polish & testing
-- [ ] **Week 4:** Production deployment
+### After Step 3 (GSA MAS Basic):
+✅ Labor rates from 25,000+ GSA MAS contracts  
+✅ Rate comparison queries  
+✅ Pricing intelligence  
+❌ GWAC programs  
+❌ GWAC contract holders  
+❌ FPDS linking  
+
+### After Step 7 (GWAC Linking):
+✅ Labor rates from MAS  
+✅ GWAC programs defined  
+✅ FPDS task orders linked to GWACs  
+❌ GWAC contract holder details  
+
+### After Step 8 (Full Implementation):
+✅ Everything!  
+✅ Complete contract vehicle tracking  
+✅ Pricing intelligence  
+✅ Company portfolios  
+✅ Market analytics  
 
 ---
 
-## Next Actions (RIGHT NOW)
+## Troubleshooting
 
-1. **Copy the SQL above** and run it in Supabase
-2. **Test the API** using curl commands
-3. **Tell me when done**, and I'll create the scraper files for you
+### Error: "relation already exists"
+**Solution:** Run `GWAC_AND_MAS_FIXED.sql` which drops tables first
 
-Ready to start with Step 1?
+### Error: "column does not exist" 
+**Solution:** Make sure you ran the full schema, not just part of it
 
+### CALC+ scraper fails
+**Solution:** Check internet connection, try manual curl:
+```bash
+curl "https://calc.gsa.gov/api/rates/?page_size=5"
+```
+
+### No results from FPDS linking
+**Solution:** Check that you have FPDS data with `referenced_idv_piid`:
+```sql
+SELECT COUNT(*) FROM fpds_contracts WHERE referenced_idv_piid IS NOT NULL;
+```
+
+---
+
+## Priority Order (If Time Limited)
+
+### Must Do (1 hour):
+1. ✅ Run GWAC_AND_MAS_FIXED.sql
+2. ✅ Run CALC+ popular scraper
+3. ✅ Verify rate data
+
+**Result:** Pricing intelligence live
+
+### Should Do (3 hours):
+4. Add GWAC programs
+5. Link FPDS to GWACs
+6. Build basic rate comparison view
+
+**Result:** Complete data foundation
+
+### Nice to Have (8 hours):
+7. Scrape GWAC contract holders
+8. Build full dashboards
+9. Set up automation
+
+**Result:** Production-ready system
+
+---
+
+## Your Next Command
+
+Run this NOW to fix the schema error:
+
+```bash
+# In Supabase SQL Editor, paste contents of:
+GWAC_AND_MAS_FIXED.sql
+```
+
+Then come back here and continue with Step 2!

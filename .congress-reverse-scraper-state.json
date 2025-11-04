@@ -1,0 +1,113 @@
+{
+  "direction": "ascending",
+  "currentCongress": 17,
+  "currentOffset": 0,
+  "totalBillsProcessed": 2117,
+  "successCount": 2114,
+  "failureCount": 3,
+  "congresses": {
+    "1": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "2": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "3": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "4": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "5": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "6": {
+      "totalBills": 80,
+      "processedBills": 79,
+      "lastOffset": 0
+    },
+    "7": {
+      "totalBills": 54,
+      "processedBills": 53,
+      "lastOffset": 0
+    },
+    "8": {
+      "totalBills": 152,
+      "processedBills": 151,
+      "lastOffset": 0
+    },
+    "9": {
+      "totalBills": 154,
+      "processedBills": 154,
+      "lastOffset": 0
+    },
+    "10": {
+      "totalBills": 177,
+      "processedBills": 174,
+      "lastOffset": 0
+    },
+    "11": {
+      "totalBills": 70,
+      "processedBills": 70,
+      "lastOffset": 0
+    },
+    "12": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "13": {
+      "totalBills": 204,
+      "processedBills": 204,
+      "lastOffset": 0
+    },
+    "14": {
+      "totalBills": 222,
+      "processedBills": 218,
+      "lastOffset": 0
+    },
+    "15": {
+      "totalBills": 246,
+      "processedBills": 244,
+      "lastOffset": 0
+    },
+    "16": {
+      "totalBills": 399,
+      "processedBills": 398,
+      "lastOffset": 250
+    },
+    "17": {
+      "totalBills": 390,
+      "processedBills": 372,
+      "lastOffset": 250
+    }
+  },
+  "errors": [
+    {
+      "congress": 8,
+      "bill": "CEN_DOC_H 4",
+      "error": "Request failed with status code 500"
+    },
+    {
+      "congress": 17,
+      "bill": "CEN_DOC_H 3",
+      "error": "Request failed with status code 500"
+    },
+    {
+      "congress": 17,
+      "bill": "CEN_DOC_H 2",
+      "error": "Request failed with status code 500"
+    }
+  ],
+  "lastUpdated": "2025-11-04T17:37:38.585Z"
+}

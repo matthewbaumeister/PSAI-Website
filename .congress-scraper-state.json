@@ -1,11 +1,18 @@
 {
   "currentCongress": 119,
-  "currentOffset": 570,
-  "totalBillsProcessed": 570,
-  "successCount": 570,
-  "failureCount": 0,
-  "startTime": "2025-11-04T14:28:57.008Z",
-  "lastSaveTime": "2025-11-04T14:56:26.949Z",
+  "currentOffset": 2140,
+  "totalBillsProcessed": 2140,
+  "successCount": 2139,
+  "failureCount": 1,
+  "startTime": "2025-11-04T15:04:04.339Z",
+  "lastSaveTime": "2025-11-04T17:35:41.418Z",
   "completedCongresses": [],
-  "errors": []
+  "errors": [
+    {
+      "congress": 119,
+      "bill": "HR 5775",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-04T15:20:47.205Z"
+    }
+  ]
 }
