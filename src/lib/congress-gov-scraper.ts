@@ -748,7 +748,7 @@ export async function saveBill(bill: NormalizedBill): Promise<boolean> {
         sponsor_bioguide_id: bill.sponsor_bioguide_id,
         cosponsor_count: bill.cosponsor_count,
         cosponsors: bill.cosponsors,
-        committees: bill.committees,
+        committees: bill.committees || [], // PostgreSQL TEXT[] - send empty array instead of null
         primary_committee: bill.primary_committee,
         actions: bill.actions,
         action_count: bill.action_count,
