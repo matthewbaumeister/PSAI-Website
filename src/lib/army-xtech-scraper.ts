@@ -67,46 +67,119 @@ interface XTechCompetition {
   // Basic Info
   opportunity_number?: string;
   opportunity_title: string;
+  opportunity_subtitle?: string;
   competition_name: string;
   competition_year?: number;
+  competition_phase?: string;
   
   // Classification
   opportunity_type: string;
+  track_name?: string;
   status: string;
+  submission_window_status?: string;
   
   // Dates
   announced_date?: string;
   open_date?: string;
   close_date?: string;
+  submission_deadline?: string;
+  evaluation_start_date?: string;
+  evaluation_end_date?: string;
   winner_announcement_date?: string;
+  award_date?: string;
   
   // Description
   description?: string;
   problem_statement?: string;
   challenge_description?: string;
+  desired_outcome?: string;
+  evaluation_criteria?: string;
   
   // Technology Focus
   technology_areas?: string[];
+  naics_codes?: string[];
   keywords?: string[];
+  modernization_priorities?: string[];
+  capability_gaps?: string[];
+  
+  // Eligibility
+  eligibility_requirements?: string;
+  eligible_entities?: string[];
+  security_clearance_required?: boolean;
+  itar_controlled?: boolean;
+  us_citizen_required?: boolean;
+  team_size_limit?: number;
   
   // Funding
   total_prize_pool?: number;
   prize_structure?: any;
   number_of_awards?: number;
+  min_award_amount?: number;
   max_award_amount?: number;
+  matching_funds_available?: boolean;
+  follow_on_funding_potential?: string;
+  
+  // Submission Requirements
+  submission_format?: string;
+  page_limit?: number;
+  submission_instructions?: string;
+  required_documents?: string[];
+  optional_documents?: string[];
+  
+  // Evaluation
+  evaluation_stages?: string[];
+  judging_criteria?: string[];
+  review_process_description?: string;
+  
+  // Contact and Events
+  poc_name?: string;
+  poc_email?: string;
+  poc_phone?: string;
+  technical_poc_name?: string;
+  technical_poc_email?: string;
+  questions_allowed?: boolean;
+  qa_deadline?: string;
+  pitch_event_date?: string;
+  pitch_event_location?: string;
+  pitch_event_virtual?: boolean;
+  demo_day_date?: string;
+  demo_day_location?: string;
+  
+  // URLs
+  opportunity_url: string;
+  registration_url?: string;
+  submission_portal_url?: string;
+  rules_document_url?: string;
+  faq_url?: string;
+  information_session_url?: string;
+  video_url?: string;
+  
+  // Partners and Participants
+  industry_partners?: string[];
+  government_partners?: string[];
+  academic_partners?: string[];
+  transition_partners?: string[];
+  expected_participants?: number;
+  actual_participants?: number;
+  submissions_received?: number;
+  finalists_selected?: number;
+  winners_selected?: number;
   
   // Winners/Finalists
   winners?: Winner[];
   finalists?: Finalist[];
   
-  // Links
-  opportunity_url: string;
-  source_url: string;
-  
   // Metadata
+  previous_competition_id?: number;
+  competition_series?: string;
+  series_iteration?: number;
+  source_url: string;
   program_name: string;
   data_source: string;
   last_scraped: string;
+  scrape_frequency?: string;
+  related_sbir_topics?: string[];
+  is_sbir_prize_gateway?: boolean;
 }
 
 interface Winner {
@@ -387,7 +460,7 @@ export class ArmyXTechScraper {
   /**
    * Parse competition card from HTML (Essential Grid format)
    */
-  private parseCompetitionCard($: cheerio.CheerioAPI, card: cheerio.Element): Partial<XTechCompetition> | null {
+  private parseCompetitionCard($: cheerio.CheerioAPI, card: any): Partial<XTechCompetition> | null {
     try {
       const $card = $(card);
       
@@ -736,8 +809,11 @@ export class ArmyXTechScraper {
     });
 
     if (winnersHeadingIndex === -1) {
+      this.log(`No WINNERS heading found (checked ${allHeadings.length} headings)`, 'info');
       return winners; // No winners section found
     }
+    
+    this.log(`Found WINNERS heading at index ${winnersHeadingIndex}`, 'info');
 
     // Extract company names as headings after the WINNERS heading
     // Stop when we hit another major section
@@ -1234,7 +1310,7 @@ export class ArmyXTechScraper {
                (!overlayClass.includes('closed') && !statusText.includes('closed'));
       });
 
-      this.log(`Found ${activeCards.length} active competitions (out of ${cards.length} total)`);
+      this.log(`Found ${activeCards.length} active competitions (out of ${allCards.length} total)`);
       this.stats.competitionsFound = activeCards.length;
 
       // Process each active competition
