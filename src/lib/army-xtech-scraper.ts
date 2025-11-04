@@ -730,8 +730,8 @@ export class ArmyXTechScraper {
         details.award_date = this.parseDate(lastDate);
       }
       
-      // Extract phase information with enhanced tracking
-      const phaseLines = lines.filter(line => /PHASE\s+\d/i.test(line));
+      // Extract phase information with enhanced tracking (supports unlimited phases)
+      const phaseLines = lines.filter(line => /PHASE\s+\d+/i.test(line));
       if (phaseLines.length > 0) {
         details.evaluation_stages = phaseLines.map(line => line.trim());
         (details as any).total_phases = phaseLines.length;
