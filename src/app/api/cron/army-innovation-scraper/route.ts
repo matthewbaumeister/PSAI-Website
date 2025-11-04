@@ -94,8 +94,7 @@ export async function GET(request: NextRequest) {
         new_winners: xtechStats.winnersFound,
         new_finalists: xtechStats.finalistsFound,
         errors: xtechStats.errors
-      },
-      message: `Successfully scraped ${xtechStats.competitionsFound} active XTECH competitions. Found ${xtechStats.competitionsUpdated} updates, ${xtechStats.winnersFound} new winners, and ${xtechStats.finalistsFound} new finalists.`
+      }
     });
 
     return NextResponse.json(result);
@@ -113,8 +112,7 @@ export async function GET(request: NextRequest) {
       success: false,
       date: currentDate,
       duration: durationSeconds,
-      error: errorMessage,
-      message: `Army Innovation scraper failed: ${errorMessage}`
+      error: errorMessage
     });
     
     return NextResponse.json(
