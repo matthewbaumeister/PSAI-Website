@@ -145,6 +145,7 @@ CREATE TABLE army_innovation_opportunities (
   -- Funding & Prizes
   total_prize_pool DECIMAL(12,2),
   prize_structure JSONB, -- {"first": 100000, "second": 50000, "third": 25000}
+  prize_structure_description TEXT, -- Full text description of prize structure
   number_of_awards INTEGER,
   min_award_amount DECIMAL(12,2),
   max_award_amount DECIMAL(12,2),

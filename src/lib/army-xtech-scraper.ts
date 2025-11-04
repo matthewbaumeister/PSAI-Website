@@ -933,8 +933,16 @@ export class ArmyXTechScraper {
           const companyHeading = $container.find('h2, h3, h4, h5, .company-name, strong').first();
           let companyName = companyHeading.text().trim();
           
-          // IMPORTANT: Check if this card has a description paragraph (company cards should have descriptions)
-          const hasDescription = $container.find('p').text().trim().length > 20;
+          // IMPORTANT: Check if this card has a description paragraph DIRECTLY AFTER the heading
+          // (not just any paragraph somewhere in the container)
+          let hasDescription = false;
+          if (companyHeading.length > 0) {
+            const nextElement = companyHeading.next();
+            if (nextElement.is('p')) {
+              const descText = nextElement.text().trim();
+              hasDescription = descText.length > 20 && descText.length < 1000;
+            }
+          }
           
           // Clean up the company name (remove the status text if it's included)
           companyName = companyName.replace(/\b(winner|finalist|semi-?finalist)\b/gi, '').trim();
