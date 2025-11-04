@@ -108,16 +108,16 @@ export async function GET(request: NextRequest) {
 
     // 4. Congress.gov Bills - Check actual data table
     const { data: congressData, count: congressCount } = await supabase
-      .from('congress_bills')
-      .select('last_updated_at', { count: 'exact' })
-      .order('last_updated_at', { ascending: false })
+      .from('congressional_bills')
+      .select('last_action_date', { count: 'exact' })
+      .order('last_action_date', { ascending: false })
       .limit(1)
       .maybeSingle()
 
     scrapers.push({
       name: 'congress',
       displayName: 'Congress.gov Bills',
-      lastRun: congressData?.last_updated_at || null,
+      lastRun: congressData?.last_action_date || null,
       status: congressData ? 'success' : 'never-run',
       recordsProcessed: congressCount || 0,
       recordsInserted: congressCount || 0,
@@ -154,16 +154,16 @@ export async function GET(request: NextRequest) {
 
     // 6. SBIR Awards - Check actual data table
     const { data: sbirData, count: sbirCount } = await supabase
-      .from('sbir_sttr_awards')
-      .select('created_at', { count: 'exact' })
-      .order('created_at', { ascending: false })
+      .from('sbir_final')
+      .select('last_updated', { count: 'exact' })
+      .order('last_updated', { ascending: false })
       .limit(1)
       .maybeSingle()
 
     scrapers.push({
       name: 'sbir',
       displayName: 'SBIR/STTR Awards',
-      lastRun: sbirData?.created_at || null,
+      lastRun: sbirData?.last_updated || null,
       status: sbirData ? 'success' : 'never-run',
       recordsProcessed: sbirCount || 0,
       recordsInserted: sbirCount || 0,
