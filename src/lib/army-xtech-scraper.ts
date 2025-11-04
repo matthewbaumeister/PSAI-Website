@@ -767,18 +767,27 @@ export class ArmyXTechScraper {
         details.actual_participants = parseInt(participantMatch[1]);
       }
 
-      // Extract winners
-      const winners = this.extractWinners($);
-      if (winners.length > 0) {
-        details.winners = winners;
-        this.stats.winnersFound += winners.length;
+      // Extract all submissions (winners, finalists, semi-finalists)
+      const submissions = this.extractWinners($);
+      if (submissions.length > 0) {
+        details.winners = submissions;
+        
+        // Count by type
+        submissions.forEach(sub => {
+          const status = (sub as any).submission_status;
+          if (status === 'Finalist' || status === 'Semi-Finalist') {
+            this.stats.finalistsFound++;
+          } else {
+            this.stats.winnersFound++;
+          }
+        });
       }
 
-      // Extract finalists
-      const finalists = this.extractFinalists($);
-      if (finalists.length > 0) {
-        details.finalists = finalists;
-        this.stats.finalistsFound += finalists.length;
+      // Also try finalists extraction for backwards compatibility
+      const additionalFinalists = this.extractFinalists($);
+      if (additionalFinalists.length > 0) {
+        details.finalists = additionalFinalists;
+        this.stats.finalistsFound += additionalFinalists.length;
       }
 
       // Extract technology areas from keywords
@@ -796,26 +805,41 @@ export class ArmyXTechScraper {
   }
 
   /**
-   * Extract winners from page (cards or headings)
+   * Extract winners/finalists/semi-finalists from page (cards or headings)
    */
   private extractWinners($: cheerio.CheerioAPI): Winner[] {
     const winners: Winner[] = [];
     
-    // First, try to find winner/finalist cards (new structure)
-    const cards = $('.wpb_wrapper, .et_pb_module, .vc_column_container').toArray();
+    // Helper function to determine submission status from text
+    const getSubmissionStatus = (text: string): 'Winner' | 'Finalist' | 'Semi-Finalist' | null => {
+      const lowerText = text.toLowerCase().replace(/[\s-]/g, ''); // Remove spaces and hyphens
+      
+      if (lowerText.includes('winner')) return 'Winner';
+      if (lowerText.includes('semifinalist')) return 'Semi-Finalist';
+      if (lowerText.includes('finalist')) return 'Finalist';
+      
+      return null;
+    };
+    
+    // First, try to find winner/finalist/semi-finalist cards (new structure)
+    const cards = $('.wpb_wrapper, .et_pb_module, .vc_column_container, .wpb_column, .vc_column-inner').toArray();
     
     for (const card of cards) {
       const $card = $(card);
-      const cardText = $card.text().toLowerCase();
+      const cardText = $card.text();
+      const status = getSubmissionStatus(cardText);
       
-      // Look for "FINALIST" or "WINNER" text in card
-      if (cardText.includes('finalist') || cardText.includes('winner')) {
+      // Look for any submission status badge
+      if (status) {
         // Extract company name - look for h3, h4, strong with company name
-        const companyName = $card.find('h3, h4, strong, .company-name').first().text().trim();
+        const companyName = $card.find('h3, h4, strong, .company-name, h2').first().text().trim();
         
-        if (companyName && companyName.length > 2 && !companyName.toLowerCase().includes('finalist') && !companyName.toLowerCase().includes('winner')) {
+        // Filter out the status text itself from company name
+        const cleanedName = companyName.replace(/\b(winner|finalist|semi-?finalist)\b/gi, '').trim();
+        
+        if (cleanedName && cleanedName.length > 2) {
           const winner: Winner = {
-            company_name: companyName,
+            company_name: cleanedName,
             location: this.extractLocation($card.text())
           };
           
@@ -825,15 +849,18 @@ export class ArmyXTechScraper {
             winner.description = desc;
           }
           
+          // Store the submission status (we'll use this when saving)
+          (winner as any).submission_status = status;
+          
           winners.push(winner);
-          this.log(`Found winner/finalist card: ${companyName}`, 'info');
+          this.log(`Found ${status} card: ${cleanedName}`, 'info');
         }
       }
     }
     
     // If we found winners in cards, return them
     if (winners.length > 0) {
-      this.log(`Extracted ${winners.length} winners/finalists from cards`, 'info');
+      this.log(`Extracted ${winners.length} submissions from cards`, 'info');
       return winners;
     }
     
@@ -1231,7 +1258,7 @@ export class ArmyXTechScraper {
         opportunity_id: opportunityId,
         company_name: winner.company_name,
         company_location: winner.location,
-        submission_status: 'Winner',
+        submission_status: (winner as any).submission_status || 'Winner', // Use detected status or default to Winner
         phase: winner.phase,
         award_amount: winner.award_amount,
         public_abstract: winner.description
