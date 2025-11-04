@@ -748,7 +748,7 @@ export async function saveBill(bill: NormalizedBill): Promise<boolean> {
         sponsor_bioguide_id: bill.sponsor_bioguide_id,
         cosponsor_count: bill.cosponsor_count,
         cosponsors: bill.cosponsors,
-        committees: bill.committees, // Already returns [] from normalizeBill
+        // committees: bill.committees, // TEMPORARILY SKIP - TEXT[] issue with Supabase client
         primary_committee: bill.primary_committee,
         actions: bill.actions,
         action_count: bill.action_count,
