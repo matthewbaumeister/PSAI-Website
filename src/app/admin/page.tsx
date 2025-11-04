@@ -1196,7 +1196,129 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* DSIP & SBIR Quick Access */}
+        {/* Quick Access Links */}
+        <div style={{
+          background: 'rgba(30, 41, 59, 0.6)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(148, 163, 184, 0.2)',
+          borderRadius: '20px',
+          padding: '32px'
+        }}>
+          <h2 style={{
+            fontSize: '28px',
+            fontWeight: '700',
+            color: '#ffffff',
+            margin: '0 0 24px 0'
+          }}>
+            Quick Access
+          </h2>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+            gap: '16px'
+          }}>
+            <button
+              onClick={() => router.push('/admin/scrapers')}
+              style={{
+                padding: '20px',
+                background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05))',
+                border: '1px solid rgba(139, 92, 246, 0.2)',
+                borderRadius: '16px',
+                color: '#c4b5fd',
+                fontSize: '16px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                textAlign: 'left'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.1))'
+                e.currentTarget.style.transform = 'translateY(-2px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05))'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              Data Scrapers
+            </button>
+            <button
+              onClick={() => router.push('/admin/sbir-database')}
+              style={{
+                padding: '20px',
+                background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05))',
+                border: '1px solid rgba(59, 130, 246, 0.2)',
+                borderRadius: '16px',
+                color: '#93c5fd',
+                fontSize: '16px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                textAlign: 'left'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0.1))'
+                e.currentTarget.style.transform = 'translateY(-2px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(59, 130, 246, 0.05))'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              SBIR Database
+            </button>
+            <button
+              onClick={() => router.push('/admin/system-logs')}
+              style={{
+                padding: '20px',
+                background: 'linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05))',
+                border: '1px solid rgba(34, 197, 94, 0.2)',
+                borderRadius: '16px',
+                color: '#86efac',
+                fontSize: '16px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                textAlign: 'left'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(34, 197, 94, 0.1))'
+                e.currentTarget.style.transform = 'translateY(-2px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05))'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              System Logs
+            </button>
+            <button
+              onClick={() => router.push('/admin/publications')}
+              style={{
+                padding: '20px',
+                background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05))',
+                border: '1px solid rgba(245, 158, 11, 0.2)',
+                borderRadius: '16px',
+                color: '#fcd34d',
+                fontSize: '16px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                textAlign: 'left'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1))'
+                e.currentTarget.style.transform = 'translateY(-2px)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(245, 158, 11, 0.05))'
+                e.currentTarget.style.transform = 'translateY(0)'
+              }}
+            >
+              Publications
+            </button>
+          </div>
+        </div>
       </div>
 
       <style jsx>{`
