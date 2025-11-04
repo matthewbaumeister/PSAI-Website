@@ -279,7 +279,7 @@ export class ArmyXTechScraper {
                 
                 if (isVisible && buttonText && buttonText.includes('(')) {
                   // Click the button
-                  await page.evaluate(el => el.click(), loadMoreButton);
+                  await page.evaluate((el: Element) => (el as HTMLElement).click(), loadMoreButton);
                   clickCount++;
                   this.log(`Clicked Load More button (${clickCount} times)`);
                   await new Promise(resolve => setTimeout(resolve, 3000)); // Wait for new items to load
