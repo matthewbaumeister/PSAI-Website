@@ -1002,29 +1002,36 @@ export class ArmyXTechScraper {
       return winners;
     }
     
-    // FALLBACK: Use heading-based extraction
-    this.log(`No badge cards found, trying heading-based extraction`, 'info');
+    // If no badge cards found, return empty
+    this.log(`No badge cards found`, 'info');
+    return winners;
+  }
 
-    // Find section headers for WINNERS and FINALISTS
-    const allHeadings = $('h2, h3, h4').toArray();
+  /**
+   * REMOVED: Old fallback heading-based extraction - no longer needed
+   * Badge detection now handles all cases  
+   */
+  private oldHeadingBasedExtraction($: cheerio.CheerioAPI): Winner[] {
+    const winners: Winner[] = [];
+    const headings = $('h2, h3, h4').toArray();
     
-    const winnersHeadingIndex = allHeadings.findIndex(h => {
+    const winnersHeadingIndex = headings.findIndex(h => {
       const text = $(h).text().toLowerCase();
       return text.includes('winner') && !text.includes('finalist');
     });
     
-    const finalistsHeadingIndex = allHeadings.findIndex(h => {
+    const finalistsHeadingIndex = headings.findIndex(h => {
       const text = $(h).text().toLowerCase();
       return text.includes('finalist') && !text.includes('semi');
     });
     
-    const semiFinalistsHeadingIndex = allHeadings.findIndex(h => {
+    const semiFinalistsHeadingIndex = headings.findIndex(h => {
       const text = $(h).text().toLowerCase().replace(/[\s-]/g, '');
       return text.includes('semifinalist');
     });
 
     let startIndex = 0;
-    let endIndex = allHeadings.length;
+    let endIndex = headings.length;
     let currentStatus: 'Winner' | 'Finalist' | 'Semi-Finalist' = 'Winner';
     
     // Determine section boundaries
@@ -1045,7 +1052,7 @@ export class ArmyXTechScraper {
       }
     } else {
       // No section headers - extract from top of page
-      const firstSectionIndex = allHeadings.findIndex(h => {
+      const firstSectionIndex = headings.findIndex(h => {
         const text = $(h).text().toLowerCase();
         return text.includes('description') || text.includes('eligibility') || 
                text.includes('schedule') || text.includes('phase 1');
@@ -1056,8 +1063,8 @@ export class ArmyXTechScraper {
         endIndex = firstSectionIndex;
         this.log(`No section headers - extracting ${firstSectionIndex} potential company headings before sections`, 'info');
       } else {
-        const headingTexts = allHeadings.slice(0, 10).map(h => $(h).text().trim());
-        this.log(`No company names found (checked ${allHeadings.length} headings). First 10: ${JSON.stringify(headingTexts)}`, 'info');
+        const headingTexts = headings.slice(0, 10).map(h => $(h).text().trim());
+        this.log(`No company names found (checked ${headings.length} headings). First 10: ${JSON.stringify(headingTexts)}`, 'info');
         return winners;
       }
     }
@@ -1066,8 +1073,8 @@ export class ArmyXTechScraper {
     // Stop when we hit another major section
     const stopKeywords = ['finalist', 'eligibility', 'schedule', 'phase', 'description', 'prize structure', 'contact', 'navigation'];
     
-    for (let i = startIndex; i < endIndex && i < allHeadings.length; i++) {
-      const heading = allHeadings[i];
+    for (let i = startIndex; i < endIndex && i < headings.length; i++) {
+      const heading = headings[i];
       const headingText = $(heading).text().trim();
       
       // Check if we've crossed into a different section
@@ -1137,8 +1144,8 @@ export class ArmyXTechScraper {
     // This function looks for any remaining finalist-specific sections
 
     // Find the FINALISTS heading
-    const allHeadings = $('h2, h3, h4').toArray();
-    const finalistsHeadingIndex = allHeadings.findIndex(h => 
+    const finalistHeadings = $('h2, h3, h4').toArray();
+    const finalistsHeadingIndex = finalistHeadings.findIndex(h => 
       $(h).text().toLowerCase().includes('finalist')
     );
 
@@ -1149,8 +1156,8 @@ export class ArmyXTechScraper {
     // Extract company names as headings after the FINALISTS heading
     const stopKeywords = ['eligibility', 'schedule', 'phase', 'description', 'prize structure', 'contact'];
     
-    for (let i = finalistsHeadingIndex + 1; i < allHeadings.length; i++) {
-      const heading = allHeadings[i];
+    for (let i = finalistsHeadingIndex + 1; i < finalistHeadings.length; i++) {
+      const heading = finalistHeadings[i];
       const headingText = $(heading).text().trim();
       
       // Stop if we hit another major section
