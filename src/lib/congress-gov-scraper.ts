@@ -227,6 +227,11 @@ export async function fetchBillWithDetails(
   const bill = await fetchBill(congress, billType, billNumber);
   if (!bill) return null;
   
+  // Ensure bill has type, congress, and number (API sometimes omits these)
+  bill.type = bill.type || billType;
+  bill.congress = bill.congress || congress;
+  bill.number = bill.number || billNumber;
+  
   // Track what we're fetching for logging
   const fetchTasks = [];
   
@@ -671,7 +676,7 @@ function generateCongressGovUrl(congress: number, billType: string, billNumber: 
   return `https://www.congress.gov/bill/${congress}th-congress/${urlType}/${billNumber}`;
 }
 
-export function normalizeBill(rawBill: any): NormalizedBill {
+export function normalizeBill(rawBill: any, billType?: string): NormalizedBill {
   const isDefense = isDefenseRelated(rawBill);
   const defenseScore = isDefense ? calculateDefenseRelevanceScore(rawBill) : 0;
   
@@ -685,7 +690,7 @@ export function normalizeBill(rawBill: any): NormalizedBill {
 
   return {
     congress: rawBill.congress,
-    bill_type: rawBill.type,
+    bill_type: rawBill.type || billType, // Use parameter as fallback if rawBill.type is missing
     bill_number: rawBill.number,
     title: rawBill.title || 'Untitled',
     short_title: Array.isArray(rawBill.titles) ? rawBill.titles.find((t: any) => t.titleType === 'Short Title(s) as Introduced')?.title : undefined,
