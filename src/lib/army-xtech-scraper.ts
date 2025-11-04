@@ -329,11 +329,11 @@ export class ArmyXTechScraper {
       }
 
       const page = await browser.newPage();
-      // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+      // @ts-ignore - puppeteer vs puppeteer-core type mismatch
       await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
       
       this.log(`Navigating to: ${url}`);
-      // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+      // @ts-ignore - puppeteer vs puppeteer-core type mismatch
       await page.goto(url, {
         waitUntil: 'networkidle2',
         timeout: 60000
@@ -341,7 +341,7 @@ export class ArmyXTechScraper {
 
       // Wait for competitions to load (look for common selectors)
       try {
-        // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+        // @ts-ignore - puppeteer vs puppeteer-core type mismatch
         await page.waitForSelector('article, .entry-content, .competition, h2, h3', { timeout: 10000 });
       } catch {
         this.log('No specific selectors found, continuing with what loaded');
@@ -353,7 +353,7 @@ export class ArmyXTechScraper {
         
         // Click CLOSED button to load all closed competitions
         try {
-          // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+          // @ts-ignore - puppeteer vs puppeteer-core type mismatch
           await page.click('a[href="#closed"]');
           this.log('Clicked CLOSED filter');
           await new Promise(resolve => setTimeout(resolve, 2000));
@@ -367,11 +367,11 @@ export class ArmyXTechScraper {
               const loadMoreButton = await page.$('.esg-loadmore');
               if (loadMoreButton) {
                 // Check if button has remaining items using page.$eval
-                // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+                // @ts-ignore - puppeteer vs puppeteer-core type mismatch
                 const buttonText = await page.$eval('.esg-loadmore', (el: any) => el.textContent).catch(() => null);
                 this.log(`Found Load More button: ${buttonText}`);
                 
-                // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+                // @ts-ignore - puppeteer vs puppeteer-core type mismatch
                 const isVisible = await page.$eval('.esg-loadmore', (el: any) => {
                   const style = window.getComputedStyle(el);
                   return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
@@ -379,7 +379,7 @@ export class ArmyXTechScraper {
                 
                 if (isVisible && buttonText && buttonText.includes('(')) {
                   // Click the button
-                  // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+                  // @ts-ignore - puppeteer vs puppeteer-core type mismatch
                   await page.$eval('.esg-loadmore', (el: any) => (el as HTMLElement).click()).catch(() => {});
                   clickCount++;
                   this.log(`Clicked Load More button (${clickCount} times)`);
@@ -403,7 +403,7 @@ export class ArmyXTechScraper {
         
         // Click ACTIVE button to load active competitions
         try {
-          // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+          // @ts-ignore - puppeteer vs puppeteer-core type mismatch
           await page.click('a[href="#active"]');
           this.log('Clicked ACTIVE filter');
           await new Promise(resolve => setTimeout(resolve, 2000));
@@ -414,16 +414,16 @@ export class ArmyXTechScraper {
             try {
               const loadMoreButton = await page.$('.esg-loadmore');
               if (loadMoreButton) {
-                // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+                // @ts-ignore - puppeteer vs puppeteer-core type mismatch
                 const buttonText = await page.$eval('.esg-loadmore', (el: any) => el.textContent).catch(() => null);
-                // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+                // @ts-ignore - puppeteer vs puppeteer-core type mismatch
                 const isVisible = await page.$eval('.esg-loadmore', (el: any) => {
                   const style = window.getComputedStyle(el);
                   return style.display !== 'none' && style.visibility !== 'hidden';
                 }).catch(() => false);
                 
                 if (isVisible && buttonText && buttonText.includes('(')) {
-                  // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+                  // @ts-ignore - puppeteer vs puppeteer-core type mismatch
                   await page.$eval('.esg-loadmore', (el: any) => (el as HTMLElement).click()).catch(() => {});
                   clickCount++;
                   this.log(`Clicked Load More for active (${clickCount} times)`);
@@ -444,7 +444,7 @@ export class ArmyXTechScraper {
         
         // Click OPEN button to load open competitions
         try {
-          // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+          // @ts-ignore - puppeteer vs puppeteer-core type mismatch
           await page.click('a[href="#open"]');
           this.log('Clicked OPEN filter');
           await new Promise(resolve => setTimeout(resolve, 2000));
@@ -456,7 +456,7 @@ export class ArmyXTechScraper {
       }
 
       // Scroll to load lazy-loaded content
-      // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+      // @ts-ignore - puppeteer vs puppeteer-core type mismatch
       await page.evaluate(async () => {
         await new Promise<void>((resolve) => {
           let totalHeight = 0;
@@ -477,7 +477,7 @@ export class ArmyXTechScraper {
       // Wait a bit more for any final content to load
       await new Promise(resolve => setTimeout(resolve, 2000));
 
-      // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
+      // @ts-ignore - puppeteer vs puppeteer-core type mismatch
       const html = await page.content();
       await browser.close();
       
