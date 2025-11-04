@@ -880,7 +880,12 @@ export class ArmyXTechScraper {
     
     const finalistsHeadingIndex = allHeadings.findIndex(h => {
       const text = $(h).text().toLowerCase();
-      return text.includes('finalist');
+      return text.includes('finalist') && !text.includes('semi');
+    });
+    
+    const semiFinalistsHeadingIndex = allHeadings.findIndex(h => {
+      const text = $(h).text().toLowerCase().replace(/[\s-]/g, '');
+      return text.includes('semifinalist');
     });
 
     let startIndex = 0;
@@ -888,18 +893,20 @@ export class ArmyXTechScraper {
     let currentStatus: 'Winner' | 'Finalist' | 'Semi-Finalist' = 'Winner';
     
     // Determine section boundaries
-    if (winnersHeadingIndex !== -1 || finalistsHeadingIndex !== -1) {
-      this.log(`Found section headers - Winners: ${winnersHeadingIndex}, Finalists: ${finalistsHeadingIndex}`, 'info');
+    if (winnersHeadingIndex !== -1 || finalistsHeadingIndex !== -1 || semiFinalistsHeadingIndex !== -1) {
+      this.log(`Found section headers - Winners: ${winnersHeadingIndex}, Finalists: ${finalistsHeadingIndex}, Semi-Finalists: ${semiFinalistsHeadingIndex}`, 'info');
       
-      if (winnersHeadingIndex !== -1 && finalistsHeadingIndex !== -1) {
-        // Both sections exist - process them separately
-        // This will be handled by extracting from each section
-      } else if (winnersHeadingIndex !== -1) {
-        startIndex = winnersHeadingIndex + 1;
-        currentStatus = 'Winner';
-      } else if (finalistsHeadingIndex !== -1) {
-        startIndex = finalistsHeadingIndex + 1;
-        currentStatus = 'Finalist';
+      // Determine starting point - use the earliest section found
+      const sections = [
+        { index: winnersHeadingIndex, status: 'Winner' as const },
+        { index: finalistsHeadingIndex, status: 'Finalist' as const },
+        { index: semiFinalistsHeadingIndex, status: 'Semi-Finalist' as const }
+      ].filter(s => s.index !== -1).sort((a, b) => a.index - b.index);
+      
+      if (sections.length > 0) {
+        startIndex = sections[0].index + 1;
+        currentStatus = sections[0].status;
+        this.log(`Starting from ${currentStatus} section at index ${startIndex}`, 'info');
       }
     } else {
       // No section headers - extract from top of page
@@ -929,7 +936,12 @@ export class ArmyXTechScraper {
       const headingText = $(heading).text().trim();
       
       // Check if we've crossed into a different section
-      if (headingText.toLowerCase().includes('finalist')) {
+      const lowerHeading = headingText.toLowerCase().replace(/[\s-]/g, '');
+      if (lowerHeading.includes('semifinalist')) {
+        currentStatus = 'Semi-Finalist';
+        this.log(`Switched to Semi-Finalist section at index ${i}`, 'info');
+        continue; // Skip the section header itself
+      } else if (headingText.toLowerCase().includes('finalist') && !lowerHeading.includes('semifinalist')) {
         currentStatus = 'Finalist';
         this.log(`Switched to Finalist section at index ${i}`, 'info');
         continue; // Skip the section header itself

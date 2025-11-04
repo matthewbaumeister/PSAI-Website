@@ -11,7 +11,8 @@ WITH overall_stats AS (
     (SELECT COUNT(*)::text FROM army_innovation_opportunities) as metric_1,
     (SELECT COUNT(*)::text FROM army_innovation_submissions) as metric_2,
     (SELECT COUNT(*)::text FROM army_innovation_submissions WHERE submission_status = 'Winner') as metric_3,
-    (SELECT COUNT(*)::text FROM army_innovation_submissions WHERE submission_status = 'Finalist') as metric_4
+    (SELECT COUNT(*)::text FROM army_innovation_submissions WHERE submission_status = 'Finalist') as metric_4,
+    (SELECT COUNT(*)::text FROM army_innovation_submissions WHERE submission_status = 'Semi-Finalist') as metric_5
   
   UNION ALL
   
@@ -23,7 +24,8 @@ WITH overall_stats AS (
     'Value ↓',
     'Value ↓',
     'Value ↓',
-    'Total Finalists →'
+    'Total Finalists →',
+    'Total Semi-Finalists →'
 ),
 
 competitions_with_data AS (
@@ -35,7 +37,8 @@ competitions_with_data AS (
     NULL as metric_1,
     NULL as metric_2,
     NULL as metric_3,
-    NULL as metric_4
+    NULL as metric_4,
+    NULL as metric_5
   FROM army_innovation_submissions
   
   UNION ALL
@@ -44,6 +47,7 @@ competitions_with_data AS (
     'Coverage Stats',
     'Competitions without Submissions',
     COUNT(*)::text,
+    NULL,
     NULL,
     NULL,
     NULL,
@@ -62,6 +66,7 @@ competitions_with_data AS (
     NULL,
     NULL,
     NULL,
+    NULL,
     NULL
   FROM army_innovation_opportunities
   WHERE total_phases IS NOT NULL AND current_phase_number IS NOT NULL
@@ -72,6 +77,7 @@ competitions_with_data AS (
     'Coverage Stats',
     'Semi-Finalists Found',
     COUNT(*)::text,
+    NULL,
     NULL,
     NULL,
     NULL,
@@ -89,8 +95,9 @@ top_competitions AS (
     COUNT(s.id)::text as detail_3,
     COUNT(CASE WHEN s.submission_status = 'Winner' THEN 1 END)::text as metric_1,
     COUNT(CASE WHEN s.submission_status = 'Finalist' THEN 1 END)::text as metric_2,
-    NULL as metric_3,
-    NULL as metric_4
+    COUNT(CASE WHEN s.submission_status = 'Semi-Finalist' THEN 1 END)::text as metric_3,
+    NULL as metric_4,
+    NULL as metric_5
   FROM army_innovation_opportunities o
   LEFT JOIN army_innovation_submissions s ON o.id = s.opportunity_id
   GROUP BY o.id, o.opportunity_title, o.status
@@ -108,7 +115,8 @@ data_richness AS (
     COALESCE(ARRAY_LENGTH(evaluation_stages, 1)::text, '0') as metric_1,
     CASE WHEN open_date IS NOT NULL THEN 'Yes' ELSE 'No' END as metric_2,
     CASE WHEN close_date IS NOT NULL THEN 'Yes' ELSE 'No' END as metric_3,
-    CASE WHEN eligibility_requirements IS NOT NULL THEN 'Yes' ELSE 'No' END as metric_4
+    CASE WHEN eligibility_requirements IS NOT NULL THEN 'Yes' ELSE 'No' END as metric_4,
+    NULL as metric_5
   FROM army_innovation_opportunities
   ORDER BY total_prize_pool DESC NULLS LAST
   LIMIT 10
@@ -127,7 +135,8 @@ phase_tracking AS (
       WHEN total_phases IS NOT NULL AND current_phase_number IS NOT NULL THEN 'Complete'
       WHEN evaluation_stages IS NOT NULL THEN 'Partial'
       ELSE 'Missing'
-    END as metric_4
+    END as metric_4,
+    NULL as metric_5
   FROM army_innovation_opportunities
   WHERE status IN ('Active', 'Open') OR total_phases IS NOT NULL
   ORDER BY phase_progress_percentage DESC NULLS LAST
@@ -141,8 +150,9 @@ SELECT
   detail_3 as "Count/Current",
   metric_1 as "Winners/Progress%",
   metric_2 as "Finalists/Status",
-  metric_3 as "Info_3/PhaseCount",
-  metric_4 as "Info_4/PhaseData"
+  metric_3 as "Semi-Finalists/PhaseCount",
+  metric_4 as "Info_4/PhaseData",
+  metric_5 as "Info_5"
 FROM (
   SELECT 1 as sort_order, * FROM overall_stats
   UNION ALL
