@@ -363,9 +363,11 @@ export class ArmyXTechScraper {
               const loadMoreButton = await page.$('.esg-loadmore');
               if (loadMoreButton) {
                 // Check if button has remaining items using page.$eval
+                // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
                 const buttonText = await page.$eval('.esg-loadmore', (el: any) => el.textContent).catch(() => null);
                 this.log(`Found Load More button: ${buttonText}`);
                 
+                // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
                 const isVisible = await page.$eval('.esg-loadmore', (el: any) => {
                   const style = window.getComputedStyle(el);
                   return style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0';
@@ -373,6 +375,7 @@ export class ArmyXTechScraper {
                 
                 if (isVisible && buttonText && buttonText.includes('(')) {
                   // Click the button
+                  // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
                   await page.$eval('.esg-loadmore', (el: any) => (el as HTMLElement).click()).catch(() => {});
                   clickCount++;
                   this.log(`Clicked Load More button (${clickCount} times)`);
@@ -406,13 +409,16 @@ export class ArmyXTechScraper {
             try {
               const loadMoreButton = await page.$('.esg-loadmore');
               if (loadMoreButton) {
+                // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
                 const buttonText = await page.$eval('.esg-loadmore', (el: any) => el.textContent).catch(() => null);
+                // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
                 const isVisible = await page.$eval('.esg-loadmore', (el: any) => {
                   const style = window.getComputedStyle(el);
                   return style.display !== 'none' && style.visibility !== 'hidden';
                 }).catch(() => false);
                 
                 if (isVisible && buttonText && buttonText.includes('(')) {
+                  // @ts-expect-error - puppeteer vs puppeteer-core type mismatch
                   await page.$eval('.esg-loadmore', (el: any) => (el as HTMLElement).click()).catch(() => {});
                   clickCount++;
                   this.log(`Clicked Load More for active (${clickCount} times)`);
