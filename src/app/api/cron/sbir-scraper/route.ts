@@ -236,18 +236,9 @@ async function generateInstructionsForActiveOpportunities(log: (msg: string) => 
 
     for (const opp of opportunities) {
       try {
-        // Skip if instructions already exist and were generated recently (within 24 hours)
-        if (opp.consolidated_instructions_url && opp.instructions_generated_at) {
-          const generatedDate = new Date(opp.instructions_generated_at);
-          const hoursSince = (Date.now() - generatedDate.getTime()) / (1000 * 60 * 60);
-          
-          if (hoursSince < 24) {
-            log(`     ⏭️  ${opp.topic_number}: Skipping (generated ${Math.round(hoursSince)}h ago)`);
-            skipped++;
-            continue;
-          }
-        }
-
+        // Always regenerate instructions to ensure data is up-to-date
+        // (Removed 24-hour check - user wants fresh data every run)
+        
         // Generate instructions
         log(`     🔄 ${opp.topic_number}: Generating instructions...`);
         const result = await instructionService.generateForOpportunity(opp.topic_id);

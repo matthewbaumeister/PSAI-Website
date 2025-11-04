@@ -651,6 +651,8 @@ export interface NormalizedBill {
   primary_committee?: string;
   actions?: any;
   action_count: number;
+  amendments?: any;
+  text_versions?: any;
   latest_action_text?: string;
   congress_gov_url: string;
   api_response: any;
@@ -713,8 +715,11 @@ export function normalizeBill(rawBill: any): NormalizedBill {
     cosponsors: Array.isArray(rawBill.cosponsors) ? rawBill.cosponsors : null, // Only store if we have actual data
     committees: Array.isArray(rawBill.committees) ? rawBill.committees.map((c: any) => c.name) : [],
     primary_committee: Array.isArray(rawBill.committees) && rawBill.committees[0] ? rawBill.committees[0].name : undefined,
-    actions: rawBill.actions,
-    action_count: rawBill.actions?.count || 0,
+    // FIX: Use fetched arrays if available, otherwise store null (not reference objects)
+    actions: Array.isArray(rawBill.actions) ? rawBill.actions : null,
+    action_count: Array.isArray(rawBill.actions) ? rawBill.actions.length : (rawBill.actions?.count || 0),
+    amendments: Array.isArray(rawBill.amendments) ? rawBill.amendments : null,
+    text_versions: Array.isArray(rawBill.textVersions) ? rawBill.textVersions : null,
     latest_action_text: rawBill.latestAction?.text,
     congress_gov_url: generateCongressGovUrl(rawBill.congress, rawBill.type, rawBill.number),
     api_response: rawBill
@@ -753,6 +758,8 @@ export async function saveBill(bill: NormalizedBill): Promise<boolean> {
         primary_committee: bill.primary_committee,
         actions: bill.actions,
         action_count: bill.action_count,
+        amendments: bill.amendments,
+        text_versions: bill.text_versions,
         latest_action_text: bill.latest_action_text,
         congress_gov_url: bill.congress_gov_url,
         api_response: bill.api_response,
