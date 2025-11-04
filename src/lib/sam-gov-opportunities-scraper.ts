@@ -17,7 +17,8 @@ const SAM_GOV_API_BASE = 'https://api.sam.gov/opportunities/v2/search';
 
 // Lazy initialization - don't create client until needed
 let supabase: SupabaseClient | null = null;
-let SAM_GOV_API_KEY: string | null = null;
+let SAM_GOV_API_KEYS: string[] = [];
+let currentKeyIndex = 0;
 
 function getSupabase() {
   if (!supabase) {
@@ -33,14 +34,43 @@ function getSupabase() {
   return supabase;
 }
 
-function getApiKey() {
-  if (!SAM_GOV_API_KEY) {
-    SAM_GOV_API_KEY = process.env.SAM_GOV_API_KEY || '';
-    if (!SAM_GOV_API_KEY) {
-      throw new Error('Missing SAM_GOV_API_KEY in environment');
+function initializeApiKeys() {
+  if (SAM_GOV_API_KEYS.length === 0) {
+    // Support multiple API keys for rotation
+    const key1 = process.env.SAM_GOV_API_KEY || process.env.SAM_GOV_API_KEY_1;
+    const key2 = process.env.SAM_GOV_API_KEY_2;
+    
+    if (key1) SAM_GOV_API_KEYS.push(key1);
+    if (key2) SAM_GOV_API_KEYS.push(key2);
+    
+    if (SAM_GOV_API_KEYS.length === 0) {
+      throw new Error('Missing SAM_GOV_API_KEY in environment. Please set SAM_GOV_API_KEY or SAM_GOV_API_KEY_1');
     }
+    
+    console.log(`[SAM.gov] Initialized with ${SAM_GOV_API_KEYS.length} API key(s)`);
   }
-  return SAM_GOV_API_KEY;
+}
+
+function getApiKey(): string {
+  initializeApiKeys();
+  return SAM_GOV_API_KEYS[currentKeyIndex];
+}
+
+function rotateApiKey(): boolean {
+  initializeApiKeys();
+  
+  if (SAM_GOV_API_KEYS.length <= 1) {
+    console.log('[SAM.gov] No additional API keys available for rotation');
+    return false;
+  }
+  
+  currentKeyIndex = (currentKeyIndex + 1) % SAM_GOV_API_KEYS.length;
+  console.log(`[SAM.gov] Rotated to API key ${currentKeyIndex + 1}/${SAM_GOV_API_KEYS.length}`);
+  return true;
+}
+
+function resetApiKeyRotation() {
+  currentKeyIndex = 0;
 }
 
 // ============================================
@@ -96,8 +126,9 @@ export class SAMGovOpportunitiesScraper {
 
   /**
    * Search opportunities with pagination
+   * Supports automatic API key rotation on rate limit errors
    */
-  async searchOpportunities(options: ScraperOptions = {}, offset: number = 0): Promise<{ opportunities: SAMOpportunity[]; hasMore: boolean }> {
+  async searchOpportunities(options: ScraperOptions = {}, offset: number = 0, retryCount: number = 0): Promise<{ opportunities: SAMOpportunity[]; hasMore: boolean }> {
     const {
       postedFrom = this.getDateDaysAgo(30), // Default: Last 30 days
       postedTo = this.getToday(),
@@ -127,6 +158,24 @@ export class SAMGovOpportunitiesScraper {
         }
       });
 
+      // Handle rate limiting with automatic key rotation
+      if (response.status === 429) {
+        const errorText = await response.text();
+        console.warn(`[SAM.gov] Rate limit hit (429). Attempting API key rotation...`);
+        
+        if (retryCount < SAM_GOV_API_KEYS.length - 1) {
+          const rotated = rotateApiKey();
+          if (rotated) {
+            console.log(`[SAM.gov] Retrying with different API key...`);
+            await this.delay(2000); // Brief delay before retry
+            return this.searchOpportunities(options, offset, retryCount + 1);
+          }
+        }
+        
+        console.error(`[SAM.gov] All API keys exhausted. Rate limit error: ${errorText.substring(0, 500)}`);
+        throw new Error(`SAM.gov API rate limit exceeded: ${errorText}`);
+      }
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error(`[SAM.gov] API Response: ${errorText.substring(0, 500)}`);
@@ -151,12 +200,30 @@ export class SAMGovOpportunitiesScraper {
 
   /**
    * Get full details for a single opportunity
+   * Supports automatic API key rotation on rate limit errors
    */
-  async getOpportunityDetails(noticeId: string): Promise<any> {
+  async getOpportunityDetails(noticeId: string, retryCount: number = 0): Promise<any> {
     const url = `https://api.sam.gov/opportunities/v2/opportunities/${noticeId}?api_key=${getApiKey()}`;
     
     try {
       const response = await fetch(url);
+      
+      // Handle rate limiting with automatic key rotation
+      if (response.status === 429) {
+        console.warn(`[SAM.gov] Rate limit hit for ${noticeId}. Attempting API key rotation...`);
+        
+        if (retryCount < SAM_GOV_API_KEYS.length - 1) {
+          const rotated = rotateApiKey();
+          if (rotated) {
+            console.log(`[SAM.gov] Retrying ${noticeId} with different API key...`);
+            await this.delay(2000); // Brief delay before retry
+            return this.getOpportunityDetails(noticeId, retryCount + 1);
+          }
+        }
+        
+        console.error(`[SAM.gov] All API keys exhausted for ${noticeId}`);
+        return null;
+      }
       
       if (!response.ok) {
         throw new Error(`Failed to fetch opportunity ${noticeId}: ${response.status}`);
@@ -380,6 +447,10 @@ export async function scrapeSAMGovOpportunities(options: ScraperOptions & { full
   const scraper = new SAMGovOpportunitiesScraper();
   const fetchFullDetails = options.fullDetails || false;
   
+  // Reset API key rotation at start of scraping session
+  resetApiKeyRotation();
+  initializeApiKeys();
+  
   console.log(`
 ╔════════════════════════════════════════════╗
 ║   SAM.gov Opportunities Scraper           ║
@@ -387,6 +458,7 @@ export async function scrapeSAMGovOpportunities(options: ScraperOptions & { full
 
 📅 Date Range: ${options.postedFrom || 'Last 30 days'} → ${options.postedTo || 'Today'}
 ${fetchFullDetails ? '🔍 Mode: FULL DETAILS (descriptions, attachments, contacts)' : '⚡ Mode: FAST (search results only)'}
+🔑 API Keys: ${SAM_GOV_API_KEYS.length} available
 🔄 Fetching all pages...
   `);
 
