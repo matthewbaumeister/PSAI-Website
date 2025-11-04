@@ -796,32 +796,90 @@ export class ArmyXTechScraper {
   }
 
   /**
-   * Extract winners from page
+   * Extract winners from page (cards or headings)
    */
   private extractWinners($: cheerio.CheerioAPI): Winner[] {
     const winners: Winner[] = [];
+    
+    // First, try to find winner/finalist cards (new structure)
+    const cards = $('.wpb_wrapper, .et_pb_module, .vc_column_container').toArray();
+    
+    for (const card of cards) {
+      const $card = $(card);
+      const cardText = $card.text().toLowerCase();
+      
+      // Look for "FINALIST" or "WINNER" text in card
+      if (cardText.includes('finalist') || cardText.includes('winner')) {
+        // Extract company name - look for h3, h4, strong with company name
+        const companyName = $card.find('h3, h4, strong, .company-name').first().text().trim();
+        
+        if (companyName && companyName.length > 2 && !companyName.toLowerCase().includes('finalist') && !companyName.toLowerCase().includes('winner')) {
+          const winner: Winner = {
+            company_name: companyName,
+            location: this.extractLocation($card.text())
+          };
+          
+          // Try to extract description
+          const desc = $card.find('p').first().text().trim();
+          if (desc && desc.length > 20 && desc.length < 500) {
+            winner.description = desc;
+          }
+          
+          winners.push(winner);
+          this.log(`Found winner/finalist card: ${companyName}`, 'info');
+        }
+      }
+    }
+    
+    // If we found winners in cards, return them
+    if (winners.length > 0) {
+      this.log(`Extracted ${winners.length} winners/finalists from cards`, 'info');
+      return winners;
+    }
+    
+    // Fallback to old heading-based extraction
+    this.log(`No winner cards found, trying heading-based extraction`, 'info');
 
-    // Find the WINNERS heading
+    // Find the WINNERS heading OR look for company names at the top of the page
     const allHeadings = $('h2, h3, h4').toArray();
-    const winnersHeadingIndex = allHeadings.findIndex(h => {
+    let winnersHeadingIndex = allHeadings.findIndex(h => {
       const text = $(h).text().toLowerCase();
       return text.includes('winner') && !text.includes('finalist');
     });
 
-    if (winnersHeadingIndex === -1) {
-      // Debug: show what headings we DID find
-      const headingTexts = allHeadings.slice(0, 10).map(h => $(h).text().trim());
-      this.log(`No WINNERS heading found (checked ${allHeadings.length} headings). First 10: ${JSON.stringify(headingTexts)}`, 'info');
-      return winners; // No winners section found
+    let startIndex = 0;
+    let endIndex = allHeadings.length;
+    
+    // If we found a "WINNERS" heading, start after it
+    if (winnersHeadingIndex !== -1) {
+      this.log(`Found WINNERS heading at index ${winnersHeadingIndex}`, 'info');
+      startIndex = winnersHeadingIndex + 1;
+    } else {
+      // No "WINNERS" heading - companies might be at the top before "DESCRIPTION"
+      // Find where standard sections start
+      const firstSectionIndex = allHeadings.findIndex(h => {
+        const text = $(h).text().toLowerCase();
+        return text.includes('description') || text.includes('eligibility') || 
+               text.includes('schedule') || text.includes('phase 1');
+      });
+      
+      if (firstSectionIndex > 0) {
+        // Extract company names from headings BEFORE the first standard section
+        startIndex = 0;
+        endIndex = firstSectionIndex;
+        this.log(`No WINNERS heading - extracting ${firstSectionIndex} potential company headings before sections`, 'info');
+      } else {
+        const headingTexts = allHeadings.slice(0, 10).map(h => $(h).text().trim());
+        this.log(`No WINNERS heading or company names found (checked ${allHeadings.length} headings). First 10: ${JSON.stringify(headingTexts)}`, 'info');
+        return winners;
+      }
     }
-    
-    this.log(`Found WINNERS heading at index ${winnersHeadingIndex}`, 'info');
 
-    // Extract company names as headings after the WINNERS heading
+    // Extract company names as headings
     // Stop when we hit another major section
-    const stopKeywords = ['finalist', 'eligibility', 'schedule', 'phase', 'description', 'prize structure', 'contact'];
+    const stopKeywords = ['finalist', 'eligibility', 'schedule', 'phase', 'description', 'prize structure', 'contact', 'navigation'];
     
-    for (let i = winnersHeadingIndex + 1; i < allHeadings.length; i++) {
+    for (let i = startIndex; i < endIndex && i < allHeadings.length; i++) {
       const heading = allHeadings[i];
       const headingText = $(heading).text().trim();
       
@@ -863,10 +921,15 @@ export class ArmyXTechScraper {
   }
 
   /**
-   * Extract finalists from page
+   * Extract finalists from page (cards or headings)
+   * Note: In the card-based layout, finalists and winners often share the same structure
    */
   private extractFinalists($: cheerio.CheerioAPI): Finalist[] {
     const finalists: Finalist[] = [];
+    
+    // Since winners and finalists use the same card structure,
+    // extractFinalists is mostly handled by extractWinners
+    // This function looks for any remaining finalist-specific sections
 
     // Find the FINALISTS heading
     const allHeadings = $('h2, h3, h4').toArray();
