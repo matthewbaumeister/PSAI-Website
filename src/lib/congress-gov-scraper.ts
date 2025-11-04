@@ -707,7 +707,7 @@ export function normalizeBill(rawBill: any): NormalizedBill {
     sponsor_bioguide_id: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].bioguideId : undefined,
     cosponsor_count: Array.isArray(rawBill.cosponsors) ? rawBill.cosponsors.length : (rawBill.cosponsors?.count || 0),
     cosponsors: Array.isArray(rawBill.cosponsors) ? rawBill.cosponsors : null, // Only store if we have actual data
-    committees: Array.isArray(rawBill.committees) ? rawBill.committees.map((c: any) => c.name || c.systemCode || String(c)) : null,
+    committees: Array.isArray(rawBill.committees) ? rawBill.committees.map((c: any) => c.name || c.systemCode || String(c)) : [], // TEXT[] needs empty array, not null
     primary_committee: Array.isArray(rawBill.committees) && rawBill.committees[0] ? rawBill.committees[0].name : undefined,
     // FIX: Use fetched arrays if available, otherwise store null (not reference objects)
     actions: Array.isArray(rawBill.actions) ? rawBill.actions : null,
@@ -748,7 +748,7 @@ export async function saveBill(bill: NormalizedBill): Promise<boolean> {
         sponsor_bioguide_id: bill.sponsor_bioguide_id,
         cosponsor_count: bill.cosponsor_count,
         cosponsors: bill.cosponsors,
-        committees: bill.committees || [], // PostgreSQL TEXT[] - send empty array instead of null
+        committees: bill.committees, // Already returns [] from normalizeBill
         primary_committee: bill.primary_committee,
         actions: bill.actions,
         action_count: bill.action_count,
