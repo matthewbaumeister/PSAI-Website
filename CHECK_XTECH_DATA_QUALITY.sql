@@ -51,6 +51,34 @@ competitions_with_data AS (
     NULL
   FROM army_innovation_opportunities
   WHERE id NOT IN (SELECT DISTINCT opportunity_id FROM army_innovation_submissions)
+  
+  UNION ALL
+  
+  SELECT 
+    'Coverage Stats',
+    'Competitions with Phase Tracking',
+    COUNT(*)::text,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  FROM army_innovation_opportunities
+  WHERE total_phases IS NOT NULL AND current_phase_number IS NOT NULL
+  
+  UNION ALL
+  
+  SELECT 
+    'Coverage Stats',
+    'Semi-Finalists Found',
+    COUNT(*)::text,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL
+  FROM army_innovation_submissions
+  WHERE submission_status = 'Semi-Finalist'
 ),
 
 top_competitions AS (
@@ -84,17 +112,37 @@ data_richness AS (
   FROM army_innovation_opportunities
   ORDER BY total_prize_pool DESC NULLS LAST
   LIMIT 10
+),
+
+phase_tracking AS (
+  SELECT 
+    'Phase Tracking' as section,
+    opportunity_title as detail_1,
+    competition_phase as detail_2,
+    COALESCE(current_phase_number::text, 'N/A') || '/' || COALESCE(total_phases::text, 'N/A') as detail_3,
+    COALESCE(phase_progress_percentage::text || '%', 'N/A') as metric_1,
+    status as metric_2,
+    COALESCE(ARRAY_LENGTH(evaluation_stages, 1)::text, '0') as metric_3,
+    CASE 
+      WHEN total_phases IS NOT NULL AND current_phase_number IS NOT NULL THEN 'Complete'
+      WHEN evaluation_stages IS NOT NULL THEN 'Partial'
+      ELSE 'Missing'
+    END as metric_4
+  FROM army_innovation_opportunities
+  WHERE status IN ('Active', 'Open') OR total_phases IS NOT NULL
+  ORDER BY phase_progress_percentage DESC NULLS LAST
+  LIMIT 10
 )
 
 SELECT 
   section,
   detail_1 as "Competition/Metric",
-  detail_2 as "Status/Value",
-  detail_3 as "Count/Prize",
-  metric_1 as "Winners/Phases",
-  metric_2 as "Finalists/OpenDate",
-  metric_3 as "Info_3/CloseDate",
-  metric_4 as "Info_4/Eligibility"
+  detail_2 as "Status/Phase",
+  detail_3 as "Count/Current",
+  metric_1 as "Winners/Progress%",
+  metric_2 as "Finalists/Status",
+  metric_3 as "Info_3/PhaseCount",
+  metric_4 as "Info_4/PhaseData"
 FROM (
   SELECT 1 as sort_order, * FROM overall_stats
   UNION ALL
@@ -103,6 +151,8 @@ FROM (
   SELECT 3, * FROM top_competitions
   UNION ALL
   SELECT 4, * FROM data_richness
+  UNION ALL
+  SELECT 5, * FROM phase_tracking
 ) combined
 ORDER BY sort_order, section;
 
