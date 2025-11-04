@@ -118,6 +118,7 @@ interface XTechCompetition {
   // Funding
   total_prize_pool?: number;
   prize_structure?: any;
+  prize_structure_description?: string;
   number_of_awards?: number;
   min_award_amount?: number;
   max_award_amount?: number;
@@ -804,6 +805,9 @@ export class ArmyXTechScraper {
         details.actual_participants = parseInt(participantMatch[1]);
       }
 
+      // Extract metadata from informational cards (Who Can Submit, Challenge Topic, etc.)
+      this.extractInfoCards($, details);
+
       // Extract all submissions (winners, finalists, semi-finalists)
       const submissions = this.extractWinners($);
       if (submissions.length > 0) {
@@ -838,6 +842,55 @@ export class ArmyXTechScraper {
     } catch (error) {
       this.log(`Error fetching competition details: ${error}`, 'error');
       return {};
+    }
+  }
+
+  /**
+   * Extract metadata from informational cards (Total Money Offered, Who Can Submit, etc.)
+   */
+  private extractInfoCards($: cheerio.CheerioAPI, details: any): void {
+    // Look for info cards - they often have specific headings or labels
+    const allText = $('body').text();
+    
+    // Extract "Who Can Submit" / Eligible Entities
+    const whoCanSubmitMatch = allText.match(/Who Can Submit[:\s]+([\s\S]{0,200}?)(?=\n\n|\n[A-Z]|$)/i);
+    if (whoCanSubmitMatch) {
+      let eligibility = whoCanSubmitMatch[1].trim();
+      // Clean up common patterns
+      eligibility = eligibility.replace(/\s+/g, ' ').trim();
+      if (eligibility.length > 5 && eligibility.length < 500) {
+        details.eligible_entities = details.eligible_entities || [];
+        if (!details.eligible_entities.includes(eligibility)) {
+          details.eligible_entities.push(eligibility);
+        }
+        this.log(`Extracted eligibility: ${eligibility}`, 'info');
+      }
+    }
+    
+    // Extract "Challenge Topic" / Focus Area
+    const challengeTopicMatch = allText.match(/Challenge Topic[:\s]+([\s\S]{0,200}?)(?=\n\n|\n[A-Z]|Submission|$)/i);
+    if (challengeTopicMatch) {
+      let topic = challengeTopicMatch[1].trim();
+      topic = topic.replace(/\s+/g, ' ').trim();
+      if (topic.length > 5 && topic.length < 500) {
+        details.modernization_priorities = details.modernization_priorities || [];
+        if (!details.modernization_priorities.includes(topic)) {
+          details.modernization_priorities.push(topic);
+        }
+        this.log(`Extracted challenge topic: ${topic}`, 'info');
+      }
+    }
+    
+    // Extract "Total Money Offered" - enhance prize pool details
+    const totalMoneyMatch = allText.match(/Total Money Offered[:\s]+([\s\S]{0,200}?)(?=\n\n|Challenge Topic|Submission|Who Can|$)/i);
+    if (totalMoneyMatch) {
+      let prizeInfo = totalMoneyMatch[1].trim();
+      prizeInfo = prizeInfo.replace(/\s+/g, ' ').trim();
+      if (prizeInfo.length > 5) {
+        // Store full prize description
+        details.prize_structure_description = prizeInfo;
+        this.log(`Extracted prize info: ${prizeInfo}`, 'info');
+      }
     }
   }
 
@@ -1253,6 +1306,7 @@ export class ArmyXTechScraper {
         // Prizes and funding
         total_prize_pool: competition.total_prize_pool,
         prize_structure: competition.prize_structure,
+        prize_structure_description: competition.prize_structure_description,
         number_of_awards: competition.number_of_awards,
         min_award_amount: competition.min_award_amount,
         max_award_amount: competition.max_award_amount,

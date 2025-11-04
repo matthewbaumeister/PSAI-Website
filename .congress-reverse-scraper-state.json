@@ -2,8 +2,8 @@
   "direction": "ascending",
   "currentCongress": 21,
   "currentOffset": 0,
-  "totalBillsProcessed": 4417,
-  "successCount": 4414,
+  "totalBillsProcessed": 4483,
+  "successCount": 4480,
   "failureCount": 3,
   "congresses": {
     "1": {
@@ -108,7 +108,7 @@
     },
     "21": {
       "totalBills": 842,
-      "processedBills": 324,
+      "processedBills": 390,
       "lastOffset": 250
     }
   },
@@ -129,5 +129,5 @@
       "error": "Request failed with status code 500"
     }
   ],
-  "lastUpdated": "2025-11-04T21:10:21.897Z"
+  "lastUpdated": "2025-11-04T21:13:23.906Z"
 }
