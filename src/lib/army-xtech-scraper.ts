@@ -933,14 +933,29 @@ export class ArmyXTechScraper {
           const companyHeading = $container.find('h2, h3, h4, h5, .company-name, strong').first();
           let companyName = companyHeading.text().trim();
           
-          // IMPORTANT: Check if this card has a description paragraph DIRECTLY AFTER the heading
-          // (not just any paragraph somewhere in the container)
+          // IMPORTANT: Check if this card has a company-specific description
+          // Look for a paragraph near the heading (within the same immediate parent)
           let hasDescription = false;
           if (companyHeading.length > 0) {
-            const nextElement = companyHeading.next();
-            if (nextElement.is('p')) {
-              const descText = nextElement.text().trim();
-              hasDescription = descText.length > 20 && descText.length < 1000;
+            // Try next sibling first (most common)
+            let descPara = companyHeading.next('p');
+            
+            // If not found, try next few siblings
+            if (descPara.length === 0) {
+              const siblings = companyHeading.nextAll().slice(0, 3); // Check next 3 siblings
+              siblings.each((idx, el) => {
+                if ($(el).is('p') && !hasDescription) {
+                  descPara = $(el);
+                  return false; // Break loop
+                }
+              });
+            }
+            
+            // Validate the description
+            if (descPara.length > 0) {
+              const descText = descPara.text().trim();
+              // Company descriptions are 20-500 chars, not super long (which would be the main competition description)
+              hasDescription = descText.length > 20 && descText.length < 500;
             }
           }
           
