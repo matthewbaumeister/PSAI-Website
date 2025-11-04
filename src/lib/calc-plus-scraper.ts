@@ -161,6 +161,8 @@ export async function scrapeContractRates(contractNumber: string): Promise<{
   let hasMore = true;
   
   try {
+    const supabase = getSupabase();
+    
     // Get or create contract vehicle
     const { data: vehicle } = await supabase
       .from('contract_vehicles')
@@ -328,6 +330,7 @@ export async function scrapeLaborCategoryRates(
   const contractsProcessed = new Set<string>();
   
   try {
+    const supabase = getSupabase();
     let page = 1;
     let hasMore = true;
     let processedCount = 0;
