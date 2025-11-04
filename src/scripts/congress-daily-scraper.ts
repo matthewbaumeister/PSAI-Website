@@ -24,6 +24,7 @@ import 'dotenv/config';
 import {
   searchBills,
   fetchBill,
+  fetchBillWithDetails,
   fetchBillActions,
   fetchBillCosponsors,
   normalizeBill,
@@ -105,10 +106,11 @@ async function scrapeRecentBills(dateRange: { startDate: string; endDate: string
     found = bills.length;
     log(`Found ${found} bills updated in date range`);
 
-    // Fetch full details for each bill
+    // Fetch full details for each bill (with ALL data - actions, cosponsors, amendments, etc.)
     for (const billSummary of bills) {
       try {
-        const fullBill = await fetchBill(
+        // Use fetchBillWithDetails to get comprehensive data
+        const fullBill = await fetchBillWithDetails(
           billSummary.congress,
           billSummary.type,
           billSummary.number
@@ -119,25 +121,24 @@ async function scrapeRecentBills(dateRange: { startDate: string; endDate: string
           continue;
         }
 
-        // Normalize and save
-        const normalized = normalizeBill(fullBill);
+        // Normalize with billType parameter
+        const normalized = normalizeBill(fullBill, billSummary.type);
         
-        // Only save defense-related bills
-        if (normalized.is_defense_related) {
-          const success = await saveBill(normalized);
-          if (success) {
-            if (normalized.introduced_date === dateRange.endDate) {
-              newCount++;
-            } else {
-              updated++;
-            }
-            log(`  ✓ ${normalized.bill_type.toUpperCase()} ${normalized.bill_number}: ${normalized.title.substring(0, 60)}...`);
+        // Save ALL bills (we mark defense relevance, but store everything for completeness)
+        const success = await saveBill(normalized);
+        if (success) {
+          if (normalized.introduced_date === dateRange.endDate) {
+            newCount++;
           } else {
-            failed++;
+            updated++;
           }
+          const defenseTag = normalized.is_defense_related ? '🛡️ ' : '';
+          log(`  ✓ ${defenseTag}${normalized.bill_type.toUpperCase()} ${normalized.bill_number}: ${normalized.title.substring(0, 60)}...`);
+        } else {
+          failed++;
         }
 
-        // Small delay to avoid overwhelming API
+        // Small delay to avoid overwhelming API (already has rate limiter, but extra safety)
         await delay(100);
       } catch (error) {
         log(`  ✗ Failed to process bill: ${error instanceof Error ? error.message : 'Unknown error'}`);

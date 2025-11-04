@@ -15,12 +15,16 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { runDailyScraper } from '@/scripts/congress-daily-scraper';
+import { sendCronSuccessEmail, sendCronFailureEmail } from '@/lib/cron-notifications';
+import { createClient } from '@supabase/supabase-js';
 
 // ============================================
 // Cron Job Handler
 // ============================================
 
 export async function GET(request: NextRequest) {
+  const startTime = Date.now();
+  
   // Security: Verify cron secret
   const authHeader = request.headers.get('authorization');
   const cronSecret = process.env.CRON_SECRET;
@@ -35,35 +39,107 @@ export async function GET(request: NextRequest) {
   try {
     console.log('[Cron] Starting Congress.gov daily scraper...');
     
+    // Get count before scraping
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+    
+    const { count: countBefore } = await supabase
+      .from('congressional_bills')
+      .select('*', { count: 'exact', head: true });
+    
     // Run the scraper
     const result = await runDailyScraper();
+    
+    // Get count after scraping
+    const { count: countAfter } = await supabase
+      .from('congressional_bills')
+      .select('*', { count: 'exact', head: true });
+    
+    const durationMs = Date.now() - startTime;
+    const durationSeconds = Math.floor(durationMs / 1000);
+    const newBills = (countAfter || 0) - (countBefore || 0);
 
     if (result.success) {
       console.log('[Cron] Congress.gov scraper completed successfully');
+      console.log(`[Cron] Total: ${newBills} new/updated bills`);
+      
+      // Send success email
+      await sendCronSuccessEmail({
+        jobName: 'Congress.gov Legislative Scraper',
+        success: true,
+        date: new Date().toISOString().split('T')[0],
+        duration: durationSeconds,
+        stats: {
+          total_bills_in_db: countAfter || 0,
+          new_updated_bills: newBills,
+          bills_found: result.stats.found,
+          bills_processed: result.stats.new + result.stats.updated,
+          new_bills: result.stats.new,
+          updated_bills: result.stats.updated,
+          failed_bills: result.stats.failed,
+          api_calls_made: result.stats.apiCalls,
+          window: 'Last 3 days',
+          mode: 'comprehensive',
+          includes: 'summaries, actions, cosponsors, amendments, text versions, related bills'
+        }
+      });
       
       return NextResponse.json({
         success: true,
         message: 'Congress.gov daily scraper completed',
-        stats: result.stats,
+        stats: {
+          total_bills: countAfter,
+          new_updated: newBills,
+          found: result.stats.found,
+          new: result.stats.new,
+          updated: result.stats.updated,
+          failed: result.stats.failed,
+          api_calls: result.stats.apiCalls
+        },
+        duration_seconds: durationSeconds,
         timestamp: new Date().toISOString()
       });
     } else {
       console.error('[Cron] Congress.gov scraper failed:', result.error);
       
+      // Send failure email
+      await sendCronFailureEmail({
+        jobName: 'Congress.gov Legislative Scraper',
+        success: false,
+        date: new Date().toISOString().split('T')[0],
+        duration: durationSeconds,
+        error: result.error || 'Unknown error'
+      });
+      
       return NextResponse.json({
         success: false,
         error: result.error,
         stats: result.stats,
+        duration_seconds: durationSeconds,
         timestamp: new Date().toISOString()
       }, { status: 500 });
     }
 
   } catch (error) {
+    const durationMs = Date.now() - startTime;
+    const durationSeconds = Math.floor(durationMs / 1000);
     console.error('[Cron] Congress.gov scraper exception:', error);
+    
+    // Send failure email
+    await sendCronFailureEmail({
+      jobName: 'Congress.gov Legislative Scraper',
+      success: false,
+      date: new Date().toISOString().split('T')[0],
+      duration: durationSeconds,
+      error: error instanceof Error ? error.message : 'Unknown error'
+    });
     
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
+      duration_seconds: durationSeconds,
       timestamp: new Date().toISOString()
     }, { status: 500 });
   }
@@ -74,44 +150,7 @@ export async function GET(request: NextRequest) {
 // ============================================
 
 export async function POST(request: NextRequest) {
-  // Security: Verify cron secret or admin auth
-  const authHeader = request.headers.get('authorization');
-  const cronSecret = process.env.CRON_SECRET;
-
-  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
-    return NextResponse.json(
-      { error: 'Unauthorized' },
-      { status: 401 }
-    );
-  }
-
-  try {
-    console.log('[Manual] Starting Congress.gov daily scraper...');
-    
-    const result = await runDailyScraper();
-
-    if (result.success) {
-      return NextResponse.json({
-        success: true,
-        message: 'Congress.gov scraper completed (manual trigger)',
-        stats: result.stats,
-        timestamp: new Date().toISOString()
-      });
-    } else {
-      return NextResponse.json({
-        success: false,
-        error: result.error,
-        stats: result.stats,
-        timestamp: new Date().toISOString()
-      }, { status: 500 });
-    }
-
-  } catch (error) {
-    return NextResponse.json({
-      success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-      timestamp: new Date().toISOString()
-    }, { status: 500 });
-  }
+  // Manual triggers use the same logic as cron
+  return GET(request);
 }
 
