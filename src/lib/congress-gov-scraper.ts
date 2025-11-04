@@ -707,7 +707,7 @@ export function normalizeBill(rawBill: any): NormalizedBill {
     sponsor_bioguide_id: Array.isArray(rawBill.sponsors) && rawBill.sponsors[0] ? rawBill.sponsors[0].bioguideId : undefined,
     cosponsor_count: Array.isArray(rawBill.cosponsors) ? rawBill.cosponsors.length : (rawBill.cosponsors?.count || 0),
     cosponsors: Array.isArray(rawBill.cosponsors) ? rawBill.cosponsors : null, // Only store if we have actual data
-    committees: Array.isArray(rawBill.committees) ? rawBill.committees.map((c: any) => c.name) : [],
+    committees: Array.isArray(rawBill.committees) ? rawBill.committees.map((c: any) => c.name || c.systemCode || String(c)) : null,
     primary_committee: Array.isArray(rawBill.committees) && rawBill.committees[0] ? rawBill.committees[0].name : undefined,
     // FIX: Use fetched arrays if available, otherwise store null (not reference objects)
     actions: Array.isArray(rawBill.actions) ? rawBill.actions : null,
