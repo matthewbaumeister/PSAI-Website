@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { sendCronSuccessEmail, sendCronFailureEmail } from '@/lib/cron-notifications';
 import { createClient } from '@supabase/supabase-js';
-import { scrapeDailyTransactions } from '@/lib/fpds-transactions-scraper';
+import { scrapeDate } from '@/scripts/fpds-daily-scraper';
 
 /**
  * FPDS Daily Scraper - Vercel Cron Job
  * 
- * Now uses TRANSACTIONS endpoint to get ALL contract actions (6000+ per day)
- * Previously: Used awards endpoint (only 12 new awards per day)
+ * Uses AWARDS endpoint to get all contract awards (10,000+ per day)
  * 
- * Runs daily at 12:00 PM UTC to scrape contract transactions
+ * Note: Vercel has 5-minute timeout, but scraper has resume logic.
+ * Each run processes ~600 contracts, picks up where it left off next time.
+ * A full day (10,000 contracts) takes ~17 runs (80 minutes total).
+ * 
+ * Runs every 5 minutes to handle resume logic automatically.
  * 
  * Vercel Cron: 0 12 * * * (12:00 PM UTC = 8:00 AM EST / 5:00 AM PST)
  */
@@ -43,9 +46,9 @@ export async function GET(request: NextRequest) {
   const dateStr = formatDate(today);
 
   try {
-    console.log('[Cron] Starting FPDS TRANSACTIONS scraper...');
-    console.log('[Cron] Using transactions endpoint - will capture 6000+ daily actions');
-    console.log('[Cron] Multi-day mode: Will scrape last 3 days to handle API delays');
+    console.log('[Cron] Starting FPDS daily scraper...');
+    console.log('[Cron] Will scrape yesterday and day before (2 days)');
+    console.log('[Cron] Processes ALL pages until complete, may take multiple runs');
     
     // Get count before scraping
     const supabase = createClient(
@@ -60,26 +63,28 @@ export async function GET(request: NextRequest) {
     
     console.log(`[Cron] Database has ${countBefore} contracts before scraping`);
     
-    // Scrape last 3 days (today, yesterday, 2 days ago)
-    const dates = [];
-    for (let i = 0; i < 3; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() - i);
-      dates.push(formatDate(date));
-    }
+    // Scrape yesterday and day before (2 days to account for reporting delays)
+    const yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
+    const dayBefore = new Date(today);
+    dayBefore.setDate(today.getDate() - 2);
     
-    console.log(`[Cron] Scraping dates: ${dates.join(', ')}`);
+    const dates = [formatDate(yesterday), formatDate(dayBefore)];
+    
+    console.log(`[Cron] Target dates: ${dates.join(', ')}`);
     
     let totalFound = 0;
     let totalInserted = 0;
     let totalUpdated = 0;
     let totalFailed = 0;
+    let daysCompleted = 0;
+    const completedDates: string[] = [];
     
-    // Scrape each date using TRANSACTIONS endpoint
+    // Scrape each date - will process as many pages as possible before timeout
     for (const date of dates) {
       try {
-        console.log(`[Cron] Processing ${date} (transactions)...`);
-        const result = await scrapeDailyTransactions(date);
+        console.log(`[Cron] Processing ${date}...`);
+        const result = await scrapeDate(date);
         
         totalFound += result.totalFound;
         totalInserted += result.totalInserted;
@@ -87,6 +92,25 @@ export async function GET(request: NextRequest) {
         totalFailed += result.totalFailed;
         
         console.log(`[Cron] ${date}: Found ${result.totalFound}, New: ${result.totalInserted}, Updated: ${result.totalUpdated}`);
+        
+        // Check if this date is fully complete (no more pages)
+        const { data: lastPage } = await supabase
+          .from('fpds_page_progress')
+          .select('contracts_found')
+          .eq('date', date)
+          .eq('status', 'completed')
+          .order('page_number', { ascending: false })
+          .limit(1)
+          .single();
+        
+        if (lastPage && lastPage.contracts_found < 100) {
+          daysCompleted++;
+          completedDates.push(date);
+          console.log(`[Cron] ✅ ${date} is COMPLETE!`);
+        } else {
+          console.log(`[Cron] ⏳ ${date} still in progress (will resume next run)`);
+        }
+        
       } catch (error: any) {
         console.error(`[Cron] Error scraping ${date}:`, error.message);
         // Continue with other dates even if one fails
@@ -100,37 +124,47 @@ export async function GET(request: NextRequest) {
     
     const duration = Date.now() - startTime;
     
-    console.log('[Cron] FPDS transactions scraping completed successfully');
-    console.log(`[Cron] Total: ${totalFound} found, ${totalInserted} new, ${totalUpdated} updated, ${totalFailed} failed`);
-    console.log(`[Cron] Database now has ${countAfter} contracts (was ${countBefore})`);
+    console.log('[Cron] FPDS scraping run completed');
+    console.log(`[Cron] This run: ${totalInserted} new, ${totalUpdated} updated`);
+    console.log(`[Cron] Days completed: ${daysCompleted}/${dates.length}`);
+    console.log(`[Cron] Database: ${countBefore} → ${countAfter} (+${(countAfter || 0) - (countBefore || 0)})`);
     
-    // Send success email
-    await sendCronSuccessEmail({
-      jobName: 'FPDS Contract Awards Scraper',
-      success: true,
-      date: dateStr,
-      duration,
-      stats: {
-        days_scraped: 3,
-        total_found: totalFound,
-        new_contracts: totalInserted,
-        updated_contracts: totalUpdated,
-        failed: totalFailed,
-        total_in_db: countAfter || 0
-      }
-    });
+    // Only send email if at least one full day was completed
+    if (daysCompleted > 0) {
+      console.log(`[Cron] 📧 Sending completion email for: ${completedDates.join(', ')}`);
+      
+      await sendCronSuccessEmail({
+        jobName: 'FPDS Contract Awards Scraper',
+        success: true,
+        date: dateStr,
+        duration,
+        stats: {
+          days_scraped: daysCompleted,
+          total_found: totalFound,
+          new_contracts: totalInserted,
+          updated_contracts: totalUpdated,
+          failed: totalFailed,
+          total_in_db: countAfter || 0
+        }
+      });
+    } else {
+      console.log(`[Cron] ⏭️  No days completed yet, skipping email (will resume next run)`);
+    }
     
     return NextResponse.json({
       success: true,
-      message: `FPDS transactions scraped (last 3 days)`,
+      message: `FPDS scraping run completed`,
       date: dateStr,
       stats: {
-        days_scraped: 3,
+        days_targeted: dates.length,
+        days_completed: daysCompleted,
+        completed_dates: completedDates,
         total_found: totalFound,
         new: totalInserted,
         updated: totalUpdated,
         failed: totalFailed,
-        total_in_db: countAfter || 0
+        total_in_db: countAfter || 0,
+        db_growth: (countAfter || 0) - (countBefore || 0)
       }
     });
     

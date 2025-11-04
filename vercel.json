@@ -2,7 +2,7 @@
   "crons": [
     {
       "path": "/api/cron/scrape-fpds",
-      "schedule": "0 12 * * *"
+      "schedule": "*/5 12-14 * * *"
     },
     {
       "path": "/api/cron/scrape-dod-news",
