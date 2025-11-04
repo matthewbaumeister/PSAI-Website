@@ -846,26 +846,18 @@ export class ArmyXTechScraper {
       
       if (isClosed) {
         // Extract all submissions (winners, finalists, semi-finalists)
+        // Note: Stats will be counted during actual database insertion to avoid counting duplicates
         const submissions = this.extractWinners($);
         if (submissions.length > 0) {
           details.winners = submissions;
-          
-          // Count by type
-          submissions.forEach(sub => {
-            const status = (sub as any).submission_status;
-            if (status === 'Finalist' || status === 'Semi-Finalist') {
-              this.stats.finalistsFound++;
-            } else {
-              this.stats.winnersFound++;
-            }
-          });
+          this.log(`Extracted ${submissions.length} submissions from page`);
         }
 
         // Also try finalists extraction for backwards compatibility
         const additionalFinalists = this.extractFinalists($);
         if (additionalFinalists.length > 0) {
           details.finalists = additionalFinalists;
-          this.stats.finalistsFound += additionalFinalists.length;
+          this.log(`Extracted ${additionalFinalists.length} additional finalists from page`);
         }
       } else {
         this.log(`Skipping winner/finalist extraction for ${currentStatus} competition`);
@@ -1470,31 +1462,70 @@ export class ArmyXTechScraper {
   }
 
   /**
-   * Save winners to database
+   * Save winners to database (only inserts new ones, skips duplicates)
    */
   private async saveWinners(opportunityId: number, winners: Winner[]): Promise<void> {
     try {
       const supabase = getSupabase();
 
-      const submissions = winners.map(winner => ({
-        opportunity_id: opportunityId,
-        company_name: winner.company_name,
-        company_location: winner.location,
-        submission_status: (winner as any).submission_status || 'Winner', // Use detected status or default to Winner
-        phase: winner.phase,
-        award_amount: winner.award_amount,
-        public_abstract: winner.description
-      }));
+      let newWinnersCount = 0;
+      let skippedCount = 0;
 
-      // Use insert instead of upsert since table has no unique constraint
-      const { error: insertError } = await supabase
-        .from('army_innovation_submissions')
-        .insert(submissions);
+      for (const winner of winners) {
+        const submission_status = (winner as any).submission_status || 'Winner';
+        
+        // Check if this submission already exists
+        const { data: existing, error: checkError } = await supabase
+          .from('army_innovation_submissions')
+          .select('id')
+          .eq('opportunity_id', opportunityId)
+          .eq('company_name', winner.company_name)
+          .eq('submission_status', submission_status)
+          .maybeSingle();
 
-      if (insertError) {
-        this.log(`Error inserting winners: ${insertError.message}`, 'error');
-      } else {
-        this.log(`Saved ${winners.length} winners`);
+        if (checkError) {
+          this.log(`Error checking for existing submission: ${checkError.message}`, 'error');
+          continue;
+        }
+
+        if (existing) {
+          skippedCount++;
+          continue; // Skip if already exists
+        }
+
+        // Insert new submission
+        const { error: insertError } = await supabase
+          .from('army_innovation_submissions')
+          .insert({
+            opportunity_id: opportunityId,
+            company_name: winner.company_name,
+            company_location: winner.location,
+            submission_status: submission_status,
+            phase: winner.phase,
+            award_amount: winner.award_amount,
+            public_abstract: winner.description
+          });
+
+        if (insertError) {
+          this.log(`Error inserting winner ${winner.company_name}: ${insertError.message}`, 'error');
+          this.stats.errors++;
+        } else {
+          newWinnersCount++;
+          
+          // Only count as new if it's a winner (not finalist/semi-finalist)
+          if (submission_status === 'Winner') {
+            this.stats.winnersFound++;
+          } else {
+            this.stats.finalistsFound++;
+          }
+        }
+      }
+
+      if (newWinnersCount > 0) {
+        this.log(`Inserted ${newWinnersCount} new submissions`);
+      }
+      if (skippedCount > 0) {
+        this.log(`Skipped ${skippedCount} existing submissions`);
       }
     } catch (error) {
       this.log(`Error saving winners: ${error}`, 'error');
@@ -1502,30 +1533,61 @@ export class ArmyXTechScraper {
   }
 
   /**
-   * Save finalists to database
+   * Save finalists to database (only inserts new ones, skips duplicates)
    */
   private async saveFinalists(opportunityId: number, finalists: Finalist[]): Promise<void> {
     try {
       const supabase = getSupabase();
 
-      const submissions = finalists.map(finalist => ({
-        opportunity_id: opportunityId,
-        company_name: finalist.company_name,
-        company_location: finalist.location,
-        submission_status: 'Finalist',
-        phase: finalist.phase,
-        public_abstract: finalist.description
-      }));
+      let newFinalistsCount = 0;
+      let skippedCount = 0;
 
-      // Use insert instead of upsert since table has no unique constraint
-      const { error: insertError } = await supabase
-        .from('army_innovation_submissions')
-        .insert(submissions);
+      for (const finalist of finalists) {
+        // Check if this submission already exists
+        const { data: existing, error: checkError } = await supabase
+          .from('army_innovation_submissions')
+          .select('id')
+          .eq('opportunity_id', opportunityId)
+          .eq('company_name', finalist.company_name)
+          .eq('submission_status', 'Finalist')
+          .maybeSingle();
 
-      if (insertError) {
-        this.log(`Error inserting finalists: ${insertError.message}`, 'error');
-      } else {
-        this.log(`Saved ${finalists.length} finalists`);
+        if (checkError) {
+          this.log(`Error checking for existing finalist: ${checkError.message}`, 'error');
+          continue;
+        }
+
+        if (existing) {
+          skippedCount++;
+          continue; // Skip if already exists
+        }
+
+        // Insert new submission
+        const { error: insertError } = await supabase
+          .from('army_innovation_submissions')
+          .insert({
+            opportunity_id: opportunityId,
+            company_name: finalist.company_name,
+            company_location: finalist.location,
+            submission_status: 'Finalist',
+            phase: finalist.phase,
+            public_abstract: finalist.description
+          });
+
+        if (insertError) {
+          this.log(`Error inserting finalist ${finalist.company_name}: ${insertError.message}`, 'error');
+          this.stats.errors++;
+        } else {
+          newFinalistsCount++;
+          this.stats.finalistsFound++;
+        }
+      }
+
+      if (newFinalistsCount > 0) {
+        this.log(`Inserted ${newFinalistsCount} new finalists`);
+      }
+      if (skippedCount > 0) {
+        this.log(`Skipped ${skippedCount} existing finalists`);
       }
     } catch (error) {
       this.log(`Error saving finalists: ${error}`, 'error');
