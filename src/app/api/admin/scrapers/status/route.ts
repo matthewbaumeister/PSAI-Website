@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server'
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
+import { NextRequest, NextResponse } from 'next/server'
+import { requireAuth } from '@/lib/auth-middleware'
+import { createAdminSupabaseClient } from '@/lib/supabase'
 
 interface ScraperStatus {
   name: string
@@ -17,27 +17,22 @@ interface ScraperStatus {
   testPath: string | null
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies()
-    const supabase = createRouteHandlerClient({ cookies: () => cookieStore })
-    
-    // Check if user is admin
-    const { data: { user } } = await supabase.auth.getUser()
-    
-    if (!user) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    // Authenticate the request
+    const authResult = await requireAuth(request)
+    if (authResult instanceof NextResponse) {
+      return authResult
     }
-    
-    const { data: userProfile } = await supabase
-      .from('users')
-      .select('is_admin')
-      .eq('id', user.id)
-      .single()
-    
-    if (!userProfile?.is_admin) {
+
+    const { user } = authResult
+
+    // Check if user is admin
+    if (!user.isAdmin) {
       return NextResponse.json({ error: 'Forbidden - Admin access required' }, { status: 403 })
     }
+
+    const supabase = createAdminSupabaseClient()
 
     // Query all scraper logs
     const scrapers: ScraperStatus[] = []
