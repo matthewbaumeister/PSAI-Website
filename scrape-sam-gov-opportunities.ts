@@ -22,7 +22,8 @@
 
 // Load environment variables FIRST
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: '.env.local' });
+dotenv.config(); // Load .env as fallback
 
 import { scrapeSAMGovOpportunities } from './src/lib/sam-gov-opportunities-scraper';
 

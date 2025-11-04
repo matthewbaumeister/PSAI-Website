@@ -225,14 +225,25 @@ export class SAMGovOpportunitiesScraper {
         return null;
       }
       
+      // 404 is common - record doesn't exist or was archived
+      // This is NOT an error - just return null and use search data
+      if (response.status === 404) {
+        // Silently return null - we'll use search data instead
+        return null;
+      }
+      
       if (!response.ok) {
-        throw new Error(`Failed to fetch opportunity ${noticeId}: ${response.status}`);
+        console.warn(`[SAM.gov] HTTP ${response.status} for ${noticeId} - using search data`);
+        return null;
       }
 
       return await response.json();
 
     } catch (error) {
-      console.error(`[SAM.gov] Error fetching details for ${noticeId}:`, error);
+      // Log only if it's not a 404 error
+      if (!(error instanceof Error) || !error.message.includes('404')) {
+        console.warn(`[SAM.gov] Could not fetch details for ${noticeId} - using search data`);
+      }
       return null;
     }
   }
@@ -484,24 +495,35 @@ ${fetchFullDetails ? '🔍 Mode: FULL DETAILS (descriptions, attachments, contac
       if (fetchFullDetails) {
         console.log(`[SAM.gov] Fetching full details for ${opportunities.length} opportunities...`);
         normalized = [];
+        let successCount = 0;
+        let failCount = 0;
         
         for (let i = 0; i < opportunities.length; i++) {
           const opp = opportunities[i];
           
-          // Fetch full details
+          // Fetch full details (may return null if 404)
           const details = await scraper.getOpportunityDetails(opp.noticeId);
           
-          // Normalize with full details
+          // Track success/failure
+          if (details) {
+            successCount++;
+          } else {
+            failCount++;
+          }
+          
+          // Normalize with full details (or just search data if details failed)
           normalized.push(scraper.normalizeOpportunity(opp, details));
           
           // Progress indicator
           if ((i + 1) % 10 === 0 || i === opportunities.length - 1) {
-            console.log(`[SAM.gov] Fetched details: ${i + 1}/${opportunities.length}`);
+            console.log(`[SAM.gov] Progress: ${i + 1}/${opportunities.length} (${successCount} full details, ${failCount} search-only)`);
           }
           
           // Rate limiting between detail requests (important!)
           await scraper.delay(1000);
         }
+        
+        console.log(`[SAM.gov] Completed: ${successCount} with full details, ${failCount} using search data only`);
       } else {
         // Fast mode: just use search results
         normalized = opportunities.map(o => scraper.normalizeOpportunity(o));
