@@ -68,8 +68,7 @@ export async function GET(request: NextRequest) {
         new_winners: xtechStats.winnersFound,
         new_finalists: xtechStats.finalistsFound,
         errors: xtechStats.errors
-      },
-      message: `✅ TEST RUN SUCCESSFUL! Scraped ${xtechStats.competitionsFound} active competitions. Found ${xtechStats.competitionsUpdated} updates, ${xtechStats.winnersFound} new winners, ${xtechStats.finalistsFound} new finalists.`
+      }
     });
 
     return NextResponse.json(result);
@@ -87,8 +86,7 @@ export async function GET(request: NextRequest) {
       success: false,
       date: currentDate,
       duration: durationSeconds,
-      error: errorMessage,
-      message: `❌ TEST RUN FAILED: ${errorMessage}`
+      error: errorMessage
     });
     
     return NextResponse.json(
