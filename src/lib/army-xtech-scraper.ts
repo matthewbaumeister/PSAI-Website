@@ -78,6 +78,11 @@ interface XTechCompetition {
   status: string;
   submission_window_status?: string;
   
+  // Phase tracking
+  current_phase_number?: number;
+  total_phases?: number;
+  phase_progress_percentage?: number;
+  
   // Dates
   announced_date?: string;
   open_date?: string;
@@ -725,27 +730,58 @@ export class ArmyXTechScraper {
         details.award_date = this.parseDate(lastDate);
       }
       
-      // Extract phase information
+      // Extract phase information with enhanced tracking
       const phaseLines = lines.filter(line => /PHASE\s+\d/i.test(line));
       if (phaseLines.length > 0) {
         details.evaluation_stages = phaseLines.map(line => line.trim());
+        (details as any).total_phases = phaseLines.length;
       }
       
-      // Determine current competition phase based on status
+      // Determine current competition phase based on status and dates
       if (details.status === 'Closed') {
         details.competition_phase = 'Closed/Awarded';
+        (details as any).current_phase_number = (details as any).total_phases || 0;
+        (details as any).phase_progress_percentage = 100;
       } else if (details.status === 'Open' || details.status === 'Active') {
-        // Try to determine which phase they're in
         const currentDate = new Date();
+        let currentPhaseNum = 1;
+        let phaseName = 'Phase 1';
+        
+        // Smart phase detection based on dates
         if (details.submission_deadline) {
           const deadlineDate = new Date(details.submission_deadline);
           if (currentDate < deadlineDate) {
-            details.competition_phase = 'Phase 1: Submissions Open';
+            // Still in submission phase (Phase 1)
+            currentPhaseNum = 1;
+            phaseName = phaseLines[0] || 'Phase 1: Submissions Open';
+          } else if (details.winner_announcement_date) {
+            const announcementDate = new Date(details.winner_announcement_date);
+            if (currentDate < announcementDate) {
+              // Between submission deadline and winner announcement (Phase 2+)
+              currentPhaseNum = 2;
+              phaseName = phaseLines[1] || 'Phase 2: Evaluation';
+            } else {
+              // Winners announced (Final Phase)
+              currentPhaseNum = (details as any).total_phases || phaseLines.length;
+              phaseName = phaseLines[phaseLines.length - 1] || 'Finals';
+            }
           } else {
-            details.competition_phase = 'Phase 2: Evaluation';
+            // After submission deadline, no announcement date known
+            currentPhaseNum = 2;
+            phaseName = phaseLines[1] || 'Phase 2: Evaluation';
           }
         } else {
-          details.competition_phase = 'Active';
+          // No submission deadline, assume Phase 1
+          currentPhaseNum = 1;
+          phaseName = phaseLines[0] || 'Phase 1';
+        }
+        
+        details.competition_phase = phaseName;
+        (details as any).current_phase_number = currentPhaseNum;
+        
+        // Calculate progress percentage
+        if ((details as any).total_phases > 0) {
+          (details as any).phase_progress_percentage = Math.round((currentPhaseNum / (details as any).total_phases) * 100);
         }
       }
 
@@ -1086,6 +1122,11 @@ export class ArmyXTechScraper {
         track_name: competition.track_name,
         status: competition.status,
         submission_window_status: competition.submission_window_status,
+        
+        // Phase tracking
+        current_phase_number: competition.current_phase_number,
+        total_phases: competition.total_phases,
+        phase_progress_percentage: competition.phase_progress_percentage,
         
         // Dates
         announced_date: competition.announced_date,
