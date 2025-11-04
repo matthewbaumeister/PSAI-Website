@@ -25,8 +25,8 @@ import axios, { AxiosError } from 'axios';
 const CONGRESS_GOV_API_BASE = 'https://api.congress.gov/v3';
 const CONGRESS_GOV_API_KEY = process.env.CONGRESS_GOV_API_KEY;
 const API_RATE_LIMIT = 5000; // requests per hour (official limit)
-const SAFE_REQUEST_LIMIT = 4000; // pause after 4000 to be safe for overnight runs
-const REQUEST_DELAY_MS = 750; // ~1.3 req/sec to stay under limit
+const SAFE_REQUEST_LIMIT = 5000; // Use full 5000 limit (we have two API keys running in parallel)
+const REQUEST_DELAY_MS = 720; // ~5 req/sec = 5000/hour exactly
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;

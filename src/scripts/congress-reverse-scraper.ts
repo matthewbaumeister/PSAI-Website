@@ -36,8 +36,8 @@ import path from 'path';
 // ============================================
 
 const STATE_FILE = path.join(process.cwd(), '.congress-reverse-scraper-state.json');
-const REQUESTS_PER_HOUR = 4500; // 90% of 5000 limit
-const DELAY_BETWEEN_REQUESTS = Math.ceil((3600 * 1000) / REQUESTS_PER_HOUR); // ~800ms
+const REQUESTS_PER_HOUR = 5000; // Full 5000 limit (we have dedicated API key)
+const DELAY_BETWEEN_REQUESTS = Math.ceil((3600 * 1000) / REQUESTS_PER_HOUR); // ~720ms
 const BILLS_PER_PAGE = 250;
 const MAX_RETRIES = 3;
 const RETRY_DELAY_MS = 5000;

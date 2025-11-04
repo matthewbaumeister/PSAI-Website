@@ -55,8 +55,8 @@ const CONGRESS_GOV_BASE_URL = 'https://api.congress.gov/v3';
 
 // Rate limiting (stay well under 5000/hour limit)
 // Official limit: 5000/hour | Our setting: 4500/hour (90% safety buffer)
-const REQUESTS_PER_HOUR = 4500;
-const DELAY_BETWEEN_REQUESTS = Math.ceil((3600 * 1000) / REQUESTS_PER_HOUR); // ~800ms
+const REQUESTS_PER_HOUR = 5000; // Full 5000 limit (we have dedicated API key)
+const DELAY_BETWEEN_REQUESTS = Math.ceil((3600 * 1000) / REQUESTS_PER_HOUR); // ~720ms
 
 // Pagination settings
 const BILLS_PER_PAGE = 250; // Max allowed by API
