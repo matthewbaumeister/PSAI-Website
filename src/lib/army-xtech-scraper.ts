@@ -837,27 +837,38 @@ export class ArmyXTechScraper {
       // Extract metadata from informational cards (Who Can Submit, Challenge Topic, etc.)
       this.extractInfoCards($, details);
 
-      // Extract all submissions (winners, finalists, semi-finalists)
-      const submissions = this.extractWinners($);
-      if (submissions.length > 0) {
-        details.winners = submissions;
-        
-        // Count by type
-        submissions.forEach(sub => {
-          const status = (sub as any).submission_status;
-          if (status === 'Finalist' || status === 'Semi-Finalist') {
-            this.stats.finalistsFound++;
-          } else {
-            this.stats.winnersFound++;
-          }
-        });
-      }
+      // Only extract winners/finalists for CLOSED competitions
+      // Active/Open competitions shouldn't have winners yet
+      const currentStatus = status || details.status || 'Unknown';
+      const isClosed = currentStatus.toLowerCase().includes('closed') || 
+                       currentStatus.toLowerCase().includes('awarded') ||
+                       currentStatus.toLowerCase().includes('complete');
+      
+      if (isClosed) {
+        // Extract all submissions (winners, finalists, semi-finalists)
+        const submissions = this.extractWinners($);
+        if (submissions.length > 0) {
+          details.winners = submissions;
+          
+          // Count by type
+          submissions.forEach(sub => {
+            const status = (sub as any).submission_status;
+            if (status === 'Finalist' || status === 'Semi-Finalist') {
+              this.stats.finalistsFound++;
+            } else {
+              this.stats.winnersFound++;
+            }
+          });
+        }
 
-      // Also try finalists extraction for backwards compatibility
-      const additionalFinalists = this.extractFinalists($);
-      if (additionalFinalists.length > 0) {
-        details.finalists = additionalFinalists;
-        this.stats.finalistsFound += additionalFinalists.length;
+        // Also try finalists extraction for backwards compatibility
+        const additionalFinalists = this.extractFinalists($);
+        if (additionalFinalists.length > 0) {
+          details.finalists = additionalFinalists;
+          this.stats.finalistsFound += additionalFinalists.length;
+        }
+      } else {
+        this.log(`Skipping winner/finalist extraction for ${currentStatus} competition`);
       }
 
       // Extract technology areas from keywords
