@@ -36,8 +36,7 @@ export async function searchContractTransactions(options: {
         start_date: startDate,
         end_date: endDate
       }],
-      award_type_codes: ['A', 'B', 'C', 'D'], // All contract types
-      prime_award_types: ['contract']
+      award_type_codes: ['A', 'B', 'C', 'D'] // All contract types
     },
     fields: [
       'Award ID',
@@ -50,9 +49,7 @@ export async function searchContractTransactions(options: {
       'action_type_description'
     ],
     limit,
-    page,
-    order: 'desc',
-    sort: 'action_date'
+    page
   };
 
   const response = await fetch(`${USA_SPENDING_API}/search/spending_by_transaction/`, {
