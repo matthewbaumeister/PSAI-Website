@@ -22,6 +22,8 @@ import 'dotenv/config';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import * as cheerio from 'cheerio';
 import puppeteer from 'puppeteer';
+import chromium from '@sparticuz/chromium';
+import puppeteerCore from 'puppeteer-core';
 
 // ============================================
 // Configuration
@@ -308,10 +310,23 @@ export class ArmyXTechScraper {
     let browser = null;
     try {
       this.log(`Launching browser for: ${url}`);
-      browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
-      });
+      
+      // Use chromium in production (Vercel), puppeteer in development
+      const isProduction = process.env.VERCEL || process.env.NODE_ENV === 'production';
+      
+      if (isProduction) {
+        browser = await puppeteerCore.launch({
+          args: chromium.args,
+          defaultViewport: chromium.defaultViewport,
+          executablePath: await chromium.executablePath(),
+          headless: chromium.headless,
+        });
+      } else {
+        browser = await puppeteer.launch({
+          headless: true,
+          args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+      }
 
       const page = await browser.newPage();
       await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
