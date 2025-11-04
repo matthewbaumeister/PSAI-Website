@@ -858,69 +858,51 @@ export class ArmyXTechScraper {
       return null;
     };
     
-    // First, try to find winner/finalist/semi-finalist cards (new structure)
-    const cards = $('.wpb_wrapper, .et_pb_module, .vc_column_container, .wpb_column, .vc_column-inner').toArray();
+    // Try to detect finalist/winner sections by looking for section headers
+    const finalistSection = $('h2:contains("FINALIST"), h3:contains("FINALIST"), h2:contains("Finalist"), h3:contains("Finalist")').first();
+    const winnerSection = $('h2:contains("WINNER"), h3:contains("WINNER"), h2:contains("Winner"), h3:contains("Winner")').first();
     
-    for (const card of cards) {
-      const $card = $(card);
-      const cardText = $card.text();
-      const status = getSubmissionStatus(cardText);
-      
-      // Look for any submission status badge
-      if (status) {
-        // Extract company name - look for h3, h4, strong with company name
-        const companyName = $card.find('h3, h4, strong, .company-name, h2').first().text().trim();
-        
-        // Filter out the status text itself from company name
-        const cleanedName = companyName.replace(/\b(winner|finalist|semi-?finalist)\b/gi, '').trim();
-        
-        if (cleanedName && cleanedName.length > 2) {
-          const winner: Winner = {
-            company_name: cleanedName,
-            location: this.extractLocation($card.text())
-          };
-          
-          // Try to extract description
-          const desc = $card.find('p').first().text().trim();
-          if (desc && desc.length > 20 && desc.length < 500) {
-            winner.description = desc;
-          }
-          
-          // Store the submission status (we'll use this when saving)
-          (winner as any).submission_status = status;
-          
-          winners.push(winner);
-          this.log(`Found ${status} card: ${cleanedName}`, 'info');
-        }
-      }
+    if (finalistSection.length > 0 || winnerSection.length > 0) {
+      this.log('Found FINALIST/WINNER section headers, using section-based extraction', 'info');
+      // Will be handled by the heading-based extraction below
     }
     
-    // If we found winners in cards, return them
-    if (winners.length > 0) {
-      this.log(`Extracted ${winners.length} submissions from cards`, 'info');
-      return winners;
-    }
-    
-    // Fallback to old heading-based extraction
-    this.log(`No winner cards found, trying heading-based extraction`, 'info');
+    // Fallback to heading-based extraction (improved with status detection)
+    this.log(`Using heading-based extraction with status detection`, 'info');
 
-    // Find the WINNERS heading OR look for company names at the top of the page
+    // Find section headers for WINNERS and FINALISTS
     const allHeadings = $('h2, h3, h4').toArray();
-    let winnersHeadingIndex = allHeadings.findIndex(h => {
+    
+    const winnersHeadingIndex = allHeadings.findIndex(h => {
       const text = $(h).text().toLowerCase();
       return text.includes('winner') && !text.includes('finalist');
+    });
+    
+    const finalistsHeadingIndex = allHeadings.findIndex(h => {
+      const text = $(h).text().toLowerCase();
+      return text.includes('finalist');
     });
 
     let startIndex = 0;
     let endIndex = allHeadings.length;
+    let currentStatus: 'Winner' | 'Finalist' | 'Semi-Finalist' = 'Winner';
     
-    // If we found a "WINNERS" heading, start after it
-    if (winnersHeadingIndex !== -1) {
-      this.log(`Found WINNERS heading at index ${winnersHeadingIndex}`, 'info');
-      startIndex = winnersHeadingIndex + 1;
+    // Determine section boundaries
+    if (winnersHeadingIndex !== -1 || finalistsHeadingIndex !== -1) {
+      this.log(`Found section headers - Winners: ${winnersHeadingIndex}, Finalists: ${finalistsHeadingIndex}`, 'info');
+      
+      if (winnersHeadingIndex !== -1 && finalistsHeadingIndex !== -1) {
+        // Both sections exist - process them separately
+        // This will be handled by extracting from each section
+      } else if (winnersHeadingIndex !== -1) {
+        startIndex = winnersHeadingIndex + 1;
+        currentStatus = 'Winner';
+      } else if (finalistsHeadingIndex !== -1) {
+        startIndex = finalistsHeadingIndex + 1;
+        currentStatus = 'Finalist';
+      }
     } else {
-      // No "WINNERS" heading - companies might be at the top before "DESCRIPTION"
-      // Find where standard sections start
+      // No section headers - extract from top of page
       const firstSectionIndex = allHeadings.findIndex(h => {
         const text = $(h).text().toLowerCase();
         return text.includes('description') || text.includes('eligibility') || 
@@ -928,13 +910,12 @@ export class ArmyXTechScraper {
       });
       
       if (firstSectionIndex > 0) {
-        // Extract company names from headings BEFORE the first standard section
         startIndex = 0;
         endIndex = firstSectionIndex;
-        this.log(`No WINNERS heading - extracting ${firstSectionIndex} potential company headings before sections`, 'info');
+        this.log(`No section headers - extracting ${firstSectionIndex} potential company headings before sections`, 'info');
       } else {
         const headingTexts = allHeadings.slice(0, 10).map(h => $(h).text().trim());
-        this.log(`No WINNERS heading or company names found (checked ${allHeadings.length} headings). First 10: ${JSON.stringify(headingTexts)}`, 'info');
+        this.log(`No company names found (checked ${allHeadings.length} headings). First 10: ${JSON.stringify(headingTexts)}`, 'info');
         return winners;
       }
     }
@@ -947,6 +928,17 @@ export class ArmyXTechScraper {
       const heading = allHeadings[i];
       const headingText = $(heading).text().trim();
       
+      // Check if we've crossed into a different section
+      if (headingText.toLowerCase().includes('finalist')) {
+        currentStatus = 'Finalist';
+        this.log(`Switched to Finalist section at index ${i}`, 'info');
+        continue; // Skip the section header itself
+      } else if (headingText.toLowerCase().includes('winner') && !headingText.toLowerCase().includes('finalist')) {
+        currentStatus = 'Winner';
+        this.log(`Switched to Winner section at index ${i}`, 'info');
+        continue; // Skip the section header itself
+      }
+      
       // Stop if we hit another major section
       const isStopSection = stopKeywords.some(keyword => 
         headingText.toLowerCase().includes(keyword)
@@ -954,11 +946,9 @@ export class ArmyXTechScraper {
       if (isStopSection) break;
       
       // Skip if it's just a date, number, or announcement text
-      // Match various date formats: "Sep 18, 2025", "Sep 18 2025", "Sep18 2025", "September 18, 2025"
       if (/^[A-Z][a-z]{2,9}\.?\s*\d{1,2},?\s+\d{4}$/.test(headingText)) continue;
       if (/^\d+$/.test(headingText)) continue;
       if (headingText.length < 3) continue;
-      // Skip headings that are just announcement text
       if (headingText.toLowerCase().includes('announced')) continue;
       if (headingText.toLowerCase().includes('winner:')) continue;
       
@@ -977,6 +967,10 @@ export class ArmyXTechScraper {
           winner.description = desc;
         }
       }
+
+      // Assign the current section status
+      (winner as any).submission_status = currentStatus;
+      this.log(`Found ${currentStatus}: ${headingText}`, 'info');
 
       winners.push(winner);
     }
