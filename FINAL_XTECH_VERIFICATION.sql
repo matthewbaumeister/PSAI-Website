@@ -142,15 +142,17 @@ LIMIT 50;
 SELECT 
   '=== SCRAPER LOGS ===' as report_section,
   scrape_type,
+  scrape_target,
   status,
-  competitions_found,
-  competitions_processed,
-  competitions_inserted,
-  competitions_updated,
-  errors_count,
-  created_at
+  records_found,
+  records_inserted,
+  records_updated,
+  records_errors,
+  duration_seconds,
+  started_at,
+  completed_at
 FROM army_innovation_scraper_log
-ORDER BY created_at DESC
+ORDER BY started_at DESC
 LIMIT 10;
 
 -- PART 9: QUALITY METRICS SUMMARY
