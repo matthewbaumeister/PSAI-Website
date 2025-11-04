@@ -292,7 +292,7 @@ export class ArmyXTechScraper {
                 break;
               }
             } catch (e) {
-              this.log(`Finished clicking Load More button: ${e.message}`);
+              this.log(`Finished clicking Load More button: ${e instanceof Error ? e.message : String(e)}`);
               break;
             }
           }
