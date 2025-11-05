@@ -107,27 +107,31 @@ export async function GET(request: NextRequest) {
         }
       ),
 
-      // 2. SAM.gov - Check data table
+      // 2. SAM.gov - Has scraper_log
       getSafeScraperStatus(
         'sam-gov',
         'SAM.gov Opportunities',
         '/api/cron/scrape-sam-gov',
         null,
         async () => {
-          const { data, count, error } = await supabase
-            .from('sam_gov_opportunities')
-            .select('last_scraped', { count: 'exact' })
-            .order('last_scraped', { ascending: false })
+          const { data, error } = await supabase
+            .from('sam_gov_scraper_log')
+            .select('*')
+            .order('started_at', { ascending: false })
             .limit(1)
             .maybeSingle()
 
           if (error) throw error
 
           return {
-            lastRun: data?.last_scraped,
-            status: data && count && count > 0 ? 'success' : 'never-run',
-            recordsProcessed: count || 0,
-            recordsInserted: count || 0
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.records_found || 0,
+            recordsInserted: data?.records_inserted || 0,
+            recordsUpdated: data?.records_updated || 0,
+            errors: data?.records_errors || 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message
           }
         }
       ),
@@ -161,77 +165,89 @@ export async function GET(request: NextRequest) {
         }
       ),
 
-      // 4. Congress.gov Bills - Check data table
+      // 4. Congress.gov Bills - Has scraper_log
       getSafeScraperStatus(
         'congress',
         'Congress.gov Bills',
         '/api/cron/scrape-congress-gov',
         null,
         async () => {
-          const { data, count, error } = await supabase
-            .from('congressional_bills')
-            .select('latest_action_date', { count: 'exact' })
-            .order('latest_action_date', { ascending: false })
+          const { data, error } = await supabase
+            .from('congress_scraper_log')
+            .select('*')
+            .order('started_at', { ascending: false })
             .limit(1)
             .maybeSingle()
 
           if (error) throw error
 
           return {
-            lastRun: data?.latest_action_date,
-            status: data && count && count > 0 ? 'success' : 'never-run',
-            recordsProcessed: count || 0,
-            recordsInserted: count || 0
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.records_found || 0,
+            recordsInserted: data?.records_inserted || 0,
+            recordsUpdated: data?.records_updated || 0,
+            errors: data?.records_errors || 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message
           }
         }
       ),
 
-      // 5. DoD Contract News - Check data table
+      // 5. DoD Contract News - Has scraper_log
       getSafeScraperStatus(
         'dod-news',
         'DoD Contract News',
         '/api/cron/scrape-dod-news',
         null,
         async () => {
-          const { data, count, error } = await supabase
-            .from('dod_contract_news')
-            .select('scraped_at', { count: 'exact' })
-            .order('scraped_at', { ascending: false })
+          const { data, error } = await supabase
+            .from('dod_news_scraper_log')
+            .select('*')
+            .order('started_at', { ascending: false })
             .limit(1)
             .maybeSingle()
 
           if (error) throw error
 
           return {
-            lastRun: data?.scraped_at,
-            status: data && count && count > 0 ? 'success' : 'never-run',
-            recordsProcessed: count || 0,
-            recordsInserted: count || 0
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.records_found || 0,
+            recordsInserted: data?.records_inserted || 0,
+            recordsUpdated: data?.records_updated || 0,
+            errors: data?.records_errors || 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message
           }
         }
       ),
 
-      // 6. SBIR/STTR Awards - Check data table
+      // 6. SBIR/STTR Awards - Has scraper_log
       getSafeScraperStatus(
         'sbir',
         'SBIR/STTR Awards',
         '/api/cron/sbir-scraper',
         null,
         async () => {
-          const { data, count, error } = await supabase
-            .from('sbir_final')
-            .select('created_at', { count: 'exact' })
-            .order('created_at', { ascending: false })
+          const { data, error } = await supabase
+            .from('sbir_scraper_log')
+            .select('*')
+            .order('started_at', { ascending: false })
             .limit(1)
             .maybeSingle()
 
           if (error) throw error
 
           return {
-            lastRun: data?.created_at,
-            status: data && count && count > 0 ? 'success' : 'never-run',
-            recordsProcessed: count || 0,
-            recordsInserted: count || 0
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.records_found || 0,
+            recordsInserted: data?.records_inserted || 0,
+            recordsUpdated: data?.records_updated || 0,
+            errors: data?.records_errors || 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message
           }
         }
       )
