@@ -11,7 +11,18 @@
     "push": "./auto-push.sh",
     "auto-push": "git add . && git commit -m \"Auto-commit: $(date)\" && git push",
     "scrape:army-innovation:historical": "tsx src/lib/army-xtech-scraper.ts historical",
-    "scrape:army-innovation:active": "tsx src/lib/army-xtech-scraper.ts active"
+    "scrape:army-innovation:active": "tsx src/lib/army-xtech-scraper.ts active",
+    "scrape:congress-trades:historical": "tsx src/lib/congressional-trades-scraper.ts historical",
+    "scrape:congress-trades:daily": "tsx src/lib/congressional-trades-scraper.ts daily",
+    "check:congress-trades": "tsx check-congress-status.ts",
+    "scrape:mantech:news": "tsx src/scripts/mantech-news-scraper.ts",
+    "scrape:mantech:historical": "tsx src/scripts/mantech-historical-scraper.ts",
+    "check:mantech": "tsx check-mantech-status.ts",
+    "test:mantech:extraction": "tsx test-mantech-extraction.ts",
+    "test:mantech:save": "tsx test-mantech-save.ts",
+    "check:test-article": "tsx check-test-article.ts",
+    "enrich-companies": "tsx enrich-companies.ts",
+    "update-companies:daily": "tsx cron/daily-company-update.ts"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.81",
