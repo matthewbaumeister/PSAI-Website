@@ -168,7 +168,7 @@ export async function GET(request: NextRequest) {
         jobName: 'FPDS Contract Awards Scraper',
         success: true,
         date: dateStr,
-        duration,
+        duration: durationSeconds, // Pass seconds, not milliseconds
         stats: {
           days_scraped: daysCompleted,
           total_found: totalFound,
@@ -221,7 +221,7 @@ export async function GET(request: NextRequest) {
       jobName: 'FPDS Contract Awards Scraper',
       success: false,
       date: dateStr,
-      duration: durationSeconds,
+      duration: durationSeconds, // Already in seconds
       error: error.message || 'Unknown error'
     });
     
