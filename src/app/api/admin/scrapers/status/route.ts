@@ -223,10 +223,10 @@ export async function GET(request: NextRequest) {
         }
       ),
 
-      // 6. SBIR/STTR Awards - Has scraper_log
+      // 6. DSIP Opportunities - Has scraper_log
       getSafeScraperStatus(
         'sbir',
-        'SBIR/STTR Awards',
+        'DSIP Opportunities',
         '/api/cron/sbir-scraper',
         null,
         async () => {
