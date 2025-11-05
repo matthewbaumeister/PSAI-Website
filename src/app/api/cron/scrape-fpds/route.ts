@@ -45,16 +45,31 @@ export async function GET(request: NextRequest) {
   const today = new Date();
   const dateStr = formatDate(today);
 
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+  
+  // Create scraper log entry
+  const { data: logEntry, error: logError } = await supabase
+    .from('fpds_scraper_log')
+    .insert({
+      scrape_type: 'daily',
+      date_range: `${formatDate(new Date(today.getTime() - 2 * 24 * 60 * 60 * 1000))} to ${formatDate(new Date(today.getTime() - 24 * 60 * 60 * 1000))}`,
+      status: 'running',
+      started_at: new Date().toISOString()
+    })
+    .select()
+    .single();
+    
+  if (logError) {
+    console.error('[Cron] Failed to create scraper log:', logError);
+  }
+
   try {
     console.log('[Cron] Starting FPDS daily scraper...');
     console.log('[Cron] Will scrape yesterday and day before (2 days)');
     console.log('[Cron] Processes ALL pages until complete, may take multiple runs');
-    
-    // Get count before scraping
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
     
     // Get total count in database
     const { count: countBefore } = await supabase
@@ -123,11 +138,27 @@ export async function GET(request: NextRequest) {
       .select('*', { count: 'exact', head: true });
     
     const duration = Date.now() - startTime;
+    const durationSeconds = Math.floor(duration / 1000);
     
     console.log('[Cron] FPDS scraping run completed');
     console.log(`[Cron] This run: ${totalInserted} new, ${totalUpdated} updated`);
     console.log(`[Cron] Days completed: ${daysCompleted}/${dates.length}`);
     console.log(`[Cron] Database: ${countBefore} → ${countAfter} (+${(countAfter || 0) - (countBefore || 0)})`);
+    
+    // Update scraper log with results
+    if (logEntry) {
+      await supabase
+        .from('fpds_scraper_log')
+        .update({
+          status: 'completed',
+          duration_seconds: durationSeconds,
+          records_found: totalFound,
+          records_inserted: totalInserted,
+          records_updated: totalUpdated,
+          records_errors: totalFailed
+        })
+        .eq('id', logEntry.id);
+    }
     
     // Only send email if at least one full day was completed
     if (daysCompleted > 0) {
@@ -170,14 +201,27 @@ export async function GET(request: NextRequest) {
     
   } catch (error: any) {
     const duration = Date.now() - startTime;
+    const durationSeconds = Math.floor(duration / 1000);
     console.error('❌ [Cron] FPDS scraping failed:', error);
+    
+    // Update scraper log with failure
+    if (logEntry) {
+      await supabase
+        .from('fpds_scraper_log')
+        .update({
+          status: 'failed',
+          duration_seconds: durationSeconds,
+          error_message: error.message || 'Unknown error'
+        })
+        .eq('id', logEntry.id);
+    }
     
     // Send failure email
     await sendCronFailureEmail({
       jobName: 'FPDS Contract Awards Scraper',
       success: false,
       date: dateStr,
-      duration,
+      duration: durationSeconds,
       error: error.message || 'Unknown error'
     });
     
