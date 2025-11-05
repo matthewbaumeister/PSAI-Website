@@ -39,25 +39,40 @@ export async function GET(request: NextRequest) {
     return `${month}/${day}/${year}`;
   };
 
+  // Check last 3 days (handles API delays and updates)
+  const today = new Date();
+  const dates = [];
+  for (let i = 1; i <= 3; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() - i);
+    dates.push(date);
+  }
+
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+  
+  // Create scraper log entry
+  const { data: logEntry, error: logError } = await supabase
+    .from('sam_gov_scraper_log')
+    .insert({
+      scrape_type: 'daily',
+      date_range: dates.map(d => formatDate(d)).join(', '),
+      status: 'running',
+      started_at: new Date().toISOString()
+    })
+    .select()
+    .single();
+    
+  if (logError) {
+    console.error('[Cron] Failed to create scraper log:', logError);
+  }
+
   try {
     console.log('[Cron] Starting SAM.gov daily scraper...');
-    
-    // Check last 3 days (handles API delays and updates)
-    const today = new Date();
-    const dates = [];
-    for (let i = 1; i <= 3; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() - i);
-      dates.push(date);
-    }
-    
     console.log(`[Cron] Checking dates: ${dates.map(d => formatDate(d)).join(', ')}`);
     console.log(`[Cron] (Multi-day check handles API delays and updates)`);
-    
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
     
     // Get count before scraping
     const { count: countBefore } = await supabase
@@ -110,6 +125,21 @@ export async function GET(request: NextRequest) {
     console.log('[Cron] SAM.gov scraping completed');
     console.log(`[Cron] Total: ${newOpportunities} new/updated opportunities`);
     
+    // Update scraper log with results
+    if (logEntry) {
+      await supabase
+        .from('sam_gov_scraper_log')
+        .update({
+          status: 'completed',
+          duration_seconds: durationSeconds,
+          records_found: totalOpportunities,
+          records_inserted: newOpportunities,
+          records_updated: 0,
+          records_errors: 0
+        })
+        .eq('id', logEntry.id);
+    }
+    
     // Send success email
     await sendCronSuccessEmail({
       jobName: 'SAM.gov Opportunities Scraper',
@@ -146,6 +176,18 @@ export async function GET(request: NextRequest) {
     
     // Check if it's a rate limit error
     const isRateLimit = error.message?.includes('429') || error.message?.includes('quota');
+    
+    // Update scraper log with failure
+    if (logEntry) {
+      await supabase
+        .from('sam_gov_scraper_log')
+        .update({
+          status: 'failed',
+          duration_seconds: durationSeconds,
+          error_message: error.message || 'Unknown error'
+        })
+        .eq('id', logEntry.id);
+    }
     
     // Send failure email
     await sendCronFailureEmail({

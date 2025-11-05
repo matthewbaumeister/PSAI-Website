@@ -36,15 +36,31 @@ export async function GET(request: NextRequest) {
     );
   }
 
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+  
+  // Create scraper log entry
+  const { data: logEntry, error: logError } = await supabase
+    .from('congress_scraper_log')
+    .insert({
+      scrape_type: 'daily',
+      date_range: 'Last 2 days',
+      status: 'running',
+      started_at: new Date().toISOString()
+    })
+    .select()
+    .single();
+    
+  if (logError) {
+    console.error('[Cron] Failed to create scraper log:', logError);
+  }
+
   try {
     console.log('[Cron] Starting Congress.gov daily scraper...');
     
     // Get count before scraping
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
-    
     const { count: countBefore } = await supabase
       .from('congressional_bills')
       .select('*', { count: 'exact', head: true });
@@ -64,6 +80,21 @@ export async function GET(request: NextRequest) {
     if (result.success) {
       console.log('[Cron] Congress.gov scraper completed successfully');
       console.log(`[Cron] Total: ${newBills} new/updated bills`);
+      
+      // Update scraper log with results
+      if (logEntry) {
+        await supabase
+          .from('congress_scraper_log')
+          .update({
+            status: 'completed',
+            duration_seconds: durationSeconds,
+            records_found: result.stats.found,
+            records_inserted: result.stats.new,
+            records_updated: result.stats.updated,
+            records_errors: result.stats.failed
+          })
+          .eq('id', logEntry.id);
+      }
       
       // Send success email
       await sendCronSuccessEmail({
@@ -104,6 +135,18 @@ export async function GET(request: NextRequest) {
     } else {
       console.error('[Cron] Congress.gov scraper failed:', result.error);
       
+      // Update scraper log with failure
+      if (logEntry) {
+        await supabase
+          .from('congress_scraper_log')
+          .update({
+            status: 'failed',
+            duration_seconds: durationSeconds,
+            error_message: result.error || 'Unknown error'
+          })
+          .eq('id', logEntry.id);
+      }
+      
       // Send failure email
       await sendCronFailureEmail({
         jobName: 'Congress.gov Legislative Scraper',
@@ -126,6 +169,18 @@ export async function GET(request: NextRequest) {
     const durationMs = Date.now() - startTime;
     const durationSeconds = Math.floor(durationMs / 1000);
     console.error('[Cron] Congress.gov scraper exception:', error);
+    
+    // Update scraper log with exception
+    if (logEntry) {
+      await supabase
+        .from('congress_scraper_log')
+        .update({
+          status: 'failed',
+          duration_seconds: durationSeconds,
+          error_message: error instanceof Error ? error.message : 'Unknown error'
+        })
+        .eq('id', logEntry.id);
+    }
     
     // Send failure email
     await sendCronFailureEmail({

@@ -129,29 +129,43 @@ export async function GET(request: NextRequest) {
     return `${year}-${month}-${day}`;
   };
 
+  // Initialize Supabase
+  const supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+  
+  // Check today + last 3 days (covers gov shutdown catch-up)
+  const today = new Date();
+  const dates = [];
+  for (let i = 0; i <= 3; i++) {
+    const date = new Date(today);
+    date.setDate(today.getDate() - i);
+    dates.push(formatDate(date));
+  }
+  
+  // Create scraper log entry
+  const { data: logEntry, error: logError } = await supabase
+    .from('dod_news_scraper_log')
+    .insert({
+      scrape_type: 'daily',
+      date_range: dates.join(', '),
+      status: 'running',
+      started_at: new Date().toISOString()
+    })
+    .select()
+    .single();
+    
+  if (logError) {
+    console.error('[Cron] Failed to create scraper log:', logError);
+  }
+
   try {
     console.log('[Cron] Starting DoD contract news scraper...');
-    
-    // Initialize Supabase
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
-    
-    // Check today + last 3 days (covers gov shutdown catch-up)
-    const today = new Date();
-    const dates = [];
-    for (let i = 0; i <= 3; i++) {
-      const date = new Date(today);
-      date.setDate(today.getDate() - i);
-      dates.push(formatDate(date));
-    }
-    
     console.log(`[Cron] Checking dates: ${dates.join(', ')}`);
     console.log(`[Cron] (Today + last 3 days - handles weekends and gov shutdowns)`);
     
     // Get count before scraping
-    
     const { count: countBefore } = await supabase
       .from('dod_contract_news')
       .select('*', { count: 'exact', head: true });
@@ -235,6 +249,21 @@ export async function GET(request: NextRequest) {
     console.log(`[Cron] Total: ${totalArticles} articles, ${newContracts} new/updated contracts`);
     console.log(`[Cron] Last Gov Updated Date: ${lastGovUpdatedDate}`);
     
+    // Update scraper log with results
+    if (logEntry) {
+      await supabase
+        .from('dod_news_scraper_log')
+        .update({
+          status: 'completed',
+          duration_seconds: durationSeconds,
+          records_found: totalArticles,
+          records_inserted: totalContracts,
+          records_updated: 0,
+          records_errors: 0
+        })
+        .eq('id', logEntry.id);
+    }
+    
     // Send success email
     await sendCronSuccessEmail({
       jobName: 'DoD Contract News Scraper',
@@ -268,6 +297,18 @@ export async function GET(request: NextRequest) {
     const durationMs = Date.now() - startTime;
     const durationSeconds = Math.floor(durationMs / 1000);
     console.error('[Cron] DoD news scraping failed:', error);
+    
+    // Update scraper log with failure
+    if (logEntry) {
+      await supabase
+        .from('dod_news_scraper_log')
+        .update({
+          status: 'failed',
+          duration_seconds: durationSeconds,
+          error_message: error.message || 'Unknown error'
+        })
+        .eq('id', logEntry.id);
+    }
     
     // Send failure email
     await sendCronFailureEmail({

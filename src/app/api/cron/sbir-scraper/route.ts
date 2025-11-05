@@ -26,6 +26,22 @@ export async function GET(request: NextRequest) {
   let runId: number | null = null;
   const startTime = Date.now();
   
+  // Create scraper log entry (for admin dashboard)
+  const { data: logEntry, error: logError } = await supabase
+    .from('sbir_scraper_log')
+    .insert({
+      scrape_type: 'daily',
+      date_range: 'Active opportunities',
+      status: 'running',
+      started_at: new Date().toISOString()
+    })
+    .select()
+    .single();
+    
+  if (logError) {
+    console.error('[Cron] Failed to create scraper log:', logError);
+  }
+  
   try {
     // Verify this is a cron job request
     const authHeader = request.headers.get('authorization');
@@ -39,7 +55,7 @@ export async function GET(request: NextRequest) {
     const userEmail = request.headers.get('x-user-email') || null;
     const runType = triggerSource === 'admin_ui' ? 'manual' : 'cron';
 
-    // Record the start of this run
+    // Record the start of this run (detailed tracking)
     const { data: runRecord, error: insertError } = await supabase
       .from('dsip_scraper_runs')
       .insert({
@@ -89,8 +105,23 @@ export async function GET(request: NextRequest) {
       log(` Run completed in ${durationSeconds}s - Record updated`);
     }
     
-    // Send success email notification
+    // Update scraper log (for admin dashboard)
     const durationSeconds = Math.floor((Date.now() - startTime) / 1000);
+    if (logEntry) {
+      await supabase
+        .from('sbir_scraper_log')
+        .update({
+          status: 'completed',
+          duration_seconds: durationSeconds,
+          records_found: result.totalTopics || 0,
+          records_inserted: result.newRecords || 0,
+          records_updated: result.updatedRecords || 0,
+          records_errors: 0
+        })
+        .eq('id', logEntry.id);
+    }
+    
+    // Send success email notification
     await sendCronSuccessEmail({
       jobName: 'SBIR/DSIP Scraper',
       success: true,
@@ -118,9 +149,22 @@ export async function GET(request: NextRequest) {
   } catch (error) {
     console.error(' SBIR scraper error:', error);
     
+    const durationSeconds = Math.floor((Date.now() - startTime) / 1000);
+    
+    // Update scraper log (for admin dashboard)
+    if (logEntry) {
+      await supabase
+        .from('sbir_scraper_log')
+        .update({
+          status: 'failed',
+          duration_seconds: durationSeconds,
+          error_message: error instanceof Error ? error.message : 'Unknown error'
+        })
+        .eq('id', logEntry.id);
+    }
+    
     // Update the run record with error
     if (runId) {
-      const durationSeconds = Math.floor((Date.now() - startTime) / 1000);
       await supabase
         .from('dsip_scraper_runs')
         .update({
