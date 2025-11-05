@@ -21,6 +21,7 @@
     "test:mantech:extraction": "tsx test-mantech-extraction.ts",
     "test:mantech:save": "tsx test-mantech-save.ts",
     "check:test-article": "tsx check-test-article.ts",
+    "trigger:mantech": "tsx trigger-mantech-cron.ts",
     "enrich-companies": "tsx enrich-companies.ts",
     "update-companies:daily": "tsx cron/daily-company-update.ts"
   },
