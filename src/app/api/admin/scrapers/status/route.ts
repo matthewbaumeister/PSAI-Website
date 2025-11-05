@@ -17,6 +17,48 @@ interface ScraperStatus {
   testPath: string | null
 }
 
+async function getSafeScraperStatus(
+  name: string,
+  displayName: string,
+  cronPath: string,
+  testPath: string | null,
+  queryFn: () => Promise<Partial<ScraperStatus>>
+): Promise<ScraperStatus> {
+  try {
+    const result = await queryFn()
+    return {
+      name,
+      displayName,
+      cronPath,
+      testPath,
+      lastRun: result.lastRun || null,
+      status: result.status || 'never-run',
+      recordsProcessed: result.recordsProcessed || 0,
+      recordsInserted: result.recordsInserted || 0,
+      recordsUpdated: result.recordsUpdated || 0,
+      errors: result.errors || 0,
+      duration: result.duration || null,
+      errorMessage: result.errorMessage || null
+    }
+  } catch (error: any) {
+    console.error(`Error fetching ${displayName} status:`, error.message)
+    return {
+      name,
+      displayName,
+      cronPath,
+      testPath,
+      lastRun: null,
+      status: 'never-run',
+      recordsProcessed: 0,
+      recordsInserted: 0,
+      recordsUpdated: 0,
+      errors: 0,
+      duration: null,
+      errorMessage: `Query error: ${error.message}`
+    }
+  }
+}
+
 export async function GET(request: NextRequest) {
   try {
     // Authenticate the request
@@ -34,154 +76,177 @@ export async function GET(request: NextRequest) {
 
     const supabase = createAdminSupabaseClient()
 
-    // Query all scraper logs
-    const scrapers: ScraperStatus[] = []
+    // Query all scrapers with individual error handling
+    const scrapers = await Promise.all([
+      // 1. Army Innovation (XTECH) - Has scraper_log
+      getSafeScraperStatus(
+        'army-innovation',
+        'Army Innovation (XTECH)',
+        '/api/cron/army-innovation-scraper',
+        '/api/army-innovation/test-cron',
+        async () => {
+          const { data, error } = await supabase
+            .from('army_innovation_scraper_log')
+            .select('*')
+            .order('started_at', { ascending: false })
+            .limit(1)
+            .maybeSingle()
 
-    // 1. Army Innovation (XTECH)
-    const { data: xtechLog } = await supabase
-      .from('army_innovation_scraper_log')
-      .select('*')
-      .order('started_at', { ascending: false })
-      .limit(1)
-      .single()
+          if (error) throw error
 
-    scrapers.push({
-      name: 'army-innovation',
-      displayName: 'Army Innovation (XTECH)',
-      lastRun: xtechLog?.started_at || null,
-      status: !xtechLog ? 'never-run' : xtechLog.status === 'completed' ? 'success' : xtechLog.status === 'failed' ? 'failed' : 'running',
-      recordsProcessed: xtechLog?.records_found || 0,
-      recordsInserted: xtechLog?.records_inserted || 0,
-      recordsUpdated: xtechLog?.records_updated || 0,
-      errors: xtechLog?.records_errors || 0,
-      duration: xtechLog?.duration_seconds || null,
-      errorMessage: xtechLog?.error_message || null,
-      cronPath: '/api/cron/army-innovation-scraper',
-      testPath: '/api/army-innovation/test-cron'
-    })
+          return {
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.records_found || 0,
+            recordsInserted: data?.records_inserted || 0,
+            recordsUpdated: data?.records_updated || 0,
+            errors: data?.records_errors || 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message
+          }
+        }
+      ),
 
-    // 2. SAM.gov - Check actual data table since no scraper_log exists
-    const { data: samData, count: samCount } = await supabase
-      .from('sam_gov_opportunities')
-      .select('last_scraped', { count: 'exact' })
-      .order('last_scraped', { ascending: false })
-      .limit(1)
-      .maybeSingle()
+      // 2. SAM.gov - Check data table
+      getSafeScraperStatus(
+        'sam-gov',
+        'SAM.gov Opportunities',
+        '/api/cron/scrape-sam-gov',
+        null,
+        async () => {
+          const { data, count, error } = await supabase
+            .from('sam_gov_opportunities')
+            .select('last_scraped', { count: 'exact' })
+            .order('last_scraped', { ascending: false })
+            .limit(1)
+            .maybeSingle()
 
-    scrapers.push({
-      name: 'sam-gov',
-      displayName: 'SAM.gov Opportunities',
-      lastRun: samData?.last_scraped || null,
-      status: samData ? 'success' : 'never-run',
-      recordsProcessed: samCount || 0,
-      recordsInserted: samCount || 0,
-      recordsUpdated: 0,
-      errors: 0,
-      duration: null,
-      errorMessage: null,
-      cronPath: '/api/cron/scrape-sam-gov',
-      testPath: null
-    })
+          if (error) throw error
 
-    // 3. FPDS Contracts - Check scraper log (it has one!)
-    const { data: fpdsLog } = await supabase
-      .from('fpds_scraper_log')
-      .select('*')
-      .order('started_at', { ascending: false })
-      .limit(1)
-      .maybeSingle()
+          return {
+            lastRun: data?.last_scraped,
+            status: data && count && count > 0 ? 'success' : 'never-run',
+            recordsProcessed: count || 0,
+            recordsInserted: count || 0
+          }
+        }
+      ),
 
-    scrapers.push({
-      name: 'fpds',
-      displayName: 'FPDS Contracts',
-      lastRun: fpdsLog?.started_at || null,
-      status: !fpdsLog ? 'never-run' : fpdsLog.status === 'completed' ? 'success' : fpdsLog.status === 'failed' ? 'failed' : 'running',
-      recordsProcessed: fpdsLog?.records_found || 0,
-      recordsInserted: fpdsLog?.records_inserted || 0,
-      recordsUpdated: fpdsLog?.records_updated || 0,
-      errors: fpdsLog?.records_errors || 0,
-      duration: fpdsLog?.duration_seconds || null,
-      errorMessage: fpdsLog?.error_message || null,
-      cronPath: '/api/cron/scrape-fpds',
-      testPath: null
-    })
+      // 3. FPDS Contracts - Has scraper_log
+      getSafeScraperStatus(
+        'fpds',
+        'FPDS Contracts',
+        '/api/cron/scrape-fpds',
+        null,
+        async () => {
+          const { data, error } = await supabase
+            .from('fpds_scraper_log')
+            .select('*')
+            .order('started_at', { ascending: false })
+            .limit(1)
+            .maybeSingle()
 
-    // 4. Congress.gov Bills - Check actual data table
-    const { data: congressData, count: congressCount } = await supabase
-      .from('congressional_bills')
-      .select('last_action_date', { count: 'exact' })
-      .order('last_action_date', { ascending: false })
-      .limit(1)
-      .maybeSingle()
+          if (error) throw error
 
-    scrapers.push({
-      name: 'congress',
-      displayName: 'Congress.gov Bills',
-      lastRun: congressData?.last_action_date || null,
-      status: congressData ? 'success' : 'never-run',
-      recordsProcessed: congressCount || 0,
-      recordsInserted: congressCount || 0,
-      recordsUpdated: 0,
-      errors: 0,
-      duration: null,
-      errorMessage: null,
-      cronPath: '/api/cron/scrape-congress-gov',
-      testPath: null
-    })
+          return {
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.records_found || 0,
+            recordsInserted: data?.records_inserted || 0,
+            recordsUpdated: data?.records_updated || 0,
+            errors: data?.records_errors || 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message
+          }
+        }
+      ),
 
-    // 5. DoD News - Check actual data table
-    const { data: dodData, count: dodCount } = await supabase
-      .from('dod_contract_news')
-      .select('published_at', { count: 'exact' })
-      .order('published_at', { ascending: false })
-      .limit(1)
-      .maybeSingle()
+      // 4. Congress.gov Bills - Check data table
+      getSafeScraperStatus(
+        'congress',
+        'Congress.gov Bills',
+        '/api/cron/scrape-congress-gov',
+        null,
+        async () => {
+          const { data, count, error } = await supabase
+            .from('congressional_bills')
+            .select('last_action_date', { count: 'exact' })
+            .order('last_action_date', { ascending: false })
+            .limit(1)
+            .maybeSingle()
 
-    scrapers.push({
-      name: 'dod-news',
-      displayName: 'DoD Contract News',
-      lastRun: dodData?.published_at || null,
-      status: dodData ? 'success' : 'never-run',
-      recordsProcessed: dodCount || 0,
-      recordsInserted: dodCount || 0,
-      recordsUpdated: 0,
-      errors: 0,
-      duration: null,
-      errorMessage: null,
-      cronPath: '/api/cron/scrape-dod-news',
-      testPath: null
-    })
+          if (error) throw error
 
-    // 6. SBIR Awards - Check actual data table
-    const { data: sbirData, count: sbirCount } = await supabase
-      .from('sbir_final')
-      .select('last_updated', { count: 'exact' })
-      .order('last_updated', { ascending: false })
-      .limit(1)
-      .maybeSingle()
+          return {
+            lastRun: data?.last_action_date,
+            status: data && count && count > 0 ? 'success' : 'never-run',
+            recordsProcessed: count || 0,
+            recordsInserted: count || 0
+          }
+        }
+      ),
 
-    scrapers.push({
-      name: 'sbir',
-      displayName: 'SBIR/STTR Awards',
-      lastRun: sbirData?.last_updated || null,
-      status: sbirData ? 'success' : 'never-run',
-      recordsProcessed: sbirCount || 0,
-      recordsInserted: sbirCount || 0,
-      recordsUpdated: 0,
-      errors: 0,
-      duration: null,
-      errorMessage: null,
-      cronPath: '/api/cron/sbir-scraper',
-      testPath: null
-    })
+      // 5. DoD Contract News - Check data table
+      getSafeScraperStatus(
+        'dod-news',
+        'DoD Contract News',
+        '/api/cron/scrape-dod-news',
+        null,
+        async () => {
+          const { data, count, error } = await supabase
+            .from('dod_contract_news')
+            .select('published_at', { count: 'exact' })
+            .order('published_at', { ascending: false })
+            .limit(1)
+            .maybeSingle()
+
+          if (error) throw error
+
+          return {
+            lastRun: data?.published_at,
+            status: data && count && count > 0 ? 'success' : 'never-run',
+            recordsProcessed: count || 0,
+            recordsInserted: count || 0
+          }
+        }
+      ),
+
+      // 6. SBIR/STTR Awards - Check data table
+      getSafeScraperStatus(
+        'sbir',
+        'SBIR/STTR Awards',
+        '/api/cron/sbir-scraper',
+        null,
+        async () => {
+          const { data, count, error } = await supabase
+            .from('sbir_final')
+            .select('last_updated', { count: 'exact' })
+            .order('last_updated', { ascending: false })
+            .limit(1)
+            .maybeSingle()
+
+          if (error) throw error
+
+          return {
+            lastRun: data?.last_updated,
+            status: data && count && count > 0 ? 'success' : 'never-run',
+            recordsProcessed: count || 0,
+            recordsInserted: count || 0
+          }
+        }
+      )
+    ])
 
     return NextResponse.json({ scrapers })
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error fetching scraper status:', error)
     return NextResponse.json(
-      { error: 'Failed to fetch scraper status' },
+      { 
+        error: 'Failed to fetch scraper status',
+        details: error?.message || String(error),
+        scrapers: []
+      },
       { status: 500 }
     )
   }
 }
-
