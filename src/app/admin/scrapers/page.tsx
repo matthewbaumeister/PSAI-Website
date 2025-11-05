@@ -17,6 +17,8 @@ interface ScraperStatus {
   errorMessage: string | null
   cronPath: string
   testPath: string | null
+  totalRowsInDb: number
+  totalDataPoints: number
 }
 
 export default function ScrapersPage() {
@@ -379,6 +381,35 @@ export default function ScrapersPage() {
                     <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '4px' }}>Errors</div>
                     <div style={{ color: scraper.errors > 0 ? '#fca5a5' : '#ffffff', fontSize: '14px', fontWeight: '600' }}>
                       {scraper.errors.toLocaleString()}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Database Metrics */}
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(2, 1fr)',
+                  gap: '12px',
+                  marginTop: '16px'
+                }}>
+                  <div style={{
+                    background: 'rgba(15, 23, 42, 0.6)',
+                    padding: '12px',
+                    borderRadius: '12px'
+                  }}>
+                    <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '4px' }}>Total Rows in DB</div>
+                    <div style={{ color: '#ffffff', fontSize: '14px', fontWeight: '600' }}>
+                      {scraper.totalRowsInDb.toLocaleString()}
+                    </div>
+                  </div>
+                  <div style={{
+                    background: 'rgba(15, 23, 42, 0.6)',
+                    padding: '12px',
+                    borderRadius: '12px'
+                  }}>
+                    <div style={{ color: '#94a3b8', fontSize: '12px', marginBottom: '4px' }}>Total Data Points</div>
+                    <div style={{ color: '#10b981', fontSize: '14px', fontWeight: '600' }}>
+                      {scraper.totalDataPoints.toLocaleString()}
                     </div>
                   </div>
                 </div>

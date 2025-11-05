@@ -15,6 +15,8 @@ interface ScraperStatus {
   errorMessage: string | null
   cronPath: string
   testPath: string | null
+  totalRowsInDb: number
+  totalDataPoints: number
 }
 
 async function getSafeScraperStatus(
@@ -38,7 +40,9 @@ async function getSafeScraperStatus(
       recordsUpdated: result.recordsUpdated || 0,
       errors: result.errors || 0,
       duration: result.duration || null,
-      errorMessage: result.errorMessage || null
+      errorMessage: result.errorMessage || null,
+      totalRowsInDb: result.totalRowsInDb || 0,
+      totalDataPoints: result.totalDataPoints || 0
     }
   } catch (error: any) {
     console.error(`Error fetching ${displayName} status:`, error.message)
@@ -54,7 +58,9 @@ async function getSafeScraperStatus(
       recordsUpdated: 0,
       errors: 0,
       duration: null,
-      errorMessage: `Query error: ${error.message}`
+      errorMessage: `Query error: ${error.message}`,
+      totalRowsInDb: 0,
+      totalDataPoints: 0
     }
   }
 }
@@ -94,6 +100,19 @@ export async function GET(request: NextRequest) {
 
           if (error) throw error
 
+          // Get total rows in database
+          const { count: totalRows } = await supabase
+            .from('army_innovation_opportunities')
+            .select('*', { count: 'exact', head: true })
+          
+          // Get total submissions (winners/finalists)
+          const { count: totalSubmissions } = await supabase
+            .from('army_innovation_submissions')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~80 fields per opportunity + ~10 per submission
+          const totalDataPoints = ((totalRows || 0) * 80) + ((totalSubmissions || 0) * 10)
+
           return {
             lastRun: data?.started_at,
             status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
@@ -102,7 +121,9 @@ export async function GET(request: NextRequest) {
             recordsUpdated: data?.records_updated || 0,
             errors: data?.records_errors || 0,
             duration: data?.duration_seconds,
-            errorMessage: data?.error_message
+            errorMessage: data?.error_message,
+            totalRowsInDb: (totalRows || 0) + (totalSubmissions || 0),
+            totalDataPoints
           }
         }
       ),
@@ -123,6 +144,14 @@ export async function GET(request: NextRequest) {
 
           if (error) throw error
 
+          // Get total rows in database
+          const { count: totalRows } = await supabase
+            .from('sam_gov_opportunities')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~60 fields per opportunity (description, attachments, contacts, etc.)
+          const totalDataPoints = (totalRows || 0) * 60
+
           return {
             lastRun: data?.started_at,
             status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
@@ -131,7 +160,9 @@ export async function GET(request: NextRequest) {
             recordsUpdated: data?.records_updated || 0,
             errors: data?.records_errors || 0,
             duration: data?.duration_seconds,
-            errorMessage: data?.error_message
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalRows || 0,
+            totalDataPoints
           }
         }
       ),
@@ -152,6 +183,14 @@ export async function GET(request: NextRequest) {
 
           if (error) throw error
 
+          // Get total rows in database
+          const { count: totalRows } = await supabase
+            .from('fpds_contracts')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~100 fields per contract (very detailed contract data)
+          const totalDataPoints = (totalRows || 0) * 100
+
           return {
             lastRun: data?.started_at,
             status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
@@ -160,7 +199,9 @@ export async function GET(request: NextRequest) {
             recordsUpdated: data?.records_updated || 0,
             errors: data?.records_errors || 0,
             duration: data?.duration_seconds,
-            errorMessage: data?.error_message
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalRows || 0,
+            totalDataPoints
           }
         }
       ),
@@ -181,6 +222,14 @@ export async function GET(request: NextRequest) {
 
           if (error) throw error
 
+          // Get total rows in database
+          const { count: totalRows } = await supabase
+            .from('congressional_bills')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~50 fields per bill (title, summary, actions, cosponsors, etc.)
+          const totalDataPoints = (totalRows || 0) * 50
+
           return {
             lastRun: data?.started_at,
             status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
@@ -189,7 +238,9 @@ export async function GET(request: NextRequest) {
             recordsUpdated: data?.records_updated || 0,
             errors: data?.records_errors || 0,
             duration: data?.duration_seconds,
-            errorMessage: data?.error_message
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalRows || 0,
+            totalDataPoints
           }
         }
       ),
@@ -210,6 +261,14 @@ export async function GET(request: NextRequest) {
 
           if (error) throw error
 
+          // Get total rows in database
+          const { count: totalRows } = await supabase
+            .from('dod_contract_news')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~30 fields per contract (vendor, amount, description, locations, etc.)
+          const totalDataPoints = (totalRows || 0) * 30
+
           return {
             lastRun: data?.started_at,
             status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
@@ -218,7 +277,9 @@ export async function GET(request: NextRequest) {
             recordsUpdated: data?.records_updated || 0,
             errors: data?.records_errors || 0,
             duration: data?.duration_seconds,
-            errorMessage: data?.error_message
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalRows || 0,
+            totalDataPoints
           }
         }
       ),
@@ -239,6 +300,14 @@ export async function GET(request: NextRequest) {
 
           if (error) throw error
 
+          // Get total rows in database
+          const { count: totalRows } = await supabase
+            .from('sbir_final')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~120 fields per topic (very detailed SBIR data with Q&A)
+          const totalDataPoints = (totalRows || 0) * 120
+
           return {
             lastRun: data?.started_at,
             status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
@@ -247,7 +316,9 @@ export async function GET(request: NextRequest) {
             recordsUpdated: data?.records_updated || 0,
             errors: data?.records_errors || 0,
             duration: data?.duration_seconds,
-            errorMessage: data?.error_message
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalRows || 0,
+            totalDataPoints
           }
         }
       )
