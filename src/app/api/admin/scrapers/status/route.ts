@@ -170,15 +170,15 @@ export async function GET(request: NextRequest) {
         async () => {
           const { data, count, error } = await supabase
             .from('congressional_bills')
-            .select('last_action_date', { count: 'exact' })
-            .order('last_action_date', { ascending: false })
+            .select('latest_action_date', { count: 'exact' })
+            .order('latest_action_date', { ascending: false })
             .limit(1)
             .maybeSingle()
 
           if (error) throw error
 
           return {
-            lastRun: data?.last_action_date,
+            lastRun: data?.latest_action_date,
             status: data && count && count > 0 ? 'success' : 'never-run',
             recordsProcessed: count || 0,
             recordsInserted: count || 0
@@ -195,15 +195,15 @@ export async function GET(request: NextRequest) {
         async () => {
           const { data, count, error } = await supabase
             .from('dod_contract_news')
-            .select('published_at', { count: 'exact' })
-            .order('published_at', { ascending: false })
+            .select('scraped_at', { count: 'exact' })
+            .order('scraped_at', { ascending: false })
             .limit(1)
             .maybeSingle()
 
           if (error) throw error
 
           return {
-            lastRun: data?.published_at,
+            lastRun: data?.scraped_at,
             status: data && count && count > 0 ? 'success' : 'never-run',
             recordsProcessed: count || 0,
             recordsInserted: count || 0
@@ -220,15 +220,15 @@ export async function GET(request: NextRequest) {
         async () => {
           const { data, count, error } = await supabase
             .from('sbir_final')
-            .select('last_updated', { count: 'exact' })
-            .order('last_updated', { ascending: false })
+            .select('created_at', { count: 'exact' })
+            .order('created_at', { ascending: false })
             .limit(1)
             .maybeSingle()
 
           if (error) throw error
 
           return {
-            lastRun: data?.last_updated,
+            lastRun: data?.created_at,
             status: data && count && count > 0 ? 'success' : 'never-run',
             recordsProcessed: count || 0,
             recordsInserted: count || 0
