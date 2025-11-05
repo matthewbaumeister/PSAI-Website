@@ -56,7 +56,8 @@ export async function sendCronSuccessEmail(result: CronJobResult): Promise<void>
       .join('\n');
   }
   
-  const durationText = duration ? `${Math.round(duration / 1000)}s` : 'N/A';
+  // Duration is already in seconds (not milliseconds)
+  const durationText = duration ? `${duration}s` : 'N/A';
   
   const html = `
     <!DOCTYPE html>
@@ -154,7 +155,8 @@ export async function sendCronFailureEmail(result: CronJobResult): Promise<void>
 
   const { jobName, date, error, duration } = result;
   
-  const durationText = duration ? `${Math.round(duration / 1000)}s` : 'N/A';
+  // Duration is already in seconds (not milliseconds)
+  const durationText = duration ? `${duration}s` : 'N/A';
   const isRateLimit = error?.includes('429') || error?.includes('quota') || error?.includes('rate limit');
   
   const html = `
