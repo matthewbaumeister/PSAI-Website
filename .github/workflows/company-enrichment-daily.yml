@@ -1,0 +1,65 @@
+name: Company Intelligence Daily Update
+
+on:
+  schedule:
+    # Runs daily at 3:30 AM UTC (after all daily scrapers complete)
+    - cron: '30 3 * * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+  
+  # Allow trigger from admin page
+  repository_dispatch:
+    types: [company-enrichment-daily]
+
+jobs:
+  update-companies:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30  # 30 minutes max (enriches new companies only)
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run Daily Company Update
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
+          SAM_GOV_ENRICHMENT_API_KEY: ${{ secrets.SAM_GOV_ENRICHMENT_API_KEY }}
+          SAM_GOV_THIRD_API_KEY: ${{ secrets.SAM_GOV_THIRD_API_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting daily company intelligence update..."
+          echo ""
+          echo "This workflow:"
+          echo "1. Rebuilds company stats from latest contracts"
+          echo "2. Enriches NEW companies (not yet in company_intelligence)"
+          echo "3. Refreshes stale public company data (>90 days old)"
+          echo ""
+          echo "Estimated time: 5-15 minutes"
+          echo "New companies per day: Usually 5-50"
+          echo ""
+          
+          npm run update-companies:daily
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: company-update-logs
+          path: logs/company-*.log
+          retention-days: 7
+
+

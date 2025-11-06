@@ -525,6 +525,45 @@ export async function GET(request: NextRequest) {
             totalDataPoints
           }
         }
+      ),
+
+      // 12. Company Intelligence Daily Update
+      getSafeScraperStatus(
+        'company-daily',
+        'Company Intelligence (Daily)',
+        '/api/cron/company-daily',
+        '/api/admin/scrapers/trigger',
+        async () => {
+          // Note: No dedicated log table, tracks via company_intelligence table
+          const { count: totalCompanies } = await supabase
+            .from('fpds_company_stats')
+            .select('*', { count: 'exact', head: true })
+
+          const { count: enrichedCompanies } = await supabase
+            .from('company_intelligence')
+            .select('*', { count: 'exact', head: true })
+
+          const { count: publicCompanies } = await supabase
+            .from('company_intelligence')
+            .select('*', { count: 'exact', head: true })
+            .eq('is_public_company', true)
+
+          // Estimate data points: ~40 fields per company
+          const totalDataPoints = (enrichedCompanies || 0) * 40
+
+          return {
+            lastRun: null,
+            status: 'never-run',
+            recordsProcessed: 0,
+            recordsInserted: 0,
+            recordsUpdated: 0,
+            errors: 0,
+            duration: null,
+            errorMessage: null,
+            totalRowsInDb: enrichedCompanies || 0,
+            totalDataPoints
+          }
+        }
       )
     ])
 

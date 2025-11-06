@@ -1,0 +1,26 @@
+# Military News Scraper Requirements
+# Install with: pip install -r scripts/military_news_requirements.txt
+
+# Core dependencies
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Database
+supabase>=2.0.0
+
+# Date/time parsing
+python-dateutil>=2.8.0
+
+# Optional: Natural Language Processing for entity extraction
+# Uncomment if you want advanced entity extraction
+# spacy>=3.7.0
+# Download model with: python -m spacy download en_core_web_sm
+
+# Optional: Browser automation for JavaScript-heavy sites
+# playwright>=1.40.0
+# Install browsers with: playwright install
+
+# Optional: Progress bars
+# tqdm>=4.66.0
+

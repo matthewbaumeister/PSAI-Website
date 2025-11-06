@@ -166,7 +166,7 @@ export async function enrichWithSAMEntity(uei: string): Promise<any> {
       `https://api.sam.gov/entity-information/v3/entities?ueiSAM=${uei}&includeSections=entityRegistration,coreData,pointsOfContact,repsAndCerts`,
       {
         headers: {
-          'X-Api-Key': process.env.SAM_GOV_ENRICHMENT_API_KEY || process.env.SAM_GOV_API_KEY!,
+          'X-Api-Key': process.env.SAM_GOV_THIRD_API_KEY || process.env.SAM_GOV_ENRICHMENT_API_KEY || process.env.SAM_GOV_API_KEY!,
           'Accept': 'application/json',
         },
       }
