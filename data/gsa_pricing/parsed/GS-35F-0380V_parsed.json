@@ -1,0 +1,89 @@
+{
+  "contract_number": "GS-35F-0380V",
+  "contractor_id": 3376,
+  "price_list_id": 1388,
+  "labor_categories": [
+    {
+      "contract_number": "GS-35F-0380V",
+      "labor_category": "IT Systems Engineer Level 3",
+      "hourly_rate": 149.0683,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "CAS SEVERN, INC",
+        "unique_catalog_item_id": "L-ENG-03",
+        "title": "IT Systems Engineer Level 3",
+        "description": "Provides technical knowledge and analysis of highly specialized network hardware and software environments.  Performs a variety of systems engineering tasks and activities that are broad in nature and are concerned with major systems design, integration and implementation, including personnel, hardware, software, budgetary and support facilities and/or equipment. Utilizes software and hardware tools and identifies and diagnoses complex problems and factors affecting network performance. Provides quality assurance review and the evaluation of new and existing software products. Provides technical guidance for planning, directing and monitoring information systems operations. Plans and conducts assignments, generally involving the larger and more important projects or more than one project.",
+        "sin": "54151S",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "149.0683",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "7.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "IT Systems Engineer,Level 3",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 3376,
+      "price_list_id": 1388
+    },
+    {
+      "contract_number": "GS-35F-0380V",
+      "labor_category": "IT Subject Matter Expert Level 1",
+      "hourly_rate": 120.2131,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "CAS SEVERN, INC",
+        "unique_catalog_item_id": "L-SME-01",
+        "title": "IT Subject Matter Expert Level 1",
+        "description": "Serves as subject matter expert possessing in-depth knowledge of a particular area, such as line of business or commercial product. Provides technical knowledge and analysis of highly specialized applications and operational environments, high-level functional systems analysis, design, integration, documentation and implementation advice on exceptionally complex problems that need extensive knowledge of the subject matter for effective implementation.  Participates, as needed, in all phases of software development with emphasis on analysis, testing, integration and documentation phases. Typically required to work as a team member under the supervision and direction of senior personnel.  Provides insight and advice concerning strategic direction and applicability of up to date, industry standard solutions.  Responsible for providing high level vision to program/project manager or senior client leadership to influence objectives of complex efforts. Primarily utilized on projects for their specific expertise, in support of the creation of comprehensive methods for describing current and/or future structure and behavior of an organization\u2019s processes, systems, personnel and organizational sub-units, so that they align with the organization\u2019s core goals and strategic direction.",
+        "sin": "54151S",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "120.2131",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "1.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Subject Matter Expert,Level 1",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 3376,
+      "price_list_id": 1388
+    },
+    {
+      "contract_number": "GS-35F-0380V",
+      "labor_category": "IT Subject Matter Expert Level 2",
+      "hourly_rate": 129.835,
+      "source_sheet_name": "Price List",
+      "source_row_number": 5,
+      "raw_data": {
+        "vendor_name": "CAS SEVERN, INC",
+        "unique_catalog_item_id": "L-SME-02",
+        "title": "IT Subject Matter Expert Level 2",
+        "description": "Serves as subject matter expert, possessing in-depth knowledge of a particular area, such as line of business or commercial product.  Provides technical knowledge and analysis of highly specialized applications and operational environments, high-level functional systems analysis, design, integration, documentation and implementation advice on exceptionally complex problems that need extensive knowledge of the subject matter for effective implementation.  Participates as needed in all phases of software development with emphasis on the planning, analysis, testing, integration, documentation and presentation phases",
+        "sin": "54151S",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "129.835",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "4.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "IT Subject Matter Expert,Level 2",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 3376,
+      "price_list_id": 1388
+    }
+  ],
+  "parsed_at": "2025-11-06T11:56:12.711697"
+}

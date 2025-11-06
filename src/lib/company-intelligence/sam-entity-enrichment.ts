@@ -338,7 +338,7 @@ export async function batchEnrichFromFPDS(limit: number = 100): Promise<void> {
   // Get companies that need enrichment
   const { data: companies, error } = await supabase
     .from('fpds_company_stats')
-    .select('id, company_name, vendor_uei, vendor_duns')
+    .select('id, company_name, vendor_uei, vendor_duns, total_value, small_business, woman_owned, veteran_owned, service_disabled_veteran, hubzone, eight_a')
     .is('company_intelligence_id', null)
     .not('vendor_uei', 'is', null)
     .order('total_value', { ascending: false })

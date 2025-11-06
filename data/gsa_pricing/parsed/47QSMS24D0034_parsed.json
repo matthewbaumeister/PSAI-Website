@@ -1,0 +1,108 @@
+{
+  "contract_number": "47QSMS24D0034",
+  "contractor_id": 573,
+  "price_list_id": 340,
+  "labor_categories": [
+    {
+      "contract_number": "47QSMS24D0034",
+      "labor_category": "Design",
+      "hourly_rate": 65.4912,
+      "source_sheet_name": "Price List",
+      "source_row_number": 85,
+      "raw_data": {
+        "vendor_name": "STEELCASE INC.",
+        "unique_catalog_item_id": "GSADESIGN",
+        "title": "Design",
+        "description": "Design floor plan and furniture locations",
+        "sin": "33721",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "65.4912",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Ancillary_Item",
+        "key_words": "Specify,quote,customer facing,curate",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "manufacturer_name": "GSADESIGN"
+      },
+      "security_clearance": "No",
+      "contractor_id": 573,
+      "price_list_id": 340
+    },
+    {
+      "contract_number": "47QSMS24D0034",
+      "labor_category": "Installation",
+      "hourly_rate": 65.4912,
+      "source_sheet_name": "Price List",
+      "source_row_number": 86,
+      "raw_data": {
+        "vendor_name": "STEELCASE INC.",
+        "unique_catalog_item_id": "GSAINSTALL",
+        "title": "Installation",
+        "description": "Install furniture",
+        "sin": "33721",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "65.4912",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Ancillary_Item",
+        "key_words": "Unload,stage,assemble,clean,communicate",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "manufacturer_name": "GSAINSTALL"
+      },
+      "security_clearance": "No",
+      "contractor_id": 573,
+      "price_list_id": 340
+    },
+    {
+      "contract_number": "47QSMS24D0034",
+      "labor_category": "Project Management",
+      "hourly_rate": 65.4912,
+      "source_sheet_name": "Price List",
+      "source_row_number": 87,
+      "raw_data": {
+        "vendor_name": "STEELCASE INC.",
+        "unique_catalog_item_id": "GSAPROJMGMT",
+        "title": "Project Management",
+        "description": "Oversee project",
+        "sin": "33721",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "65.4912",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Ancillary_Item",
+        "key_words": "Scheduling,coordinating,resolution,performance oversight",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "manufacturer_name": "GSAPROJMGMT"
+      },
+      "security_clearance": "No",
+      "contractor_id": 573,
+      "price_list_id": 340
+    },
+    {
+      "contract_number": "47QSMS24D0034",
+      "labor_category": "Reconfiguration",
+      "hourly_rate": 65.4912,
+      "source_sheet_name": "Price List",
+      "source_row_number": 88,
+      "raw_data": {
+        "vendor_name": "STEELCASE INC.",
+        "unique_catalog_item_id": "GSARECONFIG",
+        "title": "Reconfiguration",
+        "description": "Reconfigure furniture",
+        "sin": "33721",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "65.4912",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Ancillary_Item",
+        "key_words": "Unload,stage,assemble,clean,communicate",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "manufacturer_name": "GSARECONFIG"
+      },
+      "security_clearance": "No",
+      "contractor_id": 573,
+      "price_list_id": 340
+    }
+  ],
+  "parsed_at": "2025-11-06T11:56:00.761101"
+}

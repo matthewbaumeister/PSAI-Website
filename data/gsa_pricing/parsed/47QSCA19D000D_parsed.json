@@ -1,0 +1,89 @@
+{
+  "contract_number": "47QSCA19D000D",
+  "contractor_id": 320,
+  "price_list_id": 734,
+  "labor_categories": [
+    {
+      "contract_number": "47QSCA19D000D",
+      "labor_category": "Designer,Space Planner",
+      "hourly_rate": 75.57,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "ARCTIC OFFICE MACHINE, INC.",
+        "unique_catalog_item_id": "Designer,Space Planner",
+        "title": "Designer,Space Planner",
+        "description": "Designer,Space Planner",
+        "sin": "33721P",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "75.57",
+        "minimum_education": "High_School",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Designer,Space Planner",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "High_School",
+      "security_clearance": "No",
+      "contractor_id": 320,
+      "price_list_id": 734
+    },
+    {
+      "contract_number": "47QSCA19D000D",
+      "labor_category": "Installer",
+      "hourly_rate": 75.57,
+      "source_sheet_name": "Price List",
+      "source_row_number": 5,
+      "raw_data": {
+        "vendor_name": "ARCTIC OFFICE MACHINE, INC.",
+        "unique_catalog_item_id": "Installer",
+        "title": "Installer",
+        "description": "Installer",
+        "sin": "33721P",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "75.57",
+        "minimum_education": "High_School",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Installer",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "High_School",
+      "security_clearance": "No",
+      "contractor_id": 320,
+      "price_list_id": 734
+    },
+    {
+      "contract_number": "47QSCA19D000D",
+      "labor_category": "Project Manager",
+      "hourly_rate": 75.57,
+      "source_sheet_name": "Price List",
+      "source_row_number": 6,
+      "raw_data": {
+        "vendor_name": "ARCTIC OFFICE MACHINE, INC.",
+        "unique_catalog_item_id": "Project Manager",
+        "title": "Project Manager",
+        "description": "Project Manager",
+        "sin": "33721P",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "75.57",
+        "minimum_education": "High_School",
+        "minimum_years_of_education": "1.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Project Manager",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "High_School",
+      "security_clearance": "No",
+      "contractor_id": 320,
+      "price_list_id": 734
+    }
+  ],
+  "parsed_at": "2025-11-06T11:56:21.838248"
+}

@@ -1,0 +1,108 @@
+{
+  "contract_number": "GS-07F-0139Y",
+  "contractor_id": 13759,
+  "price_list_id": 153,
+  "labor_categories": [
+    {
+      "contract_number": "GS-07F-0139Y",
+      "labor_category": "Field Service Engineer",
+      "hourly_rate": 151.13,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "CHEMTREAT, INC.",
+        "unique_catalog_item_id": "CT001",
+        "title": "Field Service Engineer",
+        "description": "The consulting services of a qualified ChemTreat Field Service Engineer (FSE) with the ability to deliver direct value to a Facility as technician, chemist and/or engineer is essential to ensure all the benefits of any chemistry program are achieved.  These multi-faceted FSE\u2019s ensure the Facilities (employees, community, reputation, infrastructure & capital assets) are protected while minimizing the Total Cost to Operate.  ChemTreat\u2019s FSE\u2019s average 15 years of industry experience and are able to provide a variety of value-add services included but not limited to: \u2022 Site Survey\u2019s  \u2022 Best Practice Audits \u2022 Water Management Plan Creation and Support \u2022 Operator Training \u2022 Additional Service Visits \u2022 Installation and Repair of Equipment \u2022 System Cleanings",
+        "sin": "325998W",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "151.13",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "10.0",
+        "required_certifications_or_licenses": "none",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "field,service,engineer,chemistry",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 13759,
+      "price_list_id": 153
+    },
+    {
+      "contract_number": "GS-07F-0139Y",
+      "labor_category": "Legionella Consulting Services and Risk Management",
+      "hourly_rate": 327.46,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "CHEMTREAT, INC.",
+        "unique_catalog_item_id": "CT002",
+        "title": "Legionella Consulting Services and Risk Management",
+        "description": "ChemTreat offers non-potable and potable Legionella testing through third-party laboratories.  ChemTreat representatives will collect water samples for testing from industrial water (such as cooling towers) and may offer services for potable water sample collection depending on the customer need.",
+        "sin": "325998W",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "327.46",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "Legionella",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "security_clearance": "No",
+      "contractor_id": 13759,
+      "price_list_id": 153
+    },
+    {
+      "contract_number": "GS-07F-0139Y",
+      "labor_category": "Complete Water Analysis",
+      "hourly_rate": 227.71,
+      "source_sheet_name": "Price List",
+      "source_row_number": 5,
+      "raw_data": {
+        "vendor_name": "CHEMTREAT, INC.",
+        "unique_catalog_item_id": "CT003",
+        "title": "Complete Water Analysis",
+        "description": "Complete Water Analysis: Laboratory analysis to determine analytes including pH, conductivity, various minerals and metals that may be present in industrial water systems we support for our customers. Additionally, we test residuals of our treatment programs chemistries to ensure we maintain suggested KPIs. This testing is completed using a variety of analytical instrumentation and techniques including atomic spectroscopy, chromatography, auto titration and wet chemistry. The data is run against a mass balance to ensure the sum of the anions and cations chemically equal to the sum of each other.",
+        "sin": "325998W",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "227.71",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "Water,analysis",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "security_clearance": "No",
+      "contractor_id": 13759,
+      "price_list_id": 153
+    },
+    {
+      "contract_number": "GS-07F-0139Y",
+      "labor_category": "Differential MB Analysis",
+      "hourly_rate": 227.71,
+      "source_sheet_name": "Price List",
+      "source_row_number": 6,
+      "raw_data": {
+        "vendor_name": "CHEMTREAT, INC.",
+        "unique_catalog_item_id": "CT004",
+        "title": "Differential MB Analysis",
+        "description": "Full Differential (Open Loop) MB Analysis: Laboratory analysis to determine presence of Slime-Forming Bacteria, using BARTs; Sulfate-Reducing Bacteria, using Sani-Check vials; Total Aerobic Bacteria, using 3M Petri Films; Total Fungi, using 3M Petri Films; Pseudomonas, using Cetrimide Agar Plates; E.coli/Coliforms, using MacConkey Agar Plates. The Total Aerobic Bacteria, Total Fungi and Sulfate-Reducing Bacteria tests have enumerated results while Pseudomonas, E.coli/Coliforms, and Slime-Forming Bacteria tests are given \u2018Positive or Negative\u2019 results; however, all tests can be quantitated upon request. This assay generally caters to open loop systems.  Full Differential (Closed Loop) MB Analysis: Laboratory analysis to determine presence of Slime-Forming Bacteria, using BARTs; Iron-Related Bacteria, using BARTs; Denitrifying Bacteria, using BARTs; Nitrifying Bacteria, using BARTs; Sulfate-Reducing Bacteria, using Sani-Check vials; Total Aerobic Bacteria, using 3M Petri Films; Total Fungi, using 3M Petri Films; Pseudomonas, using Cetrimide Agar Plates; E.coli/Coliforms, using MacConkey Agar Plates. The Total Aerobic Bacteria, Total Fungi and Sulfate-Reducing Bacteria tests have enumerated results while Pseudomonas, E.coli/Coliforms, Slime-Forming Bacteria, Iron-Related Bacteria, Denitrifying Bacteria, and Nitrifying Bacteria tests are given \u2018Positive or Negative\u2019 results; however, all tests can be quantitated upon request. This assay generally caters to closed loop systems.",
+        "sin": "325998W",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "227.71",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "MB,Analysis",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "security_clearance": "No",
+      "contractor_id": 13759,
+      "price_list_id": 153
+    }
+  ],
+  "parsed_at": "2025-11-06T11:56:57.178139"
+}

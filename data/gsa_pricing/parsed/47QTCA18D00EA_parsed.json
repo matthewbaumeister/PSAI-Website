@@ -1,0 +1,64 @@
+{
+  "contract_number": "47QTCA18D00EA",
+  "contractor_id": 9399,
+  "price_list_id": 641,
+  "labor_categories": [
+    {
+      "contract_number": "47QTCA18D00EA",
+      "labor_category": "Principal Consultant",
+      "hourly_rate": 186.53,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "ONIX NETWORKING CORP",
+        "unique_catalog_item_id": "Principal_Consultant",
+        "title": "Principal Consultant",
+        "description": "Demonstrated skills in multiple Remedy products and applications. Data Base Expertise ( Oracle, Sybase, MSSQL, etc ). Architects and implements complex Remedy enterprise solutions. Provide technical leadership to project team. Share knowledge and mentor other project team members. Designing, implementing and supports high availability IT solutions. Translates conceptual level business solutions into Remedy technology specifics.",
+        "sin": "54151S",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "186.53",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "4.0",
+        "education_and_experience_substitution": "5 yrs experience can be substituted in lieu of a degree",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "years_experience": "5 yrs experience can be substituted in lieu of a degree",
+      "security_clearance": "No",
+      "contractor_id": 9399,
+      "price_list_id": 641
+    },
+    {
+      "contract_number": "47QTCA18D00EA",
+      "labor_category": "Senior Consultant",
+      "hourly_rate": 134.66,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "ONIX NETWORKING CORP",
+        "unique_catalog_item_id": "Senior_Consultant",
+        "title": "Senior Consultant",
+        "description": "Customization/Implementation of Remedy Application Software (4.0 or higher). Customization of the AR System Software (4.0 or higher). Knowledge of Relation Databases and ODBC Clients. Understanding of Java, IE or Netscape. Provides the highest level of customer service to include the best possible support and on-time achievement of deliverables and commitments. Learns to identify client needs and priorities and work effectively with a range of clients with moderate supervision. Has good analytical, interpersonal, and oral and written communications skills.",
+        "sin": "54151S",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "134.66",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "3.0",
+        "education_and_experience_substitution": "6 yrs experience can be substituted in lieu of a degree",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "years_experience": "6 yrs experience can be substituted in lieu of a degree",
+      "security_clearance": "No",
+      "contractor_id": 9399,
+      "price_list_id": 641
+    }
+  ],
+  "parsed_at": "2025-11-06T11:56:55.181419"
+}

@@ -1,0 +1,54 @@
+{
+  "contract_number": "GS-03F-0087Y",
+  "contractor_id": 540,
+  "price_list_id": 1526,
+  "labor_categories": [
+    {
+      "contract_number": "GS-03F-0087Y",
+      "labor_category": "Install LED Display",
+      "hourly_rate": 177.33,
+      "source_sheet_name": "Price List",
+      "source_row_number": 11,
+      "raw_data": {
+        "vendor_name": "ACE SIGNS OF ARKANSAS L.L.C.",
+        "unique_catalog_item_id": "109-Install LED Display",
+        "title": "Install LED Display",
+        "description": "Installation of LED display per square foot",
+        "sin": "ANCILLARY",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "177.33",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Ancillary_Item",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "security_clearance": "No",
+      "contractor_id": 540,
+      "price_list_id": 1526
+    },
+    {
+      "contract_number": "GS-03F-0087Y",
+      "labor_category": "On-Site Service",
+      "hourly_rate": 111.23,
+      "source_sheet_name": "Price List",
+      "source_row_number": 12,
+      "raw_data": {
+        "vendor_name": "ACE SIGNS OF ARKANSAS L.L.C.",
+        "unique_catalog_item_id": "110-On-Site Service",
+        "title": "On-Site Service",
+        "description": "On-Site service (per Hour) Includes one technician",
+        "sin": "ANCILLARY",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "111.23",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Ancillary_Item",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "security_clearance": "No",
+      "contractor_id": 540,
+      "price_list_id": 1526
+    }
+  ],
+  "parsed_at": "2025-11-06T11:55:17.567472"
+}

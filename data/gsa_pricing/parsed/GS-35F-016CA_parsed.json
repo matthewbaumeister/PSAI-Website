@@ -1,0 +1,62 @@
+{
+  "contract_number": "GS-35F-016CA",
+  "contractor_id": 3672,
+  "price_list_id": 1668,
+  "labor_categories": [
+    {
+      "contract_number": "GS-35F-016CA",
+      "labor_category": "Telecommunications Engineer",
+      "hourly_rate": 239.29,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "CLEARLY IP INC",
+        "unique_catalog_item_id": "Telecommunications Engineer",
+        "title": "Telecommunications Engineer",
+        "description": "The Telecommunications Engineer has an advanced skill set encompassing VoIP, SIP, WebRTC, UCaaS, PBX, IPPBX, SBC, RTP, SRTP, FreePBX, Asterisk, FreeSwitch, Kamailio, and OpenSIPS. This specialist spearheads design, implementation, and maintenance of sophisticated telecommunications solutions,",
+        "sin": "54151S",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "239.29",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "8.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "SIP,VoIP,UCaaS,FreePBX,Asterisk",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 3672,
+      "price_list_id": 1668
+    },
+    {
+      "contract_number": "GS-35F-016CA",
+      "labor_category": "Telecommunications Specialist",
+      "hourly_rate": 143.58,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "CLEARLY IP INC",
+        "unique_catalog_item_id": "Telecommunications Specialist",
+        "title": "Telecommunications Specialist",
+        "description": "The Telecommunications Specialist has worked with VoIP, SIP, WebRTC, UCaaS, PBX, IPPBX, SBC, RTP, SRTP, FreePBX, Asterisk, FreeSwitch, Kamailio, and OpenSIPS. This specialist assists in the design, implementation, and maintenance of sophisticated telecommunications solutions.",
+        "sin": "54151S",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "143.58",
+        "minimum_education": "Associates",
+        "minimum_years_of_education": "4.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "SIP,VoIP,UCaaS,FreePBX,Asterisk",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Associates",
+      "security_clearance": "No",
+      "contractor_id": 3672,
+      "price_list_id": 1668
+    }
+  ],
+  "parsed_at": "2025-11-06T11:54:41.258054"
+}

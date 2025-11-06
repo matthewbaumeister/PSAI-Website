@@ -1,0 +1,58 @@
+{
+  "contract_number": "GS-03F-015BA",
+  "contractor_id": 2494,
+  "price_list_id": 957,
+  "labor_categories": [
+    {
+      "contract_number": "GS-03F-015BA",
+      "labor_category": "64 gal Full tote Shredding-bi-weekly",
+      "hourly_rate": 43.53,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "B & C ENTERPRISES LLC",
+        "unique_catalog_item_id": "1.0",
+        "title": "64 gal Full tote Shredding-bi-weekly",
+        "description": "Document Destruction of  Full Tote (up to 14 E-Console and/or 64 Gal Retrievers)- Destruction services include both onsite and offsite services of classified and unclassified paper documents, materials and magnetic media.  The methods for destruction services may be obtained through these destruction options: shredding (e.g.  paper documents, folders, newspapers, catalog, magazines) disintegration (e.g., microfilm, microfiche, ID cards, VHS tapes, audio cassettes, CD ROM, floppy disks) and incineration (e.g., paper documents, maps, files, envelopes, manuals, newspapers, catalogs, magazines, blue prints).",
+        "sin": "561990.0",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "43.53",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "Full Tote Shredding,Document Destruction,64 Gal Retrievers,Mixed Media,bi-weekly",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "security_clearance": "No",
+      "contractor_id": 2494,
+      "price_list_id": 957
+    },
+    {
+      "contract_number": "GS-03F-015BA",
+      "labor_category": "64 gal Full tote Shredding-Monthly",
+      "hourly_rate": 53.2,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "B & C ENTERPRISES LLC",
+        "unique_catalog_item_id": "2.0",
+        "title": "64 gal Full tote Shredding-Monthly",
+        "description": "Document Destruction of Full Tote (up to 14 E-Console and/or 64 Gal Retrievers)- Destruction services include both onsite and offsite services of classified and unclassified paper documents, materials and magnetic media.The methods for destruction services may be obtained through these destruction options: shredding (e.g.  paper documents, folders, newspapers, catalog, magazines) disintegration (e.g., microfilm, microfiche, ID cards, VHS tapes, audio cassettes, CD ROM, floppy disks) and incineration (e.g., paper documents, maps, files, envelopes, manuals, newspapers, catalogs, magazines, blueprints). *",
+        "sin": "561990.0",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "MO",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "53.2",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "Full Tote Shredding,Document Destruction,64 Gal Retrievers,Mixed Media,Monthly",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "security_clearance": "No",
+      "contractor_id": 2494,
+      "price_list_id": 957
+    }
+  ],
+  "parsed_at": "2025-11-06T11:56:05.821897"
+}
