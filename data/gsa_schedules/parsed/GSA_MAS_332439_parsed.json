@@ -1,0 +1,238 @@
+{
+  "sin_code": "332439",
+  "file_name": "GSA_MAS_332439_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:32.581311",
+  "sheets": {
+    "2025_11_05_11_33_29": {
+      "row_count": 12,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "332439"
+      ],
+      "primary_sin": "332439",
+      "schedule_number": "MAS",
+      "company_name": "AAR MANUFACTURING, INC.",
+      "contract_number": "47QSWA21D000M",
+      "vendor_uei": "M26PK7RRJNR7",
+      "company_address": "201 HAYNES ST",
+      "company_city": "CADILLAC",
+      "company_state": "MI",
+      "company_zip": "49601-1803",
+      "primary_contact_phone": "2317796305",
+      "primary_contact_email": "scampbell@aarcorp.com",
+      "website": "http://www.aarmobilitysystems.com",
+      "contract_start_date": "2025-11-15",
+      "contract_expiration_date": "2040-11-15",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 332439.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D000M/47QSWA21D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D000M&sin=332439&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332439"
+      ],
+      "primary_sin": "332439",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL ENTERPRISE, INC",
+      "contract_number": "GS-30F-040BA",
+      "vendor_uei": "L3P3MXXX2W59",
+      "company_address": "11560 STONEWALL RD",
+      "company_city": "APPOMATTOX",
+      "company_state": "VA",
+      "company_zip": "24522-8806",
+      "primary_contact_phone": "7036241206",
+      "primary_contact_email": "gsasupport@fedharmony.com",
+      "website": "http://www.fedharmony.com",
+      "contract_start_date": "2029-09-17",
+      "contract_expiration_date": "2034-09-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 332439.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F040BA/GS30F040BA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-30F-040BA/pricelist_GS-30F-040BA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-040BA&sin=332439&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332439"
+      ],
+      "primary_sin": "332439",
+      "schedule_number": "MAS",
+      "company_name": "GMS INDUSTRIAL SUPPLY, INC.",
+      "contract_number": "GS-07F-0369V",
+      "vendor_uei": "U7U2XCEKCS66",
+      "company_address": "212 DENN LN",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23462-2506",
+      "primary_contact_phone": "7574731467",
+      "primary_contact_email": "sales@gmsindustrialsupply.com",
+      "website": "http://www.gmsindustrialsupply.com",
+      "contract_start_date": "2029-06-14",
+      "contract_expiration_date": "2029-06-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 332439.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0369V/GS07F0369V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0369V&sin=332439&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332439"
+      ],
+      "primary_sin": "332439",
+      "schedule_number": "MAS",
+      "company_name": "KRYDON GROUP, INC.",
+      "contract_number": "47QSWA20D009H",
+      "vendor_uei": "T8VNRYNXDWX4",
+      "company_address": "900 NORTH KINGS HIGHWAY",
+      "company_city": "CHERRY HILL",
+      "company_state": "NJ",
+      "company_zip": "08034-1516",
+      "primary_contact_phone": "8778541342",
+      "primary_contact_email": "gsaorders@krydon.com",
+      "website": "http://www.krydon.com",
+      "contract_start_date": "2030-08-27",
+      "contract_expiration_date": "2040-08-27",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 332439.0,
+        "address_2": "STE 208",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D009H/47QSWA20D009H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D009H&sin=332439&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332439"
+      ],
+      "primary_sin": "332439",
+      "schedule_number": "MAS",
+      "company_name": "SEA BOX, INC.",
+      "contract_number": "GS-07F-253AA",
+      "vendor_uei": "XKNQALQC33E3",
+      "company_address": "1 SEA BOX DRIVE",
+      "company_city": "CINNAMINSON",
+      "company_state": "NJ",
+      "company_zip": "08077-2022",
+      "primary_contact_phone": "8563031101",
+      "primary_contact_email": "sharons@seabox.com",
+      "website": "http://WWW.SEABOX.COM",
+      "contract_start_date": "2028-05-14",
+      "contract_expiration_date": "2033-05-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 332439.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F253AA/GS07F253AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-253AA&sin=332439&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332439"
+      ],
+      "primary_sin": "332439",
+      "schedule_number": "MAS",
+      "company_name": "SHIPPING CONTAINER SAFETY INTERNATIONAL INC",
+      "contract_number": "47QSEA23D004N",
+      "vendor_uei": "DQQHT7ASAY59",
+      "company_address": "160 INDUSTRY AVE",
+      "company_city": "LA HABRA",
+      "company_state": "CA",
+      "company_zip": "90631-6816",
+      "primary_contact_phone": "6576676227",
+      "primary_contact_email": "info@opnbar.com",
+      "website": "http://www.shippingcontainertool.com",
+      "contract_start_date": "2028-07-19",
+      "contract_expiration_date": "2043-07-19",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 332439.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA23D004N/47QSEA23D004N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA23D004N&sin=332439&src=elib&app=cat"
+      }
+    }
+  ]
+}

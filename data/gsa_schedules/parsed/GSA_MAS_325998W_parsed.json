@@ -1,0 +1,2108 @@
+{
+  "sin_code": "325998W",
+  "file_name": "GSA_MAS_325998W_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:11.642791",
+  "sheets": {
+    "2025_11_05_11_14_06": {
+      "row_count": 75,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "ACTION CHEMICAL, INC.",
+      "contract_number": "GS-07F-9372S",
+      "vendor_uei": "RRULZZ1UTMM5",
+      "company_address": "275 CUMBERLAND ST",
+      "company_city": "MEMPHIS",
+      "company_state": "TN",
+      "company_zip": "38112-3320",
+      "primary_contact_phone": "9015228783",
+      "primary_contact_email": "CHARLES@ACTIONJPS.COM",
+      "website": "http://actionchemical.com",
+      "contract_start_date": "2026-02-28",
+      "contract_expiration_date": "2026-02-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9372S/GS07F9372S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9372S&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "ALKOTA OF KANSAS LLC",
+      "contract_number": "47QSMS24D007B",
+      "vendor_uei": "M3EYX5WUGMF1",
+      "company_address": "401 N WEST ST",
+      "company_city": "WICHITA",
+      "company_state": "KS",
+      "company_zip": "67203",
+      "primary_contact_phone": "3169426116",
+      "primary_contact_email": "justin@alkotadealer.com",
+      "website": "http://www.alkotadealer.com",
+      "contract_start_date": "2029-05-16",
+      "contract_expiration_date": "2044-05-16",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D007B/47QSMS24D007B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D007B&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "AMERIWATER LLC",
+      "contract_number": "47QSWA22D002W",
+      "vendor_uei": "SJEAWDHTL9Q8",
+      "company_address": "3345 STOP 8 RD",
+      "company_city": "DAYTON",
+      "company_state": "OH",
+      "company_zip": "45414-3425",
+      "primary_contact_phone": "9374618833",
+      "primary_contact_email": "gsacontracts@ameriwater.com",
+      "website": "https://www.ameriwater.com/",
+      "contract_start_date": "2027-02-02",
+      "contract_expiration_date": "2042-02-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D002W/47QSWA22D002W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D002W&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "AQUALOGIX LLC",
+      "contract_number": "47QSWA23D007G",
+      "vendor_uei": "V23JRXHTVN33",
+      "company_address": "4440 PGA BLVD STE 600",
+      "company_city": "PALM BEACH GARDENS",
+      "company_state": "FL",
+      "company_zip": "33410-6542",
+      "primary_contact_phone": "8584424550",
+      "primary_contact_email": "mrichardson@aqualogix.com",
+      "website": "http://www.aqualogix.com",
+      "contract_start_date": "2028-07-11",
+      "contract_expiration_date": "2043-07-11",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D007G/47QSWA23D007G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D007G&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "AQUAMEDIX, LLC",
+      "contract_number": "47QSMS25D0094",
+      "vendor_uei": "UNL7LSNHM6S4",
+      "company_address": "7169 SHADY OAK RD",
+      "company_city": "EDEN PRAIRIE",
+      "company_state": "MN",
+      "company_zip": "55344-3516",
+      "primary_contact_phone": "9524790636",
+      "primary_contact_email": "jackb@aquamedix.net",
+      "website": "http://aquamedix.net",
+      "contract_start_date": "2030-06-01",
+      "contract_expiration_date": "2045-06-01",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0094&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "AQUATOMIC PRODUCTS CO INC",
+      "contract_number": "GS-07F-0164Y",
+      "vendor_uei": "GYCDYCJNLWH7",
+      "company_address": "3141 DRAPER DR STE A",
+      "company_city": "FAIRFAX",
+      "company_state": "VA",
+      "company_zip": "22031-5127",
+      "primary_contact_phone": "7036911111",
+      "primary_contact_email": "shudson@aquatomic.com",
+      "website": "www.aquatomc.com",
+      "contract_start_date": "2027-01-14",
+      "contract_expiration_date": "2032-01-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0164Y/GS07F0164Y_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "ARIS CHEMICAL & SUPPLY CO",
+      "contract_number": "GS-07F-080GA",
+      "vendor_uei": "NG5KG61LJXH8",
+      "company_address": "2973 E PIONEER TRL",
+      "company_city": "AURORA",
+      "company_state": "OH",
+      "company_zip": "44202-9379",
+      "primary_contact_phone": "7047999163",
+      "primary_contact_email": "tami@arischemical.com",
+      "website": "http://www.arischemical.com",
+      "contract_start_date": "2027-03-09",
+      "contract_expiration_date": "2037-03-09",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F080GA/GS07F080GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-080GA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "ASPEN WATER, INC.",
+      "contract_number": "47QSWA23D0054",
+      "vendor_uei": "LBMHGS82MFH7",
+      "company_address": "880 N DOROTHY DR",
+      "company_city": "RICHARDSON",
+      "company_state": "TX",
+      "company_zip": "75081-2772",
+      "primary_contact_phone": "9728899500",
+      "primary_contact_email": "kimberly@aspenwater.com",
+      "website": "http://aspenwater.com",
+      "contract_start_date": "2028-04-20",
+      "contract_expiration_date": "2043-04-20",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "address_2": "STE 800",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0054/47QSWA23D0054_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0054&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "ATLANTIC DIVING SUPPLY, INC.",
+      "contract_number": "47QSMA19D08Q1",
+      "vendor_uei": "GJMSFBCNMSK3",
+      "company_address": "621 LYNNHAVEN PKWY",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23452-7383",
+      "primary_contact_phone": "7574167505",
+      "primary_contact_email": "gsa@adsinc.com",
+      "website": "http://www.adsinc.com",
+      "contract_start_date": "2029-05-07",
+      "contract_expiration_date": "2039-05-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "address_2": "STE 160",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08Q1/47QSMA19D08Q1_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA19D08Q1/pricelist_47QSMA19D08Q1.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08Q1&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "ATLANTIC ULTRAVIOLET CORPORATION",
+      "contract_number": "47QSMS25D000K",
+      "vendor_uei": "GM7BAFVT9X75",
+      "company_address": "375 MARCUS BLVD",
+      "company_city": "HAUPPAUGE",
+      "company_state": "NY",
+      "company_zip": "11788-2026",
+      "primary_contact_phone": "6312730500122",
+      "primary_contact_email": "ckopp@atlanticuv.com",
+      "website": "http://atlanticultraviolet.com",
+      "contract_start_date": "2029-10-14",
+      "contract_expiration_date": "2044-10-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D000K&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "AVIATE ENTERPRISES, INC.",
+      "contract_number": "47QMCA20D000U",
+      "vendor_uei": "XZ2XCSGEQME5",
+      "company_address": "5844 PRICE AVE",
+      "company_city": "MCCLELLAN",
+      "company_state": "CA",
+      "company_zip": "95652-2407",
+      "primary_contact_phone": "9169934000",
+      "primary_contact_email": "gsa@aviateinc.com",
+      "website": "http://www.aviateinc.com",
+      "contract_start_date": "2029-12-12",
+      "contract_expiration_date": "2039-12-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA20D000U/47QMCA20D000U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA20D000U&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "B. DAVID CO INC",
+      "contract_number": "47QSMS25D00CC",
+      "vendor_uei": "F7VFWVQV7QZ3",
+      "company_address": "9333 SHERIDAN AVE S",
+      "company_city": "MINNEAPOLIS",
+      "company_state": "MN",
+      "company_zip": "55431-2440",
+      "primary_contact_phone": "9528848417",
+      "primary_contact_email": "bruce.ribnick@bdavidwater.com",
+      "website": "https://www.bdavidwater.com",
+      "contract_start_date": "2030-09-30",
+      "contract_expiration_date": "2045-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00CC/47QSMS25D00CC_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00CC&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "BARCLAY WATER MANAGEMENT, INC.",
+      "contract_number": "GS-07F-0041Y",
+      "vendor_uei": "NNVLDYCNQML3",
+      "company_address": "55 CHAPEL ST STE 300",
+      "company_city": "NEWTON",
+      "company_state": "MA",
+      "company_zip": "02458-1074",
+      "primary_contact_phone": "6172134051",
+      "primary_contact_email": "ruth.shaw@ecolab.com",
+      "website": "http://www.barclaywater.com",
+      "contract_start_date": "2027-01-14",
+      "contract_expiration_date": "2032-01-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0041Y/GS07F0041Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0041Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "BETA TECHNOLOGY, INC.",
+      "contract_number": "47QSMS25D008G",
+      "vendor_uei": "WEM9NWYT66Q9",
+      "company_address": "16810 BARKER SPRINGS RD STE 204",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77084-5037",
+      "primary_contact_phone": "2816479700102",
+      "primary_contact_email": "sswanson@betatechnologyinc.com",
+      "website": "http://www.betatechnologyinc.com",
+      "contract_start_date": "2030-05-12",
+      "contract_expiration_date": "2045-05-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D008G/47QSMS25D008G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D008G&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "CH2O INC",
+      "contract_number": "GS-07F-0398Y",
+      "vendor_uei": "DJ5NMDUC57Z3",
+      "company_address": "8820 OLD HIGHWAY 99 SE",
+      "company_city": "TUMWATER",
+      "company_state": "WA",
+      "company_zip": "98501-5744",
+      "primary_contact_phone": "3609436063",
+      "primary_contact_email": "cshelton@ch2o.com",
+      "website": "http://www.ch2o.com",
+      "contract_start_date": "2027-05-24",
+      "contract_expiration_date": "2032-05-24",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0398Y/GS07F0398Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0398Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "CHARDON LABORATORIES, INC",
+      "contract_number": "47QSWA20D009F",
+      "vendor_uei": "F1JGSAK3MRJ3",
+      "company_address": "7300 TUSSING RD",
+      "company_city": "REYNOLDSBURG",
+      "company_state": "OH",
+      "company_zip": "43068-4111",
+      "primary_contact_phone": "8008489526",
+      "primary_contact_email": "mwelsh@chardonlabs.com",
+      "website": "http://www.chardonlabs.com",
+      "contract_start_date": "2030-08-13",
+      "contract_expiration_date": "2040-08-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D009F/47QSWA20D009F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D009F&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "CHEM-AQUA INC",
+      "contract_number": "47QSWA23D009E",
+      "vendor_uei": "WMSSVQVLESW6",
+      "company_address": "2727 CHEMSEARCH BLVD",
+      "company_city": "IRVING",
+      "company_state": "TX",
+      "company_zip": "75062-6454",
+      "primary_contact_phone": "9724380237",
+      "primary_contact_email": "jerold.murray@chemaqua.com",
+      "website": "http://www.chemaqua.com",
+      "contract_start_date": "2028-08-31",
+      "contract_expiration_date": "2043-08-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D009E/47QSWA23D009E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D009E&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "CHEMCO INDUSTRIES INC",
+      "contract_number": "GS-07F-203AA",
+      "vendor_uei": "UK5FLEZGDA67",
+      "company_address": "3670 SCARLET OAK BLVD",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63122-6606",
+      "primary_contact_phone": "8008544236",
+      "primary_contact_email": "MOLLY@CHEMCOINDUSTRIES.COM",
+      "website": "http://www.chemcocorp-gsa.com",
+      "contract_start_date": "2028-04-14",
+      "contract_expiration_date": "2033-04-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F203AA/GS07F203AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-203AA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "CHEMTREAT, INC.",
+      "contract_number": "GS-07F-0139Y",
+      "vendor_uei": "YLLNCNNKRNJ9",
+      "company_address": "5640 COX RD",
+      "company_city": "GLEN ALLEN",
+      "company_state": "VA",
+      "company_zip": "23060-9297",
+      "primary_contact_phone": "8049352383",
+      "primary_contact_email": "tracyg@chemtreat.com",
+      "website": "http://www.chemtreat.com",
+      "contract_start_date": "2027-01-14",
+      "contract_expiration_date": "2032-01-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0139Y/GS07F0139Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0139Y/pricelist_GS-07F-0139Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0139Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "CHOICECOMM, LLC",
+      "contract_number": "47QTCA25D00BW",
+      "vendor_uei": "DX4KZCDHN7M1",
+      "company_address": "2145 CABIN BRANCH CT",
+      "company_city": "MOUNT AIRY",
+      "company_state": "MD",
+      "company_zip": "21771-3739",
+      "primary_contact_phone": "3018310063",
+      "primary_contact_email": "office@choicecomm.com",
+      "website": "http://www.choicecomm.com",
+      "contract_start_date": "2030-06-24",
+      "contract_expiration_date": "2045-06-24",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA25D00BW/47QTCA25D00BW_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA25D00BW&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "COASTLINE LTD.",
+      "contract_number": "GS-07F-0225Y",
+      "vendor_uei": "PFYMCF9WYJA6",
+      "company_address": "4944A EISENHOWER AVE",
+      "company_city": "ALEXANDRIA",
+      "company_state": "VA",
+      "company_zip": "22304-4809",
+      "primary_contact_phone": "7034610200",
+      "primary_contact_email": "david.anderson@coastlineltd.com",
+      "website": "http://www.coastlineltd.com",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2032-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0225Y/GS07F0225Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0225Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "COMPETITIVE CHOICE, INC",
+      "contract_number": "47QSEA20D005G",
+      "vendor_uei": "NEABMUMEWMM7",
+      "company_address": "9030 KIRBY DR",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77054-2504",
+      "primary_contact_phone": "7138381144",
+      "primary_contact_email": "AUNDREA@COMPETITIVECHOICE.NET",
+      "website": "http://www.competitivechoice.net",
+      "contract_start_date": "2030-03-29",
+      "contract_expiration_date": "2040-03-29",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D005G/47QSEA20D005G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D005G&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "CONTINENTAL RESEARCH CORPORATION",
+      "contract_number": "GS-07F-0369T",
+      "vendor_uei": "KXB1VY811LU3",
+      "company_address": "1180 CENTRAL INDUSTRIAL DR",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63110-2306",
+      "primary_contact_phone": "3142101923",
+      "primary_contact_email": "nick@CRCORP.COM",
+      "website": "http://www.crcorp.com",
+      "contract_start_date": "2027-05-14",
+      "contract_expiration_date": "2027-05-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0369T/GS07F0369T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0369T&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "DELTA FOREMOST CHEMICAL CORP.",
+      "contract_number": "GS-07F-9458S",
+      "vendor_uei": "PSN1Y9DT5HK1",
+      "company_address": "3915 AIR PARK ST",
+      "company_city": "MEMPHIS",
+      "company_state": "TN",
+      "company_zip": "38118-6007",
+      "primary_contact_phone": "8002386131",
+      "primary_contact_email": "jonathan.cooper@deltaforemost.com",
+      "website": "http://www.deltaforemost.com",
+      "contract_start_date": "2026-04-30",
+      "contract_expiration_date": "2026-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9458S/GS07F9458S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9458S&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "DIESEL AMERICA WEST, INC.",
+      "contract_number": "GS-07F-9443S",
+      "vendor_uei": "E63SVK8WAKJ3",
+      "company_address": "92 LITTLE RD",
+      "company_city": "FRIDAY HARBOR",
+      "company_state": "WA",
+      "company_zip": "98250-7107",
+      "primary_contact_phone": "3603784182",
+      "primary_contact_email": "info@dawest.com",
+      "website": "http://www.dawest.com",
+      "contract_start_date": "2026-03-31",
+      "contract_expiration_date": "2026-03-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9443S/GS07F9443S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9443S&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "ECOJOHN, INC.",
+      "contract_number": "47QSWA22D005S",
+      "vendor_uei": "S9W1CGT8JFL3",
+      "company_address": "6148 GETTY DR",
+      "company_city": "NORTH LITTLE ROCK",
+      "company_state": "AR",
+      "company_zip": "72117-1611",
+      "primary_contact_phone": "5018330144",
+      "primary_contact_email": "sjohansson@ecojohn.com",
+      "website": "http://www.shop.ecojohn.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2042-05-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D005S/47QSWA22D005S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D005S&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "ENVIREMEDIAL SERVICES, INC.",
+      "contract_number": "GS-07F-149DA",
+      "vendor_uei": "WVW4HEMWGN15",
+      "company_address": "3186 VISTA WAY",
+      "company_city": "OCEANSIDE",
+      "company_state": "CA",
+      "company_zip": "92056-3631",
+      "primary_contact_phone": "7609451166",
+      "primary_contact_email": "EILEEN@ENVIREMEDIAL.COM",
+      "website": "http://WWW.ESICLEANWATER.COM",
+      "contract_start_date": "2026-07-31",
+      "contract_expiration_date": "2036-07-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "address_2": "STE 200",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F149DA/GS07F149DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-149DA/pricelist_GS-07F-149DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-149DA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "EXPORT 220VOLT INC.",
+      "contract_number": "GS-21F-029DA",
+      "vendor_uei": "F5DFMLGS8YM1",
+      "company_address": "5810 HILLCROFT ST",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77036-3302",
+      "primary_contact_phone": "7137892220",
+      "primary_contact_email": "sales@export220volt.com",
+      "website": "http://www.export220volt.com",
+      "contract_start_date": "2026-05-19",
+      "contract_expiration_date": "2036-05-19",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F029DA/GS21F029DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-029DA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "FEDERAL CONTRACTS LLC",
+      "contract_number": "GS-03F-113DA",
+      "vendor_uei": "TK67EL9NPMD9",
+      "company_address": "12918 N NEBRASKA AVE",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33612-4446",
+      "primary_contact_phone": "8136310000",
+      "primary_contact_email": "sales@federalcontractscorp.com",
+      "website": "http://www.federalcontractscorp.com",
+      "contract_start_date": "2026-06-12",
+      "contract_expiration_date": "2036-06-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F113DA/GS03F113DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-113DA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "FILTER ENGINEERING CORPORATION",
+      "contract_number": "GS-07F-0035W",
+      "vendor_uei": "C75PVBEU8UV3",
+      "company_address": "1415 COMBERMERE DR",
+      "company_city": "TROY",
+      "company_state": "MI",
+      "company_zip": "48083-2745",
+      "primary_contact_phone": "5862687300",
+      "primary_contact_email": "TDABALDO@FILTERENGINEERING.COM",
+      "website": "http://www.filterengineering.com",
+      "contract_start_date": "2029-10-04",
+      "contract_expiration_date": "2029-10-04",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0035W/GS07F0035W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0035W&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "GARRATT-CALLAHAN COMPANY",
+      "contract_number": "GS-07F-0105Y",
+      "vendor_uei": "SA6AP4DNLGG6",
+      "company_address": "50 INGOLD RD",
+      "company_city": "BURLINGAME",
+      "company_state": "CA",
+      "company_zip": "94010-2206",
+      "primary_contact_phone": "6506975811",
+      "primary_contact_email": "lmaafu@g-c.com",
+      "website": "http://garrattcallahan.com/",
+      "contract_start_date": "2027-01-14",
+      "contract_expiration_date": "2032-01-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0105Y/GS07F0105Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0105Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "GMS INDUSTRIAL SUPPLY, INC.",
+      "contract_number": "GS-07F-0369V",
+      "vendor_uei": "U7U2XCEKCS66",
+      "company_address": "212 DENN LN",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23462-2506",
+      "primary_contact_phone": "7574731467",
+      "primary_contact_email": "sales@gmsindustrialsupply.com",
+      "website": "http://www.gmsindustrialsupply.com",
+      "contract_start_date": "2029-06-14",
+      "contract_expiration_date": "2029-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0369V/GS07F0369V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0369V&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "GRACE ENVIRONMENTAL SERVICES, INC.",
+      "contract_number": "47QRAA22D000Z",
+      "vendor_uei": "WYRBGYTWLZB3",
+      "company_address": "1765 BERKSHIRE DR",
+      "company_city": "THOUSAND OAKS",
+      "company_state": "CA",
+      "company_zip": "91362-1804",
+      "primary_contact_phone": "8054316253",
+      "primary_contact_email": "cgrace@graceenviro.com",
+      "website": "http://www.graceenviro.com",
+      "contract_start_date": "2026-10-18",
+      "contract_expiration_date": "2041-10-18",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA22D000Z/47QRAA22D000Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA22D000Z&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "GREEN AND SUSTAINABLE SERVICES, LLC",
+      "contract_number": "GS-07F-231CA",
+      "vendor_uei": "CHJVLYBMT9J3",
+      "company_address": "2421 AMYX RANCH DR",
+      "company_city": "PONDER",
+      "company_state": "TX",
+      "company_zip": "76259-8032",
+      "primary_contact_phone": "9405973723",
+      "primary_contact_email": "TSMITH@GRNSERV.COM",
+      "website": "http://www.grnserv.com",
+      "contract_start_date": "2030-09-14",
+      "contract_expiration_date": "2035-09-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F231CA/GS07F231CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-231CA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "GREEN CHEM LABORATORIES LLC",
+      "contract_number": "47QSWA23D004B",
+      "vendor_uei": "GQ57R2PCLLA6",
+      "company_address": "1650 MARKET ST.",
+      "company_city": "PHILADELPHIA",
+      "company_state": "PA",
+      "company_zip": "19103-7301",
+      "primary_contact_phone": "8009643151",
+      "primary_contact_email": "GABBY@GREENCHEMLABS.COM",
+      "website": "http://www.greenchemlabs.com",
+      "contract_start_date": "2028-03-19",
+      "contract_expiration_date": "2043-03-19",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "address_2": "STE 3631",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D004B/47QSWA23D004B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D004B&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "HD SUPPLY FACILITIES MAINTENANCE, LTD.",
+      "contract_number": "47QSWA22D002Q",
+      "vendor_uei": "GKX5L7VACLQ7",
+      "company_address": "3781 BUR WOOD DR",
+      "company_city": "WAUKEGAN",
+      "company_state": "IL",
+      "company_zip": "60085-9101",
+      "primary_contact_phone": "8477756924",
+      "primary_contact_email": "ktaylor@usabluebook.com",
+      "website": "http://www.usabluebook.com",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2042-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D002Q/47QSWA22D002Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D002Q&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "HIGHLAND ENGINEERING, INC.",
+      "contract_number": "GS-07F-0199U",
+      "vendor_uei": "NA3VW5ZSUPM5",
+      "company_address": "1153 GRAND OAKS",
+      "company_city": "HOWELL",
+      "company_state": "MI",
+      "company_zip": "48843-8511",
+      "primary_contact_phone": "5175484372",
+      "primary_contact_email": "jeff@HIGH-ENG.COM",
+      "website": "http://WWW.HIGH-ENG.COM",
+      "contract_start_date": "2028-01-31",
+      "contract_expiration_date": "2028-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0199U/GS07F0199U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0199U&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "HOMELAND INDUSTRIAL SUPPLY INC",
+      "contract_number": "47QSWA19D001R",
+      "vendor_uei": "DBLLH68CF4B4",
+      "company_address": "3045 MCCANN FARM DR UNIT 102",
+      "company_city": "GARNET VALLEY",
+      "company_state": "PA",
+      "company_zip": "19060-2128",
+      "primary_contact_phone": "8443501550",
+      "primary_contact_email": "patrick.king@homelandindustrialsupply.com",
+      "website": "http://www.homelandindustrialsupply.com",
+      "contract_start_date": "2028-12-14",
+      "contract_expiration_date": "2038-12-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D001R/47QSWA19D001R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D001R&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "HYDRO ENGINEERING INC",
+      "contract_number": "GS-07F-0217Y",
+      "vendor_uei": "PJQLLJ6R8YR3",
+      "company_address": "865 W 2600 S",
+      "company_city": "SOUTH SALT LAKE",
+      "company_state": "UT",
+      "company_zip": "84119-2429",
+      "primary_contact_phone": "8019721181",
+      "primary_contact_email": "csmith@hydroblaster.com",
+      "website": "http://WWW.HYDROBLASTER.COM",
+      "contract_start_date": "2027-03-31",
+      "contract_expiration_date": "2032-03-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0217Y/GS07F0217Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0217Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "INDUSTRIAL WATER ENGINEERING, INC.",
+      "contract_number": "GS-07F-0190Y",
+      "vendor_uei": "PTH7UJKVMMZ3",
+      "company_address": "8701 ALAMEDA PARK DR NE",
+      "company_city": "ALBUQUERQUE",
+      "company_state": "NM",
+      "company_zip": "87113-2475",
+      "primary_contact_phone": "5053455055",
+      "primary_contact_email": "BCOMBS@INDUSTRIALWATER.NET",
+      "website": "http://WWW.INDUSTRIALWATER.NET",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2032-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0190Y/GS07F0190Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0190Y/pricelist_GS-07F-0190Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0190Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL CHEMSTAR INCORPORATED",
+      "contract_number": "47QSWA21D006P",
+      "vendor_uei": "EZB6SQV96C73",
+      "company_address": "9601 PULASKI PARK DR STE 406",
+      "company_city": "MIDDLE RIVER",
+      "company_state": "MD",
+      "company_zip": "21220-1409",
+      "primary_contact_phone": "4103917516",
+      "primary_contact_email": "jwood@chemstarwater.com",
+      "website": "http://www.chemstarwater.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2041-08-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D006P/47QSWA21D006P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D006P&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "KARCHER NORTH AMERICA INC",
+      "contract_number": "47QSWA19D005Z",
+      "vendor_uei": "W752SFMSN5M1",
+      "company_address": "2700 S ARMSTRONG AVE STE 1",
+      "company_city": "FAYETTEVILLE",
+      "company_state": "AR",
+      "company_zip": "72701-6241",
+      "primary_contact_phone": "8009842612",
+      "primary_contact_email": "ubin.foucher@karcher.com",
+      "website": "http://www.karcher.com/usa/Home.htm",
+      "contract_start_date": "2029-04-14",
+      "contract_expiration_date": "2039-04-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D005Z/47QSWA19D005Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D005Z&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "KLENZOID INC",
+      "contract_number": "47QSWA19D004L",
+      "vendor_uei": "LWYELHFWV415",
+      "company_address": "912 SPRING MILL AVE",
+      "company_city": "CONSHOHOCKEN",
+      "company_state": "PA",
+      "company_zip": "19428-2316",
+      "primary_contact_phone": "8008259495",
+      "primary_contact_email": "Jeff_Rudolph@Klenzoidinc.com",
+      "website": "http://www2.klenzoidinc.com/",
+      "contract_start_date": "2029-03-03",
+      "contract_expiration_date": "2039-03-03",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D004L/47QSWA19D004L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D004L&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "KURITA AMERICA INC",
+      "contract_number": "47QSWA22D0080",
+      "vendor_uei": "HKJMJP8F7MU1",
+      "company_address": "6600 94TH AVE N",
+      "company_city": "MINNEAPOLIS",
+      "company_state": "MN",
+      "company_zip": "55445-1700",
+      "primary_contact_phone": "2147898090",
+      "primary_contact_email": "d.lattin@kurita-america.com",
+      "website": "http://www.kuritaamerica.com/",
+      "contract_start_date": "2027-08-11",
+      "contract_expiration_date": "2042-08-11",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0080/47QSWA22D0080_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0080&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "LASAR CHEMICALS LLC",
+      "contract_number": "GS-07F-008DA",
+      "vendor_uei": "YKSKWMH8V8M1",
+      "company_address": "3440 CHANDLER CREEK RD STE 105",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23453-2976",
+      "primary_contact_phone": "7576230331",
+      "primary_contact_email": "stephanie@lasarchemicals.com",
+      "website": "http://www.lasarchemicals.com",
+      "contract_start_date": "2030-09-30",
+      "contract_expiration_date": "2035-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F008DA/GS07F008DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-008DA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "LIQUA FLOW PUMP COMPANY",
+      "contract_number": "47QSWA18D0043",
+      "vendor_uei": "UG1EJXT67NM5",
+      "company_address": "135 TAURUS ROAD",
+      "company_city": "STATESVILLE",
+      "company_state": "NC",
+      "company_zip": "28625-1532",
+      "primary_contact_phone": "7042333377",
+      "primary_contact_email": "christina@liquaflowpump.com",
+      "website": "http://www.liquaflowpump.com",
+      "contract_start_date": "2028-05-07",
+      "contract_expiration_date": "2038-05-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D0043/47QSWA18D0043_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D0043&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "MAXA BEAM SEARCHLIGHTS, INC.",
+      "contract_number": "GS-07F-066DA",
+      "vendor_uei": "K4GPLMBJ9C13",
+      "company_address": "111 SHORES POINTE DR",
+      "company_city": "JUPITER",
+      "company_state": "FL",
+      "company_zip": "33458-3318",
+      "primary_contact_phone": "5617438180",
+      "primary_contact_email": "francie@maxavision.net",
+      "website": "http://www.maxavision.net",
+      "contract_start_date": "2026-03-31",
+      "contract_expiration_date": "2036-03-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F066DA/GS07F066DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-066DA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "MID-SOUTH CHEMICAL COMPANY, INC.",
+      "contract_number": "47QSWA23D002X",
+      "vendor_uei": "YKHVU9LNCE47",
+      "company_address": "5681 HIGHWAY 4",
+      "company_city": "RINGGOLD",
+      "company_state": "LA",
+      "company_zip": "71068-3447",
+      "primary_contact_phone": "3374536443",
+      "primary_contact_email": "kayers@midsouthchemical.com",
+      "website": "http://www.midsouthchemical.com",
+      "contract_start_date": "2028-01-31",
+      "contract_expiration_date": "2043-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D002X/47QSWA23D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D002X&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "MOMAR, INCORPORATED",
+      "contract_number": "GS-07F-0019W",
+      "vendor_uei": "U2TVPCY6KKD5",
+      "company_address": "1830 ELLSWORTH INDUSTRIAL BLVD N",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30318-3746",
+      "primary_contact_phone": "8005563967",
+      "primary_contact_email": "craig.hallman@momar.com",
+      "website": "http://www.momar.com",
+      "contract_start_date": "2029-10-14",
+      "contract_expiration_date": "2029-10-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0019W/GS07F0019W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0019W&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "MORNING STAR INDUSTRIES INC",
+      "contract_number": "47QSWA20D002D",
+      "vendor_uei": "KB1EKZ5BXVL8",
+      "company_address": "630 NE JENSEN BEACH BLVD",
+      "company_city": "JENSEN BEACH",
+      "company_state": "FL",
+      "company_zip": "34957-4750",
+      "primary_contact_phone": "8004406050",
+      "primary_contact_email": "steve@morningstarusa.com",
+      "website": "http://www.morningstarusa.com",
+      "contract_start_date": "2029-12-15",
+      "contract_expiration_date": "2039-12-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D002D/47QSWA20D002D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D002D&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "NALCO COMPANY LLC",
+      "contract_number": "GS-07F-0176Y",
+      "vendor_uei": "M4BHFR4QMUL5",
+      "company_address": "1601 W DIEHL RD",
+      "company_city": "NAPERVILLE",
+      "company_state": "IL",
+      "company_zip": "60563-0130",
+      "primary_contact_phone": "3312371778",
+      "primary_contact_email": "kay.williams@ecolab.com",
+      "website": "http://www.nalco.com",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2032-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0176Y/GS07F0176Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0176Y/pricelist_GS-07F-0176Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0176Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "NORCHEM CORP",
+      "contract_number": "47QSMS24D006F",
+      "vendor_uei": "MPN8WDVVKDU1",
+      "company_address": "5649 ALHAMBRA AVE",
+      "company_city": "LOS ANGELES",
+      "company_state": "CA",
+      "company_zip": "90032",
+      "primary_contact_phone": "3232210221",
+      "primary_contact_email": "vaughn@norchemcorp.com",
+      "website": "http://wwww.norchemcorp.com",
+      "contract_start_date": "2029-04-30",
+      "contract_expiration_date": "2044-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D006F/47QSMS24D006F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D006F&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "NUGENERATION TECHNOLOGIES LLC",
+      "contract_number": "GS-07F-0252W",
+      "vendor_uei": "CJXLJMB8S231",
+      "company_address": "1155 PARK AVE",
+      "company_city": "EMERYVILLE",
+      "company_state": "CA",
+      "company_zip": "94608-3631",
+      "primary_contact_phone": "8774544472",
+      "primary_contact_email": "snewton@dcciconsulting.com",
+      "website": "http://www.nugentec.com",
+      "contract_start_date": "2030-02-28",
+      "contract_expiration_date": "2030-02-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0252W/GS07F0252W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0252W&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "POWER ENGINEERING COMPANY, INC.",
+      "contract_number": "GS-07F-0215Y",
+      "vendor_uei": "Q3ZDGKZM67M1",
+      "company_address": "364 W 600 N",
+      "company_city": "SALT LAKE CITY",
+      "company_state": "UT",
+      "company_zip": "84103-1320",
+      "primary_contact_phone": "8015326072",
+      "primary_contact_email": "ch@pecowater.com",
+      "website": "http://pecowater.com",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2032-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0215Y/GS07F0215Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0215Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "POWER KLEEN CORPORATION",
+      "contract_number": "47QSWA22D0069",
+      "vendor_uei": "JF7BJGAP37Z9",
+      "company_address": "101 S BAYVIEW BLVD",
+      "company_city": "OLDSMAR",
+      "company_state": "FL",
+      "company_zip": "34677-3101",
+      "primary_contact_phone": "8138542648",
+      "primary_contact_email": "jlsanders@powerkleen.com",
+      "website": "http://www.powerkleen.com",
+      "contract_start_date": "2027-06-14",
+      "contract_expiration_date": "2042-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "PREMIER WATER & ENERGY TECHNOLOGY INC",
+      "contract_number": "GS-07F-0222Y",
+      "vendor_uei": "HYVXAJD24744",
+      "company_address": "11481 COLUMBIA PARK DR W",
+      "company_city": "JACKSONVILLE",
+      "company_state": "FL",
+      "company_zip": "32258-2478",
+      "primary_contact_phone": "9042681152",
+      "primary_contact_email": "mchrist@premierwater.com",
+      "website": "http://www.premierwater.com",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2032-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0222Y/GS07F0222Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0222Y&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "PRO-CHEM INC",
+      "contract_number": "47QSWA21D003T",
+      "vendor_uei": "GWBKQHN9JEC4",
+      "company_address": "1475 BLUEGRASS LAKES PKWY",
+      "company_city": "ALPHARETTA",
+      "company_state": "GA",
+      "company_zip": "30004-7711",
+      "primary_contact_phone": "7707402800",
+      "primary_contact_email": "tplatt@procheminc.com",
+      "website": "http://www.procheminc.com",
+      "contract_start_date": "2026-03-30",
+      "contract_expiration_date": "2041-03-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D003T/47QSWA21D003T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D003T&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "READY ALLIANCE GROUP, INC.",
+      "contract_number": "47QSMS25D006L",
+      "vendor_uei": "KC9FZV8M3867",
+      "company_address": "1175 S MERIDIAN PARK RD STE A",
+      "company_city": "SALT LAKE CITY",
+      "company_state": "UT",
+      "company_zip": "84104-5155",
+      "primary_contact_phone": "13852701085",
+      "primary_contact_email": "jared@readyalliance.com",
+      "website": "http://mypatriotsupply.com",
+      "contract_start_date": "2030-03-25",
+      "contract_expiration_date": "2045-03-25",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D006L/47QSMS25D006L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D006L&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "RITE-KEM, INC.",
+      "contract_number": "47QSWA18D005X",
+      "vendor_uei": "WMG1PZNR26H3",
+      "company_address": "703 WESTMORELAND DR",
+      "company_city": "TUPELO",
+      "company_state": "MS",
+      "company_zip": "38801-6521",
+      "primary_contact_phone": "6628406060",
+      "primary_contact_email": "mark@ritekem.com",
+      "website": "http://www.ritekem.com",
+      "contract_start_date": "2028-06-13",
+      "contract_expiration_date": "2038-06-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D005X/47QSWA18D005X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D005X&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "SAN JOAQUIN CHEMICALS, INC.",
+      "contract_number": "47QSMS24D00CG",
+      "vendor_uei": "DCL7MFWECAC6",
+      "company_address": "4684 E HEDGES AVE",
+      "company_city": "FRESNO",
+      "company_state": "CA",
+      "company_zip": "93703-4707",
+      "primary_contact_phone": "5592523727",
+      "primary_contact_email": "office.manager@sjc-inc.com",
+      "website": "http://www.sjc-inc.com",
+      "contract_start_date": "2029-09-23",
+      "contract_expiration_date": "2044-09-23",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00CG/47QSMS24D00CG_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00CG&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "SYNTEC CORPORATION",
+      "contract_number": "47QSMS25D0070",
+      "vendor_uei": "D5ATQ8YUF2G4",
+      "company_address": "4060 N DUPONT HWY",
+      "company_city": "NEW CASTLE",
+      "company_state": "DE",
+      "company_zip": "19720-6325",
+      "primary_contact_phone": "3024218393",
+      "primary_contact_email": "THERESA@SYNTEC.COM",
+      "website": "http://www.syntec.com",
+      "contract_start_date": "2030-04-02",
+      "contract_expiration_date": "2045-04-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0070&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "THE MACLEAN GROUP LLC",
+      "contract_number": "47QSWA22D000M",
+      "vendor_uei": "DAM9QJJ7FTL4",
+      "company_address": "2233 WATT AVE STE 296",
+      "company_city": "SACRAMENTO",
+      "company_state": "CA",
+      "company_zip": "95825-0570",
+      "primary_contact_phone": "9199152877",
+      "primary_contact_email": "nmason@macleanhealth.com",
+      "website": "http://www.themacleangroup.net",
+      "contract_start_date": "2026-10-26",
+      "contract_expiration_date": "2041-10-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D000M/47QSWA22D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D000M&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "TMI SALT PURE CORP",
+      "contract_number": "47QSWA23D0032",
+      "vendor_uei": "Q5GEL3A2RJZ3",
+      "company_address": "1605 ALASKA AVE E",
+      "company_city": "PORT ORCHARD",
+      "company_state": "WA",
+      "company_zip": "98366-8405",
+      "primary_contact_phone": "13608713930",
+      "primary_contact_email": "chele@tmiaquatics.com",
+      "website": "http://www.tmiaquatics.com",
+      "contract_start_date": "2028-02-07",
+      "contract_expiration_date": "2043-02-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0032/47QSWA23D0032_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0032&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "TOTEMIC BUSINESS SOLUTIONS, LLC",
+      "contract_number": "GS-07F-192GA",
+      "vendor_uei": "TLFXRBFRQNL3",
+      "company_address": "16385 BEAVER DAM RD",
+      "company_city": "MONTPELIER",
+      "company_state": "VA",
+      "company_zip": "23192-2129",
+      "primary_contact_phone": "8043347873",
+      "primary_contact_email": "tgilardi@totemicsolutions.com",
+      "website": "http://www.totemicsolutionsllc.com",
+      "contract_start_date": "2027-09-14",
+      "contract_expiration_date": "2037-09-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F192GA/GS07F192GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-192GA&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "UNITED LABORATORIES INC",
+      "contract_number": "47QSWA23D007Q",
+      "vendor_uei": "Z3KNNLB7K3M1",
+      "company_address": "320 37TH AVE",
+      "company_city": "SAINT CHARLES",
+      "company_state": "IL",
+      "company_zip": "60174-5414",
+      "primary_contact_phone": "8003232594",
+      "primary_contact_email": "scarey@unitedlabsinc.com",
+      "website": "http://www.unitedlabsinc.com",
+      "contract_start_date": "2028-09-30",
+      "contract_expiration_date": "2043-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D007Q/47QSWA23D007Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D007Q&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "VEOLIA WTS USA, INC.",
+      "contract_number": "GS-07F-0227Y",
+      "vendor_uei": "LHTCCXDME415",
+      "company_address": "3600 HORIZON BLVD",
+      "company_city": "FEASTERVILLE TREVOS",
+      "company_state": "PA",
+      "company_zip": "19053-4945",
+      "primary_contact_phone": "8646178072",
+      "primary_contact_email": "paul.howland@veolia.com",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2032-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "WATER FILTER EXCHANGE, INC",
+      "contract_number": "47QSMS25D00AT",
+      "vendor_uei": "JYX3JD8UDX16",
+      "company_address": "875 NORTH TODD AVENUE",
+      "company_city": "AZUSA",
+      "company_state": "CA",
+      "company_zip": "91702",
+      "primary_contact_phone": "8188082541",
+      "primary_contact_email": "blacksea7171@gmail.com",
+      "website": "http://www.AmericanFilterCompany.com",
+      "contract_start_date": "2030-07-30",
+      "contract_expiration_date": "2045-07-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00AT/47QSMS25D00AT_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00AT&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "WATER TREATMENT SERVICES INC.",
+      "contract_number": "47QSWA19D0051",
+      "vendor_uei": "RB47JNUELBT9",
+      "company_address": "203 TOWNSEND DR",
+      "company_city": "MONROEVILLE",
+      "company_state": "PA",
+      "company_zip": "15146-1065",
+      "primary_contact_phone": "8008175116709",
+      "primary_contact_email": "BARBARAK@WTSERVICESLLC.COM",
+      "website": "http://WWW.WTSFIRSTDEFENSE.com",
+      "contract_start_date": "2029-03-31",
+      "contract_expiration_date": "2039-03-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D0051/47QSWA19D0051_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D0051&sin=325998W&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "325998W"
+      ],
+      "primary_sin": "325998W",
+      "schedule_number": "MAS",
+      "company_name": "XYLEM DEWATERING SOLUTIONS, INC",
+      "contract_number": "47QSMS24D00C6",
+      "vendor_uei": "VXDXUAYKE1E5",
+      "company_address": "84 FLOODGATE RD",
+      "company_city": "BRIDGEPORT",
+      "company_state": "NJ",
+      "company_zip": "08014-1001",
+      "primary_contact_phone": "4126703247",
+      "primary_contact_email": "michael.ivory@xylem.com",
+      "website": "http://www.xylem.com",
+      "contract_start_date": "2029-09-22",
+      "contract_expiration_date": "2044-09-22",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "325998W ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00C6/47QSMS24D00C6_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00C6&sin=325998W&src=elib&app=cat"
+      }
+    }
+  ]
+}

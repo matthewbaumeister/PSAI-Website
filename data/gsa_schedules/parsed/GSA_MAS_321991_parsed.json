@@ -1,0 +1,119 @@
+{
+  "sin_code": "321991",
+  "file_name": "GSA_MAS_321991_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:30.448496",
+  "sheets": {
+    "2025_11_05_11_08_27": {
+      "row_count": 8,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "321991"
+      ],
+      "primary_sin": "321991",
+      "schedule_number": "MAS",
+      "company_name": "MCGRATH RENTCORP",
+      "contract_number": "GS-07F-0401X",
+      "vendor_uei": "LVDDZJ5UBDS4",
+      "company_address": "5700 LAS POSITAS RD",
+      "company_city": "LIVERMORE",
+      "company_state": "CA",
+      "company_zip": "94551-7806",
+      "primary_contact_phone": "7045194011",
+      "primary_contact_email": "patrick.muchmore@mobilemodular.com",
+      "website": "http://www.mobilemodular.com",
+      "contract_start_date": "2026-03-31",
+      "contract_expiration_date": "2031-03-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 321991.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0401X/GS07F0401X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0401X&sin=321991&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321991"
+      ],
+      "primary_sin": "321991",
+      "schedule_number": "MAS",
+      "company_name": "TRAYLOR MOTOR HOMES, INC.",
+      "contract_number": "GS-03F-0062V",
+      "vendor_uei": "NPG4SFB7MJL3",
+      "company_address": "6650 MOUNTAIN TRL",
+      "company_city": "DALLAS",
+      "company_state": "TX",
+      "company_zip": "75236-5616",
+      "primary_contact_phone": "9722912067",
+      "primary_contact_email": "JDTRAYLOR@TRAYLORMOTORHOMES.COM",
+      "website": "http://TRAYLORMOTORHOMES.COM",
+      "contract_start_date": "2029-02-28",
+      "contract_expiration_date": "2029-02-28",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 321991.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0062V/GS03F0062V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0062V&sin=321991&src=elib&app=cat"
+      }
+    }
+  ]
+}

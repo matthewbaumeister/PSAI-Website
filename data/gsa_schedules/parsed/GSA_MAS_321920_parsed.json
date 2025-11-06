@@ -1,0 +1,393 @@
+{
+  "sin_code": "321920",
+  "file_name": "GSA_MAS_321920_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:53.716563",
+  "sheets": {
+    "2025_11_05_11_13_37": {
+      "row_count": 17,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN PACKAGING I, INC.",
+      "contract_number": "47QSEA20D003D",
+      "vendor_uei": "D4KJZJDTA4V6",
+      "company_address": "363 WATERS EDGE",
+      "company_city": "AUBURN",
+      "company_state": "NY",
+      "company_zip": "13021-8306",
+      "primary_contact_phone": "3152534809",
+      "primary_contact_email": "turbo1407@aol.com",
+      "website": "http://WWW.GSAADVANTAGE.GOV",
+      "contract_start_date": "2030-01-13",
+      "contract_expiration_date": "2040-01-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D003D/47QSEA20D003D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D003D&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "DBISP LLC",
+      "contract_number": "GS-03F-056DA",
+      "vendor_uei": "WM4TLSL4VPZ1",
+      "company_address": "777 BEACHWAY DR STE 102",
+      "company_city": "INDIANAPOLIS",
+      "company_state": "IN",
+      "company_zip": "46224-7877",
+      "primary_contact_phone": "3172221671",
+      "primary_contact_email": "sales@dbispllc.com",
+      "website": "https://www.dbispllc.com",
+      "contract_start_date": "2026-02-14",
+      "contract_expiration_date": "2036-02-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Dec 21, 2026",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F056DA/GS03F056DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-056DA/pricelist_GS-03F-056DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-056DA&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "DIVINE IMAGING INC.",
+      "contract_number": "47QSWA19D002X",
+      "vendor_uei": "LGMVH2NYJH38",
+      "company_address": "21323 PACIFIC COAST HWY STE 101",
+      "company_city": "MALIBU",
+      "company_state": "CA",
+      "company_zip": "90265-5202",
+      "primary_contact_phone": "3105794000",
+      "primary_contact_email": "kim@divineimaging.com",
+      "website": "https://www.divineImaging.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2039-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002X/47QSWA19D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002X&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "FORMALL, INC",
+      "contract_number": "47QSEA23D003B",
+      "vendor_uei": "RWB5FXCTLKQ4",
+      "company_address": "1709 LAKE CITY HWY",
+      "company_city": "CLINTON",
+      "company_state": "TN",
+      "company_zip": "37716-6334",
+      "primary_contact_phone": "8006433676",
+      "primary_contact_email": "kpatterson@formall.com",
+      "website": "http://www.formall.com",
+      "contract_start_date": "2028-05-04",
+      "contract_expiration_date": "2043-05-04",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA23D003B/47QSEA23D003B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA23D003B&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "GMS INDUSTRIAL SUPPLY, INC.",
+      "contract_number": "GS-07F-0369V",
+      "vendor_uei": "U7U2XCEKCS66",
+      "company_address": "212 DENN LN",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23462-2506",
+      "primary_contact_phone": "7574731467",
+      "primary_contact_email": "sales@gmsindustrialsupply.com",
+      "website": "http://www.gmsindustrialsupply.com",
+      "contract_start_date": "2029-06-14",
+      "contract_expiration_date": "2029-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0369V/GS07F0369V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0369V&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "J&J PALLET AND RECYCLING, LLC",
+      "contract_number": "47QSMS25D008N",
+      "vendor_uei": "PZSPE3QG39S8",
+      "company_address": "1690 OPPORTUNITY AVE",
+      "company_city": "CHAMBERSBURG",
+      "company_state": "PA",
+      "company_zip": "17201-7851",
+      "primary_contact_phone": "7175048296",
+      "primary_contact_email": "jjpallets@yahoo.com",
+      "website": "http://jjpallets.com",
+      "contract_start_date": "2030-05-18",
+      "contract_expiration_date": "2045-05-18",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D008N/47QSMS25D008N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D008N&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "JIFRAM EXTRUSIONS, INC.",
+      "contract_number": "47QSEA22D004H",
+      "vendor_uei": "Y4DHQBK677K3",
+      "company_address": "320 FOREST AVE",
+      "company_city": "SHEBOYGAN FALLS",
+      "company_state": "WI",
+      "company_zip": "53085-3324",
+      "primary_contact_phone": "9204672477",
+      "primary_contact_email": "SALES@JIFRAM.COM",
+      "website": "http://WWW.JIFRAM.COM",
+      "contract_start_date": "2027-07-13",
+      "contract_expiration_date": "2042-07-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA22D004H/47QSEA22D004H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA22D004H&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "M-PAK, INC.",
+      "contract_number": "47QSEA20D0046",
+      "vendor_uei": "QGM1VMELTHF1",
+      "company_address": "11255 CAMP BOWIE WEST BLVD",
+      "company_city": "ALEDO",
+      "company_state": "TX",
+      "company_zip": "76008-3692",
+      "primary_contact_phone": "4138291058",
+      "primary_contact_email": "justin@m-pakinc.com",
+      "website": "http://www.m-pakinc.com",
+      "contract_start_date": "2025-11-28",
+      "contract_expiration_date": "2040-02-18",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "address_2": "STE 111",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D0046/47QSEA20D0046_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D0046&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "PREMIER PALLETS, INC.",
+      "contract_number": "47QSMS25D000L",
+      "vendor_uei": "P6X6M6PCQKG1",
+      "company_address": "9412 BALM RIVERVIEW RD",
+      "company_city": "RIVERVIEW",
+      "company_state": "FL",
+      "company_zip": "33569-5116",
+      "primary_contact_phone": "8139864889106",
+      "primary_contact_email": "scott@premier-pallets.com",
+      "website": "http://www.premier-pallets.com",
+      "contract_start_date": "2029-10-15",
+      "contract_expiration_date": "2044-10-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D000L/47QSMS25D000L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D000L&sin=321920&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321920"
+      ],
+      "primary_sin": "321920",
+      "schedule_number": "MAS",
+      "company_name": "SUPPLY KING USA, LLC",
+      "contract_number": "47QSHA22D0022",
+      "vendor_uei": "F886DTPP1W48",
+      "company_address": "55 OLD NYACK TPKE STE 210",
+      "company_city": "NANUET",
+      "company_state": "NY",
+      "company_zip": "10954-2450",
+      "primary_contact_phone": "9172689222",
+      "primary_contact_email": "sales@supplykingusa.com",
+      "website": "http://www.supplykingusa.com",
+      "contract_start_date": "2027-06-30",
+      "contract_expiration_date": "2042-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 321920.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D0022/47QSHA22D0022_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D0022&sin=321920&src=elib&app=cat"
+      }
+    }
+  ]
+}

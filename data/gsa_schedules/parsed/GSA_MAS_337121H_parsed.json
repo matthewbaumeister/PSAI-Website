@@ -1,0 +1,1732 @@
+{
+  "sin_code": "337121H",
+  "file_name": "GSA_MAS_337121H_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:46.326716",
+  "sheets": {
+    "2025_11_05_11_09_43": {
+      "row_count": 62,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "ACCESS SUPPLY LLC",
+      "contract_number": "GS-28F-013DA",
+      "vendor_uei": "EMYRGEMMMLK6",
+      "company_address": "119 BRIERY CHURCH RD",
+      "company_city": "KEYSVILLE",
+      "company_state": "VA",
+      "company_zip": "23947-5002",
+      "primary_contact_phone": "4347368643",
+      "primary_contact_email": "rduffer@accessupply.com",
+      "website": "http://www.accessupply.com",
+      "contract_start_date": "2026-06-20",
+      "contract_expiration_date": "2036-06-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F013DA/GS28F013DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-013DA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "ACE UNIFORMS AND ACCESSORIES, INC",
+      "contract_number": "47QSWA22D0041",
+      "vendor_uei": "G1E5XU2K58K3",
+      "company_address": "633 16TH ST",
+      "company_city": "SAN DIEGO",
+      "company_state": "CA",
+      "company_zip": "92101-7321",
+      "primary_contact_phone": "7735776975",
+      "primary_contact_email": "rory@aceuniforms.com",
+      "website": "http://www.aceuniforms.com",
+      "contract_start_date": "2027-03-27",
+      "contract_expiration_date": "2042-03-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0041/47QSWA22D0041_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0041&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN BEDDING MFG., LLC",
+      "contract_number": "GS-27F-0007V",
+      "vendor_uei": "KJF3DGNKYVW7",
+      "company_address": "2110 REDFERN DR",
+      "company_city": "ATHENS",
+      "company_state": "TN",
+      "company_zip": "37303-1987",
+      "primary_contact_phone": "4237451512",
+      "primary_contact_email": "don@americanbeddingmfg.com",
+      "website": "http://www.americanbeddingmfg.com",
+      "contract_start_date": "2028-12-18",
+      "contract_expiration_date": "2028-12-18",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0007V/GS27F0007V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0007V&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "ARIZONA INDUSTRIES FOR THE BLIND",
+      "contract_number": "47QSWA20D002R",
+      "vendor_uei": "LCLUT194X458",
+      "company_address": "515 N 51ST AVE STE 130",
+      "company_city": "PHOENIX",
+      "company_state": "AZ",
+      "company_zip": "85043-2711",
+      "primary_contact_phone": "6232337878",
+      "primary_contact_email": "lmann@azifb.com",
+      "website": "http://www.azifb.com",
+      "contract_start_date": "2029-12-19",
+      "contract_expiration_date": "2039-12-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D002R/47QSWA20D002R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D002R&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "ARTHUR GORDON ASSOCIATES INC",
+      "contract_number": "GS-28F-0045W",
+      "vendor_uei": "HHDMWGGT33J7",
+      "company_address": "2 LOCKWOOD RUN",
+      "company_city": "COLTS NECK",
+      "company_state": "NJ",
+      "company_zip": "07722-2413",
+      "primary_contact_phone": "2125320075",
+      "primary_contact_email": "peter@gordonisgood.com",
+      "website": "http://www.GordonIsGood.com",
+      "contract_start_date": "2030-08-11",
+      "contract_expiration_date": "2030-08-11",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0045W/GS28F0045W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0045W&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "BEAUFURN, LLC",
+      "contract_number": "GS-28F-0005Y",
+      "vendor_uei": "QJCJX6JYXKS3",
+      "company_address": "1005 W FAIRFIELD RD",
+      "company_city": "HIGH POINT",
+      "company_state": "NC",
+      "company_zip": "27263-1609",
+      "primary_contact_phone": "3369413446",
+      "primary_contact_email": "thomas@beaufurn.com",
+      "website": "http://www.beaufurn.com",
+      "contract_start_date": "2026-10-02",
+      "contract_expiration_date": "2031-10-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0005Y/GS28F0005Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0005Y&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "BIF NEW YORK INC",
+      "contract_number": "GS-28F-0041T",
+      "vendor_uei": "JW6HL7DTFX75",
+      "company_address": "465 BARELL AVE",
+      "company_city": "CARLSTADT",
+      "company_state": "NJ",
+      "company_zip": "07072-2809",
+      "primary_contact_phone": "2019337777",
+      "primary_contact_email": "tlee@bifnewyork.com",
+      "website": "http://www.bifnewyork.com",
+      "contract_start_date": "2027-09-20",
+      "contract_expiration_date": "2027-09-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0041T/GS28F0041T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0041T&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "BLOCKHOUSE COMPANY, INC.",
+      "contract_number": "47QSCA18D000N",
+      "vendor_uei": "V7V3HHLJR1D4",
+      "company_address": "3285 FARMTRAIL RD",
+      "company_city": "YORK",
+      "company_state": "PA",
+      "company_zip": "17406-5602",
+      "primary_contact_phone": "5137028229",
+      "primary_contact_email": "tduncan@blockhouse.com",
+      "website": "http://www.blockhouse.com",
+      "contract_start_date": "2028-07-11",
+      "contract_expiration_date": "2038-07-11",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA18D000N/47QSCA18D000N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA18D000N&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "CHC ART SERVICES LLC",
+      "contract_number": "47QSMS14D0001",
+      "vendor_uei": "D8QQG366L6N5",
+      "company_address": "76 W SEEGERS RD",
+      "company_city": "ARLINGTON HEIGHTS",
+      "company_state": "IL",
+      "company_zip": "60005-3917",
+      "primary_contact_phone": "8478433636",
+      "primary_contact_email": "joe@artmillgroup.com",
+      "website": "www.healtheart.com",
+      "contract_start_date": "2029-04-01",
+      "contract_expiration_date": "2034-04-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "CHICAGO AMERICAN MANUFACTURING LLC",
+      "contract_number": "GS-27F-007CA",
+      "vendor_uei": "M5EMFRYLDKL5",
+      "company_address": "4500 W 47TH ST",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60632-4450",
+      "primary_contact_phone": "7087071147",
+      "primary_contact_email": "Dherman@chicagoamerican.net",
+      "website": "http://www.chicagoamerican.com",
+      "contract_start_date": "2030-01-21",
+      "contract_expiration_date": "2035-01-21",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F007CA/GS27F007CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-007CA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "CVK ENTERPRISES INC",
+      "contract_number": "GS-07F-264BA",
+      "vendor_uei": "VXJ9KCULLET5",
+      "company_address": "1171 S NORTHPOINT BLVD",
+      "company_city": "WAUKEGAN",
+      "company_state": "IL",
+      "company_zip": "60085-8216",
+      "primary_contact_phone": "8479996577",
+      "primary_contact_email": "meagan@federalsupply.com",
+      "website": "http://www.federalsupply.com",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2034-07-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F264BA/GS07F264BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-264BA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "DCI INC",
+      "contract_number": "47QSMA18D0004",
+      "vendor_uei": "X1YTEP3SRVN8",
+      "company_address": "265 SOUTH MAIN ST",
+      "company_city": "LISBON",
+      "company_state": "NH",
+      "company_zip": "03585-6217",
+      "primary_contact_phone": "8005528286",
+      "primary_contact_email": "sales@dcifurn.com",
+      "website": "http://www.dcifurn.com",
+      "contract_start_date": "2027-10-15",
+      "contract_expiration_date": "2037-10-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D0004/47QSMA18D0004_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA18D0004/pricelist_47QSMA18D0004.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D0004&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "DICKSON FURNITURE MANUFACTURERS LLC",
+      "contract_number": "47QSCA19D000F",
+      "vendor_uei": "NXM1W3N5E671",
+      "company_address": "6900 OVERMYER DR",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77008-5016",
+      "primary_contact_phone": "7137470341",
+      "primary_contact_email": "vbanka@dicksonfurniture.com",
+      "website": "http://www.dicksonfurniture.com",
+      "contract_start_date": "2029-07-23",
+      "contract_expiration_date": "2039-07-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA19D000F/47QSCA19D000F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA19D000F&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "DIVINE IMAGING INC.",
+      "contract_number": "47QSWA19D002X",
+      "vendor_uei": "LGMVH2NYJH38",
+      "company_address": "21323 PACIFIC COAST HWY STE 101",
+      "company_city": "MALIBU",
+      "company_state": "CA",
+      "company_zip": "90265-5202",
+      "primary_contact_phone": "3105794000",
+      "primary_contact_email": "kim@divineimaging.com",
+      "website": "https://www.divineImaging.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2039-01-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002X/47QSWA19D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002X&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "DREAMSEATS, LLC",
+      "contract_number": "47QSMA22D08P5",
+      "vendor_uei": "EGLPGKNRA8H1",
+      "company_address": "150 MOTOR PKWY STE 200",
+      "company_city": "HAUPPAUGE",
+      "company_state": "NY",
+      "company_zip": "11788-5180",
+      "primary_contact_phone": "6316561066",
+      "primary_contact_email": "taltadonna@dreamseat.com",
+      "website": "http://www.dreamseat.com",
+      "contract_start_date": "2027-03-06",
+      "contract_expiration_date": "2042-03-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08P5/47QSMA22D08P5_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08P5&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "ETHAN ALLEN RETAIL, INC.",
+      "contract_number": "GS-28F-007AA",
+      "vendor_uei": "NGSMBHUNRTA7",
+      "company_address": "25 LAKE AVENUE EXT",
+      "company_city": "DANBURY",
+      "company_state": "CT",
+      "company_zip": "06811-5286",
+      "primary_contact_phone": "3365801068",
+      "primary_contact_email": "contractsales@ethanalleninc.com",
+      "website": "http://www.ethanallen.com",
+      "contract_start_date": "2027-10-23",
+      "contract_expiration_date": "2032-10-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F007AA/GS28F007AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-007AA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "FIRE STATION OUTFITTERS LLC",
+      "contract_number": "GS-27F-016CA",
+      "vendor_uei": "MA1NSK5MP3W3",
+      "company_address": "331 WEYER RD",
+      "company_city": "MODESTO",
+      "company_state": "CA",
+      "company_zip": "95357-1765",
+      "primary_contact_phone": "2095965524",
+      "primary_contact_email": "dave@firestationoutfitters.com",
+      "website": "http://www.firestationoutfitters.com",
+      "contract_start_date": "2030-05-19",
+      "contract_expiration_date": "2035-05-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F016CA/GS27F016CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-016CA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "FOLIOT FURNITURE INC",
+      "contract_number": "47QSMS24D00BC",
+      "vendor_uei": "JU3NZTNBEU55",
+      "company_address": "721 BOUL ROLAND-GODARD",
+      "company_city": "ST-JEROME",
+      "company_state": "QC",
+      "company_zip": "J7Y 4C1",
+      "primary_contact_phone": "4506021658",
+      "primary_contact_email": "VPOWER@FOLIOT.COM",
+      "website": "http://WWW.FOLIOT.COM",
+      "contract_start_date": "2029-09-01",
+      "contract_expiration_date": "2044-09-01",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00BC/47QSMS24D00BC_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00BC&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "FSR CONSULTING LLC",
+      "contract_number": "47QTCA21D008L",
+      "vendor_uei": "ZZGWX398RJJ6",
+      "company_address": "618 S BROAD ST STE 2",
+      "company_city": "LANSDALE",
+      "company_state": "PA",
+      "company_zip": "19446",
+      "primary_contact_phone": "4842146541",
+      "primary_contact_email": "frank@cirrussystemsus.com",
+      "website": "http://cirrussystemsus.com/",
+      "contract_start_date": "2026-04-20",
+      "contract_expiration_date": "2041-04-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA21D008L/47QTCA21D008L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA21D008L&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "GKI, LLC",
+      "contract_number": "47QSWA19D0030",
+      "vendor_uei": "MQA2D9K6KBQ1",
+      "company_address": "13501 BALSAM LN N",
+      "company_city": "DAYTON",
+      "company_state": "MN",
+      "company_zip": "55327-9469",
+      "primary_contact_phone": "7633344150",
+      "primary_contact_email": "steve@gkisolutions.com",
+      "website": "http://GKISOLUTIONS.COM",
+      "contract_start_date": "2029-02-14",
+      "contract_expiration_date": "2039-02-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "address_2": "STE 130",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D0030/47QSWA19D0030_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D0030&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT SALES, LLC",
+      "contract_number": "GS-07F-0518T",
+      "vendor_uei": "J3M5EM9GLUW5",
+      "company_address": "4644 ARENDELL ST STE A",
+      "company_city": "MOREHEAD CITY",
+      "company_state": "NC",
+      "company_zip": "28557",
+      "primary_contact_phone": "8005316635",
+      "primary_contact_email": "CHARLES@GOVERNMENTSALESLLC.COM",
+      "website": "https://governmentsalesllc.com",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2027-08-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0518T/GS07F0518T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0518T&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "GOVSOLUTIONS, INC.",
+      "contract_number": "GS-03F-078AA",
+      "vendor_uei": "ZD8UWVHYKGC1",
+      "company_address": "108 S BIRDNECK RD",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23451-5863",
+      "primary_contact_phone": "7574307890",
+      "primary_contact_email": "dlong@govsolutionsinc.com",
+      "website": "http://WWW.GOVSOLUTIONSINC.COM",
+      "contract_start_date": "2028-05-27",
+      "contract_expiration_date": "2033-05-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F078AA/GS03F078AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-078AA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "GOVSOLUTIONS, INC.",
+      "contract_number": "GS-28F-0019T",
+      "vendor_uei": "ZD8UWVHYKGC1",
+      "company_address": "108 S BIRDNECK RD",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23451-5863",
+      "primary_contact_phone": "7574307890",
+      "primary_contact_email": "dlong@govsolutionsinc.com",
+      "website": "http://WWW.GOVSOLUTIONSINC.COM",
+      "contract_start_date": "2027-04-01",
+      "contract_expiration_date": "2027-04-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0019T/GS28F0019T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0019T&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "HEARTHSTONE ENTERPRISES, INC",
+      "contract_number": "47QSMA22D08NX",
+      "vendor_uei": "STENP5J7L5Z4",
+      "company_address": "251 INDUSTRIAL PARK DR",
+      "company_city": "BOONE",
+      "company_state": "NC",
+      "company_zip": "28607-3976",
+      "primary_contact_phone": "8282640100",
+      "primary_contact_email": "abeekman@charlestonforge.com",
+      "website": "http://www.charlestonforge.com",
+      "contract_start_date": "2027-02-08",
+      "contract_expiration_date": "2042-02-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08NX&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "HI-TECH BED SYSTEMS, CORPORATION",
+      "contract_number": "47QSMA22D08Q4",
+      "vendor_uei": "EJDQQK6CAHM7",
+      "company_address": "26 BRUSH CREEK RD",
+      "company_city": "WHEATLAND",
+      "company_state": "WY",
+      "company_zip": "82201-8709",
+      "primary_contact_phone": "3073311473",
+      "primary_contact_email": "hitechbeds@wyomingwireless.com",
+      "website": "http://none.com",
+      "contract_start_date": "2027-06-08",
+      "contract_expiration_date": "2042-06-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08Q4/47QSMA22D08Q4_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08Q4&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "HNF LLC",
+      "contract_number": "47QSMS25D000R",
+      "vendor_uei": "NV8ZGJ181N96",
+      "company_address": "1819 INDIGO CREEK LN",
+      "company_city": "WYLIE",
+      "company_state": "TX",
+      "company_zip": "75098-0585",
+      "primary_contact_phone": "2149300006",
+      "primary_contact_email": "josh@fenixgrouptx.com",
+      "website": "https://www.americanmadeu.com",
+      "contract_start_date": "2029-10-17",
+      "contract_expiration_date": "2044-10-17",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D000R/47QSMS25D000R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D000R&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "INOVO INC",
+      "contract_number": "47QSMA20D08PT",
+      "vendor_uei": "TSMBULKHCFS1",
+      "company_address": "24 RUTLEDGE ST",
+      "company_city": "BROOKLYN",
+      "company_state": "NY",
+      "company_zip": "11249-7911",
+      "primary_contact_phone": "7182857855",
+      "primary_contact_email": "pessy@inovo-inc.com",
+      "website": "http://www.inovo-inc.com",
+      "contract_start_date": "2030-04-01",
+      "contract_expiration_date": "2040-04-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08PT/47QSMA20D08PT_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08PT&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "J SQUARED INC.",
+      "contract_number": "47QSMA19D08QB",
+      "vendor_uei": "MWGXJVZ6HDK7",
+      "company_address": "2588 JANNETIDES BLVD",
+      "company_city": "GREENFIELD",
+      "company_state": "IN",
+      "company_zip": "46140-9130",
+      "primary_contact_phone": "3178665771",
+      "primary_contact_email": "mjohnson@uloft.com",
+      "website": "http://www.uloft.com",
+      "contract_start_date": "2029-06-24",
+      "contract_expiration_date": "2039-06-24",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08QB/47QSMA19D08QB_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08QB&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "JOHN SAVOY & SON, INC.",
+      "contract_number": "GS-27F-004CA",
+      "vendor_uei": "H1ZPXTA8DZC5",
+      "company_address": "300 HOWARD ST",
+      "company_city": "MONTOURSVILLE",
+      "company_state": "PA",
+      "company_zip": "17754-2412",
+      "primary_contact_phone": "5703682424",
+      "primary_contact_email": "govt@savoyfurniture.com",
+      "website": "http://gov.savoyfurniture.com/",
+      "contract_start_date": "2030-01-18",
+      "contract_expiration_date": "2035-01-18",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F004CA/GS27F004CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-004CA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "KNU, LLC",
+      "contract_number": "GS-28F-0008V",
+      "vendor_uei": "S1DNTDMV1A19",
+      "company_address": "1 BEST DR",
+      "company_city": "FERDINAND",
+      "company_state": "IN",
+      "company_zip": "47532-9537",
+      "primary_contact_phone": "8123673007",
+      "primary_contact_email": "bsicard@getknu.com",
+      "website": "http://getknu.com",
+      "contract_start_date": "2028-12-02",
+      "contract_expiration_date": "2028-12-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0008V/GS28F0008V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0008V&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "KOAS CO.,LTD.",
+      "contract_number": "GS-28F-0012S",
+      "vendor_uei": "NFK3CBUZMG88",
+      "company_address": "17, SEONYU-RO 52-GIL",
+      "company_city": "SEOUL",
+      "primary_contact_phone": "82221636074",
+      "primary_contact_email": "justinhong@ikoas.com",
+      "website": "http://www.ikoas.com",
+      "contract_start_date": "2026-02-08",
+      "contract_expiration_date": "2026-02-08",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "address_2": "YEONGDEUNGPO-GU",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0012S/GS28F0012S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0012S&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "KRUEGER INTERNATIONAL, INC.",
+      "contract_number": "47QSMS24D007M",
+      "vendor_uei": "PAZHQEMYTSD8",
+      "company_address": "1330 BELLEVUE ST",
+      "company_city": "GREEN BAY",
+      "company_state": "WI",
+      "company_zip": "54302-2119",
+      "primary_contact_phone": "9204682580",
+      "primary_contact_email": "nick.guerrieri@ki.com",
+      "website": "http://www.ki.com",
+      "contract_start_date": "2029-05-22",
+      "contract_expiration_date": "2044-05-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D007M/47QSMS24D007M_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMS24D007M/pricelist_47QSMS24D007M.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D007M&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "KWALU, LLC",
+      "contract_number": "GS-27F-0041W",
+      "vendor_uei": "VBFGTFNWY8W7",
+      "company_address": "6160 PEACHTREE DUNWOODY RD BLDG",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30328-6068",
+      "primary_contact_phone": "6786905684",
+      "primary_contact_email": "cmccarthy@kwalu.com",
+      "website": "http://www.kwalu.com",
+      "contract_start_date": "2030-07-15",
+      "contract_expiration_date": "2030-07-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0041W/GS27F0041W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0041W&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "LESRO INDUSTRIES, INC.",
+      "contract_number": "47QSCA18D000L",
+      "vendor_uei": "NJQ8W1JGFXN7",
+      "company_address": "1 GRIFFIN RD S",
+      "company_city": "BLOOMFIELD",
+      "company_state": "CT",
+      "company_zip": "06002-1351",
+      "primary_contact_phone": "8602433226",
+      "primary_contact_email": "gsaorders@lesro.com",
+      "website": "http://www.lesro.com",
+      "contract_start_date": "2028-07-08",
+      "contract_expiration_date": "2038-07-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA18D000L/47QSCA18D000L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA18D000L&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "LIONS VOLUNTEER BLIND INDUSTRIES, INC.",
+      "contract_number": "GS-27F-020BA",
+      "vendor_uei": "HQMMC41BNB67",
+      "company_address": "758 W MORRIS BLVD",
+      "company_city": "MORRISTOWN",
+      "company_state": "TN",
+      "company_zip": "37813-2136",
+      "primary_contact_phone": "4235863922",
+      "primary_contact_email": "betsy@volblind.org",
+      "website": "http://lvbi.org/",
+      "contract_start_date": "2028-12-01",
+      "contract_expiration_date": "2033-12-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F020BA/GS27F020BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-020BA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "MAGNUSON GROUP INC",
+      "contract_number": "GS-07F-0308W",
+      "vendor_uei": "MBHXKBKM1YG6",
+      "company_address": "1400 INTERNATIONALE PKWY",
+      "company_city": "WOODRIDGE",
+      "company_state": "IL",
+      "company_zip": "60517-5151",
+      "primary_contact_phone": "6307838100",
+      "primary_contact_email": "cynthia@magnusongroup.com",
+      "website": "http://www.magnusongroup.com",
+      "contract_start_date": "2030-03-14",
+      "contract_expiration_date": "2030-03-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0308W/GS07F0308W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0308W&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "MARVIN J. PERRY, INC.",
+      "contract_number": "GS-27F-0008V",
+      "vendor_uei": "RQEZW8BSJCV4",
+      "company_address": "10563 METROPOLITAN AVE",
+      "company_city": "KENSINGTON",
+      "company_state": "MD",
+      "company_zip": "20895-2600",
+      "primary_contact_phone": "3019491301",
+      "primary_contact_email": "ROSEMARY@MARVINJPERRY.COM",
+      "website": "http://www.marvinjperry.com",
+      "contract_start_date": "2029-01-04",
+      "contract_expiration_date": "2029-01-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0008V/GS27F0008V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0008V&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL BUSINESS FURNITURE, LLC",
+      "contract_number": "GS-27F-0024V",
+      "vendor_uei": "JJJ2JY8TJRZ8",
+      "company_address": "770 S 70TH ST",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53214-3109",
+      "primary_contact_phone": "8005581010",
+      "primary_contact_email": "GovSales@nbf.com",
+      "website": "http://NBF.com",
+      "contract_start_date": "2029-04-28",
+      "contract_expiration_date": "2029-04-28",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0024V/GS27F0024V_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-27F-0024V/pricelist_GS-27F-0024V.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0024V&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "NEUTRAL POSTURE, INC",
+      "contract_number": "GS-27F-0014Y",
+      "vendor_uei": "EYTGAM8GGLJ3",
+      "company_address": "3904 N TEXAS AVE",
+      "company_city": "BRYAN",
+      "company_state": "TX",
+      "company_zip": "77803-0555",
+      "primary_contact_phone": "18004463746",
+      "primary_contact_email": "jgurode@neutralposture.com",
+      "website": "http://www.NeutralPosture.com",
+      "contract_start_date": "2027-06-26",
+      "contract_expiration_date": "2032-06-26",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Oct 15, 2029",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0014Y/GS27F0014Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0014Y&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "NEW ENGLAND WOODCRAFT, INC.",
+      "contract_number": "GS-03F-040DA",
+      "vendor_uei": "W9Z1CJ2RM4K4",
+      "company_address": "481 NORTH ST",
+      "company_city": "BRANDON",
+      "company_state": "VT",
+      "company_zip": "05733-9509",
+      "primary_contact_phone": "8022478211",
+      "primary_contact_email": "lmack@newoodcraft.com",
+      "website": "http://www.NewEnglandWoodcraft.com",
+      "contract_start_date": "2030-12-22",
+      "contract_expiration_date": "2035-12-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F040DA/GS03F040DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-040DA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "NORIX GROUP INC",
+      "contract_number": "GS-27F-0037X",
+      "vendor_uei": "MW3ECZR6N1F9",
+      "company_address": "1 INNOVATION DR",
+      "company_city": "WEST CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60185-2033",
+      "primary_contact_phone": "8002344900",
+      "primary_contact_email": "NorixGSA@norix.com",
+      "website": "http://www.norix.com",
+      "contract_start_date": "2026-04-18",
+      "contract_expiration_date": "2031-04-18",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0037X/GS27F0037X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0037X&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "OFFICE PARTNERS, INC.",
+      "contract_number": "GS-28F-0008Y",
+      "vendor_uei": "MJFMEUWA2TT6",
+      "company_address": "9496 US HIGHWAY 411",
+      "company_city": "ODENVILLE",
+      "company_state": "AL",
+      "company_zip": "35120-4730",
+      "primary_contact_phone": "2156962072",
+      "primary_contact_email": "gs@officepartners.com",
+      "website": "http://www.officepartners.com",
+      "contract_start_date": "2026-10-25",
+      "contract_expiration_date": "2031-10-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0008Y/GS28F0008Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0008Y&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "OFS BRANDS HOLDINGS INC.",
+      "contract_number": "47QSMA18D08QX",
+      "vendor_uei": "H1QMAHW65NZ6",
+      "company_address": "1204 E 6TH ST",
+      "company_city": "HUNTINGBURG",
+      "company_state": "IN",
+      "company_zip": "47542-9375",
+      "primary_contact_phone": "8666379328",
+      "primary_contact_email": "gsa@ofs.com",
+      "website": "http://ofs.com",
+      "contract_start_date": "2028-08-07",
+      "contract_expiration_date": "2038-08-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08QX/47QSMA18D08QX_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08QX&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "OSTYN NEWMAN INC",
+      "contract_number": "GS-27F-0026X",
+      "vendor_uei": "H5A7MGBRF8Z7",
+      "company_address": "62 W EL INDIO",
+      "company_city": "GREEN VALLEY",
+      "company_state": "AZ",
+      "company_zip": "85614-3814",
+      "primary_contact_phone": "8883878782",
+      "primary_contact_email": "Gov@Ostyn-Newman.com",
+      "website": "http://Ostyn-Newman.com",
+      "contract_start_date": "2026-01-23",
+      "contract_expiration_date": "2031-01-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0026X/GS27F0026X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0026X&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "OW LEE TX, INC",
+      "contract_number": "GS-27F-0007U",
+      "vendor_uei": "Z7V4LS6B3885",
+      "company_address": "1206 FIFTH ST",
+      "company_city": "COMFORT",
+      "company_state": "TX",
+      "company_zip": "78013-2310",
+      "primary_contact_phone": "2406217960",
+      "primary_contact_email": "malcolmw@mjpw.com",
+      "website": "http://www.owlee.com",
+      "contract_start_date": "2027-12-26",
+      "contract_expiration_date": "2027-12-26",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0007U/GS27F0007U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0007U&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "PARAMOUNT INDUSTRIAL COMPANIES, INC.",
+      "contract_number": "GS-27F-0014T",
+      "vendor_uei": "QK4CU14F2RS5",
+      "company_address": "1112 KINGWOOD AVE",
+      "company_city": "NORFOLK",
+      "company_state": "VA",
+      "company_zip": "23502-5603",
+      "primary_contact_phone": "7578553321",
+      "primary_contact_email": "rdiamonstein@paramountsleep.com",
+      "website": "http://www.paramountsleep.com",
+      "contract_start_date": "2027-08-05",
+      "contract_expiration_date": "2027-08-05",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0014T/GS27F0014T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0014T&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "PERRY & WILSON, INC.",
+      "contract_number": "GS-27F-0030U",
+      "vendor_uei": "JEEHZQ7GVHN3",
+      "company_address": "11111 EASECREST DR",
+      "company_city": "SILVER SPRING",
+      "company_state": "MD",
+      "company_zip": "20902-3508",
+      "primary_contact_phone": "2406217960",
+      "primary_contact_email": "malcolmw@mjpw.com",
+      "website": "http://www.perryandwilson.com",
+      "contract_start_date": "2028-09-08",
+      "contract_expiration_date": "2028-09-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0030U/GS27F0030U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0030U&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "PETERSON PICTURE FRAME CO INC",
+      "contract_number": "47QSMA23D08Q4",
+      "vendor_uei": "J2M7ERCQAGL4",
+      "company_address": "2720 W BELMONT AVE",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60618-5915",
+      "primary_contact_phone": "7734638888",
+      "primary_contact_email": "mike@peterson-picture.com",
+      "website": "http://www.peterson-picture.com",
+      "contract_start_date": "2028-06-20",
+      "contract_expiration_date": "2043-06-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08Q4/47QSMA23D08Q4_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08Q4&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "R.T. LONDON COMPANY",
+      "contract_number": "47QSMS24D00A0",
+      "vendor_uei": "NWPLTR5CNWM3",
+      "company_address": "1642 BROADWAY AVE NW STE 100",
+      "company_city": "GRAND RAPIDS",
+      "company_state": "MI",
+      "company_zip": "49504-2046",
+      "primary_contact_phone": "6165514606",
+      "primary_contact_email": "schandonnet@rtlondon.com",
+      "website": "http://www.rtlondon.com",
+      "contract_start_date": "2029-07-15",
+      "contract_expiration_date": "2044-07-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__38": "hjv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00A0/47QSMS24D00A0_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00A0&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "SANDLER SEATING, INC.",
+      "contract_number": "47QSCA18D0004",
+      "vendor_uei": "UNZVHJDD2SV3",
+      "company_address": "1201 PEACHTREE ST NE",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30361-3572",
+      "primary_contact_phone": "4049829000",
+      "primary_contact_email": "rusty@sandlerseating.com",
+      "website": "http://www.sandlerseating.com",
+      "contract_start_date": "2027-11-13",
+      "contract_expiration_date": "2037-11-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "address_2": "STE 1625",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA18D0004/47QSCA18D0004_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA18D0004&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "SUSTAINABLE FURNITURE INC",
+      "contract_number": "GS-27F-010DA",
+      "vendor_uei": "PGL5BENAY6D5",
+      "company_address": "5800 ALDER AVE",
+      "company_city": "SACRAMENTO",
+      "company_state": "CA",
+      "company_zip": "95828-1108",
+      "primary_contact_phone": "2106015853",
+      "primary_contact_email": "jhines@sustainablefurnitureinc.com",
+      "website": "http://sustainablefurnitureinc.com",
+      "contract_start_date": "2026-01-27",
+      "contract_expiration_date": "2036-01-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F010DA/GS27F010DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-010DA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "TERA CONSULTING INC.",
+      "contract_number": "47QTCA18D00C3",
+      "vendor_uei": "PG4WWPKBCCZ7",
+      "company_address": "29 ELVES LN",
+      "company_city": "LEVITTOWN",
+      "company_state": "NY",
+      "company_zip": "11756-5522",
+      "primary_contact_phone": "7188137755",
+      "primary_contact_email": "kbajwa@teraconsultinginc.com",
+      "website": "http://www.teraconsultinginc.com",
+      "contract_start_date": "2028-05-20",
+      "contract_expiration_date": "2038-05-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Aug 26, 2028",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA18D00C3/47QTCA18D00C3_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QTCA18D00C3/pricelist_47QTCA18D00C3.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA18D00C3&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "TRENZY LLC",
+      "contract_number": "47QSMA22D08QL",
+      "vendor_uei": "Y8THNPZH4NJ3",
+      "company_address": "2714 SHERIDAN RD",
+      "company_city": "HIGHLAND PARK",
+      "company_state": "IL",
+      "company_zip": "60035-1441",
+      "primary_contact_phone": "3125600096",
+      "primary_contact_email": "george@rfplus.com",
+      "website": "http://restaurantfurnitureplus.com",
+      "contract_start_date": "2027-08-31",
+      "contract_expiration_date": "2042-08-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08QL/47QSMA22D08QL_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08QL&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "TRISTATE APARTMENT FURNISHERS, LLC",
+      "contract_number": "GS-28F-004GA",
+      "vendor_uei": "D6R3FBEVFJU1",
+      "company_address": "431 TIMPSON PL",
+      "company_city": "BRONX",
+      "company_state": "NY",
+      "company_zip": "10455",
+      "primary_contact_phone": "7186653700",
+      "primary_contact_email": "esty@apartmentfurnishers.com",
+      "website": "http://www.apartmentfurnishers.com",
+      "contract_start_date": "2026-12-15",
+      "contract_expiration_date": "2036-12-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F004GA/GS28F004GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-004GA&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "VAE INDUSTRIES CORPORATION",
+      "contract_number": "47QSWA22D002Z",
+      "vendor_uei": "LDC4UCWKDGB4",
+      "company_address": "5402 RESEARCH DR",
+      "company_city": "HUNTINGTON BEACH",
+      "company_state": "CA",
+      "company_zip": "92649-1542",
+      "primary_contact_phone": "7148427500",
+      "primary_contact_email": "mathieu@instent.com",
+      "website": "https://www.instent.com/",
+      "contract_start_date": "2027-02-06",
+      "contract_expiration_date": "2042-02-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D002Z/47QSWA22D002Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D002Z&sin=337121H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337121H"
+      ],
+      "primary_sin": "337121H",
+      "schedule_number": "MAS",
+      "company_name": "VANGUARD FURNITURE CO INC",
+      "contract_number": "47QSMA23D08NA",
+      "vendor_uei": "FPJZFLXB1LM3",
+      "company_address": "109 SIMPSON ST SW",
+      "company_city": "CONOVER",
+      "company_state": "NC",
+      "company_zip": "28613",
+      "primary_contact_phone": "3019491301",
+      "primary_contact_email": "ROSEMARY@MARVINJPERRY.COM",
+      "website": "http://www.vanguardfurniture.com",
+      "contract_start_date": "2027-10-18",
+      "contract_expiration_date": "2042-10-18",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "337121H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08NA/47QSMA23D08NA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08NA&sin=337121H&src=elib&app=cat"
+      }
+    }
+  ]
+}

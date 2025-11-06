@@ -270,18 +270,18 @@ export async function enrichWithSAMEntity(uei: string): Promise<any> {
     // Extract revenue/employee info from FAR responses if available
     const farResponses = entity.repsAndCerts?.certifications?.fARResponses?.listOfAnswers;
     if (farResponses) {
-      const revenueAnswer = farResponses.find((a: any) => 
-        a.questionText?.includes('gross revenues') || a.questionText?.includes('annual revenue')
-      );
-      if (revenueAnswer?.grossRevenuesBusinessPrevious3Years) {
-        enrichmentData.annual_revenue_range = revenueAnswer.grossRevenuesBusinessPrevious3Years;
-      }
+      // const revenueAnswer = farResponses.find((a: any) => 
+      //   a.questionText?.includes('gross revenues') || a.questionText?.includes('annual revenue')
+      // );
+      // if (revenueAnswer?.grossRevenuesBusinessPrevious3Years) {
+      //   enrichmentData.annual_revenue_range = revenueAnswer.grossRevenuesBusinessPrevious3Years;
+      // }
     }
 
     return enrichmentData;
-  } catch (error) {
+  } catch (error: any) {
     console.error(`Error enriching with SAM.gov Entity for UEI ${uei}:`, error);
-    await logAPICall('sam.gov', `/entity-information/v3/entities`, uei, 0, false, error.message);
+    await logAPICall('sam.gov', `/entity-information/v3/entities`, uei, 0, false, error?.message || 'Unknown error');
     throw error;
   }
 }

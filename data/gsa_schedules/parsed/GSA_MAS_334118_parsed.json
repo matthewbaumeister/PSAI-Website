@@ -1,0 +1,178 @@
+{
+  "sin_code": "334118",
+  "file_name": "GSA_MAS_334118_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:19.021743",
+  "sheets": {
+    "2025_11_05_11_30_49": {
+      "row_count": 10,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "334118"
+      ],
+      "primary_sin": "334118",
+      "schedule_number": "MAS",
+      "company_name": "CIM USA INC",
+      "contract_number": "47QSMA19D08NF",
+      "vendor_uei": "EN2XBKJ744P9",
+      "company_address": "6555 POWERLINE RD STE 101",
+      "company_city": "FORT LAUDERDALE",
+      "company_state": "FL",
+      "company_zip": "33309-2048",
+      "primary_contact_phone": "3056393040",
+      "primary_contact_email": "administration@cimusainc.com",
+      "website": "http://www.cimusainc.com",
+      "contract_start_date": "2028-10-29",
+      "contract_expiration_date": "2038-10-29",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Security Services",
+        "source": "MAS",
+        "category": 334118.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08NF/47QSMA19D08NF_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08NF&sin=334118&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334118"
+      ],
+      "primary_sin": "334118",
+      "schedule_number": "MAS",
+      "company_name": "DBISP LLC",
+      "contract_number": "GS-03F-056DA",
+      "vendor_uei": "WM4TLSL4VPZ1",
+      "company_address": "777 BEACHWAY DR STE 102",
+      "company_city": "INDIANAPOLIS",
+      "company_state": "IN",
+      "company_zip": "46224-7877",
+      "primary_contact_phone": "3172221671",
+      "primary_contact_email": "sales@dbispllc.com",
+      "website": "https://www.dbispllc.com",
+      "contract_start_date": "2026-02-14",
+      "contract_expiration_date": "2036-02-14",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Security Services",
+        "source": "MAS",
+        "category": 334118.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Dec 21, 2026",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F056DA/GS03F056DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-056DA/pricelist_GS-03F-056DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-056DA&sin=334118&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334118"
+      ],
+      "primary_sin": "334118",
+      "schedule_number": "MAS",
+      "company_name": "TELESIS TECHNOLOGIES, INC",
+      "contract_number": "47QSMS25D00B5",
+      "vendor_uei": "E2CEEF24ELQ1",
+      "company_address": "28181 RIVER DR",
+      "company_city": "CIRCLEVILLE",
+      "company_state": "OH",
+      "company_zip": "43113-9726",
+      "primary_contact_phone": "7404775000",
+      "primary_contact_email": "charn.alhabshi@telesistech.com",
+      "website": "http://www.telesis.com",
+      "contract_start_date": "2030-08-10",
+      "contract_expiration_date": "2045-08-10",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Security Services",
+        "source": "MAS",
+        "category": 334118.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "334118"
+      ],
+      "primary_sin": "334118",
+      "schedule_number": "MAS",
+      "company_name": "YOUR SUPPLY DEPOT LTD",
+      "contract_number": "GS-03F-0088U",
+      "vendor_uei": "NA78LWJBJSN5",
+      "company_address": "1245 E FOREST AVE",
+      "company_city": "DES PLAINES",
+      "company_state": "IL",
+      "company_zip": "60018-1564",
+      "primary_contact_phone": "8155684115",
+      "primary_contact_email": "tom@dogtagmachines.com",
+      "website": "http://www.dogtagmachines.com",
+      "contract_start_date": "2028-08-17",
+      "contract_expiration_date": "2028-08-17",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Security Services",
+        "source": "MAS",
+        "category": 334118.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0088U/GS03F0088U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0088U&sin=334118&src=elib&app=cat"
+      }
+    }
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "sin_code": "337127CF",
+  "file_name": "GSA_MAS_337127CF_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:31.120588",
+  "sheets": {
+    "2025_11_05_11_10_12": {
+      "row_count": 17,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "ACCESS SUPPLY LLC",
+      "contract_number": "GS-28F-013DA",
+      "vendor_uei": "EMYRGEMMMLK6",
+      "company_address": "119 BRIERY CHURCH RD",
+      "company_city": "KEYSVILLE",
+      "company_state": "VA",
+      "company_zip": "23947-5002",
+      "primary_contact_phone": "4347368643",
+      "primary_contact_email": "rduffer@accessupply.com",
+      "website": "http://www.accessupply.com",
+      "contract_start_date": "2026-06-20",
+      "contract_expiration_date": "2036-06-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F013DA/GS28F013DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-013DA&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "BABCO INTERNATIONAL INC",
+      "contract_number": "47QSWA18D001H",
+      "vendor_uei": "MU77BJ5D4JW5",
+      "company_address": "1931 W GRANT RD",
+      "company_city": "TUCSON",
+      "company_state": "AZ",
+      "company_zip": "85745-1104",
+      "primary_contact_phone": "5206287596",
+      "primary_contact_email": "betsy@babcotucson.com",
+      "website": "HTTP://WWW.BABCOTUCSON.COM",
+      "contract_start_date": "2028-04-30",
+      "contract_expiration_date": "2038-04-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "address_2": "STE 320",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001H/47QSWA18D001H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001H&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "COMMERCIAL FURNITURE GROUP INC",
+      "contract_number": "GS-03F-087DA",
+      "vendor_uei": "ZF14E7FKC8L1",
+      "company_address": "810 W HIGHWAY 25 70",
+      "company_city": "NEWPORT",
+      "company_state": "TN",
+      "company_zip": "37821-8044",
+      "primary_contact_phone": "2402159700x106",
+      "primary_contact_email": "paul.snyder@cma-purchasing.com",
+      "website": "http://www.commercialfurnituregroup.com/",
+      "contract_start_date": "2026-04-06",
+      "contract_expiration_date": "2036-04-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F087DA/GS03F087DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-087DA&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "FAIRWAY HOLDINGS, INC.",
+      "contract_number": "GS-27F-008CA",
+      "vendor_uei": "ULNMTY1K5J94",
+      "company_address": "111 WINNEBAGO ST",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63118-4126",
+      "primary_contact_phone": "8887724788",
+      "primary_contact_email": "mike@osrberco.com",
+      "website": "http://www.bercodesigns.com",
+      "contract_start_date": "2030-02-02",
+      "contract_expiration_date": "2035-02-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F008CA/GS27F008CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-008CA&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "GASSER CHAIR CO INC",
+      "contract_number": "47QSMS11D0002",
+      "vendor_uei": "Z15VKUQ9QNA3",
+      "company_address": "4136 LOGAN WAY",
+      "company_city": "YOUNGSTOWN",
+      "company_state": "OH",
+      "company_zip": "44505-1797",
+      "primary_contact_phone": "3305457580",
+      "primary_contact_email": "LBURES@GASSERCHAIR.COM",
+      "website": "http://www.gasserchair.com",
+      "contract_start_date": "2026-01-31",
+      "contract_expiration_date": "2031-01-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS11D0002/47QSMS11D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS11D0002&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT SALES, LLC",
+      "contract_number": "GS-07F-0518T",
+      "vendor_uei": "J3M5EM9GLUW5",
+      "company_address": "4644 ARENDELL ST STE A",
+      "company_city": "MOREHEAD CITY",
+      "company_state": "NC",
+      "company_zip": "28557",
+      "primary_contact_phone": "8005316635",
+      "primary_contact_email": "CHARLES@GOVERNMENTSALESLLC.COM",
+      "website": "https://governmentsalesllc.com",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2027-08-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0518T/GS07F0518T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0518T&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "KFI FURNITURE, LLC",
+      "contract_number": "GS-28F-0023W",
+      "vendor_uei": "KGXWJNJBXWJ5",
+      "company_address": "1533 BANK ST",
+      "company_city": "LOUISVILLE",
+      "company_state": "KY",
+      "company_zip": "40203",
+      "primary_contact_phone": "8004575073",
+      "primary_contact_email": "csmith@kfistudios.com",
+      "website": "http://www.kfiseating.com",
+      "contract_start_date": "2030-02-25",
+      "contract_expiration_date": "2030-02-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0023W/GS28F0023W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0023W&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "NPS PUBLIC FURNITURE CORP",
+      "contract_number": "47QSMS25D00AD",
+      "vendor_uei": "NWPNXN9TDXQ5",
+      "company_address": "149 ENTIN RD STE 100",
+      "company_city": "CLIFTON",
+      "company_state": "NJ",
+      "company_zip": "07014-1424",
+      "primary_contact_phone": "9735941100154",
+      "primary_contact_email": "contracts@nationalpublicseating.com",
+      "website": "http://www.nationalpublicseating.com/",
+      "contract_start_date": "2030-07-20",
+      "contract_expiration_date": "2045-07-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00AD/47QSMS25D00AD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00AD&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "SEATING CONCEPTS INC",
+      "contract_number": "47QSMS20D0002",
+      "vendor_uei": "GGXHBT7M1KC9",
+      "company_address": "125 CONNELL AVE",
+      "company_city": "ROCKDALE",
+      "company_state": "IL",
+      "company_zip": "60436-2466",
+      "primary_contact_phone": "8154832255",
+      "primary_contact_email": "tstjulien@scicustom.com",
+      "website": "http://www.scicustom.com",
+      "contract_start_date": "2030-03-23",
+      "contract_expiration_date": "2040-03-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS20D0002/47QSMS20D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS20D0002&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "SPECIAL-T, LLC",
+      "contract_number": "GS-28F-0015W",
+      "vendor_uei": "JN35LUM5XR97",
+      "company_address": "11820 WILLS RD",
+      "company_city": "ALPHARETTA",
+      "company_state": "GA",
+      "company_zip": "30009-2056",
+      "primary_contact_phone": "6784218001",
+      "primary_contact_email": "lisa@specialt.net",
+      "website": "http://www.specialt.net",
+      "contract_start_date": "2029-12-31",
+      "contract_expiration_date": "2029-12-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "address_2": "SUITE 140",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0015W/GS28F0015W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0015W&sin=337127CF&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127CF"
+      ],
+      "primary_sin": "337127CF",
+      "schedule_number": "MAS",
+      "company_name": "TRENZY LLC",
+      "contract_number": "47QSMA22D08QL",
+      "vendor_uei": "Y8THNPZH4NJ3",
+      "company_address": "2714 SHERIDAN RD",
+      "company_city": "HIGHLAND PARK",
+      "company_state": "IL",
+      "company_zip": "60035-1441",
+      "primary_contact_phone": "3125600096",
+      "primary_contact_email": "george@rfplus.com",
+      "website": "http://restaurantfurnitureplus.com",
+      "contract_start_date": "2027-08-31",
+      "contract_expiration_date": "2042-08-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127CF ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08QL/47QSMA22D08QL_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08QL&sin=337127CF&src=elib&app=cat"
+      }
+    }
+  ]
+}

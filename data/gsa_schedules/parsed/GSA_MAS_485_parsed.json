@@ -1,0 +1,1197 @@
+{
+  "sin_code": "485",
+  "file_name": "GSA_MAS_485_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:16.553898",
+  "sheets": {
+    "2025_11_05_11_33_52": {
+      "row_count": 44,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "ADVENTURES BY DAWN L.L.C",
+      "contract_number": "GS-33F-025DA",
+      "vendor_uei": "QZNYYTQ4BBM5",
+      "company_address": "17517B INDIAN HEAD HWY",
+      "company_city": "ACCOKEEK",
+      "company_state": "MD",
+      "company_zip": "20607-2527",
+      "primary_contact_phone": "3018681141",
+      "primary_contact_email": "fedsales@abdtours.com",
+      "website": "http://www.abdtours.com",
+      "contract_start_date": "2026-07-14",
+      "contract_expiration_date": "2036-07-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F025DA/GS33F025DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-025DA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "AIRPORT METRO CONNECTION, INC",
+      "contract_number": "47QMCB23D0007",
+      "vendor_uei": "PQEJK92M35E6",
+      "company_address": "4910 LAWRENCE PL",
+      "company_city": "HYATTSVILLE",
+      "company_state": "MD",
+      "company_zip": "20781-1023",
+      "primary_contact_phone": "3017731018",
+      "primary_contact_email": "tmamo@amcbus.com",
+      "website": "HTTPS://AMCBUS.COM",
+      "contract_start_date": "2028-02-23",
+      "contract_expiration_date": "2043-02-23",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D0007/47QMCB23D0007_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D0007&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "AMERICA TRANSPORTATION",
+      "contract_number": "GS-33F-028AA",
+      "vendor_uei": "P2P3MY9HAJK9",
+      "company_address": "6930 GIRARD ST",
+      "company_city": "MC LEAN",
+      "company_state": "VA",
+      "company_zip": "22101-5013",
+      "primary_contact_phone": "7038489655",
+      "primary_contact_email": "americabus26@gmail.com",
+      "website": "http://www.americatransportation.com",
+      "contract_start_date": "2028-01-15",
+      "contract_expiration_date": "2033-01-15",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F028AA/GS33F028AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-028AA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "ATLANTIC TRANSPORTATION SERVICES LLC",
+      "contract_number": "47QMCB23D0005",
+      "vendor_uei": "ND8CSJB2M4Z5",
+      "company_address": "4200 WISCONSIN AVE NW STE 550",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20016",
+      "primary_contact_phone": "2024665050",
+      "primary_contact_email": "DCHIN@ASGPARK.COM",
+      "website": "http://www.asgpark.com",
+      "contract_start_date": "2028-01-31",
+      "contract_expiration_date": "2043-01-31",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D0005/47QMCB23D0005_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D0005&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "ATS TRANS LLC",
+      "contract_number": "47QMCB22D0008",
+      "vendor_uei": "EJLSH4W6TJN7",
+      "company_address": "2220 SOUTH TACOMA WAY STE B",
+      "company_city": "TACOMA",
+      "company_state": "WA",
+      "company_zip": "98409-7500",
+      "primary_contact_phone": "2533007232",
+      "primary_contact_email": "hutch@transpro.org",
+      "website": "https://atstrans.org/",
+      "contract_start_date": "2027-01-06",
+      "contract_expiration_date": "2042-01-06",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB22D0008/47QMCB22D0008_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "BATTLE'S TRANSPORTATION, INC.",
+      "contract_number": "47QMCB22D000C",
+      "vendor_uei": "KE6EULC2EZ17",
+      "company_address": "3000 V ST NE",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20018-1521",
+      "primary_contact_phone": "2024628658",
+      "primary_contact_email": "tdominique@battles-transport.com",
+      "website": "http://www.battles-transport.com",
+      "contract_start_date": "2027-05-30",
+      "contract_expiration_date": "2042-05-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB22D000C/47QMCB22D000C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB22D000C&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "BUSH FIRE SERVICES INC",
+      "contract_number": "GS-33F-013GA",
+      "vendor_uei": "WSHKNPTJZ2C5",
+      "company_address": "305 FLAT LICK RD",
+      "company_city": "LONDON",
+      "company_state": "KY",
+      "company_zip": "40744-6811",
+      "primary_contact_phone": "6068642244",
+      "primary_contact_email": "phil.bfs360@gmail.com",
+      "website": "http://www.bushfireservices.com",
+      "contract_start_date": "2027-04-12",
+      "contract_expiration_date": "2037-04-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F013GA/GS33F013GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-013GA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "CALLAWAY TRANSPORTATION, INC.",
+      "contract_number": "47QMCB19D000H",
+      "vendor_uei": "W967XDPN1A87",
+      "company_address": "1341 W LIBERTY RD",
+      "company_city": "SYKESVILLE",
+      "company_state": "MD",
+      "company_zip": "21784-9351",
+      "primary_contact_phone": "4437563305",
+      "primary_contact_email": "DCALLAWAY@CALLAWAYTRANSPORTATION.COM",
+      "website": "http://www.callawaytransportation.com",
+      "contract_start_date": "2029-04-30",
+      "contract_expiration_date": "2039-04-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB19D000H/47QMCB19D000H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB19D000H&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "CARE ON WHEELS TRANSPORTATION SERVICES LLC",
+      "contract_number": "47QMCB25D0004",
+      "vendor_uei": "JTN6U1J4SPQ3",
+      "company_address": "7801 MANOR ST",
+      "company_city": "DEARBORN",
+      "company_state": "MI",
+      "company_zip": "48126-1276",
+      "primary_contact_phone": "3139771077",
+      "primary_contact_email": "careonwheels@gmail.com",
+      "website": "http://n/a",
+      "contract_start_date": "2030-02-05",
+      "contract_expiration_date": "2045-02-05",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D0004/47QMCB25D0004_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D0004&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "CHARTER BUS PROS INC",
+      "contract_number": "47QMCB23D0001",
+      "vendor_uei": "YQQ3FTQ733D6",
+      "company_address": "1110 SOUTH AVE STE 24",
+      "company_city": "STATEN ISLAND",
+      "company_state": "NY",
+      "company_zip": "10314-3403",
+      "primary_contact_phone": "8004947528",
+      "primary_contact_email": "jjacovino@charterlinkz.com",
+      "website": "http://www.charterlinkz.com",
+      "contract_start_date": "2027-11-17",
+      "contract_expiration_date": "2042-11-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D0001/47QMCB23D0001_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D0001&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "CITI CONCEPTS INC",
+      "contract_number": "GS-33F-002CA",
+      "vendor_uei": "ZMCYMFMNGMC4",
+      "company_address": "6815 COOLRIDGE DR",
+      "company_city": "TEMPLE HILLS",
+      "company_state": "MD",
+      "company_zip": "20748-6947",
+      "primary_contact_phone": "2023203322",
+      "primary_contact_email": "chalabi@citiconcepts.com",
+      "website": "http://wwww.barontours.com",
+      "contract_start_date": "2029-12-02",
+      "contract_expiration_date": "2034-12-02",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F002CA/GS33F002CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-002CA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "COAST TO COAST TOURS, LLC",
+      "contract_number": "GS-33F-025BA",
+      "vendor_uei": "MS1TFLUN9KU5",
+      "company_address": "3401 NORMAN BERRY DR STE 272",
+      "company_city": "EAST POINT",
+      "company_state": "GA",
+      "company_zip": "30344-5120",
+      "primary_contact_phone": "4045434690",
+      "primary_contact_email": "wjohnson@coasttocoasttours.com",
+      "website": "http://www.coasttocoasttours.com",
+      "contract_start_date": "2029-03-24",
+      "contract_expiration_date": "2034-03-24",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F025BA/GS33F025BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-025BA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "COASTAL MEDICAL TRANSPORT INC",
+      "contract_number": "47QMCB20D0002",
+      "vendor_uei": "MW4UG1HEKPH3",
+      "company_address": "101 S GRANVILLE ST",
+      "company_city": "WINDSOR",
+      "company_state": "NC",
+      "company_zip": "27983-2148",
+      "primary_contact_phone": "8442940999",
+      "primary_contact_email": "tamarab@coastalmedtrans.com",
+      "website": "http://www.coastalmedtrans.com",
+      "contract_start_date": "2029-10-23",
+      "contract_expiration_date": "2039-10-23",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB20D0002/47QMCB20D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB20D0002&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "COMMUNITY PASTOR CARE LLC",
+      "contract_number": "GS-33F-043BA",
+      "vendor_uei": "GP9JN244EKG2",
+      "company_address": "1908 E BOUNDARY RD",
+      "company_city": "COLUMBIA",
+      "company_state": "SC",
+      "company_zip": "29223-3713",
+      "primary_contact_phone": "9129808711",
+      "primary_contact_email": "monicalamb76@gmail.com",
+      "website": "http://none",
+      "contract_start_date": "2029-09-03",
+      "contract_expiration_date": "2034-09-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F043BA/GS33F043BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-043BA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "DD ENTERPRISES, INC.",
+      "contract_number": "GS-33F-027BA",
+      "vendor_uei": "K2JGDGHQLVK9",
+      "company_address": "8016 MARLBORO PIKE",
+      "company_city": "DISTRICT HEIGHTS",
+      "company_state": "MD",
+      "company_zip": "20747-4416",
+      "primary_contact_phone": "3014205100",
+      "primary_contact_email": "mdavis@beltwaytransportation.com",
+      "website": "http://www.beltwaytransportation.com",
+      "contract_start_date": "2029-04-15",
+      "contract_expiration_date": "2034-04-15",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F027BA/GS33F027BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-027BA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "DPV TRANSPORTATION, INC",
+      "contract_number": "47QMCB25D0007",
+      "vendor_uei": "VF1AK7EY6G19",
+      "company_address": "383 W 2ND ST",
+      "company_city": "BOSTON",
+      "company_state": "MA",
+      "company_zip": "02127-1346",
+      "primary_contact_phone": "3042821828",
+      "primary_contact_email": "john.perry@dpvtransportation.com",
+      "website": "http://dpvtransportation.com",
+      "contract_start_date": "2030-03-03",
+      "contract_expiration_date": "2045-03-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D0007/47QMCB25D0007_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D0007&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "DTS WORLDWIDE TRANSPORTATION LLC",
+      "contract_number": "47QMCB25D000V",
+      "vendor_uei": "CGV4P4MXRC19",
+      "company_address": "15210 DINO DR",
+      "company_city": "BURTONSVILLE",
+      "company_state": "MD",
+      "company_zip": "20866-7551",
+      "primary_contact_phone": "3014768490",
+      "primary_contact_email": "willie@thedtsgroup.com",
+      "website": "http://www.dtstransportation.com",
+      "contract_start_date": "2030-07-30",
+      "contract_expiration_date": "2045-07-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "address_2": "STE H",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D000V/47QMCB25D000V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D000V&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "EVERYTHING PARKING, INC.",
+      "contract_number": "GS-33F-023BA",
+      "vendor_uei": "LZEZGUJN7W98",
+      "company_address": "4900 OLD PINEVILLE RD",
+      "company_city": "CHARLOTTE",
+      "company_state": "NC",
+      "company_zip": "28217-2102",
+      "primary_contact_phone": "7043771755",
+      "primary_contact_email": "hauprichtb@parkinc.com",
+      "website": "http://www.parkinc.com",
+      "contract_start_date": "2029-03-18",
+      "contract_expiration_date": "2034-03-18",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "address_2": "STE B",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F023BA/GS33F023BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-023BA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "GENTLE CARE MEDICAL TRANSPORTATION, LLC",
+      "contract_number": "47QMCB24D000R",
+      "vendor_uei": "Q2G2NJA5WMS8",
+      "company_address": "13115 ACACIA AVE",
+      "company_city": "MORENO VALLEY",
+      "company_state": "CA",
+      "company_zip": "92553-6908",
+      "primary_contact_phone": "9099797055",
+      "primary_contact_email": "gentlecaremedical@gmail.com",
+      "website": "http://www.gentlecaremedical.com",
+      "contract_start_date": "2029-09-17",
+      "contract_expiration_date": "2044-09-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D000R/47QMCB24D000R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D000R&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL CHARTER SERVICES INC",
+      "contract_number": "GS-33F-0010U",
+      "vendor_uei": "Q2D6J8KPFXF6",
+      "company_address": "939 W NORTH AVE STE 750",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60642-7142",
+      "primary_contact_phone": "3124766124",
+      "primary_contact_email": "mnovak@busbank.com",
+      "website": "http://www.busbank.com",
+      "contract_start_date": "2028-02-25",
+      "contract_expiration_date": "2028-02-25",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0010U/GS33F0010U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0010U&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "J DIAMOND, INC",
+      "contract_number": "47QMCB20D0007",
+      "vendor_uei": "J5BRTBHCEAJ8",
+      "company_address": "805 LIVE OAK DR STE 104",
+      "company_city": "CHESAPEAKE",
+      "company_state": "VA",
+      "company_zip": "23320-2672",
+      "primary_contact_phone": "7574105713",
+      "primary_contact_email": "sales@agapetourbus.com",
+      "website": "http://www.agapetourbus.com",
+      "contract_start_date": "2030-02-05",
+      "contract_expiration_date": "2040-02-05",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB20D0007/47QMCB20D0007_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB20D0007&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "J-3 PROFESSIONAL SERVICES, LLC",
+      "contract_number": "47QTCA21D006E",
+      "vendor_uei": "LKWRGBVVZHP5",
+      "company_address": "316 YELLOWWOOD DR",
+      "company_city": "SHARPSBURG",
+      "company_state": "GA",
+      "company_zip": "30277",
+      "primary_contact_phone": "4783193958",
+      "primary_contact_email": "jalbers@j-3ps.com",
+      "website": "http://www.j-3ps.com",
+      "contract_start_date": "2026-03-09",
+      "contract_expiration_date": "2041-03-09",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA21D006E/47QTCA21D006E_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QTCA21D006E/pricelist_47QTCA21D006E.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA21D006E&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "MAJOR H. SERVICES, LLC",
+      "contract_number": "47QMCB22D000A",
+      "vendor_uei": "LCADRC9CW439",
+      "company_address": "501 GIBSON DR APT 1821",
+      "company_city": "ROSEVILLE",
+      "company_state": "CA",
+      "company_zip": "95678",
+      "primary_contact_phone": "8134765777",
+      "primary_contact_email": "michelle@governmentservicesexchange.com",
+      "contract_start_date": "2027-05-17",
+      "contract_expiration_date": "2042-05-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB22D000A/47QMCB22D000A_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "METRO TRAVEL SERVICES INC",
+      "contract_number": "GS-33F-0027U",
+      "vendor_uei": "P3NQQGL9JXK4",
+      "company_address": "4312 LOCUST LN",
+      "company_city": "BETHESDA",
+      "company_state": "MD",
+      "company_zip": "20816-2522",
+      "primary_contact_phone": "2408330938",
+      "primary_contact_email": "dave@metropolitanshuttle.com",
+      "website": "http://www.metropolitanshuttle.com/gsa-advantage.php",
+      "contract_start_date": "2028-07-21",
+      "contract_expiration_date": "2028-07-21",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0027U/GS33F0027U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0027U&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "NAVIGATOR INTERNATIONAL LLC",
+      "contract_number": "GS-00F-393GA",
+      "vendor_uei": "FVHLL3VNZLN7",
+      "company_address": "301 FRANKLIN ST SE",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35801",
+      "primary_contact_phone": "3343481550",
+      "primary_contact_email": "albert.patterson@nav-int.com",
+      "website": "http://www.nav-int.com",
+      "contract_start_date": "2027-09-12",
+      "contract_expiration_date": "2037-09-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS00F393GA/GS00F393GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-00F-393GA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "NORVEL F WOOD JR",
+      "contract_number": "47QMCB25D000Y",
+      "vendor_uei": "FS2NEEDL1DQ9",
+      "company_address": "4703 WEBSTER ST",
+      "company_city": "BLADENSBURG",
+      "company_state": "MD",
+      "company_zip": "20710-1121",
+      "primary_contact_phone": "2022569719",
+      "primary_contact_email": "dctours@verizon.net",
+      "website": "http://www.washingtondctours.net",
+      "contract_start_date": "2030-08-17",
+      "contract_expiration_date": "2045-08-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D000Y/47QMCB25D000Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D000Y&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "PHOENIX BUS INC.",
+      "contract_number": "47QMCB24D000C",
+      "vendor_uei": "TLRCQH4AN1B3",
+      "company_address": "3220 37TH ST",
+      "company_city": "ORLANDO",
+      "company_state": "FL",
+      "company_zip": "32839-8690",
+      "primary_contact_phone": "4075747662",
+      "primary_contact_email": "contact@phoenixbusorlando.com",
+      "website": "http://www.phoenixbusorlando.com",
+      "contract_start_date": "2029-05-23",
+      "contract_expiration_date": "2044-05-23",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D000C/47QMCB24D000C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D000C&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "RESTON LIMOUSINE & TRAVEL SERVICE, INC.",
+      "contract_number": "GS-33F-0012U",
+      "vendor_uei": "R787R962HEJ7",
+      "company_address": "45685 ELMWOOD CT",
+      "company_city": "STERLING",
+      "company_state": "VA",
+      "company_zip": "20166-4209",
+      "primary_contact_phone": "7034780500",
+      "primary_contact_email": "gsacontracts@restonlimo.com",
+      "website": "http://www.restonlimo.com",
+      "contract_start_date": "2028-03-05",
+      "contract_expiration_date": "2028-03-05",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0012U/GS33F0012U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0012U&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "RHG GROUP, INC",
+      "contract_number": "GS-33F-0014T",
+      "vendor_uei": "DFQAWAELYFX5",
+      "company_address": "915 5TH ST NW",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20001-2501",
+      "primary_contact_phone": "2403501702",
+      "primary_contact_email": "tdominique@rhggroup.com",
+      "website": "http://www.rhggroup.coom",
+      "contract_start_date": "2027-04-25",
+      "contract_expiration_date": "2027-04-25",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0014T/GS33F0014T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0014T&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "SHAH CORPORATION",
+      "contract_number": "47QMCB25D000B",
+      "vendor_uei": "DSLRBE4NC9Z4",
+      "company_address": "6605 SPRING RD",
+      "company_city": "SPRINGFIELD",
+      "company_state": "VA",
+      "company_zip": "22150-3530",
+      "primary_contact_phone": "5713145888",
+      "primary_contact_email": "NASIRSHAH16@YAHOO.COM",
+      "website": "http://www.shahlimousine.com",
+      "contract_start_date": "2030-05-12",
+      "contract_expiration_date": "2045-05-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D000B/47QMCB25D000B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D000B&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "SUNNY'S COACH SERVICES, INC.",
+      "contract_number": "GS-33F-0010Y",
+      "vendor_uei": "JXMNZSDG27C8",
+      "company_address": "23765 PEBBLE RUN PL",
+      "company_city": "STERLING",
+      "company_state": "VA",
+      "company_zip": "20166-4456",
+      "primary_contact_phone": "7034082363",
+      "primary_contact_email": "john.tincher@sunnylimo.com",
+      "website": "http://www.sunnylimo.com",
+      "contract_start_date": "2026-12-12",
+      "contract_expiration_date": "2031-12-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0010Y/GS33F0010Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0010Y&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "TAC TRANSPORTATION INC",
+      "contract_number": "47QMCB24D0006",
+      "vendor_uei": "VJUGPP8AMUM3",
+      "company_address": "1570 SW LAKE RD",
+      "company_city": "REDMOND",
+      "company_state": "OR",
+      "company_zip": "97756-6771",
+      "primary_contact_phone": "5419045753",
+      "primary_contact_email": "anthony.ferro@pacificcrestcharters.com",
+      "website": "http://www.pacificcrestbuslines.net",
+      "contract_start_date": "2029-02-14",
+      "contract_expiration_date": "2044-02-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D0006/47QMCB24D0006_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D0006&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "TAYLOR MADE TRANSPORTATION SERVICES, INC.",
+      "contract_number": "GS-33F-0011X",
+      "vendor_uei": "TFLHT2E43LV5",
+      "company_address": "2901 DRUID PARK DR STE 206",
+      "company_city": "BALTIMORE",
+      "company_state": "MD",
+      "company_zip": "21215-8188",
+      "primary_contact_phone": "4103831701",
+      "primary_contact_email": "theart85@aol.com",
+      "website": "http://www.tmtransportation.com",
+      "contract_start_date": "2026-01-24",
+      "contract_expiration_date": "2031-01-24",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0011X/GS33F0011X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0011X&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "TRANSPORTATION MANAGEMENT SERVICES INC",
+      "contract_number": "GS-33F-0017U",
+      "vendor_uei": "NAXAZUBNBPJ4",
+      "company_address": "46 S MARKET ST # 2",
+      "company_city": "FREDERICK",
+      "company_state": "MD",
+      "company_zip": "21701-5525",
+      "primary_contact_phone": "5712218275",
+      "primary_contact_email": "scarney@tms.com",
+      "website": "http://www.tms.com",
+      "contract_start_date": "2028-05-22",
+      "contract_expiration_date": "2028-05-22",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0017U/GS33F0017U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0017U&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "US BUS CHARTER & LIMO INC",
+      "contract_number": "GS-33F-026AA",
+      "vendor_uei": "QHMSP2T7E425",
+      "company_address": "960 HOLMDEL RD STE 1",
+      "company_city": "HOLMDEL",
+      "company_state": "NJ",
+      "company_zip": "07733-2100",
+      "primary_contact_phone": "6464799592",
+      "primary_contact_email": "ETelmany@uscoachwaysinc.com",
+      "website": "http://www.uscoachways.com",
+      "contract_start_date": "2028-01-07",
+      "contract_expiration_date": "2033-01-07",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F026AA/GS33F026AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-026AA&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "US&S INC",
+      "contract_number": "47QSHA23D000V",
+      "vendor_uei": "G5ZNNT3951L3",
+      "company_address": "281 FAIRFOREST WAY",
+      "company_city": "GREENVILLE",
+      "company_state": "SC",
+      "company_zip": "29607-5731",
+      "primary_contact_phone": "8642338035",
+      "primary_contact_email": "ehagins@usands.com",
+      "website": "http://www.usands.com",
+      "contract_start_date": "2028-04-24",
+      "contract_expiration_date": "2043-04-24",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA23D000V/47QSHA23D000V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA23D000V&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "USA GUIDED TOURS DC LLC",
+      "contract_number": "47QMCB23D0003",
+      "vendor_uei": "W2NRA9MN2HF3",
+      "company_address": "6231 LEESBURG PIKE",
+      "company_city": "FALLS CHURCH",
+      "company_state": "VA",
+      "company_zip": "22022-2102",
+      "primary_contact_phone": "2022880032",
+      "primary_contact_email": "rshakir@usaguidedtours.com",
+      "website": "http://usaguidedtours.com",
+      "contract_start_date": "2028-01-03",
+      "contract_expiration_date": "2043-01-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "address_2": "STE 306",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D0003/47QMCB23D0003_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D0003&sin=485&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "485"
+      ],
+      "primary_sin": "485",
+      "schedule_number": "MAS",
+      "company_name": "VESPER MEDICAL TRANSPORT OF MARYLAND LLC",
+      "contract_number": "47QMCB23D0004",
+      "vendor_uei": "FB59XMFXZEZ2",
+      "company_address": "8408 ADLER CT",
+      "company_city": "MILLERSVILLE",
+      "company_state": "MD",
+      "company_zip": "21108",
+      "primary_contact_phone": "3304958888",
+      "primary_contact_email": "susalla@phimedicine.com",
+      "website": "https://dcambulance.com/",
+      "contract_start_date": "2028-01-12",
+      "contract_expiration_date": "2043-01-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 485.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D0004/47QMCB23D0004_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D0004&sin=485&src=elib&app=cat"
+      }
+    }
+  ]
+}

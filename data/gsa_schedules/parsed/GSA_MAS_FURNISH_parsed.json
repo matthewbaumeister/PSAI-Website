@@ -1,0 +1,781 @@
+{
+  "sin_code": "FURNISH",
+  "file_name": "GSA_MAS_FURNISH_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:55.595016",
+  "sheets": {
+    "2025_11_05_11_09_49": {
+      "row_count": 31,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "AA ACCENTS, LIMITED",
+      "contract_number": "47QSMS06D0001",
+      "vendor_uei": "ZJKMM79K2YR7",
+      "company_address": "2715 JACKSON DR",
+      "company_city": "WOODRIDGE",
+      "company_state": "IL",
+      "company_zip": "60517-1036",
+      "primary_contact_phone": "6309649008",
+      "primary_contact_email": "patat2715@comcast.net",
+      "website": "http://www.artisticaccentsonline.com",
+      "contract_start_date": "2026-01-31",
+      "contract_expiration_date": "2026-01-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "ACCENT ART & FRAME LLC",
+      "contract_number": "47QSMS25D007J",
+      "vendor_uei": "DSLKPC8JUD33",
+      "company_address": "9932 CLEARFIELD AVE",
+      "company_city": "VIENNA",
+      "company_state": "VA",
+      "company_zip": "22181-5311",
+      "primary_contact_phone": "4102125117",
+      "primary_contact_email": "paul@accentartandframe.com",
+      "website": "http://www.accentartandframe.com",
+      "contract_start_date": "2029-11-13",
+      "contract_expiration_date": "2044-11-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D007J&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "ACCENT DESIGNS LLC",
+      "contract_number": "47QSMS11D0004",
+      "vendor_uei": "RA93L19R3AS9",
+      "company_address": "13976 BALTIMORE AVE STE 127",
+      "company_city": "LAUREL",
+      "company_state": "MD",
+      "company_zip": "20707-5086",
+      "primary_contact_phone": "3012440652",
+      "primary_contact_email": "farrisc@amshades.com",
+      "website": "http://www.amshades.com",
+      "contract_start_date": "2025-12-14",
+      "contract_expiration_date": "2030-12-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS11D0004/47QSMS11D0004_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS11D0004&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "ALUMA DESIGNS LLC",
+      "contract_number": "47QSMA22D08PF",
+      "vendor_uei": "FLNBNKH9WDX5",
+      "company_address": "400 N TARRAGONA ST",
+      "company_city": "PENSACOLA",
+      "company_state": "FL",
+      "company_zip": "32501-3965",
+      "primary_contact_phone": "8509324064",
+      "primary_contact_email": "david@alumadesigns.com",
+      "website": "http://www.alumadesigns.com",
+      "contract_start_date": "2027-03-20",
+      "contract_expiration_date": "2042-03-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "address_2": "STE 633",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08PF/47QSMA22D08PF_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08PF&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "ARCH DESIGN INC",
+      "contract_number": "47QSMS21D0003",
+      "vendor_uei": "CD25KJGCBDE5",
+      "company_address": "1188 WALTERS WAY LN",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63132-2200",
+      "primary_contact_phone": "8669166484",
+      "primary_contact_email": "josh@gsascheduleservices.com",
+      "website": "arch-design.com",
+      "contract_start_date": "2026-07-25",
+      "contract_expiration_date": "2041-07-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "ARKANSAS LAMP MANUFACTURING CO",
+      "contract_number": "47QSMS19D0002",
+      "vendor_uei": "DBNXFLF19EG8",
+      "company_address": "1701 S 28TH ST",
+      "company_city": "VAN BUREN",
+      "company_state": "AR",
+      "company_zip": "72956-6268",
+      "primary_contact_phone": "4794740876",
+      "primary_contact_email": "customerservice@arkansaslighting.com",
+      "website": "https://www.arkansaslighting.com",
+      "contract_start_date": "2029-03-11",
+      "contract_expiration_date": "2039-03-11",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS19D0002/47QSMS19D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS19D0002&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "ART LINE WHOLESALERS, INC",
+      "contract_number": "47QSMS15D0004",
+      "vendor_uei": "KEDHVJEFSQV4",
+      "company_address": "1 MIDLAND AVE",
+      "company_city": "HICKSVILLE",
+      "company_state": "NY",
+      "company_zip": "11801-4376",
+      "primary_contact_phone": "8006786540",
+      "primary_contact_email": "artline@spec.net",
+      "website": "http://www.artlinewholesalers.com",
+      "contract_start_date": "2030-07-29",
+      "contract_expiration_date": "2035-07-29",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "CALDWELL'S WINDOWARE, INC",
+      "contract_number": "47QSMS17D0004",
+      "vendor_uei": "EZDKVX24SPD8",
+      "company_address": "166 WABASH ST",
+      "company_city": "PITTSBURGH",
+      "company_state": "PA",
+      "company_zip": "15220-5404",
+      "primary_contact_phone": "4129221132",
+      "primary_contact_email": "joyce@caldwellsww.com",
+      "website": "www.caldwellsww.com",
+      "contract_start_date": "2027-09-02",
+      "contract_expiration_date": "2037-09-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "CASTAWAY YACHT SALES LLC",
+      "contract_number": "47QSMS25D003K",
+      "vendor_uei": "YUA2JUA99LR3",
+      "company_address": "5310 E PORT CLINTON EASTERN RD",
+      "company_city": "PORT CLINTON",
+      "company_state": "OH",
+      "company_zip": "43452",
+      "primary_contact_phone": "4197322938",
+      "primary_contact_email": "rick@castawayyachtsales.com",
+      "website": "http://www.castawayyachtsales.com",
+      "contract_start_date": "2030-01-23",
+      "contract_expiration_date": "2045-01-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D003K/47QSMS25D003K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D003K&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "CREATIVE POSTERS INC",
+      "contract_number": "47QSMS15D0003",
+      "vendor_uei": "LZLKKFH3ZFN3",
+      "company_address": "11460 EDMONSTON RD # B",
+      "company_city": "BELTSVILLE",
+      "company_state": "MD",
+      "company_zip": "20705-1731",
+      "primary_contact_phone": "3013453700",
+      "primary_contact_email": "creative@creativesignage.com",
+      "website": "www.creativesignage.com",
+      "contract_start_date": "2030-05-14",
+      "contract_expiration_date": "2035-05-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "CREST CRAFT CO",
+      "contract_number": "47QSMS25D00C2",
+      "vendor_uei": "HDALX3EE8BQ9",
+      "company_address": "4460 LAKE FOREST DR",
+      "company_city": "BLUE ASH",
+      "company_state": "OH",
+      "company_zip": "45242-3755",
+      "primary_contact_phone": "5132714858",
+      "primary_contact_email": "BRAD@CRESTCRAFT.COM",
+      "website": "https://www.crestcraft.com/",
+      "contract_start_date": "2030-09-08",
+      "contract_expiration_date": "2045-09-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "address_2": "STE 232",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00C2&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "CUBE CARE CO",
+      "contract_number": "47QSMS10D0002",
+      "vendor_uei": "TVKEYKW3JFN3",
+      "company_address": "3359 NW 154TH TER",
+      "company_city": "OPA LOCKA",
+      "company_state": "FL",
+      "company_zip": "33054-2465",
+      "primary_contact_phone": "3055568700",
+      "primary_contact_email": "susana@cubecare.com",
+      "website": "https://www.cubecare.com",
+      "contract_start_date": "2030-04-08",
+      "contract_expiration_date": "2030-04-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "DCI INC",
+      "contract_number": "47QSMA18D0004",
+      "vendor_uei": "X1YTEP3SRVN8",
+      "company_address": "265 SOUTH MAIN ST",
+      "company_city": "LISBON",
+      "company_state": "NH",
+      "company_zip": "03585-6217",
+      "primary_contact_phone": "8005528286",
+      "primary_contact_email": "sales@dcifurn.com",
+      "website": "http://www.dcifurn.com",
+      "contract_start_date": "2027-10-15",
+      "contract_expiration_date": "2037-10-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D0004/47QSMA18D0004_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA18D0004/pricelist_47QSMA18D0004.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D0004&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "GLENMAR DRAPERIES INC",
+      "contract_number": "47QSMS16D0001",
+      "vendor_uei": "JZCGD66J7AG1",
+      "company_address": "7915-A OLD BRANCH AVE",
+      "company_city": "CLINTON",
+      "company_state": "MD",
+      "company_zip": "20735-1636",
+      "primary_contact_phone": "3018685986",
+      "primary_contact_email": "sales@glenmardraperies.com",
+      "website": "www.Glenmardraperies.com",
+      "contract_start_date": "2026-06-15",
+      "contract_expiration_date": "2036-06-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "ICONIC PINEAPPLE LLC",
+      "contract_number": "47QSMS25D0085",
+      "vendor_uei": "PQJLUXWN3TC5",
+      "company_address": "3015 STATE ROUTE 32",
+      "company_city": "WEST FRIENDSHIP",
+      "company_state": "MD",
+      "company_zip": "21794-9301",
+      "primary_contact_phone": "4109108309",
+      "primary_contact_email": "melissa@iconicpineapple.com",
+      "website": "www.IconicPineapple.com",
+      "contract_start_date": "2030-02-17",
+      "contract_expiration_date": "2045-02-17",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "KONCEPT TECHNOLOGIES INC.",
+      "contract_number": "47QSMS17D0003",
+      "vendor_uei": "P6A3KW5VABP9",
+      "company_address": "429 E HUNTINGTON DR",
+      "company_city": "MONROVIA",
+      "company_state": "CA",
+      "company_zip": "91016-3632",
+      "primary_contact_phone": "3232618999",
+      "primary_contact_email": "Doug.Benway@koncept.com",
+      "website": "http://www.koncept.com",
+      "contract_start_date": "2027-06-27",
+      "contract_expiration_date": "2037-06-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS17D0003/47QSMS17D0003_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS17D0003&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "LORTON GROUP, LLC.",
+      "contract_number": "47QSMS17D0002",
+      "vendor_uei": "XJMKF2C2J9B9",
+      "company_address": "41 COTTONWOOD CIR",
+      "company_city": "BRECKENRIDGE",
+      "company_state": "CO",
+      "company_zip": "80424-5360",
+      "primary_contact_phone": "5613769719",
+      "primary_contact_email": "mhatton@lortongroup.com",
+      "website": "www.lortongroup.com",
+      "contract_start_date": "2027-08-02",
+      "contract_expiration_date": "2037-08-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "OSTYN NEWMAN INC",
+      "contract_number": "GS-27F-0026X",
+      "vendor_uei": "H5A7MGBRF8Z7",
+      "company_address": "62 W EL INDIO",
+      "company_city": "GREEN VALLEY",
+      "company_state": "AZ",
+      "company_zip": "85614-3814",
+      "primary_contact_phone": "8883878782",
+      "primary_contact_email": "Gov@Ostyn-Newman.com",
+      "website": "http://Ostyn-Newman.com",
+      "contract_start_date": "2026-01-23",
+      "contract_expiration_date": "2031-01-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0026X/GS27F0026X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0026X&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "PETERSON PICTURE FRAME CO INC",
+      "contract_number": "47QSMA23D08Q4",
+      "vendor_uei": "J2M7ERCQAGL4",
+      "company_address": "2720 W BELMONT AVE",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60618-5915",
+      "primary_contact_phone": "7734638888",
+      "primary_contact_email": "mike@peterson-picture.com",
+      "website": "http://www.peterson-picture.com",
+      "contract_start_date": "2028-06-20",
+      "contract_expiration_date": "2043-06-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08Q4/47QSMA23D08Q4_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08Q4&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "R.A.O. CONTRACT SALES OF NEW YORK, INC",
+      "contract_number": "47QSMS16D0002",
+      "vendor_uei": "KAN8GJEN1HW7",
+      "company_address": "94 FULTON ST STE 4",
+      "company_city": "PATERSON",
+      "company_state": "NJ",
+      "company_zip": "07501-1200",
+      "primary_contact_phone": "2016521500",
+      "primary_contact_email": "seth@rao.com",
+      "website": "http://www.rao.com",
+      "contract_start_date": "2030-10-21",
+      "contract_expiration_date": "2035-10-21",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "RICHERT INC",
+      "contract_number": "47QSMS19D0001",
+      "vendor_uei": "DNFSG94GNJF7",
+      "company_address": "12124 POPES HEAD RD",
+      "company_city": "FAIRFAX",
+      "company_state": "VA",
+      "company_zip": "22030-5812",
+      "primary_contact_phone": "7036312727",
+      "primary_contact_email": "arichert@tradeproductscorp.com",
+      "website": "http://www.accentdrapery.com",
+      "contract_start_date": "2029-06-12",
+      "contract_expiration_date": "2039-06-12",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "RMP ASSOCIATES, INC.",
+      "contract_number": "47QSMA22D08PX",
+      "vendor_uei": "KEGLFBX58TR8",
+      "company_address": "2590 SIDNEY LANIER DR",
+      "company_city": "BRUNSWICK",
+      "company_state": "GA",
+      "company_zip": "31525-6809",
+      "primary_contact_phone": "8023772363",
+      "primary_contact_email": "orders@rmpassociates.com",
+      "website": "https://www.rmpassociates.com/",
+      "contract_start_date": "2027-05-09",
+      "contract_expiration_date": "2042-05-09",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08PX/47QSMA22D08PX_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08PX&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "THE ART COLLECTOR",
+      "contract_number": "47QSMS08D0003",
+      "vendor_uei": "DBADL25NPPV8",
+      "company_address": "4151 TAYLOR ST",
+      "company_city": "SAN DIEGO",
+      "company_state": "CA",
+      "company_zip": "92110",
+      "primary_contact_phone": "6192993232",
+      "primary_contact_email": "daniel@jvaartgroup.com",
+      "website": "http://www.theartcollectorgov.com",
+      "contract_start_date": "2027-12-09",
+      "contract_expiration_date": "2027-12-09",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS08D0003/47QSMS08D0003_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS08D0003&sin=FURNISH&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "THE GREAT AMERICAN PICTURE COMPANY, INC.",
+      "contract_number": "47QSMS15D0002",
+      "vendor_uei": "DE5PBANCAJ28",
+      "company_address": "23 NORFOLK AVE",
+      "company_city": "SOUTH EASTON",
+      "company_state": "MA",
+      "company_zip": "02375-1187",
+      "primary_contact_phone": "7813412900",
+      "primary_contact_email": "curt@greatamericanpicture.com",
+      "website": "HTTP://WWW.GREATAMERICANART.COM",
+      "contract_start_date": "2030-04-01",
+      "contract_expiration_date": "2035-04-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "FURNISH"
+      ],
+      "primary_sin": "FURNISH",
+      "schedule_number": "MAS",
+      "company_name": "THOMAS W RAFTERY INC",
+      "contract_number": "47QSMS14D0002",
+      "vendor_uei": "DPU7NDUTN573",
+      "company_address": "1055 BROAD ST",
+      "company_city": "HARTFORD",
+      "company_state": "CT",
+      "company_zip": "06106-2310",
+      "primary_contact_phone": "8002432887",
+      "primary_contact_email": "gary@twraftery.com",
+      "website": "http://www.twraftery.com",
+      "contract_start_date": "2029-05-21",
+      "contract_expiration_date": "2034-05-21",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Household, Dormitory & Quarters Furniture",
+        "source": "MAS",
+        "category": "FURNISH ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    }
+  ]
+}

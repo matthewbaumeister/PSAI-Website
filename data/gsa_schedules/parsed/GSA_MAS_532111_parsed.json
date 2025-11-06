@@ -1,0 +1,524 @@
+{
+  "sin_code": "532111",
+  "file_name": "GSA_MAS_532111_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:53.684479",
+  "sheets": {
+    "2025_11_05_11_33_58": {
+      "row_count": 22,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "ACME AUTO LEASING LLC",
+      "contract_number": "47QMCA21D000G",
+      "vendor_uei": "J69HN3Q4HJN7",
+      "company_address": "440 WASHINGTON AVE",
+      "company_city": "NORTH HAVEN",
+      "company_state": "CT",
+      "company_zip": "06473-1311",
+      "primary_contact_phone": "2032346850",
+      "primary_contact_email": "gsa@acmeautoleasing.com",
+      "website": "http://www.acmeautoleasing.com",
+      "contract_start_date": "2030-12-07",
+      "contract_expiration_date": "2040-12-07",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA21D000G/47QMCA21D000G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA21D000G&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "ALL CAR LEASING, INC.",
+      "contract_number": "GS-33F-039BA",
+      "vendor_uei": "DBVJC4TLZ7L3",
+      "company_address": "13900 LAUREL LAKES AVE STE 100",
+      "company_city": "LAUREL",
+      "company_state": "MD",
+      "company_zip": "20707-5091",
+      "primary_contact_phone": "2405811346",
+      "primary_contact_email": "gsa-rsvp@nextcar.com",
+      "website": "http://www.nextcarrental.com/gsa.htm",
+      "contract_start_date": "2029-08-21",
+      "contract_expiration_date": "2034-08-21",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F039BA/GS33F039BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-039BA&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "AUTOMAX RENT A CAR INC",
+      "contract_number": "47QMCB21D0006",
+      "vendor_uei": "K1CHXVUTN6W5",
+      "company_address": "100 S MORNINGSIDE DR",
+      "company_city": "CARTERSVILLE",
+      "company_state": "GA",
+      "company_zip": "30121-3636",
+      "primary_contact_phone": "6784104890",
+      "primary_contact_email": "meryl@busmaxrental.com",
+      "website": "http://busmaxrental.com",
+      "contract_start_date": "2031-01-04",
+      "contract_expiration_date": "2041-01-04",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB21D0006/47QMCB21D0006_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB21D0006&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "AVIS RENT A CAR SYSTEM, LLC",
+      "contract_number": "GS-33F-0022S",
+      "vendor_uei": "ZAL6KMAYEGG3",
+      "company_address": "379 INTERPACE PKWY",
+      "company_city": "PARSIPPANY",
+      "company_state": "NJ",
+      "company_zip": "07054-1131",
+      "primary_contact_phone": "6896886706",
+      "primary_contact_email": "sandro.dicastro@avisbudget.com",
+      "website": "http://www.avis.com",
+      "contract_start_date": "2026-08-03",
+      "contract_expiration_date": "2026-08-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0022S/GS33F0022S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0022S&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "BUDGET RENT A CAR SYSTEM, INC.",
+      "contract_number": "GS-33F-018AA",
+      "vendor_uei": "KPUJT41C1KU9",
+      "company_address": "379 INTERPACE PKWY",
+      "company_city": "PARSIPPANY",
+      "company_state": "NJ",
+      "company_zip": "07054-1131",
+      "primary_contact_phone": "3013561663",
+      "primary_contact_email": "rita.schols-deen@avisbudget.com",
+      "website": "http://www.budget.com",
+      "contract_start_date": "2027-11-15",
+      "contract_expiration_date": "2032-11-15",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F018AA/GS33F018AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-018AA&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "BUSH FIRE SERVICES INC",
+      "contract_number": "GS-33F-013GA",
+      "vendor_uei": "WSHKNPTJZ2C5",
+      "company_address": "305 FLAT LICK RD",
+      "company_city": "LONDON",
+      "company_state": "KY",
+      "company_zip": "40744-6811",
+      "primary_contact_phone": "6068642244",
+      "primary_contact_email": "phil.bfs360@gmail.com",
+      "website": "http://www.bushfireservices.com",
+      "contract_start_date": "2027-04-12",
+      "contract_expiration_date": "2037-04-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F013GA/GS33F013GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-013GA&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "DOLLAR THRIFTY AUTOMOTIVE GROUP INC",
+      "contract_number": "47QMCB25D000D",
+      "vendor_uei": "F5KJSZQQJ185",
+      "company_address": "8501 WILLIAMS RD",
+      "company_city": "ESTERO",
+      "company_state": "FL",
+      "company_zip": "33928-3325",
+      "primary_contact_phone": "9545297931",
+      "primary_contact_email": "mderosa@hertz.com",
+      "website": "http://www.dollar.com",
+      "contract_start_date": "2030-05-14",
+      "contract_expiration_date": "2045-05-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D000D/47QMCB25D000D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D000D&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "EAN HOLDINGS, LLC",
+      "contract_number": "47QMCB25D000F",
+      "vendor_uei": "R81NZZ21QP95",
+      "company_address": "600 CORPORATE PARK DR",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63105-4204",
+      "primary_contact_phone": "3149283109",
+      "primary_contact_email": "melissa.l.soriano@ehi.com",
+      "website": "http://www.enterprise.com/gsa",
+      "contract_start_date": "2030-05-27",
+      "contract_expiration_date": "2045-05-27",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D000F/47QMCB25D000F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D000F&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "EAN HOLDINGS, LLC",
+      "contract_number": "GS-33F-0015S",
+      "vendor_uei": "R81NZZ21QP95",
+      "company_address": "600 CORPORATE PARK DR",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63105-4204",
+      "primary_contact_phone": "3149282618",
+      "primary_contact_email": "Bryan.J.Scott@em.com",
+      "website": "http://www.enterprise.com/gsa",
+      "contract_start_date": "2026-04-24",
+      "contract_expiration_date": "2026-04-24",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "closed___for___new___award": "Yes",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0015S/GS33F0015S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0015S&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "HERC RENTALS INC",
+      "contract_number": "47QMCB19D000G",
+      "vendor_uei": "CEJGFN29N4L1",
+      "company_address": "27500 RIVERVIEW CENTER BLVD STE",
+      "company_city": "BONITA SPRINGS",
+      "company_state": "FL",
+      "company_zip": "34134-4328",
+      "primary_contact_phone": "2393011344",
+      "primary_contact_email": "richard.shugg@hercrentals.com",
+      "website": "http://www.hercrentals.com",
+      "contract_start_date": "2029-03-14",
+      "contract_expiration_date": "2039-03-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB19D000G/47QMCB19D000G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB19D000G&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "HERTZ CORPORATION (THE)",
+      "contract_number": "GS-33F-007GA",
+      "vendor_uei": "FH6CJHAFXV66",
+      "company_address": "8501 WILLIAMS RD",
+      "company_city": "ESTERO",
+      "company_state": "FL",
+      "company_zip": "33928-3325",
+      "primary_contact_phone": "9545297931",
+      "primary_contact_email": "MDEROSA@HERTZ.COM",
+      "website": "http://www.hertz.com",
+      "contract_start_date": "2027-01-29",
+      "contract_expiration_date": "2037-01-29",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F007GA/GS33F007GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-007GA&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "MATRAN, INC.",
+      "contract_number": "GS-33F-0039X",
+      "vendor_uei": "NKQVDSXM3913",
+      "company_address": "14655 PROSPECT AVE",
+      "company_city": "KANSAS CITY",
+      "company_state": "MO",
+      "company_zip": "64146-1900",
+      "primary_contact_phone": "8007833613",
+      "primary_contact_email": "amym@masterstransportation.com",
+      "website": "https://www.masterstransportation.com",
+      "contract_start_date": "2026-05-30",
+      "contract_expiration_date": "2031-05-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0039X/GS33F0039X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0039X&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "PREMIER LEASING, INC.",
+      "contract_number": "GS-33F-0016V",
+      "vendor_uei": "KM98KLN4JXE9",
+      "company_address": "3431 5TH AVE",
+      "company_city": "LAKE CHARLES",
+      "company_state": "LA",
+      "company_zip": "70607-2127",
+      "primary_contact_phone": "3374791333",
+      "primary_contact_email": "deanna.usaveauto@yahoo.com",
+      "website": "http://premierleasing@hotmail.com",
+      "contract_start_date": "2029-02-01",
+      "contract_expiration_date": "2029-02-01",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0016V/GS33F0016V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0016V&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "RYDER TRUCK RENTAL, INC.",
+      "contract_number": "GS-33F-0023T",
+      "vendor_uei": "SKJMJYK7NLP1",
+      "company_address": "11690 NW 105TH ST",
+      "company_city": "MIAMI",
+      "company_state": "FL",
+      "company_zip": "33178-1103",
+      "primary_contact_phone": "8643138447",
+      "primary_contact_email": "James_Daley@Ryder.com",
+      "website": "http://www.ryder.com",
+      "contract_start_date": "2027-08-09",
+      "contract_expiration_date": "2027-08-09",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0023T/GS33F0023T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0023T&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "SGK GLOBAL SERVICES LLC",
+      "contract_number": "47QMCB19D000K",
+      "vendor_uei": "HVUSQM32DB65",
+      "company_address": "4910 WRIGHT RD STE 160",
+      "company_city": "STAFFORD",
+      "company_state": "TX",
+      "company_zip": "77477-4120",
+      "primary_contact_phone": "2817029115",
+      "primary_contact_email": "uche@sgkglobal.com",
+      "website": "http://autolinkrental.com",
+      "contract_start_date": "2029-06-05",
+      "contract_expiration_date": "2039-06-05",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB19D000K/47QMCB19D000K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB19D000K&sin=532111&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532111"
+      ],
+      "primary_sin": "532111",
+      "schedule_number": "MAS",
+      "company_name": "SUMMIT FLEET MANAGEMENT, LLC",
+      "contract_number": "47QMCB19D000J",
+      "vendor_uei": "LQ63H1KJGJL4",
+      "company_address": "6975 S UNION PARK CTR STE 500",
+      "company_city": "MIDVALE",
+      "company_state": "UT",
+      "company_zip": "84047-6026",
+      "primary_contact_phone": "8018198826",
+      "primary_contact_email": "bbassett@summitfleet.com",
+      "website": "https://summitfleet.com/about/industries/government/",
+      "contract_start_date": "2029-05-08",
+      "contract_expiration_date": "2039-05-08",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": 532111.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB19D000J/47QMCB19D000J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB19D000J&sin=532111&src=elib&app=cat"
+      }
+    }
+  ]
+}

@@ -1,0 +1,264 @@
+{
+  "sin_code": "4PL",
+  "file_name": "GSA_MAS_4PL_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:50.336884",
+  "sheets": {
+    "2025_11_05_11_19_04": {
+      "row_count": 13,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "4PL"
+      ],
+      "primary_sin": "4PL",
+      "schedule_number": "MAS",
+      "company_name": "LC INDUSTRIES INC",
+      "contract_number": "47QSEA20D001S",
+      "vendor_uei": "SWFSJMS9EHB2",
+      "company_address": "4500 EMPEROR BLVD",
+      "company_city": "DURHAM",
+      "company_state": "NC",
+      "company_zip": "27703-8420",
+      "primary_contact_phone": "9195968277",
+      "primary_contact_email": "GOVT.SALES@LC-IND.COM",
+      "website": "http://buylci.com",
+      "contract_start_date": "2029-12-01",
+      "contract_expiration_date": "2039-12-01",
+      "additional_data": {
+        "large_category": "Miscellaneous ",
+        "sub_category": " Complementary Special Item Numbers (SINs)",
+        "source": "MAS",
+        "category": "4PL ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D001S/47QSEA20D001S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D001S&sin=4PL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "4PL"
+      ],
+      "primary_sin": "4PL",
+      "schedule_number": "MAS",
+      "company_name": "MSC INDUSTRIAL DIRECT CO., INC.",
+      "contract_number": "47QSHA18D002C",
+      "vendor_uei": "NTP7NWDS9Y49",
+      "company_address": "515 BROADHOLLOW RD STE 1000",
+      "company_city": "MELVILLE",
+      "company_state": "NY",
+      "company_zip": "11747-3739",
+      "primary_contact_phone": "8009701173",
+      "primary_contact_email": "GovTeam@mscdirect.com",
+      "website": "https://www.mscdirect.com",
+      "contract_start_date": "2028-07-26",
+      "contract_expiration_date": "2038-07-26",
+      "additional_data": {
+        "large_category": "Miscellaneous ",
+        "sub_category": " Complementary Special Item Numbers (SINs)",
+        "source": "MAS",
+        "category": "4PL ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D002C/47QSHA18D002C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D002C&sin=4PL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "4PL"
+      ],
+      "primary_sin": "4PL",
+      "schedule_number": "MAS",
+      "company_name": "NOBLE SUPPLY & LOGISTICS, LLC",
+      "contract_number": "47QSEA19D00AY",
+      "vendor_uei": "YLE5AAYNVPK6",
+      "company_address": "1 MARINA PARK DRIVE, SUITE 220",
+      "company_city": "BOSTON",
+      "company_state": "MA",
+      "company_zip": "02210-1873",
+      "primary_contact_phone": "7818711911",
+      "primary_contact_email": "support@noble.com",
+      "website": "http://www.noble.com",
+      "contract_start_date": "2029-08-04",
+      "contract_expiration_date": "2039-08-04",
+      "additional_data": {
+        "large_category": "Miscellaneous ",
+        "sub_category": " Complementary Special Item Numbers (SINs)",
+        "source": "MAS",
+        "category": "4PL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA19D00AY/47QSEA19D00AY_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA19D00AY&sin=4PL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "4PL"
+      ],
+      "primary_sin": "4PL",
+      "schedule_number": "MAS",
+      "company_name": "NOBLE SUPPLY & LOGISTICS, LLC",
+      "contract_number": "47QSHA19D004Z",
+      "vendor_uei": "YLE5AAYNVPK6",
+      "company_address": "1 MARINA PARK DRIVE, SUITE 220",
+      "company_city": "BOSTON",
+      "company_state": "MA",
+      "company_zip": "02210-1873",
+      "primary_contact_phone": "7818711911",
+      "primary_contact_email": "govteam@noble.com",
+      "website": "http://www.noble.com",
+      "contract_start_date": "2029-08-04",
+      "contract_expiration_date": "2039-08-04",
+      "additional_data": {
+        "large_category": "Miscellaneous ",
+        "sub_category": " Complementary Special Item Numbers (SINs)",
+        "source": "MAS",
+        "category": "4PL ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D004Z/47QSHA19D004Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D004Z&sin=4PL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "4PL"
+      ],
+      "primary_sin": "4PL",
+      "schedule_number": "MAS",
+      "company_name": "ODP BUSINESS SOLUTIONS, LLC",
+      "contract_number": "47QSEA20D005Q",
+      "vendor_uei": "DL92XLEBJHE1",
+      "company_address": "6600 N MILITARY TRL",
+      "company_city": "BOCA RATON",
+      "company_state": "FL",
+      "company_zip": "33496-2434",
+      "primary_contact_phone": "8882633423",
+      "primary_contact_email": "bill.murray@odpbusiness.com",
+      "website": "http://www.odpbusiness.com/federal",
+      "contract_start_date": "2030-04-08",
+      "contract_expiration_date": "2040-04-08",
+      "additional_data": {
+        "large_category": "Miscellaneous ",
+        "sub_category": " Complementary Special Item Numbers (SINs)",
+        "source": "MAS",
+        "category": "4PL ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D005Q/47QSEA20D005Q_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSEA20D005Q/pricelist_47QSEA20D005Q.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D005Q&sin=4PL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "4PL"
+      ],
+      "primary_sin": "4PL",
+      "schedule_number": "MAS",
+      "company_name": "OSC SOLUTIONS INC",
+      "contract_number": "47QSHA18D0023",
+      "vendor_uei": "U15RUNNKM2W7",
+      "company_address": "1100 NORTHPOINT PKWY",
+      "company_city": "WEST PALM BEACH",
+      "company_state": "FL",
+      "company_zip": "33407-1937",
+      "primary_contact_phone": "5616834090",
+      "primary_contact_email": "service@oscmro.com",
+      "website": "http://www.oscmro.com",
+      "contract_start_date": "2028-06-30",
+      "contract_expiration_date": "2038-06-30",
+      "additional_data": {
+        "large_category": "Miscellaneous ",
+        "sub_category": " Complementary Special Item Numbers (SINs)",
+        "source": "MAS",
+        "category": "4PL ",
+        "address_2": "STE 200",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D0023/47QSHA18D0023_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D0023&sin=4PL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "4PL"
+      ],
+      "primary_sin": "4PL",
+      "schedule_number": "MAS",
+      "company_name": "W.W. GRAINGER, INC.",
+      "contract_number": "47QSHA18D000G",
+      "vendor_uei": "DBQGN324ULK3",
+      "company_address": "100 GRAINGER PARKWAY",
+      "company_city": "LAKE FOREST",
+      "company_state": "IL",
+      "company_zip": "60045-5202",
+      "primary_contact_phone": "8004688326",
+      "primary_contact_email": "GDC@grainger.com",
+      "website": "http://www.grainger.com",
+      "contract_start_date": "2027-11-09",
+      "contract_expiration_date": "2037-11-09",
+      "additional_data": {
+        "large_category": "Miscellaneous ",
+        "sub_category": " Complementary Special Item Numbers (SINs)",
+        "source": "MAS",
+        "category": "4PL ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D000G/47QSHA18D000G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D000G&sin=4PL&src=elib&app=cat"
+      }
+    }
+  ]
+}

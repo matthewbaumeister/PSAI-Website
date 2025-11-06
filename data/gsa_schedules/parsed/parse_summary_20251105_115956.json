@@ -1,0 +1,1941 @@
+{
+  "parse_date": "2025-11-05T11:59:06.248089",
+  "total_files": 276,
+  "total_contractors": 50438,
+  "files": [
+    {
+      "sin_code": "334220",
+      "file_name": "GSA_MAS_334220_20251105.xlsx",
+      "contractor_count": 127,
+      "output_file": "GSA_MAS_334220_parsed.json"
+    },
+    {
+      "sin_code": "334511T",
+      "file_name": "GSA_MAS_334511T_20251105.xlsx",
+      "contractor_count": 21,
+      "output_file": "GSA_MAS_334511T_parsed.json"
+    },
+    {
+      "sin_code": "325998",
+      "file_name": "GSA_MAS_325998_20251105.xlsx",
+      "contractor_count": 44,
+      "output_file": "GSA_MAS_325998_parsed.json"
+    },
+    {
+      "sin_code": "339999E",
+      "file_name": "GSA_MAS_339999E_20251105.xlsx",
+      "contractor_count": 14,
+      "output_file": "GSA_MAS_339999E_parsed.json"
+    },
+    {
+      "sin_code": "541330EMI",
+      "file_name": "GSA_MAS_541330EMI_20251105.xlsx",
+      "contractor_count": 129,
+      "output_file": "GSA_MAS_541330EMI_parsed.json"
+    },
+    {
+      "sin_code": "541614SVC",
+      "file_name": "GSA_MAS_541614SVC_20251105.xlsx",
+      "contractor_count": 313,
+      "output_file": "GSA_MAS_541614SVC_parsed.json"
+    },
+    {
+      "sin_code": "561410",
+      "file_name": "GSA_MAS_561410_20251105.xlsx",
+      "contractor_count": 25,
+      "output_file": "GSA_MAS_561410_parsed.json"
+    },
+    {
+      "sin_code": "611430ST",
+      "file_name": "GSA_MAS_611430ST_20251105.xlsx",
+      "contractor_count": 168,
+      "output_file": "GSA_MAS_611430ST_parsed.json"
+    },
+    {
+      "sin_code": "541420",
+      "file_name": "GSA_MAS_541420_20251105.xlsx",
+      "contractor_count": 541,
+      "output_file": "GSA_MAS_541420_parsed.json"
+    },
+    {
+      "sin_code": "336612R",
+      "file_name": "GSA_MAS_336612R_20251105.xlsx",
+      "contractor_count": 5,
+      "output_file": "GSA_MAS_336612R_parsed.json"
+    },
+    {
+      "sin_code": "325320",
+      "file_name": "GSA_MAS_325320_20251105.xlsx",
+      "contractor_count": 72,
+      "output_file": "GSA_MAS_325320_parsed.json"
+    },
+    {
+      "sin_code": "561210SB",
+      "file_name": "GSA_MAS_561210SB_20251105.xlsx",
+      "contractor_count": 77,
+      "output_file": "GSA_MAS_561210SB_parsed.json"
+    },
+    {
+      "sin_code": "611TRAINAW",
+      "file_name": "GSA_MAS_611TRAINAW_20251105.xlsx",
+      "contractor_count": 7,
+      "output_file": "GSA_MAS_611TRAINAW_parsed.json"
+    },
+    {
+      "sin_code": "541715",
+      "file_name": "GSA_MAS_541715_20251105.xlsx",
+      "contractor_count": 747,
+      "output_file": "GSA_MAS_541715_parsed.json"
+    },
+    {
+      "sin_code": "336212",
+      "file_name": "GSA_MAS_336212_20251105.xlsx",
+      "contractor_count": 30,
+      "output_file": "GSA_MAS_336212_parsed.json"
+    },
+    {
+      "sin_code": "541990L",
+      "file_name": "GSA_MAS_541990L_20251105.xlsx",
+      "contractor_count": 27,
+      "output_file": "GSA_MAS_541990L_parsed.json"
+    },
+    {
+      "sin_code": "511210",
+      "file_name": "GSA_MAS_511210_20251105.xlsx",
+      "contractor_count": 1097,
+      "output_file": "GSA_MAS_511210_parsed.json"
+    },
+    {
+      "sin_code": "541611O",
+      "file_name": "GSA_MAS_541611O_20251105.xlsx",
+      "contractor_count": 41,
+      "output_file": "GSA_MAS_541611O_parsed.json"
+    },
+    {
+      "sin_code": "561612",
+      "file_name": "GSA_MAS_561612_20251105.xlsx",
+      "contractor_count": 187,
+      "output_file": "GSA_MAS_561612_parsed.json"
+    },
+    {
+      "sin_code": "54151",
+      "file_name": "GSA_MAS_54151_20251105.xlsx",
+      "contractor_count": 633,
+      "output_file": "GSA_MAS_54151_parsed.json"
+    },
+    {
+      "sin_code": "517312",
+      "file_name": "GSA_MAS_517312_20251105.xlsx",
+      "contractor_count": 33,
+      "output_file": "GSA_MAS_517312_parsed.json"
+    },
+    {
+      "sin_code": "532490P",
+      "file_name": "GSA_MAS_532490P_20251105.xlsx",
+      "contractor_count": 31,
+      "output_file": "GSA_MAS_532490P_parsed.json"
+    },
+    {
+      "sin_code": "339940",
+      "file_name": "GSA_MAS_339940_20251105.xlsx",
+      "contractor_count": 260,
+      "output_file": "GSA_MAS_339940_parsed.json"
+    },
+    {
+      "sin_code": "541214",
+      "file_name": "GSA_MAS_541214_20251105.xlsx",
+      "contractor_count": 69,
+      "output_file": "GSA_MAS_541214_parsed.json"
+    },
+    {
+      "sin_code": "333318TDTM",
+      "file_name": "GSA_MAS_333318TDTM_20251105.xlsx",
+      "contractor_count": 88,
+      "output_file": "GSA_MAS_333318TDTM_parsed.json"
+    },
+    {
+      "sin_code": "561599L",
+      "file_name": "GSA_MAS_561599L_20251105.xlsx",
+      "contractor_count": 19,
+      "output_file": "GSA_MAS_561599L_parsed.json"
+    },
+    {
+      "sin_code": "325998W",
+      "file_name": "GSA_MAS_325998W_20251105.xlsx",
+      "contractor_count": 69,
+      "output_file": "GSA_MAS_325998W_parsed.json"
+    },
+    {
+      "sin_code": "541614CF",
+      "file_name": "GSA_MAS_541614CF_20251105.xlsx",
+      "contractor_count": 83,
+      "output_file": "GSA_MAS_541614CF_parsed.json"
+    },
+    {
+      "sin_code": "3FIRE",
+      "file_name": "GSA_MAS_3FIRE_20251105.xlsx",
+      "contractor_count": 36,
+      "output_file": "GSA_MAS_3FIRE_parsed.json"
+    },
+    {
+      "sin_code": "518210C",
+      "file_name": "GSA_MAS_518210C_20251105.xlsx",
+      "contractor_count": 1088,
+      "output_file": "GSA_MAS_518210C_parsed.json"
+    },
+    {
+      "sin_code": "333415",
+      "file_name": "GSA_MAS_333415_20251105.xlsx",
+      "contractor_count": 22,
+      "output_file": "GSA_MAS_333415_parsed.json"
+    },
+    {
+      "sin_code": "333997",
+      "file_name": "GSA_MAS_333997_20251105.xlsx",
+      "contractor_count": 19,
+      "output_file": "GSA_MAS_333997_parsed.json"
+    },
+    {
+      "sin_code": "611430",
+      "file_name": "GSA_MAS_611430_20251105.xlsx",
+      "contractor_count": 1170,
+      "output_file": "GSA_MAS_611430_parsed.json"
+    },
+    {
+      "sin_code": "326199",
+      "file_name": "GSA_MAS_326199_20251105.xlsx",
+      "contractor_count": 45,
+      "output_file": "GSA_MAS_326199_parsed.json"
+    },
+    {
+      "sin_code": "337127CI",
+      "file_name": "GSA_MAS_337127CI_20251105.xlsx",
+      "contractor_count": 1,
+      "output_file": "GSA_MAS_337127CI_parsed.json"
+    },
+    {
+      "sin_code": "531",
+      "file_name": "GSA_MAS_531_20251105.xlsx",
+      "contractor_count": 15,
+      "output_file": "GSA_MAS_531_parsed.json"
+    },
+    {
+      "sin_code": "336999",
+      "file_name": "GSA_MAS_336999_20251105.xlsx",
+      "contractor_count": 48,
+      "output_file": "GSA_MAS_336999_parsed.json"
+    },
+    {
+      "sin_code": "324191",
+      "file_name": "GSA_MAS_324191_20251105.xlsx",
+      "contractor_count": 47,
+      "output_file": "GSA_MAS_324191_parsed.json"
+    },
+    {
+      "sin_code": "493110RM",
+      "file_name": "GSA_MAS_493110RM_20251105.xlsx",
+      "contractor_count": 92,
+      "output_file": "GSA_MAS_493110RM_parsed.json"
+    },
+    {
+      "sin_code": "611420",
+      "file_name": "GSA_MAS_611420_20251105.xlsx",
+      "contractor_count": 455,
+      "output_file": "GSA_MAS_611420_parsed.json"
+    },
+    {
+      "sin_code": "33411",
+      "file_name": "GSA_MAS_33411_20251105.xlsx",
+      "contractor_count": 860,
+      "output_file": "GSA_MAS_33411_parsed.json"
+    },
+    {
+      "sin_code": "339113PA",
+      "file_name": "GSA_MAS_339113PA_20251105.xlsx",
+      "contractor_count": 149,
+      "output_file": "GSA_MAS_339113PA_parsed.json"
+    },
+    {
+      "sin_code": "561611",
+      "file_name": "GSA_MAS_561611_20251105.xlsx",
+      "contractor_count": 73,
+      "output_file": "GSA_MAS_561611_parsed.json"
+    },
+    {
+      "sin_code": "541611MPS",
+      "file_name": "GSA_MAS_541611MPS_20251105.xlsx",
+      "contractor_count": 23,
+      "output_file": "GSA_MAS_541611MPS_parsed.json"
+    },
+    {
+      "sin_code": "333316C",
+      "file_name": "GSA_MAS_333316C_20251105.xlsx",
+      "contractor_count": 24,
+      "output_file": "GSA_MAS_333316C_parsed.json"
+    },
+    {
+      "sin_code": "332999",
+      "file_name": "GSA_MAS_332999_20251105.xlsx",
+      "contractor_count": 187,
+      "output_file": "GSA_MAS_332999_parsed.json"
+    },
+    {
+      "sin_code": "541370GEO",
+      "file_name": "GSA_MAS_541370GEO_20251105.xlsx",
+      "contractor_count": 95,
+      "output_file": "GSA_MAS_541370GEO_parsed.json"
+    },
+    {
+      "sin_code": "333914",
+      "file_name": "GSA_MAS_333914_20251105.xlsx",
+      "contractor_count": 17,
+      "output_file": "GSA_MAS_333914_parsed.json"
+    },
+    {
+      "sin_code": "561599",
+      "file_name": "GSA_MAS_561599_20251105.xlsx",
+      "contractor_count": 12,
+      "output_file": "GSA_MAS_561599_parsed.json"
+    },
+    {
+      "sin_code": "541370GIS",
+      "file_name": "GSA_MAS_541370GIS_20251105.xlsx",
+      "contractor_count": 248,
+      "output_file": "GSA_MAS_541370GIS_parsed.json"
+    },
+    {
+      "sin_code": "339950",
+      "file_name": "GSA_MAS_339950_20251105.xlsx",
+      "contractor_count": 75,
+      "output_file": "GSA_MAS_339950_parsed.json"
+    },
+    {
+      "sin_code": "334310",
+      "file_name": "GSA_MAS_334310_20251105.xlsx",
+      "contractor_count": 77,
+      "output_file": "GSA_MAS_334310_parsed.json"
+    },
+    {
+      "sin_code": "339999S",
+      "file_name": "GSA_MAS_339999S_20251105.xlsx",
+      "contractor_count": 28,
+      "output_file": "GSA_MAS_339999S_parsed.json"
+    },
+    {
+      "sin_code": "322291",
+      "file_name": "GSA_MAS_322291_20251105.xlsx",
+      "contractor_count": 110,
+      "output_file": "GSA_MAS_322291_parsed.json"
+    },
+    {
+      "sin_code": "332321",
+      "file_name": "GSA_MAS_332321_20251105.xlsx",
+      "contractor_count": 15,
+      "output_file": "GSA_MAS_332321_parsed.json"
+    },
+    {
+      "sin_code": "333241",
+      "file_name": "GSA_MAS_333241_20251105.xlsx",
+      "contractor_count": 63,
+      "output_file": "GSA_MAS_333241_parsed.json"
+    },
+    {
+      "sin_code": "532420LT",
+      "file_name": "GSA_MAS_532420LT_20251105.xlsx",
+      "contractor_count": 4,
+      "output_file": "GSA_MAS_532420LT_parsed.json"
+    },
+    {
+      "sin_code": "339999F",
+      "file_name": "GSA_MAS_339999F_20251105.xlsx",
+      "contractor_count": 51,
+      "output_file": "GSA_MAS_339999F_parsed.json"
+    },
+    {
+      "sin_code": "485",
+      "file_name": "GSA_MAS_485_20251105.xlsx",
+      "contractor_count": 38,
+      "output_file": "GSA_MAS_485_parsed.json"
+    },
+    {
+      "sin_code": "541715AIR",
+      "file_name": "GSA_MAS_541715AIR_20251105.xlsx",
+      "contractor_count": 9,
+      "output_file": "GSA_MAS_541715AIR_parsed.json"
+    },
+    {
+      "sin_code": "541430",
+      "file_name": "GSA_MAS_541430_20251105.xlsx",
+      "contractor_count": 363,
+      "output_file": "GSA_MAS_541430_parsed.json"
+    },
+    {
+      "sin_code": "541612LOB",
+      "file_name": "GSA_MAS_541612LOB_20251105.xlsx",
+      "contractor_count": 14,
+      "output_file": "GSA_MAS_541612LOB_parsed.json"
+    },
+    {
+      "sin_code": "321918",
+      "file_name": "GSA_MAS_321918_20251105.xlsx",
+      "contractor_count": 26,
+      "output_file": "GSA_MAS_321918_parsed.json"
+    },
+    {
+      "sin_code": "327910",
+      "file_name": "GSA_MAS_327910_20251105.xlsx",
+      "contractor_count": 10,
+      "output_file": "GSA_MAS_327910_parsed.json"
+    },
+    {
+      "sin_code": "541330ENG",
+      "file_name": "GSA_MAS_541330ENG_20251105.xlsx",
+      "contractor_count": 1209,
+      "output_file": "GSA_MAS_541330ENG_parsed.json"
+    },
+    {
+      "sin_code": "488190",
+      "file_name": "GSA_MAS_488190_20251105.xlsx",
+      "contractor_count": 11,
+      "output_file": "GSA_MAS_488190_parsed.json"
+    },
+    {
+      "sin_code": "561439",
+      "file_name": "GSA_MAS_561439_20251105.xlsx",
+      "contractor_count": 34,
+      "output_file": "GSA_MAS_561439_parsed.json"
+    },
+    {
+      "sin_code": "334519",
+      "file_name": "GSA_MAS_334519_20251105.xlsx",
+      "contractor_count": 63,
+      "output_file": "GSA_MAS_334519_parsed.json"
+    },
+    {
+      "sin_code": "339920",
+      "file_name": "GSA_MAS_339920_20251105.xlsx",
+      "contractor_count": 55,
+      "output_file": "GSA_MAS_339920_parsed.json"
+    },
+    {
+      "sin_code": "332216",
+      "file_name": "GSA_MAS_332216_20251105.xlsx",
+      "contractor_count": 90,
+      "output_file": "GSA_MAS_332216_parsed.json"
+    },
+    {
+      "sin_code": "336211",
+      "file_name": "GSA_MAS_336211_20251105.xlsx",
+      "contractor_count": 18,
+      "output_file": "GSA_MAS_336211_parsed.json"
+    },
+    {
+      "sin_code": "334513",
+      "file_name": "GSA_MAS_334513_20251105.xlsx",
+      "contractor_count": 14,
+      "output_file": "GSA_MAS_334513_parsed.json"
+    },
+    {
+      "sin_code": "541990AV",
+      "file_name": "GSA_MAS_541990AV_20251105.xlsx",
+      "contractor_count": 75,
+      "output_file": "GSA_MAS_541990AV_parsed.json"
+    },
+    {
+      "sin_code": "3PACK",
+      "file_name": "GSA_MAS_3PACK_20251105.xlsx",
+      "contractor_count": 66,
+      "output_file": "GSA_MAS_3PACK_parsed.json"
+    },
+    {
+      "sin_code": "532490L",
+      "file_name": "GSA_MAS_532490L_20251105.xlsx",
+      "contractor_count": 30,
+      "output_file": "GSA_MAS_532490L_parsed.json"
+    },
+    {
+      "sin_code": "315210",
+      "file_name": "GSA_MAS_315210_20251105.xlsx",
+      "contractor_count": 24,
+      "output_file": "GSA_MAS_315210_parsed.json"
+    },
+    {
+      "sin_code": "334290",
+      "file_name": "GSA_MAS_334290_20251105.xlsx",
+      "contractor_count": 187,
+      "output_file": "GSA_MAS_334290_parsed.json"
+    },
+    {
+      "sin_code": "339113LAB",
+      "file_name": "GSA_MAS_339113LAB_20251105.xlsx",
+      "contractor_count": 49,
+      "output_file": "GSA_MAS_339113LAB_parsed.json"
+    },
+    {
+      "sin_code": "333120",
+      "file_name": "GSA_MAS_333120_20251105.xlsx",
+      "contractor_count": 18,
+      "output_file": "GSA_MAS_333120_parsed.json"
+    },
+    {
+      "sin_code": "NEW",
+      "file_name": "GSA_MAS_NEW_20251105.xlsx",
+      "contractor_count": 103,
+      "output_file": "GSA_MAS_NEW_parsed.json"
+    },
+    {
+      "sin_code": "337127",
+      "file_name": "GSA_MAS_337127_20251105.xlsx",
+      "contractor_count": 45,
+      "output_file": "GSA_MAS_337127_parsed.json"
+    },
+    {
+      "sin_code": "334118",
+      "file_name": "GSA_MAS_334118_20251105.xlsx",
+      "contractor_count": 4,
+      "output_file": "GSA_MAS_334118_parsed.json"
+    },
+    {
+      "sin_code": "561621H",
+      "file_name": "GSA_MAS_561621H_20251105.xlsx",
+      "contractor_count": 4,
+      "output_file": "GSA_MAS_561621H_parsed.json"
+    },
+    {
+      "sin_code": "531210",
+      "file_name": "GSA_MAS_531210_20251105.xlsx",
+      "contractor_count": 55,
+      "output_file": "GSA_MAS_531210_parsed.json"
+    },
+    {
+      "sin_code": "333923S",
+      "file_name": "GSA_MAS_333923S_20251105.xlsx",
+      "contractor_count": 18,
+      "output_file": "GSA_MAS_333923S_parsed.json"
+    },
+    {
+      "sin_code": "335220E",
+      "file_name": "GSA_MAS_335220E_20251105.xlsx",
+      "contractor_count": 10,
+      "output_file": "GSA_MAS_335220E_parsed.json"
+    },
+    {
+      "sin_code": "335220",
+      "file_name": "GSA_MAS_335220_20251105.xlsx",
+      "contractor_count": 36,
+      "output_file": "GSA_MAS_335220_parsed.json"
+    },
+    {
+      "sin_code": "518210ERM",
+      "file_name": "GSA_MAS_518210ERM_20251105.xlsx",
+      "contractor_count": 112,
+      "output_file": "GSA_MAS_518210ERM_parsed.json"
+    },
+    {
+      "sin_code": "492110",
+      "file_name": "GSA_MAS_492110_20251105.xlsx",
+      "contractor_count": 8,
+      "output_file": "GSA_MAS_492110_parsed.json"
+    },
+    {
+      "sin_code": "541380",
+      "file_name": "GSA_MAS_541380_20251105.xlsx",
+      "contractor_count": 454,
+      "output_file": "GSA_MAS_541380_parsed.json"
+    },
+    {
+      "sin_code": "332913",
+      "file_name": "GSA_MAS_332913_20251105.xlsx",
+      "contractor_count": 15,
+      "output_file": "GSA_MAS_332913_parsed.json"
+    },
+    {
+      "sin_code": "3361",
+      "file_name": "GSA_MAS_3361_20251105.xlsx",
+      "contractor_count": 28,
+      "output_file": "GSA_MAS_3361_parsed.json"
+    },
+    {
+      "sin_code": "333923",
+      "file_name": "GSA_MAS_333923_20251105.xlsx",
+      "contractor_count": 6,
+      "output_file": "GSA_MAS_333923_parsed.json"
+    },
+    {
+      "sin_code": "54151S",
+      "file_name": "GSA_MAS_54151S_20251105.xlsx",
+      "contractor_count": 5228,
+      "output_file": "GSA_MAS_54151S_parsed.json"
+    },
+    {
+      "sin_code": "332312",
+      "file_name": "GSA_MAS_332312_20251105.xlsx",
+      "contractor_count": 5,
+      "output_file": "GSA_MAS_332312_parsed.json"
+    },
+    {
+      "sin_code": "333316M",
+      "file_name": "GSA_MAS_333316M_20251105.xlsx",
+      "contractor_count": 8,
+      "output_file": "GSA_MAS_333316M_parsed.json"
+    },
+    {
+      "sin_code": "541611W",
+      "file_name": "GSA_MAS_541611W_20251105.xlsx",
+      "contractor_count": 57,
+      "output_file": "GSA_MAS_541611W_parsed.json"
+    },
+    {
+      "sin_code": "812910",
+      "file_name": "GSA_MAS_812910_20251105.xlsx",
+      "contractor_count": 29,
+      "output_file": "GSA_MAS_812910_parsed.json"
+    },
+    {
+      "sin_code": "532420C",
+      "file_name": "GSA_MAS_532420C_20251105.xlsx",
+      "contractor_count": 6,
+      "output_file": "GSA_MAS_532420C_parsed.json"
+    },
+    {
+      "sin_code": "541219",
+      "file_name": "GSA_MAS_541219_20251105.xlsx",
+      "contractor_count": 402,
+      "output_file": "GSA_MAS_541219_parsed.json"
+    },
+    {
+      "sin_code": "541612EPM",
+      "file_name": "GSA_MAS_541612EPM_20251105.xlsx",
+      "contractor_count": 47,
+      "output_file": "GSA_MAS_541612EPM_parsed.json"
+    },
+    {
+      "sin_code": "541519ICAM",
+      "file_name": "GSA_MAS_541519ICAM_20251105.xlsx",
+      "contractor_count": 63,
+      "output_file": "GSA_MAS_541519ICAM_parsed.json"
+    },
+    {
+      "sin_code": "812990",
+      "file_name": "GSA_MAS_812990_20251105.xlsx",
+      "contractor_count": 9,
+      "output_file": "GSA_MAS_812990_parsed.json"
+    },
+    {
+      "sin_code": "561450",
+      "file_name": "GSA_MAS_561450_20251105.xlsx",
+      "contractor_count": 29,
+      "output_file": "GSA_MAS_561450_parsed.json"
+    },
+    {
+      "sin_code": "311423",
+      "file_name": "GSA_MAS_311423_20251105.xlsx",
+      "contractor_count": 28,
+      "output_file": "GSA_MAS_311423_parsed.json"
+    },
+    {
+      "sin_code": "339113R",
+      "file_name": "GSA_MAS_339113R_20251105.xlsx",
+      "contractor_count": 76,
+      "output_file": "GSA_MAS_339113R_parsed.json"
+    },
+    {
+      "sin_code": "541990RISK",
+      "file_name": "GSA_MAS_541990RISK_20251105.xlsx",
+      "contractor_count": 109,
+      "output_file": "GSA_MAS_541990RISK_parsed.json"
+    },
+    {
+      "sin_code": "54161",
+      "file_name": "GSA_MAS_54161_20251105.xlsx",
+      "contractor_count": 56,
+      "output_file": "GSA_MAS_54161_parsed.json"
+    },
+    {
+      "sin_code": "325611",
+      "file_name": "GSA_MAS_325611_20251105.xlsx",
+      "contractor_count": 162,
+      "output_file": "GSA_MAS_325611_parsed.json"
+    },
+    {
+      "sin_code": "334419",
+      "file_name": "GSA_MAS_334419_20251105.xlsx",
+      "contractor_count": 6,
+      "output_file": "GSA_MAS_334419_parsed.json"
+    },
+    {
+      "sin_code": "3361E",
+      "file_name": "GSA_MAS_3361E_20251105.xlsx",
+      "contractor_count": 29,
+      "output_file": "GSA_MAS_3361E_parsed.json"
+    },
+    {
+      "sin_code": "332311",
+      "file_name": "GSA_MAS_332311_20251105.xlsx",
+      "contractor_count": 11,
+      "output_file": "GSA_MAS_332311_parsed.json"
+    },
+    {
+      "sin_code": "561440",
+      "file_name": "GSA_MAS_561440_20251105.xlsx",
+      "contractor_count": 28,
+      "output_file": "GSA_MAS_561440_parsed.json"
+    },
+    {
+      "sin_code": "561510",
+      "file_name": "GSA_MAS_561510_20251105.xlsx",
+      "contractor_count": 20,
+      "output_file": "GSA_MAS_561510_parsed.json"
+    },
+    {
+      "sin_code": "541611",
+      "file_name": "GSA_MAS_541611_20251105.xlsx",
+      "contractor_count": 3065,
+      "output_file": "GSA_MAS_541611_parsed.json"
+    },
+    {
+      "sin_code": "337215M",
+      "file_name": "GSA_MAS_337215M_20251105.xlsx",
+      "contractor_count": 2,
+      "output_file": "GSA_MAS_337215M_parsed.json"
+    },
+    {
+      "sin_code": "54151HACS",
+      "file_name": "GSA_MAS_54151HACS_20251105.xlsx",
+      "contractor_count": 729,
+      "output_file": "GSA_MAS_54151HACS_parsed.json"
+    },
+    {
+      "sin_code": "335911",
+      "file_name": "GSA_MAS_335911_20251105.xlsx",
+      "contractor_count": 31,
+      "output_file": "GSA_MAS_335911_parsed.json"
+    },
+    {
+      "sin_code": "333318",
+      "file_name": "GSA_MAS_333318_20251105.xlsx",
+      "contractor_count": 2,
+      "output_file": "GSA_MAS_333318_parsed.json"
+    },
+    {
+      "sin_code": "332994",
+      "file_name": "GSA_MAS_332994_20251105.xlsx",
+      "contractor_count": 3,
+      "output_file": "GSA_MAS_332994_parsed.json"
+    },
+    {
+      "sin_code": "333924",
+      "file_name": "GSA_MAS_333924_20251105.xlsx",
+      "contractor_count": 52,
+      "output_file": "GSA_MAS_333924_parsed.json"
+    },
+    {
+      "sin_code": "541690E",
+      "file_name": "GSA_MAS_541690E_20251105.xlsx",
+      "contractor_count": 182,
+      "output_file": "GSA_MAS_541690E_parsed.json"
+    },
+    {
+      "sin_code": "333999",
+      "file_name": "GSA_MAS_333999_20251105.xlsx",
+      "contractor_count": 8,
+      "output_file": "GSA_MAS_333999_parsed.json"
+    },
+    {
+      "sin_code": "811310",
+      "file_name": "GSA_MAS_811310_20251105.xlsx",
+      "contractor_count": 13,
+      "output_file": "GSA_MAS_811310_parsed.json"
+    },
+    {
+      "sin_code": "325612",
+      "file_name": "GSA_MAS_325612_20251105.xlsx",
+      "contractor_count": 121,
+      "output_file": "GSA_MAS_325612_parsed.json"
+    },
+    {
+      "sin_code": "334519ENV",
+      "file_name": "GSA_MAS_334519ENV_20251105.xlsx",
+      "contractor_count": 44,
+      "output_file": "GSA_MAS_334519ENV_parsed.json"
+    },
+    {
+      "sin_code": "561EEO",
+      "file_name": "GSA_MAS_561EEO_20251105.xlsx",
+      "contractor_count": 48,
+      "output_file": "GSA_MAS_561EEO_parsed.json"
+    },
+    {
+      "sin_code": "238320",
+      "file_name": "GSA_MAS_238320_20251105.xlsx",
+      "contractor_count": 8,
+      "output_file": "GSA_MAS_238320_parsed.json"
+    },
+    {
+      "sin_code": "321991",
+      "file_name": "GSA_MAS_321991_20251105.xlsx",
+      "contractor_count": 2,
+      "output_file": "GSA_MAS_321991_parsed.json"
+    },
+    {
+      "sin_code": "332510S",
+      "file_name": "GSA_MAS_332510S_20251105.xlsx",
+      "contractor_count": 23,
+      "output_file": "GSA_MAS_332510S_parsed.json"
+    },
+    {
+      "sin_code": "339994",
+      "file_name": "GSA_MAS_339994_20251105.xlsx",
+      "contractor_count": 67,
+      "output_file": "GSA_MAS_339994_parsed.json"
+    },
+    {
+      "sin_code": "512110",
+      "file_name": "GSA_MAS_512110_20251105.xlsx",
+      "contractor_count": 309,
+      "output_file": "GSA_MAS_512110_parsed.json"
+    },
+    {
+      "sin_code": "811212SA",
+      "file_name": "GSA_MAS_811212SA_20251105.xlsx",
+      "contractor_count": 32,
+      "output_file": "GSA_MAS_811212SA_parsed.json"
+    },
+    {
+      "sin_code": "561320",
+      "file_name": "GSA_MAS_561320_20251105.xlsx",
+      "contractor_count": 90,
+      "output_file": "GSA_MAS_561320_parsed.json"
+    },
+    {
+      "sin_code": "33512",
+      "file_name": "GSA_MAS_33512_20251105.xlsx",
+      "contractor_count": 38,
+      "output_file": "GSA_MAS_33512_parsed.json"
+    },
+    {
+      "sin_code": "339940SVC",
+      "file_name": "GSA_MAS_339940SVC_20251105.xlsx",
+      "contractor_count": 7,
+      "output_file": "GSA_MAS_339940SVC_parsed.json"
+    },
+    {
+      "sin_code": "325992",
+      "file_name": "GSA_MAS_325992_20251105.xlsx",
+      "contractor_count": 2,
+      "output_file": "GSA_MAS_325992_parsed.json"
+    },
+    {
+      "sin_code": "337215",
+      "file_name": "GSA_MAS_337215_20251105.xlsx",
+      "contractor_count": 61,
+      "output_file": "GSA_MAS_337215_parsed.json"
+    },
+    {
+      "sin_code": "532120",
+      "file_name": "GSA_MAS_532120_20251105.xlsx",
+      "contractor_count": 5,
+      "output_file": "GSA_MAS_532120_parsed.json"
+    },
+    {
+      "sin_code": "337127CF",
+      "file_name": "GSA_MAS_337127CF_20251105.xlsx",
+      "contractor_count": 11,
+      "output_file": "GSA_MAS_337127CF_parsed.json"
+    },
+    {
+      "sin_code": "541690",
+      "file_name": "GSA_MAS_541690_20251105.xlsx",
+      "contractor_count": 350,
+      "output_file": "GSA_MAS_541690_parsed.json"
+    },
+    {
+      "sin_code": "561210FAC",
+      "file_name": "GSA_MAS_561210FAC_20251105.xlsx",
+      "contractor_count": 558,
+      "output_file": "GSA_MAS_561210FAC_parsed.json"
+    },
+    {
+      "sin_code": "322220",
+      "file_name": "GSA_MAS_322220_20251105.xlsx",
+      "contractor_count": 9,
+      "output_file": "GSA_MAS_322220_parsed.json"
+    },
+    {
+      "sin_code": "541614",
+      "file_name": "GSA_MAS_541614_20251105.xlsx",
+      "contractor_count": 267,
+      "output_file": "GSA_MAS_541614_parsed.json"
+    },
+    {
+      "sin_code": "333249",
+      "file_name": "GSA_MAS_333249_20251105.xlsx",
+      "contractor_count": 32,
+      "output_file": "GSA_MAS_333249_parsed.json"
+    },
+    {
+      "sin_code": "336992",
+      "file_name": "GSA_MAS_336992_20251105.xlsx",
+      "contractor_count": 23,
+      "output_file": "GSA_MAS_336992_parsed.json"
+    },
+    {
+      "sin_code": "541519PIV",
+      "file_name": "GSA_MAS_541519PIV_20251105.xlsx",
+      "contractor_count": 53,
+      "output_file": "GSA_MAS_541519PIV_parsed.json"
+    },
+    {
+      "sin_code": "333314NV",
+      "file_name": "GSA_MAS_333314NV_20251105.xlsx",
+      "contractor_count": 38,
+      "output_file": "GSA_MAS_333314NV_parsed.json"
+    },
+    {
+      "sin_code": "332510C",
+      "file_name": "GSA_MAS_332510C_20251105.xlsx",
+      "contractor_count": 172,
+      "output_file": "GSA_MAS_332510C_parsed.json"
+    },
+    {
+      "sin_code": "332439",
+      "file_name": "GSA_MAS_332439_20251105.xlsx",
+      "contractor_count": 6,
+      "output_file": "GSA_MAS_332439_parsed.json"
+    },
+    {
+      "sin_code": "339112",
+      "file_name": "GSA_MAS_339112_20251105.xlsx",
+      "contractor_count": 41,
+      "output_file": "GSA_MAS_339112_parsed.json"
+    },
+    {
+      "sin_code": "333921",
+      "file_name": "GSA_MAS_333921_20251105.xlsx",
+      "contractor_count": 23,
+      "output_file": "GSA_MAS_333921_parsed.json"
+    },
+    {
+      "sin_code": "316210",
+      "file_name": "GSA_MAS_316210_20251105.xlsx",
+      "contractor_count": 69,
+      "output_file": "GSA_MAS_316210_parsed.json"
+    },
+    {
+      "sin_code": "3361V",
+      "file_name": "GSA_MAS_3361V_20251105.xlsx",
+      "contractor_count": 52,
+      "output_file": "GSA_MAS_3361V_parsed.json"
+    },
+    {
+      "sin_code": "541810ODC",
+      "file_name": "GSA_MAS_541810ODC_20251105.xlsx",
+      "contractor_count": 224,
+      "output_file": "GSA_MAS_541810ODC_parsed.json"
+    },
+    {
+      "sin_code": "OLM",
+      "file_name": "GSA_MAS_OLM_20251105.xlsx",
+      "contractor_count": 12946,
+      "output_file": "GSA_MAS_OLM_parsed.json"
+    },
+    {
+      "sin_code": "339920PARK",
+      "file_name": "GSA_MAS_339920PARK_20251105.xlsx",
+      "contractor_count": 29,
+      "output_file": "GSA_MAS_339920PARK_parsed.json"
+    },
+    {
+      "sin_code": "339920S",
+      "file_name": "GSA_MAS_339920S_20251105.xlsx",
+      "contractor_count": 138,
+      "output_file": "GSA_MAS_339920S_parsed.json"
+    },
+    {
+      "sin_code": "561422",
+      "file_name": "GSA_MAS_561422_20251105.xlsx",
+      "contractor_count": 62,
+      "output_file": "GSA_MAS_561422_parsed.json"
+    },
+    {
+      "sin_code": "541910",
+      "file_name": "GSA_MAS_541910_20251105.xlsx",
+      "contractor_count": 315,
+      "output_file": "GSA_MAS_541910_parsed.json"
+    },
+    {
+      "sin_code": "334515",
+      "file_name": "GSA_MAS_334515_20251105.xlsx",
+      "contractor_count": 51,
+      "output_file": "GSA_MAS_334515_parsed.json"
+    },
+    {
+      "sin_code": "481211B",
+      "file_name": "GSA_MAS_481211B_20251105.xlsx",
+      "contractor_count": 16,
+      "output_file": "GSA_MAS_481211B_parsed.json"
+    },
+    {
+      "sin_code": "541990",
+      "file_name": "GSA_MAS_541990_20251105.xlsx",
+      "contractor_count": 196,
+      "output_file": "GSA_MAS_541990_parsed.json"
+    },
+    {
+      "sin_code": "561920",
+      "file_name": "GSA_MAS_561920_20251105.xlsx",
+      "contractor_count": 213,
+      "output_file": "GSA_MAS_561920_parsed.json"
+    },
+    {
+      "sin_code": "532490ESA",
+      "file_name": "GSA_MAS_532490ESA_20251105.xlsx",
+      "contractor_count": 5,
+      "output_file": "GSA_MAS_532490ESA_parsed.json"
+    },
+    {
+      "sin_code": "541612ER",
+      "file_name": "GSA_MAS_541612ER_20251105.xlsx",
+      "contractor_count": 39,
+      "output_file": "GSA_MAS_541612ER_parsed.json"
+    },
+    {
+      "sin_code": "334511",
+      "file_name": "GSA_MAS_334511_20251105.xlsx",
+      "contractor_count": 59,
+      "output_file": "GSA_MAS_334511_parsed.json"
+    },
+    {
+      "sin_code": "332999S",
+      "file_name": "GSA_MAS_332999S_20251105.xlsx",
+      "contractor_count": 13,
+      "output_file": "GSA_MAS_332999S_parsed.json"
+    },
+    {
+      "sin_code": "624SS",
+      "file_name": "GSA_MAS_624SS_20251105.xlsx",
+      "contractor_count": 62,
+      "output_file": "GSA_MAS_624SS_parsed.json"
+    },
+    {
+      "sin_code": "541214HR",
+      "file_name": "GSA_MAS_541214HR_20251105.xlsx",
+      "contractor_count": 43,
+      "output_file": "GSA_MAS_541214HR_parsed.json"
+    },
+    {
+      "sin_code": "336612",
+      "file_name": "GSA_MAS_336612_20251105.xlsx",
+      "contractor_count": 55,
+      "output_file": "GSA_MAS_336612_parsed.json"
+    },
+    {
+      "sin_code": "541519PKI",
+      "file_name": "GSA_MAS_541519PKI_20251105.xlsx",
+      "contractor_count": 2,
+      "output_file": "GSA_MAS_541519PKI_parsed.json"
+    },
+    {
+      "sin_code": "314110",
+      "file_name": "GSA_MAS_314110_20251105.xlsx",
+      "contractor_count": 26,
+      "output_file": "GSA_MAS_314110_parsed.json"
+    },
+    {
+      "sin_code": "532420LTOP",
+      "file_name": "GSA_MAS_532420LTOP_20251105.xlsx",
+      "contractor_count": 16,
+      "output_file": "GSA_MAS_532420LTOP_parsed.json"
+    },
+    {
+      "sin_code": "335220D",
+      "file_name": "GSA_MAS_335220D_20251105.xlsx",
+      "contractor_count": 25,
+      "output_file": "GSA_MAS_335220D_parsed.json"
+    },
+    {
+      "sin_code": "325412",
+      "file_name": "GSA_MAS_325412_20251105.xlsx",
+      "contractor_count": 18,
+      "output_file": "GSA_MAS_325412_parsed.json"
+    },
+    {
+      "sin_code": "334516",
+      "file_name": "GSA_MAS_334516_20251105.xlsx",
+      "contractor_count": 95,
+      "output_file": "GSA_MAS_334516_parsed.json"
+    },
+    {
+      "sin_code": "333415REM",
+      "file_name": "GSA_MAS_333415REM_20251105.xlsx",
+      "contractor_count": 38,
+      "output_file": "GSA_MAS_333415REM_parsed.json"
+    },
+    {
+      "sin_code": "337121H",
+      "file_name": "GSA_MAS_337121H_20251105.xlsx",
+      "contractor_count": 56,
+      "output_file": "GSA_MAS_337121H_parsed.json"
+    },
+    {
+      "sin_code": "56131",
+      "file_name": "GSA_MAS_56131_20251105.xlsx",
+      "contractor_count": 122,
+      "output_file": "GSA_MAS_56131_parsed.json"
+    },
+    {
+      "sin_code": "541612LR",
+      "file_name": "GSA_MAS_541612LR_20251105.xlsx",
+      "contractor_count": 21,
+      "output_file": "GSA_MAS_541612LR_parsed.json"
+    },
+    {
+      "sin_code": "333415HVAC",
+      "file_name": "GSA_MAS_333415HVAC_20251105.xlsx",
+      "contractor_count": 57,
+      "output_file": "GSA_MAS_333415HVAC_parsed.json"
+    },
+    {
+      "sin_code": "562910REM",
+      "file_name": "GSA_MAS_562910REM_20251105.xlsx",
+      "contractor_count": 292,
+      "output_file": "GSA_MAS_562910REM_parsed.json"
+    },
+    {
+      "sin_code": "ANCILLARY",
+      "file_name": "GSA_MAS_ANCILLARY_20251105.xlsx",
+      "contractor_count": 696,
+      "output_file": "GSA_MAS_ANCILLARY_parsed.json"
+    },
+    {
+      "sin_code": "334290L",
+      "file_name": "GSA_MAS_334290L_20251105.xlsx",
+      "contractor_count": 105,
+      "output_file": "GSA_MAS_334290L_parsed.json"
+    },
+    {
+      "sin_code": "ANCRA",
+      "file_name": "GSA_MAS_ANCRA_20251105.xlsx",
+      "contractor_count": 234,
+      "output_file": "GSA_MAS_ANCRA_parsed.json"
+    },
+    {
+      "sin_code": "336611",
+      "file_name": "GSA_MAS_336611_20251105.xlsx",
+      "contractor_count": 17,
+      "output_file": "GSA_MAS_336611_parsed.json"
+    },
+    {
+      "sin_code": "332999P",
+      "file_name": "GSA_MAS_332999P_20251105.xlsx",
+      "contractor_count": 17,
+      "output_file": "GSA_MAS_332999P_parsed.json"
+    },
+    {
+      "sin_code": "713940",
+      "file_name": "GSA_MAS_713940_20251105.xlsx",
+      "contractor_count": 4,
+      "output_file": "GSA_MAS_713940_parsed.json"
+    },
+    {
+      "sin_code": "334512",
+      "file_name": "GSA_MAS_334512_20251105.xlsx",
+      "contractor_count": 161,
+      "output_file": "GSA_MAS_334512_parsed.json"
+    },
+    {
+      "sin_code": "562910RMI",
+      "file_name": "GSA_MAS_562910RMI_20251105.xlsx",
+      "contractor_count": 37,
+      "output_file": "GSA_MAS_562910RMI_parsed.json"
+    },
+    {
+      "sin_code": "611430TTS",
+      "file_name": "GSA_MAS_611430TTS_20251105.xlsx",
+      "contractor_count": 22,
+      "output_file": "GSA_MAS_611430TTS_parsed.json"
+    },
+    {
+      "sin_code": "541110",
+      "file_name": "GSA_MAS_541110_20251105.xlsx",
+      "contractor_count": 46,
+      "output_file": "GSA_MAS_541110_parsed.json"
+    },
+    {
+      "sin_code": "541511T",
+      "file_name": "GSA_MAS_541511T_20251105.xlsx",
+      "contractor_count": 3,
+      "output_file": "GSA_MAS_541511T_parsed.json"
+    },
+    {
+      "sin_code": "561499M",
+      "file_name": "GSA_MAS_561499M_20251105.xlsx",
+      "contractor_count": 60,
+      "output_file": "GSA_MAS_561499M_parsed.json"
+    },
+    {
+      "sin_code": "336413",
+      "file_name": "GSA_MAS_336413_20251105.xlsx",
+      "contractor_count": 15,
+      "output_file": "GSA_MAS_336413_parsed.json"
+    },
+    {
+      "sin_code": "332312F",
+      "file_name": "GSA_MAS_332312F_20251105.xlsx",
+      "contractor_count": 5,
+      "output_file": "GSA_MAS_332312F_parsed.json"
+    },
+    {
+      "sin_code": "336991",
+      "file_name": "GSA_MAS_336991_20251105.xlsx",
+      "contractor_count": 45,
+      "output_file": "GSA_MAS_336991_parsed.json"
+    },
+    {
+      "sin_code": "541330L",
+      "file_name": "GSA_MAS_541330L_20251105.xlsx",
+      "contractor_count": 112,
+      "output_file": "GSA_MAS_541330L_parsed.json"
+    },
+    {
+      "sin_code": "333922",
+      "file_name": "GSA_MAS_333922_20251105.xlsx",
+      "contractor_count": 21,
+      "output_file": "GSA_MAS_333922_parsed.json"
+    },
+    {
+      "sin_code": "326220",
+      "file_name": "GSA_MAS_326220_20251105.xlsx",
+      "contractor_count": 16,
+      "output_file": "GSA_MAS_326220_parsed.json"
+    },
+    {
+      "sin_code": "337127INT",
+      "file_name": "GSA_MAS_337127INT_20251105.xlsx",
+      "contractor_count": 22,
+      "output_file": "GSA_MAS_337127INT_parsed.json"
+    },
+    {
+      "sin_code": "541820",
+      "file_name": "GSA_MAS_541820_20251105.xlsx",
+      "contractor_count": 277,
+      "output_file": "GSA_MAS_541820_parsed.json"
+    },
+    {
+      "sin_code": "33712",
+      "file_name": "GSA_MAS_33712_20251105.xlsx",
+      "contractor_count": 21,
+      "output_file": "GSA_MAS_33712_parsed.json"
+    },
+    {
+      "sin_code": "541613",
+      "file_name": "GSA_MAS_541613_20251105.xlsx",
+      "contractor_count": 365,
+      "output_file": "GSA_MAS_541613_parsed.json"
+    },
+    {
+      "sin_code": "541614OR",
+      "file_name": "GSA_MAS_541614OR_20251105.xlsx",
+      "contractor_count": 139,
+      "output_file": "GSA_MAS_541614OR_parsed.json"
+    },
+    {
+      "sin_code": "333318T",
+      "file_name": "GSA_MAS_333318T_20251105.xlsx",
+      "contractor_count": 9,
+      "output_file": "GSA_MAS_333318T_parsed.json"
+    },
+    {
+      "sin_code": "324110",
+      "file_name": "GSA_MAS_324110_20251105.xlsx",
+      "contractor_count": 3,
+      "output_file": "GSA_MAS_324110_parsed.json"
+    },
+    {
+      "sin_code": "33721",
+      "file_name": "GSA_MAS_33721_20251105.xlsx",
+      "contractor_count": 243,
+      "output_file": "GSA_MAS_33721_parsed.json"
+    },
+    {
+      "sin_code": "541620",
+      "file_name": "GSA_MAS_541620_20251105.xlsx",
+      "contractor_count": 575,
+      "output_file": "GSA_MAS_541620_parsed.json"
+    },
+    {
+      "sin_code": "611710",
+      "file_name": "GSA_MAS_611710_20251105.xlsx",
+      "contractor_count": 112,
+      "output_file": "GSA_MAS_611710_parsed.json"
+    },
+    {
+      "sin_code": "4PL",
+      "file_name": "GSA_MAS_4PL_20251105.xlsx",
+      "contractor_count": 7,
+      "output_file": "GSA_MAS_4PL_parsed.json"
+    },
+    {
+      "sin_code": "54151ECOM",
+      "file_name": "GSA_MAS_54151ECOM_20251105.xlsx",
+      "contractor_count": 286,
+      "output_file": "GSA_MAS_54151ECOM_parsed.json"
+    },
+    {
+      "sin_code": "332215T",
+      "file_name": "GSA_MAS_332215T_20251105.xlsx",
+      "contractor_count": 53,
+      "output_file": "GSA_MAS_332215T_parsed.json"
+    },
+    {
+      "sin_code": "333316F",
+      "file_name": "GSA_MAS_333316F_20251105.xlsx",
+      "contractor_count": 13,
+      "output_file": "GSA_MAS_333316F_parsed.json"
+    },
+    {
+      "sin_code": "333244",
+      "file_name": "GSA_MAS_333244_20251105.xlsx",
+      "contractor_count": 9,
+      "output_file": "GSA_MAS_333244_parsed.json"
+    },
+    {
+      "sin_code": "333314",
+      "file_name": "GSA_MAS_333314_20251105.xlsx",
+      "contractor_count": 16,
+      "output_file": "GSA_MAS_333314_parsed.json"
+    },
+    {
+      "sin_code": "532420L",
+      "file_name": "GSA_MAS_532420L_20251105.xlsx",
+      "contractor_count": 39,
+      "output_file": "GSA_MAS_532420L_parsed.json"
+    },
+    {
+      "sin_code": "524292",
+      "file_name": "GSA_MAS_524292_20251105.xlsx",
+      "contractor_count": 38,
+      "output_file": "GSA_MAS_524292_parsed.json"
+    },
+    {
+      "sin_code": "518210FM",
+      "file_name": "GSA_MAS_518210FM_20251105.xlsx",
+      "contractor_count": 26,
+      "output_file": "GSA_MAS_518210FM_parsed.json"
+    },
+    {
+      "sin_code": "335999",
+      "file_name": "GSA_MAS_335999_20251105.xlsx",
+      "contractor_count": 83,
+      "output_file": "GSA_MAS_335999_parsed.json"
+    },
+    {
+      "sin_code": "518210DC",
+      "file_name": "GSA_MAS_518210DC_20251105.xlsx",
+      "contractor_count": 116,
+      "output_file": "GSA_MAS_518210DC_parsed.json"
+    },
+    {
+      "sin_code": "541511",
+      "file_name": "GSA_MAS_541511_20251105.xlsx",
+      "contractor_count": 373,
+      "output_file": "GSA_MAS_541511_parsed.json"
+    },
+    {
+      "sin_code": "238910",
+      "file_name": "GSA_MAS_238910_20251105.xlsx",
+      "contractor_count": 82,
+      "output_file": "GSA_MAS_238910_parsed.json"
+    },
+    {
+      "sin_code": "611630",
+      "file_name": "GSA_MAS_611630_20251105.xlsx",
+      "contractor_count": 39,
+      "output_file": "GSA_MAS_611630_parsed.json"
+    },
+    {
+      "sin_code": "811212",
+      "file_name": "GSA_MAS_811212_20251105.xlsx",
+      "contractor_count": 421,
+      "output_file": "GSA_MAS_811212_parsed.json"
+    },
+    {
+      "sin_code": "337122O",
+      "file_name": "GSA_MAS_337122O_20251105.xlsx",
+      "contractor_count": 9,
+      "output_file": "GSA_MAS_337122O_parsed.json"
+    },
+    {
+      "sin_code": "541330SEC",
+      "file_name": "GSA_MAS_541330SEC_20251105.xlsx",
+      "contractor_count": 43,
+      "output_file": "GSA_MAS_541330SEC_parsed.json"
+    },
+    {
+      "sin_code": "333112",
+      "file_name": "GSA_MAS_333112_20251105.xlsx",
+      "contractor_count": 31,
+      "output_file": "GSA_MAS_333112_parsed.json"
+    },
+    {
+      "sin_code": "33721T",
+      "file_name": "GSA_MAS_33721T_20251105.xlsx",
+      "contractor_count": 20,
+      "output_file": "GSA_MAS_33721T_parsed.json"
+    },
+    {
+      "sin_code": "332510",
+      "file_name": "GSA_MAS_332510_20251105.xlsx",
+      "contractor_count": 10,
+      "output_file": "GSA_MAS_332510_parsed.json"
+    },
+    {
+      "sin_code": "481211O",
+      "file_name": "GSA_MAS_481211O_20251105.xlsx",
+      "contractor_count": 14,
+      "output_file": "GSA_MAS_481211O_parsed.json"
+    },
+    {
+      "sin_code": "611512",
+      "file_name": "GSA_MAS_611512_20251105.xlsx",
+      "contractor_count": 277,
+      "output_file": "GSA_MAS_611512_parsed.json"
+    },
+    {
+      "sin_code": "339940OS4",
+      "file_name": "GSA_MAS_339940OS4_20251105.xlsx",
+      "contractor_count": 54,
+      "output_file": "GSA_MAS_339940OS4_parsed.json"
+    },
+    {
+      "sin_code": "561990",
+      "file_name": "GSA_MAS_561990_20251105.xlsx",
+      "contractor_count": 49,
+      "output_file": "GSA_MAS_561990_parsed.json"
+    },
+    {
+      "sin_code": "522310",
+      "file_name": "GSA_MAS_522310_20251105.xlsx",
+      "contractor_count": 88,
+      "output_file": "GSA_MAS_522310_parsed.json"
+    },
+    {
+      "sin_code": "339113H",
+      "file_name": "GSA_MAS_339113H_20251105.xlsx",
+      "contractor_count": 45,
+      "output_file": "GSA_MAS_339113H_parsed.json"
+    },
+    {
+      "sin_code": "532111",
+      "file_name": "GSA_MAS_532111_20251105.xlsx",
+      "contractor_count": 16,
+      "output_file": "GSA_MAS_532111_parsed.json"
+    },
+    {
+      "sin_code": "321920",
+      "file_name": "GSA_MAS_321920_20251105.xlsx",
+      "contractor_count": 11,
+      "output_file": "GSA_MAS_321920_parsed.json"
+    },
+    {
+      "sin_code": "811310MR",
+      "file_name": "GSA_MAS_811310MR_20251105.xlsx",
+      "contractor_count": 38,
+      "output_file": "GSA_MAS_811310MR_parsed.json"
+    },
+    {
+      "sin_code": "33721P",
+      "file_name": "GSA_MAS_33721P_20251105.xlsx",
+      "contractor_count": 170,
+      "output_file": "GSA_MAS_33721P_parsed.json"
+    },
+    {
+      "sin_code": "541519CSP",
+      "file_name": "GSA_MAS_541519CSP_20251105.xlsx",
+      "contractor_count": 3,
+      "output_file": "GSA_MAS_541519CSP_parsed.json"
+    },
+    {
+      "sin_code": "332311P",
+      "file_name": "GSA_MAS_332311P_20251105.xlsx",
+      "contractor_count": 81,
+      "output_file": "GSA_MAS_332311P_parsed.json"
+    },
+    {
+      "sin_code": "561730",
+      "file_name": "GSA_MAS_561730_20251105.xlsx",
+      "contractor_count": 106,
+      "output_file": "GSA_MAS_561730_parsed.json"
+    },
+    {
+      "sin_code": "334290PACS",
+      "file_name": "GSA_MAS_334290PACS_20251105.xlsx",
+      "contractor_count": 34,
+      "output_file": "GSA_MAS_334290PACS_parsed.json"
+    },
+    {
+      "sin_code": "541930",
+      "file_name": "GSA_MAS_541930_20251105.xlsx",
+      "contractor_count": 162,
+      "output_file": "GSA_MAS_541930_parsed.json"
+    },
+    {
+      "sin_code": "333318F",
+      "file_name": "GSA_MAS_333318F_20251105.xlsx",
+      "contractor_count": 76,
+      "output_file": "GSA_MAS_333318F_parsed.json"
+    },
+    {
+      "sin_code": "531110",
+      "file_name": "GSA_MAS_531110_20251105.xlsx",
+      "contractor_count": 42,
+      "output_file": "GSA_MAS_531110_parsed.json"
+    },
+    {
+      "sin_code": "492210",
+      "file_name": "GSA_MAS_492210_20251105.xlsx",
+      "contractor_count": 12,
+      "output_file": "GSA_MAS_492210_parsed.json"
+    },
+    {
+      "sin_code": "54151HEAL",
+      "file_name": "GSA_MAS_54151HEAL_20251105.xlsx",
+      "contractor_count": 703,
+      "output_file": "GSA_MAS_54151HEAL_parsed.json"
+    },
+    {
+      "sin_code": "541611LIT",
+      "file_name": "GSA_MAS_541611LIT_20251105.xlsx",
+      "contractor_count": 74,
+      "output_file": "GSA_MAS_541611LIT_parsed.json"
+    },
+    {
+      "sin_code": "541612HC",
+      "file_name": "GSA_MAS_541612HC_20251105.xlsx",
+      "contractor_count": 187,
+      "output_file": "GSA_MAS_541612HC_parsed.json"
+    },
+    {
+      "sin_code": "238160",
+      "file_name": "GSA_MAS_238160_20251105.xlsx",
+      "contractor_count": 32,
+      "output_file": "GSA_MAS_238160_parsed.json"
+    },
+    {
+      "sin_code": "3152",
+      "file_name": "GSA_MAS_3152_20251105.xlsx",
+      "contractor_count": 132,
+      "output_file": "GSA_MAS_3152_parsed.json"
+    },
+    {
+      "sin_code": "FURNISH",
+      "file_name": "GSA_MAS_FURNISH_20251105.xlsx",
+      "contractor_count": 25,
+      "output_file": "GSA_MAS_FURNISH_parsed.json"
+    },
+    {
+      "sin_code": "611430TD",
+      "file_name": "GSA_MAS_611430TD_20251105.xlsx",
+      "contractor_count": 83,
+      "output_file": "GSA_MAS_611430TD_parsed.json"
+    },
+    {
+      "sin_code": "33611",
+      "file_name": "GSA_MAS_33611_20251105.xlsx",
+      "contractor_count": 9,
+      "output_file": "GSA_MAS_33611_parsed.json"
+    },
+    {
+      "sin_code": "333TOOL",
+      "file_name": "GSA_MAS_333TOOL_20251105.xlsx",
+      "contractor_count": 72,
+      "output_file": "GSA_MAS_333TOOL_parsed.json"
+    },
+    {
+      "sin_code": "532420LC",
+      "file_name": "GSA_MAS_532420LC_20251105.xlsx",
+      "contractor_count": 18,
+      "output_file": "GSA_MAS_532420LC_parsed.json"
+    },
+    {
+      "sin_code": "333316P",
+      "file_name": "GSA_MAS_333316P_20251105.xlsx",
+      "contractor_count": 23,
+      "output_file": "GSA_MAS_333316P_parsed.json"
+    },
+    {
+      "sin_code": "511120",
+      "file_name": "GSA_MAS_511120_20251105.xlsx",
+      "contractor_count": 19,
+      "output_file": "GSA_MAS_511120_parsed.json"
+    },
+    {
+      "sin_code": "314120",
+      "file_name": "GSA_MAS_314120_20251105.xlsx",
+      "contractor_count": 75,
+      "output_file": "GSA_MAS_314120_parsed.json"
+    },
+    {
+      "sin_code": "532112",
+      "file_name": "GSA_MAS_532112_20251105.xlsx",
+      "contractor_count": 7,
+      "output_file": "GSA_MAS_532112_parsed.json"
+    },
+    {
+      "sin_code": "517410",
+      "file_name": "GSA_MAS_517410_20251105.xlsx",
+      "contractor_count": 41,
+      "output_file": "GSA_MAS_517410_parsed.json"
+    },
+    {
+      "sin_code": "333912",
+      "file_name": "GSA_MAS_333912_20251105.xlsx",
+      "contractor_count": 24,
+      "output_file": "GSA_MAS_333912_parsed.json"
+    },
+    {
+      "sin_code": "541211",
+      "file_name": "GSA_MAS_541211_20251105.xlsx",
+      "contractor_count": 200,
+      "output_file": "GSA_MAS_541211_parsed.json"
+    },
+    {
+      "sin_code": "541810",
+      "file_name": "GSA_MAS_541810_20251105.xlsx",
+      "contractor_count": 305,
+      "output_file": "GSA_MAS_541810_parsed.json"
+    },
+    {
+      "sin_code": "561110",
+      "file_name": "GSA_MAS_561110_20251105.xlsx",
+      "contractor_count": 159,
+      "output_file": "GSA_MAS_561110_parsed.json"
+    },
+    {
+      "sin_code": "331315A",
+      "file_name": "GSA_MAS_331315A_20251105.xlsx",
+      "contractor_count": 6,
+      "output_file": "GSA_MAS_331315A_parsed.json"
+    },
+    {
+      "sin_code": "811212R",
+      "file_name": "GSA_MAS_811212R_20251105.xlsx",
+      "contractor_count": 10,
+      "output_file": "GSA_MAS_811212R_parsed.json"
+    },
+    {
+      "sin_code": "336320",
+      "file_name": "GSA_MAS_336320_20251105.xlsx",
+      "contractor_count": 42,
+      "output_file": "GSA_MAS_336320_parsed.json"
+    },
+    {
+      "sin_code": "541990IPS",
+      "file_name": "GSA_MAS_541990IPS_20251105.xlsx",
+      "contractor_count": 3,
+      "output_file": "GSA_MAS_541990IPS_parsed.json"
+    },
+    {
+      "sin_code": "532310",
+      "file_name": "GSA_MAS_532310_20251105.xlsx",
+      "contractor_count": 7,
+      "output_file": "GSA_MAS_532310_parsed.json"
+    },
+    {
+      "sin_code": "562112",
+      "file_name": "GSA_MAS_562112_20251105.xlsx",
+      "contractor_count": 66,
+      "output_file": "GSA_MAS_562112_parsed.json"
+    },
+    {
+      "sin_code": "332999BMS",
+      "file_name": "GSA_MAS_332999BMS_20251105.xlsx",
+      "contractor_count": 35,
+      "output_file": "GSA_MAS_332999BMS_parsed.json"
+    },
+    {
+      "sin_code": "337121P",
+      "file_name": "GSA_MAS_337121P_20251105.xlsx",
+      "contractor_count": 10,
+      "output_file": "GSA_MAS_337121P_parsed.json"
+    }
+  ],
+  "sins_processed": [
+    "334220",
+    "334511T",
+    "325998",
+    "339999E",
+    "541330EMI",
+    "541614SVC",
+    "561410",
+    "611430ST",
+    "541420",
+    "336612R",
+    "325320",
+    "561210SB",
+    "611TRAINAW",
+    "541715",
+    "336212",
+    "541990L",
+    "511210",
+    "541611O",
+    "561612",
+    "54151",
+    "517312",
+    "532490P",
+    "339940",
+    "541214",
+    "333318TDTM",
+    "561599L",
+    "325998W",
+    "541614CF",
+    "3FIRE",
+    "518210C",
+    "333415",
+    "333997",
+    "611430",
+    "326199",
+    "337127CI",
+    "531",
+    "336999",
+    "324191",
+    "493110RM",
+    "611420",
+    "33411",
+    "339113PA",
+    "561611",
+    "541611MPS",
+    "333316C",
+    "332999",
+    "541370GEO",
+    "333914",
+    "561599",
+    "541370GIS",
+    "339950",
+    "334310",
+    "339999S",
+    "322291",
+    "332321",
+    "333241",
+    "532420LT",
+    "339999F",
+    "485",
+    "541715AIR",
+    "541430",
+    "541612LOB",
+    "321918",
+    "327910",
+    "541330ENG",
+    "488190",
+    "561439",
+    "334519",
+    "339920",
+    "332216",
+    "336211",
+    "334513",
+    "541990AV",
+    "3PACK",
+    "532490L",
+    "315210",
+    "334290",
+    "339113LAB",
+    "333120",
+    "NEW",
+    "337127",
+    "334118",
+    "561621H",
+    "531210",
+    "333923S",
+    "335220E",
+    "335220",
+    "518210ERM",
+    "492110",
+    "541380",
+    "332913",
+    "3361",
+    "333923",
+    "54151S",
+    "332312",
+    "333316M",
+    "541611W",
+    "812910",
+    "532420C",
+    "541219",
+    "541612EPM",
+    "541519ICAM",
+    "812990",
+    "561450",
+    "311423",
+    "339113R",
+    "541990RISK",
+    "54161",
+    "325611",
+    "334419",
+    "3361E",
+    "332311",
+    "561440",
+    "561510",
+    "541611",
+    "337215M",
+    "54151HACS",
+    "335911",
+    "333318",
+    "332994",
+    "333924",
+    "541690E",
+    "333999",
+    "811310",
+    "325612",
+    "334519ENV",
+    "561EEO",
+    "238320",
+    "321991",
+    "332510S",
+    "339994",
+    "512110",
+    "811212SA",
+    "561320",
+    "33512",
+    "339940SVC",
+    "325992",
+    "337215",
+    "532120",
+    "337127CF",
+    "541690",
+    "561210FAC",
+    "322220",
+    "541614",
+    "333249",
+    "336992",
+    "541519PIV",
+    "333314NV",
+    "332510C",
+    "332439",
+    "339112",
+    "333921",
+    "316210",
+    "3361V",
+    "541810ODC",
+    "OLM",
+    "339920PARK",
+    "339920S",
+    "561422",
+    "541910",
+    "334515",
+    "481211B",
+    "541990",
+    "561920",
+    "532490ESA",
+    "541612ER",
+    "334511",
+    "332999S",
+    "624SS",
+    "541214HR",
+    "336612",
+    "541519PKI",
+    "314110",
+    "532420LTOP",
+    "335220D",
+    "325412",
+    "334516",
+    "333415REM",
+    "337121H",
+    "56131",
+    "541612LR",
+    "333415HVAC",
+    "562910REM",
+    "ANCILLARY",
+    "334290L",
+    "ANCRA",
+    "336611",
+    "332999P",
+    "713940",
+    "334512",
+    "562910RMI",
+    "611430TTS",
+    "541110",
+    "541511T",
+    "561499M",
+    "336413",
+    "332312F",
+    "336991",
+    "541330L",
+    "333922",
+    "326220",
+    "337127INT",
+    "541820",
+    "33712",
+    "541613",
+    "541614OR",
+    "333318T",
+    "324110",
+    "33721",
+    "541620",
+    "611710",
+    "4PL",
+    "54151ECOM",
+    "332215T",
+    "333316F",
+    "333244",
+    "333314",
+    "532420L",
+    "524292",
+    "518210FM",
+    "335999",
+    "518210DC",
+    "541511",
+    "238910",
+    "611630",
+    "811212",
+    "337122O",
+    "541330SEC",
+    "333112",
+    "33721T",
+    "332510",
+    "481211O",
+    "611512",
+    "339940OS4",
+    "561990",
+    "522310",
+    "339113H",
+    "532111",
+    "321920",
+    "811310MR",
+    "33721P",
+    "541519CSP",
+    "332311P",
+    "561730",
+    "334290PACS",
+    "541930",
+    "333318F",
+    "531110",
+    "492210",
+    "54151HEAL",
+    "541611LIT",
+    "541612HC",
+    "238160",
+    "3152",
+    "FURNISH",
+    "611430TD",
+    "33611",
+    "333TOOL",
+    "532420LC",
+    "333316P",
+    "511120",
+    "314120",
+    "532112",
+    "517410",
+    "333912",
+    "541211",
+    "541810",
+    "561110",
+    "331315A",
+    "811212R",
+    "336320",
+    "541990IPS",
+    "532310",
+    "562112",
+    "332999BMS",
+    "337121P"
+  ]
+}

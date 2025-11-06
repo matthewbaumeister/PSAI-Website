@@ -1,0 +1,4160 @@
+{
+  "sin_code": "339920S",
+  "file_name": "GSA_MAS_339920S_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:44.712441",
+  "sheets": {
+    "2025_11_05_11_09_02": {
+      "row_count": 144,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "2XL CORPORATION",
+      "contract_number": "47QSMA21D08R2",
+      "vendor_uei": "F45DNYZW7697",
+      "company_address": "2 GATEWAY CT STE A",
+      "company_city": "BOLINGBROOK",
+      "company_state": "IL",
+      "company_zip": "60440-4880",
+      "primary_contact_phone": "7084354059",
+      "primary_contact_email": "MICHELLEG@2XLPRO.COM",
+      "website": "http://www.2xlpro.com",
+      "contract_start_date": "2026-08-18",
+      "contract_expiration_date": "2041-08-18",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08R2/47QSMA21D08R2_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08R2&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "4IMPRINT INC",
+      "contract_number": "GS-07F-9626S",
+      "vendor_uei": "XK7UNSSLL833",
+      "company_address": "101 COMMERCE ST",
+      "company_city": "OSHKOSH",
+      "company_state": "WI",
+      "company_zip": "54901-4864",
+      "primary_contact_phone": "8882345797",
+      "primary_contact_email": "JLORD@4IMPRINT.COM",
+      "website": "HTTP://WWW.4IMPRINT.COM",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2026-08-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9626S/GS07F9626S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9626S&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ABACUS SPORTS INSTALLATIONS, LTD.",
+      "contract_number": "GS-03F-039GA",
+      "vendor_uei": "N1DNWELMPMX8",
+      "company_address": "2330 DAIRY RD",
+      "company_city": "LANCASTER",
+      "company_state": "PA",
+      "company_zip": "17601-2308",
+      "primary_contact_phone": "7175608050",
+      "primary_contact_email": "casey@abacussports.com",
+      "website": "http://www.abacussports.com",
+      "contract_start_date": "2027-02-13",
+      "contract_expiration_date": "2037-02-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F039GA/GS03F039GA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-039GA/pricelist_GS-03F-039GA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-039GA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ACCENT APPAREL CO INC",
+      "contract_number": "GS-07F-0312X",
+      "vendor_uei": "M5F6ECSENP53",
+      "company_address": "100 MARKET ST",
+      "company_city": "ANNAPOLIS",
+      "company_state": "MD",
+      "company_zip": "21401-2608",
+      "primary_contact_phone": "4106832323",
+      "primary_contact_email": "rryba@accentapparel.com",
+      "website": "http://WWW.accentapparel.com",
+      "contract_start_date": "2026-02-22",
+      "contract_expiration_date": "2031-02-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0312X/GS07F0312X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0312X&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ADVANCED HEALTHSTYLES FITNESS EQUIPMENT, INC.",
+      "contract_number": "47QSMA20D08Q1",
+      "vendor_uei": "DBV5JMMPCUF3",
+      "company_address": "861 SOUTHPARK DR",
+      "company_city": "LITTLETON",
+      "company_state": "CO",
+      "company_zip": "80120-5684",
+      "primary_contact_phone": "2409258731",
+      "primary_contact_email": "podell@advancedexercise.com",
+      "website": "http://www.advancedexercise.com/",
+      "contract_start_date": "2030-04-22",
+      "contract_expiration_date": "2040-04-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08Q1/47QSMA20D08Q1_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08Q1&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ADVANTAGE TENT FITTINGS, INC",
+      "contract_number": "GS-03F-0003W",
+      "vendor_uei": "KFCXTADK6HG4",
+      "company_address": "11661 PLEASANT VALLEY RD",
+      "company_city": "CHILLICOTHE",
+      "company_state": "OH",
+      "company_zip": "45601-8315",
+      "primary_contact_phone": "17407733015",
+      "primary_contact_email": "BEN@ADVANTAGETENT.COM",
+      "website": "http://WWW.ADVANTAGETENT.COM",
+      "contract_start_date": "2029-09-30",
+      "contract_expiration_date": "2029-09-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0003W/GS03F0003W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0003W&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ADVERTISING/MARKETING/STRATEGIC PLANNING, LLC",
+      "contract_number": "GS-03F-0195W",
+      "vendor_uei": "HCRHNUVEUAW5",
+      "company_address": "84912 LAUGHLIN RD",
+      "company_city": "EUGENE",
+      "company_state": "OR",
+      "company_zip": "97405-9448",
+      "primary_contact_phone": "5413440794",
+      "primary_contact_email": "lpocan@amspromogroup.com",
+      "website": "http://www.amspromogroup.com",
+      "contract_start_date": "2030-07-06",
+      "contract_expiration_date": "2030-07-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Feb 1, 2026",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0195W/GS03F0195W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0195W&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "AKERVALL TECHNOLOGIES, INC.",
+      "contract_number": "47QSMA18D08Q9",
+      "vendor_uei": "FU4ULKMNAY44",
+      "company_address": "1512 WOODLAND DR",
+      "company_city": "SALINE",
+      "company_state": "MI",
+      "company_zip": "48176-1632",
+      "primary_contact_phone": "7343897406",
+      "primary_contact_email": "BEN@SISUGUARD.COM",
+      "website": "http://www.akervalltechnologies.com",
+      "contract_start_date": "2028-06-07",
+      "contract_expiration_date": "2038-06-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08Q9/47QSMA18D08Q9_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08Q9&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ALEGNA INC",
+      "contract_number": "47QSHA21D001L",
+      "vendor_uei": "M322ZEVGUEZ8",
+      "company_address": "2810 N KINGSTON DR",
+      "company_city": "PEORIA",
+      "company_state": "IL",
+      "company_zip": "61604-2145",
+      "primary_contact_phone": "8666157942",
+      "primary_contact_email": "sales@alegnainc.net",
+      "website": "HTTPS://WWW.ALEGNAINC.NET",
+      "contract_start_date": "2026-04-25",
+      "contract_expiration_date": "2041-04-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA21D001L/47QSHA21D001L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA21D001L&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ALL AMERICAN EMBROIDERY INC",
+      "contract_number": "GS-03F-121DA",
+      "vendor_uei": "JEUULJYCA6Q5",
+      "company_address": "31600 PLYMOUTH RD",
+      "company_city": "LIVONIA",
+      "company_state": "MI",
+      "company_zip": "48150-1930",
+      "primary_contact_phone": "7344219292",
+      "primary_contact_email": "sandeep@aae4ever.com",
+      "website": "https://www.aae4ever.com/",
+      "contract_start_date": "2026-06-30",
+      "contract_expiration_date": "2036-06-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F121DA/GS03F121DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-121DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ALTERG, INC.",
+      "contract_number": "GS-03F-031DA",
+      "vendor_uei": "DYTSBA9TLGJ3",
+      "company_address": "48368 MILMONT DR",
+      "company_city": "FREMONT",
+      "company_state": "CA",
+      "company_zip": "94538-7324",
+      "primary_contact_phone": "4697812680",
+      "primary_contact_email": "mswaim@alterg.com",
+      "website": "http://www.alterg.com",
+      "contract_start_date": "2025-12-15",
+      "contract_expiration_date": "2035-12-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F031DA/GS03F031DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-031DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN DIVING SUPPLY LLC",
+      "contract_number": "47QSMA23D08QU",
+      "vendor_uei": "EAP8GY142XK5",
+      "company_address": "2531 TILTON RD",
+      "company_city": "EGG HARBOR TOWNSHIP",
+      "company_state": "NJ",
+      "company_zip": "08234-5145",
+      "primary_contact_phone": "6096465090",
+      "primary_contact_email": "gsa@americandivingsupply.com",
+      "website": "http://www.americandivingsupply.com",
+      "contract_start_date": "2028-09-25",
+      "contract_expiration_date": "2043-09-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08QU/47QSMA23D08QU_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08QU&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN FILING SOLUTIONS INC",
+      "contract_number": "47QSMA21D08Q5",
+      "vendor_uei": "C1DYFJVM6N44",
+      "company_address": "2855 FOREST CREEK LN",
+      "company_city": "NAPERVILLE",
+      "company_state": "IL",
+      "company_zip": "60565",
+      "primary_contact_phone": "6307488099",
+      "primary_contact_email": "info@americanfilingsolutions.com",
+      "website": "http://www.brandinghawk.com",
+      "contract_start_date": "2026-05-25",
+      "contract_expiration_date": "2041-05-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08Q5/47QSMA21D08Q5_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08Q5&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN MADE LLC",
+      "contract_number": "GS-03F-0034T",
+      "vendor_uei": "NMCVFVNGT6E9",
+      "company_address": "238 COUNTY ROAD 2446",
+      "company_city": "GUNTOWN",
+      "company_state": "MS",
+      "company_zip": "38849-9106",
+      "primary_contact_phone": "6624886883",
+      "primary_contact_email": "CONTACTUS@AMERICANMADEFITNESSEQUIPMENT.COM",
+      "website": "http://WWW.AMERICANMADEFITNESSEQUIPMENT.COM",
+      "contract_start_date": "2027-02-14",
+      "contract_expiration_date": "2027-02-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0034T/GS03F0034T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0034T&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ANHINGA CO",
+      "contract_number": "47QSMS24D00B3",
+      "vendor_uei": "LZCNEKLH1AT6",
+      "company_address": "1849 CHERRY ST UNIT 14",
+      "company_city": "LOUISVILLE",
+      "company_state": "CO",
+      "company_zip": "80027-3089",
+      "primary_contact_phone": "9704602327",
+      "primary_contact_email": "tracy@bearvault.com",
+      "website": "http://www.bearvault.com",
+      "contract_start_date": "2029-08-08",
+      "contract_expiration_date": "2044-08-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00B3/47QSMS24D00B3_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00B3&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "APISOURCE INC",
+      "contract_number": "GS-03F-060AA",
+      "vendor_uei": "WRP8YMC95575",
+      "company_address": "7850 WALKER DR",
+      "company_city": "GREENBELT",
+      "company_state": "MD",
+      "company_zip": "20770-3234",
+      "primary_contact_phone": "3017316100",
+      "primary_contact_email": "cindy.brown@apisource.com",
+      "website": "http://www.apisource.com/",
+      "contract_start_date": "2028-03-31",
+      "contract_expiration_date": "2033-03-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 400",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F060AA/GS03F060AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-060AA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "AQUILA FITNESS CONSULTING SYSTEMS LTD",
+      "contract_number": "GS-03F-047CA",
+      "vendor_uei": "MCMGH44PNB95",
+      "company_address": "1221 BRICKELL AVE STE 1060",
+      "company_city": "MIAMI",
+      "company_state": "FL",
+      "company_zip": "33131-3258",
+      "primary_contact_phone": "3054008444",
+      "primary_contact_email": "yvan.miklin@aquilaltd.com",
+      "website": "http://www.aquilaltd.com",
+      "contract_start_date": "2030-03-31",
+      "contract_expiration_date": "2035-03-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F047CA/GS03F047CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-047CA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ASAP SCREEN PRINTING, INC",
+      "contract_number": "GS-03F-125DA",
+      "vendor_uei": "DJ7MZLMPGG45",
+      "company_address": "4141 N HENDERSON RD STE 11",
+      "company_city": "ARLINGTON",
+      "company_state": "VA",
+      "company_zip": "22203",
+      "primary_contact_phone": "7038411977",
+      "primary_contact_email": "asapprinting@erols.com",
+      "website": "http://asapscreenprinting.com",
+      "contract_start_date": "2026-07-06",
+      "contract_expiration_date": "2036-07-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F125DA/GS03F125DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-125DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ATLANTIC DIVING SUPPLY, INC.",
+      "contract_number": "47QSMA19D08Q1",
+      "vendor_uei": "GJMSFBCNMSK3",
+      "company_address": "621 LYNNHAVEN PKWY",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23452-7383",
+      "primary_contact_phone": "7574167505",
+      "primary_contact_email": "gsa@adsinc.com",
+      "website": "http://www.adsinc.com",
+      "contract_start_date": "2029-05-07",
+      "contract_expiration_date": "2039-05-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 160",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08Q1/47QSMA19D08Q1_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA19D08Q1/pricelist_47QSMA19D08Q1.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08Q1&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BCI BURKE COMPANY, LLC",
+      "contract_number": "47QSMA20D08NL",
+      "vendor_uei": "M28NJPBMXWG8",
+      "company_address": "727 NORTHWEST WAY",
+      "company_city": "NORTH FOND DU LAC",
+      "company_state": "WI",
+      "company_zip": "54937-1865",
+      "primary_contact_phone": "9209336701",
+      "primary_contact_email": "mlarson@bciburke.com",
+      "website": "http://www.bciburke.com",
+      "contract_start_date": "2029-11-25",
+      "contract_expiration_date": "2039-11-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08NL/47QSMA20D08NL_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08NL&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BEAM DISTRIBUTING, INC.",
+      "contract_number": "GS-07F-256AA",
+      "vendor_uei": "FY4FYX6HUPE5",
+      "company_address": "317 HILL CARTER PKWY",
+      "company_city": "ASHLAND",
+      "company_state": "VA",
+      "company_zip": "23005-2315",
+      "primary_contact_phone": "8044406489",
+      "primary_contact_email": "jackie@beamdistributing.com",
+      "website": "http://www.beam.is",
+      "contract_start_date": "2028-05-09",
+      "contract_expiration_date": "2033-05-09",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F256AA/GS07F256AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-256AA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BEAVERFIT NORTH AMERICA LLC",
+      "contract_number": "47QSMS25D00BU",
+      "vendor_uei": "L2VKL25HGAM7",
+      "company_address": "120 WOODLAND AVE",
+      "company_city": "RENO",
+      "company_state": "NV",
+      "company_zip": "89523-8951",
+      "primary_contact_phone": "6192066929",
+      "primary_contact_email": "tyler@beaverfitusa.com",
+      "website": "http://beaverfitusa.com",
+      "contract_start_date": "2030-09-03",
+      "contract_expiration_date": "2045-09-03",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE D",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00BU&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BIG STAR BRANDING INC",
+      "contract_number": "47QSMA22D08QG",
+      "vendor_uei": "EH8MEKHK8254",
+      "company_address": "4009 NACO PERRIN BLVD",
+      "company_city": "SAN ANTONIO",
+      "company_state": "TX",
+      "company_zip": "78217-2582",
+      "primary_contact_phone": "2105902662",
+      "primary_contact_email": "GSAsales@bigstarbranding.com",
+      "website": "https://www.bigstarbranding.com",
+      "contract_start_date": "2027-08-11",
+      "contract_expiration_date": "2042-08-11",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08QG/47QSMA22D08QG_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08QG&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BIKE TRACK, INC.",
+      "contract_number": "47QSMA18D08PE",
+      "vendor_uei": "K7EKMZPR9M63",
+      "company_address": "19 CENTRAL ST",
+      "company_city": "WOODSTOCK",
+      "company_state": "VT",
+      "company_zip": "05091-1005",
+      "primary_contact_phone": "8024573275",
+      "primary_contact_email": "rstaples@biketrack.com",
+      "website": "http://www.biketrack.com",
+      "contract_start_date": "2028-03-27",
+      "contract_expiration_date": "2038-03-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08PE/47QSMA18D08PE_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08PE&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BIOSPACE, INC.",
+      "contract_number": "47QSMA21D08Q9",
+      "vendor_uei": "MTGTVFNHLF74",
+      "company_address": "13850 CERRITOS CORPORATE DR STE",
+      "company_city": "CERRITOS",
+      "company_state": "CA",
+      "company_zip": "90703-2467",
+      "primary_contact_phone": "3239326503",
+      "primary_contact_email": "gsa.biospace@inbody.com",
+      "website": "http://www.inbodyusa.com",
+      "contract_start_date": "2026-06-06",
+      "contract_expiration_date": "2041-06-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08Q9/47QSMA21D08Q9_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08Q9&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BIZOLUTIONS CONSULTING LLC",
+      "contract_number": "47QSMA23D08N7",
+      "vendor_uei": "K4ABFKAKVA53",
+      "company_address": "1663 OSPREY AVE",
+      "company_city": "THE VILLAGES",
+      "company_state": "FL",
+      "company_zip": "32162-2218",
+      "primary_contact_phone": "2398962847",
+      "primary_contact_email": "mvp@bizolutionsconsult.com",
+      "website": "http://www.bizolutionsconsult.com",
+      "contract_start_date": "2027-10-10",
+      "contract_expiration_date": "2042-10-10",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08N7/47QSMA23D08N7_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08N7&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BOATHOUSE ROW SPORTS LTD",
+      "contract_number": "GS-03F-012CA",
+      "vendor_uei": "TJB5PLFBDRS6",
+      "company_address": "425 E HUNTING PARK AVE",
+      "company_city": "PHILADELPHIA",
+      "company_state": "PA",
+      "company_zip": "19124-6008",
+      "primary_contact_phone": "2154254300",
+      "primary_contact_email": "johna@boathouse.com",
+      "website": "https://www.boathouse.com",
+      "contract_start_date": "2029-11-25",
+      "contract_expiration_date": "2034-11-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F012CA/GS03F012CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-012CA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BODY BUILDERS DISCOUNT OUTLET INC",
+      "contract_number": "GS-03F-0152Y",
+      "vendor_uei": "GZT2WFPHDNL6",
+      "company_address": "1900 DES PLAINES AVE",
+      "company_city": "FOREST PARK",
+      "company_state": "IL",
+      "company_zip": "60130-2512",
+      "primary_contact_phone": "7084273500",
+      "primary_contact_email": "GSA@fitnessfactory.com",
+      "website": "http://www.fitnessfactory.com",
+      "contract_start_date": "2027-08-19",
+      "contract_expiration_date": "2032-08-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0152Y/GS03F0152Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0152Y&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BOOFIGHTER LLC",
+      "contract_number": "GS-03F-0151Y",
+      "vendor_uei": "ESW6L2FDM9J9",
+      "company_address": "6655 SW KINGSVIEW CT",
+      "company_city": "TIGARD",
+      "company_state": "OR",
+      "company_zip": "97223-2249",
+      "primary_contact_phone": "5034522521",
+      "primary_contact_email": "admin@americanfitness.net",
+      "website": "http://www.americanfitness.net/",
+      "contract_start_date": "2027-08-19",
+      "contract_expiration_date": "2032-08-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0151Y/GS03F0151Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0151Y&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BOTTOM LINE MILITARY SALES, LLC",
+      "contract_number": "GS-07F-9624S",
+      "vendor_uei": "EEXWDLL9W2H1",
+      "company_address": "6220 MOOREFIELD MEMORIAL HWY",
+      "company_city": "LIBERTY",
+      "company_state": "SC",
+      "company_zip": "29657-9272",
+      "primary_contact_phone": "18882115691",
+      "primary_contact_email": "bottomline2000@charter.net",
+      "website": "http://www.bottomline2000.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2026-08-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9624S/GS07F9624S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9624S&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "BRUNTON INTERNATIONAL, LLC",
+      "contract_number": "GS-03F-0013Y",
+      "vendor_uei": "PQMLSBB4V9M7",
+      "company_address": "2255 BRUNTON CT",
+      "company_city": "RIVERTON",
+      "company_state": "WY",
+      "company_zip": "82501-2822",
+      "primary_contact_phone": "7032561500",
+      "primary_contact_email": "rspotswood@govtools.com",
+      "website": "http://www.brunton.com",
+      "contract_start_date": "2026-10-14",
+      "contract_expiration_date": "2031-10-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0013Y/GS03F0013Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0013Y&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CALYPSO DIVERS OF TAMPA BAY, LLC",
+      "contract_number": "47QRAA24D008X",
+      "vendor_uei": "K79VDH16SRK1",
+      "company_address": "401 E BEARSS AVE",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33613",
+      "primary_contact_phone": "8139693483",
+      "primary_contact_email": "thompsonlarrym60@gmail.com",
+      "website": "https://www.calypsotampa.com",
+      "contract_start_date": "2029-06-02",
+      "contract_expiration_date": "2044-06-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CAMELBAK PRODUCTS, LLC",
+      "contract_number": "GS-03F-023DA",
+      "vendor_uei": "Q114NM4JZM65",
+      "company_address": "16752 ARMSTRONG AVE",
+      "company_city": "IRVINE",
+      "company_state": "CA",
+      "company_zip": "92606-4912",
+      "primary_contact_phone": "6178693956",
+      "primary_contact_email": "bleggat@camelbak.com",
+      "website": "http://www.CamelBak.com",
+      "contract_start_date": "2030-11-30",
+      "contract_expiration_date": "2035-11-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F023DA/GS03F023DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-023DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CELINA TENT INC",
+      "contract_number": "47QSMS24D0092",
+      "vendor_uei": "G8VPNT9Q99P3",
+      "company_address": "5373 STATE ROUTE 29",
+      "company_city": "CELINA",
+      "company_state": "OH",
+      "company_zip": "45822-9210",
+      "primary_contact_phone": "4193056886",
+      "primary_contact_email": "jillroy@celinatent.com",
+      "website": "http://WWW.CELINATENT.COM",
+      "contract_start_date": "2029-06-24",
+      "contract_expiration_date": "2044-06-24",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0092/47QSMS24D0092_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0092&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CHASE SUPPLY, INC.",
+      "contract_number": "47QSMS25D003R",
+      "vendor_uei": "TF2HVUYPRMV1",
+      "company_address": "307 E ST",
+      "company_city": "HAMPTON",
+      "company_state": "VA",
+      "company_zip": "23661-1209",
+      "primary_contact_phone": "7572452800",
+      "primary_contact_email": "david.weeda@chasedefense.com",
+      "website": "https://www.chasedefense.com/",
+      "contract_start_date": "2030-01-28",
+      "contract_expiration_date": "2045-01-28",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D003R/47QSMS25D003R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D003R&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "COLUMBIA CASCADE COMPANY",
+      "contract_number": "GS-03F-095DA",
+      "vendor_uei": "EQ2MDLYNBQ64",
+      "company_address": "700 NE 4TH AVE STE 201",
+      "company_city": "CAMAS",
+      "company_state": "WA",
+      "company_zip": "98607-2168",
+      "primary_contact_phone": "5032231157",
+      "primary_contact_email": "stevek@timberform.com",
+      "website": "http://www.timberform.com",
+      "contract_start_date": "2026-04-24",
+      "contract_expiration_date": "2036-04-24",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F095DA/GS03F095DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-095DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CONCEPT2, INC",
+      "contract_number": "47QSMA23D08PS",
+      "vendor_uei": "YU16QKLGN323",
+      "company_address": "105 INDUSTRIAL PARK DR",
+      "company_city": "MORRISVILLE",
+      "company_state": "VT",
+      "company_zip": "05661-8532",
+      "primary_contact_phone": "8778878467",
+      "primary_contact_email": "tracyd@concept2.com",
+      "website": "http://www.concept2.com",
+      "contract_start_date": "2028-05-07",
+      "contract_expiration_date": "2043-05-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08PS/47QSMA23D08PS_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08PS&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CONNER ATHLETIC PRODUCTS INC",
+      "contract_number": "GS-03F-077GA",
+      "vendor_uei": "UQNMFW5LML29",
+      "company_address": "900 E HIGHWAY 30",
+      "company_city": "JEFFERSON",
+      "company_state": "IA",
+      "company_zip": "50129",
+      "primary_contact_phone": "5153863717",
+      "primary_contact_email": "mrichardson@power-lift.com",
+      "website": "http://www.power-lift.com",
+      "contract_start_date": "2027-07-23",
+      "contract_expiration_date": "2037-07-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077GA/GS03F077GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077GA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CONTINENTAL FLOORING CO",
+      "contract_number": "GS-03F-001BA",
+      "vendor_uei": "D64SYT4L46S7",
+      "company_address": "9319 N 94TH WAY",
+      "company_city": "SCOTTSDALE",
+      "company_state": "AZ",
+      "company_zip": "85258-5568",
+      "primary_contact_phone": "8008251221",
+      "primary_contact_email": "krensmeyer@continentalflooring.com",
+      "website": "https://www.continentalflooring.com",
+      "contract_start_date": "2028-09-30",
+      "contract_expiration_date": "2033-09-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 1000",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F001BA/GS03F001BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-001BA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "COULTER VENTURES LLC",
+      "contract_number": "GS-03F-0091W",
+      "vendor_uei": "L2SQG6N83MM3",
+      "company_address": "545 E 5TH AVE",
+      "company_city": "COLUMBUS",
+      "company_state": "OH",
+      "company_zip": "43201",
+      "primary_contact_phone": "6143586190",
+      "primary_contact_email": "govsales@roguefitness.com",
+      "website": "http://www.roguefitness.com",
+      "contract_start_date": "2030-02-28",
+      "contract_expiration_date": "2030-02-28",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0091W/GS03F0091W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0091W&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "COVERMASTER INC",
+      "contract_number": "GS-03F-130DA",
+      "vendor_uei": "YENCB1MXD645",
+      "company_address": "100 WESTMORE DR",
+      "company_city": "ETOBICOKE",
+      "company_state": "ON",
+      "company_zip": "M9V 5C3",
+      "primary_contact_phone": "8003875808",
+      "primary_contact_email": "ken@covermaster.com",
+      "website": "http://www.covermaster.com",
+      "contract_start_date": "2026-07-31",
+      "contract_expiration_date": "2036-07-31",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "UNIT 11D",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F130DA/GS03F130DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-130DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CREATIVE ENGINEERING INC",
+      "contract_number": "47QSMA23D08N6",
+      "vendor_uei": "GED8GN6J1NM1",
+      "company_address": "7621 E JOY RD",
+      "company_city": "ANN ARBOR",
+      "company_state": "MI",
+      "company_zip": "48105-9682",
+      "primary_contact_phone": "8007424478",
+      "primary_contact_email": "debbie@chponline.com",
+      "website": "http://www.chponline.com",
+      "contract_start_date": "2027-10-10",
+      "contract_expiration_date": "2042-10-10",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08N6/47QSMA23D08N6_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08N6&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "CROSSOVER SYMMETRY LLC",
+      "contract_number": "47QSMA23D08P0",
+      "vendor_uei": "VLSES64T5LH8",
+      "company_address": "225 5TH AVE STE 2",
+      "company_city": "INDIALANTIC",
+      "company_state": "FL",
+      "company_zip": "32903-3163",
+      "primary_contact_phone": "7202512927",
+      "primary_contact_email": "matt@crossoversymmetry.com",
+      "website": "http://www.crossoversymmetry.com",
+      "contract_start_date": "2028-02-23",
+      "contract_expiration_date": "2043-02-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08P0&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "DIAMOND FITNESS SYSTEMS INC",
+      "contract_number": "GS-03F-0026W",
+      "vendor_uei": "FLMLHAZK7JV7",
+      "company_address": "33159 WARM SPRINGS WAY",
+      "company_city": "MENIFEE",
+      "company_state": "CA",
+      "company_zip": "92596-9774",
+      "primary_contact_phone": "9516980782",
+      "primary_contact_email": "info-dfs@hotmail.com",
+      "website": "http://www.diamondfitnesssystems.com",
+      "contract_start_date": "2029-11-14",
+      "contract_expiration_date": "2029-11-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0026W/GS03F0026W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0026W&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "DISC-O-BED LP",
+      "contract_number": "47QSMS25D009N",
+      "vendor_uei": "MR5TF7XCBN45",
+      "company_address": "2402 TECH CENTER PKWY STE 300",
+      "company_city": "LAWRENCEVILLE",
+      "company_state": "GA",
+      "company_zip": "30043-1357",
+      "primary_contact_phone": "7702952292",
+      "primary_contact_email": "sales@discobed.com",
+      "website": "http://www.discobed.com",
+      "contract_start_date": "2030-06-18",
+      "contract_expiration_date": "2045-06-18",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D009N/47QSMS25D009N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D009N&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "DIVINE IMAGING INC.",
+      "contract_number": "47QSWA19D002X",
+      "vendor_uei": "LGMVH2NYJH38",
+      "company_address": "21323 PACIFIC COAST HWY STE 101",
+      "company_city": "MALIBU",
+      "company_state": "CA",
+      "company_zip": "90265-5202",
+      "primary_contact_phone": "3105794000",
+      "primary_contact_email": "kim@divineimaging.com",
+      "website": "https://www.divineImaging.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2039-01-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002X/47QSWA19D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002X&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "DL STONE ENTERPRISES, LLC",
+      "contract_number": "47QSMA19D08RB",
+      "vendor_uei": "KPTQA956X581",
+      "company_address": "9027 CINNABAR CT",
+      "company_city": "GARDEN RIDGE",
+      "company_state": "TX",
+      "company_zip": "78266-2246",
+      "primary_contact_phone": "2105350919",
+      "primary_contact_email": "donstone13@hotmail.com",
+      "website": "http://stonespecialties.com",
+      "contract_start_date": "2029-09-25",
+      "contract_expiration_date": "2039-09-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08RB/47QSMA19D08RB_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08RB&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "DOCK BLOCKS OF NORTH AMERICA, LLC",
+      "contract_number": "47QSWA19D004B",
+      "vendor_uei": "RBN8DWQ9NZK3",
+      "company_address": "4614 RIVERS AVE STE A",
+      "company_city": "NORTH CHARLESTON",
+      "company_state": "SC",
+      "company_zip": "29405-6644",
+      "primary_contact_phone": "8774788440",
+      "primary_contact_email": "dockblocks@gmail.com",
+      "website": "http://dock-blocks.com",
+      "contract_start_date": "2029-02-25",
+      "contract_expiration_date": "2039-02-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D004B/47QSWA19D004B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D004B&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ELEIKO SPORT INC.",
+      "contract_number": "GS-03F-128DA",
+      "vendor_uei": "R3C6J7N7C1Q4",
+      "company_address": "3910 S INDUSTRIAL DR",
+      "company_city": "AUSTIN",
+      "company_state": "TX",
+      "company_zip": "78744-1156",
+      "primary_contact_phone": "8664779441",
+      "primary_contact_email": "HARI.CHELLURI@ELEIKO.COM",
+      "website": "http://eleiko.com",
+      "contract_start_date": "2026-07-20",
+      "contract_expiration_date": "2036-07-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F128DA/GS03F128DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-128DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ENHANCED LIFESTYLE PRODUCTS LLC",
+      "contract_number": "47QSMS25D008E",
+      "vendor_uei": "YX41H4XCVSV7",
+      "company_address": "6350 PELICAN BAY BLVD",
+      "company_city": "NAPLES",
+      "company_state": "FL",
+      "company_zip": "34108-8134",
+      "primary_contact_phone": "4436943187",
+      "primary_contact_email": "drjkibby@gmail.com",
+      "website": "https://www.enhancedlifestyleproducts.com",
+      "contract_start_date": "2030-05-12",
+      "contract_expiration_date": "2045-05-12",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "PH 2B",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D008E/47QSMS25D008E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D008E&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "FIELDTURF USA, INC.",
+      "contract_number": "GS-07F-9631S",
+      "vendor_uei": "F73RHKWMHC11",
+      "company_address": "175 N INDUSTRIAL BLVD NE",
+      "company_city": "CALHOUN",
+      "company_state": "GA",
+      "company_zip": "30701-8651",
+      "primary_contact_phone": "5032670165",
+      "primary_contact_email": "sarah.morehead@fieldturf.com",
+      "website": "http://www.fieldturf.com",
+      "contract_start_date": "2026-08-06",
+      "contract_expiration_date": "2026-08-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9631S/GS07F9631S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9631S&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "FIRESIGN INC. PROMOTIONAL PRODUCTS & PRINT",
+      "contract_number": "GS-03F-010AA",
+      "vendor_uei": "LLL5ZGFWM9M4",
+      "company_address": "280 COMMERCE DR",
+      "company_city": "FAYETTEVILLE",
+      "company_state": "GA",
+      "company_zip": "30214-7808",
+      "primary_contact_phone": "6785742461",
+      "primary_contact_email": "JLYLES@FIRESIGNINC.COM",
+      "website": "http://www.firesigninc2.com",
+      "contract_start_date": "2027-11-01",
+      "contract_expiration_date": "2032-11-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F010AA/GS03F010AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-010AA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "FITNESS SUPERSTORE, INC.",
+      "contract_number": "47QSMS25D00CB",
+      "vendor_uei": "ML34WSQUCZK1",
+      "company_address": "537 STONE RD",
+      "company_city": "BENICIA",
+      "company_state": "CA",
+      "company_zip": "94510-1171",
+      "primary_contact_phone": "9253189753",
+      "primary_contact_email": "raihan@fitnesssuperstore.com",
+      "website": "http://www.fitnesssuperstore.com/",
+      "contract_start_date": "2030-09-14",
+      "contract_expiration_date": "2045-09-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE F",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "FOSSIL OUTDOOR INC",
+      "contract_number": "47QSMA23D08NV",
+      "vendor_uei": "HDRHKQT2EYQ1",
+      "company_address": "4708 E VAN BUREN ST.",
+      "company_city": "PHOENIX",
+      "company_state": "AZ",
+      "company_zip": "85008-6908",
+      "primary_contact_phone": "4804329151",
+      "primary_contact_email": "everett@fossiloutdoor.com",
+      "website": "https://ancienttrail.co/",
+      "contract_start_date": "2028-02-14",
+      "contract_expiration_date": "2043-02-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 205",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08NV&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "FUJI MATS LLC",
+      "contract_number": "47QSMS24D008N",
+      "vendor_uei": "K3VBKZ58V2P7",
+      "company_address": "12 CAMERON WAY",
+      "company_city": "METHUEN",
+      "company_state": "MA",
+      "company_zip": "01844-2697",
+      "primary_contact_phone": "8622684298",
+      "primary_contact_email": "dave@fujimats.com",
+      "website": "www.fujimats.com",
+      "contract_start_date": "2029-06-13",
+      "contract_expiration_date": "2044-06-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "GARRISON WALKER GROUP INC",
+      "contract_number": "47QSHA22D001A",
+      "vendor_uei": "GHZKSZNTA2N5",
+      "company_address": "841 APOLLO ST",
+      "company_city": "EL SEGUNDO",
+      "company_state": "CA",
+      "company_zip": "90245-4724",
+      "primary_contact_phone": "4806180793",
+      "primary_contact_email": "GWGcontracts@gwalkergroup.com",
+      "website": "http://www.gwalkergroup.com",
+      "contract_start_date": "2027-03-22",
+      "contract_expiration_date": "2042-03-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 324",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D001A/47QSHA22D001A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D001A&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "GKI, LLC",
+      "contract_number": "47QSWA19D0030",
+      "vendor_uei": "MQA2D9K6KBQ1",
+      "company_address": "13501 BALSAM LN N",
+      "company_city": "DAYTON",
+      "company_state": "MN",
+      "company_zip": "55327-9469",
+      "primary_contact_phone": "7633344150",
+      "primary_contact_email": "steve@gkisolutions.com",
+      "website": "http://GKISOLUTIONS.COM",
+      "contract_start_date": "2029-02-14",
+      "contract_expiration_date": "2039-02-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 130",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D0030/47QSWA19D0030_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D0030&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "GLENDALE PARADE STORE, LLC",
+      "contract_number": "GS-03F-048BA",
+      "vendor_uei": "X4RLCJYKJN48",
+      "company_address": "12754 OCONNOR RD",
+      "company_city": "SAN ANTONIO",
+      "company_state": "TX",
+      "company_zip": "78233-5545",
+      "primary_contact_phone": "8006535515",
+      "primary_contact_email": "jose.barreto@glendale.com",
+      "website": "http://www.paradestore.com",
+      "contract_start_date": "2029-04-16",
+      "contract_expiration_date": "2034-04-16",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F048BA/GS03F048BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-048BA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "GMES LLC",
+      "contract_number": "47QSWA20D002U",
+      "vendor_uei": "JQXHBGK4GZE3",
+      "company_address": "1391 E BOONE INDUSTRIAL BLVD",
+      "company_city": "COLUMBIA",
+      "company_state": "MO",
+      "company_zip": "65202-3352",
+      "primary_contact_phone": "5737222120",
+      "primary_contact_email": "justin@gme.com",
+      "website": "http://www.gme.com",
+      "contract_start_date": "2029-12-22",
+      "contract_expiration_date": "2039-12-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D002U/47QSWA20D002U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D002U&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "GRACE PREMIER FITNESS & WELLNESS PRODUCTS, INC.",
+      "contract_number": "47QSMA20D08NR",
+      "vendor_uei": "JJRHZDC2JA47",
+      "company_address": "3407 NE 113TH ST",
+      "company_city": "VANCOUVER",
+      "company_state": "WA",
+      "company_zip": "98686-4348",
+      "primary_contact_phone": "3605746524",
+      "primary_contact_email": "juanita@gracefitness.com",
+      "website": "http://gracefitness.com",
+      "contract_start_date": "2029-12-22",
+      "contract_expiration_date": "2039-12-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08NR/47QSMA20D08NR_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08NR&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "GRAVITEC SYSTEMS INC",
+      "contract_number": "47QSMS24D005P",
+      "vendor_uei": "RLLHU9DZZNL3",
+      "company_address": "21291 URDAHL RD NW",
+      "company_city": "POULSBO",
+      "company_state": "WA",
+      "company_zip": "98370",
+      "primary_contact_phone": "2067802898",
+      "primary_contact_email": "accounting@gravitec.com",
+      "website": "http://www.gravitec.com",
+      "contract_start_date": "2029-03-31",
+      "contract_expiration_date": "2044-03-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D005P/47QSMS24D005P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D005P&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "GREENFIELDS OUTDOOR FITNESS, INC",
+      "contract_number": "GS-03F-086GA",
+      "vendor_uei": "JEL3TV2LD8W8",
+      "company_address": "2617 W WOODLAND DR",
+      "company_city": "ANAHEIM",
+      "company_state": "CA",
+      "company_zip": "92801-2627",
+      "primary_contact_phone": "8883159037",
+      "primary_contact_email": "sabina@greenfieldsfitness.com",
+      "website": "http://gfoutdoorfitness.com",
+      "contract_start_date": "2027-08-20",
+      "contract_expiration_date": "2037-08-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F086GA/GS03F086GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-086GA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "HEALTHCARE INTERNATIONAL, INC.",
+      "contract_number": "GS-03F-0148W",
+      "vendor_uei": "K78PM1QKA8E1",
+      "company_address": "5325 CRAWFORD RD",
+      "company_city": "LANGLEY",
+      "company_state": "WA",
+      "company_zip": "98260-8526",
+      "primary_contact_phone": "2067395400",
+      "primary_contact_email": "heidihci@msn.com",
+      "website": "http://www.hcifitness.com",
+      "contract_start_date": "2030-05-17",
+      "contract_expiration_date": "2030-05-17",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0148W/GS03F0148W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0148W&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "HEART RATE, INC.",
+      "contract_number": "47QSMA21D08RE",
+      "vendor_uei": "DTJ1QXM1DER9",
+      "company_address": "2619 OAK ST",
+      "company_city": "SANTA ANA",
+      "company_state": "CA",
+      "company_zip": "92707-3720",
+      "primary_contact_phone": "7148509716",
+      "primary_contact_email": "kmartin@versaclimber.com",
+      "website": "http://versaclimber.com",
+      "contract_start_date": "2026-09-26",
+      "contract_expiration_date": "2041-09-26",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08RE/47QSMA21D08RE_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08RE&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "HOIST FITNESS SYSTEMS, INC.",
+      "contract_number": "47QSMA19D08PY",
+      "vendor_uei": "D18NBTKYAAZ8",
+      "company_address": "11900 COMMUNITY RD",
+      "company_city": "POWAY",
+      "company_state": "CA",
+      "company_zip": "92064-7143",
+      "primary_contact_phone": "8005485438",
+      "primary_contact_email": "mlopez@hoistfitness.com",
+      "website": "http://WWW.HOISTFITNESS.COM",
+      "contract_start_date": "2029-04-28",
+      "contract_expiration_date": "2039-04-28",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08PY/47QSMA19D08PY_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08PY&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "INDUSTRIAL STRENGTH INDUSTRIES LLC",
+      "contract_number": "47QSHA19D0053",
+      "vendor_uei": "JKW6B4E7W9V2",
+      "company_address": "732 SOUND VIEW RD",
+      "company_city": "OYSTER BAY",
+      "company_state": "NY",
+      "company_zip": "11771-1114",
+      "primary_contact_phone": "5164132251",
+      "primary_contact_email": "ara@industrialstrengthsupply.com",
+      "website": "http://www.industrialstrengthsupply.com",
+      "contract_start_date": "2029-08-04",
+      "contract_expiration_date": "2039-08-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D0053/47QSHA19D0053_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D0053&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "INFLATABLE FUSION, INC.",
+      "contract_number": "GS-03F-018CA",
+      "vendor_uei": "MKERRN6RV1A3",
+      "company_address": "5974 CHARING ST",
+      "company_city": "SAN DIEGO",
+      "company_state": "CA",
+      "company_zip": "92117-4121",
+      "primary_contact_phone": "8584951700",
+      "primary_contact_email": "ryan@inflatablefusion.com",
+      "website": "http://www.inflatablefusion.com",
+      "contract_start_date": "2029-12-16",
+      "contract_expiration_date": "2034-12-16",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F018CA/GS03F018CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-018CA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL E-Z UP, INC.",
+      "contract_number": "GS-03F-0066U",
+      "vendor_uei": "TWB4P2VER3L8",
+      "company_address": "1900 2ND ST",
+      "company_city": "NORCO",
+      "company_state": "CA",
+      "company_zip": "92860-2803",
+      "primary_contact_phone": "9517792348",
+      "primary_contact_email": "hopedennis@ezup.com",
+      "website": "http://www.ezup.com",
+      "contract_start_date": "2028-05-19",
+      "contract_expiration_date": "2028-05-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0066U/GS03F0066U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0066U&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "INVENTORY MANAGEMENT SOLUTIONS, LLC",
+      "contract_number": "GS-07F-032BA",
+      "vendor_uei": "CEPFED28AQJ4",
+      "company_address": "10505 PLAZA DR STE B",
+      "company_city": "WHITMORE LAKE",
+      "company_state": "MI",
+      "company_zip": "48189-9156",
+      "primary_contact_phone": "8775093179",
+      "primary_contact_email": "pricing@armyproperty.com",
+      "website": "http://www.armyproperty.com",
+      "contract_start_date": "2028-11-14",
+      "contract_expiration_date": "2033-11-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Feb 28, 2028",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F032BA/GS07F032BA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-032BA/pricelist_GS-07F-032BA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-032BA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "IRONCOMPANY.COM, LLC",
+      "contract_number": "47QSMA22D08NN",
+      "vendor_uei": "U1AMUPN2TQP1",
+      "company_address": "14325 GILLIS RD",
+      "company_city": "FARMERS BRANCH",
+      "company_state": "TX",
+      "company_zip": "75244-3771",
+      "primary_contact_phone": "18887587527",
+      "primary_contact_email": "sales@ironcompany.com",
+      "website": "http://www.ironcompany.com/",
+      "contract_start_date": "2027-01-03",
+      "contract_expiration_date": "2042-01-03",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 150",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08NN/47QSMA22D08NN_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08NN&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "JACOBS LADDER LLC",
+      "contract_number": "GS-03F-0046T",
+      "vendor_uei": "J5KPYKELF5L7",
+      "company_address": "6292 WALMORE RD",
+      "company_city": "NIAGARA FALLS",
+      "company_state": "NY",
+      "company_zip": "14304-5703",
+      "primary_contact_phone": "7166921455",
+      "primary_contact_email": "bpalka@jacobsladderexercise.com",
+      "website": "www.jacobsladderexercise.com",
+      "contract_start_date": "2027-02-28",
+      "contract_expiration_date": "2027-02-28",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0046T/GS03F0046T_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "JAMESTOWN ADVANCED PRODUCTS CORP.",
+      "contract_number": "GS-03F-009DA",
+      "vendor_uei": "VKLSAMTPV347",
+      "company_address": "2855 GIRTS RD",
+      "company_city": "JAMESTOWN",
+      "company_state": "NY",
+      "company_zip": "14701-9666",
+      "primary_contact_phone": "8004520639",
+      "primary_contact_email": "wlodestro@jamestownadvanced.com",
+      "website": "http://www.JamestownAdvanced.com",
+      "contract_start_date": "2030-10-29",
+      "contract_expiration_date": "2035-10-29",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F009DA/GS03F009DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-009DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "JFXD TRX ACQ LLC",
+      "contract_number": "GS-03F-0097T",
+      "vendor_uei": "ELXRN6VMUB65",
+      "company_address": "1110 S FEDERAL HWY",
+      "company_city": "DELRAY BEACH",
+      "company_state": "FL",
+      "company_zip": "33483-5291",
+      "primary_contact_phone": "3108496887",
+      "primary_contact_email": "mlivingston@trxtraining.com",
+      "website": "http://trxtrainng.com",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2027-08-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0097T/GS03F0097T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0097T&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "JONAH'S ENTERPRISES INC.",
+      "contract_number": "47QSWA23D0084",
+      "vendor_uei": "J18AZ3YDVF54",
+      "company_address": "652 LEFFERTS AVE",
+      "company_city": "BROOKLYN",
+      "company_state": "NY",
+      "company_zip": "11203-1006",
+      "primary_contact_phone": "7185028837",
+      "primary_contact_email": "jonahs.enterprises@gmail.com",
+      "website": "http://BRANDSRUS.CA",
+      "contract_start_date": "2028-07-27",
+      "contract_expiration_date": "2043-07-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0084/47QSWA23D0084_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0084&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "JUKE PERFORMANCE, INC.",
+      "contract_number": "47QSMS25D0031",
+      "vendor_uei": "SDU3YNGKV2C5",
+      "company_address": "31316 VIA COLINAS STE 111",
+      "company_city": "WESTLAKE VILLAGE",
+      "company_state": "CA",
+      "company_zip": "91362-6722",
+      "primary_contact_phone": "8186201997",
+      "primary_contact_email": "jesse@masssuit.com",
+      "website": "https://jukegyms.com/",
+      "contract_start_date": "2030-01-07",
+      "contract_expiration_date": "2045-01-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0031/47QSMS25D0031_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0031&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "KD KANOPY INC.",
+      "contract_number": "47QSMS24D0025",
+      "vendor_uei": "NEPWFJ5AAKM6",
+      "company_address": "1921 E 68TH AVE",
+      "company_city": "DENVER",
+      "company_state": "CO",
+      "company_zip": "80229-7320",
+      "primary_contact_phone": "8004324435",
+      "primary_contact_email": "matt@kdkanopy.com",
+      "website": "http://www.kdkanopy.com",
+      "contract_start_date": "2029-01-18",
+      "contract_expiration_date": "2044-01-18",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0025/47QSMS24D0025_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0025&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "KEISER CORPORATION",
+      "contract_number": "47QSMA19D08Q9",
+      "vendor_uei": "QXDLQLTD9ZM1",
+      "company_address": "2470 S CHERRY AVE",
+      "company_city": "FRESNO",
+      "company_state": "CA",
+      "company_zip": "93706-5004",
+      "primary_contact_phone": "5592568000",
+      "primary_contact_email": "portlinnp@keiser.com",
+      "website": "http://keiser.com",
+      "contract_start_date": "2029-06-19",
+      "contract_expiration_date": "2039-06-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08Q9/47QSMA19D08Q9_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08Q9&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "LANDICE INC",
+      "contract_number": "47QSMA18D08PR",
+      "vendor_uei": "ZPHKHLTAGFA3",
+      "company_address": "111 CANFIELD AVE",
+      "company_city": "RANDOLPH",
+      "company_state": "NJ",
+      "company_zip": "07869-1127",
+      "primary_contact_phone": "8005263423",
+      "primary_contact_email": "dave@landice.com",
+      "website": "http://www.landice.com",
+      "contract_start_date": "2028-04-19",
+      "contract_expiration_date": "2038-04-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08PR/47QSMA18D08PR_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08PR&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "LANDSCAPE FORMS INC",
+      "contract_number": "GS-03F-0008Y",
+      "vendor_uei": "VN24A1EP8276",
+      "company_address": "7800 E MICHIGAN AVE",
+      "company_city": "KALAMAZOO",
+      "company_state": "MI",
+      "company_zip": "49048-9506",
+      "primary_contact_phone": "8005212546",
+      "primary_contact_email": "contracta@landscapeforms.com",
+      "website": "http://www.landscapeforms.com",
+      "contract_start_date": "2026-09-30",
+      "contract_expiration_date": "2031-09-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0008Y/GS03F0008Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0008Y&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "LATITUDE USA, LLC",
+      "contract_number": "47QSWA20D0006",
+      "vendor_uei": "WHV7NRQWYTL6",
+      "company_address": "290 S MAIN ST",
+      "company_city": "BOUNTIFUL",
+      "company_state": "UT",
+      "company_zip": "84010-6236",
+      "primary_contact_phone": "8662054872",
+      "primary_contact_email": "osmond@golatitude.com",
+      "website": "http://www.golatitude.com",
+      "contract_start_date": "2029-10-09",
+      "contract_expiration_date": "2039-10-09",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D0006/47QSWA20D0006_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D0006&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "LEISURE PRO, LTD.",
+      "contract_number": "GS-03F-053CA",
+      "vendor_uei": "ERRLUECEYBM7",
+      "company_address": "42 W 18TH ST",
+      "company_city": "NEW YORK",
+      "company_state": "NY",
+      "company_zip": "10011-4621",
+      "primary_contact_phone": "2126451234",
+      "primary_contact_email": "govsales@scuba.com",
+      "website": "https://www.scuba.com",
+      "contract_start_date": "2030-04-14",
+      "contract_expiration_date": "2035-04-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F053CA/GS03F053CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-053CA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "LEP LLC",
+      "contract_number": "GS-07F-260BA",
+      "vendor_uei": "XDG8CRSBCAE5",
+      "company_address": "8825 XYLON AVE N",
+      "company_city": "MINNEAPOLIS",
+      "company_state": "MN",
+      "company_zip": "55445-1812",
+      "primary_contact_phone": "7635041069",
+      "primary_contact_email": "CSR@lepllc84.com",
+      "website": "https://lepllc84.com/",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2034-07-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F260BA/GS07F260BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-260BA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "LIFE FITNESS SALES, INC.",
+      "contract_number": "GS-03F-120DA",
+      "vendor_uei": "F4W8LKWUTGJ8",
+      "company_address": "9525 BRYN MAWR AVE",
+      "company_city": "ROSEMONT",
+      "company_state": "IL",
+      "company_zip": "60018-5249",
+      "primary_contact_phone": "8048747007",
+      "primary_contact_email": "thomas.johnson@lifefitness.com",
+      "website": "http://www.lifefitness.com",
+      "contract_start_date": "2026-06-26",
+      "contract_expiration_date": "2036-06-26",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F120DA/GS03F120DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-120DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "LITEFIGHTER SYSTEMS, LLC",
+      "contract_number": "47QSMA18D08PN",
+      "vendor_uei": "F22NPARUG233",
+      "company_address": "3080 NORTHFIELD PL STE 120",
+      "company_city": "ROSWELL",
+      "company_state": "GA",
+      "company_zip": "30076-4911",
+      "primary_contact_phone": "6788806767",
+      "primary_contact_email": "admin@litefighter.com",
+      "website": "http://www.litefighter.com/",
+      "contract_start_date": "2028-04-10",
+      "contract_expiration_date": "2038-04-10",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08PN/47QSMA18D08PN_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08PN&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "LOGO MAT CENTRAL LLC",
+      "contract_number": "GS-03F-116AA",
+      "vendor_uei": "HJVLTS3RFMT8",
+      "company_address": "216 LITTLE FALLS RD UNIT 13-14",
+      "company_city": "CEDAR GROVE",
+      "company_state": "NJ",
+      "company_zip": "07009",
+      "primary_contact_phone": "9735711515",
+      "primary_contact_email": "Michael@logomatcentral.com",
+      "website": "http://www.logomatcentral.com",
+      "contract_start_date": "2029-04-01",
+      "contract_expiration_date": "2029-04-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F116AA/GS03F116AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-116AA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "METRO OFFICE SOLUTIONS INC",
+      "contract_number": "GS-28F-0011U",
+      "vendor_uei": "FG79E48PHUF7",
+      "company_address": "4692 MILLENNIUM DR",
+      "company_city": "BELCAMP",
+      "company_state": "MD",
+      "company_zip": "21017-1546",
+      "primary_contact_phone": "8664508160x113",
+      "primary_contact_email": "aszeliga@metroofficesolutions.com",
+      "website": "http://www.metroofficesolutions.com",
+      "contract_start_date": "2028-03-02",
+      "contract_expiration_date": "2028-03-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 420",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0011U/GS28F0011U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0011U&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "MILCON SYSTEMS, INC.",
+      "contract_number": "47QSMA19D08P8",
+      "vendor_uei": "L9VBN9F24QC3",
+      "company_address": "1726 W WOODIE PROCTOR RD",
+      "company_city": "COLUMBIA",
+      "company_state": "MO",
+      "company_zip": "65203-8886",
+      "primary_contact_phone": "5733567355",
+      "primary_contact_email": "JASON@MILCONSYSTEMS.COM",
+      "website": "http://www.milconsystems.com",
+      "contract_start_date": "2029-02-14",
+      "contract_expiration_date": "2039-02-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08P8/47QSMA19D08P8_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08P8&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "MMI OUTDOOR INC",
+      "contract_number": "47QSMA20D08QE",
+      "vendor_uei": "FLMGB7YLDFN8",
+      "company_address": "3615A WETUMPKA HWY",
+      "company_city": "MONTGOMERY",
+      "company_state": "AL",
+      "company_zip": "36110-2749",
+      "primary_contact_phone": "3342860700",
+      "primary_contact_email": "dholmes@catoma.com",
+      "website": "http://www.catoma.com",
+      "contract_start_date": "2030-07-08",
+      "contract_expiration_date": "2040-07-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08QE/47QSMA20D08QE_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08QE&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "MONARCH PRODUCTS CORP.",
+      "contract_number": "47QSWA18D001N",
+      "vendor_uei": "TH9MKPKUSA23",
+      "company_address": "6574 COBIA CIR",
+      "company_city": "BOYNTON BEACH",
+      "company_state": "FL",
+      "company_zip": "33437-3647",
+      "primary_contact_phone": "5617166112",
+      "primary_contact_email": "sales@monarchproductscorp.com",
+      "website": "https://www.monarchproductscorp.com/",
+      "contract_start_date": "2028-01-30",
+      "contract_expiration_date": "2038-01-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001N/47QSWA18D001N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001N&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "MONTANA ARMAMENT GROUP LLC",
+      "contract_number": "47QSWA23D0062",
+      "vendor_uei": "XJ3NJZR7R567",
+      "company_address": "34 RED OAK DR",
+      "company_city": "BELGRADE",
+      "company_state": "MT",
+      "company_zip": "59714-7255",
+      "primary_contact_phone": "4069242373",
+      "primary_contact_email": "sales@mtarmament.com",
+      "website": "http://mtarmament.com",
+      "contract_start_date": "2028-05-16",
+      "contract_expiration_date": "2043-05-16",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "E",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0062&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "MOUNTAIN HORSE LLC",
+      "contract_number": "47QSWA23D007V",
+      "vendor_uei": "HKV6HSM1JVA6",
+      "company_address": "407 S TEJON ST",
+      "company_city": "COLORADO SPRINGS",
+      "company_state": "CO",
+      "company_zip": "80903-2196",
+      "primary_contact_phone": "6152607254",
+      "primary_contact_email": "jennifer.sheehan@mtnhorse.com",
+      "website": "http://www.mtnhorse.com",
+      "contract_start_date": "2028-07-31",
+      "contract_expiration_date": "2043-07-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE H",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D007V/47QSWA23D007V_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA23D007V/pricelist_47QSWA23D007V.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D007V&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "MUTE SPORTS EQUIPMENT, LLC.",
+      "contract_number": "47QSMA21D08PK",
+      "vendor_uei": "S4CDALZ3D153",
+      "company_address": "694 LOVING RD",
+      "company_city": "MORGANTON",
+      "company_state": "GA",
+      "company_zip": "30560-3217",
+      "primary_contact_phone": "7068972579",
+      "primary_contact_email": "laura@mutesportsequipment.com",
+      "website": "http://www.mutesportsequipment.com",
+      "contract_start_date": "2026-03-31",
+      "contract_expiration_date": "2041-03-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08PK/47QSMA21D08PK_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08PK&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL INK AND STITCH, LLC",
+      "contract_number": "47QSMA23D08QP",
+      "vendor_uei": "PN9WM9Y7MM93",
+      "company_address": "7610 MEADOW RUN LANE",
+      "company_city": "OWINGS",
+      "company_state": "MD",
+      "company_zip": "20736-3056",
+      "primary_contact_phone": "4102571776",
+      "primary_contact_email": "sales@nationalinkandstitch.com",
+      "website": "http://www.nationalinkandstitch.com",
+      "contract_start_date": "2028-09-13",
+      "contract_expiration_date": "2043-09-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08QP/47QSMA23D08QP_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08QP&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "NEXGEN OUTFITTERS, LLC",
+      "contract_number": "47QSMS24D00AN",
+      "vendor_uei": "VTPZLFGZ1BR1",
+      "company_address": "100 COMMERCE CT",
+      "company_city": "SIDNEY",
+      "company_state": "NE",
+      "company_zip": "69162-6401",
+      "primary_contact_phone": "8336943663",
+      "primary_contact_email": "orders@nexgenof.com",
+      "website": "https://nexgenof.com/",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2044-07-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00AN/47QSMS24D00AN_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00AN&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "NUSTEP LLC",
+      "contract_number": "GS-03F-0056U",
+      "vendor_uei": "LDBKE4CKRYH6",
+      "company_address": "47700 HALYARD DR",
+      "company_city": "PLYMOUTH",
+      "company_state": "MI",
+      "company_zip": "48170-2477",
+      "primary_contact_phone": "8003222209",
+      "primary_contact_email": "mliedeke@nustep.com",
+      "website": "http://www.nustep.com",
+      "contract_start_date": "2028-04-30",
+      "contract_expiration_date": "2028-04-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0056U/GS03F0056U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0056U&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ORBITER, INC",
+      "contract_number": "47QSMA21D08PZ",
+      "vendor_uei": "PLTPY6DUVR28",
+      "company_address": "13500 PACIFIC AVE S",
+      "company_city": "TACOMA",
+      "company_state": "WA",
+      "company_zip": "98444-4742",
+      "primary_contact_phone": "2536275588",
+      "primary_contact_email": "gstewart@orbiter.com",
+      "website": "http://www.Orbiter.com",
+      "contract_start_date": "2026-04-28",
+      "contract_expiration_date": "2041-04-28",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08PZ/47QSMA21D08PZ_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08PZ&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "OREGON MOUNTAIN COMMUNITY INC",
+      "contract_number": "GS-03F-0048W",
+      "vendor_uei": "LM5KDC6EGJL6",
+      "company_address": "1120 N HAYDEN MEADOWS DR",
+      "company_city": "PORTLAND",
+      "company_state": "OR",
+      "company_zip": "97217-7689",
+      "primary_contact_phone": "5032271038",
+      "primary_contact_email": "govt.sales@omcgear.com",
+      "website": "http://www.omcgear.com",
+      "contract_start_date": "2029-12-08",
+      "contract_expiration_date": "2029-12-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE A",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0048W/GS03F0048W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0048W&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "OURARING INC",
+      "contract_number": "47QSMS24D002R",
+      "vendor_uei": "CCXLM8QWZMJ8",
+      "company_address": "222 KEARNY ST FL 7",
+      "company_city": "SAN FRANCISCO",
+      "company_state": "CA",
+      "company_zip": "94108-4521",
+      "primary_contact_phone": "4154291773",
+      "primary_contact_email": "gsaorders@ouraring.com",
+      "website": "http://ouraring.com",
+      "contract_start_date": "2029-01-30",
+      "contract_expiration_date": "2044-01-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D002R/47QSMS24D002R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D002R&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "OUTDOOR VENTURE CORP",
+      "contract_number": "GS-07F-9506S",
+      "vendor_uei": "XXMZFNQPZ5G5",
+      "company_address": "30 VENTURE DR",
+      "company_city": "STEARNS",
+      "company_state": "KY",
+      "company_zip": "42647",
+      "primary_contact_phone": "6063765021",
+      "primary_contact_email": "anita.sutton@outdoorventure.com",
+      "website": "HTTP://WWW.outdoorventure.com",
+      "contract_start_date": "2026-05-31",
+      "contract_expiration_date": "2026-05-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9506S/GS07F9506S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9506S&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "OWYHEE GROUP COMPANIES",
+      "contract_number": "47QSMA18D08R6",
+      "vendor_uei": "NG3EKLN6BB31",
+      "company_address": "1075 S ANCONA AVE",
+      "company_city": "EAGLE",
+      "company_state": "ID",
+      "company_zip": "83616-6372",
+      "primary_contact_phone": "2089386086",
+      "primary_contact_email": "doug.lodge@initial-attack.com",
+      "website": "http://owyheegroup.com",
+      "contract_start_date": "2028-09-12",
+      "contract_expiration_date": "2038-09-12",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08R6/47QSMA18D08R6_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08R6&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "PETERSEN MFG. CO.",
+      "contract_number": "GS-07F-0353Y",
+      "vendor_uei": "LJ9CLRUHMTK5",
+      "company_address": "2471 HIGHWAY 30",
+      "company_city": "DENISON",
+      "company_state": "IA",
+      "company_zip": "51442-7502",
+      "primary_contact_phone": "8008327383",
+      "primary_contact_email": "emily@petersenmfg.com",
+      "website": "http://www.petersenmfg.com",
+      "contract_start_date": "2027-04-14",
+      "contract_expiration_date": "2032-04-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0353Y/GS07F0353Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0353Y&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "PLAE VERTICAL INC",
+      "contract_number": "47QSMS24D003N",
+      "vendor_uei": "MD52WCTBV313",
+      "company_address": "190 ETOWAH INDUSTRIAL CT",
+      "company_city": "CANTON",
+      "company_state": "GA",
+      "company_zip": "30114-8016",
+      "primary_contact_phone": "7066626083",
+      "primary_contact_email": "erica.clemons@plae.us",
+      "website": "http://www.plae.us",
+      "contract_start_date": "2029-02-21",
+      "contract_expiration_date": "2044-02-21",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D003N/47QSMS24D003N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D003N&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "POWER SYSTEMS PS LLC",
+      "contract_number": "GS-03F-016DA",
+      "vendor_uei": "GBDFZD1V7B53",
+      "company_address": "5700 CASEY DR",
+      "company_city": "KNOXVILLE",
+      "company_state": "TN",
+      "company_zip": "37909-1803",
+      "primary_contact_phone": "8658627888",
+      "primary_contact_email": "Biddepartment@power-systems.com",
+      "website": "http://www.power-systems.com",
+      "contract_start_date": "2025-11-14",
+      "contract_expiration_date": "2035-11-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F016DA/GS03F016DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-016DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "PROMOTIONAL DESIGN CONCEPTS INC",
+      "contract_number": "GS-03F-0040X",
+      "vendor_uei": "E1KFY9X1NYM6",
+      "company_address": "9872 RUSH ST",
+      "company_city": "SOUTH EL MONTE",
+      "company_state": "CA",
+      "company_zip": "91733-2635",
+      "primary_contact_phone": "6265791772",
+      "primary_contact_email": "adam@promotionaldesigngroup.com",
+      "website": "http://www.promotionaldesigngroup.com",
+      "contract_start_date": "2025-11-30",
+      "contract_expiration_date": "2030-11-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0040X/GS03F0040X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0040X&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "PROTEUS MOTION, INC.",
+      "contract_number": "47QSMA22D08NS",
+      "vendor_uei": "K5G5MP4LKNR4",
+      "company_address": "473 GRAND ST STE 1",
+      "company_city": "BROOKLYN",
+      "company_state": "NY",
+      "company_zip": "11211-4767",
+      "primary_contact_phone": "7819107489",
+      "primary_contact_email": "sam@proteusmotion.com",
+      "website": "http://WWW.PROTEUSMOTION.COM",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2042-01-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08NS/47QSMA22D08NS_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08NS&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "REAL ACTION PAINTBALL INC",
+      "contract_number": "GS-03F-0031V",
+      "vendor_uei": "TK3VZMN5VNG8",
+      "company_address": "2345 LA MIRADA DR",
+      "company_city": "VISTA",
+      "company_state": "CA",
+      "company_zip": "92081-7863",
+      "primary_contact_phone": "4084340434",
+      "primary_contact_email": "eric@rap4.com",
+      "website": "http://www.mcsus.com",
+      "contract_start_date": "2028-12-14",
+      "contract_expiration_date": "2028-12-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0031V/GS03F0031V_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "REGUPOL ZEBRA ATHLETICS LLC",
+      "contract_number": "47QSMA22D08Q6",
+      "vendor_uei": "J1YEMGLZFLC4",
+      "company_address": "11 RITTER WAY",
+      "company_city": "LEBANON",
+      "company_state": "PA",
+      "company_zip": "17042-9761",
+      "primary_contact_phone": "7632551562",
+      "primary_contact_email": "GSA@zebraathletics.com",
+      "website": "http://www.zebraathletics.com",
+      "contract_start_date": "2027-06-21",
+      "contract_expiration_date": "2042-06-21",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08Q6/47QSMA22D08Q6_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08Q6&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SAMPSON PARTNERS LLC",
+      "contract_number": "GS-03F-0133V",
+      "vendor_uei": "JU9ELMAK7JP8",
+      "company_address": "22 LAUGHING GULL LN",
+      "company_city": "PALM COAST",
+      "company_state": "FL",
+      "company_zip": "32137",
+      "primary_contact_phone": "9045535418",
+      "primary_contact_email": "MSCHOPP@TACTICALFITNESSGSA.COM",
+      "website": "http://www.tacticalfitnessgsa.com",
+      "contract_start_date": "2029-06-11",
+      "contract_expiration_date": "2029-06-11",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0133V/GS03F0133V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0133V&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SAN DIEGO OCEAN ENTERPRISES, INC",
+      "contract_number": "47QSMA23D08QG",
+      "vendor_uei": "DK5LFU3M5YA6",
+      "company_address": "7710 BALBOA AVE STE 201",
+      "company_city": "SAN DIEGO",
+      "company_state": "CA",
+      "company_zip": "92111",
+      "primary_contact_phone": "8585659474",
+      "primary_contact_email": "govsales@oceanenterprises.com",
+      "website": "http://www.oceanenterprises.com",
+      "contract_start_date": "2028-08-01",
+      "contract_expiration_date": "2043-08-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08QG/47QSMA23D08QG_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08QG&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SANITZ ENTERPRISES, INC.",
+      "contract_number": "47QSWA21D007B",
+      "vendor_uei": "GLJ4J66A2HK3",
+      "company_address": "256 SULTEMEIER MOELLERING RD",
+      "company_city": "FREDERICKSBURG",
+      "company_state": "TX",
+      "company_zip": "78624-7799",
+      "primary_contact_phone": "8306853430",
+      "primary_contact_email": "gsa@ampatss.com",
+      "website": "http://www.custommanufacturing.ampatss.com/",
+      "contract_start_date": "2026-08-26",
+      "contract_expiration_date": "2041-08-26",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D007B/47QSWA21D007B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D007B&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SEACOAST EMBROIDERY, INC.",
+      "contract_number": "GS-03F-0075X",
+      "vendor_uei": "R2CWUZB9A1Y9",
+      "company_address": "5893 S CONGRESS AVE",
+      "company_city": "LAKE WORTH",
+      "company_state": "FL",
+      "company_zip": "33462-1333",
+      "primary_contact_phone": "5614398005103",
+      "primary_contact_email": "TYLER@SEACOASTUNIFORMS.COM",
+      "website": "https://seacoastuniforms.com/",
+      "contract_start_date": "2026-01-31",
+      "contract_expiration_date": "2031-01-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0075X/GS03F0075X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0075X&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SONOMA DESIGN APPAREL AND PROMOTIONS, INC",
+      "contract_number": "47QSMA22D08N7",
+      "vendor_uei": "F9AMTJ4ELYK5",
+      "company_address": "5460 SKYLANE BLVD STE A",
+      "company_city": "SANTA ROSA",
+      "company_state": "CA",
+      "company_zip": "95403",
+      "primary_contact_phone": "7075784739",
+      "primary_contact_email": "EMILY@SONOMADESIGNAPPAREL.COM",
+      "website": "http://www.sonomadesignapparel.com",
+      "contract_start_date": "2026-10-04",
+      "contract_expiration_date": "2041-10-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08N7/47QSMA22D08N7_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08N7&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SORINEX EXERCISE EQUIPMENT INC",
+      "contract_number": "47QSMA18D0006",
+      "vendor_uei": "CJTFSCZB1MM4",
+      "company_address": "193 LITTON DR",
+      "company_city": "LEXINGTON",
+      "company_state": "SC",
+      "company_zip": "29073-8010",
+      "primary_contact_phone": "7576602571",
+      "primary_contact_email": "mike@sorinex.com",
+      "website": "http://www.sorinex.com",
+      "contract_start_date": "2027-10-30",
+      "contract_expiration_date": "2037-10-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D0006/47QSMA18D0006_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D0006&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SOURCELINQ LLC",
+      "contract_number": "47QSMS24D0049",
+      "vendor_uei": "QQWKWY26XZD2",
+      "company_address": "188 BROOKE RD",
+      "company_city": "WINCHESTER",
+      "company_state": "VA",
+      "company_zip": "22603-5798",
+      "primary_contact_phone": "8777100999",
+      "primary_contact_email": "keith@sourcelinq.com",
+      "website": "https://www.sourcelinq.com",
+      "contract_start_date": "2029-03-07",
+      "contract_expiration_date": "2044-03-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "SUITE# 350",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0049/47QSMS24D0049_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0049&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SPARTA SOFTWARE CORP",
+      "contract_number": "47QSMA19D08NE",
+      "vendor_uei": "LG9DAXFU2L95",
+      "company_address": "480 LINFIELD DR",
+      "company_city": "MENLO PARK",
+      "company_state": "CA",
+      "company_zip": "94025-3739",
+      "primary_contact_phone": "7148011081",
+      "primary_contact_email": "kelsey@spartascience.com",
+      "website": "www.spartascience.com",
+      "contract_start_date": "2028-10-25",
+      "contract_expiration_date": "2038-10-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SPORT SURFACES DISTRIBUTING INC",
+      "contract_number": "47QSMS24D006G",
+      "vendor_uei": "JKFRCGH32HT3",
+      "company_address": "207 CALLE INDUSTRIAL",
+      "company_city": "BERNALILLO",
+      "company_state": "NM",
+      "company_zip": "87004-7104",
+      "primary_contact_phone": "5052432971",
+      "primary_contact_email": "rcohen@sport-surfaces.com",
+      "website": "http://www.sport-surfaces.com",
+      "contract_start_date": "2029-04-24",
+      "contract_expiration_date": "2044-04-24",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D006G/47QSMS24D006G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D006G&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "SPRINTURF LLC",
+      "contract_number": "GS-03F-051CA",
+      "vendor_uei": "JFSKY9D6JKM6",
+      "company_address": "146 FAIRCHILD ST",
+      "company_city": "DANIEL ISLAND",
+      "company_state": "SC",
+      "company_zip": "29492-8231",
+      "primary_contact_phone": "7709334070",
+      "primary_contact_email": "GSA@sprinturf.com",
+      "website": "http://www.sprinturf.com",
+      "contract_start_date": "2030-04-07",
+      "contract_expiration_date": "2035-04-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 150",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F051CA/GS03F051CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-051CA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "TACTICAL & SURVIVAL SPECIALTIES, LLC",
+      "contract_number": "GS-07F-016DA",
+      "vendor_uei": "TL1CKPTLR8V7",
+      "company_address": "3900 EARLY RD",
+      "company_city": "HARRISONBURG",
+      "company_state": "VA",
+      "company_zip": "22801",
+      "primary_contact_phone": "5404348974",
+      "primary_contact_email": "sales@tssi-ops.com",
+      "website": "http://www.tssi-ops.com",
+      "contract_start_date": "2030-10-31",
+      "contract_expiration_date": "2035-10-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F016DA/GS07F016DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-016DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "THE MACLEAN GROUP LLC",
+      "contract_number": "47QSWA22D000M",
+      "vendor_uei": "DAM9QJJ7FTL4",
+      "company_address": "2233 WATT AVE STE 296",
+      "company_city": "SACRAMENTO",
+      "company_state": "CA",
+      "company_zip": "95825-0570",
+      "primary_contact_phone": "9199152877",
+      "primary_contact_email": "nmason@macleanhealth.com",
+      "website": "http://www.themacleangroup.net",
+      "contract_start_date": "2026-10-26",
+      "contract_expiration_date": "2041-10-26",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D000M/47QSWA22D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D000M&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "THE PROPHET CORPORATION",
+      "contract_number": "GS-03F-034GA",
+      "vendor_uei": "ZNQCJQHU35X5",
+      "company_address": "2525 LEMOND ST",
+      "company_city": "OWATONNA",
+      "company_state": "MN",
+      "company_zip": "55060-5081",
+      "primary_contact_phone": "8558264534",
+      "primary_contact_email": "GSAsupport@gophersport.com",
+      "website": "http://www.gophersport.com",
+      "contract_start_date": "2027-02-07",
+      "contract_expiration_date": "2037-02-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F034GA/GS03F034GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-034GA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "THE WINVALE GROUP, LLC",
+      "contract_number": "47QTCA23D007Q",
+      "vendor_uei": "DQ6RYNAB8MJ7",
+      "company_address": "3951 WESTERRE PKWY",
+      "company_city": "HENRICO",
+      "company_state": "VA",
+      "company_zip": "23233-1318",
+      "primary_contact_phone": "8043136459",
+      "primary_contact_email": "isabie@winvale.com",
+      "website": "http://www.winvale.com",
+      "contract_start_date": "2028-04-25",
+      "contract_expiration_date": "2043-04-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 250",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA23D007Q/47QTCA23D007Q_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QTCA23D007Q/pricelist_47QTCA23D007Q.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA23D007Q&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "TOWN AND COUNTRY FLOORING COMPANY",
+      "contract_number": "GS-03F-015DA",
+      "vendor_uei": "GUHBZBGF8KP8",
+      "company_address": "950 YELLOWSTONE AVE",
+      "company_city": "POCATELLO",
+      "company_state": "ID",
+      "company_zip": "83201-4417",
+      "primary_contact_phone": "2082324226",
+      "primary_contact_email": "pamela@w2wcommercial.com",
+      "website": "http://www.w2wcommercial.com",
+      "contract_start_date": "2025-11-11",
+      "contract_expiration_date": "2035-11-11",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F015DA/GS03F015DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-015DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "TRUE FITNESS TECHNOLOGY INC",
+      "contract_number": "47QSMA19D08NX",
+      "vendor_uei": "EB56Y68SJKK9",
+      "company_address": "865 HOFF RD",
+      "company_city": "O FALLON",
+      "company_state": "MO",
+      "company_zip": "63366-1900",
+      "primary_contact_phone": "6364877881",
+      "primary_contact_email": "cmcqueen@truefitness.com",
+      "website": "http://www.TRUEfitness.com",
+      "contract_start_date": "2029-01-15",
+      "contract_expiration_date": "2039-01-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08NX/47QSMA19D08NX_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08NX&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "TS GOVERNMENT SOLUTIONS. LLC",
+      "contract_number": "47QSMA20D08NQ",
+      "vendor_uei": "J6XQLYNPTBH9",
+      "company_address": "30537 CINNAMON TEAL DR",
+      "company_city": "CANYON LAKE",
+      "company_state": "CA",
+      "company_zip": "92587-7708",
+      "primary_contact_phone": "9513264806",
+      "primary_contact_email": "mmontero@tsgovsol.com",
+      "website": "http://www.tsgovsol.com",
+      "contract_start_date": "2029-12-12",
+      "contract_expiration_date": "2039-12-12",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08NQ/47QSMA20D08NQ_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08NQ&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "UNBEATABLE SALE COM INC",
+      "contract_number": "47QSMA22D08PC",
+      "vendor_uei": "S4GND34KNBB3",
+      "company_address": "195 LEHIGH AVE",
+      "company_city": "LAKEWOOD",
+      "company_state": "NJ",
+      "company_zip": "08701-4555",
+      "primary_contact_phone": "7323630606",
+      "primary_contact_email": "elif@unbeatablesale.com",
+      "website": "http://www.unbeatablesale.com",
+      "contract_start_date": "2027-03-21",
+      "contract_expiration_date": "2042-03-21",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "address_2": "STE 5",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08PC/47QSMA22D08PC_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08PC&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "UNITED CANVAS & SLING INC",
+      "contract_number": "GS-03F-0092V",
+      "vendor_uei": "SWA5LC1BP353",
+      "company_address": "511 HOFFMAN RD",
+      "company_city": "LINCOLNTON",
+      "company_state": "NC",
+      "company_zip": "28092-8230",
+      "primary_contact_phone": "7047329922",
+      "primary_contact_email": "zackschwartz@ucsspirit.com",
+      "website": "http://www.ucsspirit.com",
+      "contract_start_date": "2029-04-19",
+      "contract_expiration_date": "2029-04-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0092V/GS03F0092V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0092V&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "UNIVERSAL SPARTAN LLC",
+      "contract_number": "47QSWA20D000X",
+      "vendor_uei": "EY2KGQMNXBA1",
+      "company_address": "89 HILL CT",
+      "company_city": "VINE GROVE",
+      "company_state": "KY",
+      "company_zip": "40175-6162",
+      "primary_contact_phone": "2705012210",
+      "primary_contact_email": "contracts@universalspartan.com",
+      "website": "http://www.universalspartan.com",
+      "contract_start_date": "2029-11-04",
+      "contract_expiration_date": "2039-11-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Apr 29, 2030",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D000X/47QSWA20D000X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D000X&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "USVETSERV, LLC",
+      "contract_number": "47QSWA22D0012",
+      "vendor_uei": "FJJXT471UM24",
+      "company_address": "355 ENGLISH OAK RD",
+      "company_city": "SIMPSONVILLE",
+      "company_state": "SC",
+      "company_zip": "29681-5106",
+      "primary_contact_phone": "8642169881",
+      "primary_contact_email": "MarcBrewer@USVetServ.com",
+      "website": "http://www.USVetServ.com",
+      "contract_start_date": "2026-11-07",
+      "contract_expiration_date": "2041-11-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0012/47QSWA22D0012_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0012&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "VAE INDUSTRIES CORPORATION",
+      "contract_number": "47QSWA22D002Z",
+      "vendor_uei": "LDC4UCWKDGB4",
+      "company_address": "5402 RESEARCH DR",
+      "company_city": "HUNTINGTON BEACH",
+      "company_state": "CA",
+      "company_zip": "92649-1542",
+      "primary_contact_phone": "7148427500",
+      "primary_contact_email": "mathieu@instent.com",
+      "website": "https://www.instent.com/",
+      "contract_start_date": "2027-02-06",
+      "contract_expiration_date": "2042-02-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D002Z/47QSWA22D002Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D002Z&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "VESTERGAARD FRANDSEN INC",
+      "contract_number": "47QSMS26D0007",
+      "vendor_uei": "NCKVELSLDLL5",
+      "company_address": "333 W OSTEND ST STE 300",
+      "company_city": "BALTIMORE",
+      "company_state": "MD",
+      "company_zip": "21230-3753",
+      "primary_contact_phone": "5712777290",
+      "primary_contact_email": "aah@lifestraw.com",
+      "website": "https://www.lifestraw.com",
+      "contract_start_date": "2030-10-07",
+      "contract_expiration_date": "2045-10-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "VETERANS4YOU LLC",
+      "contract_number": "GS-03F-102DA",
+      "vendor_uei": "PFAVF34HGRX8",
+      "company_address": "310 N WICKHAM RD STE 112",
+      "company_city": "MELBOURNE",
+      "company_state": "FL",
+      "company_zip": "32935-8681",
+      "primary_contact_phone": "9543664484",
+      "primary_contact_email": "tfarrell@veterans4you.com",
+      "website": "http://www.veterans4you.com",
+      "contract_start_date": "2026-05-14",
+      "contract_expiration_date": "2036-05-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F102DA/GS03F102DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-102DA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "WOODWAY USA INC",
+      "contract_number": "GS-03F-087GA",
+      "vendor_uei": "QSMMLDL8BHZ9",
+      "company_address": "W229N591 FOSTER CT",
+      "company_city": "WAUKESHA",
+      "company_state": "WI",
+      "company_zip": "53186-1620",
+      "primary_contact_phone": "2625486235",
+      "primary_contact_email": "gsa@woodway.com",
+      "website": "http://www.woodway.com",
+      "contract_start_date": "2027-08-20",
+      "contract_expiration_date": "2037-08-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F087GA/GS03F087GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-087GA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "WORLDWIDE FITNESS PRODUCTS, LLC",
+      "contract_number": "47QSMS25D002X",
+      "vendor_uei": "PE9AMKUSBJV9",
+      "company_address": "1240 COMMERCE DR UNIT G",
+      "company_city": "GULF SHORES",
+      "company_state": "AL",
+      "company_zip": "36542-2827",
+      "primary_contact_phone": "2519672510",
+      "primary_contact_email": "stacy@worldwidefp.com",
+      "website": "http://worldwidefitnessproducts.com",
+      "contract_start_date": "2030-01-02",
+      "contract_expiration_date": "2045-01-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D002X&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "WS ACQUISITION LLC",
+      "contract_number": "GS-03F-084CA",
+      "vendor_uei": "HHKDTNVJZDH6",
+      "company_address": "830 WILSON ST",
+      "company_city": "EUGENE",
+      "company_state": "OR",
+      "company_zip": "97402-2713",
+      "primary_contact_phone": "8009717201",
+      "primary_contact_email": "glyons@westernprotectivesolutions.com",
+      "website": "http://www.westernshelter.com",
+      "contract_start_date": "2030-07-14",
+      "contract_expiration_date": "2035-07-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F084CA/GS03F084CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-084CA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "WYNNPRO LLC",
+      "contract_number": "GS-03F-001HA",
+      "vendor_uei": "VKXTM4MPD3S7",
+      "company_address": "5310 ASHBROOK DR",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77081-4102",
+      "primary_contact_phone": "4174062127",
+      "primary_contact_email": "bcollins@pmxstrength.com",
+      "website": "http://pmxstrength.com",
+      "contract_start_date": "2027-09-30",
+      "contract_expiration_date": "2037-09-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F001HA/GS03F001HA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-001HA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "YOGA DIRECT, LLC",
+      "contract_number": "GS-03F-064BA",
+      "vendor_uei": "GLQSYURJKQK1",
+      "company_address": "219 TURNER RD STE 225",
+      "company_city": "NORTH CHESTERFIELD",
+      "company_state": "VA",
+      "company_zip": "23225-6402",
+      "primary_contact_phone": "8045000932",
+      "primary_contact_email": "kryan@shockoecommerce.com",
+      "website": "http://www.yogadirect.com",
+      "contract_start_date": "2029-08-31",
+      "contract_expiration_date": "2034-08-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F064BA/GS03F064BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-064BA&sin=339920S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339920S"
+      ],
+      "primary_sin": "339920S",
+      "schedule_number": "MAS",
+      "company_name": "ZOGICS LLC",
+      "contract_number": "GS-07F-0560W",
+      "vendor_uei": "YX7QAJWVLEN1",
+      "company_address": "309 PITTSFIELD RD",
+      "company_city": "LENOX",
+      "company_state": "MA",
+      "company_zip": "01240-2444",
+      "primary_contact_phone": "8886230088",
+      "primary_contact_email": "gsa@zogics.com",
+      "website": "http://www.zogics.com",
+      "contract_start_date": "2030-07-31",
+      "contract_expiration_date": "2030-07-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Fitness Solutions",
+        "source": "MAS",
+        "category": "339920S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0560W/GS07F0560W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0560W&sin=339920S&src=elib&app=cat"
+      }
+    }
+  ]
+}

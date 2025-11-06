@@ -1,0 +1,325 @@
+{
+  "sin_code": "333318T",
+  "file_name": "GSA_MAS_333318T_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:49.454659",
+  "sheets": {
+    "2025_11_05_11_31_56": {
+      "row_count": 15,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "A3 SYSTEMS CORPORATION",
+      "contract_number": "47QSWA18D008X",
+      "vendor_uei": "EHMWBZNJ9H33",
+      "company_address": "2101 OLD BERMUDA HUNDRED RD",
+      "company_city": "CHESTER",
+      "company_state": "VA",
+      "company_zip": "23836-5505",
+      "primary_contact_phone": "8043849596",
+      "primary_contact_email": "gsesales@a3scorp.com",
+      "website": "https://www.a3aerotech.com",
+      "contract_start_date": "2028-08-23",
+      "contract_expiration_date": "2038-08-23",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D008X/47QSWA18D008X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D008X&sin=333318T&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "ARI PHOENIX INC",
+      "contract_number": "GS-07F-291AA",
+      "vendor_uei": "DYEKLRW2NAM1",
+      "company_address": "11163 WOODWARD LN",
+      "company_city": "CINCINNATI",
+      "company_state": "OH",
+      "company_zip": "45241-1856",
+      "primary_contact_phone": "5134841066",
+      "primary_contact_email": "teklagoodwin@ari-hetra.com",
+      "website": "https://www.ari-hetra.com",
+      "contract_start_date": "2028-06-30",
+      "contract_expiration_date": "2033-06-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F291AA/GS07F291AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-291AA&sin=333318T&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "GRAY MANUFACTURING COMPANY, INC",
+      "contract_number": "47QSMS25D0023",
+      "vendor_uei": "MS6AQNTUV1J5",
+      "company_address": "3501 S LEONARD RD",
+      "company_city": "SAINT JOSEPH",
+      "company_state": "MO",
+      "company_zip": "64503-1756",
+      "primary_contact_phone": "8162336121",
+      "primary_contact_email": "acline-shelton@grayusa.com",
+      "website": "http://www.grayusa.com",
+      "contract_start_date": "2029-12-02",
+      "contract_expiration_date": "2044-12-02",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0023/47QSMS25D0023_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0023&sin=333318T&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "IDSC HOLDINGS LLC",
+      "contract_number": "47QSHA19D005N",
+      "vendor_uei": "SJL9Q452QBL5",
+      "company_address": "2801 80TH ST",
+      "company_city": "KENOSHA",
+      "company_state": "WI",
+      "company_zip": "53143-5656",
+      "primary_contact_phone": "2626565430",
+      "primary_contact_email": "Carol.L.Connelly@snapon.com",
+      "website": "http://www.snapon.com/Industrial2/Industries/Military-Defense",
+      "contract_start_date": "2029-09-08",
+      "contract_expiration_date": "2039-09-08",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D005N/47QSHA19D005N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D005N&sin=333318T&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "MOHAWK LIFTS LLC",
+      "contract_number": "GS-07F-207AA",
+      "vendor_uei": "F9QME4G11RT5",
+      "company_address": "65 VROOMAN AVE",
+      "company_city": "AMSTERDAM",
+      "company_state": "NY",
+      "company_zip": "12010-5321",
+      "primary_contact_phone": "5188421431",
+      "primary_contact_email": "sperlstein@mohawklifts.com",
+      "website": "http://www.mohawklifts.com/gov",
+      "contract_start_date": "2028-06-30",
+      "contract_expiration_date": "2033-06-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F207AA/GS07F207AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-207AA&sin=333318T&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "RED HILL VENTURES LLC",
+      "contract_number": "47QSWA20D0009",
+      "vendor_uei": "RY3KK5R4GBF4",
+      "company_address": "1764 W SAM HOUSTON PKWY N",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77043-2723",
+      "primary_contact_phone": "8322950605",
+      "primary_contact_email": "gsa@redhillsupply.com",
+      "website": "https://redhillsupply.com/",
+      "contract_start_date": "2029-10-17",
+      "contract_expiration_date": "2039-10-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D0009/47QSWA20D0009_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D0009&sin=333318T&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "SANITZ ENTERPRISES, INC.",
+      "contract_number": "47QSWA21D007B",
+      "vendor_uei": "GLJ4J66A2HK3",
+      "company_address": "256 SULTEMEIER MOELLERING RD",
+      "company_city": "FREDERICKSBURG",
+      "company_state": "TX",
+      "company_zip": "78624-7799",
+      "primary_contact_phone": "8306853430",
+      "primary_contact_email": "gsa@ampatss.com",
+      "website": "http://www.custommanufacturing.ampatss.com/",
+      "contract_start_date": "2026-08-26",
+      "contract_expiration_date": "2041-08-26",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D007B/47QSWA21D007B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D007B&sin=333318T&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "SHIPPING CONTAINER SAFETY INTERNATIONAL INC",
+      "contract_number": "47QSEA23D004N",
+      "vendor_uei": "DQQHT7ASAY59",
+      "company_address": "160 INDUSTRY AVE",
+      "company_city": "LA HABRA",
+      "company_state": "CA",
+      "company_zip": "90631-6816",
+      "primary_contact_phone": "6576676227",
+      "primary_contact_email": "info@opnbar.com",
+      "website": "http://www.shippingcontainertool.com",
+      "contract_start_date": "2028-07-19",
+      "contract_expiration_date": "2043-07-19",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA23D004N/47QSEA23D004N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA23D004N&sin=333318T&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318T"
+      ],
+      "primary_sin": "333318T",
+      "schedule_number": "MAS",
+      "company_name": "VEHICLE SERVICE GROUP, LLC",
+      "contract_number": "GS-07F-294AA",
+      "vendor_uei": "E6L7P8EBDHC7",
+      "company_address": "2700 LANIER DR",
+      "company_city": "MADISON",
+      "company_state": "IN",
+      "company_zip": "47250-1753",
+      "primary_contact_phone": "8004455438",
+      "primary_contact_email": "rfulkerson@rotarylift.com",
+      "website": "http://www.rotarylift.com",
+      "contract_start_date": "2028-06-30",
+      "contract_expiration_date": "2033-06-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "333318T ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F294AA/GS07F294AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-294AA&sin=333318T&src=elib&app=cat"
+      }
+    }
+  ]
+}

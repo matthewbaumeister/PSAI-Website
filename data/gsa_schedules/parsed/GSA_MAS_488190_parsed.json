@@ -1,0 +1,393 @@
+{
+  "sin_code": "488190",
+  "file_name": "GSA_MAS_488190_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:18.070644",
+  "sheets": {
+    "2025_11_05_11_33_00": {
+      "row_count": 17,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "ADAMS COMMUNICATION & ENGINEERING TECHNOLOGY, INC.",
+      "contract_number": "47QTCA25D0055",
+      "vendor_uei": "ZKLQH4M1NU77",
+      "company_address": "45310 ABELL HOUSE LN STE 150",
+      "company_city": "CALIFORNIA",
+      "company_state": "MD",
+      "company_zip": "20619-3208",
+      "primary_contact_phone": "3012981780",
+      "primary_contact_email": "contracts@adamscomm.com",
+      "website": "http://www.adamscomm.com",
+      "contract_start_date": "2030-02-13",
+      "contract_expiration_date": "2045-02-13",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA25D0055/47QTCA25D0055_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA25D0055&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "AIRGROUP DYNAMICS, INC.",
+      "contract_number": "47QSMS25D00AF",
+      "vendor_uei": "JV4MRNFYD2N4",
+      "company_address": "7100 TPC DR STE 200",
+      "company_city": "ORLANDO",
+      "company_state": "FL",
+      "company_zip": "32822-5125",
+      "primary_contact_phone": "3212350859",
+      "primary_contact_email": "albertarce@adiaero.com",
+      "website": "http://www.adiaero.com",
+      "contract_start_date": "2030-07-22",
+      "contract_expiration_date": "2045-07-22",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "AIRTEC, INC.",
+      "contract_number": "47QSWA21D005H",
+      "vendor_uei": "YY3SSYKLLE21",
+      "company_address": "44190 AIRPORT ROAD",
+      "company_city": "CALIFORNIA",
+      "company_state": "MD",
+      "company_zip": "20619-2379",
+      "primary_contact_phone": "3013732101",
+      "primary_contact_email": "cherbert@flyairtec.com",
+      "website": "http://www.flyairtec.com",
+      "contract_start_date": "2026-06-10",
+      "contract_expiration_date": "2041-06-10",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "address_2": "SUITE B",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D005H/47QSWA21D005H_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA21D005H/pricelist_47QSWA21D005H.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D005H&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "AVIAN, LLC",
+      "contract_number": "47QRAA18D006L",
+      "vendor_uei": "D82NUFL39FE3",
+      "company_address": "22111 THREE NOTCH ROAD",
+      "company_city": "LEXINGTON PARK",
+      "company_state": "MD",
+      "company_zip": "20653-2050",
+      "primary_contact_phone": "30186620701",
+      "primary_contact_email": "jeannine.harris@avian.com",
+      "website": "http://www.avian.com",
+      "contract_start_date": "2028-03-22",
+      "contract_expiration_date": "2038-03-22",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA18D006L/47QRAA18D006L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA18D006L&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "AVION MANUFACTURING, INC.",
+      "contract_number": "47QSMS24D0017",
+      "vendor_uei": "DH21PKGXF1N7",
+      "company_address": "75 COOPERATIVE WAY",
+      "company_city": "WRIGHT CITY",
+      "company_state": "MO",
+      "company_zip": "63390-4001",
+      "primary_contact_phone": "6367915016",
+      "primary_contact_email": "kenneth.gouin@avionavtask.com",
+      "website": "http://www.avionavtask.com",
+      "contract_start_date": "2028-12-13",
+      "contract_expiration_date": "2043-12-13",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0017/47QSMS24D0017_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0017&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "AVMAC LLC",
+      "contract_number": "47QMCA20D0043",
+      "vendor_uei": "HLLKJP6ZVFB3",
+      "company_address": "409 INNOVATION DR",
+      "company_city": "CHESAPEAKE",
+      "company_state": "VA",
+      "company_zip": "23320-3815",
+      "primary_contact_phone": "7579952029",
+      "primary_contact_email": "don.buzard@avmacllc.com",
+      "website": "http://www.avmacllc.com",
+      "contract_start_date": "2030-07-16",
+      "contract_expiration_date": "2040-07-16",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA20D0043/47QMCA20D0043_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QMCA20D0043/pricelist_47QMCA20D0043.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA20D0043&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "GAUSS MANAGEMENT RESEARCH AND ENGINEERING INC",
+      "contract_number": "GS-10F-0028W",
+      "vendor_uei": "GWK3RNGGFCE6",
+      "company_address": "5875 S ADAMS AVE PKWY STE 2A",
+      "company_city": "SOUTH OGDEN",
+      "company_state": "UT",
+      "company_zip": "84405-7143",
+      "primary_contact_phone": "8014750243",
+      "primary_contact_email": "larry.magley@gmre-inc.com",
+      "website": "http://www.gmre-inc.com",
+      "contract_start_date": "2029-10-31",
+      "contract_expiration_date": "2029-10-31",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS10F0028W/GS10F0028W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-10F-0028W&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "HELICOPTER SERVICES, INC.",
+      "contract_number": "47QMCA20D001T",
+      "vendor_uei": "EADNNBULK258",
+      "company_address": "19931 STUEBNER AIRLINE RD",
+      "company_city": "SPRING",
+      "company_state": "TX",
+      "company_zip": "77379-5472",
+      "primary_contact_phone": "2813704354",
+      "primary_contact_email": "rcrossland@heliserv.com",
+      "website": "http://www.heliserv.com",
+      "contract_start_date": "2030-05-31",
+      "contract_expiration_date": "2040-05-31",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA20D001T/47QMCA20D001T_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QMCA20D001T/pricelist_47QMCA20D001T.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA20D001T&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "INNOVATIVE CONSULTING & MANAGEMENT SERVICES, LLC",
+      "contract_number": "47QSMS24D001S",
+      "vendor_uei": "RDWHWEJZ9ME6",
+      "company_address": "100 LAKEFOREST BLVD STE 600",
+      "company_city": "GAITHERSBURG",
+      "company_state": "MD",
+      "company_zip": "20877-6206",
+      "primary_contact_phone": "3015126291",
+      "primary_contact_email": "mstuckey@icms.com",
+      "website": "http://www.icmssolutions.com",
+      "contract_start_date": "2029-01-03",
+      "contract_expiration_date": "2044-01-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D001S/47QSMS24D001S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D001S&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "LOGMET LLC",
+      "contract_number": "GS-10F-0279Y",
+      "vendor_uei": "JS3TMMKJ45K6",
+      "company_address": "1311 CHISHOLM TRAIL RD STE 101",
+      "company_city": "ROUND ROCK",
+      "company_state": "TX",
+      "company_zip": "78681",
+      "primary_contact_phone": "5126371040",
+      "primary_contact_email": "wayne.rankin@logmet.com",
+      "website": "http://www.LOGMET.com",
+      "contract_start_date": "2027-04-26",
+      "contract_expiration_date": "2032-04-26",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS10F0279Y/GS10F0279Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-10F-0279Y/pricelist_GS-10F-0279Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-10F-0279Y&sin=488190&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "488190"
+      ],
+      "primary_sin": "488190",
+      "schedule_number": "MAS",
+      "company_name": "RESICUM INTERNATIONAL LLC",
+      "contract_number": "47QSEA22D000M",
+      "vendor_uei": "SNDEEVY5SBL5",
+      "company_address": "70 MAIN ST STE 23",
+      "company_city": "WARRENTON",
+      "company_state": "VA",
+      "company_zip": "20186-3346",
+      "primary_contact_phone": "3607898342",
+      "primary_contact_email": "rdemery@rilintl.com",
+      "website": "http://www.resicuminternational.com",
+      "contract_start_date": "2026-10-28",
+      "contract_expiration_date": "2041-10-28",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 488190.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA22D000M/47QSEA22D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA22D000M&sin=488190&src=elib&app=cat"
+      }
+    }
+  ]
+}

@@ -1,0 +1,390 @@
+{
+  "sin_code": "332311",
+  "file_name": "GSA_MAS_332311_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:26.148297",
+  "sheets": {
+    "2025_11_05_11_08_33": {
+      "row_count": 17,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "ACTERRA GROUP INC",
+      "contract_number": "47QSMS24D004B",
+      "vendor_uei": "WJX8XRLTAYT9",
+      "company_address": "220 35TH ST",
+      "company_city": "MARION",
+      "company_state": "IA",
+      "company_zip": "52302-3812",
+      "primary_contact_phone": "3193776357",
+      "primary_contact_email": "tcc@acterragroup.net",
+      "website": "http://www.acterragroup.com",
+      "contract_start_date": "2029-03-10",
+      "contract_expiration_date": "2044-03-10",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D004B&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "BAGLEY ENTERPRISES, INC.",
+      "contract_number": "GS-07F-0462Y",
+      "vendor_uei": "DCY1NSXJJRH5",
+      "company_address": "2370 MAGGIO CIR STE 4",
+      "company_city": "LODI",
+      "company_state": "CA",
+      "company_zip": "95240-8828",
+      "primary_contact_phone": "8778334800",
+      "primary_contact_email": "sales@bagleyenterprises.com",
+      "website": "http://www.bagleyenterprises.com",
+      "contract_start_date": "2027-07-14",
+      "contract_expiration_date": "2032-07-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0462Y/GS07F0462Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0462Y&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "CORE ENGINEERED SOLUTIONS INC",
+      "contract_number": "GS-07F-011GA",
+      "vendor_uei": "FVCDSBWYJLP9",
+      "company_address": "620 HERNDON PKWY",
+      "company_city": "HERNDON",
+      "company_state": "VA",
+      "company_zip": "20170-5400",
+      "primary_contact_phone": "7035630325",
+      "primary_contact_email": "fevans@core-es.com",
+      "website": "http://www.core-es.com",
+      "contract_start_date": "2026-09-30",
+      "contract_expiration_date": "2036-09-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "address_2": "STE 120",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F011GA/GS07F011GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-011GA&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "FOL-DA-TANK, LLC",
+      "contract_number": "47QSWA23D0090",
+      "vendor_uei": "GEQWZLJV4E99",
+      "company_address": "1001 GRAND AVE",
+      "company_city": "WEST DES MOINES",
+      "company_state": "IA",
+      "company_zip": "50265-3502",
+      "primary_contact_phone": "3095580938",
+      "primary_contact_email": "kniebur@fol-da-tank.com",
+      "website": "http://www.fol-da-tank.com",
+      "contract_start_date": "2028-08-15",
+      "contract_expiration_date": "2043-08-15",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0090/47QSWA23D0090_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0090&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL AUTOMATED SYSTEMS INC",
+      "contract_number": "47QSWA23D007T",
+      "vendor_uei": "CPN7MM4GEUW9",
+      "company_address": "10611 BALTIMORE ST NE",
+      "company_city": "BLAINE",
+      "company_state": "MN",
+      "company_zip": "55449-2846",
+      "primary_contact_phone": "5406781234",
+      "primary_contact_email": "info@fedpromgmt.com",
+      "website": "http://www.iasmn.com",
+      "contract_start_date": "2028-07-16",
+      "contract_expiration_date": "2043-07-16",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D007T/47QSWA23D007T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D007T&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "JOHN M. ELLSWORTH CO., INC.",
+      "contract_number": "GS-07F-0207Y",
+      "vendor_uei": "C6XTRMFFA1V9",
+      "company_address": "8700 W BRADLEY RD",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53224-2818",
+      "primary_contact_phone": "4147169440",
+      "primary_contact_email": "dpepin@jmesales.com",
+      "website": "http://www.jmesales.com",
+      "contract_start_date": "2027-01-14",
+      "contract_expiration_date": "2032-01-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0207Y/GS07F0207Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0207Y&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "MOUNTAIN HORSE LLC",
+      "contract_number": "47QSWA23D007V",
+      "vendor_uei": "HKV6HSM1JVA6",
+      "company_address": "407 S TEJON ST",
+      "company_city": "COLORADO SPRINGS",
+      "company_state": "CO",
+      "company_zip": "80903-2196",
+      "primary_contact_phone": "6152607254",
+      "primary_contact_email": "jennifer.sheehan@mtnhorse.com",
+      "website": "http://www.mtnhorse.com",
+      "contract_start_date": "2028-07-31",
+      "contract_expiration_date": "2043-07-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "address_2": "STE H",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D007V/47QSWA23D007V_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA23D007V/pricelist_47QSWA23D007V.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D007V&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "MULTIFORCE SYSTEMS CORP",
+      "contract_number": "GS-07F-0311V",
+      "vendor_uei": "VJARZA2RE2S7",
+      "company_address": "101 WALL ST",
+      "company_city": "PRINCETON",
+      "company_state": "NJ",
+      "company_zip": "08540-1522",
+      "primary_contact_phone": "6096834242",
+      "primary_contact_email": "joek@fuelforce.com",
+      "website": "http://www.fuelforce.com",
+      "contract_start_date": "2029-05-14",
+      "contract_expiration_date": "2029-05-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0311V/GS07F0311V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0311V&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "NATIVE INSTINCT LLC",
+      "contract_number": "47QSWA19D00AP",
+      "vendor_uei": "JMZMAE63TBR5",
+      "company_address": "4413 CYCAD LN",
+      "company_city": "BOYNTON BEACH",
+      "company_state": "FL",
+      "company_zip": "33436-7320",
+      "primary_contact_phone": "9044382858",
+      "primary_contact_email": "jeff@gsacontracts.us",
+      "website": "http://www.nativeinstinct.co",
+      "contract_start_date": "2029-09-14",
+      "contract_expiration_date": "2039-09-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Feb 7, 2030",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D00AP/47QSWA19D00AP_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D00AP&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "PETROLEUM RECOVERY SERVICES LLC",
+      "contract_number": "GS-07F-0363U",
+      "vendor_uei": "FVNUWA8C68J1",
+      "company_address": "210 POWELL DR",
+      "company_city": "SUMMERVILLE",
+      "company_state": "SC",
+      "company_zip": "29483-4615",
+      "primary_contact_phone": "8432251777",
+      "primary_contact_email": "Loretta@PRSfuel.com",
+      "website": "http://www.petroleumrecoveryservices.com",
+      "contract_start_date": "2028-05-31",
+      "contract_expiration_date": "2028-05-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0363U/GS07F0363U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0363U&sin=332311&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332311"
+      ],
+      "primary_sin": "332311",
+      "schedule_number": "MAS",
+      "company_name": "SMYTH INDUSTRIES INC.",
+      "contract_number": "47QRAA25D0010",
+      "vendor_uei": "NE5LW8T4LKN8",
+      "company_address": "4010 E ILLINOIS ST",
+      "company_city": "TUCSON",
+      "company_state": "AZ",
+      "company_zip": "85714-2170",
+      "primary_contact_phone": "5207508719",
+      "primary_contact_email": "sthompson@smythindustries.com",
+      "website": "https://www.smythindustries.com/",
+      "contract_start_date": "2029-10-21",
+      "contract_expiration_date": "2044-10-21",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332311.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA25D0010/47QRAA25D0010_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA25D0010&sin=332311&src=elib&app=cat"
+      }
+    }
+  ]
+}

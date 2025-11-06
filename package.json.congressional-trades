@@ -1,0 +1,5 @@
+# Add these to your package.json scripts section:
+
+"scrape:congress-trades:monthly": "bash scripts/scrape_congress_trades_monthly.sh",
+"test:congress-trades:monthly": "bash scripts/scrape_congress_trades_monthly.sh",
+

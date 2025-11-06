@@ -1,10 +1,10 @@
 {
   "direction": "ascending",
-  "currentCongress": 23,
+  "currentCongress": 82,
   "currentOffset": 0,
-  "totalBillsProcessed": 6206,
-  "successCount": 6203,
-  "failureCount": 3,
+  "totalBillsProcessed": 35037,
+  "successCount": 35033,
+  "failureCount": 4,
   "congresses": {
     "1": {
       "totalBills": 0,
@@ -118,8 +118,303 @@
     },
     "23": {
       "totalBills": 982,
-      "processedBills": 327,
-      "lastOffset": 250
+      "processedBills": 982,
+      "lastOffset": 750
+    },
+    "24": {
+      "totalBills": 1262,
+      "processedBills": 1262,
+      "lastOffset": 1250
+    },
+    "25": {
+      "totalBills": 1531,
+      "processedBills": 1531,
+      "lastOffset": 1500
+    },
+    "26": {
+      "totalBills": 1037,
+      "processedBills": 1037,
+      "lastOffset": 1000
+    },
+    "27": {
+      "totalBills": 1109,
+      "processedBills": 1109,
+      "lastOffset": 1000
+    },
+    "28": {
+      "totalBills": 773,
+      "processedBills": 773,
+      "lastOffset": 750
+    },
+    "29": {
+      "totalBills": 929,
+      "processedBills": 929,
+      "lastOffset": 750
+    },
+    "30": {
+      "totalBills": 1124,
+      "processedBills": 1124,
+      "lastOffset": 1000
+    },
+    "31": {
+      "totalBills": 825,
+      "processedBills": 825,
+      "lastOffset": 750
+    },
+    "32": {
+      "totalBills": 811,
+      "processedBills": 811,
+      "lastOffset": 750
+    },
+    "33": {
+      "totalBills": 1165,
+      "processedBills": 1165,
+      "lastOffset": 1000
+    },
+    "34": {
+      "totalBills": 1212,
+      "processedBills": 1212,
+      "lastOffset": 1000
+    },
+    "35": {
+      "totalBills": 1149,
+      "processedBills": 1149,
+      "lastOffset": 1000
+    },
+    "36": {
+      "totalBills": 1196,
+      "processedBills": 1196,
+      "lastOffset": 1000
+    },
+    "37": {
+      "totalBills": 995,
+      "processedBills": 995,
+      "lastOffset": 750
+    },
+    "38": {
+      "totalBills": 856,
+      "processedBills": 856,
+      "lastOffset": 750
+    },
+    "39": {
+      "totalBills": 1268,
+      "processedBills": 1268,
+      "lastOffset": 1250
+    },
+    "40": {
+      "totalBills": 1908,
+      "processedBills": 1908,
+      "lastOffset": 1750
+    },
+    "41": {
+      "totalBills": 3084,
+      "processedBills": 3084,
+      "lastOffset": 3000
+    },
+    "42": {
+      "totalBills": 5206,
+      "processedBills": 5206,
+      "lastOffset": 5000
+    },
+    "43": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "44": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "45": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "46": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "47": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "48": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "49": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "50": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "51": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "52": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "53": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "54": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "55": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "56": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "57": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "58": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "59": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "60": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "61": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "62": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "63": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "64": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "65": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "66": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "67": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "68": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "69": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "70": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "71": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "72": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "73": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "74": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "75": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "76": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "77": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "78": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "79": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "80": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "81": {
+      "totalBills": 0,
+      "processedBills": 0,
+      "lastOffset": 0
+    },
+    "82": {
+      "totalBills": 1617,
+      "processedBills": 736,
+      "lastOffset": 500
     }
   },
   "errors": [
@@ -137,7 +432,12 @@
       "congress": 17,
       "bill": "CEN_DOC_H 2",
       "error": "Request failed with status code 500"
+    },
+    {
+      "congress": 32,
+      "bill": "HR 188",
+      "error": "timeout of 30000ms exceeded"
     }
   ],
-  "lastUpdated": "2025-11-04T23:26:51.272Z"
+  "lastUpdated": "2025-11-06T16:04:44.809Z"
 }

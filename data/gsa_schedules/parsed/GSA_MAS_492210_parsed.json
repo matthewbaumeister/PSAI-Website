@@ -1,0 +1,423 @@
+{
+  "sin_code": "492210",
+  "file_name": "GSA_MAS_492210_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:54.517018",
+  "sheets": {
+    "2025_11_05_11_33_23": {
+      "row_count": 18,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "BANKERS BUSINESS MANAGEMENT SERVICES, INC.",
+      "contract_number": "47QSMA23D08NW",
+      "vendor_uei": "NFC7M74WV6D5",
+      "company_address": "8121 GEORGIA AVE",
+      "company_city": "SILVER SPRING",
+      "company_state": "MD",
+      "company_zip": "20910-4956",
+      "primary_contact_phone": "6462796859",
+      "primary_contact_email": "dawit.gebreyesus@bankersbms.com",
+      "website": "http://www.bankersbms.com",
+      "contract_start_date": "2028-02-20",
+      "contract_expiration_date": "2043-02-20",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "address_2": "STE 609",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08NW/47QSMA23D08NW_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08NW&sin=492210&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "CFI DELIVERY, LTD",
+      "contract_number": "47QMCB25D0009",
+      "vendor_uei": "DHEKB3J6L846",
+      "company_address": "10620 SENTINEL STREET",
+      "company_city": "SAN ANTONIO",
+      "company_state": "TX",
+      "company_zip": "78217-3812",
+      "primary_contact_phone": "2102289772",
+      "primary_contact_email": "rick@cfidelivery.com",
+      "website": "http://www.cfidelivery.com/",
+      "contract_start_date": "2030-03-03",
+      "contract_expiration_date": "2045-03-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D0009/47QMCB25D0009_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D0009&sin=492210&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "COURIER CORPORATION OF HAWAII",
+      "contract_number": "47QMCB14D0001",
+      "vendor_uei": "JX7RWTJ8BNQ3",
+      "company_address": "815 C WAIAKAMILO ROAD",
+      "company_city": "HONOLULU",
+      "company_state": "HI",
+      "company_zip": "96817-4337",
+      "primary_contact_phone": "8085322600",
+      "primary_contact_email": "peggy@cchawaii.com",
+      "website": "http://www.cchawaii.com",
+      "contract_start_date": "2029-02-25",
+      "contract_expiration_date": "2034-02-25",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB14D0001/47QMCB14D0001_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB14D0001&sin=492210&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "CYNWAVE SOLUTIONS, LLC",
+      "contract_number": "47QMCB21D000M",
+      "vendor_uei": "ZHVAW86N4J44",
+      "company_address": "238 EDENBRIDGE WAY",
+      "company_city": "EVANS",
+      "company_state": "GA",
+      "company_zip": "30809-8296",
+      "primary_contact_phone": "7068281891",
+      "primary_contact_email": "info@cynwavesolutions.com",
+      "website": "http://www.cynwavesolutions.com",
+      "contract_start_date": "2026-05-17",
+      "contract_expiration_date": "2041-05-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Feb 14, 2032",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB21D000M/47QMCB21D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB21D000M&sin=492210&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "DELUXE DELIVERY SYSTEMS INC.",
+      "contract_number": "47QMCB23D000M",
+      "vendor_uei": "JUS7B51K5Z14",
+      "company_address": "729 7TH AVE FL 2",
+      "company_city": "NEW YORK",
+      "company_state": "NY",
+      "company_zip": "10019-6899",
+      "primary_contact_phone": "2123764500",
+      "primary_contact_email": "ryan@deluxedelivery.com",
+      "website": "http://www.mydeluxedelivery.com",
+      "contract_start_date": "2028-02-20",
+      "contract_expiration_date": "2043-02-20",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "ELIJAH P. ISRAEL LLC",
+      "contract_number": "47QTCA23D002E",
+      "vendor_uei": "GMPJCNLXWGL3",
+      "company_address": "505 N SALTZMAN AVE",
+      "company_city": "KAPLAN",
+      "company_state": "LA",
+      "company_zip": "70548-3524",
+      "primary_contact_phone": "3373595494",
+      "primary_contact_email": "support@techepitaph.com",
+      "website": "http://www.techepitaph.com",
+      "contract_start_date": "2027-12-07",
+      "contract_expiration_date": "2042-12-07",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA23D002E/47QTCA23D002E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA23D002E&sin=492210&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "INTEGRATED PARCEL NETWORK",
+      "contract_number": "47QMCB16D0002",
+      "vendor_uei": "KWK7DXMDMBN6",
+      "company_address": "11135 RUSH ST STE A",
+      "company_city": "S EL MONTE",
+      "company_state": "CA",
+      "company_zip": "91733-3520",
+      "primary_contact_phone": "7142786100",
+      "primary_contact_email": "info@pacificcouriers.com",
+      "website": "www.pacificcouriers.com",
+      "contract_start_date": "2026-09-06",
+      "contract_expiration_date": "2036-09-06",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "ON TIME COURIER SERVICE, INC",
+      "contract_number": "47QMCB13D0001",
+      "vendor_uei": "GDDFNDG8AMK5",
+      "company_address": "8002 CAREY BRANCH DR",
+      "company_city": "FORT WASHINGTON",
+      "company_state": "MD",
+      "company_zip": "20744-4427",
+      "primary_contact_phone": "3013246620",
+      "primary_contact_email": "pmckethan@hotmail.com",
+      "website": "www.ontimecouriers.org",
+      "contract_start_date": "2027-10-22",
+      "contract_expiration_date": "2032-10-22",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "PEARL TRANSPORTATION SERVICES",
+      "contract_number": "47QMCB24D000S",
+      "vendor_uei": "E77TJ5LL7Q56",
+      "company_address": "222 N PACIFIC COAST HWY",
+      "company_city": "EL SEGUNDO",
+      "company_state": "CA",
+      "company_zip": "90245-5648",
+      "primary_contact_phone": "3103623304",
+      "primary_contact_email": "lorena@pearltrans.com",
+      "website": "www.pearltrans.com",
+      "contract_start_date": "2028-10-03",
+      "contract_expiration_date": "2043-10-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "address_2": "FL 11",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "RHG GROUP, INC",
+      "contract_number": "GS-33F-0014T",
+      "vendor_uei": "DFQAWAELYFX5",
+      "company_address": "915 5TH ST NW",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20001-2501",
+      "primary_contact_phone": "2403501702",
+      "primary_contact_email": "tdominique@rhggroup.com",
+      "website": "http://www.rhggroup.coom",
+      "contract_start_date": "2027-04-25",
+      "contract_expiration_date": "2027-04-25",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0014T/GS33F0014T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0014T&sin=492210&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "SAFEGUARD SECURITY SOLUTIONS, LLC",
+      "contract_number": "47QMCB17D0008",
+      "vendor_uei": "YXLKKEBJA9T4",
+      "company_address": "245 COUNTRY CLUB DR",
+      "company_city": "STOCKBRIDGE",
+      "company_state": "GA",
+      "company_zip": "30281-9080",
+      "primary_contact_phone": "4702781095",
+      "primary_contact_email": "mrandall@safeguardsecurityllc.com",
+      "website": "http://www.safeguardsecurityllc.com",
+      "contract_start_date": "2027-03-15",
+      "contract_expiration_date": "2037-03-15",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "address_2": "SUITE 200 F",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB17D0008/47QMCB17D0008_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB17D0008&sin=492210&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "492210"
+      ],
+      "primary_sin": "492210",
+      "schedule_number": "MAS",
+      "company_name": "STAT COURIER SERVICE, INC.",
+      "contract_number": "47QMCB09D0001",
+      "vendor_uei": "FQX2RJNE5VN9",
+      "company_address": "16 HAWK RIDGE CIR",
+      "company_city": "LAKE SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63367-1861",
+      "primary_contact_phone": "6365612518",
+      "primary_contact_email": "nboekholt@mtm-inc.net",
+      "website": "www.stat-courier.com",
+      "contract_start_date": "2029-08-13",
+      "contract_expiration_date": "2029-08-13",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Package Delivery",
+        "source": "MAS",
+        "category": 492210.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y"
+      }
+    }
+  ]
+}

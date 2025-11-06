@@ -1,0 +1,271 @@
+{
+  "sin_code": "532112",
+  "file_name": "GSA_MAS_532112_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:55.959034",
+  "sheets": {
+    "2025_11_05_11_33_06": {
+      "row_count": 13,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "532112"
+      ],
+      "primary_sin": "532112",
+      "schedule_number": "MAS",
+      "company_name": "ACME AUTO LEASING LLC",
+      "contract_number": "47QMCA21D000G",
+      "vendor_uei": "J69HN3Q4HJN7",
+      "company_address": "440 WASHINGTON AVE",
+      "company_city": "NORTH HAVEN",
+      "company_state": "CT",
+      "company_zip": "06473-1311",
+      "primary_contact_phone": "2032346850",
+      "primary_contact_email": "gsa@acmeautoleasing.com",
+      "website": "http://www.acmeautoleasing.com",
+      "contract_start_date": "2030-12-07",
+      "contract_expiration_date": "2040-12-07",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532112.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA21D000G/47QMCA21D000G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA21D000G&sin=532112&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532112"
+      ],
+      "primary_sin": "532112",
+      "schedule_number": "MAS",
+      "company_name": "ADVANTAGE LEASING ASSOCIATES LLC",
+      "contract_number": "47QMCA20D001F",
+      "vendor_uei": "TFCDD1CKNE64",
+      "company_address": "50 SCHILLING RD",
+      "company_city": "HUNT VALLEY",
+      "company_state": "MD",
+      "company_zip": "21031-1105",
+      "primary_contact_phone": "4108286200",
+      "primary_contact_email": "bbaron@admiralleasing.com",
+      "website": "http://\thttp://www.admiralleasing.com",
+      "contract_start_date": "2030-03-26",
+      "contract_expiration_date": "2040-03-26",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532112.0,
+        "address_2": "STE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA20D001F/47QMCA20D001F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA20D001F&sin=532112&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532112"
+      ],
+      "primary_sin": "532112",
+      "schedule_number": "MAS",
+      "company_name": "AUTOFLEX, INC",
+      "contract_number": "GS-30F-0008Y",
+      "vendor_uei": "MN8MVP11CJ27",
+      "company_address": "405 OAK FOREST AVE",
+      "company_city": "CATONSVILLE",
+      "company_state": "MD",
+      "company_zip": "21228-5622",
+      "primary_contact_phone": "4104559293",
+      "primary_contact_email": "LDM@autoflexfleet.com",
+      "website": "http://www.autoflexfleet.com",
+      "contract_start_date": "2026-12-21",
+      "contract_expiration_date": "2031-12-21",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532112.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F0008Y/GS30F0008Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-0008Y&sin=532112&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532112"
+      ],
+      "primary_sin": "532112",
+      "schedule_number": "MAS",
+      "company_name": "DISTRICT FLEET LLC",
+      "contract_number": "47QMCA20D001A",
+      "vendor_uei": "Z7MWAAFHSNL9",
+      "company_address": "600 MASSACHUSETTS AVE NW STE 250",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20001-5554",
+      "primary_contact_phone": "2022573797",
+      "primary_contact_email": "dan@districtfleet.com",
+      "website": "http://www.districtfleet.com",
+      "contract_start_date": "2030-02-26",
+      "contract_expiration_date": "2040-02-26",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532112.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA20D001A/47QMCA20D001A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA20D001A&sin=532112&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532112"
+      ],
+      "primary_sin": "532112",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL LEASE GROUP INC",
+      "contract_number": "47QMCA23D0002",
+      "vendor_uei": "F82QNYKNR577",
+      "company_address": "260 BEAR HILL RD",
+      "company_city": "WALTHAM",
+      "company_state": "MA",
+      "company_zip": "02451-1018",
+      "primary_contact_phone": "8574441600",
+      "primary_contact_email": "ben.rosenbloom@glgbos.com",
+      "website": "http://www.globalleasegroup.com",
+      "contract_start_date": "2027-10-06",
+      "contract_expiration_date": "2042-10-06",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532112.0,
+        "address_2": "STE 202",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA23D0002/47QMCA23D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA23D0002&sin=532112&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532112"
+      ],
+      "primary_sin": "532112",
+      "schedule_number": "MAS",
+      "company_name": "THE BANCORP BANK",
+      "contract_number": "GS-30F-014CA",
+      "vendor_uei": "HK28KTBV45L3",
+      "company_address": "2127 ESPEY CT",
+      "company_city": "CROFTON",
+      "company_state": "MD",
+      "company_zip": "21114-2491",
+      "primary_contact_phone": "4107212555",
+      "primary_contact_email": "jbarron@thebancorp.com",
+      "website": "https://www.thebancorp.com",
+      "contract_start_date": "2030-08-03",
+      "contract_expiration_date": "2035-08-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532112.0,
+        "address_2": "STE 300",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F014CA/GS30F014CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-014CA&sin=532112&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532112"
+      ],
+      "primary_sin": "532112",
+      "schedule_number": "MAS",
+      "company_name": "VEHICLE LEASING ASSOCIATES, LLC",
+      "contract_number": "GS-30F-021BA",
+      "vendor_uei": "MNK5AG3XK8U9",
+      "company_address": "333 S BROAD ST",
+      "company_city": "MERIDEN",
+      "company_state": "CT",
+      "company_zip": "06450-6646",
+      "primary_contact_phone": "2034103308",
+      "primary_contact_email": "cbrancale@vlacars.com",
+      "website": "http://WWW.VLAGOV.com",
+      "contract_start_date": "2029-03-26",
+      "contract_expiration_date": "2034-03-26",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532112.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F021BA/GS30F021BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-021BA&sin=532112&src=elib&app=cat"
+      }
+    }
+  ]
+}

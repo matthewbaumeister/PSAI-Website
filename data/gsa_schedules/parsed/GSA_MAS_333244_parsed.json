@@ -1,0 +1,324 @@
+{
+  "sin_code": "333244",
+  "file_name": "GSA_MAS_333244_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:50.693144",
+  "sheets": {
+    "2025_11_05_11_22_05": {
+      "row_count": 15,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "DUPLO U.S.A. CORPORATION",
+      "contract_number": "47QSMA22D08PD",
+      "vendor_uei": "TVZDHHLVCFN5",
+      "company_address": "3050 DAIMLER ST",
+      "company_city": "SANTA ANA",
+      "company_state": "CA",
+      "company_zip": "92705-5813",
+      "primary_contact_phone": "9497528222",
+      "primary_contact_email": "mpalomo@duplousa.com",
+      "website": "http://www.duplousa.com",
+      "contract_start_date": "2027-03-23",
+      "contract_expiration_date": "2042-03-23",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08PD/47QSMA22D08PD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08PD&sin=333244&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "FORMAX LLC",
+      "contract_number": "GS-02F-0209S",
+      "vendor_uei": "W8UESPNJ2F67",
+      "company_address": "1 EDUCATION WAY",
+      "company_city": "DOVER",
+      "company_state": "NH",
+      "company_zip": "03820-5815",
+      "primary_contact_phone": "6037495807",
+      "primary_contact_email": "cmacneil@formax.com",
+      "website": "http://www.formax.com",
+      "contract_start_date": "2026-08-22",
+      "contract_expiration_date": "2026-08-22",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0209S/GS02F0209S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0209S&sin=333244&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=333244&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "JTF BUSINESS SYSTEMS CORPORATION",
+      "contract_number": "GS-03F-0182V",
+      "vendor_uei": "CM3CXMWM13T5",
+      "company_address": "7370 STEEL MILL DR",
+      "company_city": "SPRINGFIELD",
+      "company_state": "VA",
+      "company_zip": "22150-3600",
+      "primary_contact_phone": "7036582000",
+      "primary_contact_email": "andre.matini@jtfgov.com",
+      "website": "http://JTFGov.com",
+      "contract_start_date": "2029-09-14",
+      "contract_expiration_date": "2029-09-14",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0182V/GS03F0182V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0182V&sin=333244&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "KIP AMERICA INC",
+      "contract_number": "47QSMA22D08PU",
+      "vendor_uei": "Y81GZHEM52G6",
+      "company_address": "39575 W 13 MILE RD",
+      "company_city": "NOVI",
+      "company_state": "MI",
+      "company_zip": "48377-2303",
+      "primary_contact_phone": "8002526793",
+      "primary_contact_email": "GSA@KIP.COM",
+      "website": "http://www.kip.com",
+      "contract_start_date": "2027-04-27",
+      "contract_expiration_date": "2042-04-27",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08PU/47QSMA22D08PU_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08PU&sin=333244&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "LAMINATION KING, LLC",
+      "contract_number": "GS-03F-004CA",
+      "vendor_uei": "DNCVUKKPM1L9",
+      "company_address": "221 WINSON AVE",
+      "company_city": "ENGLEWOOD",
+      "company_state": "FL",
+      "company_zip": "34223",
+      "primary_contact_phone": "8662274316",
+      "primary_contact_email": "patti@laminationking.com",
+      "website": "http://www.laminationking.com",
+      "contract_start_date": "2029-10-08",
+      "contract_expiration_date": "2034-10-08",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F004CA/GS03F004CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-004CA&sin=333244&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL LAMINATING, INC",
+      "contract_number": "GS-25F-0041S",
+      "vendor_uei": "DH6JMBFCL6M1",
+      "company_address": "165 AMARAL ST",
+      "company_city": "RIVERSIDE",
+      "company_state": "RI",
+      "company_zip": "02915-2221",
+      "primary_contact_phone": "4014388554",
+      "primary_contact_email": "pmorley@nationallaminating.com",
+      "website": "http://www.nationallaminating.com",
+      "contract_start_date": "2026-07-25",
+      "contract_expiration_date": "2026-07-25",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS25F0041S/GS25F0041S_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-25F-0041S/pricelist_GS-25F-0041S.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-25F-0041S&sin=333244&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "PLASTIC BINDING & LAMINATING, INC.",
+      "contract_number": "GS-25F-0013S",
+      "vendor_uei": "YD29GGMRY1K5",
+      "company_address": "1831 ELMORE AVE",
+      "company_city": "DOWNERS GROVE",
+      "company_state": "IL",
+      "company_zip": "60515-4429",
+      "primary_contact_phone": "8003234307",
+      "primary_contact_email": "amy@laminator.com",
+      "website": "http://www.laminator.com",
+      "contract_start_date": "2026-02-08",
+      "contract_expiration_date": "2026-02-08",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS25F0013S/GS25F0013S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-25F-0013S&sin=333244&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333244"
+      ],
+      "primary_sin": "333244",
+      "schedule_number": "MAS",
+      "company_name": "SPIEL ASSOCIATES INC",
+      "contract_number": "GS-03F-0153Y",
+      "vendor_uei": "KKNYXU59XB83",
+      "company_address": "180 ATLANTIC AVE",
+      "company_city": "NEW HYDE PARK",
+      "company_state": "NY",
+      "company_zip": "11040-5028",
+      "primary_contact_phone": "7183927900",
+      "primary_contact_email": "michaelspiel@spielassociates.com",
+      "website": "http://spielassociates.com",
+      "contract_start_date": "2027-08-20",
+      "contract_expiration_date": "2032-08-20",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": 333244.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0153Y/GS03F0153Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0153Y&sin=333244&src=elib&app=cat"
+      }
+    }
+  ]
+}

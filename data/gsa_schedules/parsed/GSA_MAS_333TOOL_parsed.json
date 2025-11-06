@@ -1,0 +1,2217 @@
+{
+  "sin_code": "333TOOL",
+  "file_name": "GSA_MAS_333TOOL_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:55.730421",
+  "sheets": {
+    "2025_11_05_11_13_20": {
+      "row_count": 78,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "A-LINE ACCESSORIES INC.",
+      "contract_number": "47QSHA18D000L",
+      "vendor_uei": "QA4UKJDT92G8",
+      "company_address": "1673 STATE ROUTE 17M",
+      "company_city": "CHESTER",
+      "company_state": "NY",
+      "company_zip": "10918-1020",
+      "primary_contact_phone": "8457828000",
+      "primary_contact_email": "eugene@alineaccessories.com",
+      "website": "http://WWW.ALINEACCESSORIES.COM",
+      "contract_start_date": "2027-11-27",
+      "contract_expiration_date": "2037-11-27",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D000L/47QSHA18D000L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D000L&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "AIR POWER, INC.",
+      "contract_number": "GS-21F-0105X",
+      "vendor_uei": "JKRAFBRGMMX3",
+      "company_address": "11000 OTTER CREEK EAST BLVD",
+      "company_city": "MABELVALE",
+      "company_state": "AR",
+      "company_zip": "72103-5802",
+      "primary_contact_phone": "9183460902",
+      "primary_contact_email": "lmercy@airpower-inc.com",
+      "website": "https://www.airpower-inc.com",
+      "contract_start_date": "2026-05-01",
+      "contract_expiration_date": "2031-05-01",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "AIRSUPPLY TOOLS INC.",
+      "contract_number": "GS-21F-0180W",
+      "vendor_uei": "HDAWCE6NWB24",
+      "company_address": "7544 TRADE ST",
+      "company_city": "SAN DIEGO",
+      "company_state": "CA",
+      "company_zip": "92121-2412",
+      "primary_contact_phone": "8009362053",
+      "primary_contact_email": "sean@airsupplytools.com",
+      "website": "http://www.airsupplytools.com",
+      "contract_start_date": "2030-06-20",
+      "contract_expiration_date": "2030-06-20",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0180W/GS21F0180W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0180W&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "ALL FOAM PRODUCTS, CO.",
+      "contract_number": "47QSHA23D0005",
+      "vendor_uei": "QXPWM13S2AU4",
+      "company_address": "15005 ENTERPRISE WAY",
+      "company_city": "MIDDLEFIELD",
+      "company_state": "OH",
+      "company_zip": "44062-9369",
+      "primary_contact_phone": "8004439967",
+      "primary_contact_email": "darrell@allfoam.com",
+      "website": "http://www.allfoam.com",
+      "contract_start_date": "2027-11-30",
+      "contract_expiration_date": "2042-11-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA23D0005/47QSHA23D0005_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA23D0005&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "ALLIANCE COATINGS, INC.",
+      "contract_number": "GS-21F-0010W",
+      "vendor_uei": "RNK7CLADRBA6",
+      "company_address": "1666 N MAGNOLIA AVE STE G",
+      "company_city": "EL CAJON",
+      "company_state": "CA",
+      "company_zip": "92020-1267",
+      "primary_contact_phone": "8005969191",
+      "primary_contact_email": "brian@alliancecoatings.com",
+      "website": "http://www.alliancecoatings.com",
+      "contract_start_date": "2029-10-12",
+      "contract_expiration_date": "2029-10-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0010W/GS21F0010W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0010W&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN DIVING SUPPLY LLC",
+      "contract_number": "47QSMA23D08QU",
+      "vendor_uei": "EAP8GY142XK5",
+      "company_address": "2531 TILTON RD",
+      "company_city": "EGG HARBOR TOWNSHIP",
+      "company_state": "NJ",
+      "company_zip": "08234-5145",
+      "primary_contact_phone": "6096465090",
+      "primary_contact_email": "gsa@americandivingsupply.com",
+      "website": "http://www.americandivingsupply.com",
+      "contract_start_date": "2028-09-25",
+      "contract_expiration_date": "2043-09-25",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08QU/47QSMA23D08QU_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08QU&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN KAL ENTERPRISES, INC",
+      "contract_number": "GS-21F-0035Y",
+      "vendor_uei": "PKLNKJ5KK8L5",
+      "company_address": "4265 PUENTE AVE",
+      "company_city": "BALDWIN PARK",
+      "company_state": "CA",
+      "company_zip": "91706",
+      "primary_contact_phone": "6263387300",
+      "primary_contact_email": "americankal@aol.com",
+      "website": "proamericatools.com",
+      "contract_start_date": "2027-01-01",
+      "contract_expiration_date": "2032-01-01",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "ARIZONA INDUSTRIES FOR THE BLIND",
+      "contract_number": "47QSWA20D002R",
+      "vendor_uei": "LCLUT194X458",
+      "company_address": "515 N 51ST AVE STE 130",
+      "company_city": "PHOENIX",
+      "company_state": "AZ",
+      "company_zip": "85043-2711",
+      "primary_contact_phone": "6232337878",
+      "primary_contact_email": "lmann@azifb.com",
+      "website": "http://www.azifb.com",
+      "contract_start_date": "2029-12-19",
+      "contract_expiration_date": "2039-12-19",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D002R/47QSWA20D002R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D002R&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "ASA ENVIRONMENTAL PRODUCTS INC",
+      "contract_number": "GS-07F-9521S",
+      "vendor_uei": "NGMSB6M2QKA4",
+      "company_address": "22 BAYVIEW AVE",
+      "company_city": "STONINGTON",
+      "company_state": "CT",
+      "company_zip": "06378-1169",
+      "primary_contact_phone": "8605353931",
+      "primary_contact_email": "jeff@ASA-environmental.com",
+      "website": "http://www.asa-environmental.com",
+      "contract_start_date": "2026-06-14",
+      "contract_expiration_date": "2026-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "address_2": "STE 46",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9521S/GS07F9521S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9521S&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "ASPETTO INC",
+      "contract_number": "GS-07F-146GA",
+      "vendor_uei": "Y7QYC9NNFMW8",
+      "company_address": "150 RIVERSIDE PKWY STE 203",
+      "company_city": "FREDERICKSBURG",
+      "company_state": "VA",
+      "company_zip": "22406-1094",
+      "primary_contact_phone": "5405478487",
+      "primary_contact_email": "GSA@aspettoinc.com",
+      "website": "http://www.aspetto.com",
+      "contract_start_date": "2027-07-14",
+      "contract_expiration_date": "2037-07-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Nov 17, 2028",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F146GA/GS07F146GA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-146GA/pricelist_GS-07F-146GA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-146GA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "ASTRO TOOL CORP.",
+      "contract_number": "GS-21F-039GA",
+      "vendor_uei": "UQ96R27EBDY3",
+      "company_address": "2856 DIRECTORS CV",
+      "company_city": "MEMPHIS",
+      "company_state": "TN",
+      "company_zip": "38131-0301",
+      "primary_contact_phone": "5036429853",
+      "primary_contact_email": "kellyj@astrotool.com",
+      "website": "http://www.astrotool.com",
+      "contract_start_date": "2027-04-25",
+      "contract_expiration_date": "2037-04-25",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F039GA/GS21F039GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-039GA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "B MED INDUSTRIAL SUPPLY LLC",
+      "contract_number": "47QMCA22D0016",
+      "vendor_uei": "NRSKE1HF3MM5",
+      "company_address": "591 HEIDI LN",
+      "company_city": "MANSFIELD",
+      "company_state": "OH",
+      "company_zip": "44904",
+      "primary_contact_phone": "4195663717",
+      "primary_contact_email": "evankohio@gmail.com",
+      "website": "http://bmedindsupply.com",
+      "contract_start_date": "2027-05-03",
+      "contract_expiration_date": "2042-05-03",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA22D0016/47QMCA22D0016_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA22D0016&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "BEAM DISTRIBUTING, INC.",
+      "contract_number": "GS-07F-256AA",
+      "vendor_uei": "FY4FYX6HUPE5",
+      "company_address": "317 HILL CARTER PKWY",
+      "company_city": "ASHLAND",
+      "company_state": "VA",
+      "company_zip": "23005-2315",
+      "primary_contact_phone": "8044406489",
+      "primary_contact_email": "jackie@beamdistributing.com",
+      "website": "http://www.beam.is",
+      "contract_start_date": "2028-05-09",
+      "contract_expiration_date": "2033-05-09",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F256AA/GS07F256AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-256AA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "BLINK SUPPLIES INC",
+      "contract_number": "47QSEA23D0037",
+      "vendor_uei": "SD3QLWJ6AW43",
+      "company_address": "5 LORIMER ST",
+      "company_city": "BROOKLYN",
+      "company_state": "NY",
+      "company_zip": "11206-8073",
+      "primary_contact_phone": "3478449050",
+      "primary_contact_email": "gitty@blinksupplies.com",
+      "website": "https://www.blinksupplies.com",
+      "contract_start_date": "2028-04-25",
+      "contract_expiration_date": "2043-04-25",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "address_2": "APT 5B",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA23D0037/47QSEA23D0037_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA23D0037&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "BLUE POINT USA LLC",
+      "contract_number": "47QSMS24D00CE",
+      "vendor_uei": "KH2EZXTRRYF4",
+      "company_address": "12134 SANDAL CREEK WAY",
+      "company_city": "ORLANDO",
+      "company_state": "FL",
+      "company_zip": "32824-8697",
+      "primary_contact_phone": "9179957711",
+      "primary_contact_email": "contact@bluepointsupplies.com",
+      "website": "http://www.bluepointstores.com",
+      "contract_start_date": "2029-09-19",
+      "contract_expiration_date": "2044-09-19",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00CE/47QSMS24D00CE_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00CE&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "BOJO DESIGN & PROTYPING",
+      "contract_number": "47QSHA19D004U",
+      "vendor_uei": "X9GFUFE3U253",
+      "company_address": "2283 RINGWOOD AVE STE E2",
+      "company_city": "SAN JOSE",
+      "company_state": "CA",
+      "company_zip": "95131-1740",
+      "primary_contact_phone": "4082021025",
+      "primary_contact_email": "Sales@Bojoinc.com",
+      "website": "http://www.BojoTools.com",
+      "contract_start_date": "2029-07-28",
+      "contract_expiration_date": "2039-07-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D004U/47QSHA19D004U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D004U&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "BOTACH INC.",
+      "contract_number": "47QSHA19D003Y",
+      "vendor_uei": "NSEVGMJ1FHN5",
+      "company_address": "4775 W HARMON AVE",
+      "company_city": "LAS VEGAS",
+      "company_state": "NV",
+      "company_zip": "89103-5215",
+      "primary_contact_phone": "17862828680",
+      "primary_contact_email": "chushim@botach.com",
+      "website": "http://www.botach.com",
+      "contract_start_date": "2029-06-09",
+      "contract_expiration_date": "2039-06-09",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D003Y/47QSHA19D003Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D003Y&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "CAIL TOOL & MACHINERY, INC.",
+      "contract_number": "GS-21F-0146V",
+      "vendor_uei": "GULMA36WZL17",
+      "company_address": "6943 FLAT ROCK RD",
+      "company_city": "MIDLAND",
+      "company_state": "GA",
+      "company_zip": "31820-3618",
+      "primary_contact_phone": "7065635466",
+      "primary_contact_email": "wes@cailtool.com",
+      "website": "http://www.cailtool.net",
+      "contract_start_date": "2029-09-15",
+      "contract_expiration_date": "2029-09-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0146V/GS21F0146V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0146V&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "CLAYTON ASSOCIATES INC",
+      "contract_number": "GS-07F-228BA",
+      "vendor_uei": "DB3NAULV43F9",
+      "company_address": "1650 OAK ST",
+      "company_city": "LAKEWOOD",
+      "company_state": "NJ",
+      "company_zip": "08701-5924",
+      "primary_contact_phone": "7323632100",
+      "primary_contact_email": "sales@jclayton.com",
+      "website": "http://www.jclayton.com",
+      "contract_start_date": "2029-05-31",
+      "contract_expiration_date": "2034-05-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F228BA/GS07F228BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-228BA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "COLLEGE STATION AUTO PARTS CO.",
+      "contract_number": "47QSHA18D000K",
+      "vendor_uei": "LMWVL9MJRG37",
+      "company_address": "2790 OSBORN LN",
+      "company_city": "BRYAN",
+      "company_state": "TX",
+      "company_zip": "77803-5151",
+      "primary_contact_phone": "9796941964",
+      "primary_contact_email": "gsasales@napatexas.com",
+      "website": "http://www.napatexas.com",
+      "contract_start_date": "2027-11-30",
+      "contract_expiration_date": "2037-11-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D000K/47QSHA18D000K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D000K&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "COMMUNICATIONS PROFESSIONALS INC.",
+      "contract_number": "47QSWA18D001S",
+      "vendor_uei": "JHU8EL7N1485",
+      "company_address": "2265 LIVERNOIS RD STE 900",
+      "company_city": "TROY",
+      "company_state": "MI",
+      "company_zip": "48083-1669",
+      "primary_contact_phone": "2485570100",
+      "primary_contact_email": "awallace@cpgp.com",
+      "website": "http://www.cpgp.com",
+      "contract_start_date": "2028-02-04",
+      "contract_expiration_date": "2038-02-04",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001S/47QSWA18D001S_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA18D001S/pricelist_47QSWA18D001S.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001S&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "COMPETITIVE CHOICE, INC",
+      "contract_number": "47QSEA20D005G",
+      "vendor_uei": "NEABMUMEWMM7",
+      "company_address": "9030 KIRBY DR",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77054-2504",
+      "primary_contact_phone": "7138381144",
+      "primary_contact_email": "AUNDREA@COMPETITIVECHOICE.NET",
+      "website": "http://www.competitivechoice.net",
+      "contract_start_date": "2030-03-29",
+      "contract_expiration_date": "2040-03-29",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D005G/47QSEA20D005G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D005G&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "COORDINATED DEFENSE SUPPLY SYSTEMS, INC.",
+      "contract_number": "GS-21F-040GA",
+      "vendor_uei": "W4K4SMLL4EA7",
+      "company_address": "44570 MORLEY DR",
+      "company_city": "CLINTON TOWNSHIP",
+      "company_state": "MI",
+      "company_zip": "48036-1358",
+      "primary_contact_phone": "5863073450",
+      "primary_contact_email": "lsj@cdssinc.com",
+      "website": "http://WWW.CDSSINC.COM",
+      "contract_start_date": "2027-05-04",
+      "contract_expiration_date": "2037-05-04",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F040GA/GS21F040GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-040GA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "CPS SOLUTIONS LLC",
+      "contract_number": "47QMCA23D0003",
+      "vendor_uei": "KJWVCGLNVQN8",
+      "company_address": "1398 LONG MDW",
+      "company_city": "SALADO",
+      "company_state": "TX",
+      "company_zip": "76571-6000",
+      "primary_contact_phone": "2198619961",
+      "primary_contact_email": "cpsolutions3@mail.com",
+      "website": "https://www.cpssolutionsllc.net",
+      "contract_start_date": "2027-11-13",
+      "contract_expiration_date": "2042-11-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA23D0003/47QMCA23D0003_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA23D0003&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "DOOR STUD, LLC",
+      "contract_number": "47QSMS25D0041",
+      "vendor_uei": "M2SEGKAA6J85",
+      "company_address": "4141 31ST AVE S STE 100A",
+      "company_city": "FARGO",
+      "company_state": "ND",
+      "company_zip": "58104-8778",
+      "primary_contact_phone": "6128177015",
+      "primary_contact_email": "mike@thedoorstud.com",
+      "website": "https://thedoorstud.com/",
+      "contract_start_date": "2030-02-02",
+      "contract_expiration_date": "2045-02-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0041/47QSMS25D0041_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0041&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "DYEMANSION NORTH AMERICA INC",
+      "contract_number": "47QSMA22D08Q3",
+      "vendor_uei": "H7EBHJQ71PF2",
+      "company_address": "4020 S INDUSTRIAL DR STE 160",
+      "company_city": "AUSTIN",
+      "company_state": "TX",
+      "company_zip": "78744-1080",
+      "primary_contact_phone": "7039662518",
+      "primary_contact_email": "gsa@dyemansion.com",
+      "website": "http://dyemansion.com/en",
+      "contract_start_date": "2027-06-02",
+      "contract_expiration_date": "2042-06-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08Q3/47QSMA22D08Q3_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08Q3&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "EXIT 10, INC.",
+      "contract_number": "47QSMS25D0064",
+      "vendor_uei": "M5D2V4YFN6L3",
+      "company_address": "100 HIGHLINE DR UNIT 116",
+      "company_city": "LONGWOOD",
+      "company_state": "FL",
+      "company_zip": "32750-5192",
+      "primary_contact_phone": "4075742433",
+      "primary_contact_email": "sales@southord.com",
+      "website": "http://www.southord.com",
+      "contract_start_date": "2030-03-13",
+      "contract_expiration_date": "2045-03-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0064/47QSMS25D0064_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0064&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "FASTENING SYSTEMS INTERNATIONAL",
+      "contract_number": "47QSHA22D001D",
+      "vendor_uei": "DGJ3BP6FKLJ9",
+      "company_address": "1206 E MACARTHUR ST",
+      "company_city": "SONOMA",
+      "company_state": "CA",
+      "company_zip": "95476-3800",
+      "primary_contact_phone": "7079351170",
+      "primary_contact_email": "LUCIA@FSIRIVET.COM",
+      "website": "http://www.fsirivet.com",
+      "contract_start_date": "2027-03-31",
+      "contract_expiration_date": "2042-03-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D001D/47QSHA22D001D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D001D&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "FIRSTSPEAR, LLC",
+      "contract_number": "47QSWA22D007L",
+      "vendor_uei": "ENLSN31RWYQ5",
+      "company_address": "2015 CORPORATE 44 DR",
+      "company_city": "FENTON",
+      "company_state": "MO",
+      "company_zip": "63026-2517",
+      "primary_contact_phone": "6363494820",
+      "primary_contact_email": "ben@first-spear.com",
+      "website": "http://www.first-spear.com",
+      "contract_start_date": "2027-08-01",
+      "contract_expiration_date": "2042-08-01",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D007L/47QSWA22D007L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D007L&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "FISKARS BRANDS, INC.",
+      "contract_number": "47QSHA19D001L",
+      "vendor_uei": "TKFDC2GC6KS9",
+      "company_address": "14200 SW 72ND AVE",
+      "company_city": "PORTLAND",
+      "company_state": "OR",
+      "company_zip": "97224-8010",
+      "primary_contact_phone": "7032561500",
+      "primary_contact_email": "dphelps@govtools.com",
+      "website": "http://www.Gerbergear.com",
+      "contract_start_date": "2029-02-28",
+      "contract_expiration_date": "2039-02-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D001L/47QSHA19D001L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D001L&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "FORREST TOOL COMPANY, INC.",
+      "contract_number": "GS-21F-148AA",
+      "vendor_uei": "VJ26SNTJ9QL9",
+      "company_address": "3104 E 4TH AVE",
+      "company_city": "DURANGO",
+      "company_state": "CO",
+      "company_zip": "81301-4306",
+      "primary_contact_phone": "9703750003",
+      "primary_contact_email": "krichardson@forresttool.com",
+      "website": "http://forresttool.com",
+      "contract_start_date": "2028-06-11",
+      "contract_expiration_date": "2033-06-11",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-148AA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "GAGE BILT, INC.",
+      "contract_number": "47QSHA22D001R",
+      "vendor_uei": "C535HHK7S953",
+      "company_address": "44766 CENTRE CT",
+      "company_city": "CLINTON TOWNSHIP",
+      "company_state": "MI",
+      "company_zip": "48038-1315",
+      "primary_contact_phone": "5862261500",
+      "primary_contact_email": "Robin.Kirkley@GAGEBILT.COM",
+      "website": "http://www.gagebilt.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2042-05-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D001R/47QSHA22D001R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D001R&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "GARRISON WALKER GROUP INC",
+      "contract_number": "47QSHA22D001A",
+      "vendor_uei": "GHZKSZNTA2N5",
+      "company_address": "841 APOLLO ST",
+      "company_city": "EL SEGUNDO",
+      "company_state": "CA",
+      "company_zip": "90245-4724",
+      "primary_contact_phone": "4806180793",
+      "primary_contact_email": "GWGcontracts@gwalkergroup.com",
+      "website": "http://www.gwalkergroup.com",
+      "contract_start_date": "2027-03-22",
+      "contract_expiration_date": "2042-03-22",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "address_2": "STE 324",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D001A/47QSHA22D001A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D001A&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "GILL METAL FAB INC",
+      "contract_number": "GS-21F-0013X",
+      "vendor_uei": "GKKNNNYPSKJ3",
+      "company_address": "170 OAK HILL WAY",
+      "company_city": "BROCKTON",
+      "company_state": "MA",
+      "company_zip": "02301-7124",
+      "primary_contact_phone": "5085804445112",
+      "primary_contact_email": "ronni@modulinecabinets.com",
+      "website": "http://www.modulinecabinets.com",
+      "contract_start_date": "2030-10-31",
+      "contract_expiration_date": "2030-10-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0013X/GS21F0013X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0013X&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "GOULD SOUTHERN INC",
+      "contract_number": "GS-06F-0047S",
+      "vendor_uei": "N7HVX6SBXGP9",
+      "company_address": "2940 OLD NORCROSS RD STE 500",
+      "company_city": "DULUTH",
+      "company_state": "GA",
+      "company_zip": "30096-7628",
+      "primary_contact_phone": "7709211111",
+      "primary_contact_email": "govsales@gouldsouthern.com",
+      "website": "http://www.gouldsouthern.com/Government.66.0.html",
+      "contract_start_date": "2026-03-12",
+      "contract_expiration_date": "2026-03-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS06F0047S/GS06F0047S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-06F-0047S&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT OFFICE TECHNOLOGIES INC",
+      "contract_number": "47QSEA20D005H",
+      "vendor_uei": "F9W8F96RSV43",
+      "company_address": "303 N CARLILE ST UNIT 104",
+      "company_city": "ALBERTVILLE",
+      "company_state": "AL",
+      "company_zip": "35950",
+      "primary_contact_phone": "8006057241",
+      "primary_contact_email": "sandra.perrine@governmentofficetech.com",
+      "website": "https://governmentofficetechnologies.com",
+      "contract_start_date": "2030-03-29",
+      "contract_expiration_date": "2040-03-29",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D005H/47QSEA20D005H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D005H&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "GREAT FALLS PAPER COMPANY",
+      "contract_number": "GS-02F-0197V",
+      "vendor_uei": "D3U7NJHKKEW3",
+      "company_address": "710 CENTRAL AVE",
+      "company_city": "GREAT FALLS",
+      "company_state": "MT",
+      "company_zip": "59401-3731",
+      "primary_contact_phone": "4064537671",
+      "primary_contact_email": "mike@gfpaper.com",
+      "website": "https://www.gfpaper.com",
+      "contract_start_date": "2029-09-08",
+      "contract_expiration_date": "2029-09-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0197V/GS02F0197V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0197V&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "HAR-PER SALES SOLUTIONS INC",
+      "contract_number": "47QSHA18D000H",
+      "vendor_uei": "NGG9FJAR6W45",
+      "company_address": "270 SOUTH ST",
+      "company_city": "WEST BRIDGEWATER",
+      "company_state": "MA",
+      "company_zip": "02379-1729",
+      "primary_contact_phone": "7742592971",
+      "primary_contact_email": "rich@har-persales.com",
+      "website": "http://www.har-persales.com",
+      "contract_start_date": "2027-11-02",
+      "contract_expiration_date": "2037-11-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D000H/47QSHA18D000H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D000H&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "IDSC HOLDINGS LLC",
+      "contract_number": "47QSHA19D005N",
+      "vendor_uei": "SJL9Q452QBL5",
+      "company_address": "2801 80TH ST",
+      "company_city": "KENOSHA",
+      "company_state": "WI",
+      "company_zip": "53143-5656",
+      "primary_contact_phone": "2626565430",
+      "primary_contact_email": "Carol.L.Connelly@snapon.com",
+      "website": "http://www.snapon.com/Industrial2/Industries/Military-Defense",
+      "contract_start_date": "2029-09-08",
+      "contract_expiration_date": "2039-09-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D005N/47QSHA19D005N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D005N&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "INDUSTRIAL STRENGTH INDUSTRIES LLC",
+      "contract_number": "47QSHA19D0053",
+      "vendor_uei": "JKW6B4E7W9V2",
+      "company_address": "732 SOUND VIEW RD",
+      "company_city": "OYSTER BAY",
+      "company_state": "NY",
+      "company_zip": "11771-1114",
+      "primary_contact_phone": "5164132251",
+      "primary_contact_email": "ara@industrialstrengthsupply.com",
+      "website": "http://www.industrialstrengthsupply.com",
+      "contract_start_date": "2029-08-04",
+      "contract_expiration_date": "2039-08-04",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D0053/47QSHA19D0053_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D0053&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL CONSULTING, UNLTD.",
+      "contract_number": "47QSMS24D009Z",
+      "vendor_uei": "LHP2SE2CHCF9",
+      "company_address": "13045 PARK ST",
+      "company_city": "SANTA FE SPRINGS",
+      "company_state": "CA",
+      "company_zip": "90670-4005",
+      "primary_contact_phone": "6198519582",
+      "primary_contact_email": "karen@knsindustrialsupply.com",
+      "website": "http://WWW.KNSINDUSTRIALSUPPLY.COM",
+      "contract_start_date": "2029-07-15",
+      "contract_expiration_date": "2044-07-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D009Z/47QSMS24D009Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D009Z&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "JENKS INC",
+      "contract_number": "47QSHA22D001Q",
+      "vendor_uei": "HSECVC3NAKM1",
+      "company_address": "910 BLADENSBURG RD NE",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20002-3930",
+      "primary_contact_phone": "2025296020",
+      "primary_contact_email": "Mike@wsjenks.com",
+      "website": "http://www.wsjenks.com",
+      "contract_start_date": "2027-05-17",
+      "contract_expiration_date": "2042-05-17",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D001Q/47QSHA22D001Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D001Q&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "JS PRODUCTS INC",
+      "contract_number": "47QSMS25D0016",
+      "vendor_uei": "HF5HTFY1J8C7",
+      "company_address": "6445 MONTESSOURI ST",
+      "company_city": "LAS VEGAS",
+      "company_state": "NV",
+      "company_zip": "89113-1188",
+      "primary_contact_phone": "7023151491",
+      "primary_contact_email": "ismercina@jsproducts.com",
+      "website": "http://www.jsproducts.com",
+      "contract_start_date": "2029-11-07",
+      "contract_expiration_date": "2044-11-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0016/47QSMS25D0016_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0016&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "K.R. CAMPBELL, INC.",
+      "contract_number": "47QSHA22D0018",
+      "vendor_uei": "WTQCPJ7JJ5J8",
+      "company_address": "3328 STATION HOUSE RD",
+      "company_city": "CHESAPEAKE",
+      "company_state": "VA",
+      "company_zip": "23321-2520",
+      "primary_contact_phone": "7576383333",
+      "primary_contact_email": "ACCOUNT@HOTNCOLDPS.COM",
+      "website": "http://www.hotandcold.net/",
+      "contract_start_date": "2027-03-14",
+      "contract_expiration_date": "2042-03-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D0018/47QSHA22D0018_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D0018&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "MACGYVER SOLUTIONS, INC.",
+      "contract_number": "47QSMA18D08QH",
+      "vendor_uei": "JKVNT2ZWLA44",
+      "company_address": "85 MAGNOLIA AVE",
+      "company_city": "PINEHURST",
+      "company_state": "NC",
+      "company_zip": "28374-8865",
+      "primary_contact_phone": "9195787246",
+      "primary_contact_email": "GSA@MACGYVERSOLUTIONS.COM",
+      "website": "http://WWW.MACGYVERSOLUTIONS.COM",
+      "contract_start_date": "2028-06-19",
+      "contract_expiration_date": "2038-06-19",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08QH/47QSMA18D08QH_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08QH&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "MALCOM COMPANY, INC.",
+      "contract_number": "GS-06F-0021T",
+      "vendor_uei": "M4UFBZ436LD8",
+      "company_address": "207 HIGHPOINT AVE STE 7B",
+      "company_city": "PORTSMOUTH",
+      "company_state": "RI",
+      "company_zip": "02871-1387",
+      "primary_contact_phone": "14012646925",
+      "primary_contact_email": "jono.bixby@malcom.com",
+      "website": "http://www.malcom.com",
+      "contract_start_date": "2027-01-15",
+      "contract_expiration_date": "2027-01-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS06F0021T/GS06F0021T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-06F-0021T&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "MANTA PC TOOLS USA INC",
+      "contract_number": "47QSHA21D002R",
+      "vendor_uei": "MAH3BED7H623",
+      "company_address": "11450 ROCKFIELD CT STE 3",
+      "company_city": "CINCINNATI",
+      "company_state": "OH",
+      "company_zip": "45241-1917",
+      "primary_contact_phone": "4403250093",
+      "primary_contact_email": "david.crosbie@tengtoolsusa.com",
+      "website": "https://www.tengtoolsusa.com",
+      "contract_start_date": "2026-09-14",
+      "contract_expiration_date": "2041-09-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA21D002R/47QSHA21D002R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA21D002R&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "PAN AMERICAN TOOL CORP",
+      "contract_number": "47QSMS24D003M",
+      "vendor_uei": "L9M1PYLLKW49",
+      "company_address": "5990 NW 31ST AVE",
+      "company_city": "FORT LAUDERDALE",
+      "company_state": "FL",
+      "company_zip": "33309-2208",
+      "primary_contact_phone": "9547358665",
+      "primary_contact_email": "curtis.finn@panamericantool.com",
+      "website": "http://www.panamericantool.com",
+      "contract_start_date": "2029-02-27",
+      "contract_expiration_date": "2044-02-27",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D003M/47QSMS24D003M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D003M&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "PEAK SOLUTIONS CORP",
+      "contract_number": "47QSWA22D006K",
+      "vendor_uei": "VKFTJKRXYPM8",
+      "company_address": "3374 SUMMERFIELD CV",
+      "company_city": "PALM HARBOR",
+      "company_state": "FL",
+      "company_zip": "34683",
+      "primary_contact_phone": "9193915993",
+      "primary_contact_email": "peaksolutionswj@gmail.com",
+      "website": "https://gopeak.net",
+      "contract_start_date": "2027-06-28",
+      "contract_expiration_date": "2042-06-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D006K/47QSWA22D006K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D006K&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "PENN TOOL CO INC",
+      "contract_number": "GS-06F-0042S",
+      "vendor_uei": "LMGZE6N1LYC6",
+      "company_address": "1776 SPRINGFIELD AVE",
+      "company_city": "MAPLEWOOD",
+      "company_state": "NJ",
+      "company_zip": "07040-2931",
+      "primary_contact_phone": "8005264956",
+      "primary_contact_email": "brandon@penntoolco.com",
+      "website": "https://www.penntoolco.com/",
+      "contract_start_date": "2026-02-28",
+      "contract_expiration_date": "2026-02-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS06F0042S/GS06F0042S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-06F-0042S&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "PERFORMANCE PLASTICS, LTD",
+      "contract_number": "47QSHA22D002Q",
+      "vendor_uei": "M5U6MGEKZ568",
+      "company_address": "4435 BROWNWAY AVE",
+      "company_city": "CINCINNATI",
+      "company_state": "OH",
+      "company_zip": "45209-1230",
+      "primary_contact_phone": "5135081027",
+      "primary_contact_email": "acrass@performanceplastics.com",
+      "website": "www.pexco.com",
+      "contract_start_date": "2027-09-30",
+      "contract_expiration_date": "2042-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D002Q/47QSHA22D002Q_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "PREMIER BUSINESS PRODUCTS INC.",
+      "contract_number": "47QSMS25D006K",
+      "vendor_uei": "MYQGH8NFNMU6",
+      "company_address": "1409 FOOTHILL BLVD",
+      "company_city": "LA VERNE",
+      "company_state": "CA",
+      "company_zip": "91750-3451",
+      "primary_contact_phone": "8007276434",
+      "primary_contact_email": "msudik@premierbusinessproducts.com",
+      "website": "https://www.premierbusinessproducts.com",
+      "contract_start_date": "2030-03-24",
+      "contract_expiration_date": "2045-03-24",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D006K/47QSMS25D006K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D006K&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "ROGUE FABRICATION, LLC",
+      "contract_number": "47QSMS25D001H",
+      "vendor_uei": "K9MBLT3YVJL7",
+      "company_address": "42335 SE MARMOT RD",
+      "company_city": "SANDY",
+      "company_state": "OR",
+      "company_zip": "97055-8712",
+      "primary_contact_phone": "5033895413",
+      "primary_contact_email": "SALES@ROGUEFAB.COM",
+      "website": "http://WWW.ROGUEFAB.COM",
+      "contract_start_date": "2029-11-18",
+      "contract_expiration_date": "2044-11-18",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D001H/47QSMS25D001H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D001H&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "SANITZ ENTERPRISES, INC.",
+      "contract_number": "47QSWA21D007B",
+      "vendor_uei": "GLJ4J66A2HK3",
+      "company_address": "256 SULTEMEIER MOELLERING RD",
+      "company_city": "FREDERICKSBURG",
+      "company_state": "TX",
+      "company_zip": "78624-7799",
+      "primary_contact_phone": "8306853430",
+      "primary_contact_email": "gsa@ampatss.com",
+      "website": "http://www.custommanufacturing.ampatss.com/",
+      "contract_start_date": "2026-08-26",
+      "contract_expiration_date": "2041-08-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D007B/47QSWA21D007B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D007B&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "SAW SERVICE OF WASHINGTON, INC.",
+      "contract_number": "47QSMS25D00BT",
+      "vendor_uei": "XF5CFC41G2P8",
+      "company_address": "1602 CAROLINA ST STE D9",
+      "company_city": "BELLINGHAM",
+      "company_state": "WA",
+      "company_zip": "98229-5489",
+      "primary_contact_phone": "3607386437",
+      "primary_contact_email": "selina@sawserviceofwa.com",
+      "website": "http://www.sawserviceofwa.com/",
+      "contract_start_date": "2030-09-03",
+      "contract_expiration_date": "2045-09-03",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "ST&T ELECTRIC CORP.",
+      "contract_number": "47QTCA22D005A",
+      "vendor_uei": "NDBJMGHR7Z77",
+      "company_address": "1F, 18, LANE 31, SEC. 1, HUANDON",
+      "company_city": "TAINAN CITY",
+      "company_zip": "74146",
+      "primary_contact_phone": "886932006110",
+      "primary_contact_email": "tony.li@stt.com.tw",
+      "website": "http://www.stt.com.tw/",
+      "contract_start_date": "2027-03-01",
+      "contract_expiration_date": "2042-03-01",
+      "company_country": "TAIWAN",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA22D005A/47QTCA22D005A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA22D005A&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "SWAIN DISTRIBUTION INC",
+      "contract_number": "47QSHA20D0028",
+      "vendor_uei": "PN6HMKYC8KS7",
+      "company_address": "211 N RAND ST",
+      "company_city": "SEARCY",
+      "company_state": "AR",
+      "company_zip": "72143-6009",
+      "primary_contact_phone": "8005214088",
+      "primary_contact_email": "compliance@swaindistribution.com",
+      "website": "http://swaindistribution.com",
+      "contract_start_date": "2030-03-13",
+      "contract_expiration_date": "2040-03-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA20D0028/47QSHA20D0028_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA20D0028&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "THE H.A.B.I.T.S GROUP LLC",
+      "contract_number": "47QSWA22D0086",
+      "vendor_uei": "LRKAGNZB7P26",
+      "company_address": "6448 E HIGHWAY 290 STE B106",
+      "company_city": "AUSTIN",
+      "company_state": "TX",
+      "company_zip": "78723-1038",
+      "primary_contact_phone": "15127893108",
+      "primary_contact_email": "government@thehabitsgroup.net",
+      "website": "http://www.thehabitsgroup.net",
+      "contract_start_date": "2027-08-16",
+      "contract_expiration_date": "2042-08-16",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Jul 21, 2033",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0086/47QSWA22D0086_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0086&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "THOMPSON & PHIPPS INC",
+      "contract_number": "47QSMS24D004D",
+      "vendor_uei": "D4A5BE9H9WZ6",
+      "company_address": "3945 E LA PALMA AVE",
+      "company_city": "ANAHEIM",
+      "company_state": "CA",
+      "company_zip": "92807-1714",
+      "primary_contact_phone": "7146328895",
+      "primary_contact_email": "pstratton@baycityind.com",
+      "website": "http://www.baycityind.com",
+      "contract_start_date": "2029-03-11",
+      "contract_expiration_date": "2044-03-11",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D004D/47QSMS24D004D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D004D&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "THUN ENTERPRISES, INC.",
+      "contract_number": "47QSMS25D002E",
+      "vendor_uei": "C7FKYKQ7GJ83",
+      "company_address": "2921 N UNIVERSITY RD STE 3 # BAY",
+      "company_city": "SPOKANE VALLEY",
+      "company_state": "WA",
+      "company_zip": "99206-4607",
+      "primary_contact_phone": "5099260557",
+      "primary_contact_email": "connie@springtools.com",
+      "website": "http://www.springtools.com",
+      "contract_start_date": "2029-12-10",
+      "contract_expiration_date": "2044-12-10",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D002E/47QSMS25D002E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D002E&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "U.S. FOAM & ETCH, INC",
+      "contract_number": "GS-21F-0009T",
+      "vendor_uei": "W72ULVZSZHW1",
+      "company_address": "1503 US HWY 117 S",
+      "company_city": "GOLDSBORO",
+      "company_state": "NC",
+      "company_zip": "27530-6831",
+      "primary_contact_phone": "9197368181",
+      "primary_contact_email": "paul@usfoamandetch.com",
+      "website": "http://www.usfoamandetch.com",
+      "contract_start_date": "2027-05-08",
+      "contract_expiration_date": "2027-05-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0009T/GS21F0009T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0009T&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "U.S. SAWS, INC.",
+      "contract_number": "47QSMS24D002Y",
+      "vendor_uei": "YEBRG2KYKMD3",
+      "company_address": "3702 W CENTRAL AVE",
+      "company_city": "SANTA ANA",
+      "company_state": "CA",
+      "company_zip": "92704-5832",
+      "primary_contact_phone": "8136218015",
+      "primary_contact_email": "sales@ussaws.com",
+      "website": "https://www.ussaws.com/",
+      "contract_start_date": "2029-02-11",
+      "contract_expiration_date": "2044-02-11",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D002Y&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "U.S. TAPE COMPANY, LLC",
+      "contract_number": "GS-21F-107AA",
+      "vendor_uei": "N2L6UJ6JH6D9",
+      "company_address": "2452 QUAKERTOWN RD STE 300",
+      "company_city": "PENNSBURG",
+      "company_state": "PA",
+      "company_zip": "18073-1008",
+      "primary_contact_phone": "7032561500",
+      "primary_contact_email": "arotruck@govtools.com",
+      "website": "http://www.ustape.com",
+      "contract_start_date": "2028-04-02",
+      "contract_expiration_date": "2033-04-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F107AA/GS21F107AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-107AA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "UNICORD CORP",
+      "contract_number": "47QSMS25D0026",
+      "vendor_uei": "K4RHAPB5NB49",
+      "company_address": "12010 S PAULINA ST",
+      "company_city": "CALUMET PARK",
+      "company_state": "IL",
+      "company_zip": "60827-5318",
+      "primary_contact_phone": "7088665516",
+      "primary_contact_email": "cpadilla@unicordcorp.com",
+      "website": "http://www.unicordcorp.com",
+      "contract_start_date": "2029-12-03",
+      "contract_expiration_date": "2044-12-03",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0026/47QSMS25D0026_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0026&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "UPC LLC",
+      "contract_number": "47QSMS24D004A",
+      "vendor_uei": "DMJVEZMKZQH3",
+      "company_address": "170 RESEARCH PKWY",
+      "company_city": "MERIDEN",
+      "company_state": "CT",
+      "company_zip": "06450-7144",
+      "primary_contact_phone": "8602145745",
+      "primary_contact_email": "pmader@upc2.com",
+      "website": "http://www.maagkit.com",
+      "contract_start_date": "2029-03-11",
+      "contract_expiration_date": "2044-03-11",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D004A/47QSMS24D004A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D004A&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "US JACK CO",
+      "contract_number": "47QSMA23D08QR",
+      "vendor_uei": "DK1CJ34LPHV8",
+      "company_address": "1125 INDUSTRIAL CT",
+      "company_city": "BENTON HARBOR",
+      "company_state": "MI",
+      "company_zip": "49022-1879",
+      "primary_contact_phone": "2699257777",
+      "primary_contact_email": "brad.houseworth@usjack.com",
+      "website": "http://www.usjack.com",
+      "contract_start_date": "2028-09-13",
+      "contract_expiration_date": "2043-09-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08QR/47QSMA23D08QR_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08QR&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "V3GATE, LLC",
+      "contract_number": "GS-35F-0486V",
+      "vendor_uei": "J4KHM5JY79E3",
+      "company_address": "555 MIDDLE CREEK PKWY UNIT 120",
+      "company_city": "COLORADO SPRINGS",
+      "company_state": "CO",
+      "company_zip": "80921-3798",
+      "primary_contact_phone": "7192370381",
+      "primary_contact_email": "GSAschedule@V3Gate.com",
+      "website": "https://www.v3gate.com/",
+      "contract_start_date": "2029-06-02",
+      "contract_expiration_date": "2029-06-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F0486V/GS35F0486V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-0486V&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "VETERANS BUSINESS SUPPLY INC",
+      "contract_number": "47QSEA21D003G",
+      "vendor_uei": "EKEQRR7NFKA5",
+      "company_address": "853 MAIN ST STE 212",
+      "company_city": "TEWKSBURY",
+      "company_state": "MA",
+      "company_zip": "01876-1854",
+      "primary_contact_phone": "7817970027",
+      "primary_contact_email": "federalsales@vbs.vet",
+      "website": "http://www.vbs.vet",
+      "contract_start_date": "2026-03-07",
+      "contract_expiration_date": "2041-03-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA21D003G/47QSEA21D003G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA21D003G&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "W & S SUPPLY CO INC",
+      "contract_number": "GS-21F-014DA",
+      "vendor_uei": "N2C8Z7MFUTN3",
+      "company_address": "16 MIDLAND AVE",
+      "company_city": "ELMWOOD PARK",
+      "company_state": "NJ",
+      "company_zip": "07407",
+      "primary_contact_phone": "2017739451",
+      "primary_contact_email": "steve@wssupplyco.com",
+      "website": "http://www.elizabethindustrial.com",
+      "contract_start_date": "2030-12-17",
+      "contract_expiration_date": "2035-12-17",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F014DA/GS21F014DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-014DA&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "WARTECH INDUSTRIES, LLC",
+      "contract_number": "47QSMS24D0006",
+      "vendor_uei": "NJ5KY1P82SM5",
+      "company_address": "3367 BELVIEW RD",
+      "company_city": "LEESVILLE",
+      "company_state": "LA",
+      "company_zip": "71446-8695",
+      "primary_contact_phone": "6362908666",
+      "primary_contact_email": "wgreer@wartechllc.com",
+      "website": "http://wartechllc.com",
+      "contract_start_date": "2028-11-14",
+      "contract_expiration_date": "2043-11-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0006/47QSMS24D0006_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0006&sin=333TOOL&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333TOOL"
+      ],
+      "primary_sin": "333TOOL",
+      "schedule_number": "MAS",
+      "company_name": "WITMER PUBLIC SAFETY GROUP INC",
+      "contract_number": "GS-07F-0080T",
+      "vendor_uei": "MMERGS8TBBY7",
+      "company_address": "104 INDEPENDENCE WAY",
+      "company_city": "COATESVILLE",
+      "company_state": "PA",
+      "company_zip": "19320-1653",
+      "primary_contact_phone": "4842886402",
+      "primary_contact_email": "GovSales@thefirestore.com",
+      "website": "http://www.thefirestore.com/page.aspx/contentid/64",
+      "contract_start_date": "2026-10-31",
+      "contract_expiration_date": "2026-10-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Hardware and Tools",
+        "source": "MAS",
+        "category": "333TOOL ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0080T/GS07F0080T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0080T&sin=333TOOL&src=elib&app=cat"
+      }
+    }
+  ]
+}

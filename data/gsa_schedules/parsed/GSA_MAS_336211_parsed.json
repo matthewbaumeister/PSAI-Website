@@ -1,0 +1,590 @@
+{
+  "sin_code": "336211",
+  "file_name": "GSA_MAS_336211_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:18.355454",
+  "sheets": {
+    "2025_11_05_11_32_25": {
+      "row_count": 24,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "AFRICA AUTOMOTIVE DISTRIBUTION SERVICES LIMITED",
+      "contract_number": "GS-30F-005DA",
+      "vendor_uei": "RB2EJT1RPZA8",
+      "company_address": "78 QUEENSWAY",
+      "company_city": "GIBRALTAR",
+      "company_zip": "GX11 1AA",
+      "primary_contact_phone": "+35022505407",
+      "primary_contact_email": "mariano.baleriola@aads-gib.com",
+      "website": "https://aads-gib.com/",
+      "contract_start_date": "2026-01-04",
+      "contract_expiration_date": "2036-01-04",
+      "company_country": "GIBRALTAR",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "address_2": "THE DOCKYARD",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F005DA/GS30F005DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-30F-005DA/pricelist_GS-30F-005DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-005DA&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN MATERIAL HANDLING, INC.",
+      "contract_number": "47QMCA18D000G",
+      "vendor_uei": "ZD8VMG7R9VP1",
+      "company_address": "3651 MARS HILL RD",
+      "company_city": "WATKINSVILLE",
+      "company_state": "GA",
+      "company_zip": "30677-5986",
+      "primary_contact_phone": "7703818436",
+      "primary_contact_email": "GSA@AMH-EQ.COM",
+      "website": "http://www.amh-eq.com",
+      "contract_start_date": "2028-04-19",
+      "contract_expiration_date": "2038-04-19",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "address_2": "STE 200A",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA18D000G/47QMCA18D000G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA18D000G&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "ARIZONA TRAILER SPECIALISTS INC",
+      "contract_number": "GS-30F-0001W",
+      "vendor_uei": "TE6ER45XU193",
+      "company_address": "3841 E 38TH ST",
+      "company_city": "TUCSON",
+      "company_state": "AZ",
+      "company_zip": "85713-5328",
+      "primary_contact_phone": "5205797458",
+      "primary_contact_email": "ah@ciequip.com",
+      "website": "http://www.ciequip.com",
+      "contract_start_date": "2029-10-12",
+      "contract_expiration_date": "2029-10-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F0001W/GS30F0001W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-0001W&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "ATAP INC",
+      "contract_number": "47QMCA19D0018",
+      "vendor_uei": "PP5ENZSSB4Y9",
+      "company_address": "130 INDUSTRY WAY",
+      "company_city": "EASTABOGA",
+      "company_state": "AL",
+      "company_zip": "36260-8020",
+      "primary_contact_phone": "2563622221",
+      "primary_contact_email": "roy.washburn@atap.com",
+      "website": "http://www.atap.com",
+      "contract_start_date": "2029-09-29",
+      "contract_expiration_date": "2039-09-29",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA19D0018/47QMCA19D0018_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA19D0018&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "BETA FUELING SYSTEMS, LLC",
+      "contract_number": "47QMCA18D000K",
+      "vendor_uei": "R42VPMEHN5D5",
+      "company_address": "1209 FREEWAY DR",
+      "company_city": "REIDSVILLE",
+      "company_state": "NC",
+      "company_zip": "27320",
+      "primary_contact_phone": "3363420306",
+      "primary_contact_email": "jingold@betafueling.com",
+      "website": "http://www.betafueling.com",
+      "contract_start_date": "2028-05-20",
+      "contract_expiration_date": "2038-05-20",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA18D000K/47QMCA18D000K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA18D000K&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "CENTRAL TRUCK CENTER INC",
+      "contract_number": "GS-30F-0045V",
+      "vendor_uei": "RN6HGRAGBK17",
+      "company_address": "3839 IRONWOOD PL",
+      "company_city": "HYATTSVILLE",
+      "company_state": "MD",
+      "company_zip": "20785-2312",
+      "primary_contact_phone": "3013229000",
+      "primary_contact_email": "skeyton@centraltruck.net",
+      "website": "http://www.centraltruckcenter.com",
+      "contract_start_date": "2029-07-23",
+      "contract_expiration_date": "2029-07-23",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F0045V/GS30F0045V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-0045V&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "CERTIFIED STAINLESS SERVICE INC.",
+      "contract_number": "GS-30F-018DA",
+      "vendor_uei": "YAL2J8H4M3M1",
+      "company_address": "2704 RAILROAD AVE",
+      "company_city": "CERES",
+      "company_state": "CA",
+      "company_zip": "95307-4600",
+      "primary_contact_phone": "2093563318",
+      "primary_contact_email": "cportmann@west-mark.com",
+      "website": "http://www.west-mark.com",
+      "contract_start_date": "2026-06-15",
+      "contract_expiration_date": "2036-06-15",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F018DA/GS30F018DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-018DA&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "FEDERAL CONTRACTS LLC",
+      "contract_number": "GS-03F-113DA",
+      "vendor_uei": "TK67EL9NPMD9",
+      "company_address": "12918 N NEBRASKA AVE",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33612-4446",
+      "primary_contact_phone": "8136310000",
+      "primary_contact_email": "sales@federalcontractscorp.com",
+      "website": "http://www.federalcontractscorp.com",
+      "contract_start_date": "2026-06-12",
+      "contract_expiration_date": "2036-06-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F113DA/GS03F113DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-113DA&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "FEDERAL RESOURCES SUPPLY COMPANY, LLC",
+      "contract_number": "GS-07F-9287S",
+      "vendor_uei": "UR5TFK3LAVL5",
+      "company_address": "235-G LOG CANOE CIR",
+      "company_city": "STEVENSVILLE",
+      "company_state": "MD",
+      "company_zip": "21666-2165",
+      "primary_contact_phone": "5404348974",
+      "primary_contact_email": "GSA@federalresources.com",
+      "website": "http://www.federalresources.com",
+      "contract_start_date": "2025-12-31",
+      "contract_expiration_date": "2025-12-31",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9287S/GS07F9287S_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-9287S/pricelist_GS-07F-9287S.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9287S&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "GARSITE PROGRESS, LLC",
+      "contract_number": "GS-30F-0031W",
+      "vendor_uei": "Q12DN4MBEN99",
+      "company_address": "539 S 10TH ST",
+      "company_city": "KANSAS CITY",
+      "company_state": "KS",
+      "company_zip": "66105-1201",
+      "primary_contact_phone": "9132793015",
+      "primary_contact_email": "jim.stewart@garsite.com",
+      "website": "http://www.garsite.com",
+      "contract_start_date": "2030-04-25",
+      "contract_expiration_date": "2030-04-25",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F0031W/GS30F0031W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-0031W&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL AUTOMOTIVE, INC.",
+      "contract_number": "47QMCA19D000Y",
+      "vendor_uei": "K74VFQ96PKR3",
+      "company_address": "1775 EYE ST NW STE 1150",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20006-2435",
+      "primary_contact_phone": "7035794600",
+      "primary_contact_email": "carl@gawdc.com",
+      "website": "http://www.gawdc.com",
+      "contract_start_date": "2029-07-29",
+      "contract_expiration_date": "2039-07-29",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA19D000Y/47QMCA19D000Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA19D000Y&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL ENTERPRISE, INC",
+      "contract_number": "GS-30F-040BA",
+      "vendor_uei": "L3P3MXXX2W59",
+      "company_address": "11560 STONEWALL RD",
+      "company_city": "APPOMATTOX",
+      "company_state": "VA",
+      "company_zip": "24522-8806",
+      "primary_contact_phone": "7036241206",
+      "primary_contact_email": "gsasupport@fedharmony.com",
+      "website": "http://www.fedharmony.com",
+      "contract_start_date": "2029-09-17",
+      "contract_expiration_date": "2034-09-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F040BA/GS30F040BA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-30F-040BA/pricelist_GS-30F-040BA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-040BA&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "ISOMETRICS INC",
+      "contract_number": "GS-30F-019DA",
+      "vendor_uei": "EGJMS6AZ6NL8",
+      "company_address": "1266 N SCALES ST",
+      "company_city": "REIDSVILLE",
+      "company_state": "NC",
+      "company_zip": "27320-8306",
+      "primary_contact_phone": "3363492329",
+      "primary_contact_email": "lhancock@isometrics-inc.com",
+      "website": "http://www.isometrics-inc.com",
+      "contract_start_date": "2026-07-27",
+      "contract_expiration_date": "2036-07-27",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F019DA/GS30F019DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-019DA&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "MACK DEFENSE LLC",
+      "contract_number": "47QMCA21D000S",
+      "vendor_uei": "C2D2FF6XKDG1",
+      "company_address": "2402 LEHIGH PKWY S",
+      "company_city": "ALLENTOWN",
+      "company_state": "PA",
+      "company_zip": "18103-2900",
+      "primary_contact_phone": "3397880484",
+      "primary_contact_email": "nicole.zelno@mackdefense.com",
+      "website": "http://www.mackdefense.com",
+      "contract_start_date": "2026-04-04",
+      "contract_expiration_date": "2041-04-04",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA21D000S/47QMCA21D000S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA21D000S&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "ON-SITE SERVICES, LLC",
+      "contract_number": "47QMCA24D0004",
+      "vendor_uei": "KYU2G2U8SKE9",
+      "company_address": "6445 W GOWEN RD",
+      "company_city": "BOISE",
+      "company_state": "ID",
+      "company_zip": "83709-5671",
+      "primary_contact_phone": "7279160496",
+      "primary_contact_email": "HWIGCHERS@ON-SITESVCS.COM",
+      "website": "http://WWW.ON-SITESVCS.COM",
+      "contract_start_date": "2028-12-13",
+      "contract_expiration_date": "2043-12-13",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA24D0004/47QMCA24D0004_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA24D0004&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "PROALL INTERNATIONAL MFG. INC.",
+      "contract_number": "GS-30F-001HA",
+      "vendor_uei": "K2W2SLJK8YF1",
+      "company_address": "5810 47TH AVE",
+      "company_city": "OLDS",
+      "company_state": "AB",
+      "company_zip": "T4H 1V1",
+      "primary_contact_phone": "18175425790",
+      "primary_contact_email": "darryl.mcguire@terex.com",
+      "website": "http://www.proallinc.com",
+      "contract_start_date": "2027-10-03",
+      "contract_expiration_date": "2037-10-03",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F001HA/GS30F001HA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-001HA&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "SKYMARK REFUELERS LLC",
+      "contract_number": "47QMCA20D0010",
+      "vendor_uei": "KH9KNSV8JAN8",
+      "company_address": "4001 E 149TH ST",
+      "company_city": "KANSAS CITY",
+      "company_state": "MO",
+      "company_zip": "64147-8103",
+      "primary_contact_phone": "9136538112",
+      "primary_contact_email": "mellis@skymarkrefuelers.com",
+      "website": "http://www.skymarkrefuelers.com",
+      "contract_start_date": "2030-01-05",
+      "contract_expiration_date": "2040-01-05",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA20D0010/47QMCA20D0010_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA20D0010&sin=336211&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "336211"
+      ],
+      "primary_sin": "336211",
+      "schedule_number": "MAS",
+      "company_name": "STEPHENS PNEUMATICS, INC.",
+      "contract_number": "47QMCA18D0007",
+      "vendor_uei": "KMDMQD54PBA6",
+      "company_address": "147 COUNTY ROAD 4840",
+      "company_city": "HASLET",
+      "company_state": "TX",
+      "company_zip": "76052-2026",
+      "primary_contact_phone": "8176369004",
+      "primary_contact_email": "stan@stephenstankproducts.com",
+      "website": "http://www.stephenstankproducts.com",
+      "contract_start_date": "2028-03-05",
+      "contract_expiration_date": "2038-03-05",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 336211.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA18D0007/47QMCA18D0007_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA18D0007&sin=336211&src=elib&app=cat"
+      }
+    }
+  ]
+}

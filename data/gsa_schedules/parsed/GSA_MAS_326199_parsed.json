@@ -1,0 +1,1407 @@
+{
+  "sin_code": "326199",
+  "file_name": "GSA_MAS_326199_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:13.862621",
+  "sheets": {
+    "2025_11_05_11_07_23": {
+      "row_count": 51,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "ACTION CHEMICAL, INC.",
+      "contract_number": "GS-07F-9372S",
+      "vendor_uei": "RRULZZ1UTMM5",
+      "company_address": "275 CUMBERLAND ST",
+      "company_city": "MEMPHIS",
+      "company_state": "TN",
+      "company_zip": "38112-3320",
+      "primary_contact_phone": "9015228783",
+      "primary_contact_email": "CHARLES@ACTIONJPS.COM",
+      "website": "http://actionchemical.com",
+      "contract_start_date": "2026-02-28",
+      "contract_expiration_date": "2026-02-28",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9372S/GS07F9372S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9372S&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "AF&S PRODUCTS & SERVICES, INC.",
+      "contract_number": "GS-07F-0514T",
+      "vendor_uei": "K9AXYA6KSFG7",
+      "company_address": "350 10TH AVE STE 1000 UNIT 1024",
+      "company_city": "SAN DIEGO",
+      "company_state": "CA",
+      "company_zip": "92101-8705",
+      "primary_contact_phone": "6197873302",
+      "primary_contact_email": "lisa@afsproductsinc.com",
+      "website": "http://www.atafs.com",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2027-08-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0514T/GS07F0514T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0514T&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "ALLE DESIGNS LLC",
+      "contract_number": "47QSMS24D000V",
+      "vendor_uei": "EQNRD48AJRR3",
+      "company_address": "27 RUSKIN RD",
+      "company_city": "BUFFALO",
+      "company_state": "NY",
+      "company_zip": "14226-4255",
+      "primary_contact_phone": "7164465538",
+      "primary_contact_email": "info@alleofficesolutions.com",
+      "website": "https://www.alleofficesolutions.com",
+      "contract_start_date": "2028-11-30",
+      "contract_expiration_date": "2043-11-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D000V/47QSMS24D000V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D000V&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "ALPHAVETS, INC",
+      "contract_number": "47QSMS24D007V",
+      "vendor_uei": "MAGTJ8T9NQE8",
+      "company_address": "15 LIBERTY ST E STE A",
+      "company_city": "YORK",
+      "company_state": "SC",
+      "company_zip": "29745-1546",
+      "primary_contact_phone": "8035486800",
+      "primary_contact_email": "Sales@alphavets.com",
+      "website": "https://www.alphavets.com",
+      "contract_start_date": "2029-05-30",
+      "contract_expiration_date": "2044-05-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D007V/47QSMS24D007V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D007V&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "ARCONAS CORPORATION",
+      "contract_number": "GS-27F-018GA",
+      "vendor_uei": "JKGUNVNCCQJ7",
+      "company_address": "5700 KEATON CRES UNIT 1",
+      "company_city": "MISSISSAUGA",
+      "company_state": "ON",
+      "company_zip": "L5R 3H5",
+      "primary_contact_phone": "8003879496",
+      "primary_contact_email": "smartin@arconas.com",
+      "website": "http://www.arconas.com",
+      "contract_start_date": "2027-03-22",
+      "contract_expiration_date": "2037-03-22",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F018GA/GS27F018GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-018GA&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "BABCO INTERNATIONAL INC",
+      "contract_number": "47QSWA18D001H",
+      "vendor_uei": "MU77BJ5D4JW5",
+      "company_address": "1931 W GRANT RD",
+      "company_city": "TUCSON",
+      "company_state": "AZ",
+      "company_zip": "85745-1104",
+      "primary_contact_phone": "5206287596",
+      "primary_contact_email": "betsy@babcotucson.com",
+      "website": "HTTP://WWW.BABCOTUCSON.COM",
+      "contract_start_date": "2028-04-30",
+      "contract_expiration_date": "2038-04-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "address_2": "STE 320",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001H/47QSWA18D001H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001H&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "BIRMINGHAM RESTAURANT SUPPLY, INC.",
+      "contract_number": "47QSMS25D005J",
+      "vendor_uei": "MF2CCMS39K73",
+      "company_address": "2428 6TH AVE S",
+      "company_city": "BIRMINGHAM",
+      "company_state": "AL",
+      "company_zip": "35233-3316",
+      "primary_contact_phone": "2052448785",
+      "primary_contact_email": "mtobia@brescoinc.com",
+      "website": "https://www.brescoinc.com/",
+      "contract_start_date": "2030-03-04",
+      "contract_expiration_date": "2045-03-04",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D005J/47QSMS25D005J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D005J&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "CALDWELL CLEANING LLC",
+      "contract_number": "GS-07F-0570X",
+      "vendor_uei": "MHMUV52ESLA3",
+      "company_address": "4022 CADDIE DR E",
+      "company_city": "BRADENTON",
+      "company_state": "FL",
+      "company_zip": "34203-3428",
+      "primary_contact_phone": "9413232932",
+      "primary_contact_email": "rkcaldwell8@gmail.com",
+      "website": "http://tinyurl.com/5ea5tauc",
+      "contract_start_date": "2026-06-14",
+      "contract_expiration_date": "2031-06-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0570X/GS07F0570X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0570X&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "CHEMCO INDUSTRIES INC",
+      "contract_number": "GS-07F-203AA",
+      "vendor_uei": "UK5FLEZGDA67",
+      "company_address": "3670 SCARLET OAK BLVD",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63122-6606",
+      "primary_contact_phone": "8008544236",
+      "primary_contact_email": "MOLLY@CHEMCOINDUSTRIES.COM",
+      "website": "http://www.chemcocorp-gsa.com",
+      "contract_start_date": "2028-04-14",
+      "contract_expiration_date": "2033-04-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F203AA/GS07F203AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-203AA&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "COMMUNICATIONS PROFESSIONALS INC.",
+      "contract_number": "47QSWA18D001S",
+      "vendor_uei": "JHU8EL7N1485",
+      "company_address": "2265 LIVERNOIS RD STE 900",
+      "company_city": "TROY",
+      "company_state": "MI",
+      "company_zip": "48083-1669",
+      "primary_contact_phone": "2485570100",
+      "primary_contact_email": "awallace@cpgp.com",
+      "website": "http://www.cpgp.com",
+      "contract_start_date": "2028-02-04",
+      "contract_expiration_date": "2038-02-04",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001S/47QSWA18D001S_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA18D001S/pricelist_47QSWA18D001S.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001S&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "COMPETITIVE CHOICE, INC",
+      "contract_number": "47QSEA20D005G",
+      "vendor_uei": "NEABMUMEWMM7",
+      "company_address": "9030 KIRBY DR",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77054-2504",
+      "primary_contact_phone": "7138381144",
+      "primary_contact_email": "AUNDREA@COMPETITIVECHOICE.NET",
+      "website": "http://www.competitivechoice.net",
+      "contract_start_date": "2030-03-29",
+      "contract_expiration_date": "2040-03-29",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D005G/47QSEA20D005G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D005G&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "COMPUMERIC ENGINEERING, INC.",
+      "contract_number": "47QSMS24D008Q",
+      "vendor_uei": "NEVPDNCW3195",
+      "company_address": "1390 S MILLIKEN AVE",
+      "company_city": "ONTARIO",
+      "company_state": "CA",
+      "company_zip": "91761-1585",
+      "primary_contact_phone": "9092125389",
+      "primary_contact_email": "sales@bearsaver.com",
+      "website": "http://bearsaver.com",
+      "contract_start_date": "2029-08-29",
+      "contract_expiration_date": "2044-08-29",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D008Q/47QSMS24D008Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D008Q&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "DERSTINES INC",
+      "contract_number": "47QSWA23D004R",
+      "vendor_uei": "XLKKNCBNKA31",
+      "company_address": "3245 STATE RD",
+      "company_city": "SELLERSVILLE",
+      "company_state": "PA",
+      "company_zip": "18960-1655",
+      "primary_contact_phone": "2673542699",
+      "primary_contact_email": "csheerin@derstines.com",
+      "website": "http://www.derstines.com/",
+      "contract_start_date": "2028-03-22",
+      "contract_expiration_date": "2043-03-22",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D004R/47QSWA23D004R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D004R&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "DESKMAKERS, INC",
+      "contract_number": "GS-27F-025DA",
+      "vendor_uei": "MUM6R9ZN4YD5",
+      "company_address": "6525 FLOTILLA ST",
+      "company_city": "COMMERCE",
+      "company_state": "CA",
+      "company_zip": "90040",
+      "primary_contact_phone": "3109630383",
+      "primary_contact_email": "phil@deskmakers.net",
+      "website": "http://www.deskmakers.com",
+      "contract_start_date": "2026-04-30",
+      "contract_expiration_date": "2036-04-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F025DA/GS27F025DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-025DA&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "DIVINE IMAGING INC.",
+      "contract_number": "47QSWA19D002X",
+      "vendor_uei": "LGMVH2NYJH38",
+      "company_address": "21323 PACIFIC COAST HWY STE 101",
+      "company_city": "MALIBU",
+      "company_state": "CA",
+      "company_zip": "90265-5202",
+      "primary_contact_phone": "3105794000",
+      "primary_contact_email": "kim@divineimaging.com",
+      "website": "https://www.divineImaging.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2039-01-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002X/47QSWA19D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002X&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "DOCUMENT IMAGING DIMENSIONS INC.",
+      "contract_number": "47QSEA19D00B9",
+      "vendor_uei": "SD6KWN6SUPC1",
+      "company_address": "205 BEAVER ST",
+      "company_city": "YORKVILLE",
+      "company_state": "IL",
+      "company_zip": "60560-1720",
+      "primary_contact_phone": "8779343462",
+      "primary_contact_email": "fedsales@did-inc.com",
+      "website": "http://www.did-inc.com",
+      "contract_start_date": "2029-08-07",
+      "contract_expiration_date": "2039-08-07",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA19D00B9/47QSEA19D00B9_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA19D00B9&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "DOCUMENT IMAGING DIMENSIONS INC.",
+      "contract_number": "GS-07F-0323Y",
+      "vendor_uei": "SD6KWN6SUPC1",
+      "company_address": "205 BEAVER ST",
+      "company_city": "YORKVILLE",
+      "company_state": "IL",
+      "company_zip": "60560-1720",
+      "primary_contact_phone": "8779343462",
+      "primary_contact_email": "fedsales@did-inc.com",
+      "website": "http://www.did-inc.com",
+      "contract_start_date": "2027-03-31",
+      "contract_expiration_date": "2032-03-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0323Y/GS07F0323Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0323Y&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "ED AND LEUTE LLC",
+      "contract_number": "47QSWA23D002R",
+      "vendor_uei": "LRHQZWURBRG9",
+      "company_address": "1184 W PIONEER PKWY",
+      "company_city": "ARLINGTON",
+      "company_state": "TX",
+      "company_zip": "76013-6367",
+      "primary_contact_phone": "2146097551",
+      "primary_contact_email": "support@edandleute.com",
+      "website": "http://www.edandleute.com",
+      "contract_start_date": "2028-01-26",
+      "contract_expiration_date": "2043-01-26",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D002R/47QSWA23D002R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D002R&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "GEO-MED, LLC",
+      "contract_number": "47QSWA18D001U",
+      "vendor_uei": "QB6KPELRH1C7",
+      "company_address": "1525 INTERNATIONAL PKWY STE 3071",
+      "company_city": "LAKE MARY",
+      "company_state": "FL",
+      "company_zip": "32746-7646",
+      "primary_contact_phone": "8778650400",
+      "primary_contact_email": "ileana.delcastillo@geomedsdvo.com",
+      "website": "http://www.geomedsdvo.com",
+      "contract_start_date": "2028-02-04",
+      "contract_expiration_date": "2038-02-04",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001U/47QSWA18D001U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001U&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "GMS INDUSTRIAL SUPPLY, INC.",
+      "contract_number": "GS-07F-0369V",
+      "vendor_uei": "U7U2XCEKCS66",
+      "company_address": "212 DENN LN",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23462-2506",
+      "primary_contact_phone": "7574731467",
+      "primary_contact_email": "sales@gmsindustrialsupply.com",
+      "website": "http://www.gmsindustrialsupply.com",
+      "contract_start_date": "2029-06-14",
+      "contract_expiration_date": "2029-06-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0369V/GS07F0369V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0369V&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT OFFICE TECHNOLOGIES INC",
+      "contract_number": "47QSEA20D005H",
+      "vendor_uei": "F9W8F96RSV43",
+      "company_address": "303 N CARLILE ST UNIT 104",
+      "company_city": "ALBERTVILLE",
+      "company_state": "AL",
+      "company_zip": "35950",
+      "primary_contact_phone": "8006057241",
+      "primary_contact_email": "sandra.perrine@governmentofficetech.com",
+      "website": "https://governmentofficetechnologies.com",
+      "contract_start_date": "2030-03-29",
+      "contract_expiration_date": "2040-03-29",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D005H/47QSEA20D005H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D005H&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "GREAT FALLS PAPER COMPANY",
+      "contract_number": "GS-02F-0197V",
+      "vendor_uei": "D3U7NJHKKEW3",
+      "company_address": "710 CENTRAL AVE",
+      "company_city": "GREAT FALLS",
+      "company_state": "MT",
+      "company_zip": "59401-3731",
+      "primary_contact_phone": "4064537671",
+      "primary_contact_email": "mike@gfpaper.com",
+      "website": "https://www.gfpaper.com",
+      "contract_start_date": "2029-09-08",
+      "contract_expiration_date": "2029-09-08",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0197V/GS02F0197V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0197V&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "HAND SAFETY, LLC",
+      "contract_number": "47QSMS24D00BK",
+      "vendor_uei": "RWZJD5AX6CP3",
+      "company_address": "500 S BARRETT AVE APT 101",
+      "company_city": "DENISON",
+      "company_state": "TX",
+      "company_zip": "75020-4465",
+      "primary_contact_phone": "9403371481",
+      "primary_contact_email": "RAMON@HANDSAFETY.US",
+      "website": "http://WWW.HANDSAFETY.US",
+      "contract_start_date": "2029-08-22",
+      "contract_expiration_date": "2044-08-22",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00BK/47QSMS24D00BK_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00BK&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "KENBAY, LLC",
+      "contract_number": "47QSMS24D00CD",
+      "vendor_uei": "GCXUJAY51UT4",
+      "company_address": "55 EASTLAKE RD",
+      "company_city": "MOUNT PLEASANT",
+      "company_state": "SC",
+      "company_zip": "29464-2665",
+      "primary_contact_phone": "8433885023",
+      "primary_contact_email": "dameis@kenbay.com",
+      "website": "http://kenbay.com",
+      "contract_start_date": "2029-09-19",
+      "contract_expiration_date": "2044-09-19",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00CD/47QSMS24D00CD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00CD&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "LC INDUSTRIES INC",
+      "contract_number": "47QSEA20D001S",
+      "vendor_uei": "SWFSJMS9EHB2",
+      "company_address": "4500 EMPEROR BLVD",
+      "company_city": "DURHAM",
+      "company_state": "NC",
+      "company_zip": "27703-8420",
+      "primary_contact_phone": "9195968277",
+      "primary_contact_email": "GOVT.SALES@LC-IND.COM",
+      "website": "http://buylci.com",
+      "contract_start_date": "2029-12-01",
+      "contract_expiration_date": "2039-12-01",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D001S/47QSEA20D001S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D001S&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "M.A.N.S. DISTRIBUTORS, INC.",
+      "contract_number": "GS-07F-0380U",
+      "vendor_uei": "UVRDN73LZTV5",
+      "company_address": "3120 KELLWAY DR",
+      "company_city": "CARROLLTON",
+      "company_state": "TX",
+      "company_zip": "75006-3311",
+      "primary_contact_phone": "9729300330",
+      "primary_contact_email": "akhil@mans.us",
+      "website": "http://www.mans.us",
+      "contract_start_date": "2028-05-31",
+      "contract_expiration_date": "2028-05-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "address_2": "STE 108",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0380U/GS07F0380U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0380U&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "MAGNUSON GROUP INC",
+      "contract_number": "GS-07F-0308W",
+      "vendor_uei": "MBHXKBKM1YG6",
+      "company_address": "1400 INTERNATIONALE PKWY",
+      "company_city": "WOODRIDGE",
+      "company_state": "IL",
+      "company_zip": "60517-5151",
+      "primary_contact_phone": "6307838100",
+      "primary_contact_email": "cynthia@magnusongroup.com",
+      "website": "http://www.magnusongroup.com",
+      "contract_start_date": "2030-03-14",
+      "contract_expiration_date": "2030-03-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0308W/GS07F0308W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0308W&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "MID-STATES SERVICES, INC.",
+      "contract_number": "47QSWA18D007B",
+      "vendor_uei": "HSJFMAJKN1Z2",
+      "company_address": "580 N BEACH ST",
+      "company_city": "FORT WORTH",
+      "company_state": "TX",
+      "company_zip": "76111-5940",
+      "primary_contact_phone": "8178388600",
+      "primary_contact_email": "gsaorders@1mssi.com",
+      "website": "http://www.midstatesservices.com",
+      "contract_start_date": "2028-07-25",
+      "contract_expiration_date": "2038-07-25",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D007B/47QSWA18D007B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D007B&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "MIDPOINT INTERNATIONAL INC",
+      "contract_number": "47QSWA23D0052",
+      "vendor_uei": "NTU7NQNGJ4D5",
+      "company_address": "288 DON HILLOCK DR",
+      "company_city": "AURORA",
+      "company_state": "ON",
+      "company_zip": "L4G 0G9",
+      "primary_contact_phone": "8886464246",
+      "primary_contact_email": "carter.durant@cleanriver.com",
+      "website": "http://www.cleanriver.com",
+      "contract_start_date": "2028-04-10",
+      "contract_expiration_date": "2043-04-10",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "address_2": "STE 1",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0052/47QSWA23D0052_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0052&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "MONO MACHINES LLC",
+      "contract_number": "47QSEA18D008C",
+      "vendor_uei": "C4S6Z1ALKEP1",
+      "company_address": "2455 DILLON RD",
+      "company_city": "WHITEFISH",
+      "company_state": "MT",
+      "company_zip": "59937-8277",
+      "primary_contact_phone": "8005921306",
+      "primary_contact_email": "sales@supplychimp.com",
+      "website": "https://www.supplychimp.com/",
+      "contract_start_date": "2028-09-27",
+      "contract_expiration_date": "2038-09-27",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA18D008C/47QSEA18D008C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA18D008C&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "MORNING STAR INDUSTRIES INC",
+      "contract_number": "47QSWA20D002D",
+      "vendor_uei": "KB1EKZ5BXVL8",
+      "company_address": "630 NE JENSEN BEACH BLVD",
+      "company_city": "JENSEN BEACH",
+      "company_state": "FL",
+      "company_zip": "34957-4750",
+      "primary_contact_phone": "8004406050",
+      "primary_contact_email": "steve@morningstarusa.com",
+      "website": "http://www.morningstarusa.com",
+      "contract_start_date": "2029-12-15",
+      "contract_expiration_date": "2039-12-15",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D002D/47QSWA20D002D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D002D&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "PIERCE SALES COMPANY, INC.",
+      "contract_number": "GS-07F-020BA",
+      "vendor_uei": "J4C7WLXMLYP5",
+      "company_address": "2413 N FORSYTH RD",
+      "company_city": "ORLANDO",
+      "company_state": "FL",
+      "company_zip": "32807-6455",
+      "primary_contact_phone": "4076799004",
+      "primary_contact_email": "gsa@rewonline.com",
+      "website": "http://www.rewonline.com",
+      "contract_start_date": "2028-10-08",
+      "contract_expiration_date": "2033-10-08",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F020BA/GS07F020BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-020BA&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "PLUM CREEK ENVIRONMENTAL TECHNOLOGIES LLC",
+      "contract_number": "47QSMS25D006C",
+      "vendor_uei": "KBBAN4XYJCJ3",
+      "company_address": "1302 INDUSTRIAL ACCESS RD",
+      "company_city": "WEST POINT",
+      "company_state": "MS",
+      "company_zip": "39773-2385",
+      "primary_contact_phone": "6623274183",
+      "primary_contact_email": "morgan@plumcreeket.com",
+      "website": "https://plumcreeket.com/",
+      "contract_start_date": "2030-03-19",
+      "contract_expiration_date": "2045-03-19",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D006C/47QSMS25D006C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D006C&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "PREMIER & COMPANIES, INC.",
+      "contract_number": "47QSEA20D0043",
+      "vendor_uei": "CW8DULW78AZ4",
+      "company_address": "525 WINDSOR DR",
+      "company_city": "SECAUCUS",
+      "company_state": "NJ",
+      "company_zip": "07094-2708",
+      "primary_contact_phone": "8664122472",
+      "primary_contact_email": "government@premierandco.com",
+      "website": "https://www.premierandcompanies.com",
+      "contract_start_date": "2030-02-12",
+      "contract_expiration_date": "2040-02-12",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D0043/47QSEA20D0043_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D0043&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "PREMIER BUSINESS PRODUCTS INC.",
+      "contract_number": "47QSMS25D006K",
+      "vendor_uei": "MYQGH8NFNMU6",
+      "company_address": "1409 FOOTHILL BLVD",
+      "company_city": "LA VERNE",
+      "company_state": "CA",
+      "company_zip": "91750-3451",
+      "primary_contact_phone": "8007276434",
+      "primary_contact_email": "msudik@premierbusinessproducts.com",
+      "website": "https://www.premierbusinessproducts.com",
+      "contract_start_date": "2030-03-24",
+      "contract_expiration_date": "2045-03-24",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D006K/47QSMS25D006K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D006K&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "SHORT AND SIMPLE SUPPLIES, INC.",
+      "contract_number": "47QSMS24D008U",
+      "vendor_uei": "FWYSUZ5N79K9",
+      "company_address": "13725 N 12TH ST",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33613-4270",
+      "primary_contact_phone": "8139724142",
+      "primary_contact_email": "Carlee@shortandsimplesupplies.com",
+      "website": "https://www.shortandsimplesupplies.com/",
+      "contract_start_date": "2029-06-19",
+      "contract_expiration_date": "2044-06-19",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D008U/47QSMS24D008U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D008U&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "SOUTHEASTERN PAPER GROUP, LLC",
+      "contract_number": "GS-07F-009BA",
+      "vendor_uei": "YVCHMSVKXKG9",
+      "company_address": "50 OLD BLACKSTOCK RD",
+      "company_city": "SPARTANBURG",
+      "company_state": "SC",
+      "company_zip": "29301-5571",
+      "primary_contact_phone": "80085872303405",
+      "primary_contact_email": "victoria.rupp@sepapergroup.com",
+      "website": "https://shop.sepg.com",
+      "contract_start_date": "2028-10-16",
+      "contract_expiration_date": "2033-10-16",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F009BA/GS07F009BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-009BA&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "STAPLES INC",
+      "contract_number": "47QSEA19D008T",
+      "vendor_uei": "FGFCWE45JBW4",
+      "company_address": "500 STAPLES DR",
+      "company_city": "FRAMINGHAM",
+      "company_state": "MA",
+      "company_zip": "01702-4478",
+      "primary_contact_phone": "8882127219",
+      "primary_contact_email": "governmentteam@staples.com",
+      "website": "https://www.StaplesAdvantage.com",
+      "contract_start_date": "2029-07-02",
+      "contract_expiration_date": "2039-07-02",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA19D008T/47QSEA19D008T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA19D008T&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "SUPPLY KING USA, LLC",
+      "contract_number": "47QSHA22D0022",
+      "vendor_uei": "F886DTPP1W48",
+      "company_address": "55 OLD NYACK TPKE STE 210",
+      "company_city": "NANUET",
+      "company_state": "NY",
+      "company_zip": "10954-2450",
+      "primary_contact_phone": "9172689222",
+      "primary_contact_email": "sales@supplykingusa.com",
+      "website": "http://www.supplykingusa.com",
+      "contract_start_date": "2027-06-30",
+      "contract_expiration_date": "2042-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D0022/47QSHA22D0022_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D0022&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "TAHANI INC.",
+      "contract_number": "47QSWA22D008S",
+      "vendor_uei": "MKJ6KYRXMJM8",
+      "company_address": "4585 PLANK RD",
+      "company_city": "BATON ROUGE",
+      "company_state": "LA",
+      "company_zip": "70805-4138",
+      "primary_contact_phone": "8187316056",
+      "primary_contact_email": "melissa@tahani.org",
+      "website": "http://tahanimedical.com",
+      "contract_start_date": "2027-08-31",
+      "contract_expiration_date": "2042-08-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D008S/47QSWA22D008S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D008S&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "TARI, INC.",
+      "contract_number": "GS-07F-197BA",
+      "vendor_uei": "L77NAX33K6L9",
+      "company_address": "426 S STAPLES ST",
+      "company_city": "CORPUS CHRISTI",
+      "company_state": "TX",
+      "company_zip": "78401-3331",
+      "primary_contact_phone": "3613607557",
+      "primary_contact_email": "bobak@jeansrs.com",
+      "website": "http://www.jeansrs.com",
+      "contract_start_date": "2029-04-09",
+      "contract_expiration_date": "2034-04-09",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F197BA/GS07F197BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-197BA&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "TERRAVIVE LLC",
+      "contract_number": "47QSWA20D009C",
+      "vendor_uei": "DMCVCDHZG4Q5",
+      "company_address": "6104 BRADFORD LANDING DR",
+      "company_city": "GLEN ALLEN",
+      "company_state": "VA",
+      "company_zip": "23059",
+      "primary_contact_phone": "8043634052",
+      "primary_contact_email": "julianna@terravive.com",
+      "website": "http://www.terravive.com",
+      "contract_start_date": "2030-08-10",
+      "contract_expiration_date": "2040-08-10",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D009C/47QSWA20D009C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D009C&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "TEXAS BOOM COMPANY LLC",
+      "contract_number": "47QSWA22D0002",
+      "vendor_uei": "N4JRVKW9NWE1",
+      "company_address": "21401 PARK ROW DR STE 340",
+      "company_city": "KATY",
+      "company_state": "TX",
+      "company_zip": "77449-2455",
+      "primary_contact_phone": "2814412002",
+      "primary_contact_email": "rick@texasboom.com",
+      "website": "http://www.texasboom.com",
+      "contract_start_date": "2026-10-04",
+      "contract_expiration_date": "2041-10-04",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0002/47QSWA22D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0002&sin=326199&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "326199"
+      ],
+      "primary_sin": "326199",
+      "schedule_number": "MAS",
+      "company_name": "TQI, LLC",
+      "contract_number": "GS-07F-0294X",
+      "vendor_uei": "YL7VY2GS8MJ5",
+      "company_address": "960 CROSSROADS BLVD",
+      "company_city": "SEGUIN",
+      "company_state": "TX",
+      "company_zip": "78155",
+      "primary_contact_phone": "8304014400",
+      "primary_contact_email": "tqcarts@tqind.com",
+      "website": "http://www.TQcarts.com",
+      "contract_start_date": "2026-02-28",
+      "contract_expiration_date": "2031-02-28",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 326199.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0294X/GS07F0294X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0294X&sin=326199&src=elib&app=cat"
+      }
+    }
+  ]
+}

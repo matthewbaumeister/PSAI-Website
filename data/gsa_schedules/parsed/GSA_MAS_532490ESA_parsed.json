@@ -1,0 +1,209 @@
+{
+  "sin_code": "532490ESA",
+  "file_name": "GSA_MAS_532490ESA_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:45.661840",
+  "sheets": {
+    "2025_11_05_11_28_51": {
+      "row_count": 11,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "532490ESA"
+      ],
+      "primary_sin": "532490ESA",
+      "schedule_number": "MAS",
+      "company_name": "ADVANCED TESTING TECHNOLOGIES INC",
+      "contract_number": "GS-07F-211AA",
+      "vendor_uei": "SP9SDCSMMX78",
+      "company_address": "110 RICEFIELD LN",
+      "company_city": "HAUPPAUGE",
+      "company_state": "NY",
+      "company_zip": "11788-2008",
+      "primary_contact_phone": "6312318777",
+      "primary_contact_email": "elilevi@attinet.com",
+      "website": "http://www.attinet.com",
+      "contract_start_date": "2028-04-01",
+      "contract_expiration_date": "2033-04-01",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Scientific Services",
+        "source": "MAS",
+        "category": "532490ESA ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F211AA/GS07F211AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-211AA&sin=532490ESA&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490ESA"
+      ],
+      "primary_sin": "532490ESA",
+      "schedule_number": "MAS",
+      "company_name": "C E ELANTECH INC",
+      "contract_number": "47QSMS25D006H",
+      "vendor_uei": "P52FZJKZJ1P4",
+      "company_address": "170 OBERLIN AVE N STE 5",
+      "company_city": "LAKEWOOD",
+      "company_state": "NJ",
+      "company_zip": "08701-4548",
+      "primary_contact_phone": "7323705559",
+      "primary_contact_email": "rick@ceelantech.com",
+      "website": "http://www.ceelantech.com",
+      "contract_start_date": "2030-03-23",
+      "contract_expiration_date": "2045-03-23",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Scientific Services",
+        "source": "MAS",
+        "category": "532490ESA ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D006H/47QSMS25D006H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D006H&sin=532490ESA&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490ESA"
+      ],
+      "primary_sin": "532490ESA",
+      "schedule_number": "MAS",
+      "company_name": "FRANKLIN YOUNG INTERNATIONAL, INCORPORATED",
+      "contract_number": "GS-07F-0636W",
+      "vendor_uei": "EDQMKDZR8L13",
+      "company_address": "1042 N MOUNTAIN AVE",
+      "company_city": "UPLAND",
+      "company_state": "CA",
+      "company_zip": "91786-3695",
+      "primary_contact_phone": "9099315012",
+      "primary_contact_email": "Dave@franklinyoung.com",
+      "website": "http://www.franklinyoung.com",
+      "contract_start_date": "2030-09-09",
+      "contract_expiration_date": "2030-09-09",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Scientific Services",
+        "source": "MAS",
+        "category": "532490ESA ",
+        "address_2": "# 310",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0636W/GS07F0636W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0636W&sin=532490ESA&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490ESA"
+      ],
+      "primary_sin": "532490ESA",
+      "schedule_number": "MAS",
+      "company_name": "SURFACIDE, LLC",
+      "contract_number": "47QSWA23D002C",
+      "vendor_uei": "SKLJHJWJK2D4",
+      "company_address": "W226N918 NORTHMOUND DR STE 300",
+      "company_city": "WAUKESHA",
+      "company_state": "WI",
+      "company_zip": "53186-1705",
+      "primary_contact_phone": "6308619000",
+      "primary_contact_email": "gunner@surfacide.com",
+      "website": "http://www.surfacide.com",
+      "contract_start_date": "2028-01-14",
+      "contract_expiration_date": "2043-01-14",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Scientific Services",
+        "source": "MAS",
+        "category": "532490ESA ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D002C/47QSWA23D002C_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA23D002C/pricelist_47QSWA23D002C.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D002C&sin=532490ESA&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490ESA"
+      ],
+      "primary_sin": "532490ESA",
+      "schedule_number": "MAS",
+      "company_name": "TACMED SIMULATION, INC",
+      "contract_number": "GS-07F-063DA",
+      "vendor_uei": "YR7MHM8Q3KB3",
+      "company_address": "1250 HARRIS BRIDGE RD",
+      "company_city": "ANDERSON",
+      "company_state": "SC",
+      "company_zip": "29621-3409",
+      "primary_contact_phone": "8647601689",
+      "primary_contact_email": "cwilliams@tacmedsolutions.com",
+      "website": "http://www.tacmedsolutions.com",
+      "contract_start_date": "2026-01-31",
+      "contract_expiration_date": "2036-01-31",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Scientific Services",
+        "source": "MAS",
+        "category": "532490ESA ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F063DA/GS07F063DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-063DA&sin=532490ESA&src=elib&app=cat"
+      }
+    }
+  ]
+}

@@ -1,12 +1,15 @@
 {
-  "currentCongress": 119,
-  "currentOffset": 6210,
-  "totalBillsProcessed": 6210,
-  "successCount": 6209,
+  "currentCongress": 117,
+  "currentOffset": 5120,
+  "totalBillsProcessed": 35044,
+  "successCount": 35043,
   "failureCount": 1,
   "startTime": "2025-11-04T15:04:04.339Z",
-  "lastSaveTime": "2025-11-04T23:26:36.988Z",
-  "completedCongresses": [],
+  "lastSaveTime": "2025-11-06T16:04:38.181Z",
+  "completedCongresses": [
+    119,
+    118
+  ],
   "errors": [
     {
       "congress": 119,

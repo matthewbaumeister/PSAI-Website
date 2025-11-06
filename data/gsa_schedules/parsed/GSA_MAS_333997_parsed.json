@@ -1,0 +1,631 @@
+{
+  "sin_code": "333997",
+  "file_name": "GSA_MAS_333997_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:12.804507",
+  "sheets": {
+    "2025_11_05_11_16_14": {
+      "row_count": 25,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "FEDERAL CONTRACTS LLC",
+      "contract_number": "GS-03F-113DA",
+      "vendor_uei": "TK67EL9NPMD9",
+      "company_address": "12918 N NEBRASKA AVE",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33612-4446",
+      "primary_contact_phone": "8136310000",
+      "primary_contact_email": "sales@federalcontractscorp.com",
+      "website": "http://www.federalcontractscorp.com",
+      "contract_start_date": "2026-06-12",
+      "contract_expiration_date": "2036-06-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F113DA/GS03F113DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-113DA&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "FISHER SCIENTIFIC COMPANY L.L.C.",
+      "contract_number": "GS-07F-161BA",
+      "vendor_uei": "HE7NJQGP4ED6",
+      "company_address": "300 INDUSTRY DR",
+      "company_city": "PITTSBURGH",
+      "company_state": "PA",
+      "company_zip": "15275-1001",
+      "primary_contact_phone": "18007667000",
+      "primary_contact_email": "GSA.Orders@thermofisher.com",
+      "website": "http://WWW.FISHERSCI.COM",
+      "contract_start_date": "2029-03-23",
+      "contract_expiration_date": "2034-03-23",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F161BA/GS07F161BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-161BA&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "FOTRONIC CORPORATION",
+      "contract_number": "GS-07F-0375T",
+      "vendor_uei": "FUN1ZFUJ3GM9",
+      "company_address": "5 COMMONWEALTH AVE UNIT 6",
+      "company_city": "WOBURN",
+      "company_state": "MA",
+      "company_zip": "01801-1069",
+      "primary_contact_phone": "7819792010",
+      "primary_contact_email": "afoti@fotronic.com",
+      "website": "http://www.testequipmentdepot.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2027-05-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0375T/GS07F0375T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0375T&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "FRANKLIN YOUNG INTERNATIONAL, INCORPORATED",
+      "contract_number": "GS-07F-0636W",
+      "vendor_uei": "EDQMKDZR8L13",
+      "company_address": "1042 N MOUNTAIN AVE",
+      "company_city": "UPLAND",
+      "company_state": "CA",
+      "company_zip": "91786-3695",
+      "primary_contact_phone": "9099315012",
+      "primary_contact_email": "Dave@franklinyoung.com",
+      "website": "http://www.franklinyoung.com",
+      "contract_start_date": "2030-09-09",
+      "contract_expiration_date": "2030-09-09",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "address_2": "# 310",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0636W/GS07F0636W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0636W&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "GENERAL ELECTRODYNAMICS CORPORATION",
+      "contract_number": "47QSMS25D004K",
+      "vendor_uei": "SW85H92C5AX4",
+      "company_address": "8000 CALENDER RD",
+      "company_city": "ARLINGTON",
+      "company_state": "TX",
+      "company_zip": "76001-7758",
+      "primary_contact_phone": "8175720366",
+      "primary_contact_email": "hthomas@gecscales.com",
+      "website": "http://gecscales.com",
+      "contract_start_date": "2030-02-10",
+      "contract_expiration_date": "2045-02-10",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D004K/47QSMS25D004K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D004K&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT SCIENTIFIC SOURCE INC",
+      "contract_number": "47QSMS25D00A9",
+      "vendor_uei": "J49CN39QTNW3",
+      "company_address": "12355 SUNRISE VALLEY DR STE 400",
+      "company_city": "RESTON",
+      "company_state": "VA",
+      "company_zip": "20191-3497",
+      "primary_contact_phone": "7037341805",
+      "primary_contact_email": "contracts2@govsci.com",
+      "website": "http://www.govsci.com",
+      "contract_start_date": "2030-07-13",
+      "contract_expiration_date": "2045-07-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00A9/47QSMS25D00A9_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00A9&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "INTERCOMP CO",
+      "contract_number": "GS-07F-078BA",
+      "vendor_uei": "MA5US45LLQQ7",
+      "company_address": "3839 COUNTY ROAD 116",
+      "company_city": "HAMEL",
+      "company_state": "MN",
+      "company_zip": "55340-9342",
+      "primary_contact_phone": "7634762531",
+      "primary_contact_email": "eric@intercompcompany.com",
+      "website": "http://www.intercompcompany.com",
+      "contract_start_date": "2028-12-31",
+      "contract_expiration_date": "2033-12-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F078BA/GS07F078BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-078BA&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "ITIN SCALE CO., INC.",
+      "contract_number": "GS-07F-9655S",
+      "vendor_uei": "LDLEWZNA7FA8",
+      "company_address": "4802 GLENWOOD RD",
+      "company_city": "BROOKLYN",
+      "company_state": "NY",
+      "company_zip": "11234-1106",
+      "primary_contact_phone": "7183365900",
+      "primary_contact_email": "steve@itinscales.com",
+      "website": "http://www.itinscales.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2026-08-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9655S/GS07F9655S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9655S&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "LIFE SCIENCE PRODUCTS, INCORPORATED",
+      "contract_number": "GS-07F-213AA",
+      "vendor_uei": "V2K9NLD8PBB4",
+      "company_address": "5989 IRIS PKWY",
+      "company_city": "FREDERICK",
+      "company_state": "CO",
+      "company_zip": "80504-6435",
+      "primary_contact_phone": "3034509442",
+      "primary_contact_email": "nicholas.larson@e-lspi.com",
+      "website": "http://www.e-lspi.com",
+      "contract_start_date": "2028-03-28",
+      "contract_expiration_date": "2033-03-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F213AA/GS07F213AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-213AA&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "MG SCIENTIFIC, INC.",
+      "contract_number": "GS-07F-154CA",
+      "vendor_uei": "JNUJLPGBJ7H5",
+      "company_address": "8500 107TH ST",
+      "company_city": "PLEASANT PRAIRIE",
+      "company_state": "WI",
+      "company_zip": "53158-5812",
+      "primary_contact_phone": "2629477000",
+      "primary_contact_email": "csuhr@mgscientific.com",
+      "website": "http://www.mgscientific.com",
+      "contract_start_date": "2030-05-17",
+      "contract_expiration_date": "2035-05-17",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F154CA/GS07F154CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-154CA&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "NETA SCIENTIFIC INC",
+      "contract_number": "47QSMS24D000Y",
+      "vendor_uei": "Y6NDRDTPNRD5",
+      "company_address": "6 EVES DR",
+      "company_city": "MARLTON",
+      "company_state": "NJ",
+      "company_zip": "08053-3122",
+      "primary_contact_phone": "8003436015",
+      "primary_contact_email": "compliance@netascientific.com",
+      "website": "https://www.netascientific.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2044-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D000Y/47QSMS24D000Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D000Y&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "PACIFIC STAR CORPORATION",
+      "contract_number": "GS-07F-0111W",
+      "vendor_uei": "QULRXKMBD576",
+      "company_address": "4350 S WAYSIDE DR",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77087-1129",
+      "primary_contact_phone": "7135270889",
+      "primary_contact_email": "customer@pfstar.com",
+      "website": "http://www.pfstar.com",
+      "contract_start_date": "2029-11-30",
+      "contract_expiration_date": "2029-11-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "address_2": "STE 106",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0111W/GS07F0111W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0111W&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "RUSTY'S WEIGH SCALES & SERVICE, INC.",
+      "contract_number": "47QSWA23D000Z",
+      "vendor_uei": "M1CJN4NQVZ31",
+      "company_address": "408 N INTERSTATE 27",
+      "company_city": "LUBBOCK",
+      "company_state": "TX",
+      "company_zip": "79403-3220",
+      "primary_contact_phone": "8067472912",
+      "primary_contact_email": "joejackson@rustysweigh.com",
+      "website": "http://www.rustysweigh.com",
+      "contract_start_date": "2027-11-08",
+      "contract_expiration_date": "2042-11-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D000Z/47QSWA23D000Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D000Z&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "SANITZ ENTERPRISES, INC.",
+      "contract_number": "47QSWA21D007B",
+      "vendor_uei": "GLJ4J66A2HK3",
+      "company_address": "256 SULTEMEIER MOELLERING RD",
+      "company_city": "FREDERICKSBURG",
+      "company_state": "TX",
+      "company_zip": "78624-7799",
+      "primary_contact_phone": "8306853430",
+      "primary_contact_email": "gsa@ampatss.com",
+      "website": "http://www.custommanufacturing.ampatss.com/",
+      "contract_start_date": "2026-08-26",
+      "contract_expiration_date": "2041-08-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D007B/47QSWA21D007B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D007B&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "THE SCALE PEOPLE, INC.",
+      "contract_number": "GS-07F-179DA",
+      "vendor_uei": "F66UMPT82249",
+      "company_address": "9693 GERWIG LANE, STE C",
+      "company_city": "COLUMBIA",
+      "company_state": "MD",
+      "company_zip": "21046-2849",
+      "primary_contact_phone": "4103095880",
+      "primary_contact_email": "marlena@scalepeople.com",
+      "website": "http://www.scalepeople.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2036-08-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F179DA/GS07F179DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-179DA&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "THE WYLIE J COMPANY INC",
+      "contract_number": "47QSWA21D008B",
+      "vendor_uei": "MBXXNCKHA4D6",
+      "company_address": "535 STATE PL",
+      "company_city": "ESCONDIDO",
+      "company_state": "CA",
+      "company_zip": "92029-1361",
+      "primary_contact_phone": "7607390555",
+      "primary_contact_email": "sales@customscale.com",
+      "website": "https://www.customscale.com/",
+      "contract_start_date": "2026-09-27",
+      "contract_expiration_date": "2041-09-27",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D008B/47QSWA21D008B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D008B&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "VWR INTERNATIONAL LLC",
+      "contract_number": "GS-07F-119CA",
+      "vendor_uei": "J6CNECEBTK23",
+      "company_address": "100 W MATSONFORD RD STE 1",
+      "company_city": "WAYNE",
+      "company_state": "PA",
+      "company_zip": "19087-4565",
+      "primary_contact_phone": "8009325000",
+      "primary_contact_email": "government@vwr.com",
+      "website": "http://www.us.vwr.com",
+      "contract_start_date": "2030-03-24",
+      "contract_expiration_date": "2035-03-24",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F119CA/GS07F119CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-119CA&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "WILSON DEPENDABLE SERVICES LLC",
+      "contract_number": "47QSWA22D005J",
+      "vendor_uei": "J13PZKRDWMG6",
+      "company_address": "3009 HILLCREST DR SE",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20020-7211",
+      "primary_contact_phone": "2025193593",
+      "primary_contact_email": "support@wdslifesci.com",
+      "website": "http://www.wdslifesci.com",
+      "contract_start_date": "2027-05-15",
+      "contract_expiration_date": "2042-05-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D005J/47QSWA22D005J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D005J&sin=333997&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333997"
+      ],
+      "primary_sin": "333997",
+      "schedule_number": "MAS",
+      "company_name": "WORLDWIDE MEDICAL PRODUCTS INC",
+      "contract_number": "GS-07F-177GA",
+      "vendor_uei": "RVP1CCPL42P9",
+      "company_address": "128 WHARTON RD",
+      "company_city": "BRISTOL",
+      "company_state": "PA",
+      "company_zip": "19007-1622",
+      "primary_contact_phone": "8668899967",
+      "primary_contact_email": "gsaorders@wwmponline.com",
+      "website": "http://www.wwmponline.com/",
+      "contract_start_date": "2027-08-20",
+      "contract_expiration_date": "2037-08-20",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Test and Measurement Supplies",
+        "source": "MAS",
+        "category": 333997.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F177GA/GS07F177GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-177GA&sin=333997&src=elib&app=cat"
+      }
+    }
+  ]
+}

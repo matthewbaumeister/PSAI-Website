@@ -147,8 +147,8 @@ async function main() {
         total_trades_in_db: countAfter || 0,
         house_trades: houseAfter || 0,
         senate_trades: senateAfter || 0,
-        total_members: stats?.total_members || 0,
-        defense_trades: stats?.defense_trades || 0
+        total_members: (stats as any)?.total_members || 0,
+        defense_trades: (stats as any)?.defense_trades || 0
       }
     });
     

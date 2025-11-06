@@ -1,0 +1,264 @@
+{
+  "sin_code": "339940SVC",
+  "file_name": "GSA_MAS_339940SVC_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:31.015497",
+  "sheets": {
+    "2025_11_05_11_21_54": {
+      "row_count": 13,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "339940SVC"
+      ],
+      "primary_sin": "339940SVC",
+      "schedule_number": "MAS",
+      "company_name": "DATA SECURITY, INC",
+      "contract_number": "GS-02F-0015T",
+      "vendor_uei": "QHEECXDESSL9",
+      "company_address": "300 S 7TH ST",
+      "company_city": "LINCOLN",
+      "company_state": "NE",
+      "company_zip": "68508-2401",
+      "primary_contact_phone": "8002257554",
+      "primary_contact_email": "kheimes@telesis-inc.com",
+      "website": "http://www.datasecurityinc.com",
+      "contract_start_date": "2026-11-02",
+      "contract_expiration_date": "2026-11-02",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": "339940SVC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0015T/GS02F0015T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0015T&sin=339940SVC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339940SVC"
+      ],
+      "primary_sin": "339940SVC",
+      "schedule_number": "MAS",
+      "company_name": "ENVISION XPRESS INC",
+      "contract_number": "GS-07F-107CA",
+      "vendor_uei": "WC8ZXNHDLKE1",
+      "company_address": "2301 S WATER ST",
+      "company_city": "WICHITA",
+      "company_state": "KS",
+      "company_zip": "67213-4819",
+      "primary_contact_phone": "3164257184",
+      "primary_contact_email": "gsa@envisionus.com",
+      "website": "http://www.envisionxpress.com",
+      "contract_start_date": "2030-03-08",
+      "contract_expiration_date": "2035-03-08",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": "339940SVC ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F107CA/GS07F107CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-107CA&sin=339940SVC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339940SVC"
+      ],
+      "primary_sin": "339940SVC",
+      "schedule_number": "MAS",
+      "company_name": "GEM LASER EXPRESS INC",
+      "contract_number": "47QSMA19D08R0",
+      "vendor_uei": "GTPGDAM8G9H6",
+      "company_address": "45929 MARIES RD",
+      "company_city": "STERLING",
+      "company_state": "VA",
+      "company_zip": "20166-9299",
+      "primary_contact_phone": "7037097140",
+      "primary_contact_email": "jyoung@gemlaser.com",
+      "website": "http://www.gemlaser.com/",
+      "contract_start_date": "2029-09-03",
+      "contract_expiration_date": "2039-09-03",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": "339940SVC ",
+        "address_2": "STE 180",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08R0/47QSMA19D08R0_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08R0&sin=339940SVC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339940SVC"
+      ],
+      "primary_sin": "339940SVC",
+      "schedule_number": "MAS",
+      "company_name": "ODP BUSINESS SOLUTIONS, LLC",
+      "contract_number": "47QSEA20D005Q",
+      "vendor_uei": "DL92XLEBJHE1",
+      "company_address": "6600 N MILITARY TRL",
+      "company_city": "BOCA RATON",
+      "company_state": "FL",
+      "company_zip": "33496-2434",
+      "primary_contact_phone": "8882633423",
+      "primary_contact_email": "bill.murray@odpbusiness.com",
+      "website": "http://www.odpbusiness.com/federal",
+      "contract_start_date": "2030-04-08",
+      "contract_expiration_date": "2040-04-08",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": "339940SVC ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D005Q/47QSEA20D005Q_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSEA20D005Q/pricelist_47QSEA20D005Q.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D005Q&sin=339940SVC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339940SVC"
+      ],
+      "primary_sin": "339940SVC",
+      "schedule_number": "MAS",
+      "company_name": "SECURITY ENGINEERED MACHINERY CO., INC.",
+      "contract_number": "GS-35F-005AA",
+      "vendor_uei": "NSW6L6MM5GS5",
+      "company_address": "5 WALKUP DR",
+      "company_city": "WESTBOROUGH",
+      "company_state": "MA",
+      "company_zip": "01581-1018",
+      "primary_contact_phone": "5083661488",
+      "primary_contact_email": "m.divirgilio@semshred.com",
+      "website": "http://www.semshred.com",
+      "contract_start_date": "2027-10-10",
+      "contract_expiration_date": "2032-10-10",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": "339940SVC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F005AA/GS35F005AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-005AA&sin=339940SVC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339940SVC"
+      ],
+      "primary_sin": "339940SVC",
+      "schedule_number": "MAS",
+      "company_name": "THE LIOCE GROUP INC",
+      "contract_number": "GS-03F-0143Y",
+      "vendor_uei": "SSK3JD7D65D5",
+      "company_address": "2950 DRAKE AVE SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805",
+      "primary_contact_phone": "2566504156",
+      "primary_contact_email": "nick@liocegroup.com",
+      "website": "http://www.liocegroup.com",
+      "contract_start_date": "2027-07-23",
+      "contract_expiration_date": "2032-07-23",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": "339940SVC ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0143Y/GS03F0143Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0143Y&sin=339940SVC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339940SVC"
+      ],
+      "primary_sin": "339940SVC",
+      "schedule_number": "MAS",
+      "company_name": "THE LIOCE GROUP INC",
+      "contract_number": "47QTCA18D00AD",
+      "vendor_uei": "SSK3JD7D65D5",
+      "company_address": "2950 DRAKE AVE SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805",
+      "primary_contact_phone": "2566504150",
+      "primary_contact_email": "FEDERALACCOUNTS@LIOCEGROUP.COM",
+      "website": "http://www.liocegroup.com",
+      "contract_start_date": "2028-04-15",
+      "contract_expiration_date": "2038-04-15",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": "339940SVC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA18D00AD/47QTCA18D00AD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA18D00AD&sin=339940SVC&src=elib&app=cat"
+      }
+    }
+  ]
+}

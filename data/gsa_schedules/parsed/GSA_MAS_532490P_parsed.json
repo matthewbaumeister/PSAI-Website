@@ -1,0 +1,988 @@
+{
+  "sin_code": "532490P",
+  "file_name": "GSA_MAS_532490P_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:11.183242",
+  "sheets": {
+    "2025_11_05_11_08_51": {
+      "row_count": 37,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "ACTIVE DEPLOYMENT SYSTEMS, LLC",
+      "contract_number": "GS-07F-0202Y",
+      "vendor_uei": "XXJXSMP4H4J1",
+      "company_address": "280 HUGO RD",
+      "company_city": "SAN MARCOS",
+      "company_state": "TX",
+      "company_zip": "78666-2537",
+      "primary_contact_phone": "5122641110",
+      "primary_contact_email": "kayla@activedeployment.com",
+      "website": "http://www.activedeployment.com",
+      "contract_start_date": "2027-01-14",
+      "contract_expiration_date": "2032-01-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0202Y/GS07F0202Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0202Y/pricelist_GS-07F-0202Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0202Y&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "APEX MODULAR GROUP LLC",
+      "contract_number": "47QSWA22D0005",
+      "vendor_uei": "QQ3MLMMGD235",
+      "company_address": "4626 STOCKPORT CIR",
+      "company_city": "DUBLIN",
+      "company_state": "OH",
+      "company_zip": "43016-8290",
+      "primary_contact_phone": "4697157693",
+      "primary_contact_email": "joe@apexmodulargroup.com",
+      "website": "http://www.ApexModularGroup.com",
+      "contract_start_date": "2026-10-05",
+      "contract_expiration_date": "2041-10-05",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0005/47QSWA22D0005_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0005&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "ARIES BUILDING SYSTEMS, LLC",
+      "contract_number": "47QSWA21D000E",
+      "vendor_uei": "EVCTPLME1HP5",
+      "company_address": "2900 S QUINCY ST",
+      "company_city": "ARLINGTON",
+      "company_state": "VA",
+      "company_zip": "22206-2231",
+      "primary_contact_phone": "7039364844",
+      "primary_contact_email": "fram@ariesbuildings.com",
+      "website": "http://www.ariesbuildings.com",
+      "contract_start_date": "2030-12-04",
+      "contract_expiration_date": "2040-12-04",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "address_2": "SUITE 425",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D000E/47QSWA21D000E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D000E&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "ATCO STRUCTURES & LOGISTICS (USA) INC.",
+      "contract_number": "47QSMS25D006U",
+      "vendor_uei": "JYLLNKQM5TY3",
+      "company_address": "480 WILDWOOD FOREST DR STE 225",
+      "company_city": "SPRING",
+      "company_state": "TX",
+      "company_zip": "77380-3772",
+      "primary_contact_phone": "2817306738",
+      "primary_contact_email": "melanie.wilkie@atco.com",
+      "website": "http://structures.atco.com/en-us.html",
+      "contract_start_date": "2030-04-04",
+      "contract_expiration_date": "2045-04-04",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D006U/47QSMS25D006U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D006U&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "ATLANTIC DIVING SUPPLY, INC.",
+      "contract_number": "47QSMA19D08Q1",
+      "vendor_uei": "GJMSFBCNMSK3",
+      "company_address": "621 LYNNHAVEN PKWY",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23452-7383",
+      "primary_contact_phone": "7574167505",
+      "primary_contact_email": "gsa@adsinc.com",
+      "website": "http://www.adsinc.com",
+      "contract_start_date": "2029-05-07",
+      "contract_expiration_date": "2039-05-07",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "address_2": "STE 160",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08Q1/47QSMA19D08Q1_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA19D08Q1/pricelist_47QSMA19D08Q1.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08Q1&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "BELTWAY LUXURY RESTROOMS, LLC",
+      "contract_number": "47QSMS24D003T",
+      "vendor_uei": "GG4ZAJX6REA3",
+      "company_address": "1473 WATERBURY ROAD",
+      "company_city": "CROWNSVILLE",
+      "company_state": "MD",
+      "company_zip": "21032-1413",
+      "primary_contact_phone": "3012610336",
+      "primary_contact_email": "joey@beltwayrestrooms.com",
+      "website": "https://beltwayluxuryrestooms.com/",
+      "contract_start_date": "2029-02-26",
+      "contract_expiration_date": "2044-02-26",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D003T/47QSMS24D003T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D003T&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "BOXX MODULAR, INC.",
+      "contract_number": "47QSWA20D000Q",
+      "vendor_uei": "JRWNS9LNFMK1",
+      "company_address": "3475 HIGH RIVER RD",
+      "company_city": "FORT WORTH",
+      "company_state": "TX",
+      "company_zip": "76155-1900",
+      "primary_contact_phone": "8179468918",
+      "primary_contact_email": "smassey@boxxmodular.com",
+      "website": "http://www.boxxmodular.com",
+      "contract_start_date": "2029-10-31",
+      "contract_expiration_date": "2039-10-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D000Q/47QSWA20D000Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D000Q&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "CADUCEUS HEALTHCARE INC",
+      "contract_number": "47QREA19D000F",
+      "vendor_uei": "ZX23KR32ZH32",
+      "company_address": "1850 PARKWAY PL SE STE 725",
+      "company_city": "MARIETTA",
+      "company_state": "GA",
+      "company_zip": "30067-8262",
+      "primary_contact_phone": "7703572400",
+      "primary_contact_email": "lmitchell@cadgov.com",
+      "website": "http://www.caduceustaffing.com",
+      "contract_start_date": "2029-03-17",
+      "contract_expiration_date": "2039-03-17",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QREA19D000F/47QREA19D000F_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QREA19D000F/pricelist_47QREA19D000F.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QREA19D000F&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "COTTON COMMERCIAL USA, INC.",
+      "contract_number": "47QRAA22D004M",
+      "vendor_uei": "VPRKW5GS6K17",
+      "company_address": "5443 KATY HOCKLEY CUT OFF RD",
+      "company_city": "KATY",
+      "company_state": "TX",
+      "company_zip": "77493-7008",
+      "primary_contact_phone": "8327992746",
+      "primary_contact_email": "travis.bice@cottonteam.com",
+      "website": "http://cottonholdings.com",
+      "contract_start_date": "2027-01-13",
+      "contract_expiration_date": "2042-01-13",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA22D004M/47QRAA22D004M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA22D004M&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "CRITICAL CONTINGENCY SOLUTIONS LLC",
+      "contract_number": "47QRAA24D009H",
+      "vendor_uei": "K4ZTKRPUGYN3",
+      "company_address": "173 FM 3237",
+      "company_city": "WIMBERLEY",
+      "company_state": "TX",
+      "company_zip": "78676-5372",
+      "primary_contact_phone": "8663672005",
+      "primary_contact_email": "Michael@ccsgov.com",
+      "website": "http://www.criticalcontingency.com",
+      "contract_start_date": "2029-06-20",
+      "contract_expiration_date": "2044-06-20",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA24D009H/47QRAA24D009H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA24D009H&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "EDS HOLDCO LLC",
+      "contract_number": "47QSMS25D009E",
+      "vendor_uei": "HAK5PNC3GZW5",
+      "company_address": "1385 PRIDEMORE CT",
+      "company_city": "LEXINGTON",
+      "company_state": "KY",
+      "company_zip": "40505-4118",
+      "primary_contact_phone": "8007858639",
+      "primary_contact_email": "government@edsteam.com",
+      "website": "http://www.emergencydisasterservices.com",
+      "contract_start_date": "2030-06-14",
+      "contract_expiration_date": "2045-06-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D009E/47QSMS25D009E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D009E&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "GRANNY'S ALLIANCE HOLDINGS, INC.",
+      "contract_number": "47QSMS24D009F",
+      "vendor_uei": "LS2WC6K1A964",
+      "company_address": "132 SW 5TH AVE",
+      "company_city": "MERIDIAN",
+      "company_state": "ID",
+      "company_zip": "83642-2922",
+      "primary_contact_phone": "7322339713",
+      "primary_contact_email": "mark@grannysalliance.com",
+      "website": "http://www.grannysalliance.com",
+      "contract_start_date": "2029-07-14",
+      "contract_expiration_date": "2044-07-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "address_2": "STE 175",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D009F/47QSMS24D009F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D009F&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "INTEGRATED MODULAR SOLUTIONS, LLC",
+      "contract_number": "47QSWA18D001W",
+      "vendor_uei": "MV22KVPV8DT5",
+      "company_address": "210 E 5TH ST",
+      "company_city": "BONHAM",
+      "company_state": "TX",
+      "company_zip": "75418",
+      "primary_contact_phone": "9034494587",
+      "primary_contact_email": "lisam@integratedmodular.net",
+      "website": "http://www.integratedmodular.net",
+      "contract_start_date": "2028-02-14",
+      "contract_expiration_date": "2038-02-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__25": "dv",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001W/47QSWA18D001W_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA18D001W/pricelist_47QSWA18D001W.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001W&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "INVENTORY MANAGEMENT SOLUTIONS, LLC",
+      "contract_number": "GS-07F-032BA",
+      "vendor_uei": "CEPFED28AQJ4",
+      "company_address": "10505 PLAZA DR STE B",
+      "company_city": "WHITMORE LAKE",
+      "company_state": "MI",
+      "company_zip": "48189-9156",
+      "primary_contact_phone": "8775093179",
+      "primary_contact_email": "pricing@armyproperty.com",
+      "website": "http://www.armyproperty.com",
+      "contract_start_date": "2028-11-14",
+      "contract_expiration_date": "2033-11-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Feb 28, 2028",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F032BA/GS07F032BA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-032BA/pricelist_GS-07F-032BA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-032BA&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "KKH RENTALS INC",
+      "contract_number": "47QSWA23D0076",
+      "vendor_uei": "KPXPZTUL8K97",
+      "company_address": "4039 INTERSTATE 10 E",
+      "company_city": "KIRBY",
+      "company_state": "TX",
+      "company_zip": "78219-4062",
+      "primary_contact_phone": "9727950657",
+      "primary_contact_email": "thalfmann@therkgroup.com",
+      "website": "http://www.therkgroup.com",
+      "contract_start_date": "2028-06-30",
+      "contract_expiration_date": "2043-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0076/47QSWA23D0076_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0076&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "MCGRATH RENTCORP",
+      "contract_number": "GS-07F-0401X",
+      "vendor_uei": "LVDDZJ5UBDS4",
+      "company_address": "5700 LAS POSITAS RD",
+      "company_city": "LIVERMORE",
+      "company_state": "CA",
+      "company_zip": "94551-7806",
+      "primary_contact_phone": "7045194011",
+      "primary_contact_email": "patrick.muchmore@mobilemodular.com",
+      "website": "http://www.mobilemodular.com",
+      "contract_start_date": "2026-03-31",
+      "contract_expiration_date": "2031-03-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0401X/GS07F0401X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0401X&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "MODERN BUILDING SYSTEMS, INC.",
+      "contract_number": "47QSWA23D000M",
+      "vendor_uei": "G7EBLERUAQS8",
+      "company_address": "9493 PORTER RD SE",
+      "company_city": "AUMSVILLE",
+      "company_state": "OR",
+      "company_zip": "97325-9750",
+      "primary_contact_phone": "5037494949",
+      "primary_contact_email": "tbednarz@modernbuildingsystems.com",
+      "website": "http://modernbuildingsystems.com",
+      "contract_start_date": "2027-10-31",
+      "contract_expiration_date": "2042-10-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D000M/47QSWA23D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D000M&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "MODULAR GENIUS INC",
+      "contract_number": "GS-07F-0124W",
+      "vendor_uei": "CC9WLWJEKUU8",
+      "company_address": "1201 S MOUNTAIN RD",
+      "company_city": "JOPPA",
+      "company_state": "MD",
+      "company_zip": "21085-3414",
+      "primary_contact_phone": "4106763424",
+      "primary_contact_email": "bradgudeman@modulargenius.com",
+      "website": "http://www.modulargenius.com",
+      "contract_start_date": "2029-11-30",
+      "contract_expiration_date": "2029-11-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0124W/GS07F0124W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0124W&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "MODULAR MANAGEMENT GROUP INC",
+      "contract_number": "GS-07F-0222X",
+      "vendor_uei": "CYU2FMJ3JM58",
+      "company_address": "6602 PLAZA PKWY",
+      "company_city": "FORT WORTH",
+      "company_state": "TX",
+      "company_zip": "76116-2400",
+      "primary_contact_phone": "8177409767",
+      "primary_contact_email": "gsasales@mmginc.info",
+      "website": "http://www.modularmanagementgroup.com/",
+      "contract_start_date": "2031-01-14",
+      "contract_expiration_date": "2031-01-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0222X/GS07F0222X_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0222X/pricelist_GS-07F-0222X.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0222X&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "MODULAR SOLUTIONS, LTD.",
+      "contract_number": "47QSWA21D003W",
+      "vendor_uei": "YL51CLPK9BN1",
+      "company_address": "5439 S 43RD AVE",
+      "company_city": "PHOENIX",
+      "company_state": "AZ",
+      "company_zip": "85041-3207",
+      "primary_contact_phone": "6029529741",
+      "primary_contact_email": "mitzig@mod-sol.com",
+      "website": "http://www.modularsolutionsltd.com",
+      "contract_start_date": "2026-04-18",
+      "contract_expiration_date": "2041-04-18",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D003W/47QSWA21D003W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D003W&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "NADLER MOBILE, LLC",
+      "contract_number": "47QSMS24D00AF",
+      "vendor_uei": "K8AXW5KJ2A57",
+      "company_address": "400 RELLA BLVD STE 110",
+      "company_city": "SUFFERN",
+      "company_state": "NY",
+      "company_zip": "10901-4239",
+      "primary_contact_phone": "8453715600",
+      "primary_contact_email": "steven@nadlermodular.com",
+      "website": "http://www.nadlermodular.com",
+      "contract_start_date": "2029-08-31",
+      "contract_expiration_date": "2044-08-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00AF/47QSMS24D00AF_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00AF&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "PACIFIC MOBILE STRUCTURES, INC.",
+      "contract_number": "47QSMS25D003M",
+      "vendor_uei": "ELA3HTZ25FJ3",
+      "company_address": "1554 BISHOP RD",
+      "company_city": "CHEHALIS",
+      "company_state": "WA",
+      "company_zip": "98532-8710",
+      "primary_contact_phone": "2083626090",
+      "primary_contact_email": "Kenna.draper@PACIFICMOBILE.COM",
+      "website": "http://WWW.PACIFICMOBILE.COM",
+      "contract_start_date": "2030-01-26",
+      "contract_expiration_date": "2045-01-26",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D003M/47QSMS25D003M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D003M&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "POPUP STRUCTURES INC",
+      "contract_number": "47QSWA23D007L",
+      "vendor_uei": "L2BRRL3K1WW1",
+      "company_address": "525 OCEAN BLVD",
+      "company_city": "GOLDEN BEACH",
+      "company_state": "FL",
+      "company_zip": "33160-2215",
+      "primary_contact_phone": "3055820222",
+      "primary_contact_email": "Richard@windwalls.com",
+      "website": "http://popupstructures.com",
+      "contract_start_date": "2028-07-11",
+      "contract_expiration_date": "2043-07-11",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D007L/47QSWA23D007L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D007L&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "RECOVERY LOGISTICS LLC",
+      "contract_number": "47QSMS25D00BG",
+      "vendor_uei": "QBNLWJ4TWLJ9",
+      "company_address": "1071 CLASSIC RD",
+      "company_city": "APEX",
+      "company_state": "NC",
+      "company_zip": "27539-4402",
+      "primary_contact_phone": "9194694141",
+      "primary_contact_email": "dan.poirier@recoverylogistics.com",
+      "website": "http://www.recoverylogistics.com",
+      "contract_start_date": "2030-08-17",
+      "contract_expiration_date": "2045-08-17",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00BG/47QSMS25D00BG_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00BG&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "RED ORANGE NORTH AMERICA INC.",
+      "contract_number": "47QSMS24D005S",
+      "vendor_uei": "S8NPX3Q8MQH3",
+      "company_address": "500 OFFICE CENTER DR STE 400",
+      "company_city": "FORT WASHINGTON",
+      "company_state": "PA",
+      "company_zip": "19034-3234",
+      "primary_contact_phone": "2672187377",
+      "primary_contact_email": "matthew.oconnor@redorange.com",
+      "website": "http://redorange.com",
+      "contract_start_date": "2029-04-01",
+      "contract_expiration_date": "2044-04-01",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D005S/47QSMS24D005S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D005S&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "REDGUARD LLC",
+      "contract_number": "GS-07F-0761X",
+      "vendor_uei": "Z3UMSQNREM96",
+      "company_address": "4340 S WEST ST",
+      "company_city": "WICHITA",
+      "company_state": "KS",
+      "company_zip": "67217-3816",
+      "primary_contact_phone": "3168678074",
+      "primary_contact_email": "RandyT@CoverSix.com",
+      "website": "http://www.coversix.com",
+      "contract_start_date": "2026-09-14",
+      "contract_expiration_date": "2031-09-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0761X/GS07F0761X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0761X&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "ROYAL RESTROOMS OF NORTH FLORIDA, LLC",
+      "contract_number": "47QSWA22D001X",
+      "vendor_uei": "WT98WH1E7727",
+      "company_address": "13117 S US HWY 441",
+      "company_city": "MICANOPY",
+      "company_state": "FL",
+      "company_zip": "32667-5320",
+      "primary_contact_phone": "3528709633",
+      "primary_contact_email": "andychristian@bellsouth.net",
+      "website": "http://www.Royalrestroomsfl.com",
+      "contract_start_date": "2026-12-12",
+      "contract_expiration_date": "2041-12-12",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D001X/47QSWA22D001X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D001X&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "SABALA MANAGEMENT LLC",
+      "contract_number": "47QSMS25D0048",
+      "vendor_uei": "MCPBDK9HU9T3",
+      "company_address": "961 N SHADOWRIDGE AVE",
+      "company_city": "EAGLE",
+      "company_state": "ID",
+      "company_zip": "83616",
+      "primary_contact_phone": "2088304037",
+      "primary_contact_email": "john@sabalamgmt.com",
+      "website": "http://SABALAMGMT.COM",
+      "contract_start_date": "2030-02-05",
+      "contract_expiration_date": "2045-02-05",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Aug 1, 2033",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0048/47QSMS25D0048_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0048&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "SPRUNG INSTANT STRUCTURES INC",
+      "contract_number": "47QSWA19D005G",
+      "vendor_uei": "MJ4HA9C9YRS5",
+      "company_address": "5711 W DANNON WAY",
+      "company_city": "WEST JORDAN",
+      "company_state": "UT",
+      "company_zip": "84081-6200",
+      "primary_contact_phone": "8012801555",
+      "primary_contact_email": "lindsay.stone@sprung.com",
+      "website": "http://www.sprung.com",
+      "contract_start_date": "2029-04-02",
+      "contract_expiration_date": "2039-04-02",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D005G/47QSWA19D005G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D005G&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "TEMPORARY 123, INC",
+      "contract_number": "47QSMS25D00AM",
+      "vendor_uei": "REVFD44JLMV5",
+      "company_address": "2511 OCEAN FRONT WALK",
+      "company_city": "VENICE",
+      "company_state": "CA",
+      "company_zip": "90291-4308",
+      "primary_contact_phone": "3104155762",
+      "primary_contact_email": "bhamid@temporarykitchens123.com",
+      "website": "http://www.temporary123.com",
+      "contract_start_date": "2030-07-31",
+      "contract_expiration_date": "2045-07-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00AM/47QSMS25D00AM_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00AM&sin=532490P&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532490P"
+      ],
+      "primary_sin": "532490P",
+      "schedule_number": "MAS",
+      "company_name": "WILLIAMS SCOTSMAN INC",
+      "contract_number": "47QSWA23D006P",
+      "vendor_uei": "URUVKGK3FTV1",
+      "company_address": "4646 E VAN BUREN ST STE 400",
+      "company_city": "PHOENIX",
+      "company_state": "AZ",
+      "company_zip": "85008-6927",
+      "primary_contact_phone": "6093613071",
+      "primary_contact_email": "Jennifer.Renz@willscot.com",
+      "website": "http://www.willscot.com",
+      "contract_start_date": "2028-06-14",
+      "contract_expiration_date": "2043-06-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": "532490P ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D006P/47QSWA23D006P_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA23D006P/pricelist_47QSWA23D006P.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D006P&sin=532490P&src=elib&app=cat"
+      }
+    }
+  ]
+}

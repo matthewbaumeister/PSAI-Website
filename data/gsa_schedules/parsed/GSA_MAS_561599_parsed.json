@@ -1,0 +1,419 @@
+{
+  "sin_code": "561599",
+  "file_name": "GSA_MAS_561599_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:15.859044",
+  "sheets": {
+    "2025_11_05_11_34_33": {
+      "row_count": 18,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "ADVANCED DECISION VECTORS LLC",
+      "contract_number": "GS-10F-171AA",
+      "vendor_uei": "CNCTMKPZ3796",
+      "company_address": "5270 SHAWNEE RD",
+      "company_city": "ALEXANDRIA",
+      "company_state": "VA",
+      "company_zip": "22312-2378",
+      "primary_contact_phone": "7038541687",
+      "primary_contact_email": "david.harris@advancedvllc.com",
+      "website": "http://advancedvllc.com/",
+      "contract_start_date": "2028-05-13",
+      "contract_expiration_date": "2033-05-13",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "address_2": "STE 104",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS10F171AA/GS10F171AA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-10F-171AA/pricelist_GS-10F-171AA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-10F-171AA&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "BCD TRAVEL USA LLC",
+      "contract_number": "GS-33F-001GA",
+      "vendor_uei": "NDN5BR3KBY83",
+      "company_address": "2060 MOUNT PARAN RD NW STE 210",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30327-2935",
+      "primary_contact_phone": "9789065537",
+      "primary_contact_email": "lisa.longley@bcdtravel.com",
+      "website": "http://bcdtravel.com/gov",
+      "contract_start_date": "2026-10-12",
+      "contract_expiration_date": "2036-10-12",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F001GA/GS33F001GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-001GA&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "CORNERSTONE INFORMATION SYSTEMS, INC",
+      "contract_number": "GS-33F-0008W",
+      "vendor_uei": "C19TALWGSZ99",
+      "company_address": "304 W KIRKWOOD AVE APT 101",
+      "company_city": "BLOOMINGTON",
+      "company_state": "IN",
+      "company_zip": "47404",
+      "primary_contact_phone": "81233043617",
+      "primary_contact_email": "SMcDermott@ciswired.com",
+      "website": "http://www.ciswired.com/",
+      "contract_start_date": "2029-11-23",
+      "contract_expiration_date": "2029-11-23",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0008W/GS33F0008W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0008W&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "CRISIS24 INC",
+      "contract_number": "GS-33F-0003S",
+      "vendor_uei": "FZKHFJ67A4D9",
+      "company_address": "185 ADMIRAL COCHRANE DR STE 300",
+      "company_city": "ANNAPOLIS",
+      "company_state": "MD",
+      "company_zip": "21401-7569",
+      "primary_contact_phone": "8774544472",
+      "primary_contact_email": "snewton@dcciconsulting.com",
+      "website": "http://www.ijet.com",
+      "contract_start_date": "2025-11-08",
+      "contract_expiration_date": "2025-11-08",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0003S/GS33F0003S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0003S&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "EMPIRE HOSPITALITY LLC",
+      "contract_number": "GS-33F-009GA",
+      "vendor_uei": "UAF9VK2RN5U4",
+      "company_address": "901 OFFICERS ROW",
+      "company_city": "VANCOUVER",
+      "company_state": "WA",
+      "company_zip": "98661-3849",
+      "primary_contact_phone": "5416063718",
+      "primary_contact_email": "jhashey@ehotelgroup.com",
+      "website": "http://www.ehotelgroup.com",
+      "contract_start_date": "2027-03-06",
+      "contract_expiration_date": "2037-03-06",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F009GA/GS33F009GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-009GA&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "GMG MANAGEMENT CONSULTING INC.",
+      "contract_number": "GS-00F-117CA",
+      "vendor_uei": "HYFKWEQ8NM91",
+      "company_address": "5810 RIGGS RD",
+      "company_city": "HYATTSVILLE",
+      "company_state": "MD",
+      "company_zip": "20783-3234",
+      "primary_contact_phone": "4104616539",
+      "primary_contact_email": "GGRIFFITH@GMG-MGT.COM",
+      "website": "http://WWW.GMG-MGT.COM",
+      "contract_start_date": "2030-04-26",
+      "contract_expiration_date": "2035-04-26",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS00F117CA/GS00F117CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-00F-117CA&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "GOLDSPRING CONSULTING LLC",
+      "contract_number": "47QMCB22D000D",
+      "vendor_uei": "X668WFM4K1H5",
+      "company_address": "2609 IZORO BND",
+      "company_city": "CEDAR PARK",
+      "company_state": "TX",
+      "company_zip": "78613-1596",
+      "primary_contact_phone": "3364164425",
+      "primary_contact_email": "melissa@goldspringconsulting.com",
+      "website": "http://www.goldspringconsulting.com",
+      "contract_start_date": "2027-06-28",
+      "contract_expiration_date": "2042-06-28",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB22D000D/47QMCB22D000D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB22D000D&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "GREENLIGHT GROUP LLC",
+      "contract_number": "47QRAA22D00AN",
+      "vendor_uei": "QWM2D2ACD8F9",
+      "company_address": "15000 EMERALD COAST PKWY",
+      "company_city": "DESTIN",
+      "company_state": "FL",
+      "company_zip": "32541",
+      "primary_contact_phone": "8507373113",
+      "primary_contact_email": "stevek@usa-gl.com",
+      "website": "http://www.usa-gl.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2042-05-31",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA22D00AN/47QRAA22D00AN_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA22D00AN&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "KESSELRUN CORPORATE TRAVEL SOLUTIONS LLC",
+      "contract_number": "GS-33F-0025W",
+      "vendor_uei": "F7UJBQ1LWHN3",
+      "company_address": "8175 OVERVIEW CT",
+      "company_city": "ROSWELL",
+      "company_state": "GA",
+      "company_zip": "30076-3921",
+      "primary_contact_phone": "4047840311",
+      "primary_contact_email": "mbrennan@kesselrunconsulting.com",
+      "website": "http://www.kesselrunconsulting.com",
+      "contract_start_date": "2030-01-10",
+      "contract_expiration_date": "2030-01-10",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0025W/GS33F0025W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0025W&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "MLINQS, LLC",
+      "contract_number": "GS-33F-0007U",
+      "vendor_uei": "FYXQSLS7MH63",
+      "company_address": "8203 ROSELAND DR",
+      "company_city": "FAIRFAX STATION",
+      "company_state": "VA",
+      "company_zip": "22039-2535",
+      "primary_contact_phone": "3475262460",
+      "primary_contact_email": "benjamin.tingo@opexustech.com",
+      "website": "http://mlinqs.net/",
+      "contract_start_date": "2028-01-30",
+      "contract_expiration_date": "2028-01-30",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0007U/GS33F0007U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0007U&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "STARRY ASSOCIATES, INC",
+      "contract_number": "47QTCA20D00DG",
+      "vendor_uei": "C4MJUUVNQJJ8",
+      "company_address": "175 ADMIRAL COCHRANE DR STE 100",
+      "company_city": "ANNAPOLIS",
+      "company_state": "MD",
+      "company_zip": "21401-7378",
+      "primary_contact_phone": "4433785850",
+      "primary_contact_email": "sstarry@starry-associates.com",
+      "website": "http://www.starry-associates.com",
+      "contract_start_date": "2030-08-05",
+      "contract_expiration_date": "2040-08-05",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA20D00DG/47QTCA20D00DG_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QTCA20D00DG/pricelist_47QTCA20D00DG.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA20D00DG&sin=561599&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561599"
+      ],
+      "primary_sin": "561599",
+      "schedule_number": "MAS",
+      "company_name": "TRAVEL TECH CONSULTING, INC.",
+      "contract_number": "GS-33F-0029Y",
+      "vendor_uei": "VEUYQGP9ZKZ8",
+      "company_address": "951 OLD COUNTY RD # 157",
+      "company_city": "BELMONT",
+      "company_state": "CA",
+      "company_zip": "94002-2773",
+      "primary_contact_phone": "6503458510",
+      "primary_contact_email": "norm@traveltechnology.com",
+      "website": "http://www.traveltechnology.com",
+      "contract_start_date": "2027-05-21",
+      "contract_expiration_date": "2032-05-21",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561599.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0029Y/GS33F0029Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0029Y&sin=561599&src=elib&app=cat"
+      }
+    }
+  ]
+}

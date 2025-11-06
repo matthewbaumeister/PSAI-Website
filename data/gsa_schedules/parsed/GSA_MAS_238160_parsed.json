@@ -1,0 +1,1002 @@
+{
+  "sin_code": "238160",
+  "file_name": "GSA_MAS_238160_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:55.418993",
+  "sheets": {
+    "2025_11_05_11_08_22": {
+      "row_count": 38,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "A TEAM PACIFIC ROOFING INC",
+      "contract_number": "47QSMS24D00AP",
+      "vendor_uei": "H9HTJ3JKMZ74",
+      "company_address": "91-567 NUKUAWA ST",
+      "company_city": "KAPOLEI",
+      "company_state": "HI",
+      "company_zip": "96707-1801",
+      "primary_contact_phone": "8086828096",
+      "primary_contact_email": "jclark@usacom.org",
+      "website": "http://ateampacificroofing.com",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2044-07-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00AP/47QSMS24D00AP_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00AP&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "ABSOLUTE STORAGE, LLC",
+      "contract_number": "GS-07F-9481S",
+      "vendor_uei": "T2M6KVD8VXE5",
+      "company_address": "5806 E MINERAL ROAD",
+      "company_city": "GUADALUPE",
+      "company_state": "AZ",
+      "company_zip": "85283-4304",
+      "primary_contact_phone": "4807681618",
+      "primary_contact_email": "jennifer@absoluterv.com",
+      "website": "http://www.absoluterv.com",
+      "contract_start_date": "2026-05-14",
+      "contract_expiration_date": "2026-05-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9481S/GS07F9481S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9481S&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "ACE ROOF COATINGS, INC",
+      "contract_number": "GS-07F-177AA",
+      "vendor_uei": "HC97VH2FHKB8",
+      "company_address": "4821 GRISHAM DR",
+      "company_city": "ROWLETT",
+      "company_state": "TX",
+      "company_zip": "75088",
+      "primary_contact_phone": "9728640240",
+      "primary_contact_email": "emendel@arccoat.com",
+      "website": "http://WWW.ARCHITECTURALROOFCOAT.COM",
+      "contract_start_date": "2028-03-14",
+      "contract_expiration_date": "2033-03-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-177AA&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "ALPHA ROOFING SYSTEMS, LLC",
+      "contract_number": "47QSMS24D0008",
+      "vendor_uei": "HQ4VDCNVM4Y8",
+      "company_address": "2358 PERIMETER PARK DR STE 370",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30341-1330",
+      "primary_contact_phone": "4043575000",
+      "primary_contact_email": "Shawn@alphacommercialroofs.com",
+      "website": "http://alphacommercialroofs.com",
+      "contract_start_date": "2028-11-16",
+      "contract_expiration_date": "2043-11-16",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0008/47QSMS24D0008_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0008&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN CLASSIC CONSTRUCTION INC.",
+      "contract_number": "GS-07F-0239Y",
+      "vendor_uei": "M94HJK6TJWQ8",
+      "company_address": "21621 HEATHER LEE LN",
+      "company_city": "CHATSWORTH",
+      "company_state": "CA",
+      "company_zip": "91311-1366",
+      "primary_contact_phone": "8187007550",
+      "primary_contact_email": "mlubran@socal.rr.com",
+      "website": "http://www.americanclassicconstruction.com",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2032-01-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0239Y/GS07F0239Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0239Y&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "BEST CONTRACTING SERVICES, INC.",
+      "contract_number": "GS-07F-0422X",
+      "vendor_uei": "XMLMK96UYHL5",
+      "company_address": "19027 S HAMILTON AVE",
+      "company_city": "GARDENA",
+      "company_state": "CA",
+      "company_zip": "90248-4408",
+      "primary_contact_phone": "3103286969",
+      "primary_contact_email": "pbarnes@bestcontracting.com",
+      "website": "http://www.BESTcontracting.com",
+      "contract_start_date": "2026-04-03",
+      "contract_expiration_date": "2031-04-03",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0422X/GS07F0422X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0422X&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "BLUEFIN LLC",
+      "contract_number": "GS-07F-158BA",
+      "vendor_uei": "MDPZR6832GN3",
+      "company_address": "6312 S FIDDLERS GREEN CIR STE 10",
+      "company_city": "GREENWOOD VILLAGE",
+      "company_state": "CO",
+      "company_zip": "80111-4927",
+      "primary_contact_phone": "7135219797",
+      "primary_contact_email": "kmcalpin@mantisinnovation.com",
+      "website": "http://mantisinnovation.com/",
+      "contract_start_date": "2029-03-31",
+      "contract_expiration_date": "2034-03-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F158BA/GS07F158BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-158BA&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "BROTHERS ROOFING & CONSTRUCTION LLC",
+      "contract_number": "47QSMS24D0028",
+      "vendor_uei": "CPA2RUGE2RL6",
+      "company_address": "29 BIRCH ST",
+      "company_city": "LYNN",
+      "company_state": "MA",
+      "company_zip": "01902-1501",
+      "primary_contact_phone": "6172700461",
+      "primary_contact_email": "Brothersroofing15@gmail.com",
+      "website": "https://www.facebook.com/brothersroofingllc?mibextid=eQY6cl",
+      "contract_start_date": "2029-01-22",
+      "contract_expiration_date": "2044-01-22",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0028/47QSMS24D0028_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0028&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "ENFIELD ENTERPRISES LLC",
+      "contract_number": "GS-07F-012AA",
+      "vendor_uei": "HXMJA2V68HC3",
+      "company_address": "30 MAGAZINER PLACE",
+      "company_city": "SPRINGFIELD",
+      "company_state": "MA",
+      "company_zip": "01104-3328",
+      "primary_contact_phone": "4137882688",
+      "primary_contact_email": "ndangelo@enfieldenterprisesinc.com",
+      "website": "http://WWW.ENFIELDENTERPRISESINC.COM",
+      "contract_start_date": "2027-09-30",
+      "contract_expiration_date": "2032-09-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F012AA/GS07F012AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-012AA&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "FLANAGAN CONSTRUCTION, INC.",
+      "contract_number": "47QSMS25D009Y",
+      "vendor_uei": "X9R3CWCAM4T4",
+      "company_address": "9183 BELLEVUE HTS",
+      "company_city": "DUBUQUE",
+      "company_state": "IA",
+      "company_zip": "52003-9620",
+      "primary_contact_phone": "5635903167",
+      "primary_contact_email": "Bobntina1@msn.com",
+      "website": "https:/www.tfc-gnv.com/",
+      "contract_start_date": "2030-06-25",
+      "contract_expiration_date": "2045-06-25",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "GANAHL LUMBER COMPANY",
+      "contract_number": "GS-07F-0133U",
+      "vendor_uei": "Q3ANNJUPM776",
+      "company_address": "1220 E BALL RD",
+      "company_city": "ANAHEIM",
+      "company_state": "CA",
+      "company_zip": "92805-5921",
+      "primary_contact_phone": "7142392289",
+      "primary_contact_email": "johnlopez@ganahl.com",
+      "website": "http://www.ganahl.com",
+      "contract_start_date": "2027-12-31",
+      "contract_expiration_date": "2027-12-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0133U/GS07F0133U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0133U&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "GREENKOAT SOLUTIONS, LLC",
+      "contract_number": "47QSWA23D008X",
+      "vendor_uei": "DACAGN5FMSL7",
+      "company_address": "1040 S GAYLORD ST STE 55",
+      "company_city": "DENVER",
+      "company_state": "CO",
+      "company_zip": "80209-4636",
+      "primary_contact_phone": "7202545309",
+      "primary_contact_email": "dkeys@flexrockcoatings.com",
+      "website": "https://flexrockcoatings.com",
+      "contract_start_date": "2028-08-25",
+      "contract_expiration_date": "2043-08-25",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D008X/47QSWA23D008X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D008X&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "HARNESS ROOFING INC",
+      "contract_number": "47QSWA22D005C",
+      "vendor_uei": "N2NVX9G8W8G7",
+      "company_address": "415 S MAIN ST",
+      "company_city": "HARRISON",
+      "company_state": "AR",
+      "company_zip": "72601-5505",
+      "primary_contact_phone": "8707410245",
+      "primary_contact_email": "dwallin@harnessroofing.com",
+      "website": "https://www.harnessroofing.com",
+      "contract_start_date": "2027-05-12",
+      "contract_expiration_date": "2042-05-12",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D005C/47QSWA22D005C_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "HOUND ROOFING, INC.",
+      "contract_number": "47QSMS24D007S",
+      "vendor_uei": "HT1FH17HKES4",
+      "company_address": "3873 US HIGHWAY 421 N",
+      "company_city": "WILMINGTON",
+      "company_state": "NC",
+      "company_zip": "28401-9025",
+      "primary_contact_phone": "9107996723",
+      "primary_contact_email": "grempel@houndroofing.com",
+      "website": "https://houndroofing.com/",
+      "contract_start_date": "2029-05-29",
+      "contract_expiration_date": "2044-05-29",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D007S/47QSMS24D007S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D007S&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "INTERIOR ALASKA ROOFING INC",
+      "contract_number": "47QSWA23D0033",
+      "vendor_uei": "WCCCLZ2CTML9",
+      "company_address": "3790 SCHACHT ST",
+      "company_city": "FAIRBANKS",
+      "company_state": "AK",
+      "company_zip": "99701-7359",
+      "primary_contact_phone": "9074565545",
+      "primary_contact_email": "jclark@usacom.org",
+      "website": "http://www.interiorakroofing.com",
+      "contract_start_date": "2028-02-17",
+      "contract_expiration_date": "2043-02-17",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0033/47QSWA23D0033_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0033&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "JOINER SHEET METAL & ROOFING, INC.",
+      "contract_number": "47QSMS25D000Q",
+      "vendor_uei": "C2SVK7CRD8L1",
+      "company_address": "205 MADISON ST",
+      "company_city": "HIGHLAND",
+      "company_state": "IL",
+      "company_zip": "62249-1318",
+      "primary_contact_phone": "6186649488",
+      "primary_contact_email": "joseph@joinersmr.com",
+      "website": "http://www.joinersmr.com",
+      "contract_start_date": "2029-10-16",
+      "contract_expiration_date": "2044-10-16",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D000Q/47QSMS25D000Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D000Q&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "KYA SERVICES LLC",
+      "contract_number": "47QSMA20D08P7",
+      "vendor_uei": "NNWJHV8VLP55",
+      "company_address": "1800 E MCFADDEN AVE",
+      "company_city": "SANTA ANA",
+      "company_state": "CA",
+      "company_zip": "92705-4736",
+      "primary_contact_phone": "9494120561",
+      "primary_contact_email": "snewton@digitaldcc.net",
+      "website": "http://www.thekyagroup.com",
+      "contract_start_date": "2030-02-10",
+      "contract_expiration_date": "2040-02-10",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08P7/47QSMA20D08P7_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA20D08P7/pricelist_47QSMA20D08P7.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08P7&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "LIQUIFORM TECHNOLOGIES INC.",
+      "contract_number": "47QSMS24D00BW",
+      "vendor_uei": "VAZHN4JU73L3",
+      "company_address": "9757 7TH ST",
+      "company_city": "RANCHO CUCAMONGA",
+      "company_state": "CA",
+      "company_zip": "91730-5297",
+      "primary_contact_phone": "9512266609",
+      "primary_contact_email": "admin@weatherweld.com",
+      "website": "http://liquiform.com/",
+      "contract_start_date": "2029-08-29",
+      "contract_expiration_date": "2044-08-29",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "address_2": "SUITE 803",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00BW/47QSMS24D00BW_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00BW&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL BUILDING CONTRACTORS, INC.",
+      "contract_number": "GS-07F-0543T",
+      "vendor_uei": "KBWEAMANL2Z3",
+      "company_address": "2151 OLD COVINGTON HWY SW",
+      "company_city": "CONYERS",
+      "company_state": "GA",
+      "company_zip": "30012-4952",
+      "primary_contact_phone": "7708601780",
+      "primary_contact_email": "brittany@nbcworldwide.com",
+      "website": "http://www.nbcweatherproofing.com",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2027-08-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__23": "ew",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0543T/GS07F0543T_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0543T/pricelist_GS-07F-0543T.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0543T&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "NUGENERATION TECHNOLOGIES LLC",
+      "contract_number": "GS-07F-0252W",
+      "vendor_uei": "CJXLJMB8S231",
+      "company_address": "1155 PARK AVE",
+      "company_city": "EMERYVILLE",
+      "company_state": "CA",
+      "company_zip": "94608-3631",
+      "primary_contact_phone": "8774544472",
+      "primary_contact_email": "snewton@dcciconsulting.com",
+      "website": "http://www.nugentec.com",
+      "contract_start_date": "2030-02-28",
+      "contract_expiration_date": "2030-02-28",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0252W/GS07F0252W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0252W&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "PACIFIC TECH CONSTRUCTION INC",
+      "contract_number": "GS-07F-0509Y",
+      "vendor_uei": "NPRHJXMJ1JS4",
+      "company_address": "1302 WALNUT ST",
+      "company_city": "KELSO",
+      "company_state": "WA",
+      "company_zip": "98626-2719",
+      "primary_contact_phone": "3604148084",
+      "primary_contact_email": "doug@pactechgroup.com",
+      "website": "http://www.pacifictech.info",
+      "contract_start_date": "2027-08-08",
+      "contract_expiration_date": "2032-08-08",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0509Y/GS07F0509Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0509Y/pricelist_GS-07F-0509Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0509Y&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "RIDGELINE GENERAL CONTRACTORS, INC.",
+      "contract_number": "47QSMS25D0076",
+      "vendor_uei": "KDTDH4EFAN22",
+      "company_address": "4614 SUNDANCE TRAIL",
+      "company_city": "INDIANAPOLIS",
+      "company_state": "IN",
+      "company_zip": "46239-9704",
+      "primary_contact_phone": "3179673539",
+      "primary_contact_email": "beth@rideglinegc.net",
+      "website": "http://www.ridgelinegc.net",
+      "contract_start_date": "2030-04-07",
+      "contract_expiration_date": "2045-04-07",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0076/47QSMS25D0076_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0076&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "RIVER CITY ENTERPRISES, LLC",
+      "contract_number": "47QSMS25D004V",
+      "vendor_uei": "X9GYFJWQECG5",
+      "company_address": "39 E 3RD ST APT D",
+      "company_city": "RICHMOND",
+      "company_state": "VA",
+      "company_zip": "23224-4169",
+      "primary_contact_phone": "8043254010",
+      "primary_contact_email": "eugene@rivercityenterprises.net",
+      "website": "http://www.rivercityenterprises.net",
+      "contract_start_date": "2030-02-17",
+      "contract_expiration_date": "2045-02-17",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D004V/47QSMS25D004V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D004V&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "ROOF TECHNOLOGY PARTNERS, LLC",
+      "contract_number": "GS-07F-054DA",
+      "vendor_uei": "DKM8AG9MMBN5",
+      "company_address": "323 BELL PARK DR",
+      "company_city": "WOODSTOCK",
+      "company_state": "GA",
+      "company_zip": "30188-1663",
+      "primary_contact_phone": "6784015200",
+      "primary_contact_email": "scott@rooftechnologypartners.com",
+      "website": "http://www.rooftechnologypartners.com",
+      "contract_start_date": "2026-01-06",
+      "contract_expiration_date": "2036-01-06",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F054DA/GS07F054DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-054DA/pricelist_GS-07F-054DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-054DA&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "ROOFING RESOURCES INC",
+      "contract_number": "47QSMS24D002W",
+      "vendor_uei": "LN4LMBCFJHN7",
+      "company_address": "423 MCFARLAN RD STE 100",
+      "company_city": "KENNETT SQUARE",
+      "company_state": "PA",
+      "company_zip": "19348",
+      "primary_contact_phone": "6105584000",
+      "primary_contact_email": "jcordrey@teamrri.com",
+      "website": "http://www.teamrri.com",
+      "contract_start_date": "2029-02-05",
+      "contract_expiration_date": "2044-02-05",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D002W/47QSMS24D002W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D002W&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "TECTA AMERICA CORP",
+      "contract_number": "GS-07F-0405U",
+      "vendor_uei": "G12FGVBGCKL3",
+      "company_address": "9450 BRYN MAWR AVE STE 500",
+      "company_city": "ROSEMONT",
+      "company_state": "IL",
+      "company_zip": "60018-5274",
+      "primary_contact_phone": "4109053669",
+      "primary_contact_email": "jphillips@tectaamerica.com",
+      "website": "http://www.tectaamerica.com",
+      "contract_start_date": "2028-06-30",
+      "contract_expiration_date": "2028-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0405U/GS07F0405U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0405U&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "THE GARLAND COMPANY, INC.",
+      "contract_number": "47QSWA20D002X",
+      "vendor_uei": "HY14EPYYSZC5",
+      "company_address": "3800 E 91ST ST",
+      "company_city": "CLEVELAND",
+      "company_state": "OH",
+      "company_zip": "44105-2103",
+      "primary_contact_phone": "2164303613",
+      "primary_contact_email": "srojek@garlandind.com",
+      "website": "http://www.garlandco.com",
+      "contract_start_date": "2029-12-31",
+      "contract_expiration_date": "2039-12-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D002X/47QSWA20D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D002X&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "TOPPS PRODUCTS INC",
+      "contract_number": "47QSMS25D00A5",
+      "vendor_uei": "NLAJV2G8NMS6",
+      "company_address": "3201 E 66TH ST",
+      "company_city": "CLEVELAND",
+      "company_state": "OH",
+      "company_zip": "44127",
+      "primary_contact_phone": "9136852500",
+      "primary_contact_email": "youchi@toppsproducts.com",
+      "website": "http://www.toppsproducts.com",
+      "contract_start_date": "2030-07-08",
+      "contract_expiration_date": "2045-07-08",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00A5/47QSMS25D00A5_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00A5&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "UNICARE BUILDING MAINTENANCE, INC",
+      "contract_number": "47QSMS24D0027",
+      "vendor_uei": "GHXRMYW4EBH5",
+      "company_address": "3007 SKYWAY CIR N STE 100",
+      "company_city": "IRVING",
+      "company_state": "TX",
+      "company_zip": "75038-3565",
+      "primary_contact_phone": "4694875152",
+      "primary_contact_email": "andrew.q@unicaremaintenance.com",
+      "website": "https://unicaremaintenance.com/",
+      "contract_start_date": "2029-01-21",
+      "contract_expiration_date": "2044-01-21",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0027/47QSMS24D0027_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0027&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "VETERAN BUILDERS LLC",
+      "contract_number": "47QSMS25D0063",
+      "vendor_uei": "PULVBVXPEVL5",
+      "company_address": "2670 OLD JACKSON RD",
+      "company_city": "LOCUST GROVE",
+      "company_state": "GA",
+      "company_zip": "30248-2755",
+      "primary_contact_phone": "9045631610",
+      "primary_contact_email": "bill@vet-builders.com",
+      "website": "https://www.vet-builders.com/",
+      "contract_start_date": "2030-03-13",
+      "contract_expiration_date": "2045-03-13",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0063/47QSMS25D0063_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0063&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "VGC & COMPANY, INC.",
+      "contract_number": "47QSMS25D0088",
+      "vendor_uei": "DFKTMQNTAW95",
+      "company_address": "1846 LOCKHILL SELMA RD STE 106",
+      "company_city": "SAN ANTONIO",
+      "company_state": "TX",
+      "company_zip": "78213-1551",
+      "primary_contact_phone": "2106681385",
+      "primary_contact_email": "harold@vgcres.com",
+      "website": "http://www.vgcres.com",
+      "contract_start_date": "2030-04-30",
+      "contract_expiration_date": "2045-04-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0088/47QSMS25D0088_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0088&sin=238160&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "238160"
+      ],
+      "primary_sin": "238160",
+      "schedule_number": "MAS",
+      "company_name": "YELLOWFIN ROOFING LLC",
+      "contract_number": "47QSMS25D00BH",
+      "vendor_uei": "XQULBMD573J4",
+      "company_address": "3903 MILL CREEK RD",
+      "company_city": "HOCKESSIN",
+      "company_state": "DE",
+      "company_zip": "19707-9105",
+      "primary_contact_phone": "3024336655",
+      "primary_contact_email": "Dan@Yellowfinco.com",
+      "contract_start_date": "2030-08-26",
+      "contract_expiration_date": "2045-08-26",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 238160.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s"
+      }
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "sin_code": "541990IPS",
+  "file_name": "GSA_MAS_541990IPS_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:56.745468",
+  "sheets": {
+    "2025_11_05_11_24_38": {
+      "row_count": 9,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "541990IPS"
+      ],
+      "primary_sin": "541990IPS",
+      "schedule_number": "MAS",
+      "company_name": "EXPERIAN RESERVED RESPONSE, INC",
+      "contract_number": "GS-23F-0010Y",
+      "vendor_uei": "MG43NGCPAWY1",
+      "company_address": "475 ANTON BLVD",
+      "company_city": "COSTA MESA",
+      "company_state": "CA",
+      "company_zip": "92626-7037",
+      "primary_contact_phone": "6612297103",
+      "primary_contact_email": "mary.daniels@experian.com",
+      "website": "http://www.experian.com",
+      "contract_start_date": "2027-03-01",
+      "contract_expiration_date": "2032-03-01",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Identity Protection Services",
+        "source": "MAS",
+        "category": "541990IPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F0010Y/GS23F0010Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-23F-0010Y&sin=541990IPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541990IPS"
+      ],
+      "primary_sin": "541990IPS",
+      "schedule_number": "MAS",
+      "company_name": "IDENTITY THEFT GUARD SOLUTIONS, INC.",
+      "contract_number": "GS-23F-0037T",
+      "vendor_uei": "W87HKT8TQJP5",
+      "company_address": "4145 SW WATSON AVE STE 400",
+      "company_city": "BEAVERTON",
+      "company_state": "OR",
+      "company_zip": "97005-2158",
+      "primary_contact_phone": "9712457385",
+      "primary_contact_email": "ikelly@zerofox.com",
+      "website": "http://www.idexpertscorp.com/",
+      "contract_start_date": "2027-03-25",
+      "contract_expiration_date": "2027-03-25",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Identity Protection Services",
+        "source": "MAS",
+        "category": "541990IPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F0037T/GS23F0037T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-23F-0037T&sin=541990IPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541990IPS"
+      ],
+      "primary_sin": "541990IPS",
+      "schedule_number": "MAS",
+      "company_name": "SONTIQ, INC.",
+      "contract_number": "GS-23F-0125S",
+      "vendor_uei": "D374P1JKV896",
+      "company_address": "555 W ADAMS ST",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60661-3719",
+      "primary_contact_phone": "3854391467",
+      "primary_contact_email": "psir@transunion.com",
+      "website": "http://WWW.SONTIQ.COM",
+      "contract_start_date": "2026-03-15",
+      "contract_expiration_date": "2026-03-15",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Identity Protection Services",
+        "source": "MAS",
+        "category": "541990IPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F0125S/GS23F0125S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-23F-0125S&sin=541990IPS&src=elib&app=cat"
+      }
+    }
+  ]
+}

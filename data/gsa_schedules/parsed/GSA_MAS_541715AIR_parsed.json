@@ -1,0 +1,319 @@
+{
+  "sin_code": "541715AIR",
+  "file_name": "GSA_MAS_541715AIR_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:16.592560",
+  "sheets": {
+    "2025_11_05_11_26_59": {
+      "row_count": 15,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "AMPERSAND SOLUTIONS GROUP INC",
+      "contract_number": "47QRAA24D007J",
+      "vendor_uei": "FJFHALLBGLW3",
+      "company_address": "400 MERIDIAN ST N STE 106",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35801-4700",
+      "primary_contact_phone": "2564698663",
+      "primary_contact_email": "chuck.speaks@ampsg.com",
+      "website": "http://www.ampsg.com",
+      "contract_start_date": "2029-05-01",
+      "contract_expiration_date": "2044-05-01",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA24D007J/47QRAA24D007J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA24D007J&sin=541715AIR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "CRUZ ASSOCIATES INC.",
+      "contract_number": "47QRAA25D00DS",
+      "vendor_uei": "M5KCH6GCL4Y7",
+      "company_address": "6515 GEORGE WASHINGTON MEM HWY S",
+      "company_city": "YORKTOWN",
+      "company_state": "VA",
+      "company_zip": "23692-2182",
+      "primary_contact_phone": "7578337538",
+      "primary_contact_email": "brian.thompson@cruzinc.us",
+      "website": "www.cruzinc.us",
+      "contract_start_date": "2030-09-21",
+      "contract_expiration_date": "2045-09-21",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "CRUZ ASSOCIATES INC.",
+      "contract_number": "GS-10F-0379U",
+      "vendor_uei": "M5KCH6GCL4Y7",
+      "company_address": "6515 GEORGE WASHINGTON MEM HWY S",
+      "company_city": "YORKTOWN",
+      "company_state": "VA",
+      "company_zip": "23692-2182",
+      "primary_contact_phone": "7578337538",
+      "primary_contact_email": "greg.stewart@cruzinc.us",
+      "website": "https://cruzinc.us",
+      "contract_start_date": "2028-09-29",
+      "contract_expiration_date": "2028-09-29",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS10F0379U/GS10F0379U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-10F-0379U&sin=541715AIR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "HEPBURN AND SONS LLC",
+      "contract_number": "47QRAA25D001E",
+      "vendor_uei": "TLLAP6FKHA99",
+      "company_address": "9200 CHURCH ST STE 302",
+      "company_city": "MANASSAS",
+      "company_state": "VA",
+      "company_zip": "20110-5561",
+      "primary_contact_phone": "7033663434",
+      "primary_contact_email": "eric.hepburn@hepburnandsons.com",
+      "website": "http://www.hepburnandsons.com",
+      "contract_start_date": "2029-10-30",
+      "contract_expiration_date": "2044-10-30",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA25D001E/47QRAA25D001E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA25D001E&sin=541715AIR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "HUMMINGBIRD AERO LLC",
+      "contract_number": "47QRAA25D00E6",
+      "vendor_uei": "YPFULM5YHQ91",
+      "company_address": "155 W 3560 S STE 100",
+      "company_city": "SOUTH SALT LAKE",
+      "company_state": "UT",
+      "company_zip": "84115-4344",
+      "primary_contact_phone": "8056304496",
+      "primary_contact_email": "bbarker@hummingbird-aero.com",
+      "website": "hummingbird-aero.com",
+      "contract_start_date": "2030-09-28",
+      "contract_expiration_date": "2045-09-28",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "STASCH ENTERPRISES, INC.",
+      "contract_number": "47QRAA21D007J",
+      "vendor_uei": "KEKZL5VMPJM6",
+      "company_address": "42257 BIRD HAVEN DR",
+      "company_city": "LEONARDTOWN",
+      "company_state": "MD",
+      "company_zip": "20650-3628",
+      "primary_contact_phone": "3014814428",
+      "primary_contact_email": "slasoski@stasch-inc.com",
+      "website": "http://www.stasch-inc.com",
+      "contract_start_date": "2026-06-30",
+      "contract_expiration_date": "2041-06-30",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA21D007J/47QRAA21D007J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA21D007J&sin=541715AIR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "SUMARIA SYSTEMS, LLC",
+      "contract_number": "47QTCA21D00EA",
+      "vendor_uei": "E5R8L9CN3JG5",
+      "company_address": "8 ESSEX CENTER DRIVE, 2ND FLOOR,",
+      "company_city": "PEABODY",
+      "company_state": "MA",
+      "company_zip": "01960-2964",
+      "primary_contact_phone": "9787394200",
+      "primary_contact_email": "bdawson@sumaria.com",
+      "website": "http://www.sumariasystems.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2041-08-31",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA21D00EA/47QTCA21D00EA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA21D00EA&sin=541715AIR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "TORCH TECHNOLOGIES INC",
+      "contract_number": "47QRAA23D007A",
+      "vendor_uei": "YA63J5PVEZE6",
+      "company_address": "4090 MEMORIAL PKWY SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35802-1382",
+      "primary_contact_phone": "2563197422",
+      "primary_contact_email": "Molly.cook@torchtechnologies.com",
+      "website": "http://www.torchtechnologies.com",
+      "contract_start_date": "2028-06-06",
+      "contract_expiration_date": "2043-06-06",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA23D007A/47QRAA23D007A_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QRAA23D007A/pricelist_47QRAA23D007A.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA23D007A&sin=541715AIR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541715AIR"
+      ],
+      "primary_sin": "541715AIR",
+      "schedule_number": "MAS",
+      "company_name": "WRIGHT BROTHERS INSTITUTE INC",
+      "contract_number": "47QRAA24D0044",
+      "vendor_uei": "KKMYW4L86V63",
+      "company_address": "5000 SPRINGFIELD ST",
+      "company_city": "DAYTON",
+      "company_state": "OH",
+      "company_zip": "45431-1386",
+      "primary_contact_phone": "9374248662",
+      "primary_contact_email": "rob.williamson@wbi-innovates.com",
+      "website": "https://www.wbi-innovates.com/",
+      "contract_start_date": "2029-02-22",
+      "contract_expiration_date": "2044-02-22",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Technical and Engineering Services (non",
+        "source": "MAS",
+        "category": "541715AIR ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA24D0044/47QRAA24D0044_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA24D0044&sin=541715AIR&src=elib&app=cat"
+      }
+    }
+  ]
+}

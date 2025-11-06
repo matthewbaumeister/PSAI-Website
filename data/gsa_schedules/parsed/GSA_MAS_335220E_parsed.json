@@ -1,0 +1,360 @@
+{
+  "sin_code": "335220E",
+  "file_name": "GSA_MAS_335220E_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:19.145484",
+  "sheets": {
+    "2025_11_05_11_15_21": {
+      "row_count": 16,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "AIRDOCTOR, LLC",
+      "contract_number": "47QSMA23D08PG",
+      "vendor_uei": "UDQDSLJE3126",
+      "company_address": "14724 VENTURA BLVD FL 200",
+      "company_city": "SHERMAN OAKS",
+      "company_state": "CA",
+      "company_zip": "91403-3514",
+      "primary_contact_phone": "8182172553",
+      "primary_contact_email": "Jsweet@idealliving.com",
+      "website": "http://www.airdoctorpro.com",
+      "contract_start_date": "2028-04-02",
+      "contract_expiration_date": "2043-04-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08PG/47QSMA23D08PG_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08PG&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "ALLIANCE LAUNDRY SYSTEMS LLC",
+      "contract_number": "47QSHA19D004A",
+      "vendor_uei": "KMMWCAJYYE23",
+      "company_address": "221 SHEPARD ST",
+      "company_city": "RIPON",
+      "company_state": "WI",
+      "company_zip": "54971-1390",
+      "primary_contact_phone": "9207481671",
+      "primary_contact_email": "susan.peppler@alliancels.com",
+      "website": "http://www.alliancelaundry.com",
+      "contract_start_date": "2029-06-17",
+      "contract_expiration_date": "2039-06-17",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D004A/47QSHA19D004A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D004A&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "AMALGAMATED SERVICES, INC.",
+      "contract_number": "GS-21F-0118Y",
+      "vendor_uei": "D3NYX5JPKME5",
+      "company_address": "21024 S 80TH AVE",
+      "company_city": "FRANKFORT",
+      "company_state": "IL",
+      "company_zip": "60423-9186",
+      "primary_contact_phone": "8154648447",
+      "primary_contact_email": "kriffice@am-serviceinc.com",
+      "website": "https://www.am-serviceinc.com/",
+      "contract_start_date": "2027-06-13",
+      "contract_expiration_date": "2032-06-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0118Y/GS21F0118Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-21F-0118Y/pricelist_GS-21F-0118Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0118Y&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "BABCO INTERNATIONAL INC",
+      "contract_number": "47QSWA18D001H",
+      "vendor_uei": "MU77BJ5D4JW5",
+      "company_address": "1931 W GRANT RD",
+      "company_city": "TUCSON",
+      "company_state": "AZ",
+      "company_zip": "85745-1104",
+      "primary_contact_phone": "5206287596",
+      "primary_contact_email": "betsy@babcotucson.com",
+      "website": "HTTP://WWW.BABCOTUCSON.COM",
+      "contract_start_date": "2028-04-30",
+      "contract_expiration_date": "2038-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "address_2": "STE 320",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001H/47QSWA18D001H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001H&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "EXPORT 220VOLT INC.",
+      "contract_number": "GS-21F-029DA",
+      "vendor_uei": "F5DFMLGS8YM1",
+      "company_address": "5810 HILLCROFT ST",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77036-3302",
+      "primary_contact_phone": "7137892220",
+      "primary_contact_email": "sales@export220volt.com",
+      "website": "http://www.export220volt.com",
+      "contract_start_date": "2026-05-19",
+      "contract_expiration_date": "2036-05-19",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F029DA/GS21F029DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-029DA&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "INDOFF, LLC",
+      "contract_number": "47QSHA18D000W",
+      "vendor_uei": "M5XKJ7HQ8SK9",
+      "company_address": "11816 LACKLAND RD",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63146-4268",
+      "primary_contact_phone": "8008433714",
+      "primary_contact_email": "absocoldgsa@indoff.com",
+      "website": "http://www.absocold.com",
+      "contract_start_date": "2028-03-14",
+      "contract_expiration_date": "2038-03-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D000W/47QSHA18D000W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D000W&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "LOGISALL USA CORP",
+      "contract_number": "47QSMS25D00BF",
+      "vendor_uei": "DP9VGEKBGLM7",
+      "company_address": "96 HALA BAMA DR",
+      "company_city": "SHORTER",
+      "company_state": "AL",
+      "company_zip": "36075-4210",
+      "primary_contact_phone": "3347824470",
+      "primary_contact_email": "sungoh@logisallusa.com",
+      "website": "http://www.logisall.com/en/sub/company/group.asp",
+      "contract_start_date": "2030-08-14",
+      "contract_expiration_date": "2045-08-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00BF/47QSMS25D00BF_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00BF&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "PIRAEUS INTERNATIONAL, INC",
+      "contract_number": "47QSMA23D08NR",
+      "vendor_uei": "ZAK6BBMNK115",
+      "company_address": "3909 EASTERN AVE",
+      "company_city": "BALTIMORE",
+      "company_state": "MD",
+      "company_zip": "21224",
+      "primary_contact_phone": "4106754696",
+      "primary_contact_email": "abouloubassis@piraeusintl.com",
+      "website": "http://www.piraeusintl.com",
+      "contract_start_date": "2028-02-06",
+      "contract_expiration_date": "2043-02-06",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08NR/47QSMA23D08NR_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08NR&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "ST&T ELECTRIC CORP.",
+      "contract_number": "47QTCA22D005A",
+      "vendor_uei": "NDBJMGHR7Z77",
+      "company_address": "1F, 18, LANE 31, SEC. 1, HUANDON",
+      "company_city": "TAINAN CITY",
+      "company_zip": "74146",
+      "primary_contact_phone": "886932006110",
+      "primary_contact_email": "tony.li@stt.com.tw",
+      "website": "http://www.stt.com.tw/",
+      "contract_start_date": "2027-03-01",
+      "contract_expiration_date": "2042-03-01",
+      "company_country": "TAIWAN",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA22D005A/47QTCA22D005A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA22D005A&sin=335220E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220E"
+      ],
+      "primary_sin": "335220E",
+      "schedule_number": "MAS",
+      "company_name": "SUPPLY KING USA, LLC",
+      "contract_number": "47QSHA22D0022",
+      "vendor_uei": "F886DTPP1W48",
+      "company_address": "55 OLD NYACK TPKE STE 210",
+      "company_city": "NANUET",
+      "company_state": "NY",
+      "company_zip": "10954-2450",
+      "primary_contact_phone": "9172689222",
+      "primary_contact_email": "sales@supplykingusa.com",
+      "website": "http://www.supplykingusa.com",
+      "contract_start_date": "2027-06-30",
+      "contract_expiration_date": "2042-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "335220E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D0022/47QSHA22D0022_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D0022&sin=335220E&src=elib&app=cat"
+      }
+    }
+  ]
+}

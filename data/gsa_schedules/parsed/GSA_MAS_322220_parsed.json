@@ -1,0 +1,332 @@
+{
+  "sin_code": "322220",
+  "file_name": "GSA_MAS_322220_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:31.952454",
+  "sheets": {
+    "2025_11_05_11_16_02": {
+      "row_count": 15,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN PACKAGING I, INC.",
+      "contract_number": "47QSEA20D003D",
+      "vendor_uei": "D4KJZJDTA4V6",
+      "company_address": "363 WATERS EDGE",
+      "company_city": "AUBURN",
+      "company_state": "NY",
+      "company_zip": "13021-8306",
+      "primary_contact_phone": "3152534809",
+      "primary_contact_email": "turbo1407@aol.com",
+      "website": "http://WWW.GSAADVANTAGE.GOV",
+      "contract_start_date": "2030-01-13",
+      "contract_expiration_date": "2040-01-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D003D/47QSEA20D003D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D003D&sin=322220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN VETERANS GROUP, LLC",
+      "contract_number": "GS-07F-0515X",
+      "vendor_uei": "NXVXBWU7ULK6",
+      "company_address": "214 PARK RD",
+      "company_city": "RIVA",
+      "company_state": "MD",
+      "company_zip": "21140",
+      "primary_contact_phone": "8004129994",
+      "primary_contact_email": "am.vet@hotmail.com",
+      "website": "http://americanveteransgroup.com",
+      "contract_start_date": "2026-05-31",
+      "contract_expiration_date": "2031-05-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0515X&sin=322220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "CLEAN EARTH SYSTEMS, INC.",
+      "contract_number": "47QSEA24D0005",
+      "vendor_uei": "N4LSYSWJLWG7",
+      "company_address": "101 E KENNEDY BLVD",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33602-5151",
+      "primary_contact_phone": "8139306831",
+      "primary_contact_email": "stephp@cleanearthsystems.com",
+      "website": "http://www.cleanearthsystems.com",
+      "contract_start_date": "2028-10-16",
+      "contract_expiration_date": "2043-10-16",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "address_2": "STE 3170",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA24D0005/47QSEA24D0005_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA24D0005&sin=322220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "DIVINE IMAGING INC.",
+      "contract_number": "47QSWA19D002X",
+      "vendor_uei": "LGMVH2NYJH38",
+      "company_address": "21323 PACIFIC COAST HWY STE 101",
+      "company_city": "MALIBU",
+      "company_state": "CA",
+      "company_zip": "90265-5202",
+      "primary_contact_phone": "3105794000",
+      "primary_contact_email": "kim@divineimaging.com",
+      "website": "https://www.divineImaging.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2039-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002X/47QSWA19D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002X&sin=322220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=322220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "JEMNI INC",
+      "contract_number": "GS-02F-040GA",
+      "vendor_uei": "X2BKMNKEFKX5",
+      "company_address": "8191 WILSHIRE LAKES BLVD",
+      "company_city": "NAPLES",
+      "company_state": "FL",
+      "company_zip": "34109-0796",
+      "primary_contact_phone": "6126444277",
+      "primary_contact_email": "brandon@jemniinc.com",
+      "website": "http://www.jemniinc.com",
+      "contract_start_date": "2027-06-08",
+      "contract_expiration_date": "2037-06-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F040GA/GS02F040GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-040GA&sin=322220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "M-PAK, INC.",
+      "contract_number": "47QSEA20D0046",
+      "vendor_uei": "QGM1VMELTHF1",
+      "company_address": "11255 CAMP BOWIE WEST BLVD",
+      "company_city": "ALEDO",
+      "company_state": "TX",
+      "company_zip": "76008-3692",
+      "primary_contact_phone": "4138291058",
+      "primary_contact_email": "justin@m-pakinc.com",
+      "website": "http://www.m-pakinc.com",
+      "contract_start_date": "2025-11-28",
+      "contract_expiration_date": "2040-02-18",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "address_2": "STE 111",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D0046/47QSEA20D0046_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D0046&sin=322220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "TIGERPAK INC",
+      "contract_number": "GS-02F-0206W",
+      "vendor_uei": "HKPFNGJB3LF9",
+      "company_address": "10 CAESAR PL",
+      "company_city": "MOONACHIE",
+      "company_state": "NJ",
+      "company_zip": "07074-1701",
+      "primary_contact_phone": "2014383515",
+      "primary_contact_email": "pharencak@lpsind.com",
+      "website": "http://www.tigerpak.com",
+      "contract_start_date": "2030-07-29",
+      "contract_expiration_date": "2030-07-29",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0206W/GS02F0206W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0206W&sin=322220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "322220"
+      ],
+      "primary_sin": "322220",
+      "schedule_number": "MAS",
+      "company_name": "USVETSERV, LLC",
+      "contract_number": "47QSWA22D0012",
+      "vendor_uei": "FJJXT471UM24",
+      "company_address": "355 ENGLISH OAK RD",
+      "company_city": "SIMPSONVILLE",
+      "company_state": "SC",
+      "company_zip": "29681-5106",
+      "primary_contact_phone": "8642169881",
+      "primary_contact_email": "MarcBrewer@USVetServ.com",
+      "website": "http://www.USVetServ.com",
+      "contract_start_date": "2026-11-07",
+      "contract_expiration_date": "2041-11-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Packaging",
+        "source": "MAS",
+        "category": 322220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0012/47QSWA22D0012_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0012&sin=322220&src=elib&app=cat"
+      }
+    }
+  ]
+}

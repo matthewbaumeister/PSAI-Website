@@ -56,11 +56,11 @@ async function main() {
     const mappedTopics = rawTopics.map((topic: any) => mapToSupabaseColumns(topic));
     
     // Smart upsert
-    const { inserted, updated, skipped, errors } = await smartUpsertTopics(mappedTopics);
-    
-    // Process instruction documents
-    const instructionService = new InstructionDocumentService();
-    await instructionService.processQueuedDocuments(25);
+    const { newRecords: inserted, updatedRecords: updated, preservedRecords: skipped } = await smartUpsertTopics(mappedTopics, {
+      scraperType: 'active',
+      logFn: (msg: string) => console.log(`[GitHub Actions] ${msg}`)
+    });
+    const errors = 0;
     
     const { count: countAfter } = await supabase
       .from('sbir_final')
@@ -77,7 +77,7 @@ async function main() {
           records_found: rawTopics.length,
           records_inserted: inserted,
           records_updated: updated,
-          records_errors: errors.length
+          records_errors: errors
         })
         .eq('id', logEntry.id);
     }
@@ -92,7 +92,7 @@ async function main() {
         new_topics: inserted,
         updated_topics: updated,
         skipped: skipped,
-        errors: errors.length,
+        errors: errors,
         total_in_db: countAfter || 0
       }
     });

@@ -14,6 +14,8 @@
     "scrape:army-innovation:active": "tsx src/lib/army-xtech-scraper.ts active",
     "scrape:congress-trades:historical": "tsx src/lib/congressional-trades-scraper.ts historical",
     "scrape:congress-trades:daily": "tsx src/lib/congressional-trades-scraper.ts daily",
+    "scrape:congress-trades:monthly": "bash scripts/scrape_congress_trades_monthly.sh",
+    "test:congress-trades:monthly": "bash scripts/scrape_congress_trades_monthly.sh",
     "check:congress-trades": "tsx check-congress-status.ts",
     "scrape:mantech:news": "tsx src/scripts/mantech-news-scraper.ts",
     "scrape:mantech:historical": "tsx src/scripts/mantech-historical-scraper.ts",

@@ -1,0 +1,596 @@
+{
+  "sin_code": "333923S",
+  "file_name": "GSA_MAS_333923S_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:19.120251",
+  "sheets": {
+    "2025_11_05_11_15_04": {
+      "row_count": 24,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "4TAS LLC",
+      "contract_number": "47QSMS25D005Q",
+      "vendor_uei": "YDX1CLHH6U18",
+      "company_address": "2942 BELLS RD",
+      "company_city": "RICHMOND",
+      "company_state": "VA",
+      "company_zip": "23234-1606",
+      "primary_contact_phone": "8042481010",
+      "primary_contact_email": "taddison@4tasllc.com",
+      "website": "http://www.4tasllc.com",
+      "contract_start_date": "2030-03-05",
+      "contract_expiration_date": "2045-03-05",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D005Q/47QSMS25D005Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D005Q&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "ALDEN EQUIPMENT, INC.",
+      "contract_number": "47QSWA20D0044",
+      "vendor_uei": "JQD3SPYMVJU7",
+      "company_address": "66 1/2 BRIDGE ST",
+      "company_city": "AMSTERDAM",
+      "company_state": "NY",
+      "company_zip": "12010-5537",
+      "primary_contact_phone": "5188426704",
+      "primary_contact_email": "aldenandris@gmail.com",
+      "website": "http://www.aldenequipment.com",
+      "contract_start_date": "2030-02-02",
+      "contract_expiration_date": "2040-02-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D0044/47QSWA20D0044_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D0044&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN MATERIAL HANDLING, INC.",
+      "contract_number": "47QMCA18D000G",
+      "vendor_uei": "ZD8VMG7R9VP1",
+      "company_address": "3651 MARS HILL RD",
+      "company_city": "WATKINSVILLE",
+      "company_state": "GA",
+      "company_zip": "30677-5986",
+      "primary_contact_phone": "7703818436",
+      "primary_contact_email": "GSA@AMH-EQ.COM",
+      "website": "http://www.amh-eq.com",
+      "contract_start_date": "2028-04-19",
+      "contract_expiration_date": "2038-04-19",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "address_2": "STE 200A",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA18D000G/47QMCA18D000G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA18D000G&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "DIVERSE SUPPLY, INC",
+      "contract_number": "47QSWA22D006L",
+      "vendor_uei": "K6BNN2T9EDF9",
+      "company_address": "980 SIESTA DR",
+      "company_city": "WEST PALM BEACH",
+      "company_state": "FL",
+      "company_zip": "33415-1312",
+      "primary_contact_phone": "8889026430",
+      "primary_contact_email": "sales@diversesupply.net",
+      "website": "http://www.platformsandladders.com/",
+      "contract_start_date": "2027-06-28",
+      "contract_expiration_date": "2042-06-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D006L/47QSWA22D006L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D006L&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "FEDERAL CONTRACTS LLC",
+      "contract_number": "GS-03F-113DA",
+      "vendor_uei": "TK67EL9NPMD9",
+      "company_address": "12918 N NEBRASKA AVE",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33612-4446",
+      "primary_contact_phone": "8136310000",
+      "primary_contact_email": "sales@federalcontractscorp.com",
+      "website": "http://www.federalcontractscorp.com",
+      "contract_start_date": "2026-06-12",
+      "contract_expiration_date": "2036-06-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F113DA/GS03F113DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-113DA&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "FLEXDECKS, INC.",
+      "contract_number": "GS-07F-0080Y",
+      "vendor_uei": "ZCQPA38SH9G9",
+      "company_address": "14325 W HARDY RD",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77060-4616",
+      "primary_contact_phone": "3469980200",
+      "primary_contact_email": "brians@flexdecks.com",
+      "website": "http://flexdecks.com/",
+      "contract_start_date": "2026-11-14",
+      "contract_expiration_date": "2031-11-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0080Y/GS07F0080Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0080Y&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL ENTERPRISE, INC",
+      "contract_number": "GS-30F-040BA",
+      "vendor_uei": "L3P3MXXX2W59",
+      "company_address": "11560 STONEWALL RD",
+      "company_city": "APPOMATTOX",
+      "company_state": "VA",
+      "company_zip": "24522-8806",
+      "primary_contact_phone": "7036241206",
+      "primary_contact_email": "gsasupport@fedharmony.com",
+      "website": "http://www.fedharmony.com",
+      "contract_start_date": "2029-09-17",
+      "contract_expiration_date": "2034-09-17",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F040BA/GS30F040BA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-30F-040BA/pricelist_GS-30F-040BA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-040BA&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "JENKS INC",
+      "contract_number": "47QSHA22D001Q",
+      "vendor_uei": "HSECVC3NAKM1",
+      "company_address": "910 BLADENSBURG RD NE",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20002-3930",
+      "primary_contact_phone": "2025296020",
+      "primary_contact_email": "Mike@wsjenks.com",
+      "website": "http://www.wsjenks.com",
+      "contract_start_date": "2027-05-17",
+      "contract_expiration_date": "2042-05-17",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D001Q/47QSHA22D001Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D001Q&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "JETECHNOLOGY SOLUTIONS INC",
+      "contract_number": "GS-07F-121DA",
+      "vendor_uei": "XW3QMN7E3NY9",
+      "company_address": "2152 SPRINT BLVD",
+      "company_city": "APOPKA",
+      "company_state": "FL",
+      "company_zip": "32703-7761",
+      "primary_contact_phone": "4076731512",
+      "primary_contact_email": "ALITTLE@JETECHNOLOGYSOLUTIONS.COM",
+      "website": "http://www.jetechnologysolutions.com/.com",
+      "contract_start_date": "2026-06-14",
+      "contract_expiration_date": "2036-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F121DA/GS07F121DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-121DA&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "NATIVE AMERICAN TRANSFORMER SERVICES INC",
+      "contract_number": "GS-07F-477AA",
+      "vendor_uei": "KLKDL3NDZUW7",
+      "company_address": "9190 DOUBLE DIAMOND PKWY STE 140",
+      "company_city": "RENO",
+      "company_state": "NV",
+      "company_zip": "89521-4842",
+      "primary_contact_phone": "8006287564",
+      "primary_contact_email": "gsasales@nativetransformer.com",
+      "website": "http://www.nativetransformer.com",
+      "contract_start_date": "2027-11-30",
+      "contract_expiration_date": "2032-11-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F477AA/GS07F477AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-477AA&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "NATIVE INSTINCT LLC",
+      "contract_number": "47QSWA19D00AP",
+      "vendor_uei": "JMZMAE63TBR5",
+      "company_address": "4413 CYCAD LN",
+      "company_city": "BOYNTON BEACH",
+      "company_state": "FL",
+      "company_zip": "33436-7320",
+      "primary_contact_phone": "9044382858",
+      "primary_contact_email": "jeff@gsacontracts.us",
+      "website": "http://www.nativeinstinct.co",
+      "contract_start_date": "2029-09-14",
+      "contract_expiration_date": "2039-09-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Feb 7, 2030",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D00AP/47QSWA19D00AP_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D00AP&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "OWYHEE GROUP COMPANIES",
+      "contract_number": "47QSMA18D08R6",
+      "vendor_uei": "NG3EKLN6BB31",
+      "company_address": "1075 S ANCONA AVE",
+      "company_city": "EAGLE",
+      "company_state": "ID",
+      "company_zip": "83616-6372",
+      "primary_contact_phone": "2089386086",
+      "primary_contact_email": "doug.lodge@initial-attack.com",
+      "website": "http://owyheegroup.com",
+      "contract_start_date": "2028-09-12",
+      "contract_expiration_date": "2038-09-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08R6/47QSMA18D08R6_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08R6&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "SANITZ ENTERPRISES, INC.",
+      "contract_number": "47QSWA21D007B",
+      "vendor_uei": "GLJ4J66A2HK3",
+      "company_address": "256 SULTEMEIER MOELLERING RD",
+      "company_city": "FREDERICKSBURG",
+      "company_state": "TX",
+      "company_zip": "78624-7799",
+      "primary_contact_phone": "8306853430",
+      "primary_contact_email": "gsa@ampatss.com",
+      "website": "http://www.custommanufacturing.ampatss.com/",
+      "contract_start_date": "2026-08-26",
+      "contract_expiration_date": "2041-08-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D007B/47QSWA21D007B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D007B&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "SCAFFOLDS USA, INC.",
+      "contract_number": "47QSMS24D000D",
+      "vendor_uei": "Q6GLN3YD6E15",
+      "company_address": "4300 W OLD US HIGHWAY 441",
+      "company_city": "MOUNT DORA",
+      "company_state": "FL",
+      "company_zip": "32757-3244",
+      "primary_contact_phone": "8009012885",
+      "primary_contact_email": "peter@scaffoldusa.com",
+      "website": "http://www.scaffoldusa.com",
+      "contract_start_date": "2028-11-23",
+      "contract_expiration_date": "2043-11-23",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D000D/47QSMS24D000D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D000D&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "SPIKA DESIGN & MANUFACTURING, INC.",
+      "contract_number": "GS-07F-0086U",
+      "vendor_uei": "RE4BLG4W9FL4",
+      "company_address": "254 COTTONWOOD CREEK RD",
+      "company_city": "LEWISTOWN",
+      "company_state": "MT",
+      "company_zip": "59457-4936",
+      "primary_contact_phone": "4065355678",
+      "primary_contact_email": "chad.catron@spikamfg.com",
+      "website": "http://www.spikamfg.com",
+      "contract_start_date": "2027-11-14",
+      "contract_expiration_date": "2027-11-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0086U/GS07F0086U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0086U&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "SUPPLY KING USA, LLC",
+      "contract_number": "47QSHA22D0022",
+      "vendor_uei": "F886DTPP1W48",
+      "company_address": "55 OLD NYACK TPKE STE 210",
+      "company_city": "NANUET",
+      "company_state": "NY",
+      "company_zip": "10954-2450",
+      "primary_contact_phone": "9172689222",
+      "primary_contact_email": "sales@supplykingusa.com",
+      "website": "http://www.supplykingusa.com",
+      "contract_start_date": "2027-06-30",
+      "contract_expiration_date": "2042-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D0022/47QSHA22D0022_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D0022&sin=333923S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333923S"
+      ],
+      "primary_sin": "333923S",
+      "schedule_number": "MAS",
+      "company_name": "SUPPLYCORE LLC",
+      "contract_number": "47QSHA21D0004",
+      "vendor_uei": "HTYJC5P9ZMH5",
+      "company_address": "303 N MAIN ST STE 800",
+      "company_city": "ROCKFORD",
+      "company_state": "IL",
+      "company_zip": "61101",
+      "primary_contact_phone": "8159971667",
+      "primary_contact_email": "Nate.Johnson@supplycore.com",
+      "website": "http://www.SUPPLYCORE.COM",
+      "contract_start_date": "2030-10-13",
+      "contract_expiration_date": "2040-10-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333923S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA21D0004/47QSHA21D0004_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA21D0004&sin=333923S&src=elib&app=cat"
+      }
+    }
+  ]
+}

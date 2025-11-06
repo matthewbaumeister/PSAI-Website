@@ -1,0 +1,658 @@
+{
+  "sin_code": "561510",
+  "file_name": "GSA_MAS_561510_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:26.203610",
+  "sheets": {
+    "2025_11_05_11_34_27": {
+      "row_count": 26,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "ACCENT TRAVEL INTERNATIONAL, LLC",
+      "contract_number": "47QMCB22D000P",
+      "vendor_uei": "FE77FTEJBUB7",
+      "company_address": "15 MINNESOTA AVE N",
+      "company_city": "AITKIN",
+      "company_state": "MN",
+      "company_zip": "56431-1407",
+      "primary_contact_phone": "6172856165",
+      "primary_contact_email": "john@accenttravelintl.com",
+      "website": "http://www.accenttravelintl.com/",
+      "contract_start_date": "2027-09-07",
+      "contract_expiration_date": "2042-09-07",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB22D000P/47QMCB22D000P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB22D000P&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "ADTRAV CORP",
+      "contract_number": "47QMCB24D0002",
+      "vendor_uei": "FLGKMSB5JEA3",
+      "company_address": "4555 SOUTHLAKE PKWY",
+      "company_city": "HOOVER",
+      "company_state": "AL",
+      "company_zip": "35244-3238",
+      "primary_contact_phone": "2054444802",
+      "primary_contact_email": "roger.hale@adtrav.com",
+      "website": "http://adtrav.com",
+      "contract_start_date": "2028-10-24",
+      "contract_expiration_date": "2043-10-24",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D0002/47QMCB24D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D0002&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "BCD TRAVEL USA LLC",
+      "contract_number": "GS-33F-001GA",
+      "vendor_uei": "NDN5BR3KBY83",
+      "company_address": "2060 MOUNT PARAN RD NW STE 210",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30327-2935",
+      "primary_contact_phone": "9789065537",
+      "primary_contact_email": "lisa.longley@bcdtravel.com",
+      "website": "http://bcdtravel.com/gov",
+      "contract_start_date": "2026-10-12",
+      "contract_expiration_date": "2036-10-12",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F001GA/GS33F001GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-001GA&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "CLASSIFIED COURIER SERVICE, INC.",
+      "contract_number": "GS-33F-009DA",
+      "vendor_uei": "TLZCMJGKLNG3",
+      "company_address": "6000 BRANDON AVE",
+      "company_city": "SPRINGFIELD",
+      "company_state": "VA",
+      "company_zip": "22150-2407",
+      "primary_contact_phone": "7034624297",
+      "primary_contact_email": "joy@classifiedvps.com",
+      "website": "http://www.classifiedvps.com",
+      "contract_start_date": "2025-12-27",
+      "contract_expiration_date": "2035-12-27",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F009DA/GS33F009DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-009DA&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "CORPORATE TRAVEL MANAGEMENT NORTH AMERICA INC",
+      "contract_number": "47QMCB25D0002",
+      "vendor_uei": "GN4NLYARTA64",
+      "company_address": "2120 S 72ND ST",
+      "company_city": "OMAHA",
+      "company_state": "NE",
+      "company_zip": "68124-2366",
+      "primary_contact_phone": "4023994763",
+      "primary_contact_email": "christina.reynoldson@travelctm.com",
+      "website": "http://https://www.travelctm.com",
+      "contract_start_date": "2029-12-15",
+      "contract_expiration_date": "2044-12-15",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "address_2": "STE 700",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D0002/47QMCB25D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D0002&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "CRUISE VENTURES INC",
+      "contract_number": "47QMCB24D0007",
+      "vendor_uei": "HAG5FDE7P881",
+      "company_address": "192 BALLARD CT STE 200",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23462-6538",
+      "primary_contact_phone": "7576409209",
+      "primary_contact_email": "kwesp@ciazumano.com",
+      "website": "http://www.citravel.com",
+      "contract_start_date": "2029-02-22",
+      "contract_expiration_date": "2044-02-22",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D0007/47QMCB24D0007_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D0007&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "CW GOVERNMENT TRAVEL INC",
+      "contract_number": "47QMCB24D000A",
+      "vendor_uei": "YAA1CKF2TJ14",
+      "company_address": "4300 WILSON BLVD STE 230",
+      "company_city": "ARLINGTON",
+      "company_state": "VA",
+      "company_zip": "22203-4167",
+      "primary_contact_phone": "7036827201",
+      "primary_contact_email": "mstec@cwtsato.com",
+      "website": "http://CWTSATOTRAVEL.COM",
+      "contract_start_date": "2029-05-02",
+      "contract_expiration_date": "2044-05-02",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D000A/47QMCB24D000A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D000A&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "DULUTH TRAVEL INC",
+      "contract_number": "47QMCB25D0001",
+      "vendor_uei": "QE9LM11BZKT9",
+      "company_address": "2860 PEACHTREE INDUSTRIAL BLVD",
+      "company_city": "DULUTH",
+      "company_state": "GA",
+      "company_zip": "30097-7906",
+      "primary_contact_phone": "4708702472",
+      "primary_contact_email": "gsabids@duluthtravel.com",
+      "website": "http://Duluthtravel.com",
+      "contract_start_date": "2029-11-14",
+      "contract_expiration_date": "2044-11-14",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "address_2": "STE 1000",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D0001/47QMCB25D0001_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D0001&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "DUMONDE GROUP, LLC",
+      "contract_number": "47QMCB23D0002",
+      "vendor_uei": "KX8XVK71VK16",
+      "company_address": "1395 BRICKELL AVE, SUITE 800",
+      "company_city": "MIAMI",
+      "company_state": "FL",
+      "company_zip": "33131-3302",
+      "primary_contact_phone": "3053796844",
+      "primary_contact_email": "andre@traveldm.com",
+      "website": "http://www.traveldm.com",
+      "contract_start_date": "2027-12-01",
+      "contract_expiration_date": "2042-12-01",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D0002/47QMCB23D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D0002&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "EL SOL TRAVEL INC",
+      "contract_number": "GS-33F-0026T",
+      "vendor_uei": "HY2QNRBL1RY5",
+      "company_address": "4500 S LAKESHORE DR STE 357",
+      "company_city": "TEMPE",
+      "company_state": "AZ",
+      "company_zip": "85282-7052",
+      "primary_contact_phone": "4806930213",
+      "primary_contact_email": "lbramlett@elsoltravel.net",
+      "website": "http://www.elsoltravel.net",
+      "contract_start_date": "2027-09-12",
+      "contract_expiration_date": "2027-09-12",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0026T/GS33F0026T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0026T&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "INTEGRATED SOLUTIONS & SERVICES, INC.",
+      "contract_number": "GS-07F-449AA",
+      "vendor_uei": "XEM2H1NVAWW8",
+      "company_address": "109 S NORTHSHORE DR STE 300",
+      "company_city": "KNOXVILLE",
+      "company_state": "TN",
+      "company_zip": "37919-4925",
+      "primary_contact_phone": "8652433344",
+      "primary_contact_email": "tjones@intsolutions.net",
+      "website": "http://www.intsolutions.net",
+      "contract_start_date": "2027-12-14",
+      "contract_expiration_date": "2032-12-14",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F449AA/GS07F449AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-449AA&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL TRAVEL SERVICE, INC.",
+      "contract_number": "47QMCB23D000L",
+      "vendor_uei": "ZGRYNN88DKJ9",
+      "company_address": "707 VIRGINIA ST E",
+      "company_city": "CHARLESTON",
+      "company_state": "WV",
+      "company_zip": "25301-2796",
+      "primary_contact_phone": "3043570801",
+      "primary_contact_email": "annh@nationaltravel.com",
+      "website": "http://www.nationaltravel.com",
+      "contract_start_date": "2028-09-26",
+      "contract_expiration_date": "2043-09-26",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "address_2": "STE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D000L/47QMCB23D000L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D000L&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "OMEGA WORLD TRAVEL INC",
+      "contract_number": "47QMCB24D0009",
+      "vendor_uei": "G1KKYJA114H9",
+      "company_address": "3102 OMEGA OFFICE PARK",
+      "company_city": "FAIRFAX",
+      "company_state": "VA",
+      "company_zip": "22031-2409",
+      "primary_contact_phone": "5714311341",
+      "primary_contact_email": "proposals@owt.net",
+      "website": "https://www.omegatravel.com/",
+      "contract_start_date": "2029-04-04",
+      "contract_expiration_date": "2044-04-04",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D0009/47QMCB24D0009_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D0009&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "RHEIN CORPORATION",
+      "contract_number": "47QMCB25D000W",
+      "vendor_uei": "LBMVAKMFB814",
+      "company_address": "223 LAFITTE CRES",
+      "company_city": "FORT WALTON BEACH",
+      "company_state": "FL",
+      "company_zip": "32547-3294",
+      "primary_contact_phone": "8506786688",
+      "primary_contact_email": "tpi.travel@embarqmail.com",
+      "website": "http://booktpi.com",
+      "contract_start_date": "2030-08-03",
+      "contract_expiration_date": "2045-08-03",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D000W/47QMCB25D000W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D000W&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "SUN TRAVEL, INC.",
+      "contract_number": "47QMCB24D000Q",
+      "vendor_uei": "PEQGLJMGL124",
+      "company_address": "5860 N MESA ST STE 107",
+      "company_city": "EL PASO",
+      "company_state": "TX",
+      "company_zip": "79912-4666",
+      "primary_contact_phone": "9155328900",
+      "primary_contact_email": "paul.coleman@suntvl.com",
+      "website": "http://www.suntvl.com",
+      "contract_start_date": "2029-07-24",
+      "contract_expiration_date": "2044-07-24",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D000Q/47QMCB24D000Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D000Q&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "THE ALAMO TRAVEL GROUP, L.P.",
+      "contract_number": "47QMCB23D000K",
+      "vendor_uei": "P6MDKV8NJUL4",
+      "company_address": "8930 WURZBACH RD",
+      "company_city": "SAN ANTONIO",
+      "company_state": "TX",
+      "company_zip": "78240-1004",
+      "primary_contact_phone": "2105930084",
+      "primary_contact_email": "scarrillo@alamotravel.com",
+      "website": "http://www.alamotravel.com",
+      "contract_start_date": "2028-09-26",
+      "contract_expiration_date": "2043-09-26",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "address_2": "STE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D000K/47QMCB23D000K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D000K&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "TRANSCOR, INC.",
+      "contract_number": "GS-33F-024DA",
+      "vendor_uei": "S6TJPGV4FCK9",
+      "company_address": "9310 OLD KINGS RD S",
+      "company_city": "JACKSONVILLE",
+      "company_state": "FL",
+      "company_zip": "32257-6178",
+      "primary_contact_phone": "9047377500",
+      "primary_contact_email": "jbreed@etranscor.com",
+      "website": "http://www.etranscor.com",
+      "contract_start_date": "2026-07-11",
+      "contract_expiration_date": "2036-07-11",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "address_2": "STE 501",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F024DA/GS33F024DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-024DA&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "TRAVEL INCORPORATED",
+      "contract_number": "GS-33F-004GA",
+      "vendor_uei": "C1D2CMFDKSP3",
+      "company_address": "4355 RIVER GREEN PKWY",
+      "company_city": "DULUTH",
+      "company_state": "GA",
+      "company_zip": "30096-2572",
+      "primary_contact_phone": "7702915245",
+      "primary_contact_email": "susan.mura@travelinc.com",
+      "website": "http://travelinc.com",
+      "contract_start_date": "2026-11-15",
+      "contract_expiration_date": "2036-11-15",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F004GA/GS33F004GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-004GA&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "US AIRLINE ALLIANCE, LTD.",
+      "contract_number": "47QMCB20D000B",
+      "vendor_uei": "EQ3PB9YYH5K3",
+      "company_address": "301, 50 SEOSOMUN-RO 11-GIL JUNG-",
+      "company_city": "SEOUL",
+      "company_zip": "04515",
+      "primary_contact_phone": "8227988505",
+      "primary_contact_email": "mskim@ustraveloffice.com",
+      "website": "http://www.ctokorea.com",
+      "contract_start_date": "2030-05-13",
+      "contract_expiration_date": "2040-05-13",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB20D000B/47QMCB20D000B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB20D000B&sin=561510&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561510"
+      ],
+      "primary_sin": "561510",
+      "schedule_number": "MAS",
+      "company_name": "VTS TRAVEL ENTERPRISES INC",
+      "contract_number": "GS-33F-0001W",
+      "vendor_uei": "NV6HALFWKGD5",
+      "company_address": "395 WEST PASSAIC STREET",
+      "company_city": "ROCHELLE PARK",
+      "company_state": "NJ",
+      "company_zip": "07662-3016",
+      "primary_contact_phone": "3035863040",
+      "primary_contact_email": "bfearrin@dt.com",
+      "website": "http://http//www.dt.com",
+      "contract_start_date": "2029-10-04",
+      "contract_expiration_date": "2029-10-04",
+      "additional_data": {
+        "large_category": "Travel ",
+        "sub_category": " Travel Agent and Misc Services",
+        "source": "MAS",
+        "category": 561510.0,
+        "address_2": "SUITE 215",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0001W/GS33F0001W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0001W&sin=561510&src=elib&app=cat"
+      }
+    }
+  ]
+}

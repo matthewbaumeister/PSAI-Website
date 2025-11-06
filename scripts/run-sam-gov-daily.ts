@@ -50,11 +50,15 @@ async function main() {
       .from('sam_gov_opportunities')
       .select('*', { count: 'exact', head: true });
     
-    const dateRanges = dates.map(d => formatDate(d)).join(',');
-    await scrapeSAMGovOpportunities({
-      postDate: dateRanges,
-      fullDetails: true
-    });
+    const dateRanges = dates.map(d => formatDate(d));
+    // Scrape each date individually
+    for (const date of dateRanges) {
+      await scrapeSAMGovOpportunities({
+        postedFrom: date,
+        postedTo: date,
+        fullDetails: true
+      });
+    }
     
     const { count: countAfter } = await supabase
       .from('sam_gov_opportunities')

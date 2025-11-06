@@ -1,0 +1,356 @@
+{
+  "sin_code": "811212R",
+  "file_name": "GSA_MAS_811212R_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:56.670602",
+  "sheets": {
+    "2025_11_05_11_21_00": {
+      "row_count": 16,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "AMERITEL COMMUNICATIONS CORPORATION",
+      "contract_number": "GS-03F-102CA",
+      "vendor_uei": "DZK7BKZMHDH1",
+      "company_address": "7361 CALHOUN PLACE",
+      "company_city": "ROCKVILLE",
+      "company_state": "MD",
+      "company_zip": "20855-2784",
+      "primary_contact_phone": "3012510222",
+      "primary_contact_email": "Government@ameritelcorporation.com",
+      "website": "http://www.ameritelcorporation.com",
+      "contract_start_date": "2030-08-31",
+      "contract_expiration_date": "2035-08-31",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "address_2": "STE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F102CA/GS03F102CA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-102CA/pricelist_GS-03F-102CA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-102CA&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "CARTRIDGE TECHNOLOGIES, LLC",
+      "contract_number": "GS-03F-0151X",
+      "vendor_uei": "Z5LLHNEXM9L8",
+      "company_address": "15738 CRABBS BRANCH WAY",
+      "company_city": "ROCKVILLE",
+      "company_state": "MD",
+      "company_zip": "20850",
+      "primary_contact_phone": "3015452086",
+      "primary_contact_email": "cmurphy@ctimd.com",
+      "website": "http://www.ctimd.com",
+      "contract_start_date": "2026-06-30",
+      "contract_expiration_date": "2031-06-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0151X/GS03F0151X_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-0151X/pricelist_GS-03F-0151X.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0151X&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "COMPUTER AND PERIPHERALS GROUP, INC.",
+      "contract_number": "GS-35F-0211Y",
+      "vendor_uei": "NK2JWH8LZJW9",
+      "company_address": "20321 VALENCIA CIR",
+      "company_city": "LAKE FOREST",
+      "company_state": "CA",
+      "company_zip": "92630-8159",
+      "primary_contact_phone": "8007919402",
+      "primary_contact_email": "gsa@sourcegraphics.com",
+      "website": "http://sourcegraphics.com",
+      "contract_start_date": "2027-02-20",
+      "contract_expiration_date": "2032-02-20",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F0211Y/GS35F0211Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-0211Y&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "FAUNT IMAGING SOLUTIONS LLC",
+      "contract_number": "47QSMA23D08QN",
+      "vendor_uei": "GGU5T53QKHG3",
+      "company_address": "1231 MARION BARRY AVE SE",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20020-6907",
+      "primary_contact_phone": "7032865426",
+      "primary_contact_email": "mperch@roadmapc.com",
+      "website": "http://fauntimagingsolutions.com",
+      "contract_start_date": "2028-09-08",
+      "contract_expiration_date": "2043-09-08",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08QN/47QSMA23D08QN_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08QN&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "JTF BUSINESS SYSTEMS CORPORATION",
+      "contract_number": "GS-03F-0182V",
+      "vendor_uei": "CM3CXMWM13T5",
+      "company_address": "7370 STEEL MILL DR",
+      "company_city": "SPRINGFIELD",
+      "company_state": "VA",
+      "company_zip": "22150-3600",
+      "primary_contact_phone": "7036582000",
+      "primary_contact_email": "andre.matini@jtfgov.com",
+      "website": "http://JTFGov.com",
+      "contract_start_date": "2029-09-14",
+      "contract_expiration_date": "2029-09-14",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0182V/GS03F0182V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0182V&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "KELLEY CREATE CO",
+      "contract_number": "GS-03F-019DA",
+      "vendor_uei": "LH82KK31LWG7",
+      "company_address": "22710 72ND AVE S",
+      "company_city": "KENT",
+      "company_state": "WA",
+      "company_zip": "98032-1926",
+      "primary_contact_phone": "2062849100",
+      "primary_contact_email": "Tom.Walter@kelleyconnect.com",
+      "website": "http://www.kelleycreate.com",
+      "contract_start_date": "2030-11-30",
+      "contract_expiration_date": "2035-11-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F019DA/GS03F019DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-019DA&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "OFFIX LC",
+      "contract_number": "GS-03F-079GA",
+      "vendor_uei": "UAD8PMXQMSM3",
+      "company_address": "13525 WELLINGTON CENTER CIR",
+      "company_city": "GAINESVILLE",
+      "company_state": "VA",
+      "company_zip": "20155-4062",
+      "primary_contact_phone": "7035301200",
+      "primary_contact_email": "KVALENTA@OFFIX.COM",
+      "website": "http://offix.com",
+      "contract_start_date": "2027-07-25",
+      "contract_expiration_date": "2037-07-25",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "address_2": "STE 107",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F079GA/GS03F079GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-079GA&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "ONE DIVERSIFIED LLC",
+      "contract_number": "47QSMS25D000N",
+      "vendor_uei": "VSECQELALDY7",
+      "company_address": "2975 NORTHWOODS PKWY",
+      "company_city": "NORCROSS",
+      "company_state": "GA",
+      "company_zip": "30071-1537",
+      "primary_contact_phone": "5417883348",
+      "primary_contact_email": "FCMSINC@MSN.COM",
+      "website": "http://www.diversifiedus.com",
+      "contract_start_date": "2029-10-15",
+      "contract_expiration_date": "2044-10-15",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D000N/47QSMS25D000N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D000N&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "THE LIOCE GROUP INC",
+      "contract_number": "GS-03F-0143Y",
+      "vendor_uei": "SSK3JD7D65D5",
+      "company_address": "2950 DRAKE AVE SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805",
+      "primary_contact_phone": "2566504156",
+      "primary_contact_email": "nick@liocegroup.com",
+      "website": "http://www.liocegroup.com",
+      "contract_start_date": "2027-07-23",
+      "contract_expiration_date": "2032-07-23",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0143Y/GS03F0143Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0143Y&sin=811212R&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811212R"
+      ],
+      "primary_sin": "811212R",
+      "schedule_number": "MAS",
+      "company_name": "THE LIOCE GROUP INC",
+      "contract_number": "47QTCA18D00AD",
+      "vendor_uei": "SSK3JD7D65D5",
+      "company_address": "2950 DRAKE AVE SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805",
+      "primary_contact_phone": "2566504150",
+      "primary_contact_email": "FEDERALACCOUNTS@LIOCEGROUP.COM",
+      "website": "http://www.liocegroup.com",
+      "contract_start_date": "2028-04-15",
+      "contract_expiration_date": "2038-04-15",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Management Maintenance and Repair",
+        "source": "MAS",
+        "category": "811212R ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA18D00AD/47QTCA18D00AD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA18D00AD&sin=811212R&src=elib&app=cat"
+      }
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "sin_code": "334419",
+  "file_name": "GSA_MAS_334419_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:26.098107",
+  "sheets": {
+    "2025_11_05_11_33_34": {
+      "row_count": 12,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "334419"
+      ],
+      "primary_sin": "334419",
+      "schedule_number": "MAS",
+      "company_name": "CODESOURCE, L.P.",
+      "contract_number": "GS-02F-0144W",
+      "vendor_uei": "W7KZGNF8JTS8",
+      "company_address": "4115 MESA DR",
+      "company_city": "DENTON",
+      "company_state": "TX",
+      "company_zip": "76207-3436",
+      "primary_contact_phone": "9408911281",
+      "primary_contact_email": "hhoulihan@codesource.com",
+      "website": "http://www.codesource.com",
+      "contract_start_date": "2030-03-22",
+      "contract_expiration_date": "2030-03-22",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 334419.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0144W/GS02F0144W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0144W&sin=334419&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334419"
+      ],
+      "primary_sin": "334419",
+      "schedule_number": "MAS",
+      "company_name": "FEDERAL SUPPLY SERVICES INTERNATIONAL LLC.",
+      "contract_number": "GS-02F-0238X",
+      "vendor_uei": "CJZKUNLHL8W8",
+      "company_address": "4239 US HIGHWAY 23",
+      "company_city": "PIKETON",
+      "company_state": "OH",
+      "company_zip": "45661-9703",
+      "primary_contact_phone": "7403704463",
+      "primary_contact_email": "info@federalsupplyservices.com",
+      "website": "http://www.federalsupplyservices.com",
+      "contract_start_date": "2026-08-21",
+      "contract_expiration_date": "2031-08-21",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 334419.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0238X/GS02F0238X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0238X&sin=334419&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334419"
+      ],
+      "primary_sin": "334419",
+      "schedule_number": "MAS",
+      "company_name": "I.D INTEGRATION, INC.",
+      "contract_number": "GS-02F-0019X",
+      "vendor_uei": "JUJ5FKKHY2M6",
+      "company_address": "13024 BEVERLY PARK RD STE 104",
+      "company_city": "MUKILTEO",
+      "company_state": "WA",
+      "company_zip": "98275-5857",
+      "primary_contact_phone": "4254382533",
+      "primary_contact_email": "cboer@id-integration.com",
+      "website": "http://www.id-integration.com",
+      "contract_start_date": "2030-10-28",
+      "contract_expiration_date": "2030-10-28",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 334419.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0019X/GS02F0019X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0019X&sin=334419&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334419"
+      ],
+      "primary_sin": "334419",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 334419.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=334419&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334419"
+      ],
+      "primary_sin": "334419",
+      "schedule_number": "MAS",
+      "company_name": "MONODE MARKING PRODUCTS INC",
+      "contract_number": "GS-02F-0151T",
+      "vendor_uei": "FMDGFULFFJN6",
+      "company_address": "9200 TYLER BLVD",
+      "company_city": "MENTOR",
+      "company_state": "OH",
+      "company_zip": "44060-1882",
+      "primary_contact_phone": "2069191175",
+      "primary_contact_email": "janjordan@att.net",
+      "website": "http://www.monode.com",
+      "contract_start_date": "2027-08-29",
+      "contract_expiration_date": "2027-08-29",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 334419.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0151T/GS02F0151T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0151T&sin=334419&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334419"
+      ],
+      "primary_sin": "334419",
+      "schedule_number": "MAS",
+      "company_name": "T & W OPERATIONS INC",
+      "contract_number": "47QREA23D000C",
+      "vendor_uei": "L88CHWMNU1N9",
+      "company_address": "307 WYNN DR NW STE C",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805-1960",
+      "primary_contact_phone": "2565350857",
+      "primary_contact_email": "rhead@tnwops.com",
+      "website": "http://www.tnwops.com",
+      "contract_start_date": "2027-12-08",
+      "contract_expiration_date": "2042-12-08",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Packaging Services",
+        "source": "MAS",
+        "category": 334419.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QREA23D000C/47QREA23D000C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QREA23D000C&sin=334419&src=elib&app=cat"
+      }
+    }
+  ]
+}

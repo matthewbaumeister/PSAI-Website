@@ -1,0 +1,119 @@
+{
+  "sin_code": "337215M",
+  "file_name": "GSA_MAS_337215M_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:29.117001",
+  "sheets": {
+    "2025_11_05_11_10_29": {
+      "row_count": 8,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "337215M"
+      ],
+      "primary_sin": "337215M",
+      "schedule_number": "MAS",
+      "company_name": "AMCASE, INC.",
+      "contract_number": "47QSMA20D08PJ",
+      "vendor_uei": "FXBRVD5Y9BJ4",
+      "company_address": "2214 SHORE ST",
+      "company_city": "HIGH POINT",
+      "company_state": "NC",
+      "company_zip": "27263-2512",
+      "primary_contact_phone": "3367845992",
+      "primary_contact_email": "Marianne@amcase.com",
+      "website": "http://www.amcase.com",
+      "contract_start_date": "2030-03-04",
+      "contract_expiration_date": "2040-03-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337215M ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08PJ/47QSMA20D08PJ_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08PJ&sin=337215M&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337215M"
+      ],
+      "primary_sin": "337215M",
+      "schedule_number": "MAS",
+      "company_name": "WORKSTREAM INC.",
+      "contract_number": "47QSMS08D0002",
+      "vendor_uei": "QS69N48FG4K3",
+      "company_address": "3158 PRODUCTION DR",
+      "company_city": "FAIRFIELD",
+      "company_state": "OH",
+      "company_zip": "45014-4228",
+      "primary_contact_phone": "8005039966",
+      "primary_contact_email": "bquick@hamiltoncs.com",
+      "website": "http://www.hamiltonsorter.com",
+      "contract_start_date": "2028-07-31",
+      "contract_expiration_date": "2028-07-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337215M ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS08D0002/47QSMS08D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS08D0002&sin=337215M&src=elib&app=cat"
+      }
+    }
+  ]
+}

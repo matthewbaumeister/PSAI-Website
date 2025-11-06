@@ -1,0 +1,450 @@
+{
+  "sin_code": "332999S",
+  "file_name": "GSA_MAS_332999S_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:45.793947",
+  "sheets": {
+    "2025_11_05_11_29_44": {
+      "row_count": 19,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "ALPHA SAFE AND VAULT, INC.",
+      "contract_number": "GS-03F-0033S",
+      "vendor_uei": "HJN1QYCT8LT1",
+      "company_address": "1656 GELDING LN",
+      "company_city": "VIENNA",
+      "company_state": "VA",
+      "company_zip": "22182-2039",
+      "primary_contact_phone": "7032817233",
+      "primary_contact_email": "sales@alphasafeinc.com",
+      "website": "http://www.alphasafeinc.com",
+      "contract_start_date": "2026-08-14",
+      "contract_expiration_date": "2026-08-14",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0033S/GS03F0033S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0033S&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "ATLANTIC DIVING SUPPLY, INC.",
+      "contract_number": "47QSMA19D08Q1",
+      "vendor_uei": "GJMSFBCNMSK3",
+      "company_address": "621 LYNNHAVEN PKWY",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23452-7383",
+      "primary_contact_phone": "7574167505",
+      "primary_contact_email": "gsa@adsinc.com",
+      "website": "http://www.adsinc.com",
+      "contract_start_date": "2029-05-07",
+      "contract_expiration_date": "2039-05-07",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "address_2": "STE 160",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08Q1/47QSMA19D08Q1_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA19D08Q1/pricelist_47QSMA19D08Q1.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08Q1&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "COLLEGE STATION AUTO PARTS CO.",
+      "contract_number": "47QSHA18D000K",
+      "vendor_uei": "LMWVL9MJRG37",
+      "company_address": "2790 OSBORN LN",
+      "company_city": "BRYAN",
+      "company_state": "TX",
+      "company_zip": "77803-5151",
+      "primary_contact_phone": "9796941964",
+      "primary_contact_email": "gsasales@napatexas.com",
+      "website": "http://www.napatexas.com",
+      "contract_start_date": "2027-11-30",
+      "contract_expiration_date": "2037-11-30",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D000K/47QSHA18D000K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D000K&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "DEFENSE VENTURE HOLDINGS, LLC",
+      "contract_number": "47QSWA23D002P",
+      "vendor_uei": "N5EVQJAL2JD5",
+      "company_address": "2601 PERFORMANCE CT STE 101",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23453-3768",
+      "primary_contact_phone": "7574992021",
+      "primary_contact_email": "kdimichele@defenseventureholdings.com",
+      "website": "http://www.defenseventureholdings.com",
+      "contract_start_date": "2028-01-31",
+      "contract_expiration_date": "2043-01-31",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D002P/47QSWA23D002P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D002P&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "EVERSAFE USA INC",
+      "contract_number": "47QSMA22D08QB",
+      "vendor_uei": "HF3CXKP3CWM5",
+      "company_address": "3877 COPPER RIDGE CT",
+      "company_city": "AMELIA",
+      "company_state": "OH",
+      "company_zip": "45102-1168",
+      "primary_contact_phone": "6023907044",
+      "primary_contact_email": "hugh.mclean@eversafetech.com",
+      "website": "https://eversafetech.com/",
+      "contract_start_date": "2027-07-24",
+      "contract_expiration_date": "2042-07-24",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08QB/47QSMA22D08QB_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08QB&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "FABRICATED METALS HOLDINGS, LLC",
+      "contract_number": "47QSMA22D08P7",
+      "vendor_uei": "EBL4YKKVVGM7",
+      "company_address": "6333 STRAWBERRY LN",
+      "company_city": "LOUISVILLE",
+      "company_state": "KY",
+      "company_zip": "40214-2930",
+      "primary_contact_phone": "8008802625",
+      "primary_contact_email": "cs@strong-hold.com",
+      "website": "https://www.strong-hold.com",
+      "contract_start_date": "2027-03-08",
+      "contract_expiration_date": "2042-03-08",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08P7/47QSMA22D08P7_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08P7&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "FORMS & SUPPLY, INC.",
+      "contract_number": "GS-27F-0020X",
+      "vendor_uei": "MWJJQMK5JNH1",
+      "company_address": "6410 ORR RD",
+      "company_city": "CHARLOTTE",
+      "company_state": "NC",
+      "company_zip": "28213-6332",
+      "primary_contact_phone": "7576795600",
+      "primary_contact_email": "bill.waide@fsioffice.com",
+      "website": "http://www.fsiofficefurniture.com",
+      "contract_start_date": "2025-12-16",
+      "contract_expiration_date": "2030-12-16",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0020X/GS27F0020X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0020X&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "INDUSTRIAL STRENGTH INDUSTRIES LLC",
+      "contract_number": "47QSHA19D0053",
+      "vendor_uei": "JKW6B4E7W9V2",
+      "company_address": "732 SOUND VIEW RD",
+      "company_city": "OYSTER BAY",
+      "company_state": "NY",
+      "company_zip": "11771-1114",
+      "primary_contact_phone": "5164132251",
+      "primary_contact_email": "ara@industrialstrengthsupply.com",
+      "website": "http://www.industrialstrengthsupply.com",
+      "contract_start_date": "2029-08-04",
+      "contract_expiration_date": "2039-08-04",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D0053/47QSHA19D0053_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D0053&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "INTERIOR RESOURCE GROUP INC",
+      "contract_number": "GS-28F-0038W",
+      "vendor_uei": "EHNBFFLWC6A7",
+      "company_address": "11838 W COQUINA CT",
+      "company_city": "CRYSTAL RIVER",
+      "company_state": "FL",
+      "company_zip": "34429",
+      "primary_contact_phone": "4106543611",
+      "primary_contact_email": "LEEANN@INTERIORRESOURCEGROUP.COM",
+      "website": "http://www.interiorresourcegroup.com",
+      "contract_start_date": "2030-06-02",
+      "contract_expiration_date": "2030-06-02",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0038W/GS28F0038W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0038W&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "LOCKERS MANUFACTURING LLC",
+      "contract_number": "47QSMS24D00AR",
+      "vendor_uei": "RP45EUSHTYT7",
+      "company_address": "209 PEARSON ST",
+      "company_city": "BATESVILLE",
+      "company_state": "MS",
+      "company_zip": "38606-2435",
+      "primary_contact_phone": "9014670161",
+      "primary_contact_email": "cole@dunham3.com",
+      "website": "http://lockersmfg.com",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2044-07-31",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00AR/47QSMS24D00AR_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00AR&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL BUSINESS FURNITURE, LLC",
+      "contract_number": "GS-27F-0024V",
+      "vendor_uei": "JJJ2JY8TJRZ8",
+      "company_address": "770 S 70TH ST",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53214-3109",
+      "primary_contact_phone": "8005581010",
+      "primary_contact_email": "GovSales@nbf.com",
+      "website": "http://NBF.com",
+      "contract_start_date": "2029-04-28",
+      "contract_expiration_date": "2029-04-28",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0024V/GS27F0024V_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-27F-0024V/pricelist_GS-27F-0024V.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0024V&sin=332999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332999S"
+      ],
+      "primary_sin": "332999S",
+      "schedule_number": "MAS",
+      "company_name": "QUALITY DOOR & HARDWARE INC",
+      "contract_number": "GS-07F-259BA",
+      "vendor_uei": "L4JKEXF9YMN4",
+      "company_address": "780 RAILROAD AVE",
+      "company_city": "WEST BABYLON",
+      "company_state": "NY",
+      "company_zip": "11704",
+      "primary_contact_phone": "6314829332",
+      "primary_contact_email": "admin@qualitydoor.com",
+      "website": "http://www.qualitydoor.com",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2034-07-31",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": "332999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F259BA/GS07F259BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-259BA&sin=332999S&src=elib&app=cat"
+      }
+    }
+  ]
+}

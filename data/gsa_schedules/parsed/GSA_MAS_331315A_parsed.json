@@ -1,0 +1,242 @@
+{
+  "sin_code": "331315A",
+  "file_name": "GSA_MAS_331315A_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:56.654633",
+  "sheets": {
+    "2025_11_05_11_14_18": {
+      "row_count": 12,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "331315A"
+      ],
+      "primary_sin": "331315A",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN PACKAGING I, INC.",
+      "contract_number": "47QSEA20D003D",
+      "vendor_uei": "D4KJZJDTA4V6",
+      "company_address": "363 WATERS EDGE",
+      "company_city": "AUBURN",
+      "company_state": "NY",
+      "company_zip": "13021-8306",
+      "primary_contact_phone": "3152534809",
+      "primary_contact_email": "turbo1407@aol.com",
+      "website": "http://WWW.GSAADVANTAGE.GOV",
+      "contract_start_date": "2030-01-13",
+      "contract_expiration_date": "2040-01-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "331315A ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D003D/47QSEA20D003D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D003D&sin=331315A&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "331315A"
+      ],
+      "primary_sin": "331315A",
+      "schedule_number": "MAS",
+      "company_name": "DBISP LLC",
+      "contract_number": "GS-03F-056DA",
+      "vendor_uei": "WM4TLSL4VPZ1",
+      "company_address": "777 BEACHWAY DR STE 102",
+      "company_city": "INDIANAPOLIS",
+      "company_state": "IN",
+      "company_zip": "46224-7877",
+      "primary_contact_phone": "3172221671",
+      "primary_contact_email": "sales@dbispllc.com",
+      "website": "https://www.dbispllc.com",
+      "contract_start_date": "2026-02-14",
+      "contract_expiration_date": "2036-02-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "331315A ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Dec 21, 2026",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F056DA/GS03F056DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-056DA/pricelist_GS-03F-056DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-056DA&sin=331315A&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "331315A"
+      ],
+      "primary_sin": "331315A",
+      "schedule_number": "MAS",
+      "company_name": "DERSTINES INC",
+      "contract_number": "47QSWA23D004R",
+      "vendor_uei": "XLKKNCBNKA31",
+      "company_address": "3245 STATE RD",
+      "company_city": "SELLERSVILLE",
+      "company_state": "PA",
+      "company_zip": "18960-1655",
+      "primary_contact_phone": "2673542699",
+      "primary_contact_email": "csheerin@derstines.com",
+      "website": "http://www.derstines.com/",
+      "contract_start_date": "2028-03-22",
+      "contract_expiration_date": "2043-03-22",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "331315A ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D004R/47QSWA23D004R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D004R&sin=331315A&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "331315A"
+      ],
+      "primary_sin": "331315A",
+      "schedule_number": "MAS",
+      "company_name": "MONO MACHINES LLC",
+      "contract_number": "47QSEA18D008C",
+      "vendor_uei": "C4S6Z1ALKEP1",
+      "company_address": "2455 DILLON RD",
+      "company_city": "WHITEFISH",
+      "company_state": "MT",
+      "company_zip": "59937-8277",
+      "primary_contact_phone": "8005921306",
+      "primary_contact_email": "sales@supplychimp.com",
+      "website": "https://www.supplychimp.com/",
+      "contract_start_date": "2028-09-27",
+      "contract_expiration_date": "2038-09-27",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "331315A ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA18D008C/47QSEA18D008C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA18D008C&sin=331315A&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "331315A"
+      ],
+      "primary_sin": "331315A",
+      "schedule_number": "MAS",
+      "company_name": "NELSON, BLAKE",
+      "contract_number": "GS-02F-044DA",
+      "vendor_uei": "GXGAF8EHLYE9",
+      "company_address": "255 N HIGHWAY 52 STE 6B",
+      "company_city": "MONCKS CORNER",
+      "company_state": "SC",
+      "company_zip": "29461-3927",
+      "primary_contact_phone": "8438994141",
+      "primary_contact_email": "blnelson@papersource-inc.com",
+      "website": "http://www.papersource-inc.com",
+      "contract_start_date": "2026-09-26",
+      "contract_expiration_date": "2036-09-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "331315A ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F044DA/GS02F044DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-044DA&sin=331315A&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "331315A"
+      ],
+      "primary_sin": "331315A",
+      "schedule_number": "MAS",
+      "company_name": "WESTERN PLASTICS, INC.",
+      "contract_number": "47QSEA19D001G",
+      "vendor_uei": "HC8YCKMCCFN7",
+      "company_address": "2399 HIGHWAY 41 SOUTH SW",
+      "company_city": "CALHOUN",
+      "company_state": "GA",
+      "company_zip": "30701-3346",
+      "primary_contact_phone": "7066255260",
+      "primary_contact_email": "tcunningham@wplastics.com",
+      "website": "http://www.wplastics.com",
+      "contract_start_date": "2028-11-15",
+      "contract_expiration_date": "2038-11-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "331315A ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA19D001G/47QSEA19D001G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA19D001G&sin=331315A&src=elib&app=cat"
+      }
+    }
+  ]
+}

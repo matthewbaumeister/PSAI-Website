@@ -1,0 +1,152 @@
+{
+  "sin_code": "332994",
+  "file_name": "GSA_MAS_332994_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:29.877223",
+  "sheets": {
+    "2025_11_05_11_29_33": {
+      "row_count": 9,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "332994"
+      ],
+      "primary_sin": "332994",
+      "schedule_number": "MAS",
+      "company_name": "CASCADE FIRE EQUIPMENT CO",
+      "contract_number": "GS-07F-0275Y",
+      "vendor_uei": "Q5TZVGVM4WC9",
+      "company_address": "8389 11TH ST",
+      "company_city": "WHITE CITY",
+      "company_state": "OR",
+      "company_zip": "97503-1048",
+      "primary_contact_phone": "8006547049",
+      "primary_contact_email": "sales@cascadefire.com",
+      "website": "http://WWW.CASCADEFIRE.COM",
+      "contract_start_date": "2027-03-31",
+      "contract_expiration_date": "2032-03-31",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": 332994.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__39": "Y",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0275Y/GS07F0275Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0275Y&sin=332994&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332994"
+      ],
+      "primary_sin": "332994",
+      "schedule_number": "MAS",
+      "company_name": "FIREBLAST GLOBAL, INC.",
+      "contract_number": "47QSWA20D007M",
+      "vendor_uei": "M3N4TQ4U7LC1",
+      "company_address": "41633 EASTMAN DR",
+      "company_city": "MURRIETA",
+      "company_state": "CA",
+      "company_zip": "92562-7054",
+      "primary_contact_phone": "9512278319",
+      "primary_contact_email": "jkuehl@fireblast.com",
+      "website": "http://fireblast.com",
+      "contract_start_date": "2030-06-10",
+      "contract_expiration_date": "2040-06-10",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": 332994.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D007M/47QSWA20D007M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D007M&sin=332994&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332994"
+      ],
+      "primary_sin": "332994",
+      "schedule_number": "MAS",
+      "company_name": "PELICAN SALES INC",
+      "contract_number": "GS-21F-0033V",
+      "vendor_uei": "KMEQKMPV2JN1",
+      "company_address": "2825 BUSINESS CENTER BLVD STE C9",
+      "company_city": "MELBOURNE",
+      "company_state": "FL",
+      "company_zip": "32940-7193",
+      "primary_contact_phone": "3212549569",
+      "primary_contact_email": "gsa@pelican-sales.com",
+      "website": "http://www.pelican-sales.com",
+      "contract_start_date": "2029-02-01",
+      "contract_expiration_date": "2029-02-01",
+      "additional_data": {
+        "large_category": "Security and Protection ",
+        "sub_category": " Protective Equipment",
+        "source": "MAS",
+        "category": 332994.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0033V/GS21F0033V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0033V&sin=332994&src=elib&app=cat"
+      }
+    }
+  ]
+}

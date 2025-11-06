@@ -1,0 +1,361 @@
+{
+  "sin_code": "327910",
+  "file_name": "GSA_MAS_327910_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:16.997500",
+  "sheets": {
+    "2025_11_05_11_14_12": {
+      "row_count": 16,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "BOTACH INC.",
+      "contract_number": "47QSHA19D003Y",
+      "vendor_uei": "NSEVGMJ1FHN5",
+      "company_address": "4775 W HARMON AVE",
+      "company_city": "LAS VEGAS",
+      "company_state": "NV",
+      "company_zip": "89103-5215",
+      "primary_contact_phone": "17862828680",
+      "primary_contact_email": "chushim@botach.com",
+      "website": "http://www.botach.com",
+      "contract_start_date": "2029-06-09",
+      "contract_expiration_date": "2039-06-09",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D003Y/47QSHA19D003Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D003Y&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "CESCO, INC.",
+      "contract_number": "47QSWA18D00AD",
+      "vendor_uei": "NTCTH8UKBX18",
+      "company_address": "7251 CROSS COUNTY RD",
+      "company_city": "NORTH CHARLESTON",
+      "company_state": "SC",
+      "company_zip": "29418-3300",
+      "primary_contact_phone": "8437603000",
+      "primary_contact_email": "randy.fulmer@blastandpaint.com",
+      "website": "http://www.blastandpaint.com",
+      "contract_start_date": "2028-10-05",
+      "contract_expiration_date": "2038-10-05",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D00AD/47QSWA18D00AD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D00AD&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "CLAYTON ASSOCIATES INC",
+      "contract_number": "GS-07F-228BA",
+      "vendor_uei": "DB3NAULV43F9",
+      "company_address": "1650 OAK ST",
+      "company_city": "LAKEWOOD",
+      "company_state": "NJ",
+      "company_zip": "08701-5924",
+      "primary_contact_phone": "7323632100",
+      "primary_contact_email": "sales@jclayton.com",
+      "website": "http://www.jclayton.com",
+      "contract_start_date": "2029-05-31",
+      "contract_expiration_date": "2034-05-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F228BA/GS07F228BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-228BA&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "GRAND NORTHERN PRODUCTS, LLC",
+      "contract_number": "GS-07F-0283V",
+      "vendor_uei": "ZJCMZVJ952A5",
+      "company_address": "9000 BYRON COMMERCE DR SW",
+      "company_city": "BYRON CENTER",
+      "company_state": "MI",
+      "company_zip": "49315-8077",
+      "primary_contact_phone": "6163047795",
+      "primary_contact_email": "sconant@grandnorthern.com",
+      "website": "http://www.grandnorthern.com",
+      "contract_start_date": "2029-04-30",
+      "contract_expiration_date": "2029-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0283V/GS07F0283V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0283V&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "M.N. GUMBERT CORP",
+      "contract_number": "GS-07F-0436V",
+      "vendor_uei": "YP5LK5U191F4",
+      "company_address": "2187 S 49TH WEST AVE",
+      "company_city": "TULSA",
+      "company_state": "OK",
+      "company_zip": "74107",
+      "primary_contact_phone": "9183827788",
+      "primary_contact_email": "mccblast@aol.com",
+      "website": "http://WWW.SOTABRASIVES.COM",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2029-07-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0436V/GS07F0436V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0436V&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "MPC INDUSTRIES, INC.",
+      "contract_number": "GS-07F-0037U",
+      "vendor_uei": "MH9UW5NMRCW9",
+      "company_address": "215 JOHNSON RD",
+      "company_city": "MAYNARDVILLE",
+      "company_state": "TN",
+      "company_zip": "37807-2961",
+      "primary_contact_phone": "8658050866",
+      "primary_contact_email": "SHUFENDU@YAHOO.COM",
+      "website": "http://XOFFABRASIVE@MSN.COM",
+      "contract_start_date": "2027-10-31",
+      "contract_expiration_date": "2027-10-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0037U/GS07F0037U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0037U&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "S & S FASTENER COMPANY",
+      "contract_number": "47QSMS25D0087",
+      "vendor_uei": "L2MGNVGDS3W8",
+      "company_address": "12120 ELLINGTON CT",
+      "company_city": "CINCINNATI",
+      "company_state": "OH",
+      "company_zip": "45249-1000",
+      "primary_contact_phone": "5134891200",
+      "primary_contact_email": "jsheff@ss-fastener.com",
+      "website": "http://www.ss-fastener.com",
+      "contract_start_date": "2030-04-29",
+      "contract_expiration_date": "2045-04-29",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0087/47QSMS25D0087_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0087&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "SOLIDSTRIP, INC.",
+      "contract_number": "GS-07F-0264U",
+      "vendor_uei": "W3BFJSMJ3FG6",
+      "company_address": "8590 USH 51 BSMT",
+      "company_city": "MINOCQUA",
+      "company_state": "WI",
+      "company_zip": "54548-9347",
+      "primary_contact_phone": "7153567130",
+      "primary_contact_email": "solidstrip@plasticmedia.com",
+      "website": "http://solidstrip@plasticmedia.com",
+      "contract_start_date": "2028-03-31",
+      "contract_expiration_date": "2028-03-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0264U/GS07F0264U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0264U&sin=327910&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "327910"
+      ],
+      "primary_sin": "327910",
+      "schedule_number": "MAS",
+      "company_name": "THE H.A.B.I.T.S GROUP LLC",
+      "contract_number": "47QSWA22D0086",
+      "vendor_uei": "LRKAGNZB7P26",
+      "company_address": "6448 E HIGHWAY 290 STE B106",
+      "company_city": "AUSTIN",
+      "company_state": "TX",
+      "company_zip": "78723-1038",
+      "primary_contact_phone": "15127893108",
+      "primary_contact_email": "government@thehabitsgroup.net",
+      "website": "http://www.thehabitsgroup.net",
+      "contract_start_date": "2027-08-16",
+      "contract_expiration_date": "2042-08-16",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 327910.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Jul 21, 2033",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0086/47QSWA22D0086_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0086&sin=327910&src=elib&app=cat"
+      }
+    }
+  ]
+}

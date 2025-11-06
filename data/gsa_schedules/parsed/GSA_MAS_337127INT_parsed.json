@@ -1,0 +1,686 @@
+{
+  "sin_code": "337127INT",
+  "file_name": "GSA_MAS_337127INT_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:48.507599",
+  "sheets": {
+    "2025_11_05_11_10_23": {
+      "row_count": 28,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "ABS ALPHA GROUP GMBH",
+      "contract_number": "47QSCA20D000A",
+      "vendor_uei": "D9C9YNDYM8D3",
+      "company_address": "ZEPPELINSTR. 20",
+      "company_city": "BAD VILBEL",
+      "company_zip": "61118",
+      "primary_contact_phone": "0049610158650",
+      "primary_contact_email": "m.laube@abs-alpha-group.com",
+      "website": "http://www.abs-alpha-group.com",
+      "contract_start_date": "2030-04-22",
+      "contract_expiration_date": "2040-04-22",
+      "company_country": "GERMANY",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA20D000A/47QSCA20D000A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA20D000A&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "AMOSAINS FURNITURE CO., LTD.",
+      "contract_number": "47QSCA20D0009",
+      "vendor_uei": "NQRMJMN3BNB5",
+      "company_address": "24, GAHYEONSAN-RO 23BEON-GIL, SE",
+      "company_city": "INCHEON",
+      "company_zip": "22603",
+      "primary_contact_phone": "+82325632700",
+      "primary_contact_email": "amosainsfur@gmail.com",
+      "website": "https://www.amosains.com/",
+      "contract_start_date": "2030-01-15",
+      "contract_expiration_date": "2040-01-15",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA20D0009/47QSCA20D0009_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA20D0009&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "BIF GLOBAL CO.,LTD",
+      "contract_number": "GS-28F-0032X",
+      "vendor_uei": "J8M3WGR3AC96",
+      "company_address": "233-1, MOKDONGDONG-RO, YANGCHEON",
+      "company_city": "SEOUL",
+      "company_zip": "07995",
+      "primary_contact_phone": "82226549506",
+      "primary_contact_email": "bifglobal@hotmail.com",
+      "website": "http://www.bifglobal.net",
+      "contract_start_date": "2026-09-28",
+      "contract_expiration_date": "2031-09-28",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0032X/GS28F0032X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0032X&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "BIF NEW YORK INC",
+      "contract_number": "GS-28F-0041T",
+      "vendor_uei": "JW6HL7DTFX75",
+      "company_address": "465 BARELL AVE",
+      "company_city": "CARLSTADT",
+      "company_state": "NJ",
+      "company_zip": "07072-2809",
+      "primary_contact_phone": "2019337777",
+      "primary_contact_email": "tlee@bifnewyork.com",
+      "website": "http://www.bifnewyork.com",
+      "contract_start_date": "2027-09-20",
+      "contract_expiration_date": "2027-09-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0041T/GS28F0041T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0041T&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "DASANFURS CO.LTD.",
+      "contract_number": "47QSMA23D08NL",
+      "vendor_uei": "KK4JCJXCG6C7",
+      "company_address": "1791-9 GYEONGGI-DAERO, JINWI-MYE",
+      "company_city": "PYEONGTAEK",
+      "company_zip": "17706",
+      "primary_contact_phone": "82316621351",
+      "primary_contact_email": "dasanfurs@hotmail.com",
+      "contract_start_date": "2028-01-04",
+      "contract_expiration_date": "2043-01-04",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "DHI GLOBAL CO.,LTD",
+      "contract_number": "GS-27F-0009T",
+      "vendor_uei": "PM5YRA3ZNBE7",
+      "company_address": "55-37 LG-RO, JINWI-MYEON",
+      "company_city": "PYEONGTAEK-SI",
+      "company_zip": "17707",
+      "primary_contact_phone": "2406217960",
+      "primary_contact_email": "malcolmw@mjpw.com",
+      "website": "http://www.ikoas.com",
+      "contract_start_date": "2027-03-15",
+      "contract_expiration_date": "2027-03-15",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0009T/GS27F0009T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0009T&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "DIN SYSTEM CO., LTD.",
+      "contract_number": "47QSMS25D0067",
+      "vendor_uei": "KPFER37GY3E4",
+      "company_address": "25, SEONGSUIL-RO 4-GIL, SEONGDON",
+      "company_city": "SEOUL",
+      "primary_contact_phone": "82221158181",
+      "primary_contact_email": "dinsystem1@d-in.co.kr",
+      "website": "http://www.d-in.co.kr",
+      "contract_start_date": "2030-03-16",
+      "contract_expiration_date": "2045-03-16",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0067/47QSMS25D0067_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0067&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "DONGYANG CO., LTD",
+      "contract_number": "GS-27F-018DA",
+      "vendor_uei": "YJSDPEV1DED6",
+      "company_address": "517-3 SINHAN-RI, WACHON-MYEON",
+      "company_city": "KYUNGSAN",
+      "primary_contact_phone": "2406217960",
+      "primary_contact_email": "malcolmw@mjpw.com",
+      "website": "http://www.formers.co.kr",
+      "contract_start_date": "2026-03-21",
+      "contract_expiration_date": "2036-03-21",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F018DA/GS27F018DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-018DA&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "FURSYS INC.",
+      "contract_number": "GS-28F-0042Y",
+      "vendor_uei": "R735EQ9X5994",
+      "company_address": "311, OGEUM-RO",
+      "company_city": "SEOUL",
+      "company_zip": "056-61",
+      "primary_contact_phone": "8212721222",
+      "primary_contact_email": "GSA@FURSYS.COM",
+      "website": "http://www.globalfursys.com",
+      "contract_start_date": "2027-07-09",
+      "contract_expiration_date": "2032-07-09",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "address_2": "SONGPA-GU",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0042Y/GS28F0042Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0042Y&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "GENESIS.CO., LTD",
+      "contract_number": "47QSCA18D0008",
+      "vendor_uei": "G82GTKG421J1",
+      "company_address": "1003-11, POSEUNGJANGAN-RO",
+      "company_city": "HWSEONG-SI",
+      "company_zip": "18586",
+      "primary_contact_phone": "01182313580180",
+      "primary_contact_email": "sales@i-genesis.co.kr",
+      "website": "www.i-genesis.co.kr",
+      "contract_start_date": "2027-12-05",
+      "contract_expiration_date": "2037-12-05",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "address_2": "JANGAN-MYEON",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA18D0008/47QSCA18D0008_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "HALLYM FURNITURE INDUSTRIAL CO.,LTD",
+      "contract_number": "GS-27F-0013W",
+      "vendor_uei": "EHZ4DTXNPHW8",
+      "company_address": "26 JEONGMUN-RO 488BEON-GIL, WOLL",
+      "company_city": "PAJU-SI",
+      "primary_contact_phone": "82319445850",
+      "primary_contact_email": "hallym2009@hotmail.com",
+      "website": "http://hallym2009.com",
+      "contract_start_date": "2030-01-21",
+      "contract_expiration_date": "2030-01-21",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0013W/GS27F0013W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0013W&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "HAN SUNG IND. CO., LTD",
+      "contract_number": "47QSCA19D0003",
+      "vendor_uei": "KNYJLGQK6KS6",
+      "company_address": "3-4, WONHYO-RO 89-GIL, YONGSAN-G",
+      "company_city": "SEOUL",
+      "primary_contact_phone": "2406217960",
+      "primary_contact_email": "malcolmw@mjpw.com",
+      "website": "HTTPS://HYUNDAILIVART.CO.KR",
+      "contract_start_date": "2028-11-11",
+      "contract_expiration_date": "2038-11-11",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA19D0003/47QSCA19D0003_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA19D0003&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "HAPPY TRADING CO.,LTD",
+      "contract_number": "47QSMS24D001L",
+      "vendor_uei": "ERKYUTEUJ678",
+      "company_address": "511, ANYANG-RO, MANAN-GU,",
+      "company_city": "ANYANG-SI",
+      "company_zip": "13968",
+      "primary_contact_phone": "+827042488882",
+      "primary_contact_email": "happytradingcoltd@hotmail.com",
+      "website": "http://www.hptradingcoltd.co.kr",
+      "contract_start_date": "2028-12-27",
+      "contract_expiration_date": "2043-12-27",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D001L/47QSMS24D001L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D001L&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "HAWORTH GMBH",
+      "contract_number": "GS-03F-032GA",
+      "vendor_uei": "J6MCU738J7D5",
+      "company_address": "AM DEISTERBAHNHOF 6",
+      "company_city": "BAD MUENDER",
+      "company_zip": "31848",
+      "primary_contact_phone": "490610158650",
+      "primary_contact_email": "info@abs-alpha-group.com",
+      "website": "http://www.haworth.de",
+      "contract_start_date": "2027-02-01",
+      "contract_expiration_date": "2037-02-01",
+      "company_country": "GERMANY",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F032GA/GS03F032GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-032GA&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "HMO",
+      "contract_number": "GS-28F-004DA",
+      "vendor_uei": "YUX4LNA52FX6",
+      "company_address": "192 DONGJAK-DAERO SEOCHO-GU",
+      "company_city": "SEOUL",
+      "company_zip": "06559",
+      "primary_contact_phone": "821090911112",
+      "primary_contact_email": "hmo.office@gmail.com",
+      "website": "http://hmofurniture.kr",
+      "contract_start_date": "2030-11-05",
+      "contract_expiration_date": "2035-11-05",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F004DA/GS28F004DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-004DA&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "HUND OFFICE FURNITURE DISTRIBUTION GMBH",
+      "contract_number": "47QSMA20D08Q2",
+      "vendor_uei": "QLR1Y5RGUG51",
+      "company_address": "SCHWANHAEUSER STR. 2",
+      "company_city": "SULZDORF",
+      "company_zip": "97528",
+      "primary_contact_phone": "00491716510763",
+      "primary_contact_email": "mike.kester@hundofd.com",
+      "website": "http://www.hundofd.com",
+      "contract_start_date": "2030-04-23",
+      "contract_expiration_date": "2040-04-23",
+      "company_country": "GERMANY",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08Q2/47QSMA20D08Q2_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08Q2&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "KOAS CO.,LTD.",
+      "contract_number": "GS-28F-0012S",
+      "vendor_uei": "NFK3CBUZMG88",
+      "company_address": "17, SEONYU-RO 52-GIL",
+      "company_city": "SEOUL",
+      "primary_contact_phone": "82221636074",
+      "primary_contact_email": "justinhong@ikoas.com",
+      "website": "http://www.ikoas.com",
+      "contract_start_date": "2026-02-08",
+      "contract_expiration_date": "2026-02-08",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "address_2": "YEONGDEUNGPO-GU",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0012S/GS28F0012S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0012S&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "LEES CO., LTD.",
+      "contract_number": "47QSCA18D000V",
+      "vendor_uei": "HJZLMPDJNLX7",
+      "company_address": "181-9 SANNAM-RO",
+      "company_city": "PAJU",
+      "company_zip": "10882",
+      "primary_contact_phone": "82319433694",
+      "primary_contact_email": "leenbricks@gmail.com",
+      "website": "http://www.leescompany.com",
+      "contract_start_date": "2028-08-27",
+      "contract_expiration_date": "2038-08-27",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA18D000V/47QSCA18D000V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA18D000V&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "LIVING GROUP LLC",
+      "contract_number": "GS-28F-033AA",
+      "vendor_uei": "MKGLKMFN9XK9",
+      "company_address": "325 W 38TH ST RM 404",
+      "company_city": "NEW YORK",
+      "company_state": "NY",
+      "company_zip": "10018-9660",
+      "primary_contact_phone": "2124666476",
+      "primary_contact_email": "info@governmentofficefurniture.com",
+      "website": "www.governmentofficefurniture.com",
+      "contract_start_date": "2028-09-04",
+      "contract_expiration_date": "2033-09-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F033AA/GS28F033AA_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "NEW ENGLAND WOODCRAFT, INC.",
+      "contract_number": "GS-03F-040DA",
+      "vendor_uei": "W9Z1CJ2RM4K4",
+      "company_address": "481 NORTH ST",
+      "company_city": "BRANDON",
+      "company_state": "VT",
+      "company_zip": "05733-9509",
+      "primary_contact_phone": "8022478211",
+      "primary_contact_email": "lmack@newoodcraft.com",
+      "website": "http://www.NewEnglandWoodcraft.com",
+      "contract_start_date": "2030-12-22",
+      "contract_expiration_date": "2035-12-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F040DA/GS03F040DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-040DA&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "OFFICE ANGUNSA CO., LTD.",
+      "contract_number": "GS-27F-0035V",
+      "vendor_uei": "FFYGP84MLV87",
+      "company_address": "12-11, GAEHWADONG-RO 13-GIL, GAN",
+      "company_city": "SEOUL",
+      "company_zip": "07504",
+      "primary_contact_phone": "82226337764",
+      "primary_contact_email": "officeangunsa@gmail.com",
+      "website": "http://www.angunsa.co.kr",
+      "contract_start_date": "2029-08-27",
+      "contract_expiration_date": "2029-08-27",
+      "company_country": "SOUTH KOREA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0035V/GS27F0035V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0035V&sin=337127INT&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337127INT"
+      ],
+      "primary_sin": "337127INT",
+      "schedule_number": "MAS",
+      "company_name": "STEELCASE GMBH",
+      "contract_number": "47QSCA19D0008",
+      "vendor_uei": "NPKMEUL85YY9",
+      "company_address": "BRIENNER STR. 42",
+      "company_city": "MUNCHEN",
+      "company_zip": "80333",
+      "primary_contact_phone": "+4915209222606",
+      "primary_contact_email": "apuchegg@steelcase.com",
+      "website": "https://www.steelcase.com/eu-en",
+      "contract_start_date": "2029-01-06",
+      "contract_expiration_date": "2039-01-06",
+      "company_country": "GERMANY",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337127INT ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA19D0008/47QSCA19D0008_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA19D0008&sin=337127INT&src=elib&app=cat"
+      }
+    }
+  ]
+}

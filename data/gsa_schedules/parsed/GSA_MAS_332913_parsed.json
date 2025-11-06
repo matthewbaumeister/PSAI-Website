@@ -1,0 +1,501 @@
+{
+  "sin_code": "332913",
+  "file_name": "GSA_MAS_332913_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:19.731563",
+  "sheets": {
+    "2025_11_05_11_14_23": {
+      "row_count": 21,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "BEAM DISTRIBUTING, INC.",
+      "contract_number": "GS-07F-256AA",
+      "vendor_uei": "FY4FYX6HUPE5",
+      "company_address": "317 HILL CARTER PKWY",
+      "company_city": "ASHLAND",
+      "company_state": "VA",
+      "company_zip": "23005-2315",
+      "primary_contact_phone": "8044406489",
+      "primary_contact_email": "jackie@beamdistributing.com",
+      "website": "http://www.beam.is",
+      "contract_start_date": "2028-05-09",
+      "contract_expiration_date": "2033-05-09",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F256AA/GS07F256AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-256AA&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "BEST PLUMBING SPECIALTIES INC",
+      "contract_number": "47QSMS24D008R",
+      "vendor_uei": "D22WR7X5MHC5",
+      "company_address": "3039 VENTRIE CT",
+      "company_city": "MYERSVILLE",
+      "company_state": "MD",
+      "company_zip": "21773-7817",
+      "primary_contact_phone": "8004486710",
+      "primary_contact_email": "MMAHER@BESTPLUMBINGONLINE.COM",
+      "website": "https://www.bestplumbingspecialties.com/",
+      "contract_start_date": "2029-08-30",
+      "contract_expiration_date": "2044-08-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D008R/47QSMS24D008R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D008R&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "CAPP LLC",
+      "contract_number": "GS-21F-0116X",
+      "vendor_uei": "LNKAWHJ8T1T5",
+      "company_address": "201 MARPLE AVE",
+      "company_city": "CLIFTON HEIGHTS",
+      "company_state": "PA",
+      "company_zip": "19018-2414",
+      "primary_contact_phone": "8003568000",
+      "primary_contact_email": "hello@cappusa.com",
+      "website": "https://cappusa.com",
+      "contract_start_date": "2026-06-16",
+      "contract_expiration_date": "2031-06-16",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0116X/GS21F0116X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0116X&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "CREST GOOD MANUFACTURING CO INC",
+      "contract_number": "GS-07F-9652S",
+      "vendor_uei": "MQQJKR286VH6",
+      "company_address": "90 GORDON DR STE A",
+      "company_city": "SYOSSET",
+      "company_state": "NY",
+      "company_zip": "11791-4718",
+      "primary_contact_phone": "5169217260",
+      "primary_contact_email": "Philg@crestgood.com",
+      "website": "http://crestgood.com",
+      "contract_start_date": "2026-08-15",
+      "contract_expiration_date": "2026-08-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9652S/GS07F9652S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9652S&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "EVENFLO PLUMBING, LLC",
+      "contract_number": "47QSMS24D0055",
+      "vendor_uei": "UXSQBQTC6PK5",
+      "company_address": "106 S 11TH ST",
+      "company_city": "PHILOMATH",
+      "company_state": "OR",
+      "company_zip": "97370-9083",
+      "primary_contact_phone": "5417600607",
+      "primary_contact_email": "lisa@evenfloplumbing.com",
+      "website": "http://www.evenfloplumbing.com",
+      "contract_start_date": "2029-03-21",
+      "contract_expiration_date": "2044-03-21",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0055/47QSMS24D0055_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0055&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "EXCEL DRYER, INC.",
+      "contract_number": "GS-07F-0017T",
+      "vendor_uei": "GF7RCLK5X137",
+      "company_address": "357 CHESTNUT ST",
+      "company_city": "EAST LONGMEADOW",
+      "company_state": "MA",
+      "company_zip": "01028-2742",
+      "primary_contact_phone": "4135254231",
+      "primary_contact_email": "sales@exceldryer.com",
+      "website": "http://www.exceldryer.com",
+      "contract_start_date": "2026-09-30",
+      "contract_expiration_date": "2026-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0017T/GS07F0017T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0017T&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "FLOW-RIGHT PLUMBING & HEATING CORP.",
+      "contract_number": "47QSMS25D003E",
+      "vendor_uei": "CSTVDNW5L261",
+      "company_address": "94 DAVIDSON STREET",
+      "company_city": "STATEN ISLAND",
+      "company_state": "NY",
+      "company_zip": "10303-2037",
+      "primary_contact_phone": "7185241020",
+      "primary_contact_email": "rich@flowrightcorp.com",
+      "website": "http://www.flowrightcorp.com",
+      "contract_start_date": "2030-01-21",
+      "contract_expiration_date": "2045-01-21",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D003E&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "GASPARINI JOHN W INC",
+      "contract_number": "GS-07F-0342U",
+      "vendor_uei": "RLVNJFLMQJ87",
+      "company_address": "3312 RAMONA DR",
+      "company_city": "FORT WORTH",
+      "company_state": "TX",
+      "company_zip": "76116-6428",
+      "primary_contact_phone": "8177102264",
+      "primary_contact_email": "j.brallier@markspp.com",
+      "website": "http://www.markspp.com",
+      "contract_start_date": "2028-04-30",
+      "contract_expiration_date": "2028-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0342U/GS07F0342U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0342U&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "LIFTSEAT CORP",
+      "contract_number": "GS-07F-0453V",
+      "vendor_uei": "EMQ1KRNUE8Y4",
+      "company_address": "2001 MIDWEST RD STE 204",
+      "company_city": "OAK BROOK",
+      "company_state": "IL",
+      "company_zip": "60523-4308",
+      "primary_contact_phone": "6304242840",
+      "primary_contact_email": "jnelson@liftseat.com",
+      "website": "https://WWW.LIFTSEAT.COM",
+      "contract_start_date": "2029-08-02",
+      "contract_expiration_date": "2029-08-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0453V/GS07F0453V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0453V&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "MALPASS CONSTRUCTION CO INC",
+      "contract_number": "47QSMS25D005G",
+      "vendor_uei": "XK3BHZ9AX4Y3",
+      "company_address": "2650 INDIAN RIVER RD",
+      "company_city": "CHESAPEAKE",
+      "company_state": "VA",
+      "company_zip": "23325",
+      "primary_contact_phone": "7575433541",
+      "primary_contact_email": "Don@malpass.com",
+      "website": "https://www.malpass.com",
+      "contract_start_date": "2030-03-04",
+      "contract_expiration_date": "2045-03-04",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D005G/47QSMS25D005G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D005G&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "MASTER BUILDING SPECIALTIES INC",
+      "contract_number": "GS-07F-0339T",
+      "vendor_uei": "TE44VBYUS2S4",
+      "company_address": "1630 E FRANCIS ST STE A",
+      "company_city": "ONTARIO",
+      "company_state": "CA",
+      "company_zip": "91761-5784",
+      "primary_contact_phone": "9093930186",
+      "primary_contact_email": "lori@masterbuilding.com",
+      "website": "http://WWW.MASTERBUILDING.NET",
+      "contract_start_date": "2027-04-30",
+      "contract_expiration_date": "2027-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0339T/GS07F0339T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0339T&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "MEGA SUPPLY STORE LLC",
+      "contract_number": "47QSWA22D0065",
+      "vendor_uei": "VLMXGMNE5W18",
+      "company_address": "320 CAMER DR",
+      "company_city": "BENSALEM",
+      "company_state": "PA",
+      "company_zip": "19020-7302",
+      "primary_contact_phone": "2678254385",
+      "primary_contact_email": "tanya@megasupplystore.com",
+      "website": "http://www.megasupplypro.com",
+      "contract_start_date": "2027-06-08",
+      "contract_expiration_date": "2042-06-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0065&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "SPILL 911, INC.",
+      "contract_number": "47QSWA23D0036",
+      "vendor_uei": "DF4XBNB7EQF6",
+      "company_address": "5015 WILLOW RD",
+      "company_city": "ZIONSVILLE",
+      "company_state": "IN",
+      "company_zip": "46077-9445",
+      "primary_contact_phone": "8004745911",
+      "primary_contact_email": "johnmoore@spill911.com",
+      "website": "https://spill911.com/",
+      "contract_start_date": "2028-04-30",
+      "contract_expiration_date": "2043-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0036/47QSWA23D0036_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0036&sin=332913&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332913"
+      ],
+      "primary_sin": "332913",
+      "schedule_number": "MAS",
+      "company_name": "TOTAL MAINTENANCE SOLUTIONS SOUTH INC",
+      "contract_number": "47QSWA18D0063",
+      "vendor_uei": "JF8SRMULAFF3",
+      "company_address": "3540 RUTHERFORD RD",
+      "company_city": "TAYLORS",
+      "company_state": "SC",
+      "company_zip": "29687-2142",
+      "primary_contact_phone": "8003925066",
+      "primary_contact_email": "travis@tmssouth.com",
+      "website": "HTTP://WWW.SHOPTMSSOUTH.COM",
+      "contract_start_date": "2028-07-14",
+      "contract_expiration_date": "2038-07-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 332913.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D0063/47QSWA18D0063_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D0063&sin=332913&src=elib&app=cat"
+      }
+    }
+  ]
+}

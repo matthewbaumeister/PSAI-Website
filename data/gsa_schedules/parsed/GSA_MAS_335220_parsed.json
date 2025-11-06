@@ -1,0 +1,1141 @@
+{
+  "sin_code": "335220",
+  "file_name": "GSA_MAS_335220_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:19.166730",
+  "sheets": {
+    "2025_11_05_11_08_10": {
+      "row_count": 42,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "11400 LLC",
+      "contract_number": "47QSWA21D001S",
+      "vendor_uei": "U9PKUDH7SPX6",
+      "company_address": "2551 HORSESHOE RD",
+      "company_city": "LANCASTER",
+      "company_state": "PA",
+      "company_zip": "17601-5939",
+      "primary_contact_phone": "7172080593",
+      "primary_contact_email": "kmartin@11400llc.com",
+      "website": "http://www.11400llc.com",
+      "contract_start_date": "2026-01-14",
+      "contract_expiration_date": "2041-01-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D001S/47QSWA21D001S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D001S&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "ALDEVRA LLC",
+      "contract_number": "GS-07F-175AA",
+      "vendor_uei": "WF95AG13LN37",
+      "company_address": "5865 VENTURE PARK DR",
+      "company_city": "KALAMAZOO",
+      "company_state": "MI",
+      "company_zip": "49009-1849",
+      "primary_contact_phone": "2693501337",
+      "primary_contact_email": "sales@aldevra.com",
+      "website": "http://www.aldevra.com",
+      "contract_start_date": "2028-03-14",
+      "contract_expiration_date": "2033-03-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "May 3, 2026",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F175AA/GS07F175AA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-175AA/pricelist_GS-07F-175AA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-175AA&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "BABCO INTERNATIONAL INC",
+      "contract_number": "47QSWA18D001H",
+      "vendor_uei": "MU77BJ5D4JW5",
+      "company_address": "1931 W GRANT RD",
+      "company_city": "TUCSON",
+      "company_state": "AZ",
+      "company_zip": "85745-1104",
+      "primary_contact_phone": "5206287596",
+      "primary_contact_email": "betsy@babcotucson.com",
+      "website": "HTTP://WWW.BABCOTUCSON.COM",
+      "contract_start_date": "2028-04-30",
+      "contract_expiration_date": "2038-04-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "address_2": "STE 320",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001H/47QSWA18D001H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001H&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "BIRMINGHAM RESTAURANT SUPPLY, INC.",
+      "contract_number": "47QSMS25D005J",
+      "vendor_uei": "MF2CCMS39K73",
+      "company_address": "2428 6TH AVE S",
+      "company_city": "BIRMINGHAM",
+      "company_state": "AL",
+      "company_zip": "35233-3316",
+      "primary_contact_phone": "2052448785",
+      "primary_contact_email": "mtobia@brescoinc.com",
+      "website": "https://www.brescoinc.com/",
+      "contract_start_date": "2030-03-04",
+      "contract_expiration_date": "2045-03-04",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D005J/47QSMS25D005J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D005J&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "BURKETT & SONS INC",
+      "contract_number": "47QSWA18D002G",
+      "vendor_uei": "X96JWN5MJLP6",
+      "company_address": "28740 GLENWOOD RD",
+      "company_city": "PERRYSBURG",
+      "company_state": "OH",
+      "company_zip": "43551-3014",
+      "primary_contact_phone": "4197202888",
+      "primary_contact_email": "gsa@burkett.com",
+      "website": "http://www.burkett.com",
+      "contract_start_date": "2028-03-31",
+      "contract_expiration_date": "2038-03-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D002G/47QSWA18D002G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D002G&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "CENTRAL PRODUCTS LLC",
+      "contract_number": "GS-07F-0080V",
+      "vendor_uei": "MLVKM44NJ6W4",
+      "company_address": "9555 DRY FORK RD",
+      "company_city": "HARRISON",
+      "company_state": "OH",
+      "company_zip": "45030-1906",
+      "primary_contact_phone": "3172388247",
+      "primary_contact_email": "amandan@centralrestaurant.com",
+      "website": "http://www.centralrestaurant.com",
+      "contract_start_date": "2028-11-30",
+      "contract_expiration_date": "2028-11-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0080V/GS07F0080V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0080V&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "CITISCO, LLC",
+      "contract_number": "GS-07F-0356T",
+      "vendor_uei": "ZC8MF2WXT1V4",
+      "company_address": "225 HORIZON DR",
+      "company_city": "SUWANEE",
+      "company_state": "GA",
+      "company_zip": "30024-3101",
+      "primary_contact_phone": "8663859484",
+      "primary_contact_email": "ericthornton@citisco.com",
+      "website": "http://WWW.CITISCO.COM",
+      "contract_start_date": "2027-05-14",
+      "contract_expiration_date": "2027-05-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0356T/GS07F0356T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0356T&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "CULINARY DEPOT INC.",
+      "contract_number": "GS-07F-0211V",
+      "vendor_uei": "CJ73BZX248A1",
+      "company_address": "67 ROUTE 59",
+      "company_city": "SPRING VALLEY",
+      "company_state": "NY",
+      "company_zip": "10977-5250",
+      "primary_contact_phone": "8454142230",
+      "primary_contact_email": "elip@culinarydepot.biz",
+      "website": "http://www.culinarydepotinc.com",
+      "contract_start_date": "2029-03-31",
+      "contract_expiration_date": "2029-03-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0211V/GS07F0211V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0211V&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "CURTIS EQUIPMENT INC.",
+      "contract_number": "47QSMS24D009V",
+      "vendor_uei": "LND5X95A4MX7",
+      "company_address": "5516 COLORADO AVE NW",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20011-7802",
+      "primary_contact_phone": "2022441839",
+      "primary_contact_email": "MJeffries@curtisequip.com",
+      "website": "http://www.curtisequip.com",
+      "contract_start_date": "2029-07-11",
+      "contract_expiration_date": "2044-07-11",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D009V/47QSMS24D009V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D009V&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "CVK ENTERPRISES INC",
+      "contract_number": "GS-07F-264BA",
+      "vendor_uei": "VXJ9KCULLET5",
+      "company_address": "1171 S NORTHPOINT BLVD",
+      "company_city": "WAUKEGAN",
+      "company_state": "IL",
+      "company_zip": "60085-8216",
+      "primary_contact_phone": "8479996577",
+      "primary_contact_email": "meagan@federalsupply.com",
+      "website": "http://www.federalsupply.com",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2034-07-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F264BA/GS07F264BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-264BA&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "DASCOA, INC.",
+      "contract_number": "47QSMS24D00CQ",
+      "vendor_uei": "G7HMVEZJ9Z21",
+      "company_address": "6201 S GATEWAY DR",
+      "company_city": "MARION",
+      "company_state": "IA",
+      "company_zip": "52302-9430",
+      "primary_contact_phone": "3193737296",
+      "primary_contact_email": "NICK.SCHMITT@RAPIDSWHOLESALE.COM",
+      "website": "https://rapidswholesale.com",
+      "contract_start_date": "2029-09-26",
+      "contract_expiration_date": "2044-09-26",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00CQ&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "DEFENSE VENTURE HOLDINGS, LLC",
+      "contract_number": "47QSWA23D002P",
+      "vendor_uei": "N5EVQJAL2JD5",
+      "company_address": "2601 PERFORMANCE CT STE 101",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23453-3768",
+      "primary_contact_phone": "7574992021",
+      "primary_contact_email": "kdimichele@defenseventureholdings.com",
+      "website": "http://www.defenseventureholdings.com",
+      "contract_start_date": "2028-01-31",
+      "contract_expiration_date": "2043-01-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D002P/47QSWA23D002P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D002P&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "DIETARY EQUIPMENT INCORPORATED",
+      "contract_number": "47QSWA19D001J",
+      "vendor_uei": "TKG9ZQYZDPY3",
+      "company_address": "2205 MAIN ST STE B",
+      "company_city": "COLUMBIA",
+      "company_state": "SC",
+      "company_zip": "29201",
+      "primary_contact_phone": "8007554777",
+      "primary_contact_email": "gholiver@dietaryequipment.net",
+      "website": "http://www.dietaryequipment.net/",
+      "contract_start_date": "2028-11-18",
+      "contract_expiration_date": "2038-11-18",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D001J/47QSWA19D001J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D001J&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "DIVINE IMAGING INC.",
+      "contract_number": "47QSWA19D002X",
+      "vendor_uei": "LGMVH2NYJH38",
+      "company_address": "21323 PACIFIC COAST HWY STE 101",
+      "company_city": "MALIBU",
+      "company_state": "CA",
+      "company_zip": "90265-5202",
+      "primary_contact_phone": "3105794000",
+      "primary_contact_email": "kim@divineimaging.com",
+      "website": "https://www.divineImaging.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2039-01-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002X/47QSWA19D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002X&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "FIRST EQUIPMENT INC",
+      "contract_number": "GS-07F-0461W",
+      "vendor_uei": "HNU8GEKWNHR6",
+      "company_address": "1595 CABIN BRANCH DR",
+      "company_city": "LANDOVER",
+      "company_state": "MD",
+      "company_zip": "20785-3816",
+      "primary_contact_phone": "3017734340",
+      "primary_contact_email": "dsegal@1stequipment.com",
+      "website": "http://www.1stequipment.com",
+      "contract_start_date": "2030-05-31",
+      "contract_expiration_date": "2030-05-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0461W/GS07F0461W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0461W&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "GILL GROUP, INC.",
+      "contract_number": "GS-07F-049DA",
+      "vendor_uei": "RDN5HNBNV2D4",
+      "company_address": "1904 W PARKSIDE LN STE 100",
+      "company_city": "PHOENIX",
+      "company_state": "AZ",
+      "company_zip": "85027-1232",
+      "primary_contact_phone": "6238896864",
+      "primary_contact_email": "joanna.wigington@trimarkusa.com",
+      "website": "https://www.TriMarkusa.com",
+      "contract_start_date": "2026-02-28",
+      "contract_expiration_date": "2036-02-29",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F049DA/GS07F049DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-049DA&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "GLOBE EQUIPMENT COMPANY INC, THE",
+      "contract_number": "GS-07F-0352W",
+      "vendor_uei": "HM6EBZ9HDAN3",
+      "company_address": "300 DEWEY ST",
+      "company_city": "BRIDGEPORT",
+      "company_state": "CT",
+      "company_zip": "06605-2143",
+      "primary_contact_phone": "2032202415",
+      "primary_contact_email": "billiejo@globeequipment.com",
+      "website": "http://www.globeequipment.com",
+      "contract_start_date": "2030-04-20",
+      "contract_expiration_date": "2030-04-20",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0352W/GS07F0352W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0352W&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "GMS INDUSTRIAL SUPPLY, INC.",
+      "contract_number": "GS-07F-0369V",
+      "vendor_uei": "U7U2XCEKCS66",
+      "company_address": "212 DENN LN",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23462-2506",
+      "primary_contact_phone": "7574731467",
+      "primary_contact_email": "sales@gmsindustrialsupply.com",
+      "website": "http://www.gmsindustrialsupply.com",
+      "contract_start_date": "2029-06-14",
+      "contract_expiration_date": "2029-06-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0369V/GS07F0369V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0369V&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT SALES, LLC",
+      "contract_number": "GS-07F-0518T",
+      "vendor_uei": "J3M5EM9GLUW5",
+      "company_address": "4644 ARENDELL ST STE A",
+      "company_city": "MOREHEAD CITY",
+      "company_state": "NC",
+      "company_zip": "28557",
+      "primary_contact_phone": "8005316635",
+      "primary_contact_email": "CHARLES@GOVERNMENTSALESLLC.COM",
+      "website": "https://governmentsalesllc.com",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2027-08-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0518T/GS07F0518T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0518T&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "IFE GROUP",
+      "contract_number": "47QSWA23D0057",
+      "vendor_uei": "CXLGHMYZU2W8",
+      "company_address": "171 SAXONY RD STE 103",
+      "company_city": "ENCINITAS",
+      "company_state": "CA",
+      "company_zip": "92024-6776",
+      "primary_contact_phone": "7604363598",
+      "primary_contact_email": "gsasales@ifemarketing.com",
+      "website": "http://www.ifemarketing.com",
+      "contract_start_date": "2028-04-16",
+      "contract_expiration_date": "2043-04-16",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0057/47QSWA23D0057_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0057&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "INSTITUTIONS SERVICES, INC.",
+      "contract_number": "47QSWA18D007Y",
+      "vendor_uei": "DCC8JJC56FC8",
+      "company_address": "1421 N B AVE",
+      "company_city": "SIOUX FALLS",
+      "company_state": "SD",
+      "company_zip": "57104-0315",
+      "primary_contact_phone": "6053393931",
+      "primary_contact_email": "Tiffani@isdakota.com",
+      "website": "http://www.isdakota.com",
+      "contract_start_date": "2028-08-16",
+      "contract_expiration_date": "2038-08-16",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D007Y/47QSWA18D007Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D007Y&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "JAL ENTERPRISES, INC.",
+      "contract_number": "GS-21F-0114Y",
+      "vendor_uei": "U4MMR7DR2DR7",
+      "company_address": "502 ROTARY ST",
+      "company_city": "HAMPTON",
+      "company_state": "VA",
+      "company_zip": "23661-1321",
+      "primary_contact_phone": "7578251400",
+      "primary_contact_email": "jessica.staats@thesource2000.com",
+      "website": "http://www.thesource2000.net",
+      "contract_start_date": "2027-05-30",
+      "contract_expiration_date": "2032-05-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0114Y/GS21F0114Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0114Y&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "KATOM RESTAURANT SUPPLY, INC.",
+      "contract_number": "GS-07F-0342V",
+      "vendor_uei": "FM44T2NCG746",
+      "company_address": "305 KATOM PL",
+      "company_city": "KODAK",
+      "company_state": "TN",
+      "company_zip": "37764-1483",
+      "primary_contact_phone": "8652251545",
+      "primary_contact_email": "governmentbids@katom.com",
+      "website": "http://www.katom.com",
+      "contract_start_date": "2029-05-31",
+      "contract_expiration_date": "2029-05-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0342V/GS07F0342V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0342V&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "MOBILE FIXTURE & EQUIPMENT CO INC",
+      "contract_number": "GS-07F-0154V",
+      "vendor_uei": "E9QYLQ21LFF3",
+      "company_address": "1155 MONTLIMAR DR",
+      "company_city": "MOBILE",
+      "company_state": "AL",
+      "company_zip": "36609-1710",
+      "primary_contact_phone": "8507840501",
+      "primary_contact_email": "susan.ingram@destinrestaurantsupply.com",
+      "website": "http://www.mobilefixture.com",
+      "contract_start_date": "2029-02-14",
+      "contract_expiration_date": "2029-02-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0154V/GS07F0154V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0154V&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "NATIVE GREEN LLC",
+      "contract_number": "GS-07F-0490V",
+      "vendor_uei": "NJEMWXNTKEF9",
+      "company_address": "180 ENGELWOOD DR STE A",
+      "company_city": "ORION",
+      "company_state": "MI",
+      "company_zip": "48359-2417",
+      "primary_contact_phone": "2483654204",
+      "primary_contact_email": "sherri@nativegreen.com",
+      "website": "http://www.gonativegreen.com",
+      "contract_start_date": "2029-08-31",
+      "contract_expiration_date": "2029-08-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0490V/GS07F0490V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0490V&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "P & M LLC",
+      "contract_number": "GS-07F-9568S",
+      "vendor_uei": "MN7JWH9RC9P5",
+      "company_address": "50 RANICK DR E",
+      "company_city": "AMITYVILLE",
+      "company_state": "NY",
+      "company_zip": "11701-2822",
+      "primary_contact_phone": "6318422200",
+      "primary_contact_email": "IMCTeddy@aol.com",
+      "website": "http://www.imcteddy.com",
+      "contract_start_date": "2026-07-14",
+      "contract_expiration_date": "2026-07-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9568S/GS07F9568S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9568S&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "PIERCE SALES COMPANY, INC.",
+      "contract_number": "GS-07F-020BA",
+      "vendor_uei": "J4C7WLXMLYP5",
+      "company_address": "2413 N FORSYTH RD",
+      "company_city": "ORLANDO",
+      "company_state": "FL",
+      "company_zip": "32807-6455",
+      "primary_contact_phone": "4076799004",
+      "primary_contact_email": "gsa@rewonline.com",
+      "website": "http://www.rewonline.com",
+      "contract_start_date": "2028-10-08",
+      "contract_expiration_date": "2033-10-08",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F020BA/GS07F020BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-020BA&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "PUEBLO HOTEL SUPPLY CO",
+      "contract_number": "GS-07F-0537Y",
+      "vendor_uei": "C7THBHHDPMY5",
+      "company_address": "170 GREENHORN DR",
+      "company_city": "PUEBLO",
+      "company_state": "CO",
+      "company_zip": "81004-4075",
+      "primary_contact_phone": "7197550185",
+      "primary_contact_email": "jamie@gogradys.com",
+      "website": "https://www.gogradys.com/",
+      "contract_start_date": "2027-08-31",
+      "contract_expiration_date": "2032-08-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0537Y/GS07F0537Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0537Y&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "RESTAURANT AND MORE LLC",
+      "contract_number": "47QSMS25D008C",
+      "vendor_uei": "QNTVCDQUBMD4",
+      "company_address": "75 ALDER LN",
+      "company_city": "BOULDER",
+      "company_state": "CO",
+      "company_zip": "80304",
+      "primary_contact_phone": "8004319726",
+      "primary_contact_email": "admin@restaurantandmore.com",
+      "website": "http://www.restaurantandmore.com",
+      "contract_start_date": "2030-05-11",
+      "contract_expiration_date": "2045-05-11",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D008C/47QSMS25D008C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D008C&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "SINGER EQUIPMENT CO INC",
+      "contract_number": "GS-07F-0417Y",
+      "vendor_uei": "KKGJJL7XDFK5",
+      "company_address": "150 S TWIN VALLEY RD",
+      "company_city": "ELVERSON",
+      "company_state": "PA",
+      "company_zip": "19520-9328",
+      "primary_contact_phone": "9109126751",
+      "primary_contact_email": "SSorrells@SingerEquipment.com",
+      "website": "https://www.singerequipment.com",
+      "contract_start_date": "2027-06-30",
+      "contract_expiration_date": "2032-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0417Y/GS07F0417Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0417Y&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "SUPERIOR EQUIPMENT AND SUPPLY, CO.",
+      "contract_number": "GS-07F-0274X",
+      "vendor_uei": "DBAPQKWDUMM4",
+      "company_address": "4550 S BRUST AVE",
+      "company_city": "SAINT FRANCIS",
+      "company_state": "WI",
+      "company_zip": "53235-5322",
+      "primary_contact_phone": "8009604300",
+      "primary_contact_email": "sam@supequ.com",
+      "website": "http://www.superiorequipment.online",
+      "contract_start_date": "2026-02-14",
+      "contract_expiration_date": "2031-02-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0274X/GS07F0274X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0274X&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "SUPPLY KING USA, LLC",
+      "contract_number": "47QSHA22D0022",
+      "vendor_uei": "F886DTPP1W48",
+      "company_address": "55 OLD NYACK TPKE STE 210",
+      "company_city": "NANUET",
+      "company_state": "NY",
+      "company_zip": "10954-2450",
+      "primary_contact_phone": "9172689222",
+      "primary_contact_email": "sales@supplykingusa.com",
+      "website": "http://www.supplykingusa.com",
+      "contract_start_date": "2027-06-30",
+      "contract_expiration_date": "2042-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D0022/47QSHA22D0022_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D0022&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "TARI, INC.",
+      "contract_number": "GS-07F-197BA",
+      "vendor_uei": "L77NAX33K6L9",
+      "company_address": "426 S STAPLES ST",
+      "company_city": "CORPUS CHRISTI",
+      "company_state": "TX",
+      "company_zip": "78401-3331",
+      "primary_contact_phone": "3613607557",
+      "primary_contact_email": "bobak@jeansrs.com",
+      "website": "http://www.jeansrs.com",
+      "contract_start_date": "2029-04-09",
+      "contract_expiration_date": "2034-04-09",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F197BA/GS07F197BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-197BA&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "THE OFFICE GROUP INC",
+      "contract_number": "47QSEA20D004W",
+      "vendor_uei": "YGZMMVQKVFH1",
+      "company_address": "372 WYTHE CREEK RD",
+      "company_city": "POQUOSON",
+      "company_state": "VA",
+      "company_zip": "23662-1972",
+      "primary_contact_phone": "7578680914",
+      "primary_contact_email": "gwojo@theofficestore.com",
+      "website": "http://www.theofficestore.com",
+      "contract_start_date": "2030-03-11",
+      "contract_expiration_date": "2040-03-11",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "address_2": "STE C",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D004W/47QSEA20D004W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D004W&sin=335220&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "335220"
+      ],
+      "primary_sin": "335220",
+      "schedule_number": "MAS",
+      "company_name": "TOTEMIC BUSINESS SOLUTIONS, LLC",
+      "contract_number": "GS-07F-192GA",
+      "vendor_uei": "TLFXRBFRQNL3",
+      "company_address": "16385 BEAVER DAM RD",
+      "company_city": "MONTPELIER",
+      "company_state": "VA",
+      "company_zip": "23192-2129",
+      "primary_contact_phone": "8043347873",
+      "primary_contact_email": "tgilardi@totemicsolutions.com",
+      "website": "http://www.totemicsolutionsllc.com",
+      "contract_start_date": "2027-09-14",
+      "contract_expiration_date": "2037-09-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Food Service Equipment",
+        "source": "MAS",
+        "category": 335220.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F192GA/GS07F192GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-192GA&sin=335220&src=elib&app=cat"
+      }
+    }
+  ]
+}

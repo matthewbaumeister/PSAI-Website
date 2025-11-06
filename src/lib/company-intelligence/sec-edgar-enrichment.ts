@@ -141,9 +141,9 @@ export async function getCompanyFilings(cik: string): Promise<SECCompanyInfo | n
     const data: SECCompanyInfo = await response.json();
     return data;
 
-  } catch (error) {
+  } catch (error: any) {
     console.error(`Error fetching SEC filings for CIK ${cik}:`, error);
-    await logAPICall('sec.gov', `/submissions/CIK${cik}.json`, cik, 0, false, error.message);
+    await logAPICall('sec.gov', `/submissions/CIK${cik}.json`, cik, 0, false, error?.message || 'Unknown error');
     return null;
   }
 }

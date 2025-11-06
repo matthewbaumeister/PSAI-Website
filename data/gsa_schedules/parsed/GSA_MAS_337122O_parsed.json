@@ -1,0 +1,325 @@
+{
+  "sin_code": "337122O",
+  "file_name": "GSA_MAS_337122O_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:52.677034",
+  "sheets": {
+    "2025_11_05_11_10_00": {
+      "row_count": 15,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "D G J D, INC.",
+      "contract_number": "47QSMS11D0001",
+      "vendor_uei": "J4QEDF21ZU82",
+      "company_address": "490 RED HILL RD",
+      "company_city": "JEFFERSON",
+      "company_state": "CO",
+      "company_zip": "80456-5109",
+      "primary_contact_phone": "8008408767",
+      "primary_contact_email": "dgjdmaatsch@aol.com",
+      "website": "http://www.dgjdbleachers.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2031-08-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS11D0001/47QSMS11D0001_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS11D0001&sin=337122O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "JAMESTOWN ADVANCED PRODUCTS CORP.",
+      "contract_number": "GS-03F-009DA",
+      "vendor_uei": "VKLSAMTPV347",
+      "company_address": "2855 GIRTS RD",
+      "company_city": "JAMESTOWN",
+      "company_state": "NY",
+      "company_zip": "14701-9666",
+      "primary_contact_phone": "8004520639",
+      "primary_contact_email": "wlodestro@jamestownadvanced.com",
+      "website": "http://www.JamestownAdvanced.com",
+      "contract_start_date": "2030-10-29",
+      "contract_expiration_date": "2035-10-29",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F009DA/GS03F009DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-009DA&sin=337122O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "LANDSCAPE FORMS INC",
+      "contract_number": "GS-03F-0008Y",
+      "vendor_uei": "VN24A1EP8276",
+      "company_address": "7800 E MICHIGAN AVE",
+      "company_city": "KALAMAZOO",
+      "company_state": "MI",
+      "company_zip": "49048-9506",
+      "primary_contact_phone": "8005212546",
+      "primary_contact_email": "contracta@landscapeforms.com",
+      "website": "http://www.landscapeforms.com",
+      "contract_start_date": "2026-09-30",
+      "contract_expiration_date": "2031-09-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0008Y/GS03F0008Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0008Y&sin=337122O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "OUTDOOR CREATIONS, INC.",
+      "contract_number": "GS-03F-066BA",
+      "vendor_uei": "QWC2MLNMLXH3",
+      "company_address": "2270 BARNEY RD",
+      "company_city": "ANDERSON",
+      "company_state": "CA",
+      "company_zip": "96007-4305",
+      "primary_contact_phone": "5303656106",
+      "primary_contact_email": "deanna@outdoorcreations.com",
+      "website": "http://www.outdoorcreations.com",
+      "contract_start_date": "2029-09-18",
+      "contract_expiration_date": "2034-09-18",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F066BA/GS03F066BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-066BA&sin=337122O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "OUTDOOR ROOMS BY DESIGN LLC",
+      "contract_number": "47QSMA20D08QX",
+      "vendor_uei": "ELJ7TLUA8E67",
+      "company_address": "11966 STATE HIGHWAY 13",
+      "company_city": "KIMBERLING CITY",
+      "company_state": "MO",
+      "company_zip": "65686-8370",
+      "primary_contact_phone": "4177391019",
+      "primary_contact_email": "sharon@outdoorrooms.net",
+      "website": "http://www.outdoorrooms.net",
+      "contract_start_date": "2030-09-24",
+      "contract_expiration_date": "2040-09-24",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08QX/47QSMA20D08QX_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08QX&sin=337122O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "PETERSEN MFG. CO.",
+      "contract_number": "GS-07F-0353Y",
+      "vendor_uei": "LJ9CLRUHMTK5",
+      "company_address": "2471 HIGHWAY 30",
+      "company_city": "DENISON",
+      "company_state": "IA",
+      "company_zip": "51442-7502",
+      "primary_contact_phone": "8008327383",
+      "primary_contact_email": "emily@petersenmfg.com",
+      "website": "http://www.petersenmfg.com",
+      "contract_start_date": "2027-04-14",
+      "contract_expiration_date": "2032-04-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0353Y/GS07F0353Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0353Y&sin=337122O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "PLASTIC RECYCLING OF IOWA FALLS, INC.",
+      "contract_number": "47QSMS21D0001",
+      "vendor_uei": "JE1SBAYHU5Z3",
+      "company_address": "10252 HIGHWAY 65",
+      "company_city": "IOWA FALLS",
+      "company_state": "IA",
+      "company_zip": "50126-8823",
+      "primary_contact_phone": "6416485073",
+      "primary_contact_email": "sue.waters@plasticrecycling.us",
+      "website": "http://www.plasticrecycling.us",
+      "contract_start_date": "2026-08-17",
+      "contract_expiration_date": "2041-08-17",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "PROGRESSIVE DESIGN PLAYGROUNDS",
+      "contract_number": "47QSMA22D08PS",
+      "vendor_uei": "XSAWGT58NLB3",
+      "company_address": "2235 MEYERS AVE",
+      "company_city": "ESCONDIDO",
+      "company_state": "CA",
+      "company_zip": "92029-1005",
+      "primary_contact_phone": "7605975990",
+      "primary_contact_email": "tami@pdplay.com",
+      "website": "http://PDPLAY.com",
+      "contract_start_date": "2027-04-24",
+      "contract_expiration_date": "2042-04-24",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08PS/47QSMA22D08PS_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08PS&sin=337122O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "337122O"
+      ],
+      "primary_sin": "337122O",
+      "schedule_number": "MAS",
+      "company_name": "QUICK CRETE PRODUCTS CORPORATION",
+      "contract_number": "47QSMS24D00CY",
+      "vendor_uei": "UMK3MLB4Y8D6",
+      "company_address": "731 PARKRIDGE AVE",
+      "company_city": "NORCO",
+      "company_state": "CA",
+      "company_zip": "92860-3149",
+      "primary_contact_phone": "9512563260",
+      "primary_contact_email": "elisabet.bracamontes@qcp-corp.com",
+      "website": "http://www.qcp-corp.com",
+      "contract_start_date": "2029-08-28",
+      "contract_expiration_date": "2044-08-28",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Miscellaneous Furniture",
+        "source": "MAS",
+        "category": "337122O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00CY/47QSMS24D00CY_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00CY&sin=337122O&src=elib&app=cat"
+      }
+    }
+  ]
+}

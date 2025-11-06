@@ -1,0 +1,1187 @@
+{
+  "sin_code": "811310MR",
+  "file_name": "GSA_MAS_811310MR_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:53.773110",
+  "sheets": {
+    "2025_11_05_11_07_12": {
+      "row_count": 44,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "ATLANTIC DIVING SUPPLY, INC.",
+      "contract_number": "47QSMA19D08Q1",
+      "vendor_uei": "GJMSFBCNMSK3",
+      "company_address": "621 LYNNHAVEN PKWY",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23452-7383",
+      "primary_contact_phone": "7574167505",
+      "primary_contact_email": "gsa@adsinc.com",
+      "website": "http://www.adsinc.com",
+      "contract_start_date": "2029-05-07",
+      "contract_expiration_date": "2039-05-07",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "address_2": "STE 160",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08Q1/47QSMA19D08Q1_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA19D08Q1/pricelist_47QSMA19D08Q1.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08Q1&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "ATLAS TOYOTA MATERIAL HANDLING, LLC",
+      "contract_number": "GS-07F-115AA",
+      "vendor_uei": "MHPQXDJTH9M1",
+      "company_address": "1815 LANDMEIER RD",
+      "company_city": "ELK GROVE VILLAGE",
+      "company_state": "IL",
+      "company_zip": "60007-2420",
+      "primary_contact_phone": "7634259066",
+      "primary_contact_email": "gregs@toyotaequipment.com",
+      "website": "http://www.toyotaequipment.com",
+      "contract_start_date": "2028-01-14",
+      "contract_expiration_date": "2033-01-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F115AA/GS07F115AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-115AA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "CLAYTON ASSOCIATES INC",
+      "contract_number": "GS-07F-228BA",
+      "vendor_uei": "DB3NAULV43F9",
+      "company_address": "1650 OAK ST",
+      "company_city": "LAKEWOOD",
+      "company_state": "NJ",
+      "company_zip": "08701-5924",
+      "primary_contact_phone": "7323632100",
+      "primary_contact_email": "sales@jclayton.com",
+      "website": "http://www.jclayton.com",
+      "contract_start_date": "2029-05-31",
+      "contract_expiration_date": "2034-05-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F228BA/GS07F228BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-228BA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "CONTROL LASER CORP",
+      "contract_number": "47QSHA20D001P",
+      "vendor_uei": "JC1DV6AM7343",
+      "company_address": "8251 PRESIDENTS DR",
+      "company_city": "ORLANDO",
+      "company_state": "FL",
+      "company_zip": "32809-7653",
+      "primary_contact_phone": "4079263500",
+      "primary_contact_email": "fred.nielsen@controllaser.com",
+      "website": "http://www.controllaser.com",
+      "contract_start_date": "2030-01-16",
+      "contract_expiration_date": "2040-01-16",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA20D001P/47QSHA20D001P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA20D001P&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "DMG MORI FEDERAL SERVICES, INC.",
+      "contract_number": "47QSMS25D005S",
+      "vendor_uei": "E75XA56A4F13",
+      "company_address": "2400 HUNTINGTON BLVD",
+      "company_city": "HOFFMAN ESTATES",
+      "company_state": "IL",
+      "company_zip": "60192-1564",
+      "primary_contact_phone": "3319018892",
+      "primary_contact_email": "swelch@dmgmori-fs.com",
+      "website": "https://dmgmori-fs.com/",
+      "contract_start_date": "2030-03-05",
+      "contract_expiration_date": "2045-03-05",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D005S/47QSMS25D005S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D005S&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "DOCUMENT IMAGING DIMENSIONS INC.",
+      "contract_number": "GS-07F-0323Y",
+      "vendor_uei": "SD6KWN6SUPC1",
+      "company_address": "205 BEAVER ST",
+      "company_city": "YORKVILLE",
+      "company_state": "IL",
+      "company_zip": "60560-1720",
+      "primary_contact_phone": "8779343462",
+      "primary_contact_email": "fedsales@did-inc.com",
+      "website": "http://www.did-inc.com",
+      "contract_start_date": "2027-03-31",
+      "contract_expiration_date": "2032-03-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0323Y/GS07F0323Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0323Y&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "E.D.I. FINANCE, INC.",
+      "contract_number": "47QSMS25D0053",
+      "vendor_uei": "CJEHX8LW7497",
+      "company_address": "10099 RADIANCE DR",
+      "company_city": "IRA",
+      "company_state": "MI",
+      "company_zip": "48023-1428",
+      "primary_contact_phone": "5865668870",
+      "primary_contact_email": "steven@equipmentdistributors.biz",
+      "website": "http://edi.biz",
+      "contract_start_date": "2030-02-23",
+      "contract_expiration_date": "2045-02-23",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0053/47QSMS25D0053_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0053&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "EQUIPMENT RESOURCE CENTER, INC.",
+      "contract_number": "47QSMS24D008A",
+      "vendor_uei": "HJEGNNQNRNN7",
+      "company_address": "2104 DON AVE",
+      "company_city": "WESTMINSTER",
+      "company_state": "MD",
+      "company_zip": "21157-7331",
+      "primary_contact_phone": "4108648705",
+      "primary_contact_email": "grant@ercinfo.com",
+      "website": "http://ercinfo.com",
+      "contract_start_date": "2029-06-09",
+      "contract_expiration_date": "2044-06-09",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D008A/47QSMS24D008A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D008A&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "GRAVOTECH, INC.",
+      "contract_number": "GS-21F-076BA",
+      "vendor_uei": "N4J1PJ3ADFE8",
+      "company_address": "2200 NORTHMONT PKWY",
+      "company_city": "DULUTH",
+      "company_state": "GA",
+      "company_zip": "30096-5895",
+      "primary_contact_phone": "8008437637",
+      "primary_contact_email": "Anthony.Harris@gravotech.com",
+      "website": "http://www.gravotech.us",
+      "contract_start_date": "2029-04-02",
+      "contract_expiration_date": "2034-04-02",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F076BA/GS21F076BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-076BA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "GREEN AND SUSTAINABLE SERVICES, LLC",
+      "contract_number": "GS-07F-231CA",
+      "vendor_uei": "CHJVLYBMT9J3",
+      "company_address": "2421 AMYX RANCH DR",
+      "company_city": "PONDER",
+      "company_state": "TX",
+      "company_zip": "76259-8032",
+      "primary_contact_phone": "9405973723",
+      "primary_contact_email": "TSMITH@GRNSERV.COM",
+      "website": "http://www.grnserv.com",
+      "contract_start_date": "2030-09-14",
+      "contract_expiration_date": "2035-09-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F231CA/GS07F231CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-231CA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "HARTECH GROUP LLC",
+      "contract_number": "GS-21F-073BA",
+      "vendor_uei": "GMQRXC2EHJ43",
+      "company_address": "5516 LEEWARD LN",
+      "company_city": "NEW PORT RICHEY",
+      "company_state": "FL",
+      "company_zip": "34652-3014",
+      "primary_contact_phone": null,
+      "primary_contact_email": "Jenharsha@hartechgroup.com",
+      "website": "www.Hartechgroup.com",
+      "contract_start_date": "2029-04-01",
+      "contract_expiration_date": "2034-04-01",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F073BA/GS21F073BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-073BA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "HOUGEN MANUFACTURING, INC",
+      "contract_number": "GS-21F-035CA",
+      "vendor_uei": "JMACNARSMB65",
+      "company_address": "3001 HOUGEN DR",
+      "company_city": "SWARTZ CREEK",
+      "company_state": "MI",
+      "company_zip": "48473-7935",
+      "primary_contact_phone": "8004267818",
+      "primary_contact_email": "a.powers@hougen.com",
+      "website": "http://WWW.HOUGEN.COM",
+      "contract_start_date": "2030-03-31",
+      "contract_expiration_date": "2035-03-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F035CA/GS21F035CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-035CA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "INDUSTRIAL STRENGTH INDUSTRIES LLC",
+      "contract_number": "47QSHA19D0053",
+      "vendor_uei": "JKW6B4E7W9V2",
+      "company_address": "732 SOUND VIEW RD",
+      "company_city": "OYSTER BAY",
+      "company_state": "NY",
+      "company_zip": "11771-1114",
+      "primary_contact_phone": "5164132251",
+      "primary_contact_email": "ara@industrialstrengthsupply.com",
+      "website": "http://www.industrialstrengthsupply.com",
+      "contract_start_date": "2029-08-04",
+      "contract_expiration_date": "2039-08-04",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D0053/47QSHA19D0053_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D0053&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "JORLINK USA INC",
+      "contract_number": "GS-21F-125AA",
+      "vendor_uei": "JMT8QZEHKK79",
+      "company_address": "3714 ALLIANCE DR",
+      "company_city": "GREENSBORO",
+      "company_state": "NC",
+      "company_zip": "27407-2060",
+      "primary_contact_phone": "3362881613",
+      "primary_contact_email": "mackenzie@jorlink.com",
+      "website": "http://www.jorlink.com",
+      "contract_start_date": "2028-04-30",
+      "contract_expiration_date": "2033-04-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "address_2": "STE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F125AA/GS21F125AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-125AA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "KIPPER TOOL COMPANY",
+      "contract_number": "47QSHA18D000N",
+      "vendor_uei": "DD1BCRF2QQG8",
+      "company_address": "2375 MURPHY BLVD",
+      "company_city": "GAINESVILLE",
+      "company_state": "GA",
+      "company_zip": "30504-6001",
+      "primary_contact_phone": "7705323232",
+      "primary_contact_email": "beth.garrish@kippertool.com",
+      "website": "http://www.kippertool.com",
+      "contract_start_date": "2027-12-14",
+      "contract_expiration_date": "2037-12-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D000N/47QSHA18D000N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D000N&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "KOSER-BLACK SUPPLY INCORPORATED",
+      "contract_number": "47QSHA24D0003",
+      "vendor_uei": "FUNXEFXSQJ47",
+      "company_address": "5111 PEBBLE STONE CT",
+      "company_city": "GASTONIA",
+      "company_state": "NC",
+      "company_zip": "28056-8104",
+      "primary_contact_phone": "7046159224",
+      "primary_contact_email": "jessica@kbsupplyinc.com",
+      "website": "http://www.laserprona.com",
+      "contract_start_date": "2028-10-22",
+      "contract_expiration_date": "2043-10-22",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA24D0003/47QSHA24D0003_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA24D0003&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "LATITUDE USA, LLC",
+      "contract_number": "47QSWA20D0006",
+      "vendor_uei": "WHV7NRQWYTL6",
+      "company_address": "290 S MAIN ST",
+      "company_city": "BOUNTIFUL",
+      "company_state": "UT",
+      "company_zip": "84010-6236",
+      "primary_contact_phone": "8662054872",
+      "primary_contact_email": "osmond@golatitude.com",
+      "website": "http://www.golatitude.com",
+      "contract_start_date": "2029-10-09",
+      "contract_expiration_date": "2039-10-09",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D0006/47QSWA20D0006_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D0006&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "LC INDUSTRIES INC",
+      "contract_number": "47QSEA20D001S",
+      "vendor_uei": "SWFSJMS9EHB2",
+      "company_address": "4500 EMPEROR BLVD",
+      "company_city": "DURHAM",
+      "company_state": "NC",
+      "company_zip": "27703-8420",
+      "primary_contact_phone": "9195968277",
+      "primary_contact_email": "GOVT.SALES@LC-IND.COM",
+      "website": "http://buylci.com",
+      "contract_start_date": "2029-12-01",
+      "contract_expiration_date": "2039-12-01",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D001S/47QSEA20D001S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D001S&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "MACHINE TOOLS USA, INC.",
+      "contract_number": "GS-21F-083BA",
+      "vendor_uei": "PALYDPMJ9PZ8",
+      "company_address": "320 MAIN STREET #A",
+      "company_city": "MATHEWS",
+      "company_state": "VA",
+      "company_zip": "23109",
+      "primary_contact_phone": "8047252522",
+      "primary_contact_email": "sales@machinetoolsusa.com",
+      "website": "http://www.machinetoolsusa.com",
+      "contract_start_date": "2029-04-24",
+      "contract_expiration_date": "2034-04-24",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F083BA/GS21F083BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-083BA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "MCLAREN INDUSTRIES, INC.",
+      "contract_number": "GS-30F-031BA",
+      "vendor_uei": "ELVVLDHB2656",
+      "company_address": "9985 103RD ST",
+      "company_city": "JACKSONVILLE",
+      "company_state": "FL",
+      "company_zip": "32210-8623",
+      "primary_contact_phone": "3102121333",
+      "primary_contact_email": "gov@mclarenusa.com",
+      "website": "http://www.mclarenindustries.com",
+      "contract_start_date": "2029-05-27",
+      "contract_expiration_date": "2034-05-27",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F031BA/GS30F031BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-031BA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "MORNING STAR INDUSTRIES INC",
+      "contract_number": "47QSWA20D002D",
+      "vendor_uei": "KB1EKZ5BXVL8",
+      "company_address": "630 NE JENSEN BEACH BLVD",
+      "company_city": "JENSEN BEACH",
+      "company_state": "FL",
+      "company_zip": "34957-4750",
+      "primary_contact_phone": "8004406050",
+      "primary_contact_email": "steve@morningstarusa.com",
+      "website": "http://www.morningstarusa.com",
+      "contract_start_date": "2029-12-15",
+      "contract_expiration_date": "2039-12-15",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D002D/47QSWA20D002D_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D002D&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "NEWTURN SOLUTIONS, INC.",
+      "contract_number": "47QSMS25D000M",
+      "vendor_uei": "H64QRWG73H71",
+      "company_address": "1703 ASHLEY STREET",
+      "company_city": "SCOTTSBORO",
+      "company_state": "AL",
+      "company_zip": "35768-2201",
+      "primary_contact_phone": "2562595821",
+      "primary_contact_email": "patsy@newturnsolutions.com",
+      "website": "http://www.newturnsolutions.com/",
+      "contract_start_date": "2029-10-15",
+      "contract_expiration_date": "2044-10-15",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D000M/47QSMS25D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D000M&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "NORMAN MACHINE TOOL LTD",
+      "contract_number": "GS-21F-084AA",
+      "vendor_uei": "CVLXDTK7QKC5",
+      "company_address": "1311 PONCA ST",
+      "company_city": "BALTIMORE",
+      "company_state": "MD",
+      "company_zip": "21224-5307",
+      "primary_contact_phone": "4106332300",
+      "primary_contact_email": "sales@normanmachinetool.com",
+      "website": "http://www.normanmachinetool.com",
+      "contract_start_date": "2028-03-03",
+      "contract_expiration_date": "2033-03-03",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F084AA/GS21F084AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-084AA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "PENN TOOL CO INC",
+      "contract_number": "GS-06F-0042S",
+      "vendor_uei": "LMGZE6N1LYC6",
+      "company_address": "1776 SPRINGFIELD AVE",
+      "company_city": "MAPLEWOOD",
+      "company_state": "NJ",
+      "company_zip": "07040-2931",
+      "primary_contact_phone": "8005264956",
+      "primary_contact_email": "brandon@penntoolco.com",
+      "website": "https://www.penntoolco.com/",
+      "contract_start_date": "2026-02-28",
+      "contract_expiration_date": "2026-02-28",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS06F0042S/GS06F0042S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-06F-0042S&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "PHILLIPS CORPORATION",
+      "contract_number": "GS-03F-080CA",
+      "vendor_uei": "YFJ5M3N6EKY8",
+      "company_address": "7390 COCA COLA DR STE 200",
+      "company_city": "HANOVER",
+      "company_state": "MD",
+      "company_zip": "21076-1937",
+      "primary_contact_phone": "6106622036",
+      "primary_contact_email": "federalcontractadmin@phillipscorp.com",
+      "website": "http://www.phillipsfederal.com",
+      "contract_start_date": "2030-07-01",
+      "contract_expiration_date": "2035-07-01",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F080CA/GS03F080CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-080CA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "REINEN MACHINE SALES, INC.",
+      "contract_number": "GS-21F-0081U",
+      "vendor_uei": "MGKERSNJLFL6",
+      "company_address": "11 LAOMATONG RD",
+      "company_city": "BEDMINSTER",
+      "company_state": "NJ",
+      "company_zip": "07921-2869",
+      "primary_contact_phone": "9085410055",
+      "primary_contact_email": "INFO@REINENMACHINE.COM",
+      "website": "http://WWW.REINENMACHINE.COM",
+      "contract_start_date": "2028-06-22",
+      "contract_expiration_date": "2028-06-22",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0081U/GS21F0081U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0081U&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "ROBERT E MORRIS CO LLC",
+      "contract_number": "GS-21F-166AA",
+      "vendor_uei": "WLHEBY1LERU8",
+      "company_address": "910 DAY HILL RD",
+      "company_city": "WINDSOR",
+      "company_state": "CT",
+      "company_zip": "06095-5727",
+      "primary_contact_phone": "8606873484",
+      "primary_contact_email": "morrisgovernmentall@morrisgroupinc.com",
+      "website": "http://www.morrisgovernmentsolutions.com",
+      "contract_start_date": "2028-08-08",
+      "contract_expiration_date": "2033-08-08",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F166AA/GS21F166AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-166AA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "SAN ANGELO CROSS TEXAS SUPPLY LLC",
+      "contract_number": "GS-21F-025DA",
+      "vendor_uei": "CGKBB9KL1RA3",
+      "company_address": "4009 BEN FICKLIN RD",
+      "company_city": "SAN ANGELO",
+      "company_state": "TX",
+      "company_zip": "76903-9499",
+      "primary_contact_phone": "3256511408",
+      "primary_contact_email": "bjd@crosstexassupply.com",
+      "website": "http://www.crosstexassupply.com",
+      "contract_start_date": "2026-04-19",
+      "contract_expiration_date": "2036-04-19",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F025DA/GS21F025DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-025DA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "SKDCJ, INC.",
+      "contract_number": "GS-07F-9224S",
+      "vendor_uei": "C4PJPNPC4PC6",
+      "company_address": "2771 SAINT JULIAN AVE",
+      "company_city": "NORFOLK",
+      "company_state": "VA",
+      "company_zip": "23504-2619",
+      "primary_contact_phone": "7578556091",
+      "primary_contact_email": "customerservice@cavalierva.com",
+      "website": "http://www.cavalierva.com",
+      "contract_start_date": "2025-11-09",
+      "contract_expiration_date": "2025-11-09",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9224S/GS07F9224S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9224S&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "SOUTHEASTERN PAPER GROUP, LLC",
+      "contract_number": "GS-07F-009BA",
+      "vendor_uei": "YVCHMSVKXKG9",
+      "company_address": "50 OLD BLACKSTOCK RD",
+      "company_city": "SPARTANBURG",
+      "company_state": "SC",
+      "company_zip": "29301-5571",
+      "primary_contact_phone": "80085872303405",
+      "primary_contact_email": "victoria.rupp@sepapergroup.com",
+      "website": "https://shop.sepg.com",
+      "contract_start_date": "2028-10-16",
+      "contract_expiration_date": "2033-10-16",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F009BA/GS07F009BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-009BA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "STAPLES INC",
+      "contract_number": "47QSEA19D008T",
+      "vendor_uei": "FGFCWE45JBW4",
+      "company_address": "500 STAPLES DR",
+      "company_city": "FRAMINGHAM",
+      "company_state": "MA",
+      "company_zip": "01702-4478",
+      "primary_contact_phone": "8882127219",
+      "primary_contact_email": "governmentteam@staples.com",
+      "website": "https://www.StaplesAdvantage.com",
+      "contract_start_date": "2029-07-02",
+      "contract_expiration_date": "2039-07-02",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA19D008T/47QSEA19D008T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA19D008T&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "T & L TOOLING, INC",
+      "contract_number": "GS-06F-0099S",
+      "vendor_uei": "NCB7DXZHMVK8",
+      "company_address": "4774 S HOLLADAY BLVD",
+      "company_city": "SALT LAKE CITY",
+      "company_state": "UT",
+      "company_zip": "84117",
+      "primary_contact_phone": "8014681117",
+      "primary_contact_email": "sales@tltooling.com",
+      "website": "http://www.tltooling.com",
+      "contract_start_date": "2026-08-08",
+      "contract_expiration_date": "2026-08-08",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS06F0099S/GS06F0099S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-06F-0099S&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "TRI-LIFT NJ, INC.",
+      "contract_number": "47QMCA23D0008",
+      "vendor_uei": "WKLENNLLTYR8",
+      "company_address": "1471 JERSEY AVE",
+      "company_city": "NORTH BRUNSWICK",
+      "company_state": "NJ",
+      "company_zip": "08902-1622",
+      "primary_contact_phone": "7322200444",
+      "primary_contact_email": "gsa@tri-liftnj.com",
+      "website": "http://tri-liftnj.com",
+      "contract_start_date": "2027-12-19",
+      "contract_expiration_date": "2042-12-19",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA23D0008/47QMCA23D0008_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA23D0008&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "TUCKAHOE TRADING INC",
+      "contract_number": "GS-03F-015CA",
+      "vendor_uei": "TYSVECWME5X7",
+      "company_address": "94 N HAMILTON ST",
+      "company_city": "DOYLESTOWN",
+      "company_state": "PA",
+      "company_zip": "18901",
+      "primary_contact_phone": "2153530785",
+      "primary_contact_email": "margie@tuckahoetrading.com",
+      "website": "http://www.tuckahoetrading.com",
+      "contract_start_date": "2029-12-14",
+      "contract_expiration_date": "2034-12-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F015CA/GS03F015CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-015CA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "W & S SUPPLY CO INC",
+      "contract_number": "GS-21F-014DA",
+      "vendor_uei": "N2C8Z7MFUTN3",
+      "company_address": "16 MIDLAND AVE",
+      "company_city": "ELMWOOD PARK",
+      "company_state": "NJ",
+      "company_zip": "07407",
+      "primary_contact_phone": "2017739451",
+      "primary_contact_email": "steve@wssupplyco.com",
+      "website": "http://www.elizabethindustrial.com",
+      "contract_start_date": "2030-12-17",
+      "contract_expiration_date": "2035-12-17",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F014DA/GS21F014DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-014DA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "WESTERN ENGRAVERS SUPPLY, INC.",
+      "contract_number": "GS-21F-032BA",
+      "vendor_uei": "TPWQGADLFJ17",
+      "company_address": "17621 N BLACK CANYON HWY",
+      "company_city": "PHOENIX",
+      "company_state": "AZ",
+      "company_zip": "85023-2137",
+      "primary_contact_phone": "6024390600",
+      "primary_contact_email": "christines@visionengravers.com",
+      "website": "http://www.visionengravers.com",
+      "contract_start_date": "2028-12-31",
+      "contract_expiration_date": "2033-12-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F032BA/GS21F032BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-032BA&sin=811310MR&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310MR"
+      ],
+      "primary_sin": "811310MR",
+      "schedule_number": "MAS",
+      "company_name": "WRIGHT TOOL COMPANY, LLC",
+      "contract_number": "GS-21F-0106Y",
+      "vendor_uei": "MF46EHTMKJJ5",
+      "company_address": "24680 MOUND RD",
+      "company_city": "WARREN",
+      "company_state": "MI",
+      "company_zip": "48091-2036",
+      "primary_contact_phone": "2486436666",
+      "primary_contact_email": "Gmoore@wrighttoolcompany.com",
+      "website": "http://www.wrighttoolcompany.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2032-05-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Solutions",
+        "source": "MAS",
+        "category": "811310MR ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0106Y/GS21F0106Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0106Y&sin=811310MR&src=elib&app=cat"
+      }
+    }
+  ]
+}

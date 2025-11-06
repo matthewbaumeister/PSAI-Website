@@ -1,0 +1,930 @@
+{
+  "sin_code": "3361E",
+  "file_name": "GSA_MAS_3361E_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:26.115717",
+  "sheets": {
+    "2025_11_05_11_32_13": {
+      "row_count": 35,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "ABM FACILITY SUPPORT SERVICES, LLC",
+      "contract_number": "47QSMS24D002A",
+      "vendor_uei": "UJGDTE9Z1BB9",
+      "company_address": "6731 COLUMBIA GATEWAY DR STE 200",
+      "company_city": "COLUMBIA",
+      "company_state": "MD",
+      "company_zip": "21046-2165",
+      "primary_contact_phone": "3018756670",
+      "primary_contact_email": "Andrew.sherman@abm.com",
+      "website": "http://www.abm.com",
+      "contract_start_date": "2029-01-30",
+      "contract_expiration_date": "2044-01-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D002A/47QSMS24D002A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D002A&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "AMERESCO FEDERAL SOLUTIONS, INC.",
+      "contract_number": "47QSHA21D000R",
+      "vendor_uei": "EHZNPJJYAL33",
+      "company_address": "111 SPEEN ST STE 410",
+      "company_city": "FARMINGHAM",
+      "company_state": "MA",
+      "company_zip": "01701-2090",
+      "primary_contact_phone": "2027388442",
+      "primary_contact_email": "gsa@ameresco.com",
+      "website": "http://https://www.ameresco.com/customers/federal-government/",
+      "contract_start_date": "2026-01-07",
+      "contract_expiration_date": "2041-01-07",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA21D000R/47QSHA21D000R_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA21D000R&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "APOLLO SUNGUARD SYSTEMS INC",
+      "contract_number": "GS-30F-0029Y",
+      "vendor_uei": "JQJXT7N7J438",
+      "company_address": "4487 ASHTON RD",
+      "company_city": "SARASOTA",
+      "company_state": "FL",
+      "company_zip": "34233-2284",
+      "primary_contact_phone": "9419253000",
+      "primary_contact_email": "president@sunguard.net",
+      "website": "http://www.apollosunguard.com",
+      "contract_start_date": "2027-08-09",
+      "contract_expiration_date": "2032-08-09",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F0029Y/GS30F0029Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-30F-0029Y/pricelist_GS-30F-0029Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-0029Y&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "ATEK DISTRIBUTION LLC",
+      "contract_number": "47QSMS25D00A1",
+      "vendor_uei": "C8QHP8LKRLV8",
+      "company_address": "3401 NEVADA AVE N",
+      "company_city": "MINNEAPOLIS",
+      "company_state": "MN",
+      "company_zip": "55427-2159",
+      "primary_contact_phone": "6519001476",
+      "primary_contact_email": "jeff.anderson@atekdistribution.com",
+      "website": "http://atekdistribution.com",
+      "contract_start_date": "2030-07-06",
+      "contract_expiration_date": "2045-07-06",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "address_2": "# 1A",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00A1/47QSMS25D00A1_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00A1&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "AUTOFLEX, INC",
+      "contract_number": "GS-30F-0008Y",
+      "vendor_uei": "MN8MVP11CJ27",
+      "company_address": "405 OAK FOREST AVE",
+      "company_city": "CATONSVILLE",
+      "company_state": "MD",
+      "company_zip": "21228-5622",
+      "primary_contact_phone": "4104559293",
+      "primary_contact_email": "LDM@autoflexfleet.com",
+      "website": "http://www.autoflexfleet.com",
+      "contract_start_date": "2026-12-21",
+      "contract_expiration_date": "2031-12-21",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F0008Y/GS30F0008Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-0008Y&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "BEAM GLOBAL",
+      "contract_number": "47QSWA21D0006",
+      "vendor_uei": "KZGLF2JLSL98",
+      "company_address": "5660 EASTGATE DR A",
+      "company_city": "SAN DIEGO",
+      "company_state": "CA",
+      "company_zip": "92121-2816",
+      "primary_contact_phone": "8582434854",
+      "primary_contact_email": "lisa.potok@beamforall.com",
+      "website": "http://beamforall.com",
+      "contract_start_date": "2030-10-31",
+      "contract_expiration_date": "2040-10-31",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D0006/47QSWA21D0006_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D0006&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "BLINK CHARGING CO.",
+      "contract_number": "47QMCA23D000Q",
+      "vendor_uei": "RDL2FXZ8VV53",
+      "company_address": "5081 HOWERTON WAY STE A",
+      "company_city": "BOWIE",
+      "company_state": "MD",
+      "company_zip": "20715-4456",
+      "primary_contact_phone": "3055210200",
+      "primary_contact_email": "ndias@blinkcharging.com",
+      "website": "https://blinkcharging.com",
+      "contract_start_date": "2028-03-22",
+      "contract_expiration_date": "2043-03-22",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA23D000Q/47QMCA23D000Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA23D000Q&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "CARAHSOFT TECHNOLOGY CORP",
+      "contract_number": "47QSWA18D008F",
+      "vendor_uei": "DT8KJHZXVJH5",
+      "company_address": "11493 SUNSET HILLS RD",
+      "company_city": "RESTON",
+      "company_state": "VA",
+      "company_zip": "20190-5230",
+      "primary_contact_phone": "7038718500",
+      "primary_contact_email": "contracts@carahsoft.com",
+      "website": "http://www.carahsoft.com/",
+      "contract_start_date": "2028-08-21",
+      "contract_expiration_date": "2038-08-21",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "address_2": "STE 100",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D008F/47QSWA18D008F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D008F&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "CHARGIE LLC",
+      "contract_number": "47QMCA21D000Z",
+      "vendor_uei": "NSDFW8DZAP24",
+      "company_address": "3947 LANDMARK ST",
+      "company_city": "CULVER CITY",
+      "company_state": "CA",
+      "company_zip": "90232",
+      "primary_contact_phone": "4242105521",
+      "primary_contact_email": "jaideep.upadhyay@chargie.com",
+      "website": "https://www.chargie.com/",
+      "contract_start_date": "2026-08-26",
+      "contract_expiration_date": "2041-08-26",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA21D000Z/47QMCA21D000Z_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QMCA21D000Z/pricelist_47QMCA21D000Z.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA21D000Z&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "CITY ELECTRIC SUPPLY COMPANY",
+      "contract_number": "GS-07F-032GA",
+      "vendor_uei": "NL3TE1C26171",
+      "company_address": "1229 PERRY RD, SUITE 104",
+      "company_city": "APEX",
+      "company_state": "NC",
+      "company_zip": "27502-7740",
+      "primary_contact_phone": "9848494850",
+      "primary_contact_email": "GSASales@CityElectricSupply.com",
+      "website": "http://www.cityelectricsupply.com/",
+      "contract_start_date": "2026-11-30",
+      "contract_expiration_date": "2036-11-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F032GA/GS07F032GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-032GA&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "DISTRICT FLEET LLC",
+      "contract_number": "47QMCA20D001A",
+      "vendor_uei": "Z7MWAAFHSNL9",
+      "company_address": "600 MASSACHUSETTS AVE NW STE 250",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20001-5554",
+      "primary_contact_phone": "2022573797",
+      "primary_contact_email": "dan@districtfleet.com",
+      "website": "http://www.districtfleet.com",
+      "contract_start_date": "2030-02-26",
+      "contract_expiration_date": "2040-02-26",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA20D001A/47QMCA20D001A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA20D001A&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "ENVIROSPARK ENERGY SOLUTIONS, LLC",
+      "contract_number": "47QMCA25D000M",
+      "vendor_uei": "LJZ8B92U8MH4",
+      "company_address": "1389 CHATTAHOOCHEE AVE NW",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30318-2835",
+      "primary_contact_phone": "8444377275",
+      "primary_contact_email": "enviroschedulegsa@envirosparkenergy.com",
+      "website": "http://envirosparkenergy.com",
+      "contract_start_date": "2029-12-16",
+      "contract_expiration_date": "2044-12-16",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA25D000M/47QMCA25D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA25D000M&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "FORD MOTOR COMPANY",
+      "contract_number": "47QMCA24D0006",
+      "vendor_uei": "NJRAXBU5ZS39",
+      "company_address": "1 AMERICAN RD",
+      "company_city": "DEARBORN",
+      "company_state": "MI",
+      "company_zip": "48126-2701",
+      "primary_contact_phone": "2059992716",
+      "primary_contact_email": "sludwick@ford.com",
+      "website": "http://www.ford.com",
+      "contract_start_date": "2029-01-29",
+      "contract_expiration_date": "2044-01-29",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA24D0006/47QMCA24D0006_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA24D0006&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "GARRISON WALKER GROUP INC",
+      "contract_number": "47QSHA22D001A",
+      "vendor_uei": "GHZKSZNTA2N5",
+      "company_address": "841 APOLLO ST",
+      "company_city": "EL SEGUNDO",
+      "company_state": "CA",
+      "company_zip": "90245-4724",
+      "primary_contact_phone": "4806180793",
+      "primary_contact_email": "GWGcontracts@gwalkergroup.com",
+      "website": "http://www.gwalkergroup.com",
+      "contract_start_date": "2027-03-22",
+      "contract_expiration_date": "2042-03-22",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "address_2": "STE 324",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D001A/47QSHA22D001A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D001A&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL ENTERPRISE, INC",
+      "contract_number": "GS-30F-040BA",
+      "vendor_uei": "L3P3MXXX2W59",
+      "company_address": "11560 STONEWALL RD",
+      "company_city": "APPOMATTOX",
+      "company_state": "VA",
+      "company_zip": "24522-8806",
+      "primary_contact_phone": "7036241206",
+      "primary_contact_email": "gsasupport@fedharmony.com",
+      "website": "http://www.fedharmony.com",
+      "contract_start_date": "2029-09-17",
+      "contract_expiration_date": "2034-09-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F040BA/GS30F040BA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-30F-040BA/pricelist_GS-30F-040BA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-040BA&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "GONNEVILLE INC",
+      "contract_number": "GS-30F-0016Y",
+      "vendor_uei": "LQHKHEWYFLK3",
+      "company_address": "27126 PASEO ESPADA STE B701",
+      "company_city": "SAN JUAN CAPISTRANO",
+      "company_state": "CA",
+      "company_zip": "92675",
+      "primary_contact_phone": "8774544472",
+      "primary_contact_email": "snewton@dcciconsulting.com",
+      "website": "http://www.gonneville.com",
+      "contract_start_date": "2027-02-01",
+      "contract_expiration_date": "2032-02-01",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F0016Y/GS30F0016Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-0016Y&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "HALLPASS CAPITAL INC",
+      "contract_number": "GS-07F-0413Y",
+      "vendor_uei": "F8RAU1DTQWS7",
+      "company_address": "1835 WHITTIER AVE",
+      "company_city": "COSTA MESA",
+      "company_state": "CA",
+      "company_zip": "92627-4574",
+      "primary_contact_phone": "8552344533",
+      "primary_contact_email": "gsa@gonled.com",
+      "website": "http://www.gonled.com",
+      "contract_start_date": "2027-05-29",
+      "contract_expiration_date": "2032-05-29",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "address_2": "STE D12",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0413Y/GS07F0413Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0413Y/pricelist_GS-07F-0413Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0413Y&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "INTEGRATED MODULAR SOLUTIONS, LLC",
+      "contract_number": "47QSWA18D001W",
+      "vendor_uei": "MV22KVPV8DT5",
+      "company_address": "210 E 5TH ST",
+      "company_city": "BONHAM",
+      "company_state": "TX",
+      "company_zip": "75418",
+      "primary_contact_phone": "9034494587",
+      "primary_contact_email": "lisam@integratedmodular.net",
+      "website": "http://www.integratedmodular.net",
+      "contract_start_date": "2028-02-14",
+      "contract_expiration_date": "2038-02-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__25": "dv",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D001W/47QSWA18D001W_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA18D001W/pricelist_47QSWA18D001W.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D001W&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "LILYPAD EV LLC",
+      "contract_number": "47QMCA25D000P",
+      "vendor_uei": "UP2MLC7K6AN3",
+      "company_address": "4591 PACHECO BLVD",
+      "company_city": "MARTINEZ",
+      "company_state": "CA",
+      "company_zip": "94553-2233",
+      "primary_contact_phone": "5102850145",
+      "primary_contact_email": "gbrown@shieldsharper.com",
+      "contract_start_date": "2030-01-15",
+      "contract_expiration_date": "2045-01-15",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "LYME COMPUTER SYSTEMS, INC.",
+      "contract_number": "GS-35F-465GA",
+      "vendor_uei": "F1UZPBD1VBH9",
+      "company_address": "240 MECHANIC ST STE 301",
+      "company_city": "LEBANON",
+      "company_state": "NH",
+      "company_zip": "03766-2617",
+      "primary_contact_phone": "6037954000",
+      "primary_contact_email": "gsasales@lyme.com",
+      "website": "http://lyme.com",
+      "contract_start_date": "2027-05-30",
+      "contract_expiration_date": "2037-05-30",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F465GA/GS35F465GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-465GA&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "M. C. DEAN, INC.",
+      "contract_number": "47QSWA19D002W",
+      "vendor_uei": "RD55NEXJ5EW4",
+      "company_address": "1765 GREENSBORO STATION PL",
+      "company_city": "TYSONS",
+      "company_state": "VA",
+      "company_zip": "22102-3467",
+      "primary_contact_phone": "7032436231",
+      "primary_contact_email": "MCDEAN.GSA.MAS@mcdean.com",
+      "website": "http://www.mcdean.com",
+      "contract_start_date": "2029-01-16",
+      "contract_expiration_date": "2039-01-16",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002W/47QSWA19D002W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002W&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "MICROTECHNOLOGIES LLC",
+      "contract_number": "47QTCA21D000N",
+      "vendor_uei": "CL69E7KATK59",
+      "company_address": "220 CONGRESS PARK DR STE 138",
+      "company_city": "DELRAY BEACH",
+      "company_state": "FL",
+      "company_zip": "33445-4605",
+      "primary_contact_phone": "7036373238",
+      "primary_contact_email": "lterrizzi@microtech.net",
+      "website": "http://www.microtech.net",
+      "contract_start_date": "2030-10-18",
+      "contract_expiration_date": "2040-10-18",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA21D000N/47QTCA21D000N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA21D000N&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "NOODOE INC",
+      "contract_number": "47QMCA24D0005",
+      "vendor_uei": "PR8DSRY1ZHU5",
+      "company_address": "2600 TECHNOLOGY DR",
+      "company_city": "PLANO",
+      "company_state": "TX",
+      "company_zip": "75074-7485",
+      "primary_contact_phone": "9546442944",
+      "primary_contact_email": "szilardmurati@noodoe.com",
+      "website": "http://www.noodoe.com",
+      "contract_start_date": "2029-01-10",
+      "contract_expiration_date": "2044-01-10",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "address_2": "STE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA24D0005/47QMCA24D0005_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA24D0005&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "SCIPACT LLC",
+      "contract_number": "47QMCA23D000Y",
+      "vendor_uei": "DCW6J1KBD429",
+      "company_address": "10200 73RD AVE N STE 122",
+      "company_city": "MAPLE GROVE",
+      "company_state": "MN",
+      "company_zip": "55369",
+      "primary_contact_phone": "9523808774",
+      "primary_contact_email": "scogger@scipact.com",
+      "website": "http://www.scipact.com",
+      "contract_start_date": "2028-06-19",
+      "contract_expiration_date": "2043-06-19",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA23D000Y/47QMCA23D000Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QMCA23D000Y/pricelist_47QMCA23D000Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA23D000Y&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "SHEPHERD ELECTRIC COMPANY, LLC",
+      "contract_number": "47QSMS25D004T",
+      "vendor_uei": "XLVLQST1E7C3",
+      "company_address": "7401 PULASKI HWY",
+      "company_city": "ROSEDALE",
+      "company_state": "MD",
+      "company_zip": "21237-2529",
+      "primary_contact_phone": "8002531777",
+      "primary_contact_email": "shepherd-gsa@shepherdelec.com",
+      "website": "http://www.shepherdelec.com",
+      "contract_start_date": "2030-02-13",
+      "contract_expiration_date": "2045-02-13",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D004T/47QSMS25D004T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D004T&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "SHIELDS, HARPER & CO.",
+      "contract_number": "47QSWA23D001Q",
+      "vendor_uei": "DLL6PXFV7J51",
+      "company_address": "4591 PACHECO BLVD",
+      "company_city": "MARTINEZ",
+      "company_state": "CA",
+      "company_zip": "94553-2233",
+      "primary_contact_phone": "5102850145",
+      "primary_contact_email": "gbrown@shieldsharper.com",
+      "website": "http://www.shieldsharper.com",
+      "contract_start_date": "2027-12-08",
+      "contract_expiration_date": "2042-12-08",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D001Q/47QSWA23D001Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D001Q&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "SRI GROUP, LLC",
+      "contract_number": "GS-35F-250GA",
+      "vendor_uei": "E7BNWJMASLF5",
+      "company_address": "14755 NW 11TH PL",
+      "company_city": "NEWBERRY",
+      "company_state": "FL",
+      "company_zip": "32669-2970",
+      "primary_contact_phone": "2023519495",
+      "primary_contact_email": "jwh@srigrpllc.com",
+      "website": "http://www.srigrpllc.com/",
+      "contract_start_date": "2027-02-20",
+      "contract_expiration_date": "2037-02-20",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F250GA/GS35F250GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-250GA&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "THE LIOCE GROUP INC",
+      "contract_number": "GS-03F-0143Y",
+      "vendor_uei": "SSK3JD7D65D5",
+      "company_address": "2950 DRAKE AVE SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805",
+      "primary_contact_phone": "2566504156",
+      "primary_contact_email": "nick@liocegroup.com",
+      "website": "http://www.liocegroup.com",
+      "contract_start_date": "2027-07-23",
+      "contract_expiration_date": "2032-07-23",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0143Y/GS03F0143Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0143Y&sin=3361E&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "3361E"
+      ],
+      "primary_sin": "3361E",
+      "schedule_number": "MAS",
+      "company_name": "THE LIOCE GROUP INC",
+      "contract_number": "47QTCA18D00AD",
+      "vendor_uei": "SSK3JD7D65D5",
+      "company_address": "2950 DRAKE AVE SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805",
+      "primary_contact_phone": "2566504150",
+      "primary_contact_email": "FEDERALACCOUNTS@LIOCEGROUP.COM",
+      "website": "http://www.liocegroup.com",
+      "contract_start_date": "2028-04-15",
+      "contract_expiration_date": "2038-04-15",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": "3361E ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA18D00AD/47QTCA18D00AD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA18D00AD&sin=3361E&src=elib&app=cat"
+      }
+    }
+  ]
+}

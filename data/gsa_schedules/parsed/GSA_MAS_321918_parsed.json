@@ -1,0 +1,834 @@
+{
+  "sin_code": "321918",
+  "file_name": "GSA_MAS_321918_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:16.958756",
+  "sheets": {
+    "2025_11_05_11_09_26": {
+      "row_count": 32,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "ABACUS SPORTS INSTALLATIONS, LTD.",
+      "contract_number": "GS-03F-039GA",
+      "vendor_uei": "N1DNWELMPMX8",
+      "company_address": "2330 DAIRY RD",
+      "company_city": "LANCASTER",
+      "company_state": "PA",
+      "company_zip": "17601-2308",
+      "primary_contact_phone": "7175608050",
+      "primary_contact_email": "casey@abacussports.com",
+      "website": "http://www.abacussports.com",
+      "contract_start_date": "2027-02-13",
+      "contract_expiration_date": "2037-02-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F039GA/GS03F039GA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-039GA/pricelist_GS-03F-039GA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-039GA&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN CARPET OF HARRISBURG INC.",
+      "contract_number": "47QSMS25D0030",
+      "vendor_uei": "NAE6FHC8BZ97",
+      "company_address": "420 MILROY RD",
+      "company_city": "HUMMELSTOWN",
+      "company_state": "PA",
+      "company_zip": "17036-8626",
+      "primary_contact_phone": "7175667679",
+      "primary_contact_email": "sarina@couchpotatocarpet.com",
+      "website": "http://www.couchpotatocarpet.com",
+      "contract_start_date": "2030-01-06",
+      "contract_expiration_date": "2045-01-06",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0030/47QSMS25D0030_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0030&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "ARCHITECTURAL CERAMICS INC",
+      "contract_number": "47QSMS25D007C",
+      "vendor_uei": "KCJYNAKVWKP9",
+      "company_address": "1803 RESEARCH BLVD",
+      "company_city": "ROCKVILLE",
+      "company_state": "MD",
+      "company_zip": "20850-6545",
+      "primary_contact_phone": "3013104511",
+      "primary_contact_email": "david@architessa.com",
+      "website": "http://www.architessa.com",
+      "contract_start_date": "2030-04-13",
+      "contract_expiration_date": "2045-04-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "address_2": "STE 402",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D007C/47QSMS25D007C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D007C&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "B&B SOLUTIONS US LLC",
+      "contract_number": "47QSMA19D08QG",
+      "vendor_uei": "UJN1P152KNH3",
+      "company_address": "700 PENNSYLVANIA AVENUE SE",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20003-2493",
+      "primary_contact_phone": "2023888312",
+      "primary_contact_email": "cbellamy@bbsolutionsus.com",
+      "website": "http://WWW.BBSOLUTIONSUS.COM",
+      "contract_start_date": "2029-07-08",
+      "contract_expiration_date": "2039-07-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "address_2": "SUITE 2110",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Mar 11, 2026",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08QG/47QSMA19D08QG_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08QG&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "BENTLEY MILLS INC",
+      "contract_number": "GS-03F-014AA",
+      "vendor_uei": "G3LAW4JQ4GS4",
+      "company_address": "14641 DON JULIAN RD",
+      "company_city": "CITY OF INDUSTRY",
+      "company_state": "CA",
+      "company_zip": "91746-3106",
+      "primary_contact_phone": "6269342461",
+      "primary_contact_email": "CAROLYN.DRUMMOND@BENTLEYMILLS.COM",
+      "website": "http://WWW.BENTLEYMILLS.COM",
+      "contract_start_date": "2027-11-04",
+      "contract_expiration_date": "2032-11-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F014AA/GS03F014AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-014AA&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "CARPET RESOURCES, INC.",
+      "contract_number": "GS-03F-102GA",
+      "vendor_uei": "EJRNLQL35ZA3",
+      "company_address": "801 WINCREST PL",
+      "company_city": "GREAT FALLS",
+      "company_state": "VA",
+      "company_zip": "22066-2736",
+      "primary_contact_phone": "7032003912",
+      "primary_contact_email": "csaylor@saylormarketing.com",
+      "website": "https://www.carpetresourcesinc.com/",
+      "contract_start_date": "2027-09-24",
+      "contract_expiration_date": "2037-09-24",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F102GA/GS03F102GA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-102GA/pricelist_GS-03F-102GA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-102GA&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "CASTAWAY YACHT SALES LLC",
+      "contract_number": "47QSMS25D003K",
+      "vendor_uei": "YUA2JUA99LR3",
+      "company_address": "5310 E PORT CLINTON EASTERN RD",
+      "company_city": "PORT CLINTON",
+      "company_state": "OH",
+      "company_zip": "43452",
+      "primary_contact_phone": "4197322938",
+      "primary_contact_email": "rick@castawayyachtsales.com",
+      "website": "http://www.castawayyachtsales.com",
+      "contract_start_date": "2030-01-23",
+      "contract_expiration_date": "2045-01-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D003K/47QSMS25D003K_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D003K&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "COMMERCIAL CARPETS OF AMERICA INC",
+      "contract_number": "47QSMA23D08PV",
+      "vendor_uei": "JJBFMM6NHSN5",
+      "company_address": "885 S PICKETT ST",
+      "company_city": "ALEXANDRIA",
+      "company_state": "VA",
+      "company_zip": "22304-4605",
+      "primary_contact_phone": "7033700000",
+      "primary_contact_email": "mterrill@ccagsa.com",
+      "website": "http://www.ccafloors.com",
+      "contract_start_date": "2028-05-08",
+      "contract_expiration_date": "2043-05-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "address_2": "STE A",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08PV/47QSMA23D08PV_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08PV&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "CONTINENTAL FLOORING CO",
+      "contract_number": "GS-03F-001BA",
+      "vendor_uei": "D64SYT4L46S7",
+      "company_address": "9319 N 94TH WAY",
+      "company_city": "SCOTTSDALE",
+      "company_state": "AZ",
+      "company_zip": "85258-5568",
+      "primary_contact_phone": "8008251221",
+      "primary_contact_email": "krensmeyer@continentalflooring.com",
+      "website": "https://www.continentalflooring.com",
+      "contract_start_date": "2028-09-30",
+      "contract_expiration_date": "2033-09-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "address_2": "STE 1000",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F001BA/GS03F001BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-001BA&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "FIDELITY CONTRACT FLOORING, LLC",
+      "contract_number": "GS-27F-0036V",
+      "vendor_uei": "WRJNBQW58KC4",
+      "company_address": "1052 ELIOT ST",
+      "company_city": "OCEANSIDE",
+      "company_state": "CA",
+      "company_zip": "92057-2651",
+      "primary_contact_phone": "7607302895",
+      "primary_contact_email": "ben@fidelityfloor.com",
+      "website": "http://www.fcfsolutions.com/",
+      "contract_start_date": "2029-08-27",
+      "contract_expiration_date": "2029-08-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0036V/GS27F0036V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0036V&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "FORBO FLOORING, INC",
+      "contract_number": "GS-03F-0113X",
+      "vendor_uei": "F8B6AAQF4BG7",
+      "company_address": "8 MAPLEWOOD DR",
+      "company_city": "HAZLE TOWNSHIP",
+      "company_state": "PA",
+      "company_zip": "18202-9790",
+      "primary_contact_phone": "6317969483",
+      "primary_contact_email": "eric.bower@forbo.com",
+      "website": "http://www.forboflooringna.com/",
+      "contract_start_date": "2026-04-14",
+      "contract_expiration_date": "2031-04-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0113X/GS03F0113X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0113X&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "GARRISON WALKER GROUP INC",
+      "contract_number": "47QSHA22D001A",
+      "vendor_uei": "GHZKSZNTA2N5",
+      "company_address": "841 APOLLO ST",
+      "company_city": "EL SEGUNDO",
+      "company_state": "CA",
+      "company_zip": "90245-4724",
+      "primary_contact_phone": "4806180793",
+      "primary_contact_email": "GWGcontracts@gwalkergroup.com",
+      "website": "http://www.gwalkergroup.com",
+      "contract_start_date": "2027-03-22",
+      "contract_expiration_date": "2042-03-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "address_2": "STE 324",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA22D001A/47QSHA22D001A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA22D001A&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "GENESIS FLOOR COVERING INC",
+      "contract_number": "47QSMS25D0066",
+      "vendor_uei": "WKQVX6C3HZN7",
+      "company_address": "14101 PONTLAVOY AVE",
+      "company_city": "SANTA FE SPRINGS",
+      "company_state": "CA",
+      "company_zip": "90670-4934",
+      "primary_contact_phone": "9494120561",
+      "primary_contact_email": "snewton@dcciconsulting.com",
+      "website": "http://genesisfloor.net",
+      "contract_start_date": "2030-03-13",
+      "contract_expiration_date": "2045-03-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0066/47QSMS25D0066_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0066&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "HILLTOP PRO SERVICES LLC",
+      "contract_number": "47QSMS24D00C5",
+      "vendor_uei": "UTA8SH4Q9B13",
+      "company_address": "59 GREENWOOD AVE UNIT 1",
+      "company_city": "MIDLAND PARK",
+      "company_state": "NJ",
+      "company_zip": "07432-1556",
+      "primary_contact_phone": "2019832597",
+      "primary_contact_email": "ea@hilltopproservices.com",
+      "website": "http://hilltopproservices.com",
+      "contract_start_date": "2029-09-10",
+      "contract_expiration_date": "2044-09-10",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00C5/47QSMS24D00C5_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00C5&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "INTERFACE AMERICAS INC",
+      "contract_number": "GS-03F-056AA",
+      "vendor_uei": "LHM7L6MMJMA6",
+      "company_address": "1503 ORCHARD HILL RD",
+      "company_city": "LAGRANGE",
+      "company_state": "GA",
+      "company_zip": "30240-5709",
+      "primary_contact_phone": "7068126356",
+      "primary_contact_email": "Contracts.Group@Interface.com",
+      "website": "http://WWW.INTERFACE.COM",
+      "contract_start_date": "2028-03-31",
+      "contract_expiration_date": "2033-03-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F056AA/GS03F056AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-056AA&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "KYA SERVICES LLC",
+      "contract_number": "47QSMA20D08P7",
+      "vendor_uei": "NNWJHV8VLP55",
+      "company_address": "1800 E MCFADDEN AVE",
+      "company_city": "SANTA ANA",
+      "company_state": "CA",
+      "company_zip": "92705-4736",
+      "primary_contact_phone": "9494120561",
+      "primary_contact_email": "snewton@digitaldcc.net",
+      "website": "http://www.thekyagroup.com",
+      "contract_start_date": "2030-02-10",
+      "contract_expiration_date": "2040-02-10",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08P7/47QSMA20D08P7_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA20D08P7/pricelist_47QSMA20D08P7.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08P7&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "LONSEAL INCORPORATED",
+      "contract_number": "47QSMA21D08QL",
+      "vendor_uei": "WC3MHEJWJJ65",
+      "company_address": "928 E 238TH ST",
+      "company_city": "CARSON",
+      "company_state": "CA",
+      "company_zip": "90745-6208",
+      "primary_contact_phone": "8008327111",
+      "primary_contact_email": "peter@lonseal.com",
+      "website": "http://www.lonseal.com/",
+      "contract_start_date": "2026-07-07",
+      "contract_expiration_date": "2041-07-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08QL/47QSMA21D08QL_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08QL&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "MANNINGTON MILLS INC",
+      "contract_number": "GS-27F-0026U",
+      "vendor_uei": "PXLMXT4LDGX1",
+      "company_address": "75 MANNINGTON MILLS RD",
+      "company_city": "SALEM",
+      "company_state": "NJ",
+      "company_zip": "08079",
+      "primary_contact_phone": "4234372767",
+      "primary_contact_email": "april.middleton@mannington.com",
+      "website": "http://www.manningtoncommercial.com",
+      "contract_start_date": "2028-07-20",
+      "contract_expiration_date": "2028-07-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0026U/GS27F0026U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0026U&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "MILBURN SALES CO., INC.",
+      "contract_number": "47QSMA22D08NK",
+      "vendor_uei": "EKPUJKE1LQN4",
+      "company_address": "20 35TH ST",
+      "company_city": "COPIAGUE",
+      "company_state": "NY",
+      "company_zip": "11726-1803",
+      "primary_contact_phone": "6318421600",
+      "primary_contact_email": "RCerullo@rmny.com",
+      "website": "http://www.milburnflooring.com/",
+      "contract_start_date": "2026-12-15",
+      "contract_expiration_date": "2041-12-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08NK/47QSMA22D08NK_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08NK&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "MILLIKEN & COMPANY",
+      "contract_number": "47QSMA19D08P2",
+      "vendor_uei": "MAS3JT1VNXS4",
+      "company_address": "920 MILLIKEN RD",
+      "company_city": "SPARTANBURG",
+      "company_state": "SC",
+      "company_zip": "29303-4906",
+      "primary_contact_phone": "8647061534",
+      "primary_contact_email": "Stephen.Matthews@Milliken.com",
+      "website": "http://www.milliken.com",
+      "contract_start_date": "2029-01-29",
+      "contract_expiration_date": "2039-01-29",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08P2/47QSMA19D08P2_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08P2&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "MILLIKEN SERVICES, LLC",
+      "contract_number": "47QSMA23D08P8",
+      "vendor_uei": "J4C4H5G6ZZV4",
+      "company_address": "920 MILLIKEN ROAD",
+      "company_city": "SPARTANBURG",
+      "company_state": "SC",
+      "company_zip": "29303-4906",
+      "primary_contact_phone": "8647061534",
+      "primary_contact_email": "Stephen.Matthews@Milliken.com",
+      "website": "http://www.milliken.com",
+      "contract_start_date": "2028-03-15",
+      "contract_expiration_date": "2043-03-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "address_2": "M-416",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08P8/47QSMA23D08P8_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08P8&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "MOHAWK CARPET DISTRIBUTION, LLC",
+      "contract_number": "GS-03F-077AA",
+      "vendor_uei": "VUPMQXUJKJP3",
+      "company_address": "160 S INDUSTRIAL BLVD",
+      "company_city": "CALHOUN",
+      "company_state": "GA",
+      "company_zip": "30701-3030",
+      "primary_contact_phone": "7064830874",
+      "primary_contact_email": "brandi_purkey@mohawkind.com",
+      "website": "http://www.mohawkgroup.com/gsa",
+      "contract_start_date": "2028-05-20",
+      "contract_expiration_date": "2033-05-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077AA/GS03F077AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077AA&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "SEAMLESS ATTENUATING TECHNOLOGIES, INC",
+      "contract_number": "47QSMS11D0006",
+      "vendor_uei": "VYDNAN9B8JS9",
+      "company_address": "1769 BISHOP RD",
+      "company_city": "CHEHALIS",
+      "company_state": "WA",
+      "company_zip": "98532",
+      "primary_contact_phone": "2532184863",
+      "primary_contact_email": "brobinson@smartcellsusa.com",
+      "website": "http://satechinc.com/",
+      "contract_start_date": "2026-06-14",
+      "contract_expiration_date": "2031-06-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "SHAW INDUSTRIES, INC.",
+      "contract_number": "GS-03F-049AA",
+      "vendor_uei": "KKAAGWFL5WK7",
+      "company_address": "616 E WALNUT AVE",
+      "company_city": "DALTON",
+      "company_state": "GA",
+      "company_zip": "30721-4409",
+      "primary_contact_phone": "7703877281",
+      "primary_contact_email": "sarah.mullins@shawinc.com",
+      "website": "http://www.shawinc.com",
+      "contract_start_date": "2028-03-14",
+      "contract_expiration_date": "2033-03-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F049AA/GS03F049AA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-049AA/pricelist_GS-03F-049AA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-049AA&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "TARKETT USA INC",
+      "contract_number": "47QSMS24D006E",
+      "vendor_uei": "QJQCMQY6HRF5",
+      "company_address": "30000 AURORA RD",
+      "company_city": "SOLON",
+      "company_state": "OH",
+      "company_zip": "44139-2728",
+      "primary_contact_phone": "7062812730",
+      "primary_contact_email": "jamie.collins@tarkett.com",
+      "website": "http://commercial.tarkett.com",
+      "contract_start_date": "2029-04-23",
+      "contract_expiration_date": "2044-04-23",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D006E/47QSMS24D006E_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMS24D006E/pricelist_47QSMS24D006E.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D006E&sin=321918&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "321918"
+      ],
+      "primary_sin": "321918",
+      "schedule_number": "MAS",
+      "company_name": "WEST CARPETS LLC",
+      "contract_number": "47QSMA23D08Q5",
+      "vendor_uei": "HUTHPQS2FZ68",
+      "company_address": "385 SAINT GEORGES AVE",
+      "company_city": "RAHWAY",
+      "company_state": "NJ",
+      "company_zip": "07065-2827",
+      "primary_contact_phone": "7324998221",
+      "primary_contact_email": "jose@westcarpets.com",
+      "website": "http://www.westcarpetinc.com",
+      "contract_start_date": "2028-06-21",
+      "contract_expiration_date": "2043-06-21",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Flooring",
+        "source": "MAS",
+        "category": 321918.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08Q5/47QSMA23D08Q5_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08Q5&sin=321918&src=elib&app=cat"
+      }
+    }
+  ]
+}

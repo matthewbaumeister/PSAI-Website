@@ -1,0 +1,146 @@
+{
+  "sin_code": "324110",
+  "file_name": "GSA_MAS_324110_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:49.472230",
+  "sheets": {
+    "2025_11_05_11_13_43": {
+      "row_count": 9,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "324110"
+      ],
+      "primary_sin": "324110",
+      "schedule_number": "MAS",
+      "company_name": "AMERIGAS PROPANE, L.P.",
+      "contract_number": "GS-07F-001GA",
+      "vendor_uei": "F3J3KF4VJ8Z5",
+      "company_address": "500 N GULPH RD",
+      "company_city": "KING OF PRUSSIA",
+      "company_state": "PA",
+      "company_zip": "19406-2822",
+      "primary_contact_phone": "4849495854",
+      "primary_contact_email": "JANE.HENISE@AMERIGAS.COM",
+      "website": "http://www.amerigas.com",
+      "contract_start_date": "2026-09-30",
+      "contract_expiration_date": "2036-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 324110.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F001GA/GS07F001GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-001GA&sin=324110&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "324110"
+      ],
+      "primary_sin": "324110",
+      "schedule_number": "MAS",
+      "company_name": "SAN LUIS BUTANE DISTRIBUTORS",
+      "contract_number": "GS-07F-070DA",
+      "vendor_uei": "EBCLLURLARE8",
+      "company_address": "1960 RAMADA DR",
+      "company_city": "PASO ROBLES",
+      "company_state": "CA",
+      "company_zip": "93446-3978",
+      "primary_contact_phone": "8052390616",
+      "primary_contact_email": "allisonp@deltaliquidenergy.com",
+      "website": "http://www.deltaliquidenergy.com",
+      "contract_start_date": "2031-02-18",
+      "contract_expiration_date": "2036-02-18",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 324110.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F070DA/GS07F070DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-070DA&sin=324110&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "324110"
+      ],
+      "primary_sin": "324110",
+      "schedule_number": "MAS",
+      "company_name": "SCHNEIDER DISTRIBUTING CO INC",
+      "contract_number": "GS-07F-007GA",
+      "vendor_uei": "GVHQLF3JABH1",
+      "company_address": "403 MARTIN LUTHER KING BLVD",
+      "company_city": "SAN ANGELO",
+      "company_state": "TX",
+      "company_zip": "76903-5763",
+      "primary_contact_phone": "3256559109",
+      "primary_contact_email": "JWALTER@WCC.NET",
+      "website": "http://www.schneiderpropane.com",
+      "contract_start_date": "2026-09-30",
+      "contract_expiration_date": "2036-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": 324110.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F007GA/GS07F007GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-007GA&sin=324110&src=elib&app=cat"
+      }
+    }
+  ]
+}

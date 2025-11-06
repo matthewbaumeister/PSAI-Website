@@ -1,0 +1,616 @@
+{
+  "sin_code": "511120",
+  "file_name": "GSA_MAS_511120_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:55.851995",
+  "sheets": {
+    "2025_11_05_11_20_49": {
+      "row_count": 25,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "4CLICKS SOLUTIONS, LLC",
+      "contract_number": "47QTCA24D006Z",
+      "vendor_uei": "KN7FKNSG2LW4",
+      "company_address": "30 PATEWOOD DR STE 350",
+      "company_city": "GREENVILLE",
+      "company_state": "SC",
+      "company_zip": "29615-6810",
+      "primary_contact_phone": "7195747721",
+      "primary_contact_email": "j.smith@gordian.com",
+      "website": "http://www.4clicks.com",
+      "contract_start_date": "2029-03-25",
+      "contract_expiration_date": "2044-03-25",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA24D006Z/47QTCA24D006Z_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QTCA24D006Z/pricelist_47QTCA24D006Z.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA24D006Z&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "ALLIUM US HOLDING LLC",
+      "contract_number": "GS-02F-024DA",
+      "vendor_uei": "CUX7BNW8J445",
+      "company_address": "7979 E TUFTS AVE STE 300",
+      "company_city": "DENVER",
+      "company_state": "CO",
+      "company_zip": "80237-3361",
+      "primary_contact_phone": "7207967627",
+      "primary_contact_email": "dave.martin@accuristech.com",
+      "website": "http://www.accuristech.com",
+      "contract_start_date": "2026-03-27",
+      "contract_expiration_date": "2036-03-27",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F024DA/GS02F024DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-024DA&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "AMERGREEN, INC.",
+      "contract_number": "GS-02F-0079S",
+      "vendor_uei": "CENFDZN1MB73",
+      "company_address": "262 W AVENIDA DE LAS FLORES",
+      "company_city": "THOUSAND OAKS",
+      "company_state": "CA",
+      "company_zip": "91360-1803",
+      "primary_contact_phone": "8055570620",
+      "primary_contact_email": "info@amergreen.com",
+      "website": "http://www.amergreen.com",
+      "contract_start_date": "2026-02-05",
+      "contract_expiration_date": "2026-02-05",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0079S/GS02F0079S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0079S&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN LABELMARK COMPANY",
+      "contract_number": "47QSMS24D009G",
+      "vendor_uei": "J8RSXB47RFE6",
+      "company_address": "5724 N PULASKI RD",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60646-6820",
+      "primary_contact_phone": "7732792266",
+      "primary_contact_email": "Hstaats@labelmaster.com",
+      "website": "https://www.labelmaster.com",
+      "contract_start_date": "2029-07-01",
+      "contract_expiration_date": "2044-07-01",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D009G/47QSMS24D009G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D009G&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN NAUTICAL SERVICES, INC.",
+      "contract_number": "GS-02F-0053V",
+      "vendor_uei": "JK9KWMWSPGE3",
+      "company_address": "3311 S ANDREWS AVE",
+      "company_city": "FORT LAUDERDALE",
+      "company_state": "FL",
+      "company_zip": "33316-4103",
+      "primary_contact_phone": "9545223321",
+      "primary_contact_email": "charles@amnautical.com",
+      "website": "http://www.amnautical.com",
+      "contract_start_date": "2028-12-15",
+      "contract_expiration_date": "2028-12-15",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "address_2": "STE 11",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0053V/GS02F0053V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0053V&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "COX SUBSCRIPTIONS, INC.",
+      "contract_number": "GS-02F-0147T",
+      "vendor_uei": "MC59TD7UK9G8",
+      "company_address": "201 VILLAGE RD",
+      "company_city": "SHALLOTTE",
+      "company_state": "NC",
+      "company_zip": "28470-4441",
+      "primary_contact_phone": "8005719554",
+      "primary_contact_email": "dknox@wtcox.com",
+      "website": "http://www.wtcox.com",
+      "contract_start_date": "2027-08-19",
+      "contract_expiration_date": "2027-08-19",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0147T/GS02F0147T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0147T&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "EAST VIEW INFORMATION SERVICES, INC.",
+      "contract_number": "47QSEA23D0038",
+      "vendor_uei": "JH8MAJ6RGE39",
+      "company_address": "10601 WAYZATA BLVD",
+      "company_city": "HOPKINS",
+      "company_state": "MN",
+      "company_zip": "55305-1515",
+      "primary_contact_phone": "9522524509",
+      "primary_contact_email": "steven.stoner@eastview.com",
+      "website": "http://www.eastview.com",
+      "contract_start_date": "2028-04-26",
+      "contract_expiration_date": "2043-04-26",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "EBSCO INFORMATION SERVICES, LLC",
+      "contract_number": "47QSMS25D0089",
+      "vendor_uei": "FCNUXYEM9AE9",
+      "company_address": "5724 HIGHWAY 280 E",
+      "company_city": "BIRMINGHAM",
+      "company_state": "AL",
+      "company_zip": "35242-6818",
+      "primary_contact_phone": "2054084959",
+      "primary_contact_email": "hbrasher@ebsco.com",
+      "website": "http://www.ebsco.com",
+      "contract_start_date": "2030-05-01",
+      "contract_expiration_date": "2045-05-01",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0089/47QSMS25D0089_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0089&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "HERTZBERG NEW METHOD INC",
+      "contract_number": "GS-02F-0177X",
+      "vendor_uei": "RLENRCK3S6T3",
+      "company_address": "617 E VANDALIA RD",
+      "company_city": "JACKSONVILLE",
+      "company_state": "IL",
+      "company_zip": "62650-3544",
+      "primary_contact_phone": "8006376581",
+      "primary_contact_email": "bids@perma-bound.com",
+      "website": "http://www.perma-bound.com/",
+      "contract_start_date": "2026-06-05",
+      "contract_expiration_date": "2031-06-05",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0177X/GS02F0177X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0177X&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "INTELLIGENT DIRECT, INC.",
+      "contract_number": "GS-02F-0207V",
+      "vendor_uei": "SWMULFS8HVJ1",
+      "company_address": "10 FIRST ST",
+      "company_city": "WELLSBORO",
+      "company_state": "PA",
+      "company_zip": "16901-8167",
+      "primary_contact_phone": "8884346277",
+      "primary_contact_email": "michelle.lioe@intelligentdirect.com",
+      "website": "http://www.marketmaps.com",
+      "contract_start_date": "2029-09-24",
+      "contract_expiration_date": "2029-09-24",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0207V/GS02F0207V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0207V&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "J.E. FEDERAL ENTERPRISES, LLC.",
+      "contract_number": "47QTCA22D007W",
+      "vendor_uei": "H2LJN48V3KD4",
+      "company_address": "1455 REYNOLDS DR",
+      "company_city": "AUBURN",
+      "company_state": "AL",
+      "company_zip": "36830-1869",
+      "primary_contact_phone": "3345395293",
+      "primary_contact_email": "Scott.crook@jefederalenterprises.com",
+      "website": "http://www.jefederalenterprises.com",
+      "contract_start_date": "2027-05-03",
+      "contract_expiration_date": "2042-05-03",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA22D007W/47QTCA22D007W_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QTCA22D007W/pricelist_47QTCA22D007W.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA22D007W&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "MANCOMM INC",
+      "contract_number": "47QSMS24D006P",
+      "vendor_uei": "FMCQMKWCM6B9",
+      "company_address": "300 BOWIE ST",
+      "company_city": "AUSTIN",
+      "company_state": "TX",
+      "company_zip": "78703-4667",
+      "primary_contact_phone": "7372521891",
+      "primary_contact_email": "takaji@mancomm.com",
+      "website": "http://www.mancomm.com",
+      "contract_start_date": "2029-04-30",
+      "contract_expiration_date": "2044-04-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "address_2": "APT 2705",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D006P/47QSMS24D006P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D006P&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "PRENAX INC",
+      "contract_number": "47QREA20D001E",
+      "vendor_uei": "ZC7NG9FTYPU4",
+      "company_address": "10 FERRY ST STE 137",
+      "company_city": "CONCORD",
+      "company_state": "NH",
+      "company_zip": "03301-5019",
+      "primary_contact_phone": "6037158758",
+      "primary_contact_email": "jennifer.cullen@prenax.com",
+      "website": "https://www.prenax.com/en-us",
+      "contract_start_date": "2030-08-30",
+      "contract_expiration_date": "2040-08-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QREA20D001E/47QREA20D001E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QREA20D001E&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "PUBKGROUP INC",
+      "contract_number": "47QSEA23D0007",
+      "vendor_uei": "NNBVVHVKU459",
+      "company_address": "655 15TH ST NW STE 425",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20005-5724",
+      "primary_contact_phone": "8447825529",
+      "primary_contact_email": "bill@pubklaw.com",
+      "website": "http://www.pubkgroup.com",
+      "contract_start_date": "2027-11-02",
+      "contract_expiration_date": "2042-11-02",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA23D0007/47QSEA23D0007_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA23D0007&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "R.S. MEANS COMPANY LLC",
+      "contract_number": "GS-02F-142AA",
+      "vendor_uei": "J6NFGHNK4JY6",
+      "company_address": "30 PATEWOOD DR",
+      "company_city": "GREENVILLE",
+      "company_state": "SC",
+      "company_zip": "29615-6810",
+      "primary_contact_phone": "7814225004",
+      "primary_contact_email": "j.smith@gordian.com",
+      "website": "http://www.rsmeans.com",
+      "contract_start_date": "2028-05-08",
+      "contract_expiration_date": "2033-05-08",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "address_2": "BLDG 2 STE 350",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F142AA/GS02F142AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-142AA&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "RELX INC",
+      "contract_number": "47QREA22D0014",
+      "vendor_uei": "LKAAJG8KK4U1",
+      "company_address": "9443 SPRINGBORO PIKE BLDG 4",
+      "company_city": "MIAMISBURG",
+      "company_state": "OH",
+      "company_zip": "45342-4425",
+      "primary_contact_phone": "2028578202",
+      "primary_contact_email": "dan.weissman@lexisnexis.com",
+      "website": "http://www.lexisnexis.com",
+      "contract_start_date": "2027-06-29",
+      "contract_expiration_date": "2042-06-29",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QREA22D0014/47QREA22D0014_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QREA22D0014&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "THERAPEUTIC RESEARCH CENTER, LLC",
+      "contract_number": "47QSMS25D00BK",
+      "vendor_uei": "JTMRUCZZCJF5",
+      "company_address": "399 S SPRING AVE STE 108",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63110-1216",
+      "primary_contact_phone": "2092429408",
+      "primary_contact_email": "jill.morehead@trchealthcare.com",
+      "website": "http://info.therapeuticresearch.com/",
+      "contract_start_date": "2030-08-26",
+      "contract_expiration_date": "2045-08-26",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00BK/47QSMS25D00BK_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00BK&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "THERAPEUTIC RESOURCE INC",
+      "contract_number": "GS-02F-0184X",
+      "vendor_uei": "J1CUL1J26F63",
+      "company_address": "19336 LAUREL AVE",
+      "company_city": "ROCKY RIVER",
+      "company_state": "OH",
+      "company_zip": "44116-2769",
+      "primary_contact_phone": "18883317114",
+      "primary_contact_email": "Info@TherapeuticResources.com",
+      "website": "http://www.therapeuticresources.com",
+      "contract_start_date": "2026-06-09",
+      "contract_expiration_date": "2031-06-09",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "address_2": "APT 3",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F0184X/GS02F0184X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-0184X&sin=511120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "511120"
+      ],
+      "primary_sin": "511120",
+      "schedule_number": "MAS",
+      "company_name": "WEST PUBLISHING CORPORATION",
+      "contract_number": "GS-02F-026DA",
+      "vendor_uei": "L997DB4PEJL8",
+      "company_address": "2900 AMES CROSSING RD STE 100",
+      "company_city": "EAGAN",
+      "company_state": "MN",
+      "company_zip": "55121-2498",
+      "primary_contact_phone": "8003282781",
+      "primary_contact_email": "fedgovt@thomsonreuters.com",
+      "website": "https://legal.thomsonreuters.com/en/support/gov/order",
+      "contract_start_date": "2026-04-07",
+      "contract_expiration_date": "2036-04-07",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Media Services",
+        "source": "MAS",
+        "category": 511120.0,
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS02F026DA/GS02F026DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-02F-026DA&sin=511120&src=elib&app=cat"
+      }
+    }
+  ]
+}

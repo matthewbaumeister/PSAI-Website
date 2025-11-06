@@ -1,0 +1,34 @@
+# ============================================
+# Congressional Stock Trades Cron Jobs
+# ============================================
+#
+# Add these to your crontab: crontab -e
+# Make sure to update the path to your project directory
+#
+# ============================================
+
+# Daily scrape at 3 AM (after midnight disclosures)
+0 3 * * * cd /Users/matthewbaumeister/Documents/PropShop_AI_Website && npm run scrape:congress-trades:daily >> /var/log/congress-trades.log 2>&1
+
+# Alternative: Run twice daily (3 AM and 3 PM)
+# 0 3,15 * * * cd /Users/matthewbaumeister/Documents/PropShop_AI_Website && npm run scrape:congress-trades:daily >> /var/log/congress-trades.log 2>&1
+
+# Weekly stats report (Sunday at 6 AM)
+# 0 6 * * 0 cd /Users/matthewbaumeister/Documents/PropShop_AI_Website && psql $DATABASE_URL -c "SELECT * FROM get_congressional_trades_stats();" >> /var/log/congress-stats.log 2>&1
+
+# ============================================
+# Log Rotation (optional but recommended)
+# ============================================
+#
+# Create /etc/logrotate.d/congress-trades:
+#
+# /var/log/congress-trades.log {
+#     daily
+#     rotate 30
+#     compress
+#     delaycompress
+#     missingok
+#     notifempty
+# }
+#
+

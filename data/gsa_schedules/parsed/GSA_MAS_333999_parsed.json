@@ -1,0 +1,296 @@
+{
+  "sin_code": "333999",
+  "file_name": "GSA_MAS_333999_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:30.130575",
+  "sheets": {
+    "2025_11_05_11_27_46": {
+      "row_count": 14,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "333999"
+      ],
+      "primary_sin": "333999",
+      "schedule_number": "MAS",
+      "company_name": "FISHER SCIENTIFIC COMPANY L.L.C.",
+      "contract_number": "GS-07F-161BA",
+      "vendor_uei": "HE7NJQGP4ED6",
+      "company_address": "300 INDUSTRY DR",
+      "company_city": "PITTSBURGH",
+      "company_state": "PA",
+      "company_zip": "15275-1001",
+      "primary_contact_phone": "18007667000",
+      "primary_contact_email": "GSA.Orders@thermofisher.com",
+      "website": "http://WWW.FISHERSCI.COM",
+      "contract_start_date": "2029-03-23",
+      "contract_expiration_date": "2034-03-23",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Animals",
+        "source": "MAS",
+        "category": 333999.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F161BA/GS07F161BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-161BA&sin=333999&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333999"
+      ],
+      "primary_sin": "333999",
+      "schedule_number": "MAS",
+      "company_name": "FRANKLIN YOUNG INTERNATIONAL, INCORPORATED",
+      "contract_number": "GS-07F-0636W",
+      "vendor_uei": "EDQMKDZR8L13",
+      "company_address": "1042 N MOUNTAIN AVE",
+      "company_city": "UPLAND",
+      "company_state": "CA",
+      "company_zip": "91786-3695",
+      "primary_contact_phone": "9099315012",
+      "primary_contact_email": "Dave@franklinyoung.com",
+      "website": "http://www.franklinyoung.com",
+      "contract_start_date": "2030-09-09",
+      "contract_expiration_date": "2030-09-09",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Animals",
+        "source": "MAS",
+        "category": 333999.0,
+        "address_2": "# 310",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0636W/GS07F0636W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0636W&sin=333999&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333999"
+      ],
+      "primary_sin": "333999",
+      "schedule_number": "MAS",
+      "company_name": "LAB PRODUCTS, LLC",
+      "contract_number": "GS-07F-183BA",
+      "vendor_uei": "YEJKSR9AMJM4",
+      "company_address": "2225 PULASKI HWY",
+      "company_city": "HAVRE DE GRACE",
+      "company_state": "MD",
+      "company_zip": "21078-2145",
+      "primary_contact_phone": "3026284300",
+      "primary_contact_email": "Lwelden@labproductsinc.com",
+      "website": "http://www.Labproductsinc.com",
+      "contract_start_date": "2029-03-30",
+      "contract_expiration_date": "2034-03-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Animals",
+        "source": "MAS",
+        "category": 333999.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F183BA/GS07F183BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-183BA&sin=333999&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333999"
+      ],
+      "primary_sin": "333999",
+      "schedule_number": "MAS",
+      "company_name": "LIFE SCIENCE PRODUCTS INC",
+      "contract_number": "47QSWA20D000H",
+      "vendor_uei": "FYPVKHJPDJK3",
+      "company_address": "124 SPEER RD",
+      "company_city": "CHESTERTOWN",
+      "company_state": "MD",
+      "company_zip": "21620-1019",
+      "primary_contact_phone": "4107786474",
+      "primary_contact_email": "alemon@lspinc.com",
+      "website": "http://www.lspinc.com",
+      "contract_start_date": "2029-10-20",
+      "contract_expiration_date": "2039-10-20",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Animals",
+        "source": "MAS",
+        "category": 333999.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D000H/47QSWA20D000H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D000H&sin=333999&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333999"
+      ],
+      "primary_sin": "333999",
+      "schedule_number": "MAS",
+      "company_name": "NUAIRE INC",
+      "contract_number": "GS-07F-226BA",
+      "vendor_uei": "WEZ2ZMZBLRV3",
+      "company_address": "2100 FERNBROOK LN N",
+      "company_city": "MINNEAPOLIS",
+      "company_state": "MN",
+      "company_zip": "55447-4723",
+      "primary_contact_phone": "7635531270",
+      "primary_contact_email": "hmilless@nuaire.com",
+      "website": "http://www.nuaire.com",
+      "contract_start_date": "2029-06-01",
+      "contract_expiration_date": "2034-06-01",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Animals",
+        "source": "MAS",
+        "category": 333999.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F226BA/GS07F226BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-226BA&sin=333999&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333999"
+      ],
+      "primary_sin": "333999",
+      "schedule_number": "MAS",
+      "company_name": "REES SCIENTIFIC CORPORATION",
+      "contract_number": "GS-07F-248AA",
+      "vendor_uei": "NCRKL9YLY2X4",
+      "company_address": "1007 WHITEHEAD ROAD EXT",
+      "company_city": "EWING",
+      "company_state": "NJ",
+      "company_zip": "08638-2428",
+      "primary_contact_phone": "6096712722",
+      "primary_contact_email": "len@reesscientific.com",
+      "website": "https://www.Reesscientific.com",
+      "contract_start_date": "2028-05-05",
+      "contract_expiration_date": "2033-05-05",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Animals",
+        "source": "MAS",
+        "category": 333999.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F248AA/GS07F248AA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-248AA/pricelist_GS-07F-248AA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-248AA&sin=333999&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333999"
+      ],
+      "primary_sin": "333999",
+      "schedule_number": "MAS",
+      "company_name": "SYSMEX AMERICA, INC",
+      "contract_number": "47QSMS24D00C2",
+      "vendor_uei": "RCK2KP74XJF1",
+      "company_address": "577 APTAKISIC RD",
+      "company_city": "LINCOLNSHIRE",
+      "company_state": "IL",
+      "company_zip": "60069-4325",
+      "primary_contact_phone": "8479875562",
+      "primary_contact_email": "dunnS@sysmex.com",
+      "website": "http://www.Sysmex.com",
+      "contract_start_date": "2029-12-14",
+      "contract_expiration_date": "2044-12-14",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Animals",
+        "source": "MAS",
+        "category": 333999.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00C2/47QSMS24D00C2_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00C2&sin=333999&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333999"
+      ],
+      "primary_sin": "333999",
+      "schedule_number": "MAS",
+      "company_name": "VWR INTERNATIONAL LLC",
+      "contract_number": "GS-07F-119CA",
+      "vendor_uei": "J6CNECEBTK23",
+      "company_address": "100 W MATSONFORD RD STE 1",
+      "company_city": "WAYNE",
+      "company_state": "PA",
+      "company_zip": "19087-4565",
+      "primary_contact_phone": "8009325000",
+      "primary_contact_email": "government@vwr.com",
+      "website": "http://www.us.vwr.com",
+      "contract_start_date": "2030-03-24",
+      "contract_expiration_date": "2035-03-24",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Animals",
+        "source": "MAS",
+        "category": 333999.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F119CA/GS07F119CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-119CA&sin=333999&src=elib&app=cat"
+      }
+    }
+  ]
+}

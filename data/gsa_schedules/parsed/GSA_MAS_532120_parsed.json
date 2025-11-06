@@ -1,0 +1,208 @@
+{
+  "sin_code": "532120",
+  "file_name": "GSA_MAS_532120_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:31.105458",
+  "sheets": {
+    "2025_11_05_11_33_11": {
+      "row_count": 11,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "532120"
+      ],
+      "primary_sin": "532120",
+      "schedule_number": "MAS",
+      "company_name": "ACTIVE DEPLOYMENT SYSTEMS, LLC",
+      "contract_number": "GS-07F-0202Y",
+      "vendor_uei": "XXJXSMP4H4J1",
+      "company_address": "280 HUGO RD",
+      "company_city": "SAN MARCOS",
+      "company_state": "TX",
+      "company_zip": "78666-2537",
+      "primary_contact_phone": "5122641110",
+      "primary_contact_email": "kayla@activedeployment.com",
+      "website": "http://www.activedeployment.com",
+      "contract_start_date": "2027-01-14",
+      "contract_expiration_date": "2032-01-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0202Y/GS07F0202Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0202Y/pricelist_GS-07F-0202Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0202Y&sin=532120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532120"
+      ],
+      "primary_sin": "532120",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL ENTERPRISE, INC",
+      "contract_number": "GS-30F-040BA",
+      "vendor_uei": "L3P3MXXX2W59",
+      "company_address": "11560 STONEWALL RD",
+      "company_city": "APPOMATTOX",
+      "company_state": "VA",
+      "company_zip": "24522-8806",
+      "primary_contact_phone": "7036241206",
+      "primary_contact_email": "gsasupport@fedharmony.com",
+      "website": "http://www.fedharmony.com",
+      "contract_start_date": "2029-09-17",
+      "contract_expiration_date": "2034-09-17",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F040BA/GS30F040BA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-30F-040BA/pricelist_GS-30F-040BA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-040BA&sin=532120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532120"
+      ],
+      "primary_sin": "532120",
+      "schedule_number": "MAS",
+      "company_name": "MOBILE MEDICAL INTERNATIONAL CORPORATION",
+      "contract_number": "GS-30F-0026Y",
+      "vendor_uei": "EKJ1YDSCLMH1",
+      "company_address": "2176 PORTLAND ST",
+      "company_city": "SAINT JOHNSBURY",
+      "company_state": "VT",
+      "company_zip": "05819-8971",
+      "primary_contact_phone": "8027482322",
+      "primary_contact_email": "jlumbra@mmicmedical.com",
+      "website": "http://www.mmicmedical.com",
+      "contract_start_date": "2027-07-01",
+      "contract_expiration_date": "2032-07-01",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532120.0,
+        "address_2": "STE 4",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F0026Y/GS30F0026Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-0026Y&sin=532120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532120"
+      ],
+      "primary_sin": "532120",
+      "schedule_number": "MAS",
+      "company_name": "STERIS CORPORATION",
+      "contract_number": "GS-30F-022GA",
+      "vendor_uei": "UGGQJGGH6846",
+      "company_address": "5960, HEISLEY ROAD",
+      "company_city": "MENTOR",
+      "company_state": "OH",
+      "company_zip": "44060",
+      "primary_contact_phone": "4406693736",
+      "primary_contact_email": "joe_puchan@steris.com",
+      "website": "http://www.steris.com",
+      "contract_start_date": "2027-07-16",
+      "contract_expiration_date": "2037-07-16",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532120.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F022GA/GS30F022GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-022GA&sin=532120&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "532120"
+      ],
+      "primary_sin": "532120",
+      "schedule_number": "MAS",
+      "company_name": "TOP NOTCH SECURITY INC.",
+      "contract_number": "GS-07F-211CA",
+      "vendor_uei": "TN5GT4MCFCH8",
+      "company_address": "3121 DIRECTORS ROW STE 101",
+      "company_city": "MEMPHIS",
+      "company_state": "TN",
+      "company_zip": "38131-0405",
+      "primary_contact_phone": "9015471144",
+      "primary_contact_email": "alfred@topnotchsecurityinc.com",
+      "website": "http:///www.topnotchsecurityinc.com",
+      "contract_start_date": "2030-08-12",
+      "contract_expiration_date": "2035-08-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Motor Vehicles (non",
+        "source": "MAS",
+        "category": 532120.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F211CA/GS07F211CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-211CA&sin=532120&src=elib&app=cat"
+      }
+    }
+  ]
+}

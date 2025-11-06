@@ -1,0 +1,441 @@
+{
+  "sin_code": "811310",
+  "file_name": "GSA_MAS_811310_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:30.149004",
+  "sheets": {
+    "2025_11_05_11_15_39": {
+      "row_count": 19,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN COMPACTOR INC",
+      "contract_number": "GS-07F-0462U",
+      "vendor_uei": "HMLPNYFXDHD7",
+      "company_address": "1095 NATIONAL PKWY",
+      "company_city": "MANSFIELD",
+      "company_state": "OH",
+      "company_zip": "44906-1908",
+      "primary_contact_phone": "4195229550",
+      "primary_contact_email": "Dave@Smash-It.com",
+      "website": "http://www.smash-it.com",
+      "contract_start_date": "2028-07-31",
+      "contract_expiration_date": "2028-07-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0462U/GS07F0462U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0462U&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "ARI PHOENIX INC",
+      "contract_number": "GS-07F-291AA",
+      "vendor_uei": "DYEKLRW2NAM1",
+      "company_address": "11163 WOODWARD LN",
+      "company_city": "CINCINNATI",
+      "company_state": "OH",
+      "company_zip": "45241-1856",
+      "primary_contact_phone": "5134841066",
+      "primary_contact_email": "teklagoodwin@ari-hetra.com",
+      "website": "https://www.ari-hetra.com",
+      "contract_start_date": "2028-06-30",
+      "contract_expiration_date": "2033-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F291AA/GS07F291AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-291AA&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "BAGLEY ENTERPRISES, INC.",
+      "contract_number": "GS-07F-0462Y",
+      "vendor_uei": "DCY1NSXJJRH5",
+      "company_address": "2370 MAGGIO CIR STE 4",
+      "company_city": "LODI",
+      "company_state": "CA",
+      "company_zip": "95240-8828",
+      "primary_contact_phone": "8778334800",
+      "primary_contact_email": "sales@bagleyenterprises.com",
+      "website": "http://www.bagleyenterprises.com",
+      "contract_start_date": "2027-07-14",
+      "contract_expiration_date": "2032-07-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0462Y/GS07F0462Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0462Y&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "CRYSTAL CLEAN, LLC",
+      "contract_number": "47QSWA18D000J",
+      "vendor_uei": "T13MPXLE4KB5",
+      "company_address": "2000 CENTER DR",
+      "company_city": "HOFFMAN ESTATES",
+      "company_state": "IL",
+      "company_zip": "60192-5005",
+      "primary_contact_phone": "8478365670",
+      "primary_contact_email": "michael.wilson2@crystal-clean.com",
+      "website": "http://www.crystal-clean.com",
+      "contract_start_date": "2027-11-30",
+      "contract_expiration_date": "2037-11-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "address_2": "SUITE EAST C300",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D000J/47QSWA18D000J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D000J&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "EIDOS CORPORATION",
+      "contract_number": "GS-07F-0033U",
+      "vendor_uei": "EHE9EJMC9PC1",
+      "company_address": "4755 N 48TH ST STE A",
+      "company_city": "LINCOLN",
+      "company_state": "NE",
+      "company_zip": "68504-1467",
+      "primary_contact_phone": "4024661119",
+      "primary_contact_email": "sales@eidosergonomics.com",
+      "website": "http://eidosergonomics.com",
+      "contract_start_date": "2027-10-14",
+      "contract_expiration_date": "2027-10-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0033U/GS07F0033U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0033U&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "GRAY MANUFACTURING COMPANY, INC",
+      "contract_number": "47QSMS25D0023",
+      "vendor_uei": "MS6AQNTUV1J5",
+      "company_address": "3501 S LEONARD RD",
+      "company_city": "SAINT JOSEPH",
+      "company_state": "MO",
+      "company_zip": "64503-1756",
+      "primary_contact_phone": "8162336121",
+      "primary_contact_email": "acline-shelton@grayusa.com",
+      "website": "http://www.grayusa.com",
+      "contract_start_date": "2029-12-02",
+      "contract_expiration_date": "2044-12-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0023/47QSMS25D0023_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0023&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "HALLPASS CAPITAL INC",
+      "contract_number": "GS-07F-0413Y",
+      "vendor_uei": "F8RAU1DTQWS7",
+      "company_address": "1835 WHITTIER AVE",
+      "company_city": "COSTA MESA",
+      "company_state": "CA",
+      "company_zip": "92627-4574",
+      "primary_contact_phone": "8552344533",
+      "primary_contact_email": "gsa@gonled.com",
+      "website": "http://www.gonled.com",
+      "contract_start_date": "2027-05-29",
+      "contract_expiration_date": "2032-05-29",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "address_2": "STE D12",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0413Y/GS07F0413Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0413Y/pricelist_GS-07F-0413Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0413Y&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "IDSC HOLDINGS LLC",
+      "contract_number": "47QSHA19D005N",
+      "vendor_uei": "SJL9Q452QBL5",
+      "company_address": "2801 80TH ST",
+      "company_city": "KENOSHA",
+      "company_state": "WI",
+      "company_zip": "53143-5656",
+      "primary_contact_phone": "2626565430",
+      "primary_contact_email": "Carol.L.Connelly@snapon.com",
+      "website": "http://www.snapon.com/Industrial2/Industries/Military-Defense",
+      "contract_start_date": "2029-09-08",
+      "contract_expiration_date": "2039-09-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA19D005N/47QSHA19D005N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA19D005N&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "LAWSON PRODUCTS, INC.",
+      "contract_number": "47QSHA21D001G",
+      "vendor_uei": "ULK1N3N99NY1",
+      "company_address": "8770 W BRYN MAWR AVE",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60631-3515",
+      "primary_contact_phone": "7733045661",
+      "primary_contact_email": "Ray.Larry@lawsonproducts.com",
+      "website": "http://www.lawsonproducts.com",
+      "contract_start_date": "2026-04-22",
+      "contract_expiration_date": "2041-04-22",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "address_2": "STE 900",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA21D001G/47QSHA21D001G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA21D001G&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "MILE X EQUIPMENT INC",
+      "contract_number": "47QSMS26D0009",
+      "vendor_uei": "NNYLSLJLELY1",
+      "company_address": "801 N 2ND ST",
+      "company_city": "COLDWATER",
+      "company_state": "OH",
+      "company_zip": "45828-9800",
+      "primary_contact_phone": "4196783818",
+      "primary_contact_email": "sam@mile-x.com",
+      "website": "http://www.mile-x.com",
+      "contract_start_date": "2030-10-08",
+      "contract_expiration_date": "2045-10-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "MILE X EQUIPMENT INC",
+      "contract_number": "GS-07F-9368S",
+      "vendor_uei": "NNYLSLJLELY1",
+      "company_address": "801 N 2ND ST",
+      "company_city": "COLDWATER",
+      "company_state": "OH",
+      "company_zip": "45828-9800",
+      "primary_contact_phone": "4196783818",
+      "primary_contact_email": "sam@mile-x.com",
+      "website": "http://www.mile-x.com",
+      "contract_start_date": "2026-02-28",
+      "contract_expiration_date": "2026-02-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9368S/GS07F9368S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9368S&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "SAFETY-KLEEN SYSTEMS, INC.",
+      "contract_number": "47QSMS24D0024",
+      "vendor_uei": "PMW5K97W55P7",
+      "company_address": "42 LONGWATER DR",
+      "company_city": "NORWELL",
+      "company_state": "MA",
+      "company_zip": "02061-1612",
+      "primary_contact_phone": "7817925468",
+      "primary_contact_email": "boydm@cleanharbors.com",
+      "website": "https://www.safety-kleen.com/",
+      "contract_start_date": "2029-01-16",
+      "contract_expiration_date": "2044-01-16",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0024/47QSMS24D0024_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0024&sin=811310&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "811310"
+      ],
+      "primary_sin": "811310",
+      "schedule_number": "MAS",
+      "company_name": "SANITZ ENTERPRISES, INC.",
+      "contract_number": "47QSWA21D007B",
+      "vendor_uei": "GLJ4J66A2HK3",
+      "company_address": "256 SULTEMEIER MOELLERING RD",
+      "company_city": "FREDERICKSBURG",
+      "company_state": "TX",
+      "company_zip": "78624-7799",
+      "primary_contact_phone": "8306853430",
+      "primary_contact_email": "gsa@ampatss.com",
+      "website": "http://www.custommanufacturing.ampatss.com/",
+      "contract_start_date": "2026-08-26",
+      "contract_expiration_date": "2041-08-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products and Services Maintenance and Repair",
+        "source": "MAS",
+        "category": 811310.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D007B/47QSWA21D007B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D007B&sin=811310&src=elib&app=cat"
+      }
+    }
+  ]
+}

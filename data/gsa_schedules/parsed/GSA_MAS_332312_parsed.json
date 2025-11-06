@@ -1,0 +1,208 @@
+{
+  "sin_code": "332312",
+  "file_name": "GSA_MAS_332312_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:24.753942",
+  "sheets": {
+    "2025_11_05_11_08_45": {
+      "row_count": 11,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "332312"
+      ],
+      "primary_sin": "332312",
+      "schedule_number": "MAS",
+      "company_name": "ACCESSREC LLC",
+      "contract_number": "47QSWA20D005C",
+      "vendor_uei": "RH5MN8E5SKS6",
+      "company_address": "67 SAND PARK RD STE A",
+      "company_city": "CEDAR GROVE",
+      "company_state": "NJ",
+      "company_zip": "07009-1243",
+      "primary_contact_phone": "9739550514",
+      "primary_contact_email": "ALEX.GIRARD@ACCESSREC.COM",
+      "website": "http://www.accessrec.com",
+      "contract_start_date": "2030-03-19",
+      "contract_expiration_date": "2040-03-19",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332312.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D005C/47QSWA20D005C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D005C&sin=332312&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332312"
+      ],
+      "primary_sin": "332312",
+      "schedule_number": "MAS",
+      "company_name": "ETABLISSEMENTS A DESCHAMPS ET FILS",
+      "contract_number": "47QSWA23D004U",
+      "vendor_uei": "XNP2DBQ24S47",
+      "company_address": "USINE DE BOURISSON",
+      "company_city": "LA COURONNE",
+      "company_zip": "16400",
+      "primary_contact_phone": "9739283040",
+      "primary_contact_email": "sandrine.carpentier@mobi-mat.com",
+      "website": "https://www.mobi-mat.com",
+      "contract_start_date": "2028-03-27",
+      "contract_expiration_date": "2043-03-27",
+      "company_country": "FRANCE",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332312.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D004U/47QSWA23D004U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D004U&sin=332312&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332312"
+      ],
+      "primary_sin": "332312",
+      "schedule_number": "MAS",
+      "company_name": "FOX RIVER GRAPHICS LLC",
+      "contract_number": "47QTCA19D007U",
+      "vendor_uei": "UCAFHZ7EQKQ5",
+      "company_address": "1200 OAKWOOD LN NW",
+      "company_city": "HUTCHINSON",
+      "company_state": "MN",
+      "company_zip": "55350",
+      "primary_contact_phone": "8474285068",
+      "primary_contact_email": "gsa@foxgraph.com",
+      "website": "http://www.foxgraph.com",
+      "contract_start_date": "2029-03-14",
+      "contract_expiration_date": "2039-03-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332312.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA19D007U/47QTCA19D007U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA19D007U&sin=332312&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332312"
+      ],
+      "primary_sin": "332312",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL ENTERPRISE, INC",
+      "contract_number": "GS-30F-040BA",
+      "vendor_uei": "L3P3MXXX2W59",
+      "company_address": "11560 STONEWALL RD",
+      "company_city": "APPOMATTOX",
+      "company_state": "VA",
+      "company_zip": "24522-8806",
+      "primary_contact_phone": "7036241206",
+      "primary_contact_email": "gsasupport@fedharmony.com",
+      "website": "http://www.fedharmony.com",
+      "contract_start_date": "2029-09-17",
+      "contract_expiration_date": "2034-09-17",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332312.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS30F040BA/GS30F040BA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-30F-040BA/pricelist_GS-30F-040BA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-30F-040BA&sin=332312&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332312"
+      ],
+      "primary_sin": "332312",
+      "schedule_number": "MAS",
+      "company_name": "MOUNTAIN HORSE LLC",
+      "contract_number": "47QSWA23D007V",
+      "vendor_uei": "HKV6HSM1JVA6",
+      "company_address": "407 S TEJON ST",
+      "company_city": "COLORADO SPRINGS",
+      "company_state": "CO",
+      "company_zip": "80903-2196",
+      "primary_contact_phone": "6152607254",
+      "primary_contact_email": "jennifer.sheehan@mtnhorse.com",
+      "website": "http://www.mtnhorse.com",
+      "contract_start_date": "2028-07-31",
+      "contract_expiration_date": "2043-07-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Structures",
+        "source": "MAS",
+        "category": 332312.0,
+        "address_2": "STE H",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D007V/47QSWA23D007V_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA23D007V/pricelist_47QSWA23D007V.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D007V&sin=332312&src=elib&app=cat"
+      }
+    }
+  ]
+}

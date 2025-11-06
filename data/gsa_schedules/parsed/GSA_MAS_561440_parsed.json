@@ -1,0 +1,891 @@
+{
+  "sin_code": "561440",
+  "file_name": "GSA_MAS_561440_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:26.169758",
+  "sheets": {
+    "2025_11_05_11_24_32": {
+      "row_count": 34,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "ALLIANCEONE RECEIVABLES MANAGEMENT, INC.",
+      "contract_number": "GS-00F-263GA",
+      "vendor_uei": "MLV1XFJZJ1V1",
+      "company_address": "3043 WALTON ROAD",
+      "company_city": "PLYMOUTH MEETING",
+      "company_state": "PA",
+      "company_zip": "19462-2389",
+      "primary_contact_phone": "8665689235",
+      "primary_contact_email": "harry.neerenberg@allianceoneinc.com",
+      "website": "http://www.allianceoneinc.com/Welcome/",
+      "contract_start_date": "2027-07-13",
+      "contract_expiration_date": "2037-07-13",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "address_2": "STE 201",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS00F263GA/GS00F263GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-00F-263GA&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "CAINE & WEINER COMPANY, INC.",
+      "contract_number": "GS-00F-181DA",
+      "vendor_uei": "YWKVAD1B7M27",
+      "company_address": "5805 SEPULVEDA BLVD FL 4",
+      "company_city": "SHERMAN OAKS",
+      "company_state": "CA",
+      "company_zip": "91411-2532",
+      "primary_contact_phone": "8182511713",
+      "primary_contact_email": "joe.batie@caine-weiner.com",
+      "website": "http://www.caine-weiner.com",
+      "contract_start_date": "2026-06-08",
+      "contract_expiration_date": "2036-06-08",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS00F181DA/GS00F181DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-00F-181DA&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "CAPITAL COLLECTION MANAGEMENT LLC",
+      "contract_number": "47QRAA21D003L",
+      "vendor_uei": "ELEZMB5L73V5",
+      "company_address": "318 S CLINTON ST STE 400",
+      "company_city": "SYRACUSE",
+      "company_state": "NY",
+      "company_zip": "13202-1127",
+      "primary_contact_phone": "3152569744",
+      "primary_contact_email": "jake@ccmr3.com",
+      "website": "http://ccmr3.com",
+      "contract_start_date": "2026-03-17",
+      "contract_expiration_date": "2041-03-17",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA21D003L/47QRAA21D003L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA21D003L&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "CENTRAL PORTFOLIO CONTROL INC",
+      "contract_number": "47QRAA22D008L",
+      "vendor_uei": "NE44NNK8UCP7",
+      "company_address": "10249 YELLOW CIRCLE DR",
+      "company_city": "HOPKINS",
+      "company_state": "MN",
+      "company_zip": "55343-9111",
+      "primary_contact_phone": "6513070341",
+      "primary_contact_email": "mikelesher@cpcrecovery.com",
+      "website": "http://cpcrecovery.com",
+      "contract_start_date": "2027-04-20",
+      "contract_expiration_date": "2042-04-20",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "address_2": "STE 200",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA22D008L/47QRAA22D008L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA22D008L&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "COAST PROFESSIONAL, INC.",
+      "contract_number": "47QRAA23D0089",
+      "vendor_uei": "GERULZQKGMA5",
+      "company_address": "4273 VOLUNTEER RD",
+      "company_city": "GENESEO",
+      "company_state": "NY",
+      "company_zip": "14454-9444",
+      "primary_contact_phone": "3188076356",
+      "primary_contact_email": "mpulliam@coastprofessional.com",
+      "website": "http://www.coastprofessional.net",
+      "contract_start_date": "2028-07-18",
+      "contract_expiration_date": "2043-07-18",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA23D0089/47QRAA23D0089_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QRAA23D0089/pricelist_47QRAA23D0089.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA23D0089&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "COAST PROFESSIONAL, INC.",
+      "contract_number": "GS-23F-0009U",
+      "vendor_uei": "GERULZQKGMA5",
+      "company_address": "4273 VOLUNTEER RD",
+      "company_city": "GENESEO",
+      "company_state": "NY",
+      "company_zip": "14454-9444",
+      "primary_contact_phone": "3188076356",
+      "primary_contact_email": "gsa@coastprofessional.com",
+      "website": "http://www.coastprofessional.net",
+      "contract_start_date": "2028-01-02",
+      "contract_expiration_date": "2028-01-02",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F0009U/GS23F0009U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-23F-0009U&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "CONTINENTAL SERVICE GROUP, LLC",
+      "contract_number": "47QRAA22D002T",
+      "vendor_uei": "FBJQBCC38AY4",
+      "company_address": "200 CROSS KEYS OFFICE PARK",
+      "company_city": "FAIRPORT",
+      "company_state": "NY",
+      "company_zip": "14450-3510",
+      "primary_contact_phone": "5853152209",
+      "primary_contact_email": "ConServeGSAContractAdmin@conserve-arm.com",
+      "website": "http://www.conserve-arm.com",
+      "contract_start_date": "2026-12-01",
+      "contract_expiration_date": "2041-12-01",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA22D002T/47QRAA22D002T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA22D002T&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "CORE RECOVERIES LLC",
+      "contract_number": "47QRAA22D00CL",
+      "vendor_uei": "EB8RG31HB5S7",
+      "company_address": "9420 BUNSEN PKWY STE 120",
+      "company_city": "LOUISVILLE",
+      "company_state": "KY",
+      "company_zip": "40220-3787",
+      "primary_contact_phone": "5026905674",
+      "primary_contact_email": "lkorn@corerecoveries.com",
+      "website": "http://www.corerecoveries.com",
+      "contract_start_date": "2027-07-13",
+      "contract_expiration_date": "2042-07-13",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA22D00CL/47QRAA22D00CL_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "DEVAL , LLC",
+      "contract_number": "GS-23F-003BA",
+      "vendor_uei": "JFHVMDLE38M8",
+      "company_address": "8230 LEESBURG PIKE STE 600",
+      "company_city": "VIENNA",
+      "company_state": "VA",
+      "company_zip": "22182-2641",
+      "primary_contact_phone": "7038515466",
+      "primary_contact_email": "dgarcia@deval.us",
+      "website": "https://deval.us/",
+      "contract_start_date": "2028-11-06",
+      "contract_expiration_date": "2033-11-06",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F003BA/GS23F003BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-23F-003BA&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "ENVIRONMENTAL LITIGATION GROUP PC",
+      "contract_number": "GS-00F-268DA",
+      "vendor_uei": "JMPNG3LXPV65",
+      "company_address": "2160 HIGHLAND AVE S",
+      "company_city": "BIRMINGHAM",
+      "company_state": "AL",
+      "company_zip": "35205-4002",
+      "primary_contact_phone": "2059084048",
+      "primary_contact_email": "sylvia@elglaw.com",
+      "website": "http://www.elggov.com",
+      "contract_start_date": "2026-08-29",
+      "contract_expiration_date": "2036-08-29",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS00F268DA/GS00F268DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-00F-268DA&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "EXPRESS COLLECTIONS, INC.",
+      "contract_number": "47QRAA24D009P",
+      "vendor_uei": "XRLSVZLJTXL9",
+      "company_address": "818 SAINT JOSEPH ST STE 200",
+      "company_city": "RAPID CITY",
+      "company_state": "SD",
+      "company_zip": "57701-2610",
+      "primary_contact_phone": "6053431311",
+      "primary_contact_email": "jennifer@expresscollections.com",
+      "website": "http://www.expresscollections.com",
+      "contract_start_date": "2029-06-24",
+      "contract_expiration_date": "2044-06-24",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA24D009P/47QRAA24D009P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA24D009P&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "F.H. CANN & ASSOCIATES, INC.",
+      "contract_number": "47QRAA21D006H",
+      "vendor_uei": "JLCRDYL2L161",
+      "company_address": "1600 OSGOOD ST",
+      "company_city": "NORTH ANDOVER",
+      "company_state": "MA",
+      "company_zip": "01845-1051",
+      "primary_contact_phone": "9787642255",
+      "primary_contact_email": "rfp@fhcann.com",
+      "website": "http://www.fhcann.com",
+      "contract_start_date": "2026-06-06",
+      "contract_expiration_date": "2041-06-06",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "address_2": "STE 2-120",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__38": "hjv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA21D006H/47QRAA21D006H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA21D006H&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL RECOVERY GROUP, LLC",
+      "contract_number": "GS-23F-0026U",
+      "vendor_uei": "PDG7UND3CWN8",
+      "company_address": "620 HERNDON PKWY STE 330",
+      "company_city": "HERNDON",
+      "company_state": "VA",
+      "company_zip": "20170-5483",
+      "primary_contact_phone": "6143245959",
+      "primary_contact_email": "jeff.sniderman@globalrecoverygroup.com",
+      "website": "http://www.globalrecoverygroup.com",
+      "contract_start_date": "2028-04-08",
+      "contract_expiration_date": "2028-04-08",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F0026U/GS23F0026U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-23F-0026U&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "L J ROSS ASSOCIATES INC",
+      "contract_number": "GS-23F-0060Y",
+      "vendor_uei": "NNBWZXHTGZX8",
+      "company_address": "4 UNIVERSAL WAY",
+      "company_city": "JACKSON",
+      "company_state": "MI",
+      "company_zip": "49202-1455",
+      "primary_contact_phone": "5175449100",
+      "primary_contact_email": "kaylyn@ljross.com",
+      "website": "http://www.ljross.com",
+      "contract_start_date": "2027-07-12",
+      "contract_expiration_date": "2032-07-12",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F0060Y/GS23F0060Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-23F-0060Y&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "MID-SOUTH ADJUSTMENT CO INC",
+      "contract_number": "47QRAA24D002F",
+      "vendor_uei": "QCVBNV8V6UY1",
+      "company_address": "200 E 11TH AVE",
+      "company_city": "PINE BLUFF",
+      "company_state": "AR",
+      "company_zip": "71601-5063",
+      "primary_contact_phone": "8705414225",
+      "primary_contact_email": "n.r.sullivan@midsouthadjustment.com",
+      "website": "www.midsouthadjustment.com",
+      "contract_start_date": "2029-01-11",
+      "contract_expiration_date": "2044-01-11",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "address_2": "STE K",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL CREDIT SERVICES, INC.",
+      "contract_number": "GS-23F-0035U",
+      "vendor_uei": "VKWGPLQBE1K9",
+      "company_address": "2525 220TH ST SE STE 200",
+      "company_city": "BOTHELL",
+      "company_state": "WA",
+      "company_zip": "98021-4440",
+      "primary_contact_phone": "4259394896",
+      "primary_contact_email": "haidari@ncscollect.com",
+      "website": "http://www.ncscollect.com",
+      "contract_start_date": "2028-04-23",
+      "contract_expiration_date": "2028-04-23",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F0035U/GS23F0035U_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL ENTERPRISE SYSTEMS INC",
+      "contract_number": "GS-00F-185GA",
+      "vendor_uei": "QAKRPL832D85",
+      "company_address": "29125 SOLON RD",
+      "company_city": "SOLON",
+      "company_state": "OH",
+      "company_zip": "44139-3442",
+      "primary_contact_phone": "4402601804",
+      "primary_contact_email": "spollak@nes1.com",
+      "website": "http://www.nes1.com",
+      "contract_start_date": "2027-05-03",
+      "contract_expiration_date": "2037-05-03",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS00F185GA/GS00F185GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-00F-185GA&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "PERFORMANT RECOVERY, INC.",
+      "contract_number": "47QRAA20D003Z",
+      "vendor_uei": "HFAJCUH5UU53",
+      "company_address": "900 S PINE ISLAND RD STE 150",
+      "company_city": "PLANTATION",
+      "company_state": "FL",
+      "company_zip": "33324-3924",
+      "primary_contact_phone": "9259604765",
+      "primary_contact_email": "hwetzel@performantcorp.com",
+      "website": "https://www.performantcorp.com",
+      "contract_start_date": "2029-12-30",
+      "contract_expiration_date": "2039-12-30",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA20D003Z/47QRAA20D003Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA20D003Z&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "PIONEER CREDIT RECOVERY, INC",
+      "contract_number": "47QRAA19D00DP",
+      "vendor_uei": "YXUUF59KM4C8",
+      "company_address": "26 EDWARD ST",
+      "company_city": "ARCADE",
+      "company_state": "NY",
+      "company_zip": "14009-1012",
+      "primary_contact_phone": "5713679444",
+      "primary_contact_email": "kerry.trahan@pioneercx.com",
+      "website": "http://pioneercreditrecovery.com",
+      "contract_start_date": "2029-09-25",
+      "contract_expiration_date": "2039-09-25",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA19D00DP/47QRAA19D00DP_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA19D00DP&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "RECEIVIA, INC.",
+      "contract_number": "47QRAA21D00A1",
+      "vendor_uei": "JMHPHJZLKJQ7",
+      "company_address": "450 DORSET WAY SW",
+      "company_city": "SMYRNA",
+      "company_state": "GA",
+      "company_zip": "30082-4483",
+      "primary_contact_phone": "6783251735",
+      "primary_contact_email": "craig.fetner@receivia.com",
+      "website": "http://www.receivia.com",
+      "contract_start_date": "2026-09-12",
+      "contract_expiration_date": "2041-09-12",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA21D00A1/47QRAA21D00A1_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA21D00A1&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "RELIANT CAPITAL SOLUTIONS LLC",
+      "contract_number": "47QRAA25D009F",
+      "vendor_uei": "QNNEDAE5DNW9",
+      "company_address": "670 CROSS POINTE RD",
+      "company_city": "COLUMBUS",
+      "company_state": "OH",
+      "company_zip": "43230-6862",
+      "primary_contact_phone": "6144526115",
+      "primary_contact_email": "GSA@RELIANT-CAP.COM",
+      "website": "http://www.reliantcapitalsolutions.com",
+      "contract_start_date": "2030-05-13",
+      "contract_expiration_date": "2045-05-13",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA25D009F/47QRAA25D009F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA25D009F&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "SEQUIUM ASSET SOLUTIONS, LLC",
+      "contract_number": "47QRAA22D007A",
+      "vendor_uei": "UL65NJBSP1L6",
+      "company_address": "1130 NORTHCHASE PKWY SE STE 150",
+      "company_city": "MARIETTA",
+      "company_state": "GA",
+      "company_zip": "30067-6429",
+      "primary_contact_phone": "2185220212",
+      "primary_contact_email": "jennawilmes@sequium.com",
+      "contract_start_date": "2027-03-23",
+      "contract_expiration_date": "2042-03-23",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA22D007A/47QRAA22D007A_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "SHABAS SOLUTIONS LLC",
+      "contract_number": "GS-00F-110GA",
+      "vendor_uei": "ZGLHPDKK5GP9",
+      "company_address": "11166 FAIRFAX BLVD",
+      "company_city": "FAIRFAX",
+      "company_state": "VA",
+      "company_zip": "22030-5017",
+      "primary_contact_phone": "7037637685",
+      "primary_contact_email": "somnath.mishra@shabas.net",
+      "website": "http://www.shabas.net",
+      "contract_start_date": "2027-02-14",
+      "contract_expiration_date": "2037-02-14",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "address_2": "STE 310",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS00F110GA/GS00F110GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-00F-110GA&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "SIGNATURE PERFORMANCE, INC.",
+      "contract_number": "47QSWA18D008J",
+      "vendor_uei": "WKUNWXBN45R1",
+      "company_address": "10250 REGENCY CIR STE 500",
+      "company_city": "OMAHA",
+      "company_state": "NE",
+      "company_zip": "68114-5703",
+      "primary_contact_phone": "4023430300",
+      "primary_contact_email": "khudgins@SignaturePerformance.com",
+      "website": "http://www.signatureperformance.com",
+      "contract_start_date": "2028-08-22",
+      "contract_expiration_date": "2038-08-22",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D008J/47QSWA18D008J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D008J&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "SYNERPRISE CONSULTING SERVICES, INC.",
+      "contract_number": "47QRAA24D00AD",
+      "vendor_uei": "VQ8YQQPMSG55",
+      "company_address": "5651 BROADMOOR ST",
+      "company_city": "MISSION",
+      "company_state": "KS",
+      "company_zip": "66202-2407",
+      "primary_contact_phone": "9132208691",
+      "primary_contact_email": "rmccoyiii@synerpriseconsulting.com",
+      "website": "http://CHOOSESCS.COM",
+      "contract_start_date": "2029-07-09",
+      "contract_expiration_date": "2044-07-09",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA24D00AD/47QRAA24D00AD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA24D00AD&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "THE CBE GROUP, INC.",
+      "contract_number": "47QRAA24D0062",
+      "vendor_uei": "CTYHQ6M5VHL1",
+      "company_address": "1309 TECHNOLOGY PKWY",
+      "company_city": "CEDAR FALLS",
+      "company_state": "IA",
+      "company_zip": "50613-6976",
+      "primary_contact_phone": "3198331089",
+      "primary_contact_email": "kathy.christensen@cbecompanies.com",
+      "website": "http://www.cbegroup.com",
+      "contract_start_date": "2029-03-28",
+      "contract_expiration_date": "2044-03-28",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA24D0062/47QRAA24D0062_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA24D0062&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "TRANSWORLD SYSTEMS INC.",
+      "contract_number": "47QRAA20D001D",
+      "vendor_uei": "G5U7RMFCTM75",
+      "company_address": "500 VIRGINIA DR STE 514",
+      "company_city": "FORT WASHINGTON",
+      "company_state": "PA",
+      "company_zip": "19034-2733",
+      "primary_contact_phone": "3025980694",
+      "primary_contact_email": "Casey.Lyons@tsico.com",
+      "website": "http://www.tsico.com",
+      "contract_start_date": "2029-11-11",
+      "contract_expiration_date": "2039-11-11",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA20D001D/47QRAA20D001D_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QRAA20D001D/pricelist_47QRAA20D001D.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA20D001D&sin=561440&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "561440"
+      ],
+      "primary_sin": "561440",
+      "schedule_number": "MAS",
+      "company_name": "VALUE RECOVERY HOLDING, LIMITED LIABILITY COMPANY",
+      "contract_number": "GS-23F-0014X",
+      "vendor_uei": "GGZCUXEYHBH3",
+      "company_address": "919 OLD HENDERSON RD",
+      "company_city": "COLUMBUS",
+      "company_state": "OH",
+      "company_zip": "43220-3722",
+      "primary_contact_phone": "6143245955",
+      "primary_contact_email": "jsniderman@valuerecovery.com",
+      "website": "http://www.valuerecovery.com",
+      "contract_start_date": "2025-11-17",
+      "contract_expiration_date": "2030-11-17",
+      "additional_data": {
+        "large_category": "Professional Services ",
+        "sub_category": " Financial Services",
+        "source": "MAS",
+        "category": 561440.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS23F0014X/GS23F0014X_online.htm"
+      }
+    }
+  ]
+}

@@ -1,0 +1,476 @@
+{
+  "sin_code": "334513",
+  "file_name": "GSA_MAS_334513_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:18.380621",
+  "sheets": {
+    "2025_11_05_11_28_04": {
+      "row_count": 20,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "ADVANCED DETECTION SOLUTIONS LLC",
+      "contract_number": "47QSWA20D0047",
+      "vendor_uei": "KYLJC9AN8955",
+      "company_address": "1101 QUAIL ST",
+      "company_city": "NEWPORT BEACH",
+      "company_state": "CA",
+      "company_zip": "92660-2705",
+      "primary_contact_phone": "18006205460",
+      "primary_contact_email": "jrjanisch@detection-solutions.com",
+      "website": "http://www.detection-solutions.com/",
+      "contract_start_date": "2030-02-05",
+      "contract_expiration_date": "2040-02-05",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D0047/47QSWA20D0047_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D0047&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "BARBER CREATIONS, LLC",
+      "contract_number": "47QSWA19D0053",
+      "vendor_uei": "FC6EU2KCLAB9",
+      "company_address": "90 PONDEROSA RD",
+      "company_city": "SEDONA",
+      "company_state": "AZ",
+      "company_zip": "86351-7922",
+      "primary_contact_phone": "12064847387",
+      "primary_contact_email": "susan.barber@mintakainnovations.com",
+      "website": "http://www.mintakainnovations.com",
+      "contract_start_date": "2029-03-24",
+      "contract_expiration_date": "2039-03-24",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D0053/47QSWA19D0053_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D0053&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "BIOSONICS, INC",
+      "contract_number": "47QSWA22D003W",
+      "vendor_uei": "N3FGP5W9W1C8",
+      "company_address": "2356 W COMMODORE WAY UNIT 110",
+      "company_city": "SEATTLE",
+      "company_state": "WA",
+      "company_zip": "98199-1258",
+      "primary_contact_phone": "2067822211",
+      "primary_contact_email": "bevacker@biosonicsinc.com",
+      "website": "http://www.biosonicsinc.com",
+      "contract_start_date": "2027-04-29",
+      "contract_expiration_date": "2042-04-29",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D003W/47QSWA22D003W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D003W&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "FOTRONIC CORPORATION",
+      "contract_number": "GS-07F-0375T",
+      "vendor_uei": "FUN1ZFUJ3GM9",
+      "company_address": "5 COMMONWEALTH AVE UNIT 6",
+      "company_city": "WOBURN",
+      "company_state": "MA",
+      "company_zip": "01801-1069",
+      "primary_contact_phone": "7819792010",
+      "primary_contact_email": "afoti@fotronic.com",
+      "website": "http://www.testequipmentdepot.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2027-05-31",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0375T/GS07F0375T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0375T&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "FRANKLIN YOUNG INTERNATIONAL, INCORPORATED",
+      "contract_number": "GS-07F-0636W",
+      "vendor_uei": "EDQMKDZR8L13",
+      "company_address": "1042 N MOUNTAIN AVE",
+      "company_city": "UPLAND",
+      "company_state": "CA",
+      "company_zip": "91786-3695",
+      "primary_contact_phone": "9099315012",
+      "primary_contact_email": "Dave@franklinyoung.com",
+      "website": "http://www.franklinyoung.com",
+      "contract_start_date": "2030-09-09",
+      "contract_expiration_date": "2030-09-09",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "address_2": "# 310",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0636W/GS07F0636W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0636W&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "FTS FOREST TECHNOLOGY SYSTEMS LTD.",
+      "contract_number": "GS-07F-9253S",
+      "vendor_uei": "SJY5QU2S9WQ9",
+      "company_address": "1065 HENRY ENG PL",
+      "company_city": "VICTORIA",
+      "company_state": "BC",
+      "company_zip": "V9B 6B2",
+      "primary_contact_phone": "2504785561",
+      "primary_contact_email": "kwatanabe@ftsinc.com",
+      "website": "http://www.ftsinc.com",
+      "contract_start_date": "2025-11-30",
+      "contract_expiration_date": "2025-11-30",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9253S/GS07F9253S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9253S&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL TELEVISION CORPORATION",
+      "contract_number": "GS-21F-169AA",
+      "vendor_uei": "H66FJ21GAEF8",
+      "company_address": "21000 S WILMINGTON AVE",
+      "company_city": "LONG BEACH",
+      "company_state": "CA",
+      "company_zip": "90810-1232",
+      "primary_contact_phone": "3102416280",
+      "primary_contact_email": "rgrace@itcelectronics.com",
+      "website": "http://www.itcelectronics.com",
+      "contract_start_date": "2028-08-14",
+      "contract_expiration_date": "2033-08-14",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F169AA/GS21F169AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-169AA&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "KESSLER SOILS ENGINEERING PRODUCTS, INC.",
+      "contract_number": "47QSWA21D005A",
+      "vendor_uei": "JXLFGZGFPZL5",
+      "company_address": "17775 RUNNING COLT PL",
+      "company_city": "LEESBURG",
+      "company_state": "VA",
+      "company_zip": "20175-7110",
+      "primary_contact_phone": "5712463482",
+      "primary_contact_email": "virginia@kesslerdcp.com",
+      "website": "http://www.kesslerdcp.com",
+      "contract_start_date": "2026-06-19",
+      "contract_expiration_date": "2041-06-19",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D005A/47QSWA21D005A_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D005A&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "KNUDSEN SYSTEMS INC.",
+      "contract_number": "47QSWA19D0069",
+      "vendor_uei": "DTG9ZK87NZE4",
+      "company_address": "1 BRIDGE PLZ STE 209",
+      "company_city": "OGDENSBURG",
+      "company_state": "NY",
+      "company_zip": "13669-2219",
+      "primary_contact_phone": "3153938861",
+      "primary_contact_email": "judith@knudsensystems.com",
+      "website": "http://www.knudsensystems.com",
+      "contract_start_date": "2029-07-30",
+      "contract_expiration_date": "2039-07-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D0069/47QSWA19D0069_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D0069&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "METER GROUP INC",
+      "contract_number": "47QSWA21D0023",
+      "vendor_uei": "EN17YGCSD6R5",
+      "company_address": "2365 NE HOPKINS CT",
+      "company_city": "PULLMAN",
+      "company_state": "WA",
+      "company_zip": "99163-5601",
+      "primary_contact_phone": "5093385685",
+      "primary_contact_email": "lauren@metergroup.com",
+      "website": "http://www.metergroup.com",
+      "contract_start_date": "2026-01-27",
+      "contract_expiration_date": "2041-01-27",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D0023/47QSWA21D0023_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D0023&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "PACIFIC STAR CORPORATION",
+      "contract_number": "GS-07F-0111W",
+      "vendor_uei": "QULRXKMBD576",
+      "company_address": "4350 S WAYSIDE DR",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77087-1129",
+      "primary_contact_phone": "7135270889",
+      "primary_contact_email": "customer@pfstar.com",
+      "website": "http://www.pfstar.com",
+      "contract_start_date": "2029-11-30",
+      "contract_expiration_date": "2029-11-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "address_2": "STE 106",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0111W/GS07F0111W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0111W&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "SAELIG COMPANY, INC.",
+      "contract_number": "GS-07F-281AA",
+      "vendor_uei": "LPB1M519DKJ1",
+      "company_address": "71A PERINTON PKWY",
+      "company_city": "FAIRPORT",
+      "company_state": "NY",
+      "company_zip": "14450",
+      "primary_contact_phone": "5855206279",
+      "primary_contact_email": "Dan.Evans@saelig.com",
+      "website": "http://www.saelig.com/",
+      "contract_start_date": "2028-06-04",
+      "contract_expiration_date": "2033-06-04",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F281AA/GS07F281AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-281AA&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "SEATTLE METRICS INC",
+      "contract_number": "47QSWA23D004E",
+      "vendor_uei": "FTV6TBUPAWS6",
+      "company_address": "19026 72ND AVE S",
+      "company_city": "KENT",
+      "company_state": "WA",
+      "company_zip": "98032-1005",
+      "primary_contact_phone": "2538720284",
+      "primary_contact_email": "rgilbert@seametrics.com",
+      "website": "http://www.seametrics.com",
+      "contract_start_date": "2028-03-20",
+      "contract_expiration_date": "2043-03-20",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D004E/47QSWA23D004E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D004E&sin=334513&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334513"
+      ],
+      "primary_sin": "334513",
+      "schedule_number": "MAS",
+      "company_name": "VAISALA INC.",
+      "contract_number": "GS-07F-030DA",
+      "vendor_uei": "FCMPZKYCYKH5",
+      "company_address": "194 S TAYLOR AVE",
+      "company_city": "LOUISVILLE",
+      "company_state": "CO",
+      "company_zip": "80027-3024",
+      "primary_contact_phone": "7207628839",
+      "primary_contact_email": "andrew.jamison@vaisala.com",
+      "website": "http://www.vaisala.com",
+      "contract_start_date": "2025-11-30",
+      "contract_expiration_date": "2035-11-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": 334513.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F030DA/GS07F030DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-030DA&sin=334513&src=elib&app=cat"
+      }
+    }
+  ]
+}

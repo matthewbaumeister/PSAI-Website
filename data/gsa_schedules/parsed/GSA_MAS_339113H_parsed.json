@@ -1,0 +1,1392 @@
+{
+  "sin_code": "339113H",
+  "file_name": "GSA_MAS_339113H_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:53.528853",
+  "sheets": {
+    "2025_11_05_11_09_37": {
+      "row_count": 51,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "ACCESS SUPPLY LLC",
+      "contract_number": "GS-28F-013DA",
+      "vendor_uei": "EMYRGEMMMLK6",
+      "company_address": "119 BRIERY CHURCH RD",
+      "company_city": "KEYSVILLE",
+      "company_state": "VA",
+      "company_zip": "23947-5002",
+      "primary_contact_phone": "4347368643",
+      "primary_contact_email": "rduffer@accessupply.com",
+      "website": "http://www.accessupply.com",
+      "contract_start_date": "2026-06-20",
+      "contract_expiration_date": "2036-06-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F013DA/GS28F013DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-013DA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "ALLSEATING CORPORATION",
+      "contract_number": "GS-29F-004AA",
+      "vendor_uei": "CESKE9B2SJ74",
+      "company_address": "5800 AVEBURY RD UNIT 3",
+      "company_city": "MISSISSAUGA",
+      "company_state": "ON",
+      "company_zip": "L5R 3M3",
+      "primary_contact_phone": "8005633502",
+      "primary_contact_email": "customerservice@allseating.com",
+      "website": "http://www.allseating.com",
+      "contract_start_date": "2028-01-10",
+      "contract_expiration_date": "2033-01-10",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS29F004AA/GS29F004AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-29F-004AA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "AMCASE, INC.",
+      "contract_number": "47QSMA20D08PJ",
+      "vendor_uei": "FXBRVD5Y9BJ4",
+      "company_address": "2214 SHORE ST",
+      "company_city": "HIGH POINT",
+      "company_state": "NC",
+      "company_zip": "27263-2512",
+      "primary_contact_phone": "3367845992",
+      "primary_contact_email": "Marianne@amcase.com",
+      "website": "http://www.amcase.com",
+      "contract_start_date": "2030-03-04",
+      "contract_expiration_date": "2040-03-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08PJ/47QSMA20D08PJ_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08PJ&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "CLAFLIN SERVICE COMPANY",
+      "contract_number": "47QSWA21D004H",
+      "vendor_uei": "ND1BF4HPEJJ5",
+      "company_address": "1206 JEFFERSON BLVD",
+      "company_city": "WARWICK",
+      "company_state": "RI",
+      "company_zip": "02886-2204",
+      "primary_contact_phone": "4012691655",
+      "primary_contact_email": "bcharron@cmecorp.com",
+      "website": "http://www.cmecorp.com",
+      "contract_start_date": "2026-04-30",
+      "contract_expiration_date": "2041-04-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D004H/47QSWA21D004H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D004H&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "COMMERCIAL MARKETING ASSOCIATES, INC.",
+      "contract_number": "GS-03F-089GA",
+      "vendor_uei": "EN1XTK3RS6L5",
+      "company_address": "16013 MISTY KNOLL CT",
+      "company_city": "WOODBINE",
+      "company_state": "MD",
+      "company_zip": "21797-8443",
+      "primary_contact_phone": "2406513094",
+      "primary_contact_email": "paul.snyder@cma-purchasing.com",
+      "website": "http://www.cma-purchasing.com",
+      "contract_start_date": "2027-08-27",
+      "contract_expiration_date": "2037-08-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F089GA/GS03F089GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-089GA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "CORPORATE INTERIORS INC",
+      "contract_number": "GS-28F-0027V",
+      "vendor_uei": "S24GPDB3E527",
+      "company_address": "12115 28TH ST N",
+      "company_city": "SAINT PETERSBURG",
+      "company_state": "FL",
+      "company_zip": "33716-1821",
+      "primary_contact_phone": "7275397544",
+      "primary_contact_email": "edownes@the-cigroup.com",
+      "website": "http://www.the-cigroup.com",
+      "contract_start_date": "2029-03-31",
+      "contract_expiration_date": "2029-03-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0027V/GS28F0027V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0027V&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "DEFENSE VENTURE HOLDINGS, LLC",
+      "contract_number": "47QSWA23D002P",
+      "vendor_uei": "N5EVQJAL2JD5",
+      "company_address": "2601 PERFORMANCE CT STE 101",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23453-3768",
+      "primary_contact_phone": "7574992021",
+      "primary_contact_email": "kdimichele@defenseventureholdings.com",
+      "website": "http://www.defenseventureholdings.com",
+      "contract_start_date": "2028-01-31",
+      "contract_expiration_date": "2043-01-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D002P/47QSWA23D002P_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D002P&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "DESKMAKERS, INC",
+      "contract_number": "GS-27F-025DA",
+      "vendor_uei": "MUM6R9ZN4YD5",
+      "company_address": "6525 FLOTILLA ST",
+      "company_city": "COMMERCE",
+      "company_state": "CA",
+      "company_zip": "90040",
+      "primary_contact_phone": "3109630383",
+      "primary_contact_email": "phil@deskmakers.net",
+      "website": "http://www.deskmakers.com",
+      "contract_start_date": "2026-04-30",
+      "contract_expiration_date": "2036-04-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F025DA/GS27F025DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-025DA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "DIVINE IMAGING INC.",
+      "contract_number": "47QSWA19D002X",
+      "vendor_uei": "LGMVH2NYJH38",
+      "company_address": "21323 PACIFIC COAST HWY STE 101",
+      "company_city": "MALIBU",
+      "company_state": "CA",
+      "company_zip": "90265-5202",
+      "primary_contact_phone": "3105794000",
+      "primary_contact_email": "kim@divineimaging.com",
+      "website": "https://www.divineImaging.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2039-01-31",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002X/47QSWA19D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002X&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "ERGOCENTRIC INC.",
+      "contract_number": "GS-27F-019GA",
+      "vendor_uei": "VRJJWJ4JJ475",
+      "company_address": "275 SUPERIOR BLVD UNIT 2",
+      "company_city": "MISSISSAUGA",
+      "company_state": "ON",
+      "company_zip": "L5T 2L6",
+      "primary_contact_phone": "18664383746",
+      "primary_contact_email": "dan@ergocentric.com",
+      "website": "http://www.ergocentric.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2037-05-31",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F019GA/GS27F019GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-019GA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "GF HEALTH PRODUCTS, INC.",
+      "contract_number": "GS-27F-023DA",
+      "vendor_uei": "RKXCN9S27YK6",
+      "company_address": "1 GRAHAM FIELD WAY",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30340-3140",
+      "primary_contact_phone": "5162205373",
+      "primary_contact_email": "ldelahaba@grahamfield.com",
+      "website": "http://www.grahamfield.com",
+      "contract_start_date": "2026-04-19",
+      "contract_expiration_date": "2036-04-19",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F023DA/GS27F023DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-023DA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "GLOBAL INDUSTRIES, INC.",
+      "contract_number": "GS-03F-076GA",
+      "vendor_uei": "UUSPKG1HLBQ3",
+      "company_address": "17 W STOW RD",
+      "company_city": "MARLTON",
+      "company_state": "NJ",
+      "company_zip": "08053-3116",
+      "primary_contact_phone": "8565523784",
+      "primary_contact_email": "khiggins@globalfurnituregroup.com",
+      "website": "http://www.globalgovernmentusa.com",
+      "contract_start_date": "2027-07-16",
+      "contract_expiration_date": "2037-07-16",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F076GA/GS03F076GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-076GA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT SALES, LLC",
+      "contract_number": "GS-07F-0518T",
+      "vendor_uei": "J3M5EM9GLUW5",
+      "company_address": "4644 ARENDELL ST STE A",
+      "company_city": "MOREHEAD CITY",
+      "company_state": "NC",
+      "company_zip": "28557",
+      "primary_contact_phone": "8005316635",
+      "primary_contact_email": "CHARLES@GOVERNMENTSALESLLC.COM",
+      "website": "https://governmentsalesllc.com",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2027-08-14",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0518T/GS07F0518T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0518T&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "GOVSOLUTIONS, INC.",
+      "contract_number": "GS-03F-078AA",
+      "vendor_uei": "ZD8UWVHYKGC1",
+      "company_address": "108 S BIRDNECK RD",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23451-5863",
+      "primary_contact_phone": "7574307890",
+      "primary_contact_email": "dlong@govsolutionsinc.com",
+      "website": "http://WWW.GOVSOLUTIONSINC.COM",
+      "contract_start_date": "2028-05-27",
+      "contract_expiration_date": "2033-05-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F078AA/GS03F078AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-078AA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "GOVSOLUTIONS, INC.",
+      "contract_number": "GS-28F-0019T",
+      "vendor_uei": "ZD8UWVHYKGC1",
+      "company_address": "108 S BIRDNECK RD",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23451-5863",
+      "primary_contact_phone": "7574307890",
+      "primary_contact_email": "dlong@govsolutionsinc.com",
+      "website": "http://WWW.GOVSOLUTIONSINC.COM",
+      "contract_start_date": "2027-04-01",
+      "contract_expiration_date": "2027-04-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0019T/GS28F0019T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0019T&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "GROUPE LACASSE LLC",
+      "contract_number": "GS-27F-006GA",
+      "vendor_uei": "LGUFTSV4KU11",
+      "company_address": "222 MERCHANDISE MART PLZ STE 100",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60654-1103",
+      "primary_contact_phone": "8885222773",
+      "primary_contact_email": "BEN.W@GROUPELACASSE.COM",
+      "website": "http://WWW.GROUPELACASSE.COM",
+      "contract_start_date": "2026-12-22",
+      "contract_expiration_date": "2036-12-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F006GA/GS27F006GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-006GA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "HAWORTH INC",
+      "contract_number": "GS-03F-057DA",
+      "vendor_uei": "E32XCUALMYL4",
+      "company_address": "1 HAWORTH CTR",
+      "company_city": "HOLLAND",
+      "company_state": "MI",
+      "company_zip": "49423-9570",
+      "primary_contact_phone": "6163934038",
+      "primary_contact_email": "Hayleigh.Bosmeijer@haworth.com",
+      "website": "http://www.haworth.com/government",
+      "contract_start_date": "2026-02-07",
+      "contract_expiration_date": "2036-02-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F057DA/GS03F057DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-057DA/pricelist_GS-03F-057DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-057DA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "HOMEWOOD HEALTH CARE PRODUCTS, INC.",
+      "contract_number": "GS-27F-0013T",
+      "vendor_uei": "GRB7RMFXNMW8",
+      "company_address": "6735 MEADOW CREEK DR",
+      "company_city": "COLUMBUS",
+      "company_state": "OH",
+      "company_zip": "43235-7954",
+      "primary_contact_phone": "6147664862",
+      "primary_contact_email": "ddelewese@homewoodhealthcare.com",
+      "website": "http://www.homewoodhealthcare.com",
+      "contract_start_date": "2027-07-04",
+      "contract_expiration_date": "2027-07-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "address_2": "UNIT 102",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0013T/GS27F0013T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0013T&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "INTENSA, INC.",
+      "contract_number": "GS-28F-012GA",
+      "vendor_uei": "XTHLM4TLX5C3",
+      "company_address": "1810 S ELM ST",
+      "company_city": "HIGH POINT",
+      "company_state": "NC",
+      "company_zip": "27260-8703",
+      "primary_contact_phone": "2406217960",
+      "primary_contact_email": "malcolmw@mjpw.com",
+      "website": "http://www.intensa.net",
+      "contract_start_date": "2027-06-08",
+      "contract_expiration_date": "2037-06-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F012GA/GS28F012GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-012GA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "INTERIOR RESOURCE GROUP INC",
+      "contract_number": "GS-28F-0038W",
+      "vendor_uei": "EHNBFFLWC6A7",
+      "company_address": "11838 W COQUINA CT",
+      "company_city": "CRYSTAL RIVER",
+      "company_state": "FL",
+      "company_zip": "34429",
+      "primary_contact_phone": "4106543611",
+      "primary_contact_email": "LEEANN@INTERIORRESOURCEGROUP.COM",
+      "website": "http://www.interiorresourcegroup.com",
+      "contract_start_date": "2030-06-02",
+      "contract_expiration_date": "2030-06-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0038W/GS28F0038W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0038W&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "JASPER SEATING CO INC",
+      "contract_number": "GS-28F-0030U",
+      "vendor_uei": "DDJ2GKQM7M84",
+      "company_address": "225 CLAY ST",
+      "company_city": "JASPER",
+      "company_state": "IN",
+      "company_zip": "47546-3306",
+      "primary_contact_phone": "8004574511",
+      "primary_contact_email": "akeithley@jaspergroup.us.com",
+      "website": "http://www.jsifurniture.com",
+      "contract_start_date": "2028-06-24",
+      "contract_expiration_date": "2028-06-24",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0030U/GS28F0030U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0030U&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "KIMBALL INTERNATIONAL INC",
+      "contract_number": "GS-03F-059DA",
+      "vendor_uei": "F4NYD5JGEUS8",
+      "company_address": "1600, ROYAL STREET",
+      "company_city": "JASPER",
+      "company_state": "IN",
+      "company_zip": "47546-2256",
+      "primary_contact_phone": "8004821213",
+      "primary_contact_email": "shane.flynn@kimballinternational.com",
+      "website": "https://www.kimballinternational.com/home",
+      "contract_start_date": "2026-02-11",
+      "contract_expiration_date": "2036-02-11",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F059DA/GS03F059DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-059DA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "KNU, LLC",
+      "contract_number": "GS-28F-0008V",
+      "vendor_uei": "S1DNTDMV1A19",
+      "company_address": "1 BEST DR",
+      "company_city": "FERDINAND",
+      "company_state": "IN",
+      "company_zip": "47532-9537",
+      "primary_contact_phone": "8123673007",
+      "primary_contact_email": "bsicard@getknu.com",
+      "website": "http://getknu.com",
+      "contract_start_date": "2028-12-02",
+      "contract_expiration_date": "2028-12-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0008V/GS28F0008V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0008V&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "KRUEGER INTERNATIONAL, INC.",
+      "contract_number": "47QSMS24D007M",
+      "vendor_uei": "PAZHQEMYTSD8",
+      "company_address": "1330 BELLEVUE ST",
+      "company_city": "GREEN BAY",
+      "company_state": "WI",
+      "company_zip": "54302-2119",
+      "primary_contact_phone": "9204682580",
+      "primary_contact_email": "nick.guerrieri@ki.com",
+      "website": "http://www.ki.com",
+      "contract_start_date": "2029-05-22",
+      "contract_expiration_date": "2044-05-22",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D007M/47QSMS24D007M_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMS24D007M/pricelist_47QSMS24D007M.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D007M&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "KRUG INC",
+      "contract_number": "GS-03F-084DA",
+      "vendor_uei": "MMX4LER4NNM6",
+      "company_address": "421 MANITOU DR",
+      "company_city": "KITCHENER",
+      "company_state": "ON",
+      "company_zip": "N2C 1L5",
+      "primary_contact_phone": "8002652796",
+      "primary_contact_email": "MJaksic@krug.ca",
+      "website": "http://www.krug.ca",
+      "contract_start_date": "2026-03-31",
+      "contract_expiration_date": "2036-03-31",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F084DA/GS03F084DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-084DA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "KWALU, LLC",
+      "contract_number": "GS-27F-0041W",
+      "vendor_uei": "VBFGTFNWY8W7",
+      "company_address": "6160 PEACHTREE DUNWOODY RD BLDG",
+      "company_city": "ATLANTA",
+      "company_state": "GA",
+      "company_zip": "30328-6068",
+      "primary_contact_phone": "6786905684",
+      "primary_contact_email": "cmccarthy@kwalu.com",
+      "website": "http://www.kwalu.com",
+      "contract_start_date": "2030-07-15",
+      "contract_expiration_date": "2030-07-15",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0041W/GS27F0041W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0041W&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "LC INDUSTRIES INC",
+      "contract_number": "47QSEA20D001S",
+      "vendor_uei": "SWFSJMS9EHB2",
+      "company_address": "4500 EMPEROR BLVD",
+      "company_city": "DURHAM",
+      "company_state": "NC",
+      "company_zip": "27703-8420",
+      "primary_contact_phone": "9195968277",
+      "primary_contact_email": "GOVT.SALES@LC-IND.COM",
+      "website": "http://buylci.com",
+      "contract_start_date": "2029-12-01",
+      "contract_expiration_date": "2039-12-01",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA20D001S/47QSEA20D001S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA20D001S&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "LESRO INDUSTRIES, INC.",
+      "contract_number": "47QSCA18D000L",
+      "vendor_uei": "NJQ8W1JGFXN7",
+      "company_address": "1 GRIFFIN RD S",
+      "company_city": "BLOOMFIELD",
+      "company_state": "CT",
+      "company_zip": "06002-1351",
+      "primary_contact_phone": "8602433226",
+      "primary_contact_email": "gsaorders@lesro.com",
+      "website": "http://www.lesro.com",
+      "contract_start_date": "2028-07-08",
+      "contract_expiration_date": "2038-07-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA18D000L/47QSCA18D000L_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA18D000L&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "MCKESSON MEDICAL-SURGICAL GOVERNMENT SOLUTIONS LLC",
+      "contract_number": "47QSWA23D003Z",
+      "vendor_uei": "XFHRZSRBK6Q1",
+      "company_address": "9954 MAYLAND DRIVE",
+      "company_city": "HENRICO",
+      "company_state": "VA",
+      "company_zip": "23233-1484",
+      "primary_contact_phone": "8046531147",
+      "primary_contact_email": "Ashley.Guerieri@McKesson.com",
+      "website": "http://mms.mckesson.com/fss",
+      "contract_start_date": "2028-03-12",
+      "contract_expiration_date": "2043-03-12",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "address_2": "SUITE 5176",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D003Z/47QSWA23D003Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D003Z&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "METRO OFFICE SOLUTIONS INC",
+      "contract_number": "GS-28F-0011U",
+      "vendor_uei": "FG79E48PHUF7",
+      "company_address": "4692 MILLENNIUM DR",
+      "company_city": "BELCAMP",
+      "company_state": "MD",
+      "company_zip": "21017-1546",
+      "primary_contact_phone": "8664508160x113",
+      "primary_contact_email": "aszeliga@metroofficesolutions.com",
+      "website": "http://www.metroofficesolutions.com",
+      "contract_start_date": "2028-03-02",
+      "contract_expiration_date": "2028-03-02",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "address_2": "STE 420",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0011U/GS28F0011U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0011U&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "MILLERKNOLL INC",
+      "contract_number": "GS-03F-036DA",
+      "vendor_uei": "Q2K3MSZ843D8",
+      "company_address": "855 E MAIN AVE",
+      "company_city": "ZEELAND",
+      "company_state": "MI",
+      "company_zip": "49464-1366",
+      "primary_contact_phone": "6168366800",
+      "primary_contact_email": "char_oosting@hermanmiller.com",
+      "website": "http://www.hermanmiller.com",
+      "contract_start_date": "2025-12-20",
+      "contract_expiration_date": "2035-12-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F036DA/GS03F036DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-036DA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "MOBILIER DE BUREAU LOGIFLEX INC.",
+      "contract_number": "GS-28F-0001U",
+      "vendor_uei": "YJKWTF2DRRQ1",
+      "company_address": "1235 CH SAINT-ROCH N",
+      "company_city": "SHERBROOKE",
+      "company_state": "QC",
+      "company_zip": "J1N 0H2",
+      "primary_contact_phone": "2156962072",
+      "primary_contact_email": "patrick@namarketinginc.com",
+      "website": "http://www.logiflex.ca",
+      "contract_start_date": "2027-10-01",
+      "contract_expiration_date": "2027-10-01",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0001U/GS28F0001U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0001U&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "NOVUM MEDICAL PRODUCTS OF NY, LLC",
+      "contract_number": "47QSMS25D008F",
+      "vendor_uei": "E2PRCVMJN6M1",
+      "company_address": "80 CREEKSIDE DR",
+      "company_city": "AMHERST",
+      "company_state": "NY",
+      "company_zip": "14228-2027",
+      "primary_contact_phone": "7167597200",
+      "primary_contact_email": "tkosmowski@novummed.com",
+      "website": "http://www.novummed.com",
+      "contract_start_date": "2030-05-12",
+      "contract_expiration_date": "2045-05-12",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D008F/47QSMS25D008F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D008F&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "OFFICE PARTNERS, INC.",
+      "contract_number": "GS-28F-0008Y",
+      "vendor_uei": "MJFMEUWA2TT6",
+      "company_address": "9496 US HIGHWAY 411",
+      "company_city": "ODENVILLE",
+      "company_state": "AL",
+      "company_zip": "35120-4730",
+      "primary_contact_phone": "2156962072",
+      "primary_contact_email": "gs@officepartners.com",
+      "website": "http://www.officepartners.com",
+      "contract_start_date": "2026-10-25",
+      "contract_expiration_date": "2031-10-25",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F0008Y/GS28F0008Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-0008Y&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "OFS BRANDS HOLDINGS INC.",
+      "contract_number": "47QSMA18D08QX",
+      "vendor_uei": "H1QMAHW65NZ6",
+      "company_address": "1204 E 6TH ST",
+      "company_city": "HUNTINGBURG",
+      "company_state": "IN",
+      "company_zip": "47542-9375",
+      "primary_contact_phone": "8666379328",
+      "primary_contact_email": "gsa@ofs.com",
+      "website": "http://ofs.com",
+      "contract_start_date": "2028-08-07",
+      "contract_expiration_date": "2038-08-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA18D08QX/47QSMA18D08QX_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA18D08QX&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "PALADIN HEALTHCARE, LLC",
+      "contract_number": "47QSMS25D00AP",
+      "vendor_uei": "K6UXE5TKMB75",
+      "company_address": "940 W OAKLAND AVE STE A-1",
+      "company_city": "OAKLAND",
+      "company_state": "FL",
+      "company_zip": "34787-1803",
+      "primary_contact_phone": "4076148781",
+      "primary_contact_email": "gschindele@paladinhc.com",
+      "website": "https://www.paladinhc.com",
+      "contract_start_date": "2030-07-27",
+      "contract_expiration_date": "2045-07-27",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "PERRY & WILSON, INC.",
+      "contract_number": "GS-27F-0030U",
+      "vendor_uei": "JEEHZQ7GVHN3",
+      "company_address": "11111 EASECREST DR",
+      "company_city": "SILVER SPRING",
+      "company_state": "MD",
+      "company_zip": "20902-3508",
+      "primary_contact_phone": "2406217960",
+      "primary_contact_email": "malcolmw@mjpw.com",
+      "website": "http://www.perryandwilson.com",
+      "contract_start_date": "2028-09-08",
+      "contract_expiration_date": "2028-09-08",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0030U/GS27F0030U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0030U&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "PETERSON PICTURE FRAME CO INC",
+      "contract_number": "47QSMA23D08Q4",
+      "vendor_uei": "J2M7ERCQAGL4",
+      "company_address": "2720 W BELMONT AVE",
+      "company_city": "CHICAGO",
+      "company_state": "IL",
+      "company_zip": "60618-5915",
+      "primary_contact_phone": "7734638888",
+      "primary_contact_email": "mike@peterson-picture.com",
+      "website": "http://www.peterson-picture.com",
+      "contract_start_date": "2028-06-20",
+      "contract_expiration_date": "2043-06-20",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA23D08Q4/47QSMA23D08Q4_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA23D08Q4&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "PINEAPPLE CONTRACTS INC",
+      "contract_number": "47QSMS24D009N",
+      "vendor_uei": "QBTSLN6SY7E7",
+      "company_address": "7105 19 MILE RD",
+      "company_city": "STERLING HEIGHTS",
+      "company_state": "MI",
+      "company_zip": "48314-3215",
+      "primary_contact_phone": "8004969324",
+      "primary_contact_email": "patricia.kehoe@pineapplecontracts.com",
+      "website": "http://pineapplecontracts.com",
+      "contract_start_date": "2029-07-09",
+      "contract_expiration_date": "2044-07-09",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D009N/47QSMS24D009N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D009N&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "REIMERS FURNITURE MFG., INC.",
+      "contract_number": "47QSCA18D000Q",
+      "vendor_uei": "Y5L7MWKUK286",
+      "company_address": "619 SW WOOD ST",
+      "company_city": "HILLSBORO",
+      "company_state": "OR",
+      "company_zip": "97123-5635",
+      "primary_contact_phone": "5036486121",
+      "primary_contact_email": "DEVAN@RFMSEATING.COM",
+      "website": "http://WWW.RFMSEATING.COM",
+      "contract_start_date": "2028-07-30",
+      "contract_expiration_date": "2038-07-30",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA18D000Q/47QSCA18D000Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA18D000Q&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "SAUDER MANUFACTURING CO",
+      "contract_number": "GS-28F-003DA",
+      "vendor_uei": "ZMZ5FHB5LCV1",
+      "company_address": "930 W BARRE RD",
+      "company_city": "ARCHBOLD",
+      "company_state": "OH",
+      "company_zip": "43502-9320",
+      "primary_contact_phone": "2604691228",
+      "primary_contact_email": "sbritton@saudermfg.com",
+      "website": "http://www.saudercontract.com",
+      "contract_start_date": "2030-11-04",
+      "contract_expiration_date": "2035-11-04",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS28F003DA/GS28F003DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-28F-003DA&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "STANCE HEALTHCARE INC.",
+      "contract_number": "47QSMA21D08RD",
+      "vendor_uei": "MP1MY1NVEFN7",
+      "company_address": "B2-45 GOODRICH DR",
+      "company_city": "KITCHENER",
+      "company_state": "ON",
+      "company_zip": "N2C 0B8",
+      "primary_contact_phone": "8773952623",
+      "primary_contact_email": "kim@stancehealthcare.com",
+      "website": "http://www.stancehealthcare.com",
+      "contract_start_date": "2026-09-26",
+      "contract_expiration_date": "2041-09-26",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08RD/47QSMA21D08RD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08RD&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "STEELCASE INC.",
+      "contract_number": "47QSMS24D0034",
+      "vendor_uei": "GGKLKCCKVZ16",
+      "company_address": "901, 44TH STREET SOUTH EAST",
+      "company_city": "GRAND RAPIDS",
+      "company_state": "MI",
+      "company_zip": "49508-7594",
+      "primary_contact_phone": "6167802481",
+      "primary_contact_email": "tweller@steelcase.com",
+      "website": "http://www.steelcase.com",
+      "contract_start_date": "2029-02-07",
+      "contract_expiration_date": "2044-02-07",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0034/47QSMS24D0034_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMS24D0034/pricelist_47QSMS24D0034.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0034&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "STEELCASE INC.",
+      "contract_number": "GS-27F-0014V",
+      "vendor_uei": "GGKLKCCKVZ16",
+      "company_address": "901, 44TH STREET SOUTH EAST",
+      "company_city": "GRAND RAPIDS",
+      "company_state": "MI",
+      "company_zip": "49508-7594",
+      "primary_contact_phone": "6162472710",
+      "primary_contact_email": "fedgovbids@steelcase.com",
+      "website": "http://www.steelcase.com",
+      "contract_start_date": "2029-03-12",
+      "contract_expiration_date": "2029-03-12",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "closed___for___new___award": "Yes",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS27F0014V/GS27F0014V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-27F-0014V&sin=339113H&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339113H"
+      ],
+      "primary_sin": "339113H",
+      "schedule_number": "MAS",
+      "company_name": "VERSA PRODUCTS",
+      "contract_number": "47QSMS25D004F",
+      "vendor_uei": "L8LKRDHMAJP3",
+      "company_address": "14108 TOWNE AVE",
+      "company_city": "LOS ANGELES",
+      "company_state": "CA",
+      "company_zip": "90061-2651",
+      "primary_contact_phone": "4244333396",
+      "primary_contact_email": "frank.jamison@versaproducts.com",
+      "website": "http://www.versatables.com",
+      "contract_start_date": "2030-02-13",
+      "contract_expiration_date": "2045-02-13",
+      "additional_data": {
+        "large_category": "Furniture & Furnishings ",
+        "sub_category": " Healthcare Furniture",
+        "source": "MAS",
+        "category": "339113H ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D004F/47QSMS25D004F_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D004F&sin=339113H&src=elib&app=cat"
+      }
+    }
+  ]
+}

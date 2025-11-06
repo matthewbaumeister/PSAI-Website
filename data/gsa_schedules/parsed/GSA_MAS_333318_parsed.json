@@ -1,0 +1,117 @@
+{
+  "sin_code": "333318",
+  "file_name": "GSA_MAS_333318_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:29.863145",
+  "sheets": {
+    "2025_11_05_11_21_36": {
+      "row_count": 8,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "333318"
+      ],
+      "primary_sin": "333318",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": 333318.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=333318&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333318"
+      ],
+      "primary_sin": "333318",
+      "schedule_number": "MAS",
+      "company_name": "YB SALES & DISTRIBUTORS INC",
+      "contract_number": "GS-03F-0078V",
+      "vendor_uei": "MENVMHYDZPZ7",
+      "company_address": "957 BEDFORD AVE STE 201",
+      "company_city": "BROOKLYN",
+      "company_state": "NY",
+      "company_zip": "11205-4501",
+      "primary_contact_phone": "7182378844",
+      "primary_contact_email": "ben@ybsales.net",
+      "website": "http://www.ybsales.com",
+      "contract_start_date": "2029-03-17",
+      "contract_expiration_date": "2029-03-17",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Office Supplies",
+        "source": "MAS",
+        "category": 333318.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0078V/GS03F0078V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0078V&sin=333318&src=elib&app=cat"
+      }
+    }
+  ]
+}

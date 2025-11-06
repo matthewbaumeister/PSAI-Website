@@ -1,0 +1,742 @@
+{
+  "sin_code": "541611MPS",
+  "file_name": "GSA_MAS_541611MPS_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:15.508819",
+  "sheets": {
+    "2025_11_05_11_23_03": {
+      "row_count": 29,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "ABM FEDERAL SALES, INC.",
+      "contract_number": "47QSEA19D000B",
+      "vendor_uei": "D5YGBJ26T1A8",
+      "company_address": "625 MARYVILLE CENTRE DR STE 160",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63141-5834",
+      "primary_contact_phone": "8005229226",
+      "primary_contact_email": "capture@abmfederal.com",
+      "website": "http://www.abmfederal.com",
+      "contract_start_date": "2028-10-14",
+      "contract_expiration_date": "2038-10-14",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA19D000B/47QSEA19D000B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA19D000B&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "ABM FEDERAL SALES, INC.",
+      "contract_number": "GS-03F-110DA",
+      "vendor_uei": "D5YGBJ26T1A8",
+      "company_address": "625 MARYVILLE CENTRE DR STE 160",
+      "company_city": "SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63141-5834",
+      "primary_contact_phone": "8005229226",
+      "primary_contact_email": "capture@abmfederal.com",
+      "website": "http://www.abmfederal.com",
+      "contract_start_date": "2026-06-02",
+      "contract_expiration_date": "2036-06-02",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F110DA/GS03F110DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-110DA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "ALPHASIX, LLC.",
+      "contract_number": "GS-35F-307AA",
+      "vendor_uei": "YRWSNBVVBK25",
+      "company_address": "21355 RIDGETOP CIR STE 330",
+      "company_city": "STERLING",
+      "company_state": "VA",
+      "company_zip": "20166-8500",
+      "primary_contact_phone": "7035796479",
+      "primary_contact_email": "jill.williams@alphasixcorp.com",
+      "website": "http://www.alphasixcorp.com",
+      "contract_start_date": "2028-04-07",
+      "contract_expiration_date": "2033-04-07",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F307AA/GS35F307AA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-35F-307AA/pricelist_GS-35F-307AA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-307AA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "AMERITEL COMMUNICATIONS CORPORATION",
+      "contract_number": "GS-03F-102CA",
+      "vendor_uei": "DZK7BKZMHDH1",
+      "company_address": "7361 CALHOUN PLACE",
+      "company_city": "ROCKVILLE",
+      "company_state": "MD",
+      "company_zip": "20855-2784",
+      "primary_contact_phone": "3012510222",
+      "primary_contact_email": "Government@ameritelcorporation.com",
+      "website": "http://www.ameritelcorporation.com",
+      "contract_start_date": "2030-08-31",
+      "contract_expiration_date": "2035-08-31",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "address_2": "STE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F102CA/GS03F102CA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-102CA/pricelist_GS-03F-102CA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-102CA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "ARC DOCUMENT SOLUTIONS, LLC",
+      "contract_number": "GS-03F-142DA",
+      "vendor_uei": "HQGRUXMBQN15",
+      "company_address": "12657 ALCOSTA BLVD.",
+      "company_city": "SAN RAMON",
+      "company_state": "CA",
+      "company_zip": "94583-4433",
+      "primary_contact_phone": "4152463456",
+      "primary_contact_email": "dilo@e-arc.com",
+      "website": "http://e-arc.com",
+      "contract_start_date": "2026-09-19",
+      "contract_expiration_date": "2036-09-19",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "address_2": "SUITE 200",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F142DA/GS03F142DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-142DA/pricelist_GS-03F-142DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-142DA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "CANON U.S.A., INC.",
+      "contract_number": "GS-03F-046DA",
+      "vendor_uei": "DTQLFAEKKCP5",
+      "company_address": "4100 N FAIRFAX DR STE 200",
+      "company_city": "ARLINGTON",
+      "company_state": "VA",
+      "company_zip": "22203-1678",
+      "primary_contact_phone": "6313304981",
+      "primary_contact_email": "rastefanous@cusa.canon.com",
+      "website": "https://www.usa.canon.com/federal-government",
+      "contract_start_date": "2026-01-20",
+      "contract_expiration_date": "2036-01-20",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F046DA/GS03F046DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-046DA/pricelist_GS-03F-046DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-046DA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "CARTRIDGE TECHNOLOGIES, LLC",
+      "contract_number": "GS-03F-0151X",
+      "vendor_uei": "Z5LLHNEXM9L8",
+      "company_address": "15738 CRABBS BRANCH WAY",
+      "company_city": "ROCKVILLE",
+      "company_state": "MD",
+      "company_zip": "20850",
+      "primary_contact_phone": "3015452086",
+      "primary_contact_email": "cmurphy@ctimd.com",
+      "website": "http://www.ctimd.com",
+      "contract_start_date": "2026-06-30",
+      "contract_expiration_date": "2031-06-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0151X/GS03F0151X_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-0151X/pricelist_GS-03F-0151X.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0151X&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "COAST TO COAST COMPUTER PRODUCTS, INC.",
+      "contract_number": "GS-35F-0508U",
+      "vendor_uei": "MANMW9VJ54M5",
+      "company_address": "4277 VALLEY FAIR STREET",
+      "company_city": "SIMI VALLEY",
+      "company_state": "CA",
+      "company_zip": "93063-2940",
+      "primary_contact_phone": "8052449500",
+      "primary_contact_email": "attila@coastcoast.com",
+      "website": "https://coastcoast.com/about/government-and-educational-organization-sales/",
+      "contract_start_date": "2028-07-23",
+      "contract_expiration_date": "2028-07-23",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F0508U/GS35F0508U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-0508U&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "DIGIDOC INC",
+      "contract_number": "47QSMS25D005V",
+      "vendor_uei": "FV71Y1R1N8B5",
+      "company_address": "7331 GEORGIA AVE NW",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20012-1719",
+      "primary_contact_phone": "2022991011",
+      "primary_contact_email": "dwiggins@ps2g.us",
+      "website": "http://www.ps2g.us",
+      "contract_start_date": "2030-03-06",
+      "contract_expiration_date": "2045-03-06",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D005V/47QSMS25D005V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D005V&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "HIE NETWORKS, LLC",
+      "contract_number": "47QTCA23D004C",
+      "vendor_uei": "DFR8QLRSDSJ1",
+      "company_address": "1126 LEE AVE STE B",
+      "company_city": "TALLAHASSEE",
+      "company_state": "FL",
+      "company_zip": "32303-6508",
+      "primary_contact_phone": "8508009377",
+      "primary_contact_email": "Keisha.Holligan@centralishealth.com",
+      "website": "http://CentralisHealth.com",
+      "contract_start_date": "2028-02-02",
+      "contract_expiration_date": "2043-02-02",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA23D004C/47QTCA23D004C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA23D004C&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "ILM CORPORATION OF VIRGINIA INC.",
+      "contract_number": "47QSMA19D08P3",
+      "vendor_uei": "U5PGWHBKZFW5",
+      "company_address": "1551 EMANCIPATION HWY STE 200",
+      "company_city": "FREDERICKSBURG",
+      "company_state": "VA",
+      "company_zip": "22401-4683",
+      "primary_contact_phone": "5408981406",
+      "primary_contact_email": "jcohen@ilmcorp.com",
+      "website": "http://www.ilmcorp.com",
+      "contract_start_date": "2029-01-29",
+      "contract_expiration_date": "2039-01-29",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08P3/47QSMA19D08P3_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA19D08P3/pricelist_47QSMA19D08P3.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08P3&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "JTF BUSINESS SYSTEMS CORPORATION",
+      "contract_number": "GS-03F-0182V",
+      "vendor_uei": "CM3CXMWM13T5",
+      "company_address": "7370 STEEL MILL DR",
+      "company_city": "SPRINGFIELD",
+      "company_state": "VA",
+      "company_zip": "22150-3600",
+      "primary_contact_phone": "7036582000",
+      "primary_contact_email": "andre.matini@jtfgov.com",
+      "website": "http://JTFGov.com",
+      "contract_start_date": "2029-09-14",
+      "contract_expiration_date": "2029-09-14",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0182V/GS03F0182V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0182V&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "KELLEY CREATE CO",
+      "contract_number": "GS-03F-019DA",
+      "vendor_uei": "LH82KK31LWG7",
+      "company_address": "22710 72ND AVE S",
+      "company_city": "KENT",
+      "company_state": "WA",
+      "company_zip": "98032-1926",
+      "primary_contact_phone": "2062849100",
+      "primary_contact_email": "Tom.Walter@kelleyconnect.com",
+      "website": "http://www.kelleycreate.com",
+      "contract_start_date": "2030-11-30",
+      "contract_expiration_date": "2035-11-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F019DA/GS03F019DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-019DA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "KONICA MINOLTA BUSINESS SOLUTIONS U.S.A, INC.",
+      "contract_number": "GS-03F-135DA",
+      "vendor_uei": "QKYFZQL5VZ32",
+      "company_address": "1595 SPRING HILL RD STE 400",
+      "company_city": "VIENNA",
+      "company_state": "VA",
+      "company_zip": "22182-2228",
+      "primary_contact_phone": "7035371527",
+      "primary_contact_email": "shaun.reardon@kmbs.konicaminolta.us",
+      "website": "http://www.konicaminolta.us",
+      "contract_start_date": "2026-08-16",
+      "contract_expiration_date": "2036-08-16",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F135DA/GS03F135DA_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-135DA/pricelist_GS-03F-135DA.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-135DA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "KYOCERA DOCUMENT SOLUTIONS AMERICA INC",
+      "contract_number": "GS-03F-045DA",
+      "vendor_uei": "UKMYUL2G6Z54",
+      "company_address": "225 SAND RD",
+      "company_city": "FAIRFIELD",
+      "company_state": "NJ",
+      "company_zip": "07004-1575",
+      "primary_contact_phone": "7034692350",
+      "primary_contact_email": "millicent.richardson@da.kyocera.com",
+      "website": "http://usa.kyoceradocumentsolutions.com",
+      "contract_start_date": "2031-01-21",
+      "contract_expiration_date": "2036-01-21",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F045DA/GS03F045DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-045DA&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "LEXMARK INTERNATIONAL, INC.",
+      "contract_number": "47QSMA21D08RF",
+      "vendor_uei": "EGG9MAKS16P7",
+      "company_address": "740 W NEW CIRCLE RD",
+      "company_city": "LEXINGTON",
+      "company_state": "KY",
+      "company_zip": "40511-1806",
+      "primary_contact_phone": "8592322116",
+      "primary_contact_email": "Marybeth.Carter@lexmark.com",
+      "website": "http://www.lexmark.com/federal",
+      "contract_start_date": "2026-09-28",
+      "contract_expiration_date": "2041-09-28",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA21D08RF/47QSMA21D08RF_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA21D08RF/pricelist_47QSMA21D08RF.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA21D08RF&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "MICROTECHNOLOGIES LLC",
+      "contract_number": "47QTCA21D000N",
+      "vendor_uei": "CL69E7KATK59",
+      "company_address": "220 CONGRESS PARK DR STE 138",
+      "company_city": "DELRAY BEACH",
+      "company_state": "FL",
+      "company_zip": "33445-4605",
+      "primary_contact_phone": "7036373238",
+      "primary_contact_email": "lterrizzi@microtech.net",
+      "website": "http://www.microtech.net",
+      "contract_start_date": "2030-10-18",
+      "contract_expiration_date": "2040-10-18",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA21D000N/47QTCA21D000N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA21D000N&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "OMNI BUSINESS SYSTEMS, INC",
+      "contract_number": "GS-25F-0051S",
+      "vendor_uei": "MASMNFMUFRV3",
+      "company_address": "2850 EISENHOWER AVE STE L500",
+      "company_city": "ALEXANDRIA",
+      "company_state": "VA",
+      "company_zip": "22314-4565",
+      "primary_contact_phone": "7038071000",
+      "primary_contact_email": "gdickinson@omnibsi.com",
+      "website": "http://www.omnibsi.com",
+      "contract_start_date": "2026-09-27",
+      "contract_expiration_date": "2026-09-27",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS25F0051S/GS25F0051S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-25F-0051S&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "RICOH USA INC",
+      "contract_number": "GS-03F-0085U",
+      "vendor_uei": "K8NNV2MH8AE6",
+      "company_address": "300 EAGLEVIEW BLVD",
+      "company_city": "EXTON",
+      "company_state": "PA",
+      "company_zip": "19341-1155",
+      "primary_contact_phone": "6104074951",
+      "primary_contact_email": "scott.e.hammond@ricoh-usa.com",
+      "website": "http://www.ricoh-usa.com",
+      "contract_start_date": "2028-07-30",
+      "contract_expiration_date": "2028-07-30",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "address_2": "STE 200",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0085U/GS03F0085U_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-03F-0085U/pricelist_GS-03F-0085U.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0085U&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "THE LIOCE GROUP INC",
+      "contract_number": "GS-03F-0143Y",
+      "vendor_uei": "SSK3JD7D65D5",
+      "company_address": "2950 DRAKE AVE SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805",
+      "primary_contact_phone": "2566504156",
+      "primary_contact_email": "nick@liocegroup.com",
+      "website": "http://www.liocegroup.com",
+      "contract_start_date": "2027-07-23",
+      "contract_expiration_date": "2032-07-23",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "closed___for___new___award": "Yes",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0143Y/GS03F0143Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0143Y&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "THE LIOCE GROUP INC",
+      "contract_number": "47QTCA18D00AD",
+      "vendor_uei": "SSK3JD7D65D5",
+      "company_address": "2950 DRAKE AVE SW",
+      "company_city": "HUNTSVILLE",
+      "company_state": "AL",
+      "company_zip": "35805",
+      "primary_contact_phone": "2566504150",
+      "primary_contact_email": "FEDERALACCOUNTS@LIOCEGROUP.COM",
+      "website": "http://www.liocegroup.com",
+      "contract_start_date": "2028-04-15",
+      "contract_expiration_date": "2038-04-15",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA18D00AD/47QTCA18D00AD_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA18D00AD&sin=541611MPS&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541611MPS"
+      ],
+      "primary_sin": "541611MPS",
+      "schedule_number": "MAS",
+      "company_name": "XEROX CORPORATION",
+      "contract_number": "GS-03F-137DA",
+      "vendor_uei": "EFMFNAELHYR5",
+      "company_address": "1800 M ST NW STE 500N",
+      "company_city": "WASHINGTON",
+      "company_state": "DC",
+      "company_zip": "20036-5870",
+      "primary_contact_phone": "2026968629",
+      "primary_contact_email": "michael.parker3@xerox.com",
+      "website": "http://www.xerox.com",
+      "contract_start_date": "2026-08-22",
+      "contract_expiration_date": "2036-08-22",
+      "additional_data": {
+        "large_category": "Office Management ",
+        "sub_category": " Printing and Photographic Equipment",
+        "source": "MAS",
+        "category": "541611MPS ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F137DA/GS03F137DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-137DA&sin=541611MPS&src=elib&app=cat"
+      }
+    }
+  ]
+}

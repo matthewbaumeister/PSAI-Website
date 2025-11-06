@@ -1,0 +1,1352 @@
+{
+  "sin_code": "334519ENV",
+  "file_name": "GSA_MAS_334519ENV_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:30.317142",
+  "sheets": {
+    "2025_11_05_11_28_21": {
+      "row_count": 50,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "ADVANCED DETECTION SOLUTIONS LLC",
+      "contract_number": "47QSWA20D0047",
+      "vendor_uei": "KYLJC9AN8955",
+      "company_address": "1101 QUAIL ST",
+      "company_city": "NEWPORT BEACH",
+      "company_state": "CA",
+      "company_zip": "92660-2705",
+      "primary_contact_phone": "18006205460",
+      "primary_contact_email": "jrjanisch@detection-solutions.com",
+      "website": "http://www.detection-solutions.com/",
+      "contract_start_date": "2030-02-05",
+      "contract_expiration_date": "2040-02-05",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D0047/47QSWA20D0047_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D0047&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "AUTOMATION PRODUCTS GROUP, INC.",
+      "contract_number": "47QSMS24D0081",
+      "vendor_uei": "DBEKK15K5SM6",
+      "company_address": "1025 W 1700 N",
+      "company_city": "LOGAN",
+      "company_state": "UT",
+      "company_zip": "84321-1713",
+      "primary_contact_phone": "4357537300",
+      "primary_contact_email": "kima@apgsensors.com",
+      "website": "www.apgsensors.com",
+      "contract_start_date": "2029-06-03",
+      "contract_expiration_date": "2044-06-03",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "CAMPBELL SCIENTIFIC INC",
+      "contract_number": "GS-07F-9255S",
+      "vendor_uei": "EPYHURDCL7F8",
+      "company_address": "815 W 1800 N",
+      "company_city": "LOGAN",
+      "company_state": "UT",
+      "company_zip": "84321-1784",
+      "primary_contact_phone": "4352279532",
+      "primary_contact_email": "salesadmin@campbellsci.com",
+      "website": "http://WWW.CAMPBELLSCI.COM",
+      "contract_start_date": "2025-11-30",
+      "contract_expiration_date": "2025-11-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9255S/GS07F9255S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9255S&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "CHEMDAQ, INC.",
+      "contract_number": "GS-07F-0135V",
+      "vendor_uei": "JDMYMJAZJKC5",
+      "company_address": "300 BUSINESS CENTER DR",
+      "company_city": "PITTSBURGH",
+      "company_state": "PA",
+      "company_zip": "15205-1335",
+      "primary_contact_phone": "4127870202",
+      "primary_contact_email": "eandres@chemdaq.com",
+      "website": "http://WWW.CHEMDAQ.COM",
+      "contract_start_date": "2029-01-15",
+      "contract_expiration_date": "2029-01-15",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "address_2": "STE 330",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0135V/GS07F0135V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0135V&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "COLUMBIA WEATHER SYSTEMS, INC",
+      "contract_number": "47QSMS25D0028",
+      "vendor_uei": "MTEEMPU7DZ51",
+      "company_address": "5285 NE ELAM YOUNG PKWY STE C100",
+      "company_city": "HILLSBORO",
+      "company_state": "OR",
+      "company_zip": "97124",
+      "primary_contact_phone": "8885087375",
+      "primary_contact_email": "sales@columbiaweather.com",
+      "website": "https://columbiaweather.com",
+      "contract_start_date": "2029-12-04",
+      "contract_expiration_date": "2044-12-04",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0028/47QSMS25D0028_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0028&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "CRYSTAL CLEAR TECHNOLOGIES INC",
+      "contract_number": "GS-35F-0145U",
+      "vendor_uei": "K3EBLNL8YYT6",
+      "company_address": "5555 CENTRAL AVE",
+      "company_city": "SAINT PETERSBURG",
+      "company_state": "FL",
+      "company_zip": "33710-8024",
+      "primary_contact_phone": "7272297704",
+      "primary_contact_email": "JDRAGON@CRYSTALCLEARTEC.COM",
+      "website": "http://crystalcleartec.com",
+      "contract_start_date": "2027-12-12",
+      "contract_expiration_date": "2027-12-12",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F0145U/GS35F0145U_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-35F-0145U/pricelist_GS-35F-0145U.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-0145U&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "DYNAGRACE ENTERPRISES, INC.",
+      "contract_number": "47QSWA19D005C",
+      "vendor_uei": "K351DM4EXW27",
+      "company_address": "167 N STATE ST STE 203",
+      "company_city": "MORGAN",
+      "company_state": "UT",
+      "company_zip": "84050-9919",
+      "primary_contact_phone": "8006760058",
+      "primary_contact_email": "jennifer@dynagrace.com",
+      "website": "https://dynagrace.com",
+      "contract_start_date": "2029-04-01",
+      "contract_expiration_date": "2039-04-01",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D005C/47QSWA19D005C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D005C&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "ENVIRONMENTAL DEVICES CORPORATION",
+      "contract_number": "47QSWA22D001Z",
+      "vendor_uei": "Z45BF8M7V464",
+      "company_address": "4 WILDER DR STE 15",
+      "company_city": "PLAISTOW",
+      "company_state": "NH",
+      "company_zip": "03865-2856",
+      "primary_contact_phone": "6033782112",
+      "primary_contact_email": "sales@hazdust.com",
+      "website": "http://www.environmentaldevices.com",
+      "contract_start_date": "2026-12-14",
+      "contract_expiration_date": "2041-12-14",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D001Z/47QSWA22D001Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D001Z&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "FISHER SCIENTIFIC COMPANY L.L.C.",
+      "contract_number": "GS-07F-161BA",
+      "vendor_uei": "HE7NJQGP4ED6",
+      "company_address": "300 INDUSTRY DR",
+      "company_city": "PITTSBURGH",
+      "company_state": "PA",
+      "company_zip": "15275-1001",
+      "primary_contact_phone": "18007667000",
+      "primary_contact_email": "GSA.Orders@thermofisher.com",
+      "website": "http://WWW.FISHERSCI.COM",
+      "contract_start_date": "2029-03-23",
+      "contract_expiration_date": "2034-03-23",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F161BA/GS07F161BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-161BA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "FLUKE ELECTRONICS CORP",
+      "contract_number": "GS-07F-0528V",
+      "vendor_uei": "YA5LYT9J7TX5",
+      "company_address": "6920 SEAWAY BLVD",
+      "company_city": "EVERETT",
+      "company_state": "WA",
+      "company_zip": "98203-5829",
+      "primary_contact_phone": "4254465442",
+      "primary_contact_email": "robin.kennell@fluke.com",
+      "website": "http://www.fluke.com",
+      "contract_start_date": "2029-09-09",
+      "contract_expiration_date": "2029-09-09",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0528V/GS07F0528V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0528V&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "FOTRONIC CORPORATION",
+      "contract_number": "GS-07F-0375T",
+      "vendor_uei": "FUN1ZFUJ3GM9",
+      "company_address": "5 COMMONWEALTH AVE UNIT 6",
+      "company_city": "WOBURN",
+      "company_state": "MA",
+      "company_zip": "01801-1069",
+      "primary_contact_phone": "7819792010",
+      "primary_contact_email": "afoti@fotronic.com",
+      "website": "http://www.testequipmentdepot.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2027-05-31",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0375T/GS07F0375T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0375T&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "FRANKLIN YOUNG INTERNATIONAL, INCORPORATED",
+      "contract_number": "GS-07F-0636W",
+      "vendor_uei": "EDQMKDZR8L13",
+      "company_address": "1042 N MOUNTAIN AVE",
+      "company_city": "UPLAND",
+      "company_state": "CA",
+      "company_zip": "91786-3695",
+      "primary_contact_phone": "9099315012",
+      "primary_contact_email": "Dave@franklinyoung.com",
+      "website": "http://www.franklinyoung.com",
+      "contract_start_date": "2030-09-09",
+      "contract_expiration_date": "2030-09-09",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "address_2": "# 310",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0636W/GS07F0636W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0636W&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "FTS FOREST TECHNOLOGY SYSTEMS LTD.",
+      "contract_number": "GS-07F-9253S",
+      "vendor_uei": "SJY5QU2S9WQ9",
+      "company_address": "1065 HENRY ENG PL",
+      "company_city": "VICTORIA",
+      "company_state": "BC",
+      "company_zip": "V9B 6B2",
+      "primary_contact_phone": "2504785561",
+      "primary_contact_email": "kwatanabe@ftsinc.com",
+      "website": "http://www.ftsinc.com",
+      "contract_start_date": "2025-11-30",
+      "contract_expiration_date": "2025-11-30",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9253S/GS07F9253S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9253S&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "GARRATT-CALLAHAN COMPANY",
+      "contract_number": "GS-07F-0105Y",
+      "vendor_uei": "SA6AP4DNLGG6",
+      "company_address": "50 INGOLD RD",
+      "company_city": "BURLINGAME",
+      "company_state": "CA",
+      "company_zip": "94010-2206",
+      "primary_contact_phone": "6506975811",
+      "primary_contact_email": "lmaafu@g-c.com",
+      "website": "http://garrattcallahan.com/",
+      "contract_start_date": "2027-01-14",
+      "contract_expiration_date": "2032-01-14",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0105Y/GS07F0105Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0105Y&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "GASMET TECHNOLOGIES INC.",
+      "contract_number": "47QSWA18D000T",
+      "vendor_uei": "DNSHS4434JU5",
+      "company_address": "5865 MCLAUGHLIN RD",
+      "company_city": "MISSISSAUGA",
+      "company_state": "ON",
+      "company_zip": "L5R 1B8",
+      "primary_contact_phone": "9808671503",
+      "primary_contact_email": "brandon.hansen@gasmet.com",
+      "website": "http://www.gasmet.com",
+      "contract_start_date": "2027-12-12",
+      "contract_expiration_date": "2037-12-12",
+      "company_country": "CANADA",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "address_2": "UNIT 1",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D000T/47QSWA18D000T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D000T&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "GEOTECH ENVIRONMENTAL EQUIPMENT INC",
+      "contract_number": "GS-07F-055CA",
+      "vendor_uei": "QCK5B38LAC18",
+      "company_address": "2650 E 40TH AVE",
+      "company_city": "DENVER",
+      "company_state": "CO",
+      "company_zip": "80205-3604",
+      "primary_contact_phone": "3033204764",
+      "primary_contact_email": "JeremyH@geotechenv.com",
+      "website": "http://www.geotechenv.com",
+      "contract_start_date": "2029-12-25",
+      "contract_expiration_date": "2034-12-25",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F055CA/GS07F055CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-055CA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT SCIENTIFIC SOURCE INC",
+      "contract_number": "47QSMS25D00A9",
+      "vendor_uei": "J49CN39QTNW3",
+      "company_address": "12355 SUNRISE VALLEY DR STE 400",
+      "company_city": "RESTON",
+      "company_state": "VA",
+      "company_zip": "20191-3497",
+      "primary_contact_phone": "7037341805",
+      "primary_contact_email": "contracts2@govsci.com",
+      "website": "http://www.govsci.com",
+      "contract_start_date": "2030-07-13",
+      "contract_expiration_date": "2045-07-13",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00A9/47QSMS25D00A9_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00A9&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "HACH COMPANY",
+      "contract_number": "GS-07F-9314S",
+      "vendor_uei": "WSPVZEN4KLP9",
+      "company_address": "5600 LINDBERGH DR",
+      "company_city": "LOVELAND",
+      "company_state": "CO",
+      "company_zip": "80538-8842",
+      "primary_contact_phone": "9706631377",
+      "primary_contact_email": "pguthrie@hach.com",
+      "website": "http://www.Hach.com",
+      "contract_start_date": "2026-01-31",
+      "contract_expiration_date": "2026-01-31",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9314S/GS07F9314S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9314S&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "HOTTINGER BRUEL & KJAER INC.",
+      "contract_number": "47QSMS24D009Y",
+      "vendor_uei": "RHLAM7GSJGJ4",
+      "company_address": "19 BARTLETT ST",
+      "company_city": "MARLBOROUGH",
+      "company_state": "MA",
+      "company_zip": "01752-3014",
+      "primary_contact_phone": "7702096869",
+      "primary_contact_email": "karen.bellanca@hbkworld.com",
+      "website": "https://www.hbkworld.com",
+      "contract_start_date": "2029-07-23",
+      "contract_expiration_date": "2044-07-23",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D009Y/47QSMS24D009Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D009Y&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "IN-SITU, INC",
+      "contract_number": "47QSWA23D001X",
+      "vendor_uei": "ZT2DAH4GB1P9",
+      "company_address": "221 E LINCOLN AVE",
+      "company_city": "FORT COLLINS",
+      "company_state": "CO",
+      "company_zip": "80524-2533",
+      "primary_contact_phone": "9704981540",
+      "primary_contact_email": "clowry@in-situ.com",
+      "website": "http://www.in-situ.com",
+      "contract_start_date": "2027-12-13",
+      "contract_expiration_date": "2042-12-13",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D001X/47QSWA23D001X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D001X&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "INTECCON, INC.",
+      "contract_number": "47QSMS25D008Q",
+      "vendor_uei": "ZJ2BVXBBCRF9",
+      "company_address": "6590 W ROGERS CIR",
+      "company_city": "BOCA RATON",
+      "company_state": "FL",
+      "company_zip": "33487-2739",
+      "primary_contact_phone": "5619129809",
+      "primary_contact_email": "gabby-rodriguez@inteccon.com",
+      "website": "http://www.inteccon.com",
+      "contract_start_date": "2030-05-19",
+      "contract_expiration_date": "2045-05-19",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "address_2": "STE 11 & 12",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D008Q/47QSMS25D008Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D008Q&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL MET SYSTEMS INC",
+      "contract_number": "GS-07F-0235Y",
+      "vendor_uei": "DHJKSWD751Z3",
+      "company_address": "4767 BROADMOOR AVE SE STE 7",
+      "company_city": "GRAND RAPIDS",
+      "company_state": "MI",
+      "company_zip": "49512-9397",
+      "primary_contact_phone": "6169711005",
+      "primary_contact_email": "fclowney@intermetsystems.com",
+      "website": "http://www.intermetsystems.com",
+      "contract_start_date": "2027-02-05",
+      "contract_expiration_date": "2032-02-05",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0235Y/GS07F0235Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0235Y&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL TELEVISION CORPORATION",
+      "contract_number": "GS-21F-169AA",
+      "vendor_uei": "H66FJ21GAEF8",
+      "company_address": "21000 S WILMINGTON AVE",
+      "company_city": "LONG BEACH",
+      "company_state": "CA",
+      "company_zip": "90810-1232",
+      "primary_contact_phone": "3102416280",
+      "primary_contact_email": "rgrace@itcelectronics.com",
+      "website": "http://www.itcelectronics.com",
+      "contract_start_date": "2028-08-14",
+      "contract_expiration_date": "2033-08-14",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F169AA/GS21F169AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-169AA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "KEM MEDICAL PRODUCTS CORPORATION",
+      "contract_number": "GS-07F-120CA",
+      "vendor_uei": "NDLCC8DCG1M9",
+      "company_address": "400 OSER AVE",
+      "company_city": "HAUPPAUGE",
+      "company_state": "NY",
+      "company_zip": "11788-3672",
+      "primary_contact_phone": "6314546565",
+      "primary_contact_email": "lisa@kemmed.com",
+      "website": "http://www.kemmed.com",
+      "contract_start_date": "2030-03-30",
+      "contract_expiration_date": "2035-03-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "address_2": "STE 2400",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F120CA/GS07F120CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-120CA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "LI-COR, INC.",
+      "contract_number": "GS-07F-240CA",
+      "vendor_uei": "GTDVYFYXCFF7",
+      "company_address": "4647 SUPERIOR ST",
+      "company_city": "LINCOLN",
+      "company_state": "NE",
+      "company_zip": "68504-1357",
+      "primary_contact_phone": "4024670629",
+      "primary_contact_email": "envorders@licor.com",
+      "website": "http://www.licor.com",
+      "contract_start_date": "2025-12-28",
+      "contract_expiration_date": "2035-09-29",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F240CA/GS07F240CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-240CA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "LIFE SCIENCE PRODUCTS, INCORPORATED",
+      "contract_number": "GS-07F-213AA",
+      "vendor_uei": "V2K9NLD8PBB4",
+      "company_address": "5989 IRIS PKWY",
+      "company_city": "FREDERICK",
+      "company_state": "CO",
+      "company_zip": "80504-6435",
+      "primary_contact_phone": "3034509442",
+      "primary_contact_email": "nicholas.larson@e-lspi.com",
+      "website": "http://www.e-lspi.com",
+      "contract_start_date": "2028-03-28",
+      "contract_expiration_date": "2033-03-28",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F213AA/GS07F213AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-213AA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "METER GROUP INC",
+      "contract_number": "47QSWA21D0023",
+      "vendor_uei": "EN17YGCSD6R5",
+      "company_address": "2365 NE HOPKINS CT",
+      "company_city": "PULLMAN",
+      "company_state": "WA",
+      "company_zip": "99163-5601",
+      "primary_contact_phone": "5093385685",
+      "primary_contact_email": "lauren@metergroup.com",
+      "website": "http://www.metergroup.com",
+      "contract_start_date": "2026-01-27",
+      "contract_expiration_date": "2041-01-27",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D0023/47QSWA21D0023_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D0023&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "MSI - MID STATE INSTRUMENTS LLC",
+      "contract_number": "47QSWA19D004M",
+      "vendor_uei": "MG1SKWAGP744",
+      "company_address": "3474 EMPRESA DR STE 150",
+      "company_city": "SAN LUIS OBISPO",
+      "company_state": "CA",
+      "company_zip": "93401-7391",
+      "primary_contact_phone": "8664512257",
+      "primary_contact_email": "dlm@msisales.com",
+      "website": "http://midstateinstruments.com",
+      "contract_start_date": "2029-03-04",
+      "contract_expiration_date": "2039-03-04",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D004M/47QSWA19D004M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D004M&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "OTT HYDROMET CORP",
+      "contract_number": "GS-07F-002DA",
+      "vendor_uei": "GZWZLYNJJF22",
+      "company_address": "22400 DAVIS DR STE 100",
+      "company_city": "STERLING",
+      "company_state": "VA",
+      "company_zip": "20164-7128",
+      "primary_contact_phone": "5403152643",
+      "primary_contact_email": "Nathan.farrar@otthydromet.com",
+      "website": "http://www.otthydromet.com",
+      "contract_start_date": "2030-11-30",
+      "contract_expiration_date": "2035-11-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F002DA/GS07F002DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-002DA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "PACIFIC STAR CORPORATION",
+      "contract_number": "GS-07F-0111W",
+      "vendor_uei": "QULRXKMBD576",
+      "company_address": "4350 S WAYSIDE DR",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77087-1129",
+      "primary_contact_phone": "7135270889",
+      "primary_contact_email": "customer@pfstar.com",
+      "website": "http://www.pfstar.com",
+      "contract_start_date": "2029-11-30",
+      "contract_expiration_date": "2029-11-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "address_2": "STE 106",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0111W/GS07F0111W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0111W&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "PHYSICAL SCIENCES INC.",
+      "contract_number": "47QSWA23D007S",
+      "vendor_uei": "RMG1AZ1ZH8Q7",
+      "company_address": "20 NEW ENGLAND BUSINESS CENTER D",
+      "company_city": "ANDOVER",
+      "company_state": "MA",
+      "company_zip": "01810-1022",
+      "primary_contact_phone": "9787388108",
+      "primary_contact_email": "cbeecher@psicorp.com",
+      "website": "http://www.psicorp.com",
+      "contract_start_date": "2028-07-12",
+      "contract_expiration_date": "2043-07-12",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D007S/47QSWA23D007S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D007S&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "PULCIR INC",
+      "contract_number": "GS-07F-0360W",
+      "vendor_uei": "ETGNLEDPC7K4",
+      "company_address": "1225 LIVE OAK CIR",
+      "company_city": "KNOXVILLE",
+      "company_state": "TN",
+      "company_zip": "37932-3016",
+      "primary_contact_phone": "8652725338",
+      "primary_contact_email": "Mike@Pulcir.com",
+      "website": "http://www.pulcir.com",
+      "contract_start_date": "2030-03-31",
+      "contract_expiration_date": "2030-03-31",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0360W/GS07F0360W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0360W&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "RADONOVA INC",
+      "contract_number": "47QSWA23D009K",
+      "vendor_uei": "Q8GPJU19YXA4",
+      "company_address": "1 E 22ND ST",
+      "company_city": "LOMBARD",
+      "company_state": "IL",
+      "company_zip": "60148-4980",
+      "primary_contact_phone": "2145366666",
+      "primary_contact_email": "zan.jones@radonova.com",
+      "website": "http://radonova.com",
+      "contract_start_date": "2028-08-30",
+      "contract_expiration_date": "2043-08-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "address_2": "STE 200",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D009K&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "SAELIG COMPANY, INC.",
+      "contract_number": "GS-07F-281AA",
+      "vendor_uei": "LPB1M519DKJ1",
+      "company_address": "71A PERINTON PKWY",
+      "company_city": "FAIRPORT",
+      "company_state": "NY",
+      "company_zip": "14450",
+      "primary_contact_phone": "5855206279",
+      "primary_contact_email": "Dan.Evans@saelig.com",
+      "website": "http://www.saelig.com/",
+      "contract_start_date": "2028-06-04",
+      "contract_expiration_date": "2033-06-04",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F281AA/GS07F281AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-281AA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "SEATTLE METRICS INC",
+      "contract_number": "47QSWA23D004E",
+      "vendor_uei": "FTV6TBUPAWS6",
+      "company_address": "19026 72ND AVE S",
+      "company_city": "KENT",
+      "company_state": "WA",
+      "company_zip": "98032-1005",
+      "primary_contact_phone": "2538720284",
+      "primary_contact_email": "rgilbert@seametrics.com",
+      "website": "http://www.seametrics.com",
+      "contract_start_date": "2028-03-20",
+      "contract_expiration_date": "2043-03-20",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D004E/47QSWA23D004E_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D004E&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "SKC INC",
+      "contract_number": "GS-07F-038BA",
+      "vendor_uei": "MBWMLJYDL9L3",
+      "company_address": "863 VALLEY VIEW RD",
+      "company_city": "EIGHTY FOUR",
+      "company_state": "PA",
+      "company_zip": "15330",
+      "primary_contact_phone": "7249419701",
+      "primary_contact_email": "mfilby@skcinc.com",
+      "website": "http://www.skcinc.com",
+      "contract_start_date": "2029-01-28",
+      "contract_expiration_date": "2034-01-28",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F038BA/GS07F038BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-038BA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "SOFAR OCEAN TECHNOLOGIES, INC.",
+      "contract_number": "47QSMS25D00AX",
+      "vendor_uei": "JAFDZXVJWFN1",
+      "company_address": "PIER 28 ANNEX",
+      "company_city": "SAN FRANCISCO",
+      "company_state": "CA",
+      "company_zip": "94105",
+      "primary_contact_phone": "7862804022",
+      "primary_contact_email": "tosca.lichtenheld@sofarocean.com",
+      "website": "https://www.sofarocean.com/",
+      "contract_start_date": "2030-07-31",
+      "contract_expiration_date": "2045-07-31",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D00AX/47QSMS25D00AX_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D00AX&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "STERLITECH CORPORATION",
+      "contract_number": "47QSWA20D008Z",
+      "vendor_uei": "K6VKPUKCQEH1",
+      "company_address": "4620 B ST NW STE 101",
+      "company_city": "AUBURN",
+      "company_state": "WA",
+      "company_zip": "98001-1763",
+      "primary_contact_phone": "2539816659",
+      "primary_contact_email": "mspatz@sterlitech.com",
+      "website": "http://www.sterlitech.com/",
+      "contract_start_date": "2030-08-14",
+      "contract_expiration_date": "2040-08-14",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D008Z/47QSWA20D008Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D008Z&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "THE MALLORY CO.",
+      "contract_number": "GS-07F-0311Y",
+      "vendor_uei": "MEMVTWQSL781",
+      "company_address": "1040 INDUSTRIAL WAY",
+      "company_city": "LONGVIEW",
+      "company_state": "WA",
+      "company_zip": "98632-1039",
+      "primary_contact_phone": "7047801135",
+      "primary_contact_email": "carolyn.banks@mallory.com",
+      "website": "http://www.malloryco.com",
+      "contract_start_date": "2027-03-31",
+      "contract_expiration_date": "2032-03-31",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0311Y/GS07F0311Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0311Y&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "THOR GUARD, INC.",
+      "contract_number": "GS-07F-0576T",
+      "vendor_uei": "HFJXHJ9FU7B3",
+      "company_address": "1193 SAWGRASS CORPORATE PKWY",
+      "company_city": "SUNRISE",
+      "company_state": "FL",
+      "company_zip": "33323-2847",
+      "primary_contact_phone": "9548350900",
+      "primary_contact_email": "sales@thorguard.com",
+      "website": "http://www.thorguard.com",
+      "contract_start_date": "2027-08-29",
+      "contract_expiration_date": "2027-08-29",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0576T/GS07F0576T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0576T&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "THUNDER SCIENTIFIC CORP",
+      "contract_number": "47QSMS24D001M",
+      "vendor_uei": "ZBTHK8MLJTN7",
+      "company_address": "623 WYOMING BLVD SE",
+      "company_city": "ALBUQUERQUE",
+      "company_state": "NM",
+      "company_zip": "87123-3199",
+      "primary_contact_phone": "5052658701",
+      "primary_contact_email": "sbennewitz@thunderscientific.com",
+      "website": "http://www.thunderscientific.com",
+      "contract_start_date": "2028-12-28",
+      "contract_expiration_date": "2043-12-28",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D001M/47QSMS24D001M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D001M&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "VAISALA INC.",
+      "contract_number": "GS-07F-030DA",
+      "vendor_uei": "FCMPZKYCYKH5",
+      "company_address": "194 S TAYLOR AVE",
+      "company_city": "LOUISVILLE",
+      "company_state": "CO",
+      "company_zip": "80027-3024",
+      "primary_contact_phone": "7207628839",
+      "primary_contact_email": "andrew.jamison@vaisala.com",
+      "website": "http://www.vaisala.com",
+      "contract_start_date": "2025-11-30",
+      "contract_expiration_date": "2035-11-30",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F030DA/GS07F030DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-030DA&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "WILLIAM F HAWK CONSULTING INC",
+      "contract_number": "GS-07F-0248T",
+      "vendor_uei": "CUV5KLZJ1US3",
+      "company_address": "14699 WINDING BROOK CT",
+      "company_city": "MILTON",
+      "company_state": "DE",
+      "company_zip": "19968-2997",
+      "primary_contact_phone": "7035930194",
+      "primary_contact_email": "techawk@comcast.net",
+      "website": "http://techawksecuriyproducts.us",
+      "contract_start_date": "2027-02-26",
+      "contract_expiration_date": "2027-02-26",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0248T/GS07F0248T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0248T&sin=334519ENV&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "334519ENV"
+      ],
+      "primary_sin": "334519ENV",
+      "schedule_number": "MAS",
+      "company_name": "WORLDWIDE MEDICAL PRODUCTS INC",
+      "contract_number": "GS-07F-177GA",
+      "vendor_uei": "RVP1CCPL42P9",
+      "company_address": "128 WHARTON RD",
+      "company_city": "BRISTOL",
+      "company_state": "PA",
+      "company_zip": "19007-1622",
+      "primary_contact_phone": "8668899967",
+      "primary_contact_email": "gsaorders@wwmponline.com",
+      "website": "http://www.wwmponline.com/",
+      "contract_start_date": "2027-08-20",
+      "contract_expiration_date": "2037-08-20",
+      "additional_data": {
+        "large_category": "Scientific Management and Solutions ",
+        "sub_category": " Laboratory Equipment",
+        "source": "MAS",
+        "category": "334519ENV ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F177GA/GS07F177GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-177GA&sin=334519ENV&src=elib&app=cat"
+      }
+    }
+  ]
+}

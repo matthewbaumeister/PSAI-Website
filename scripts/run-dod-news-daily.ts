@@ -4,7 +4,7 @@
  */
 
 import 'dotenv/config';
-import { getBrowser, closeBrowser, parseArticleAndSave } from '../src/lib/dod-news-scraper';
+import { getBrowser, closeBrowser, scrapeSingleArticle } from '../src/lib/dod-news-scraper';
 import { sendCronSuccessEmail, sendCronFailureEmail } from '../src/lib/cron-notifications';
 import { createClient } from '@supabase/supabase-js';
 import * as cheerio from 'cheerio';
@@ -106,9 +106,11 @@ async function main() {
     
     for (const article of articles) {
       try {
-        const result = await parseArticleAndSave(article.url, article.publishedDate);
-        if (result === 'inserted') inserted++;
-        else if (result === 'updated') updated++;
+        const result = await scrapeSingleArticle(article.url);
+        if (result) {
+          console.log(`[GitHub Actions] Processed: ${article.title}`);
+          inserted++;
+        }
       } catch (error: any) {
         console.error(`[GitHub Actions] Error processing article: ${error.message}`);
       }

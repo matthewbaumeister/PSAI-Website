@@ -1,0 +1,472 @@
+{
+  "sin_code": "481211O",
+  "file_name": "GSA_MAS_481211O_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:52.862721",
+  "sheets": {
+    "2025_11_05_11_33_46": {
+      "row_count": 20,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "ACE AVIATION SERVICES CORP.",
+      "contract_number": "47QMCB25D0005",
+      "vendor_uei": "EDNLNMCCKWH8",
+      "company_address": "5525 N.W. 15TH AVENUE",
+      "company_city": "FORT LAUDERDALE",
+      "company_state": "FL",
+      "company_zip": "33309-2704",
+      "primary_contact_phone": "9542026903",
+      "primary_contact_email": "cvelazquez@hopajet.com",
+      "website": "http://www.hopajetworldwide.com/",
+      "contract_start_date": "2030-02-19",
+      "contract_expiration_date": "2045-02-19",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "address_2": "SUITE 100",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB25D0005/47QMCB25D0005_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB25D0005&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "AIRCRAFT SERVICES GROUP, INC.",
+      "contract_number": "47QMCB24D000B",
+      "vendor_uei": "DX1YKVCL4YX9",
+      "company_address": "401 INDUSTRIAL AVE",
+      "company_city": "TETERBORO",
+      "company_state": "NJ",
+      "company_zip": "07608-1007",
+      "primary_contact_phone": "9173468305",
+      "primary_contact_email": "A.REENSTRA@JETASG.COM",
+      "website": "https://jetasg.com/",
+      "contract_start_date": "2029-05-12",
+      "contract_expiration_date": "2044-05-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB24D000B/47QMCB24D000B_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB24D000B&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "AIRCRAFT TRANSPORT SERVICES, INC.",
+      "contract_number": "GS-33F-018DA",
+      "vendor_uei": "QXZCQHMKTLA8",
+      "company_address": "4285 SW MARTIN HWY",
+      "company_city": "PALM CITY",
+      "company_state": "FL",
+      "company_zip": "34990-8615",
+      "primary_contact_phone": "9175592146",
+      "primary_contact_email": "JS@Atsflight.com",
+      "website": "http://www.aircrafttransportservices.com",
+      "contract_start_date": "2026-04-10",
+      "contract_expiration_date": "2036-04-10",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F018DA/GS33F018DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-018DA&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "CSI AVIATION, INC",
+      "contract_number": "GS-33F-0025V",
+      "vendor_uei": "D5BNEHB3UL89",
+      "company_address": "6006 REESE CREEK RD",
+      "company_city": "KILLEEN",
+      "company_state": "TX",
+      "company_zip": "76549-7160",
+      "primary_contact_phone": "8175055650",
+      "primary_contact_email": "delucia@csiaviation.com",
+      "website": "http://www.csiaviation.com",
+      "contract_start_date": "2029-03-09",
+      "contract_expiration_date": "2029-03-09",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0025V/GS33F0025V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0025V&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "EXECUTIVE FLITEWAYS INC",
+      "contract_number": "GS-33F-0040V",
+      "vendor_uei": "GTJKNR6FQ6C7",
+      "company_address": "1 CLARK DR",
+      "company_city": "RONKONKOMA",
+      "company_state": "NY",
+      "company_zip": "11779-7354",
+      "primary_contact_phone": "6315885454",
+      "primary_contact_email": "jprinzivalli@fly-efi.com",
+      "website": "http://www.fly-efi.com",
+      "contract_start_date": "2029-06-03",
+      "contract_expiration_date": "2029-06-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0040V/GS33F0040V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0040V&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "FLIGHTWORKS INC",
+      "contract_number": "GS-33F-0008U",
+      "vendor_uei": "RR67KD8RAUH5",
+      "company_address": "1755 MCCOLLUM PKWY NW",
+      "company_city": "KENNESAW",
+      "company_state": "GA",
+      "company_zip": "30144-3678",
+      "primary_contact_phone": "7704227375",
+      "primary_contact_email": "dlucey@flightworks.com",
+      "website": "http://www.flightworks.com",
+      "contract_start_date": "2028-02-14",
+      "contract_expiration_date": "2028-02-14",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0008U/GS33F0008U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0008U&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "INFLIGHT MEDICAL SERVICES INTERNATIONAL, INC.",
+      "contract_number": "47QMCB23D0009",
+      "vendor_uei": "XL81U4AJ31K9",
+      "company_address": "3 CORMIERS WAY",
+      "company_city": "ANDOVER",
+      "company_state": "MA",
+      "company_zip": "01810-2879",
+      "primary_contact_phone": "8004324177",
+      "primary_contact_email": "inflightmedical@gmail.com",
+      "website": "http://inflightmed.com/",
+      "contract_start_date": "2028-07-11",
+      "contract_expiration_date": "2043-07-11",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB23D0009/47QMCB23D0009_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB23D0009&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "JOURNEY AVIATION LLC",
+      "contract_number": "47QMCB21D0005",
+      "vendor_uei": "VH81XGE6A4B6",
+      "company_address": "3700 AIRPORT RD STE 202",
+      "company_city": "BOCA RATON",
+      "company_state": "FL",
+      "company_zip": "33431-6409",
+      "primary_contact_phone": "5612104371",
+      "primary_contact_email": "dmcgriff@journeyflight.com",
+      "website": "http://www.journeyflight.com",
+      "contract_start_date": "2026-01-03",
+      "contract_expiration_date": "2041-01-03",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB21D0005/47QMCB21D0005_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB21D0005&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "KALITTA CHARTERS, LLC",
+      "contract_number": "GS-33F-0028W",
+      "vendor_uei": "J78TJ1HEGFN4",
+      "company_address": "843 WILLOW RUN AIRPORT",
+      "company_city": "YPSILANTI",
+      "company_state": "MI",
+      "company_zip": "48198",
+      "primary_contact_phone": "7349852541",
+      "primary_contact_email": "rdalimonte@kalittacharters.com",
+      "website": "http://www.kalittacharters.com",
+      "contract_start_date": "2030-01-12",
+      "contract_expiration_date": "2030-01-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F0028W/GS33F0028W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-0028W&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "OMNI AIR TRANSPORT, LLC",
+      "contract_number": "GS-33F-048AA",
+      "vendor_uei": "ZMGRJLATJJZ3",
+      "company_address": "3217 N SHERIDAN RD HNGR 38",
+      "company_city": "TULSA",
+      "company_state": "OK",
+      "company_zip": "74115-2307",
+      "primary_contact_phone": "9188333812",
+      "primary_contact_email": "lescalanta@flyomni.com",
+      "website": "https://flyomni.com/",
+      "contract_start_date": "2028-07-23",
+      "contract_expiration_date": "2033-07-23",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F048AA/GS33F048AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-048AA&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "PONDEROSA AVIATION INC",
+      "contract_number": "47QMCB22D0002",
+      "vendor_uei": "FPLFHLEVUK35",
+      "company_address": "4500 E AVIATION WAY",
+      "company_city": "SAFFORD",
+      "company_state": "AZ",
+      "company_zip": "85546-9479",
+      "primary_contact_phone": "9284287820",
+      "primary_contact_email": "operations@ponderosaaviation.net",
+      "website": "http://www.ponderosaaviation.com",
+      "contract_start_date": "2026-10-05",
+      "contract_expiration_date": "2041-10-05",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB22D0002/47QMCB22D0002_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB22D0002&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "PREMIER AIR, INC.",
+      "contract_number": "47QMCB22D0005",
+      "vendor_uei": "EU3XEF8UJPS3",
+      "company_address": "2580 SE AVIATION WAY",
+      "company_city": "STUART",
+      "company_state": "FL",
+      "company_zip": "34996-4030",
+      "primary_contact_phone": "7722231219",
+      "primary_contact_email": "admin@premierprivatejets.com",
+      "website": "http://www.premierprivatejets.com",
+      "contract_start_date": "2026-11-23",
+      "contract_expiration_date": "2041-11-23",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "address_2": "STE 201",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB22D0005/47QMCB22D0005_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "PRESIDENTIAL AVIATION, INC.",
+      "contract_number": "GS-33F-016BA",
+      "vendor_uei": "MD7EQN3VHTM1",
+      "company_address": "1725 NW 51ST PL",
+      "company_city": "FORT LAUDERDALE",
+      "company_state": "FL",
+      "company_zip": "33309-2750",
+      "primary_contact_phone": "9547728622",
+      "primary_contact_email": "yechemendia@presidential-aviation.com",
+      "website": "http://www.presidential-aviation.com",
+      "contract_start_date": "2029-02-16",
+      "contract_expiration_date": "2034-02-16",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS33F016BA/GS33F016BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-33F-016BA&sin=481211O&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "481211O"
+      ],
+      "primary_sin": "481211O",
+      "schedule_number": "MAS",
+      "company_name": "SIERRA PACIFIC AIRLINES, INC",
+      "contract_number": "47QMCB18D0008",
+      "vendor_uei": "EDYMMPXK8117",
+      "company_address": "7700 N BUSINESS PARK DR",
+      "company_city": "TUCSON",
+      "company_state": "AZ",
+      "company_zip": "85743-9622",
+      "primary_contact_phone": "+1520744114414",
+      "primary_contact_email": "mthorsrud@sierrapacificairlines.com",
+      "website": "https://sierrapacificairlines.com",
+      "contract_start_date": "2028-06-12",
+      "contract_expiration_date": "2038-06-12",
+      "additional_data": {
+        "large_category": "Transportation and Logistics Services ",
+        "sub_category": " Transportation of Things",
+        "source": "MAS",
+        "category": "481211O ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCB18D0008/47QMCB18D0008_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCB18D0008&sin=481211O&src=elib&app=cat"
+      }
+    }
+  ]
+}

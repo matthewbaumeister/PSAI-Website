@@ -1,0 +1,499 @@
+{
+  "sin_code": "332321",
+  "file_name": "GSA_MAS_332321_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:16.397264",
+  "sheets": {
+    "2025_11_05_11_07_29": {
+      "row_count": 21,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "A & A SHEET METAL PRODUCTS INC",
+      "contract_number": "47QSCA14D0001",
+      "vendor_uei": "KEKTUBQDCZM7",
+      "company_address": "5122 N STATE ROAD 39",
+      "company_city": "LA PORTE",
+      "company_state": "IN",
+      "company_zip": "46350-8354",
+      "primary_contact_phone": "8883267890",
+      "primary_contact_email": "custserv@securallproducts.com",
+      "website": "http://www.securallproducts.com",
+      "contract_start_date": "2029-02-28",
+      "contract_expiration_date": "2034-02-28",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSCA14D0001/47QSCA14D0001_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSCA14D0001&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "AMERICAN CLASSIC CONSTRUCTION INC.",
+      "contract_number": "GS-07F-0239Y",
+      "vendor_uei": "M94HJK6TJWQ8",
+      "company_address": "21621 HEATHER LEE LN",
+      "company_city": "CHATSWORTH",
+      "company_state": "CA",
+      "company_zip": "91311-1366",
+      "primary_contact_phone": "8187007550",
+      "primary_contact_email": "mlubran@socal.rr.com",
+      "website": "http://www.americanclassicconstruction.com",
+      "contract_start_date": "2027-01-31",
+      "contract_expiration_date": "2032-01-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0239Y/GS07F0239Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0239Y&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "CVK ENTERPRISES INC",
+      "contract_number": "GS-07F-264BA",
+      "vendor_uei": "VXJ9KCULLET5",
+      "company_address": "1171 S NORTHPOINT BLVD",
+      "company_city": "WAUKEGAN",
+      "company_state": "IL",
+      "company_zip": "60085-8216",
+      "primary_contact_phone": "8479996577",
+      "primary_contact_email": "meagan@federalsupply.com",
+      "website": "http://www.federalsupply.com",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2034-07-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F264BA/GS07F264BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-264BA&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "GANAHL LUMBER COMPANY",
+      "contract_number": "GS-07F-0133U",
+      "vendor_uei": "Q3ANNJUPM776",
+      "company_address": "1220 E BALL RD",
+      "company_city": "ANAHEIM",
+      "company_state": "CA",
+      "company_zip": "92805-5921",
+      "primary_contact_phone": "7142392289",
+      "primary_contact_email": "johnlopez@ganahl.com",
+      "website": "http://www.ganahl.com",
+      "contract_start_date": "2027-12-31",
+      "contract_expiration_date": "2027-12-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0133U/GS07F0133U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0133U&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "K-CON, INC.",
+      "contract_number": "47QSWA21D0075",
+      "vendor_uei": "P7LAGL244HK9",
+      "company_address": "6543 FAIN ST LOWR",
+      "company_city": "CHARLESTON",
+      "company_state": "SC",
+      "company_zip": "29406-4909",
+      "primary_contact_phone": "8437450434",
+      "primary_contact_email": "oshelbourne@kconinc.com",
+      "website": "http://www.kconinc.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2041-08-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D0075/47QSWA21D0075_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D0075&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "LIBERTY SASH & DOOR, INC.",
+      "contract_number": "47QSWA23D00A6",
+      "vendor_uei": "L6AGR4HFGZK1",
+      "company_address": "4230 N NEVADA AVE",
+      "company_city": "COLORADO SPRINGS",
+      "company_state": "CO",
+      "company_zip": "80907-4306",
+      "primary_contact_phone": "3032637299",
+      "primary_contact_email": "tgentry@libertyopenings.com",
+      "website": "www.libertyopenings.com",
+      "contract_start_date": "2028-09-27",
+      "contract_expiration_date": "2043-09-27",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "MEGA SUPPLY STORE LLC",
+      "contract_number": "47QSWA22D0065",
+      "vendor_uei": "VLMXGMNE5W18",
+      "company_address": "320 CAMER DR",
+      "company_city": "BENSALEM",
+      "company_state": "PA",
+      "company_zip": "19020-7302",
+      "primary_contact_phone": "2678254385",
+      "primary_contact_email": "tanya@megasupplystore.com",
+      "website": "http://www.megasupplypro.com",
+      "contract_start_date": "2027-06-08",
+      "contract_expiration_date": "2042-06-08",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0065&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL GLAZING SOLUTIONS LLC",
+      "contract_number": "47QSWA20D000C",
+      "vendor_uei": "UJ51YRUMN9G5",
+      "company_address": "140 MOUNTAIN BROOK DR",
+      "company_city": "CANTON",
+      "company_state": "GA",
+      "company_zip": "30115-9016",
+      "primary_contact_phone": "4049932704",
+      "primary_contact_email": "james@nationalglazingsolutions.com",
+      "website": "http://www.nationalglazingsolutions.com",
+      "contract_start_date": "2029-10-17",
+      "contract_expiration_date": "2039-10-17",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D000C/47QSWA20D000C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D000C&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "PET DOORS U.S.A., INC.",
+      "contract_number": "47QSWA23D0051",
+      "vendor_uei": "E22RYL5UDMM9",
+      "company_address": "4523 30TH STREET WEST",
+      "company_city": "BRADENTON",
+      "company_state": "FL",
+      "company_zip": "34207-1075",
+      "primary_contact_phone": "9417527021",
+      "primary_contact_email": "DEIDRE@PLEXIDORS.NET",
+      "website": "http://WWW.K9DOORS.COM",
+      "contract_start_date": "2028-04-14",
+      "contract_expiration_date": "2043-04-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "address_2": "# E502",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0051/47QSWA23D0051_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0051&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "QUALITY DOOR & HARDWARE INC",
+      "contract_number": "GS-07F-259BA",
+      "vendor_uei": "L4JKEXF9YMN4",
+      "company_address": "780 RAILROAD AVE",
+      "company_city": "WEST BABYLON",
+      "company_state": "NY",
+      "company_zip": "11704",
+      "primary_contact_phone": "6314829332",
+      "primary_contact_email": "admin@qualitydoor.com",
+      "website": "http://www.qualitydoor.com",
+      "contract_start_date": "2029-07-31",
+      "contract_expiration_date": "2034-07-31",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F259BA/GS07F259BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-259BA&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "S-T ACQUISITION CO LLC",
+      "contract_number": "GS-21F-0032U",
+      "vendor_uei": "E135UPWN3P97",
+      "company_address": "7589 FIRST PL",
+      "company_city": "BEDFORD",
+      "company_state": "OH",
+      "company_zip": "44146-6726",
+      "primary_contact_phone": "4407351505",
+      "primary_contact_email": "gchick@service-techcorp.com",
+      "website": "http://www.service-techcorp.com",
+      "contract_start_date": "2028-01-23",
+      "contract_expiration_date": "2028-01-23",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0032U/GS21F0032U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0032U&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "SOLAR SECURITY FILMS, INC.",
+      "contract_number": "47QSWA22D0067",
+      "vendor_uei": "NGQWNSQ63KT7",
+      "company_address": "5602 THOMPSON CENTER CT STE 400",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33634-4316",
+      "primary_contact_phone": "8006842400",
+      "primary_contact_email": "admin@solarsecurity.com",
+      "website": "http://www.solarsecurity.com",
+      "contract_start_date": "2027-06-13",
+      "contract_expiration_date": "2042-06-13",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0067/47QSWA22D0067_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0067&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "VORTEX SYSTEMS LLC",
+      "contract_number": "47QSWA18D003A",
+      "vendor_uei": "MKBQL7NCCJU3",
+      "company_address": "3731 RUTLEDGE RD NE",
+      "company_city": "ALBUQUERQUE",
+      "company_state": "NM",
+      "company_zip": "87109-5566",
+      "primary_contact_phone": "4808485603",
+      "primary_contact_email": "bsandoval@vortexsystems.us",
+      "website": "http://www.vortexsystems.us",
+      "contract_start_date": "2028-04-14",
+      "contract_expiration_date": "2038-04-14",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA18D003A/47QSWA18D003A_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA18D003A/pricelist_47QSWA18D003A.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA18D003A&sin=332321&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "332321"
+      ],
+      "primary_sin": "332321",
+      "schedule_number": "MAS",
+      "company_name": "WATERSON CORP.",
+      "contract_number": "47QSMS25D001U",
+      "vendor_uei": "LNXWVSJSAS59",
+      "company_address": "8F",
+      "company_city": "TAICHUNG CITY",
+      "company_zip": "402",
+      "primary_contact_phone": "7705255439",
+      "primary_contact_email": "betty@watersonusa.com",
+      "website": "http://watersonusa.com/",
+      "contract_start_date": "2029-11-25",
+      "contract_expiration_date": "2044-11-25",
+      "company_country": "TAIWAN",
+      "additional_data": {
+        "large_category": "Facilities ",
+        "sub_category": " Facilities Supplies",
+        "source": "MAS",
+        "category": 332321.0,
+        "address_2": "WUQUAN S. RD. NO 428",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D001U/47QSMS25D001U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D001U&sin=332321&src=elib&app=cat"
+      }
+    }
+  ]
+}

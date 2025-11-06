@@ -1,0 +1,1759 @@
+{
+  "sin_code": "333415HVAC",
+  "file_name": "GSA_MAS_333415HVAC_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:46.528240",
+  "sheets": {
+    "2025_11_05_11_14_47": {
+      "row_count": 63,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "AAR MANUFACTURING, INC.",
+      "contract_number": "47QSWA21D000M",
+      "vendor_uei": "M26PK7RRJNR7",
+      "company_address": "201 HAYNES ST",
+      "company_city": "CADILLAC",
+      "company_state": "MI",
+      "company_zip": "49601-1803",
+      "primary_contact_phone": "2317796305",
+      "primary_contact_email": "scampbell@aarcorp.com",
+      "website": "http://www.aarmobilitysystems.com",
+      "contract_start_date": "2025-11-15",
+      "contract_expiration_date": "2040-11-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D000M/47QSWA21D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D000M&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "ABATEMENT TECHNOLOGIES, INC.",
+      "contract_number": "GS-07F-0541T",
+      "vendor_uei": "DNM2AB947693",
+      "company_address": "605 SATELLITE BLVD NW",
+      "company_city": "SUWANEE",
+      "company_state": "GA",
+      "company_zip": "30024-4611",
+      "primary_contact_phone": "8006349091",
+      "primary_contact_email": "gsa@abatement.com",
+      "website": "http://www.abatement.com/",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2027-08-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "address_2": "STE 300",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0541T/GS07F0541T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0541T&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "ACCUAIR, INC.",
+      "contract_number": "GS-07F-0487Y",
+      "vendor_uei": "GRTTF8B9HF35",
+      "company_address": "3033 MERCY DR # B",
+      "company_city": "ORLANDO",
+      "company_state": "FL",
+      "company_zip": "32808-3113",
+      "primary_contact_phone": "3213772615",
+      "primary_contact_email": "greg@accuaironline.com",
+      "website": "http://www.accuaironline.com",
+      "contract_start_date": "2027-08-14",
+      "contract_expiration_date": "2032-08-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0487Y/GS07F0487Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0487Y&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "ADDON SERVICES LLC",
+      "contract_number": "47QRAA20D0073",
+      "vendor_uei": "C1J1B6AJTQK4",
+      "company_address": "27789 MOUND RD STE 200",
+      "company_city": "WARREN",
+      "company_state": "MI",
+      "company_zip": "48092-2697",
+      "primary_contact_phone": "7179190957",
+      "primary_contact_email": "Candi.Plank@addonservicesllc.com",
+      "website": "http://www.addonservicesllc.com",
+      "contract_start_date": "2030-06-15",
+      "contract_expiration_date": "2040-06-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA20D0073/47QRAA20D0073_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QRAA20D0073&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "ALLCOM GLOBAL SERVICES, INC.",
+      "contract_number": "47QSWA19D004F",
+      "vendor_uei": "N3VDYQV6KNU4",
+      "company_address": "201 STAG INDUSTRIAL BLVD",
+      "company_city": "LAKE SAINT LOUIS",
+      "company_state": "MO",
+      "company_zip": "63367-4285",
+      "primary_contact_phone": "7033408518",
+      "primary_contact_email": "sslagor@allcomgs.com",
+      "website": "https://www.allcomgs.com",
+      "contract_start_date": "2029-02-27",
+      "contract_expiration_date": "2039-02-27",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D004F/47QSWA19D004F_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA19D004F/pricelist_47QSWA19D004F.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D004F&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "ALLIED SUPPLY COMPANY, INC.",
+      "contract_number": "GS-07F-0484V",
+      "vendor_uei": "F465USBL6CG9",
+      "company_address": "1100 E MONUMENT AVE",
+      "company_city": "DAYTON",
+      "company_state": "OH",
+      "company_zip": "45402-1355",
+      "primary_contact_phone": "9373962022",
+      "primary_contact_email": "brendad@alliedsupply.com",
+      "website": "http://www.alliedsupply.com",
+      "contract_start_date": "2029-08-17",
+      "contract_expiration_date": "2029-08-17",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0484V/GS07F0484V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0484V&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "ALPINE POWER SYSTEMS INC",
+      "contract_number": "GS-07F-0540U",
+      "vendor_uei": "XEAWT4WCMGJ3",
+      "company_address": "24355 CAPITOL",
+      "company_city": "REDFORD",
+      "company_state": "MI",
+      "company_zip": "48239-2466",
+      "primary_contact_phone": "3135316600",
+      "primary_contact_email": "dprahl@alpinepowersystems.com",
+      "website": "http://www.alpinepowersystems.com/",
+      "contract_start_date": "2028-09-08",
+      "contract_expiration_date": "2028-09-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0540U/GS07F0540U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0540U&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "AMALGAMATED SERVICES, INC.",
+      "contract_number": "GS-21F-0118Y",
+      "vendor_uei": "D3NYX5JPKME5",
+      "company_address": "21024 S 80TH AVE",
+      "company_city": "FRANKFORT",
+      "company_state": "IL",
+      "company_zip": "60423-9186",
+      "primary_contact_phone": "8154648447",
+      "primary_contact_email": "kriffice@am-serviceinc.com",
+      "website": "https://www.am-serviceinc.com/",
+      "contract_start_date": "2027-06-13",
+      "contract_expiration_date": "2032-06-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0118Y/GS21F0118Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-21F-0118Y/pricelist_GS-21F-0118Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0118Y&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "BARNES & JONES, LLC",
+      "contract_number": "47QSWA22D00AA",
+      "vendor_uei": "H3CGZ5KEAT73",
+      "company_address": "91 PACELLA PARK DR",
+      "company_city": "RANDOLPH",
+      "company_state": "MA",
+      "company_zip": "02368-1755",
+      "primary_contact_phone": "7819638000",
+      "primary_contact_email": "lproc@barnesandjones.com",
+      "website": "http://www.barnesandjones.com",
+      "contract_start_date": "2027-10-13",
+      "contract_expiration_date": "2042-10-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D00AA/47QSWA22D00AA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D00AA&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "BREEWORLD LLC",
+      "contract_number": "47QSMS24D000J",
+      "vendor_uei": "U8E5ZUBVH4L4",
+      "company_address": "18406 WILD BASIN TRL",
+      "company_city": "HUMBLE",
+      "company_state": "TX",
+      "company_zip": "77346-3036",
+      "primary_contact_phone": "7036552297",
+      "primary_contact_email": "aubreyweekes@gmail.com",
+      "website": "https://breeworld.com",
+      "contract_start_date": "2028-11-15",
+      "contract_expiration_date": "2043-11-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D000J/47QSMS24D000J_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D000J&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "CALIFORNIA INDUSTRIAL REFRIGERATION MACHINES INC",
+      "contract_number": "47QSMS24D00B8",
+      "vendor_uei": "M8MWGSKX4J45",
+      "company_address": "3197 CORNERSTONE DR",
+      "company_city": "EASTVALE",
+      "company_state": "CA",
+      "company_zip": "91752-1028",
+      "primary_contact_phone": "9513610040",
+      "primary_contact_email": "RG@caindustrial.com",
+      "website": "http://www.caindustrial.com",
+      "contract_start_date": "2029-08-14",
+      "contract_expiration_date": "2044-08-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00B8/47QSMS24D00B8_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00B8&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "CAPP LLC",
+      "contract_number": "GS-21F-0116X",
+      "vendor_uei": "LNKAWHJ8T1T5",
+      "company_address": "201 MARPLE AVE",
+      "company_city": "CLIFTON HEIGHTS",
+      "company_state": "PA",
+      "company_zip": "19018-2414",
+      "primary_contact_phone": "8003568000",
+      "primary_contact_email": "hello@cappusa.com",
+      "website": "https://cappusa.com",
+      "contract_start_date": "2026-06-16",
+      "contract_expiration_date": "2031-06-16",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0116X/GS21F0116X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0116X&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "CARBONTEC WORLDWIDE LLC",
+      "contract_number": "47QSWA23D003X",
+      "vendor_uei": "D9HQYC8KQM36",
+      "company_address": "1920 EAST HALLANDALE BEACH BLVD,",
+      "company_city": "HALLANDALE",
+      "company_state": "FL",
+      "company_zip": "33009-4725",
+      "primary_contact_phone": "6464084635",
+      "primary_contact_email": "stan@carbontec.world",
+      "website": "https://carbontec.world/",
+      "contract_start_date": "2028-03-14",
+      "contract_expiration_date": "2043-03-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D003X/47QSWA23D003X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D003X&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "CD MECHANICAL, INC.",
+      "contract_number": "47QSMS25D004Y",
+      "vendor_uei": "GL6DK9V9NJN7",
+      "company_address": "606 S CALAVERAS DR",
+      "company_city": "PUEBLO",
+      "company_state": "CO",
+      "company_zip": "81007-1942",
+      "primary_contact_phone": "7192404930",
+      "primary_contact_email": "beth@firstchoicedryingequipment.com",
+      "website": "http://www.firstchoicedryingequipment.com/",
+      "contract_start_date": "2030-02-28",
+      "contract_expiration_date": "2045-02-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D004Y/47QSMS25D004Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D004Y&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "CENTRAL TEXAS COMMERCIAL AIR CONDITIONING AND HEATING, INC.",
+      "contract_number": "GS-07F-0281X",
+      "vendor_uei": "G4D1TFX9YTK9",
+      "company_address": "7909 ROSSON RD",
+      "company_city": "AUSTIN",
+      "company_state": "TX",
+      "company_zip": "78736-8010",
+      "primary_contact_phone": "5122880822",
+      "primary_contact_email": "reverett@ctcair.com",
+      "website": "http://www.ctcair.com",
+      "contract_start_date": "2026-02-14",
+      "contract_expiration_date": "2031-02-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0281X/GS07F0281X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0281X&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "CLAFLIN SERVICE COMPANY",
+      "contract_number": "47QSWA21D004H",
+      "vendor_uei": "ND1BF4HPEJJ5",
+      "company_address": "1206 JEFFERSON BLVD",
+      "company_city": "WARWICK",
+      "company_state": "RI",
+      "company_zip": "02886-2204",
+      "primary_contact_phone": "4012691655",
+      "primary_contact_email": "bcharron@cmecorp.com",
+      "website": "http://www.cmecorp.com",
+      "contract_start_date": "2026-04-30",
+      "contract_expiration_date": "2041-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA21D004H/47QSWA21D004H_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA21D004H&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "COIL WINDING SPECIALIST, INC.",
+      "contract_number": "GS-07F-105GA",
+      "vendor_uei": "J6LGYQ7PWGC5",
+      "company_address": "353 W GROVE AVE",
+      "company_city": "ORANGE",
+      "company_state": "CA",
+      "company_zip": "92865-3205",
+      "primary_contact_phone": "7142799010",
+      "primary_contact_email": "ken@coilws.com",
+      "website": "http://www.coilws.com",
+      "contract_start_date": "2027-04-30",
+      "contract_expiration_date": "2037-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F105GA/GS07F105GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-105GA&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "CPS SOLUTIONS LLC",
+      "contract_number": "47QMCA23D0003",
+      "vendor_uei": "KJWVCGLNVQN8",
+      "company_address": "1398 LONG MDW",
+      "company_city": "SALADO",
+      "company_state": "TX",
+      "company_zip": "76571-6000",
+      "primary_contact_phone": "2198619961",
+      "primary_contact_email": "cpsolutions3@mail.com",
+      "website": "https://www.cpssolutionsllc.net",
+      "contract_start_date": "2027-11-13",
+      "contract_expiration_date": "2042-11-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QMCA23D0003/47QMCA23D0003_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QMCA23D0003&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "D. W. EVANS ELECTRIC, INC.",
+      "contract_number": "47QSMS24D008S",
+      "vendor_uei": "KXL3WR6UPVM4",
+      "company_address": "3511 EVANS CORPORATE LN",
+      "company_city": "DURHAM",
+      "company_state": "NC",
+      "company_zip": "27705-7981",
+      "primary_contact_phone": "9197873989",
+      "primary_contact_email": "info@certek-usa.com",
+      "website": "http://www.certek-usa.com",
+      "contract_start_date": "2029-06-13",
+      "contract_expiration_date": "2044-06-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D008S/47QSMS24D008S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D008S&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "ESPARZA PEST CONTROL AND ECO-LOGIC SYSTEMS, INC.",
+      "contract_number": "47QSMS26D000F",
+      "vendor_uei": "U2TLR35M2J68",
+      "company_address": "5602 S SUGAR RD",
+      "company_city": "EDINBURG",
+      "company_state": "TX",
+      "company_zip": "78539-9645",
+      "primary_contact_phone": "9563100000",
+      "primary_contact_email": "elma@esparzapc.com",
+      "website": "www.esparzapc.com",
+      "contract_start_date": "2030-10-31",
+      "contract_expiration_date": "2045-10-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "EXPORT 220VOLT INC.",
+      "contract_number": "GS-21F-029DA",
+      "vendor_uei": "F5DFMLGS8YM1",
+      "company_address": "5810 HILLCROFT ST",
+      "company_city": "HOUSTON",
+      "company_state": "TX",
+      "company_zip": "77036-3302",
+      "primary_contact_phone": "7137892220",
+      "primary_contact_email": "sales@export220volt.com",
+      "website": "http://www.export220volt.com",
+      "contract_start_date": "2026-05-19",
+      "contract_expiration_date": "2036-05-19",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F029DA/GS21F029DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-029DA&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "FIBER BOND OPERATING LLC",
+      "contract_number": "47QSMS25D0081",
+      "vendor_uei": "M1W8P72PRK79",
+      "company_address": "110 MENKE RD",
+      "company_city": "TRAIL CREEK",
+      "company_state": "IN",
+      "company_zip": "46360",
+      "primary_contact_phone": "2198794541",
+      "primary_contact_email": "eric.pearman@fiberbond.net",
+      "website": "http://www.fiberbond.net",
+      "contract_start_date": "2030-04-30",
+      "contract_expiration_date": "2045-04-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0081&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "FILTER ENGINEERING CORPORATION",
+      "contract_number": "GS-07F-0035W",
+      "vendor_uei": "C75PVBEU8UV3",
+      "company_address": "1415 COMBERMERE DR",
+      "company_city": "TROY",
+      "company_state": "MI",
+      "company_zip": "48083-2745",
+      "primary_contact_phone": "5862687300",
+      "primary_contact_email": "TDABALDO@FILTERENGINEERING.COM",
+      "website": "http://www.filterengineering.com",
+      "contract_start_date": "2029-10-04",
+      "contract_expiration_date": "2029-10-04",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0035W/GS07F0035W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0035W&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "HALLPASS CAPITAL INC",
+      "contract_number": "GS-07F-0413Y",
+      "vendor_uei": "F8RAU1DTQWS7",
+      "company_address": "1835 WHITTIER AVE",
+      "company_city": "COSTA MESA",
+      "company_state": "CA",
+      "company_zip": "92627-4574",
+      "primary_contact_phone": "8552344533",
+      "primary_contact_email": "gsa@gonled.com",
+      "website": "http://www.gonled.com",
+      "contract_start_date": "2027-05-29",
+      "contract_expiration_date": "2032-05-29",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "address_2": "STE D12",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0413Y/GS07F0413Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0413Y/pricelist_GS-07F-0413Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0413Y&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "HDT EXPEDITIONARY SYSTEMS INC",
+      "contract_number": "GS-07F-0010T",
+      "vendor_uei": "MNS7TJ9KVTJ1",
+      "company_address": "30500 AURORA RD",
+      "company_city": "SOLON",
+      "company_state": "OH",
+      "company_zip": "44139-2776",
+      "primary_contact_phone": "5404798113",
+      "primary_contact_email": "jamie.woodard@hdtglobal.com",
+      "website": "http://www.hdtglobal.com",
+      "contract_start_date": "2026-09-30",
+      "contract_expiration_date": "2026-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "address_2": "STE 100",
+        "unnamed__20": "o",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0010T/GS07F0010T_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0010T&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "HP ENGINEERING INC",
+      "contract_number": "47QRAA22D004Y",
+      "vendor_uei": "T5K8MNL68SJ5",
+      "company_address": "5504 W PINNACLE POINTE DR",
+      "company_city": "ROGERS",
+      "company_state": "AR",
+      "company_zip": "72758-8143",
+      "primary_contact_phone": "4798996370",
+      "primary_contact_email": "brittney@hpengineeringinc.com",
+      "website": "http://www.hpengineeringinc.com/",
+      "contract_start_date": "2027-01-26",
+      "contract_expiration_date": "2042-01-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "address_2": "STE 200",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__32": "ai",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QRAA22D004Y/47QRAA22D004Y_online.htm"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "KYA SERVICES LLC",
+      "contract_number": "47QSMA20D08P7",
+      "vendor_uei": "NNWJHV8VLP55",
+      "company_address": "1800 E MCFADDEN AVE",
+      "company_city": "SANTA ANA",
+      "company_state": "CA",
+      "company_zip": "92705-4736",
+      "primary_contact_phone": "9494120561",
+      "primary_contact_email": "snewton@digitaldcc.net",
+      "website": "http://www.thekyagroup.com",
+      "contract_start_date": "2030-02-10",
+      "contract_expiration_date": "2040-02-10",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08P7/47QSMA20D08P7_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSMA20D08P7/pricelist_47QSMA20D08P7.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08P7&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "LEE COLLINS AIR CONDITIONING COMPANY",
+      "contract_number": "47QSMS24D008X",
+      "vendor_uei": "FSPBV72PY4M7",
+      "company_address": "8927 N 2ND WAY",
+      "company_city": "PHOENIX",
+      "company_state": "AZ",
+      "company_zip": "85020-2811",
+      "primary_contact_phone": "6026634201",
+      "primary_contact_email": "cyndi@leecollinsac.com",
+      "website": "http://www.leecollinsac.com",
+      "contract_start_date": "2029-06-20",
+      "contract_expiration_date": "2044-06-20",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D008X/47QSMS24D008X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D008X&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "MAINSTREAM ENGINEERING CORP",
+      "contract_number": "47QSWA22D0099",
+      "vendor_uei": "YR8FJBGXWRR1",
+      "company_address": "200 YELLOW PL",
+      "company_city": "ROCKLEDGE",
+      "company_state": "FL",
+      "company_zip": "32955",
+      "primary_contact_phone": "3216313550",
+      "primary_contact_email": "contracting@mainstream-engr.com",
+      "website": "https://mainstream-engr.com/",
+      "contract_start_date": "2027-09-07",
+      "contract_expiration_date": "2042-09-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0099&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "MOSEBACH MANUFACTURING CO",
+      "contract_number": "GS-07F-0200Y",
+      "vendor_uei": "EPGEDJENXKP5",
+      "company_address": "1417 MCLAUGHLIN RUN RD",
+      "company_city": "PITTSBURGH",
+      "company_state": "PA",
+      "company_zip": "15241-3158",
+      "primary_contact_phone": "4122215626",
+      "primary_contact_email": "wrelliott@mosebachresistors.com",
+      "website": "http://www.mosebachresistors.com",
+      "contract_start_date": "2027-01-05",
+      "contract_expiration_date": "2032-01-05",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "MURPHY ENTERPRISES OF ALABAMA, INC.",
+      "contract_number": "47QSWA19D007Q",
+      "vendor_uei": "HGCRWU72V7D3",
+      "company_address": "4364 ABBOTTS WAY",
+      "company_city": "HOOVER",
+      "company_state": "AL",
+      "company_zip": "35226-6354",
+      "primary_contact_phone": "8007012513",
+      "primary_contact_email": "rexmurphy773@gmail.com",
+      "website": "http://www.airpurifiersandcleaners.com",
+      "contract_start_date": "2029-06-14",
+      "contract_expiration_date": "2039-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D007Q/47QSWA19D007Q_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D007Q&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL COMPRESSOR EXCHANGE INC",
+      "contract_number": "47QSMS24D005C",
+      "vendor_uei": "QQG5AJX57ZK7",
+      "company_address": "5861 55TH ST",
+      "company_city": "MASPETH",
+      "company_state": "NY",
+      "company_zip": "11738",
+      "primary_contact_phone": "7184179100",
+      "primary_contact_email": "jrs@nationalcompressor.com",
+      "website": "www.nationalcompressor.com",
+      "contract_start_date": "2029-03-25",
+      "contract_expiration_date": "2044-03-25",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "NATIONAL ENERGY CONTROL CORPORATION",
+      "contract_number": "47QSWA20D000V",
+      "vendor_uei": "XQH4M3A65NS9",
+      "company_address": "312 DARBY RD",
+      "company_city": "HAVERTOWN",
+      "company_state": "PA",
+      "company_zip": "19083-4625",
+      "primary_contact_phone": "7174053430",
+      "primary_contact_email": "wpeachey@peakcapitalcompany.com",
+      "website": "http://necc-controls.com",
+      "contract_start_date": "2029-11-14",
+      "contract_expiration_date": "2039-11-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA20D000V/47QSWA20D000V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA20D000V&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "OSC SOLUTIONS INC",
+      "contract_number": "47QSHA18D0023",
+      "vendor_uei": "U15RUNNKM2W7",
+      "company_address": "1100 NORTHPOINT PKWY",
+      "company_city": "WEST PALM BEACH",
+      "company_state": "FL",
+      "company_zip": "33407-1937",
+      "primary_contact_phone": "5616834090",
+      "primary_contact_email": "service@oscmro.com",
+      "website": "http://www.oscmro.com",
+      "contract_start_date": "2028-06-30",
+      "contract_expiration_date": "2038-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "address_2": "STE 200",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA18D0023/47QSHA18D0023_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA18D0023&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "PACIFIC TECH CONSTRUCTION INC",
+      "contract_number": "GS-07F-0509Y",
+      "vendor_uei": "NPRHJXMJ1JS4",
+      "company_address": "1302 WALNUT ST",
+      "company_city": "KELSO",
+      "company_state": "WA",
+      "company_zip": "98626-2719",
+      "primary_contact_phone": "3604148084",
+      "primary_contact_email": "doug@pactechgroup.com",
+      "website": "http://www.pacifictech.info",
+      "contract_start_date": "2027-08-08",
+      "contract_expiration_date": "2032-08-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0509Y/GS07F0509Y_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-07F-0509Y/pricelist_GS-07F-0509Y.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0509Y&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "POWERHOUSE INDUSTRIES, INC.",
+      "contract_number": "47QSWA19D002N",
+      "vendor_uei": "JGTPNJKHNV73",
+      "company_address": "40 SEATUCK AVE",
+      "company_city": "EASTPORT",
+      "company_state": "NY",
+      "company_zip": "11941-1112",
+      "primary_contact_phone": "6313255555",
+      "primary_contact_email": "bill@jiffyjump.com",
+      "website": "http://www.val6heat.com",
+      "contract_start_date": "2029-01-31",
+      "contract_expiration_date": "2039-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA19D002N/47QSWA19D002N_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA19D002N&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "PRECISION MECHANICAL, LLP",
+      "contract_number": "47QSMS24D004G",
+      "vendor_uei": "JV6AKUMZU1S3",
+      "company_address": "5700 S HIGHWAY 79 STE E3",
+      "company_city": "RAPID CITY",
+      "company_state": "SD",
+      "company_zip": "57702",
+      "primary_contact_phone": "6053417618",
+      "primary_contact_email": "gsa@precisionmech.biz",
+      "website": "http://precisionmechsd.com",
+      "contract_start_date": "2029-03-12",
+      "contract_expiration_date": "2044-03-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D004G/47QSMS24D004G_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D004G&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "PROFESSIONAL AIR FILTER SERVICE LLC",
+      "contract_number": "47QSMS25D00CK",
+      "vendor_uei": "XBUFJMKESP75",
+      "company_address": "320 S MAIN",
+      "company_city": "BENTON",
+      "company_state": "AR",
+      "company_zip": "72015-4334",
+      "primary_contact_phone": "5016813744",
+      "primary_contact_email": "tim@timferrell.net",
+      "website": "http://proairfilter.com",
+      "contract_start_date": "2030-09-24",
+      "contract_expiration_date": "2045-09-24",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "RAM ENGINEERING SOLUTIONS CORP",
+      "contract_number": "GS-07F-0590X",
+      "vendor_uei": "TF7EMT2QLN53",
+      "company_address": "140 E RIDGEWOOD AVE STE 415",
+      "company_city": "PARAMUS",
+      "company_state": "NJ",
+      "company_zip": "07652-3915",
+      "primary_contact_phone": "2017035020",
+      "primary_contact_email": "sales@ram-engineering.com",
+      "website": "http://www.ram-engineering.com",
+      "contract_start_date": "2026-06-14",
+      "contract_expiration_date": "2031-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0590X/GS07F0590X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0590X&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "SCHWAB-VOLLHABER-LUBRATT INC",
+      "contract_number": "47QSMS25D0001",
+      "vendor_uei": "K7GHTU6UX3D3",
+      "company_address": "2920 CENTRE POINTE DR",
+      "company_city": "SAINT PAUL",
+      "company_state": "MN",
+      "company_zip": "55113-1182",
+      "primary_contact_phone": "6124682031",
+      "primary_contact_email": "duaner@svl.com",
+      "website": "www.svl.com",
+      "contract_start_date": "2029-09-30",
+      "contract_expiration_date": "2044-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "SECURITY SOLUTIONS TECHNOLOGY, LLC",
+      "contract_number": "GS-35F-387DA",
+      "vendor_uei": "GAV6G5DA9T43",
+      "company_address": "4236 PEAR PLAIN LN",
+      "company_city": "MACHIPONGO",
+      "company_state": "VA",
+      "company_zip": "23405-2502",
+      "primary_contact_phone": "3012735620",
+      "primary_contact_email": "cfloyd@securitysolutionstechnology.com",
+      "website": "http://www.securitysolutionstechnology.com",
+      "contract_start_date": "2026-06-28",
+      "contract_expiration_date": "2036-06-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F387DA/GS35F387DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-387DA&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "SRI GROUP, LLC",
+      "contract_number": "GS-35F-250GA",
+      "vendor_uei": "E7BNWJMASLF5",
+      "company_address": "14755 NW 11TH PL",
+      "company_city": "NEWBERRY",
+      "company_state": "FL",
+      "company_zip": "32669-2970",
+      "primary_contact_phone": "2023519495",
+      "primary_contact_email": "jwh@srigrpllc.com",
+      "website": "http://www.srigrpllc.com/",
+      "contract_start_date": "2027-02-20",
+      "contract_expiration_date": "2037-02-20",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS35F250GA/GS35F250GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-35F-250GA&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "STERILIZ, LLC",
+      "contract_number": "GS-07F-193BA",
+      "vendor_uei": "LJK6VJYLG9V5",
+      "company_address": "2580 BAIRD RD",
+      "company_city": "PENFIELD",
+      "company_state": "NY",
+      "company_zip": "14625-2333",
+      "primary_contact_phone": "5854696188",
+      "primary_contact_email": "steve@steriliz.us",
+      "website": "http://www.rduvc.com",
+      "contract_start_date": "2029-04-09",
+      "contract_expiration_date": "2034-04-09",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F193BA/GS07F193BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-193BA&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "SURFACIDE, LLC",
+      "contract_number": "47QSWA23D002C",
+      "vendor_uei": "SKLJHJWJK2D4",
+      "company_address": "W226N918 NORTHMOUND DR STE 300",
+      "company_city": "WAUKESHA",
+      "company_state": "WI",
+      "company_zip": "53186-1705",
+      "primary_contact_phone": "6308619000",
+      "primary_contact_email": "gunner@surfacide.com",
+      "website": "http://www.surfacide.com",
+      "contract_start_date": "2028-01-14",
+      "contract_expiration_date": "2043-01-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D002C/47QSWA23D002C_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QSWA23D002C/pricelist_47QSWA23D002C.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D002C&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "THE H.A.B.I.T.S GROUP LLC",
+      "contract_number": "47QSWA22D0086",
+      "vendor_uei": "LRKAGNZB7P26",
+      "company_address": "6448 E HIGHWAY 290 STE B106",
+      "company_city": "AUSTIN",
+      "company_state": "TX",
+      "company_zip": "78723-1038",
+      "primary_contact_phone": "15127893108",
+      "primary_contact_email": "government@thehabitsgroup.net",
+      "website": "http://www.thehabitsgroup.net",
+      "contract_start_date": "2027-08-16",
+      "contract_expiration_date": "2042-08-16",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__27": "8a",
+        "unnamed__28": "8aS",
+        "unnamed__29": "Jul 21, 2033",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0086/47QSWA22D0086_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0086&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "THE MACLEAN GROUP LLC",
+      "contract_number": "47QSWA22D000M",
+      "vendor_uei": "DAM9QJJ7FTL4",
+      "company_address": "2233 WATT AVE STE 296",
+      "company_city": "SACRAMENTO",
+      "company_state": "CA",
+      "company_zip": "95825-0570",
+      "primary_contact_phone": "9199152877",
+      "primary_contact_email": "nmason@macleanhealth.com",
+      "website": "http://www.themacleangroup.net",
+      "contract_start_date": "2026-10-26",
+      "contract_expiration_date": "2041-10-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D000M/47QSWA22D000M_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D000M&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "TL SERVICES, INC.",
+      "contract_number": "GS-21F-0185W",
+      "vendor_uei": "PKY8AMMMHL38",
+      "company_address": "2922 S FALKENBURG RD",
+      "company_city": "RIVERVIEW",
+      "company_state": "FL",
+      "company_zip": "33578-2554",
+      "primary_contact_phone": "8136412730",
+      "primary_contact_email": "julia.pringle@tlservices.com",
+      "website": "http://www.tlservices.com",
+      "contract_start_date": "2030-07-01",
+      "contract_expiration_date": "2030-07-01",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0185W/GS21F0185W_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/GS-21F-0185W/pricelist_GS-21F-0185W.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0185W&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "USVETSERV, LLC",
+      "contract_number": "47QSWA22D0012",
+      "vendor_uei": "FJJXT471UM24",
+      "company_address": "355 ENGLISH OAK RD",
+      "company_city": "SIMPSONVILLE",
+      "company_state": "SC",
+      "company_zip": "29681-5106",
+      "primary_contact_phone": "8642169881",
+      "primary_contact_email": "MarcBrewer@USVetServ.com",
+      "website": "http://www.USVetServ.com",
+      "contract_start_date": "2026-11-07",
+      "contract_expiration_date": "2041-11-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA22D0012/47QSWA22D0012_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA22D0012&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "UTS SYSTEMS LLC",
+      "contract_number": "47QSMS25D0074",
+      "vendor_uei": "ZLF3GCZELC32",
+      "company_address": "6051 N LEE HWY",
+      "company_city": "FAIRFIELD",
+      "company_state": "VA",
+      "company_zip": "24435-2505",
+      "primary_contact_phone": "5404611113",
+      "primary_contact_email": "renee.goodbar@uts-systems.com",
+      "website": "http://www.uts-systems.com/",
+      "contract_start_date": "2030-04-14",
+      "contract_expiration_date": "2045-04-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0074/47QSMS25D0074_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0074&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "UV PARTNERS INC",
+      "contract_number": "47QSMS25D009U",
+      "vendor_uei": "PN5KBFRMJG14",
+      "company_address": "233 WASHINGTON AVE",
+      "company_city": "GRAND HAVEN",
+      "company_state": "MI",
+      "company_zip": "49417-1374",
+      "primary_contact_phone": "6164026972",
+      "primary_contact_email": "nathan.utz@uvangel.com",
+      "website": "www.uvangel.com",
+      "contract_start_date": "2030-06-23",
+      "contract_expiration_date": "2045-06-23",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "address_2": "STE L1",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "VECTRUS SYSTEMS LLC",
+      "contract_number": "47QSHA21D000Z",
+      "vendor_uei": "RRFJZGASZJ41",
+      "company_address": "2424 GARDEN OF THE GODS RD STE 3",
+      "company_city": "COLORADO SPRINGS",
+      "company_state": "CO",
+      "company_zip": "80919-3143",
+      "primary_contact_phone": "7195913600",
+      "primary_contact_email": "alison.allen@vectrus.com",
+      "website": "http://www.vectrus.com",
+      "contract_start_date": "2031-02-07",
+      "contract_expiration_date": "2041-02-07",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA21D000Z/47QSHA21D000Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA21D000Z&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "VETERAN INFRASTRUCTURE LLC",
+      "contract_number": "47QSMS25D0080",
+      "vendor_uei": "WCGKRCMH6LQ9",
+      "company_address": "7095 MILFORD INDUSTRIAL RD",
+      "company_city": "PIKESVILLE",
+      "company_state": "MD",
+      "company_zip": "21208-6013",
+      "primary_contact_phone": "4438002350",
+      "primary_contact_email": "Support@veteraninfrastructure.com",
+      "website": "http://www.veteraninfrastructure.com",
+      "contract_start_date": "2030-04-28",
+      "contract_expiration_date": "2045-04-28",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS25D0080/47QSMS25D0080_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS25D0080&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "WILLETT CONSTRUCTION SERVICES, INC.",
+      "contract_number": "47QSWA23D005X",
+      "vendor_uei": "DBHHM5K7TJ45",
+      "company_address": "4570 PRINTERS CT",
+      "company_city": "WHITE PLAINS",
+      "company_state": "MD",
+      "company_zip": "20695-3119",
+      "primary_contact_phone": "3016459638",
+      "primary_contact_email": "ckwillett@willettcsinc.com",
+      "website": "http://www.willettcs.com",
+      "contract_start_date": "2028-05-10",
+      "contract_expiration_date": "2043-05-10",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D005X/47QSWA23D005X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D005X&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "WRIGHT & WRIGHT MACHINERY CO., INC.",
+      "contract_number": "GS-07F-0564W",
+      "vendor_uei": "GZSTMY7E9AJ3",
+      "company_address": "49 MICHIGAN AVE",
+      "company_city": "MONTICELLO",
+      "company_state": "KY",
+      "company_zip": "42633-1200",
+      "primary_contact_phone": "6063485828",
+      "primary_contact_email": "wright@wright.org",
+      "website": "http://www.wrightandwrightmachinery.net",
+      "contract_start_date": "2030-07-27",
+      "contract_expiration_date": "2030-07-27",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0564W/GS07F0564W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0564W&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "XENEX DISINFECTION SERVICES INC.",
+      "contract_number": "GS-07F-0587Y",
+      "vendor_uei": "DH6HDJRM1K27",
+      "company_address": "1074 ARION CIR",
+      "company_city": "SAN ANTONIO",
+      "company_state": "TX",
+      "company_zip": "78216-3085",
+      "primary_contact_phone": "2108532827",
+      "primary_contact_email": "nita.schweitzer@xenex.com",
+      "website": "http://www.xenex.com",
+      "contract_start_date": "2027-09-20",
+      "contract_expiration_date": "2032-09-20",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "address_2": "STE 116",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0587Y/GS07F0587Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0587Y&sin=333415HVAC&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "333415HVAC"
+      ],
+      "primary_sin": "333415HVAC",
+      "schedule_number": "MAS",
+      "company_name": "ZOGICS LLC",
+      "contract_number": "GS-07F-0560W",
+      "vendor_uei": "YX7QAJWVLEN1",
+      "company_address": "309 PITTSFIELD RD",
+      "company_city": "LENOX",
+      "company_state": "MA",
+      "company_zip": "01240-2444",
+      "primary_contact_phone": "8886230088",
+      "primary_contact_email": "gsa@zogics.com",
+      "website": "http://www.zogics.com",
+      "contract_start_date": "2030-07-31",
+      "contract_expiration_date": "2030-07-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Industrial Products",
+        "source": "MAS",
+        "category": "333415HVAC ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0560W/GS07F0560W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0560W&sin=333415HVAC&src=elib&app=cat"
+      }
+    }
+  ]
+}

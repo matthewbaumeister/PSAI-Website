@@ -1,0 +1,120 @@
+{
+  "sin_code": "541519PKI",
+  "file_name": "GSA_MAS_541519PKI_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:46.042142",
+  "sheets": {
+    "2025_11_05_11_18_04": {
+      "row_count": 8,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "541519PKI"
+      ],
+      "primary_sin": "541519PKI",
+      "schedule_number": "MAS",
+      "company_name": "ENTRUST CORPORATION",
+      "contract_number": "47QTCA20D007M",
+      "vendor_uei": "HWMGGWPNM6Y3",
+      "company_address": "1187 PARK PL",
+      "company_city": "SHAKOPEE",
+      "company_state": "MN",
+      "company_zip": "55379-3817",
+      "primary_contact_phone": "6132702896",
+      "primary_contact_email": "joe.wong@entrust.com",
+      "website": "http://www.entrust.com",
+      "contract_start_date": "2030-03-19",
+      "contract_expiration_date": "2040-03-19",
+      "additional_data": {
+        "large_category": "Information Technology ",
+        "sub_category": " IT Solutions",
+        "source": "MAS",
+        "category": "541519PKI ",
+        "unnamed__20": "o",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA20D007M/47QTCA20D007M_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QTCA20D007M/pricelist_47QTCA20D007M.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA20D007M&sin=541519PKI&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "541519PKI"
+      ],
+      "primary_sin": "541519PKI",
+      "schedule_number": "MAS",
+      "company_name": "WIDEPOINT CYBERSECURITY SOLUTIONS CORP",
+      "contract_number": "47QTCA19D009F",
+      "vendor_uei": "YC7GNUHMTLX6",
+      "company_address": "11250 WAPLES MILL RD",
+      "company_city": "FAIRFAX",
+      "company_state": "VA",
+      "company_zip": "22030-7550",
+      "primary_contact_phone": "7033495644",
+      "primary_contact_email": "lsredojevic-giron@widepoint.com",
+      "website": "http://www.widepoint.com",
+      "contract_start_date": "2029-04-03",
+      "contract_expiration_date": "2039-04-03",
+      "additional_data": {
+        "large_category": "Information Technology ",
+        "sub_category": " IT Solutions",
+        "source": "MAS",
+        "category": "541519PKI ",
+        "unnamed__20": "o",
+        "unnamed__39": "Y",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QTCA19D009F/47QTCA19D009F_online.htm",
+        "price_list": "https://catalog-library-prod.s3-fips.us-east-1.amazonaws.com/pricelist/47QTCA19D009F/pricelist_47QTCA19D009F.xlsx",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QTCA19D009F&sin=541519PKI&src=elib&app=cat"
+      }
+    }
+  ]
+}

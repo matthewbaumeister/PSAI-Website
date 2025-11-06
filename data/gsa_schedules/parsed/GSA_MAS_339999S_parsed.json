@@ -1,0 +1,893 @@
+{
+  "sin_code": "339999S",
+  "file_name": "GSA_MAS_339999S_20251105.xlsx",
+  "parsed_date": "2025-11-05T11:59:16.256892",
+  "sheets": {
+    "2025_11_05_11_12_44": {
+      "row_count": 34,
+      "column_count": 44,
+      "columns": [
+        "Large Category",
+        "Sub Category",
+        "Source",
+        "Category",
+        "Vendor",
+        "Contact #",
+        "Closed \n for \n New \n Award",
+        "Address 1",
+        "Address 2",
+        "City",
+        "State",
+        "Zip",
+        "Country",
+        "Phone",
+        "Email",
+        "URL",
+        "Current Option Period End Date",
+        "Ultimate Contract End Date",
+        "SAM UEI",
+        "Socio-Economic Indicators \n (only relative codes will appear for a contract)",
+        "Unnamed: 20",
+        "Unnamed: 21",
+        "Unnamed: 22",
+        "Unnamed: 23",
+        "Unnamed: 24",
+        "Unnamed: 25",
+        "Unnamed: 26",
+        "Unnamed: 27",
+        "Unnamed: 28",
+        "Unnamed: 29",
+        "Unnamed: 30",
+        "Unnamed: 31",
+        "Unnamed: 32",
+        "Unnamed: 33",
+        "Unnamed: 34",
+        "Unnamed: 35",
+        "Unnamed: 36",
+        "Unnamed: 37",
+        "Unnamed: 38",
+        "Unnamed: 39",
+        "Unnamed: 40",
+        "T&Cs",
+        "Price List",
+        "View Catalog"
+      ]
+    }
+  },
+  "contractors": [
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "ABC CONCRETE MFG. CO., INC.",
+      "contract_number": "47QSMS24D002X",
+      "vendor_uei": "DM3LEUZL9KT3",
+      "company_address": "1004 S LAKE ST",
+      "company_city": "FARMINGTON",
+      "company_state": "NM",
+      "company_zip": "87401-5660",
+      "primary_contact_phone": "5053258289",
+      "primary_contact_email": "JULIE@ABCCONCRETEMFG.COM",
+      "website": "http://www.abcconcretemfg.com",
+      "contract_start_date": "2029-02-14",
+      "contract_expiration_date": "2044-02-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D002X/47QSMS24D002X_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D002X&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "ASA ENVIRONMENTAL PRODUCTS INC",
+      "contract_number": "GS-07F-9521S",
+      "vendor_uei": "NGMSB6M2QKA4",
+      "company_address": "22 BAYVIEW AVE",
+      "company_city": "STONINGTON",
+      "company_state": "CT",
+      "company_zip": "06378-1169",
+      "primary_contact_phone": "8605353931",
+      "primary_contact_email": "jeff@ASA-environmental.com",
+      "website": "http://www.asa-environmental.com",
+      "contract_start_date": "2026-06-14",
+      "contract_expiration_date": "2026-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "address_2": "STE 46",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9521S/GS07F9521S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9521S&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "BOTTOM LINE MILITARY SALES, LLC",
+      "contract_number": "GS-07F-9624S",
+      "vendor_uei": "EEXWDLL9W2H1",
+      "company_address": "6220 MOOREFIELD MEMORIAL HWY",
+      "company_city": "LIBERTY",
+      "company_state": "SC",
+      "company_zip": "29657-9272",
+      "primary_contact_phone": "18882115691",
+      "primary_contact_email": "bottomline2000@charter.net",
+      "website": "http://www.bottomline2000.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2026-08-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9624S/GS07F9624S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9624S&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "CREATIVE SIGN SERVICE INC",
+      "contract_number": "47QSMA20D08NH",
+      "vendor_uei": "JJFVSN3MUNN5",
+      "company_address": "11460 EDMONSTON RD # B",
+      "company_city": "BELTSVILLE",
+      "company_state": "MD",
+      "company_zip": "20705-1731",
+      "primary_contact_phone": "3013453700",
+      "primary_contact_email": "CREATIVE@CREATIVESIGNAGE.COM",
+      "website": "http://WWW.CREATIVESIGNAGE.COM",
+      "contract_start_date": "2029-11-21",
+      "contract_expiration_date": "2039-11-21",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA20D08NH/47QSMA20D08NH_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA20D08NH&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "FEDERAL CONTRACTS LLC",
+      "contract_number": "GS-03F-113DA",
+      "vendor_uei": "TK67EL9NPMD9",
+      "company_address": "12918 N NEBRASKA AVE",
+      "company_city": "TAMPA",
+      "company_state": "FL",
+      "company_zip": "33612-4446",
+      "primary_contact_phone": "8136310000",
+      "primary_contact_email": "sales@federalcontractscorp.com",
+      "website": "http://www.federalcontractscorp.com",
+      "contract_start_date": "2026-06-12",
+      "contract_expiration_date": "2036-06-12",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__30": "h",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F113DA/GS03F113DA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-113DA&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "FIRST VANGUARD RENTALS & SALES, INC.",
+      "contract_number": "GS-03F-088GA",
+      "vendor_uei": "N3J9S8NEFG46",
+      "company_address": "1229 WESTERN ST",
+      "company_city": "FAIRFIELD",
+      "company_state": "CA",
+      "company_zip": "94533-2409",
+      "primary_contact_phone": "7076732165",
+      "primary_contact_email": "mspalding@1stvg.com",
+      "website": "http://www.1stvg.com",
+      "contract_start_date": "2027-08-31",
+      "contract_expiration_date": "2037-08-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "address_2": "STE 2",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F088GA/GS03F088GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-088GA&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "GMS INDUSTRIAL SUPPLY, INC.",
+      "contract_number": "GS-07F-0369V",
+      "vendor_uei": "U7U2XCEKCS66",
+      "company_address": "212 DENN LN",
+      "company_city": "VIRGINIA BEACH",
+      "company_state": "VA",
+      "company_zip": "23462-2506",
+      "primary_contact_phone": "7574731467",
+      "primary_contact_email": "sales@gmsindustrialsupply.com",
+      "website": "http://www.gmsindustrialsupply.com",
+      "contract_start_date": "2029-06-14",
+      "contract_expiration_date": "2029-06-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0369V/GS07F0369V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0369V&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "GOVERNMENT MARKETING AND PROCUREMENT, LLC",
+      "contract_number": "GS-07F-187GA",
+      "vendor_uei": "E3W3M92ASRQ5",
+      "company_address": "13350 RANCH ROAD 12",
+      "company_city": "WIMBERLEY",
+      "company_state": "TX",
+      "company_zip": "78676-5075",
+      "primary_contact_phone": "7033492990",
+      "primary_contact_email": "GSA@GMPGOV.COM",
+      "website": "http://www.gmpgov.com",
+      "contract_start_date": "2027-09-06",
+      "contract_expiration_date": "2037-09-06",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__25": "dv",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F187GA/GS07F187GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-187GA&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "IMPACT RECOVERY SYSTEMS, INC.",
+      "contract_number": "GS-07F-193GA",
+      "vendor_uei": "KMMCTCE2D8F2",
+      "company_address": "4955 STOUT DR",
+      "company_city": "SAN ANTONIO",
+      "company_state": "TX",
+      "company_zip": "78219-4333",
+      "primary_contact_phone": "2107364477",
+      "primary_contact_email": "ahernandez@impactrecovery.com",
+      "website": "http://www.impactrecovery.com/",
+      "contract_start_date": "2027-09-14",
+      "contract_expiration_date": "2037-09-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F193GA/GS07F193GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-193GA&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL COMMERCE & MARKETING CORP.",
+      "contract_number": "GS-03F-077CA",
+      "vendor_uei": "VC8JYG4AB7W5",
+      "company_address": "500 W OKLAHOMA AVE",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53207-2649",
+      "primary_contact_phone": "18007332870",
+      "primary_contact_email": "joelh@globalsupplyadvantage.com",
+      "website": "https://www.globalsupplyadvantage.com",
+      "contract_start_date": "2030-06-30",
+      "contract_expiration_date": "2035-06-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F077CA/GS03F077CA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-077CA&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "INTERNATIONAL CONSULTING, UNLTD.",
+      "contract_number": "47QSMS24D009Z",
+      "vendor_uei": "LHP2SE2CHCF9",
+      "company_address": "13045 PARK ST",
+      "company_city": "SANTA FE SPRINGS",
+      "company_state": "CA",
+      "company_zip": "90670-4005",
+      "primary_contact_phone": "6198519582",
+      "primary_contact_email": "karen@knsindustrialsupply.com",
+      "website": "http://WWW.KNSINDUSTRIALSUPPLY.COM",
+      "contract_start_date": "2029-07-15",
+      "contract_expiration_date": "2044-07-15",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__21": "w",
+        "unnamed__22": "wo",
+        "unnamed__23": "ew",
+        "unnamed__25": "dv",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D009Z/47QSMS24D009Z_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D009Z&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "ITIN SCALE CO., INC.",
+      "contract_number": "GS-07F-9655S",
+      "vendor_uei": "LDLEWZNA7FA8",
+      "company_address": "4802 GLENWOOD RD",
+      "company_city": "BROOKLYN",
+      "company_state": "NY",
+      "company_zip": "11234-1106",
+      "primary_contact_phone": "7183365900",
+      "primary_contact_email": "steve@itinscales.com",
+      "website": "http://www.itinscales.com",
+      "contract_start_date": "2026-08-31",
+      "contract_expiration_date": "2026-08-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F9655S/GS07F9655S_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-9655S&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "K & R HOLDINGS INC",
+      "contract_number": "47QSMS24D00A9",
+      "vendor_uei": "YH98MT1DGH21",
+      "company_address": "2322 W DETROIT PL",
+      "company_city": "CHANDLER",
+      "company_state": "AZ",
+      "company_zip": "85224-4124",
+      "primary_contact_phone": "4802362682",
+      "primary_contact_email": "wayne@luminousegress.com",
+      "website": "http://www.luminousegress.com",
+      "contract_start_date": "2029-07-22",
+      "contract_expiration_date": "2044-07-22",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D00A9/47QSMS24D00A9_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D00A9&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "LANDSCAPE FORMS INC",
+      "contract_number": "GS-03F-0008Y",
+      "vendor_uei": "VN24A1EP8276",
+      "company_address": "7800 E MICHIGAN AVE",
+      "company_city": "KALAMAZOO",
+      "company_state": "MI",
+      "company_zip": "49048-9506",
+      "primary_contact_phone": "8005212546",
+      "primary_contact_email": "contracta@landscapeforms.com",
+      "website": "http://www.landscapeforms.com",
+      "contract_start_date": "2026-09-30",
+      "contract_expiration_date": "2031-09-30",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0008Y/GS03F0008Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0008Y&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "LAVI INDUSTRIES, LLC",
+      "contract_number": "47QSMA22D08P4",
+      "vendor_uei": "GNKEAY95RPN7",
+      "company_address": "5885 E HOUSTON ST",
+      "company_city": "SAN ANTONIO",
+      "company_state": "TX",
+      "company_zip": "78220-1909",
+      "primary_contact_phone": "6612193115",
+      "primary_contact_email": "deverab@lavi.com",
+      "website": "http://www.lavi.com",
+      "contract_start_date": "2027-03-02",
+      "contract_expiration_date": "2042-03-02",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA22D08P4/47QSMA22D08P4_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA22D08P4&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "MILLENIUM PRODUCTS, INC",
+      "contract_number": "GS-07F-0031W",
+      "vendor_uei": "H1HSJPFM78R5",
+      "company_address": "3131 MORRIS ST N",
+      "company_city": "SAINT PETERSBURG",
+      "company_state": "FL",
+      "company_zip": "33713-2936",
+      "primary_contact_phone": "8889017430",
+      "primary_contact_email": "gsa@milleniumproducts.net",
+      "website": "http://www.milleniumproducts.net",
+      "contract_start_date": "2029-10-04",
+      "contract_expiration_date": "2029-10-04",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0031W/GS07F0031W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0031W&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "MONO MACHINES LLC",
+      "contract_number": "47QSEA18D008C",
+      "vendor_uei": "C4S6Z1ALKEP1",
+      "company_address": "2455 DILLON RD",
+      "company_city": "WHITEFISH",
+      "company_state": "MT",
+      "company_zip": "59937-8277",
+      "primary_contact_phone": "8005921306",
+      "primary_contact_email": "sales@supplychimp.com",
+      "website": "https://www.supplychimp.com/",
+      "contract_start_date": "2028-09-27",
+      "contract_expiration_date": "2038-09-27",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSEA18D008C/47QSEA18D008C_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSEA18D008C&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "OREGON MOUNTAIN COMMUNITY INC",
+      "contract_number": "GS-03F-0048W",
+      "vendor_uei": "LM5KDC6EGJL6",
+      "company_address": "1120 N HAYDEN MEADOWS DR",
+      "company_city": "PORTLAND",
+      "company_state": "OR",
+      "company_zip": "97217-7689",
+      "primary_contact_phone": "5032271038",
+      "primary_contact_email": "govt.sales@omcgear.com",
+      "website": "http://www.omcgear.com",
+      "contract_start_date": "2029-12-08",
+      "contract_expiration_date": "2029-12-08",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "address_2": "STE A",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F0048W/GS03F0048W_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-0048W&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "OTW HOLDING COMPANY",
+      "contract_number": "GS-03F-005BA",
+      "vendor_uei": "G5W6Z9DM63C6",
+      "company_address": "1698 S GRAMERCY RD STE B",
+      "company_city": "SALT LAKE CITY",
+      "company_state": "UT",
+      "company_zip": "84104-4889",
+      "primary_contact_phone": "8014414703",
+      "primary_contact_email": "Eric@otwsafety.com",
+      "website": "http://www.otwsafety.com",
+      "contract_start_date": "2028-10-14",
+      "contract_expiration_date": "2033-10-14",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F005BA/GS03F005BA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-005BA&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "P & M SIGNS INC",
+      "contract_number": "47QSMA19D08P0",
+      "vendor_uei": "DHQWHFNMCEJ8",
+      "company_address": "202 E BROADWAY",
+      "company_city": "MOUNTAINAIR",
+      "company_state": "NM",
+      "company_zip": "87036",
+      "primary_contact_phone": "5058472850",
+      "primary_contact_email": "general@pmsignsinc.com",
+      "website": "http://www.pmsignsinc.com",
+      "contract_start_date": "2029-01-27",
+      "contract_expiration_date": "2039-01-27",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08P0/47QSMA19D08P0_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08P0&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "SILVERBACK SAFETY & TRAINING SOLUTIONS, INC.",
+      "contract_number": "47QSWA23D0097",
+      "vendor_uei": "MR27KU86DCE5",
+      "company_address": "3075 TOWNSHIP ROAD 217 NE",
+      "company_city": "NEW LEXINGTON",
+      "company_state": "OH",
+      "company_zip": "43764-9585",
+      "primary_contact_phone": "7407522956",
+      "primary_contact_email": "troy@silverbacksafety.com",
+      "website": "http://www.silverbacksafety.com",
+      "contract_start_date": "2028-08-21",
+      "contract_expiration_date": "2043-08-21",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D0097/47QSWA23D0097_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D0097&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "SONCO WORLDWIDE INC",
+      "contract_number": "47QSMS24D0019",
+      "vendor_uei": "GU94NBABPMV3",
+      "company_address": "9011 E HAMPTON DRIVE",
+      "company_city": "CAPITOL HEIGHTS",
+      "company_state": "MD",
+      "company_zip": "20743-3808",
+      "primary_contact_phone": "2407285754",
+      "primary_contact_email": "ahession@sonco.com",
+      "website": "http://www.sonco.com",
+      "contract_start_date": "2028-12-13",
+      "contract_expiration_date": "2043-12-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMS24D0019/47QSMS24D0019_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMS24D0019&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "SPORTAFLEX LLC",
+      "contract_number": "GS-03F-067GA",
+      "vendor_uei": "CLPCMJFWNH84",
+      "company_address": "1715 N. ROSEMONT SUITE 200",
+      "company_city": "MESA",
+      "company_state": "AZ",
+      "company_zip": "85205",
+      "primary_contact_phone": "4804602647",
+      "primary_contact_email": "tgoodin@sportaflex.com",
+      "website": "http://www.sportaflex.com",
+      "contract_start_date": "2027-05-09",
+      "contract_expiration_date": "2037-05-09",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__24": "v",
+        "unnamed__26": "d",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS03F067GA/GS03F067GA_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-03F-067GA&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "SUPPLYCORE LLC",
+      "contract_number": "47QSHA21D0004",
+      "vendor_uei": "HTYJC5P9ZMH5",
+      "company_address": "303 N MAIN ST STE 800",
+      "company_city": "ROCKFORD",
+      "company_state": "IL",
+      "company_zip": "61101",
+      "primary_contact_phone": "8159971667",
+      "primary_contact_email": "Nate.Johnson@supplycore.com",
+      "website": "http://www.SUPPLYCORE.COM",
+      "contract_start_date": "2030-10-13",
+      "contract_expiration_date": "2040-10-13",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSHA21D0004/47QSHA21D0004_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSHA21D0004&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "TRAFFIC & PARKING CONTROL CO., LLC",
+      "contract_number": "GS-07F-0234U",
+      "vendor_uei": "KP45MJHU52K9",
+      "company_address": "5100 W BROWN DEER RD",
+      "company_city": "MILWAUKEE",
+      "company_state": "WI",
+      "company_zip": "53223-2322",
+      "primary_contact_phone": "2628147338",
+      "primary_contact_email": "ANDREW@TAPCONET.COM",
+      "website": "https://tapconet.com",
+      "contract_start_date": "2028-02-29",
+      "contract_expiration_date": "2028-02-29",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS07F0234U/GS07F0234U_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-07F-0234U&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "TRAFFIC SAFETY SERVICE LLC",
+      "contract_number": "47QSWA23D002V",
+      "vendor_uei": "PFNMF2KZCUN8",
+      "company_address": "601 HADLEY RD",
+      "company_city": "SOUTH PLAINFIELD",
+      "company_state": "NJ",
+      "company_zip": "07080-2465",
+      "primary_contact_phone": "9085614800",
+      "primary_contact_email": "mp@trafficsafetyservice.com",
+      "website": "http://www.trafficsafetyservice.com",
+      "contract_start_date": "2028-01-31",
+      "contract_expiration_date": "2043-01-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSWA23D002V/47QSWA23D002V_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSWA23D002V&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "VISIONTRON CORP",
+      "contract_number": "47QSMA19D08QC",
+      "vendor_uei": "C5KFEZKS7DA8",
+      "company_address": "925 WAVERLY AVE",
+      "company_city": "HOLTSVILLE",
+      "company_state": "NY",
+      "company_zip": "11742-1109",
+      "primary_contact_phone": "6315828600",
+      "primary_contact_email": "donnag@visiontron.com",
+      "website": "http://www.visiontron.com",
+      "contract_start_date": "2029-06-26",
+      "contract_expiration_date": "2039-06-26",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/47QSMA19D08QC/47QSMA19D08QC_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=47QSMA19D08QC&sin=339999S&src=elib&app=cat"
+      }
+    },
+    {
+      "sin_codes": [
+        "339999S"
+      ],
+      "primary_sin": "339999S",
+      "schedule_number": "MAS",
+      "company_name": "WRIGHT TOOL COMPANY, LLC",
+      "contract_number": "GS-21F-0106Y",
+      "vendor_uei": "MF46EHTMKJJ5",
+      "company_address": "24680 MOUND RD",
+      "company_city": "WARREN",
+      "company_state": "MI",
+      "company_zip": "48091-2036",
+      "primary_contact_phone": "2486436666",
+      "primary_contact_email": "Gmoore@wrighttoolcompany.com",
+      "website": "http://www.wrighttoolcompany.com",
+      "contract_start_date": "2027-05-31",
+      "contract_expiration_date": "2032-05-31",
+      "additional_data": {
+        "large_category": "Industrial Products and Services ",
+        "sub_category": " Fire/Rescue/Safety/Environmental Protection Equipment",
+        "source": "MAS",
+        "category": "339999S ",
+        "socio_economic_indicators____only_relative_codes_will_appear_for_a_contract_": "s",
+        "unnamed__40": "Y",
+        "t_cs": "https://www.gsaadvantage.gov/ref_text/GS21F0106Y/GS21F0106Y_online.htm",
+        "view_catalog": "https://www.gsaelibrary.gsa.gov/ElibMain/advRedirect.do?contract=GS-21F-0106Y&sin=339999S&src=elib&app=cat"
+      }
+    }
+  ]
+}
