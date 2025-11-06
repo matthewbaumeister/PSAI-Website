@@ -43,7 +43,7 @@ async function getEnrichmentStats() {
     totalCompanies: totalCompanies || 0,
     enrichedCompanies: enrichedCompanies || 0,
     publicCompanies: publicCompanies || 0,
-    percentEnriched: totalCompanies ? ((enrichedCompanies / totalCompanies) * 100).toFixed(1) : 0,
+    percentEnriched: totalCompanies ? (((enrichedCompanies || 0) / totalCompanies) * 100).toFixed(1) : 0,
   };
 }
 
