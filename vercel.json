@@ -1,28 +1,3 @@
 {
-  "crons": [
-    {
-      "path": "/api/cron/scrape-fpds",
-      "schedule": "0 12 * * *"
-    },
-    {
-      "path": "/api/cron/scrape-dod-news",
-      "schedule": "15 12 * * *"
-    },
-    {
-      "path": "/api/cron/scrape-sam-gov",
-      "schedule": "30 12 * * *"
-    },
-    {
-      "path": "/api/cron/sbir-scraper",
-      "schedule": "45 12 * * *"
-    },
-    {
-      "path": "/api/cron/scrape-congress-gov",
-      "schedule": "30 11 * * *"
-    },
-    {
-      "path": "/api/cron/army-innovation-scraper",
-      "schedule": "0 13 * * *"
-    }
-  ]
+  "crons": []
 }

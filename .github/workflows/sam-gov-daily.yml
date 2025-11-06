@@ -1,0 +1,53 @@
+name: SAM.gov Opportunities Daily Scraper
+
+on:
+  schedule:
+    # Runs daily at 12:30 PM UTC (8:30 AM EST / 5:30 AM PST)
+    - cron: '30 12 * * *'
+  
+  workflow_dispatch:
+  
+  repository_dispatch:
+    types: [sam-gov-daily]
+
+jobs:
+  scrape-sam-gov:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run SAM.gov Daily Scraper
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
+          SAM_GOV_API_KEY_2: ${{ secrets.SAM_GOV_API_KEY_2 }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting SAM.gov daily scraper..."
+          echo "Checking last 3 days for new opportunities"
+          
+          npx tsx scripts/run-sam-gov-daily.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sam-gov-scraper-logs-${{ github.run_number }}
+          path: logs/sam-*.log
+          retention-days: 7
+

@@ -1,0 +1,54 @@
+name: DOD Contract News Daily Scraper
+
+on:
+  schedule:
+    # Runs daily at 12:15 PM UTC (8:15 AM EST / 5:15 AM PST)
+    - cron: '15 12 * * *'
+  
+  workflow_dispatch:
+  
+  repository_dispatch:
+    types: [dod-news-daily]
+
+jobs:
+  scrape-dod-news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install Playwright
+        run: npx playwright install chromium
+      
+      - name: Run DOD News Daily Scraper
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting DOD contract news scraper..."
+          echo "Scraping yesterday's contract news releases"
+          
+          npx tsx scripts/run-dod-news-daily.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dod-news-scraper-logs-${{ github.run_number }}
+          path: logs/dod-*.log
+          retention-days: 7
+

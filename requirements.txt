@@ -1,0 +1,24 @@
+# Congressional Trades Scraper Python Dependencies
+capitolgains>=0.1.0
+playwright>=1.40.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+supabase>=2.0.0
+
+# PDF Parsing Dependencies
+pdfplumber>=0.10.0
+PyPDF2>=3.0.0
+pytesseract>=0.3.10
+pdf2image>=1.16.0
+Pillow>=10.0.0
+tabula-py>=2.8.0
+python-dateutil>=2.8.0
+
+# GSA/GWAC Scraper Dependencies
+pandas>=2.0.0
+openpyxl>=3.1.0
+pdfplumber>=0.10.0
+beautifulsoup4>=4.12.0
+supabase>=2.0.0
+lxml>=4.9.0
+

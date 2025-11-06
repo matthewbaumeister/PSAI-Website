@@ -1,0 +1,79 @@
+name: GSA Schedules Monthly Update
+
+on:
+  schedule:
+    # Runs on 25th of every month at 2 AM UTC (after House/Senate trades)
+    - cron: '0 2 25 * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+  
+  # Allow trigger from admin page
+  repository_dispatch:
+    types: [gsa-schedules-monthly]
+
+jobs:
+  scrape-gsa-schedules:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # 6 hours max (this is a LARGE scrape!)
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Install Node dependencies
+        run: npm install
+      
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+      
+      - name: Create data directory
+        run: mkdir -p data/gsa_schedules
+      
+      - name: Run GSA Schedules Scraper
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting GSA Schedules monthly scraper..."
+          echo "This is a LARGE scrape that downloads ALL GSA MAS SIN contractor lists"
+          echo "Estimated time: 2-6 hours"
+          echo ""
+          echo "Step 1: Download Excel files from GSA eLibrary"
+          echo "Step 2: Parse Excel files"
+          echo "Step 3: Upload to Supabase"
+          echo ""
+          
+          npx tsx scripts/run-gsa-schedules-monthly.ts
+      
+      - name: Upload downloaded files (for debugging)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gsa-schedules-files
+          path: data/gsa_schedules/*.xlsx
+          retention-days: 7
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gsa-scraper-logs
+          path: logs/gsa-*.log
+          retention-days: 30
+

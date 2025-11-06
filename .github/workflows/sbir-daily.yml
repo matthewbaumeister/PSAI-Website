@@ -1,0 +1,51 @@
+name: DSIP/SBIR Opportunities Daily Scraper
+
+on:
+  schedule:
+    # Runs daily at 12:45 PM UTC (8:45 AM EST / 5:45 AM PST)
+    - cron: '45 12 * * *'
+  
+  workflow_dispatch:
+  
+  repository_dispatch:
+    types: [sbir-daily]
+
+jobs:
+  scrape-sbir:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run SBIR Daily Scraper
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting DSIP/SBIR daily scraper..."
+          echo "Scraping active SBIR/STTR opportunities"
+          
+          npx tsx scripts/run-sbir-daily.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbir-scraper-logs-${{ github.run_number }}
+          path: logs/sbir-*.log
+          retention-days: 7
+

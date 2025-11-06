@@ -89,7 +89,7 @@ export async function GET(request: NextRequest) {
         'army-innovation',
         'Army Innovation (XTECH)',
         '/api/cron/army-innovation-scraper',
-        '/api/army-innovation/test-cron',
+        '/api/admin/scrapers/trigger',
         async () => {
           const { data, error } = await supabase
             .from('army_innovation_scraper_log')
@@ -133,7 +133,7 @@ export async function GET(request: NextRequest) {
         'sam-gov',
         'SAM.gov Opportunities',
         '/api/cron/scrape-sam-gov',
-        null,
+        '/api/admin/scrapers/trigger',
         async () => {
           const { data, error } = await supabase
             .from('sam_gov_scraper_log')
@@ -172,7 +172,7 @@ export async function GET(request: NextRequest) {
         'fpds',
         'FPDS Contracts',
         '/api/cron/scrape-fpds',
-        null,
+        '/api/admin/scrapers/trigger',
         async () => {
           const { data, error } = await supabase
             .from('fpds_scraper_log')
@@ -211,7 +211,7 @@ export async function GET(request: NextRequest) {
         'congress',
         'Congress.gov Bills',
         '/api/cron/scrape-congress-gov',
-        null,
+        '/api/admin/scrapers/trigger',
         async () => {
           const { data, error } = await supabase
             .from('congress_scraper_log')
@@ -250,7 +250,7 @@ export async function GET(request: NextRequest) {
         'dod-news',
         'DoD Contract News',
         '/api/cron/scrape-dod-news',
-        null,
+        '/api/admin/scrapers/trigger',
         async () => {
           const { data, error } = await supabase
             .from('dod_news_scraper_log')
@@ -289,7 +289,7 @@ export async function GET(request: NextRequest) {
         'sbir',
         'DSIP Opportunities',
         '/api/cron/sbir-scraper',
-        null,
+        '/api/admin/scrapers/trigger',
         async () => {
           const { data, error } = await supabase
             .from('sbir_scraper_log')
@@ -318,6 +318,175 @@ export async function GET(request: NextRequest) {
             duration: data?.duration_seconds,
             errorMessage: data?.error_message,
             totalRowsInDb: totalRows || 0,
+            totalDataPoints
+          }
+        }
+      ),
+
+      // 7. ManTech Projects - Has scraper_log
+      getSafeScraperStatus(
+        'mantech',
+        'ManTech Projects',
+        '/api/cron/scrape-mantech',
+        '/api/admin/scrapers/trigger',
+        async () => {
+          const { data, error } = await supabase
+            .from('mantech_scraper_log')
+            .select('*')
+            .order('started_at', { ascending: false })
+            .limit(1)
+            .maybeSingle()
+
+          if (error) throw error
+
+          // Get total rows in database
+          const { count: totalRows } = await supabase
+            .from('mantech_projects')
+            .select('*', { count: 'exact', head: true })
+
+          const { count: companyCount } = await supabase
+            .from('mantech_company_mentions')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~40 fields per project + company mentions
+          const totalDataPoints = ((totalRows || 0) * 40) + (companyCount || 0)
+
+          return {
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.articles_found || 0,
+            recordsInserted: data?.projects_created || 0,
+            recordsUpdated: data?.projects_updated || 0,
+            errors: data?.articles_failed || 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalRows || 0,
+            totalDataPoints
+          }
+        }
+      ),
+
+      // 8. Congressional Stock Trades (House + Senate) - Has scraper_log
+      getSafeScraperStatus(
+        'congress-trades',
+        'Congressional Trades (House + Senate)',
+        '/api/cron/congressional-trades-monthly',
+        '/api/admin/scrapers/trigger',
+        async () => {
+          const { data, error } = await supabase
+            .from('congressional_trades_scraper_log')
+            .select('*')
+            .eq('scrape_type', 'monthly')
+            .order('started_at', { ascending: false })
+            .limit(1)
+            .maybeSingle()
+
+          if (error) throw error
+
+          // Get total rows in database (BOTH chambers)
+          const { count: totalRows } = await supabase
+            .from('congressional_stock_trades')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~20 fields per trade
+          const totalDataPoints = (totalRows || 0) * 20
+
+          return {
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.total_trades_found || 0,
+            recordsInserted: data?.new_trades_inserted || 0,
+            recordsUpdated: data?.trades_updated || 0,
+            errors: 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalRows || 0,
+            totalDataPoints
+          }
+        }
+      ),
+
+      // 9. GSA Schedule Contracts - Has scraper_log
+      getSafeScraperStatus(
+        'gsa-schedules',
+        'GSA Schedule Contracts (Full)',
+        '/api/cron/gsa-schedules-monthly',
+        '/api/admin/scrapers/trigger',
+        async () => {
+          const { data, error } = await supabase
+            .from('gsa_scraper_log')
+            .select('*')
+            .eq('scrape_type', 'monthly_full')
+            .order('started_at', { ascending: false })
+            .limit(1)
+            .maybeSingle()
+
+          if (error) throw error
+
+          // Get total rows in database
+          const { count: totalRows } = await supabase
+            .from('gsa_schedule_contracts')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~30 fields per contract
+          const totalDataPoints = (totalRows || 0) * 30
+
+          return {
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.contractors_parsed || 0,
+            recordsInserted: data?.records_inserted || 0,
+            recordsUpdated: 0,
+            errors: 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalRows || 0,
+            totalDataPoints
+          }
+        }
+      ),
+
+      // 10. Company Intelligence Enrichment - Has enrichment_log
+      getSafeScraperStatus(
+        'company-enrichment',
+        'Company Intelligence (SAM.gov + SEC)',
+        '/api/cron/company-enrichment-monthly',
+        '/api/admin/scrapers/trigger',
+        async () => {
+          const { data, error } = await supabase
+            .from('company_enrichment_log')
+            .select('*')
+            .eq('enrichment_type', 'monthly_full')
+            .order('started_at', { ascending: false })
+            .limit(1)
+            .maybeSingle()
+
+          if (error) throw error
+
+          // Get total enriched companies
+          const { count: totalEnriched } = await supabase
+            .from('company_intelligence')
+            .select('*', { count: 'exact', head: true })
+
+          // Get total public companies found
+          const { count: publicCompanies } = await supabase
+            .from('company_intelligence')
+            .select('*', { count: 'exact', head: true })
+            .eq('is_public_company', true)
+
+          // Estimate data points: ~40 fields per company
+          const totalDataPoints = (totalEnriched || 0) * 40
+
+          return {
+            lastRun: data?.started_at,
+            status: !data ? 'never-run' : data.status === 'completed' ? 'success' : data.status === 'failed' ? 'failed' : 'running',
+            recordsProcessed: data?.companies_processed || 0,
+            recordsInserted: data?.companies_enriched || 0,
+            recordsUpdated: data?.public_companies_found || 0,
+            errors: 0,
+            duration: data?.duration_seconds,
+            errorMessage: data?.error_message,
+            totalRowsInDb: totalEnriched || 0,
             totalDataPoints
           }
         }

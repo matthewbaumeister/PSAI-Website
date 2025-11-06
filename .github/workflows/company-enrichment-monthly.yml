@@ -1,0 +1,62 @@
+name: Company Intelligence Monthly Enrichment
+
+on:
+  schedule:
+    # Runs on 28th of every month at 3 AM UTC (after all scrapers complete)
+    - cron: '0 3 28 * *'
+  
+  # Allow manual trigger
+  workflow_dispatch:
+  
+  # Allow trigger from admin page
+  repository_dispatch:
+    types: [company-enrichment-monthly]
+
+jobs:
+  enrich-companies:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180  # 3 hours max (enriches 2000-2500 companies)
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Run Company Intelligence Enrichment
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
+          SAM_GOV_ENRICHMENT_API_KEY: ${{ secrets.SAM_GOV_ENRICHMENT_API_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting Company Intelligence monthly enrichment..."
+          echo ""
+          echo "This enriches ALL companies with FREE data sources:"
+          echo "1. SAM.gov Entity Management API (company details, certifications, contacts)"
+          echo "2. SEC EDGAR (public company filings, financials)"
+          echo ""
+          echo "Estimated time: 1-3 hours"
+          echo "Companies enriched: Up to 2,500 per month"
+          echo ""
+          
+          npx tsx scripts/run-company-enrichment-monthly.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: company-enrichment-logs
+          path: logs/company-*.log
+          retention-days: 30
+

@@ -74,28 +74,31 @@ export default function ScrapersPage() {
     }
 
     setTriggeringScrapers(prev => new Set(prev).add(scraper.name))
-    setMessage(`Triggering ${scraper.displayName}...`)
+    setMessage(`Triggering ${scraper.displayName} via GitHub Actions...`)
     setMessageType('success')
 
     try {
-      const response = await fetch(scraper.testPath, {
-        method: 'GET',
+      const response = await fetch('/api/admin/scrapers/trigger', {
+        method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_CRON_SECRET}`
-        }
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ scraper: scraper.name })
       })
 
+      const data = await response.json()
+
       if (response.ok) {
-        setMessage(`${scraper.displayName} triggered successfully! Check your email for results.`)
+        setMessage(`${scraper.displayName} triggered successfully! The scraper is now running on GitHub Actions. Check your email for results.`)
         setMessageType('success')
         setTimeout(() => loadScrapers(), 3000) // Reload after 3 seconds
       } else {
-        setMessage(`Failed to trigger ${scraper.displayName}`)
+        setMessage(`Failed to trigger ${scraper.displayName}: ${data.error}`)
         setMessageType('error')
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error triggering scraper:', error)
-      setMessage(`Error triggering ${scraper.displayName}`)
+      setMessage(`Error triggering ${scraper.displayName}: ${error.message}`)
       setMessageType('error')
     } finally {
       setTriggeringScrapers(prev => {
@@ -200,7 +203,7 @@ export default function ScrapersPage() {
                 marginTop: '8px',
                 fontSize: '18px'
               }}>
-                Monitor and manage all automated data collection cron jobs
+                Monitor and manage all automated data collection jobs running on GitHub Actions
               </p>
             </div>
             <div style={{
@@ -464,9 +467,9 @@ export default function ScrapersPage() {
                       cursor: 'pointer',
                       transition: 'all 0.2s ease'
                     }}
-                    onClick={() => window.open(`https://vercel.com/matthewbaumeister/cron-job-logs?path=${scraper.cronPath}`, '_blank')}
+                    onClick={() => window.open(`https://github.com/matthewbaumeister/PropShop_AI_Website/actions`, '_blank')}
                   >
-                    View Logs
+                    View GitHub Actions
                   </button>
                 </div>
               </div>

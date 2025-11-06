@@ -1,0 +1,51 @@
+name: Congress.gov Bills Daily Scraper
+
+on:
+  schedule:
+    # Runs daily at 11:30 AM UTC (6:30 AM EST / 3:30 AM PST)
+    - cron: '30 11 * * *'
+  
+  workflow_dispatch:
+  
+  repository_dispatch:
+    types: [congress-daily]
+
+jobs:
+  scrape-congress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run Congress.gov Daily Scraper
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting Congress.gov daily scraper..."
+          echo "Scraping bills from last 2 days with full details"
+          
+          npx tsx scripts/run-congress-daily.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: congress-scraper-logs-${{ github.run_number }}
+          path: logs/congress-*.log
+          retention-days: 7
+

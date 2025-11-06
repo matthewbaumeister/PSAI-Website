@@ -1,0 +1,65 @@
+name: Congressional Trades Monthly Update (House + Senate)
+
+on:
+  schedule:
+    # Runs on 15th of every month at 2 AM UTC (both House and Senate)
+    - cron: '0 2 15 * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+  # Allow trigger from admin page
+  repository_dispatch:
+    types: [congressional-trades-monthly]
+
+jobs:
+  scrape-congressional-trades:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60  # 1 hour max
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Install Node dependencies
+        run: npm install
+      
+      - name: Install Python dependencies
+        run: |
+          pip install -r requirements.txt
+          playwright install chromium
+      
+      - name: Run Congressional Trades Scraper (House + Senate)
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting Congressional Trades monthly scraper..."
+          echo "Scraping BOTH House AND Senate for current + previous year"
+          echo "- House: PDF parsing from clerk.house.gov"
+          echo "- Senate: HTML parsing from efdsearch.senate.gov"
+          
+          npx tsx scripts/run-congress-trades-monthly.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-logs
+          path: logs/congress-monthly-*.log
+          retention-days: 30
+      
+

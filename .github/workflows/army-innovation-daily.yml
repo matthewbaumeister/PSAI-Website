@@ -1,0 +1,54 @@
+name: Army xTech Innovation Daily Scraper
+
+on:
+  schedule:
+    # Runs daily at 1:00 PM UTC (9:00 AM EST / 6:00 AM PST)
+    - cron: '0 13 * * *'
+  
+  workflow_dispatch:
+  
+  repository_dispatch:
+    types: [army-innovation-daily]
+
+jobs:
+  scrape-army-innovation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install Playwright
+        run: npx playwright install chromium
+      
+      - name: Run Army Innovation Daily Scraper
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting Army xTech/Innovation daily scraper..."
+          echo "Checking active XTECH and FUZE competitions"
+          
+          npx tsx scripts/run-army-innovation-daily.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: army-innovation-scraper-logs-${{ github.run_number }}
+          path: logs/army-*.log
+          retention-days: 7
+

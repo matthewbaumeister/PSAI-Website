@@ -1,0 +1,60 @@
+name: FPDS Contracts Daily Scraper
+
+on:
+  schedule:
+    # Runs daily at 12:00 PM UTC (8:00 AM EST / 5:00 AM PST)
+    - cron: '0 12 * * *'
+  
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+  
+  # Allow trigger from admin page
+  repository_dispatch:
+    types: [fpds-daily]
+
+jobs:
+  scrape-fpds:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15  # FPDS uses resume logic, each run is ~5 mins
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run FPDS Daily Scraper
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting FPDS daily scraper..."
+          echo "This scraper processes yesterday and day before (2 days)"
+          echo "Uses resume logic - may take multiple runs for full completion"
+          
+          npx tsx scripts/run-fpds-daily.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fpds-scraper-logs-${{ github.run_number }}
+          path: logs/fpds-*.log
+          retention-days: 7
+      
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "FPDS scraper failed! Check logs for details."
+          echo "The scraper has resume logic and will retry on next run."
+
