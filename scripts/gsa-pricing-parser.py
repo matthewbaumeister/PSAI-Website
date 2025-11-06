@@ -42,26 +42,29 @@ class GSAPricingParser:
         # Common column name mappings for labor categories
         self.column_mappings = {
             'labor_category': [
-                'Labor Category', 'Labor Cat', 'Job Title', 'Title', 
+                'Title', 'Labor Category', 'Labor Cat', 'Job Title',
                 'Position', 'Position Title', 'Service', 'Service Category',
                 'Labor', 'Category', 'Description', 'Role', 'Job Role'
             ],
             'hourly_rate': [
-                'Hourly Rate', 'Hour Rate', 'Rate', 'Hourly', 'Price',
+                'GSA Price with IFF - as of price list generation date',
+                'GSA Price with IFF  - as of price list generation date',  # Note: double space variant
+                'GSA Price with IFF', 'Hourly Rate', 'Hour Rate', 'Rate', 'Hourly', 'Price',
                 'Ceiling Price', 'Government Price', 'GSA Price', 'Rate/Hour',
                 'Hourly Ceiling', 'Year 1', 'Year 1 Rate', 'Current Year',
                 'Price Per Hour', 'Cost Per Hour'
             ],
             'education': [
-                'Education', 'Degree', 'Education Level', 'Min Education',
-                'Minimum Education', 'Required Education'
+                'Minimum Education', 'Education', 'Degree', 'Education Level', 
+                'Min Education', 'Required Education'
             ],
             'experience': [
-                'Experience', 'Years Experience', 'Years of Experience',
+                'Minimum Years of Experience', 'Experience', 'Years Experience', 'Years of Experience',
                 'Min Experience', 'Minimum Experience', 'Required Experience',
                 'Yrs Exp'
             ],
             'clearance': [
+                'Security Clearance Required', 'Minimum Security Clearance Level',
                 'Security Clearance', 'Clearance', 'Security', 'Clearance Required',
                 'Required Clearance'
             ]
@@ -158,11 +161,13 @@ class GSAPricingParser:
                 if df.empty:
                     continue
                 
-                # Detect header row
-                header_row = self._detect_header_row(df)
-                if header_row > 0:
-                    # Re-read with correct header
-                    df = pd.read_excel(file_path, sheet_name=sheet_name, header=header_row)
+                # Only detect header row if current headers look wrong (lots of "Unnamed")
+                unnamed_count = sum(1 for col in df.columns if 'Unnamed' in str(col))
+                if unnamed_count > len(df.columns) * 0.3:  # If more than 30% are unnamed
+                    header_row = self._detect_header_row(df)
+                    if header_row > 0:
+                        # Re-read with correct header
+                        df = pd.read_excel(file_path, sheet_name=sheet_name, header=header_row)
                 
                 logger.info(f"    Rows: {len(df)}, Columns: {len(df.columns)}")
                 

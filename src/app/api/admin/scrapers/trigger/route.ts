@@ -40,7 +40,8 @@ export async function POST(request: NextRequest) {
       'mantech': 'mantech-daily',
       'congress-trades': 'congressional-trades-monthly', // Does BOTH House + Senate
       'gsa-schedules': 'gsa-schedules-monthly',
-      'company-enrichment': 'company-enrichment-monthly'
+      'company-enrichment': 'company-enrichment-monthly',
+      'gsa-pricing': 'gsa-pricing-monthly'
     };
 
     const eventType = workflowMap[scraper];

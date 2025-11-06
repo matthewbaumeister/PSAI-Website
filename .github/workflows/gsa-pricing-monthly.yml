@@ -1,0 +1,63 @@
+name: GSA Pricing Data Collection Monthly
+
+on:
+  schedule:
+    # Runs on 20th of every month at 2 AM UTC (GSA pricing data)
+    - cron: '0 2 20 * *'
+
+  # Allow manual trigger
+  workflow_dispatch:
+
+  # Allow trigger from admin page
+  repository_dispatch:
+    types: [gsa-pricing-monthly]
+
+jobs:
+  scrape-gsa-pricing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # 6 hours max (this is a LONG job)
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      
+      - name: Install Node dependencies
+        run: npm install
+      
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Run GSA Pricing Collection
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+          CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
+          SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+        run: |
+          echo "Starting GSA Pricing monthly collection..."
+          echo "WARNING: This is a LONG-RUNNING job (2-4 hours)"
+          echo "- Downloads ~3,000 price list files"
+          echo "- Parses labor categories and rates"
+          echo "- Imports all data to Supabase"
+          
+          npx tsx scripts/run-gsa-pricing-monthly.ts
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-logs
+          path: logs/gsa-pricing-*.log
+          retention-days: 30
+

@@ -490,6 +490,41 @@ export async function GET(request: NextRequest) {
             totalDataPoints
           }
         }
+      ),
+
+      // 11. GSA Pricing Data Collection - Monthly
+      getSafeScraperStatus(
+        'gsa-pricing',
+        'GSA Pricing (Labor Rates)',
+        '/api/cron/gsa-pricing-monthly',
+        '/api/admin/scrapers/trigger',
+        async () => {
+          // Note: No dedicated log table yet, will show as never-run until first execution
+          // Get total rows in database
+          const { count: priceLists } = await supabase
+            .from('gsa_price_lists')
+            .select('*', { count: 'exact', head: true })
+
+          const { count: laborCategories } = await supabase
+            .from('gsa_labor_categories')
+            .select('*', { count: 'exact', head: true })
+
+          // Estimate data points: ~20 fields per labor category
+          const totalDataPoints = (laborCategories || 0) * 20
+
+          return {
+            lastRun: null,
+            status: 'never-run',
+            recordsProcessed: 0,
+            recordsInserted: 0,
+            recordsUpdated: 0,
+            errors: 0,
+            duration: null,
+            errorMessage: null,
+            totalRowsInDb: laborCategories || 0,
+            totalDataPoints
+          }
+        }
       )
     ])
 
