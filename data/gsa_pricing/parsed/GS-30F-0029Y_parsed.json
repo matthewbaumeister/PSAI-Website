@@ -1,0 +1,33 @@
+{
+  "contract_number": "GS-30F-0029Y",
+  "contractor_id": 1814,
+  "price_list_id": 1755,
+  "labor_categories": [
+    {
+      "contract_number": "GS-30F-0029Y",
+      "labor_category": "CPF-ASSURE-REN",
+      "hourly_rate": 153.4388,
+      "source_sheet_name": "Price List",
+      "source_row_number": 58,
+      "raw_data": {
+        "vendor_name": "APOLLO SUNGUARD SYSTEMS INC",
+        "unique_catalog_item_id": "CPF-ASSURE-REN",
+        "title": "CPF-ASSURE-REN",
+        "description": "CPF prepaid coterminous renewal of Assure. Includes Parts and Labor Warranty, Remote Technical Support, On-Site Repairs when needed, Unlimited Configuration Changes, and Reporting.",
+        "sin": "ANCILLARY",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "153.4388",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "CPF,prepaid,coterminous,renewal,Assure",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "security_clearance": "No",
+      "contractor_id": 1814,
+      "price_list_id": 1755
+    }
+  ],
+  "parsed_at": "2025-11-06T11:50:02.503251"
+}

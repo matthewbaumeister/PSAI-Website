@@ -36,12 +36,14 @@ function getSupabase() {
 
 function initializeApiKeys() {
   if (SAM_GOV_API_KEYS.length === 0) {
-    // Support multiple API keys for rotation
+    // Support multiple API keys for rotation (ALL 3 keys)
     const key1 = process.env.SAM_GOV_API_KEY || process.env.SAM_GOV_API_KEY_1;
     const key2 = process.env.SAM_GOV_API_KEY_2;
+    const key3 = process.env.SAM_GOV_ENRICHMENT_API_KEY;
     
     if (key1) SAM_GOV_API_KEYS.push(key1);
     if (key2) SAM_GOV_API_KEYS.push(key2);
+    if (key3) SAM_GOV_API_KEYS.push(key3);
     
     if (SAM_GOV_API_KEYS.length === 0) {
       throw new Error('Missing SAM_GOV_API_KEY in environment. Please set SAM_GOV_API_KEY or SAM_GOV_API_KEY_1');

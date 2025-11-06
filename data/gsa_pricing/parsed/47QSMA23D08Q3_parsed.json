@@ -1,0 +1,68 @@
+{
+  "contract_number": "47QSMA23D08Q3",
+  "contractor_id": 10044,
+  "price_list_id": 1575,
+  "labor_categories": [
+    {
+      "contract_number": "47QSMA23D08Q3",
+      "labor_category": "Consultant",
+      "hourly_rate": 71.25,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "PRESENTATION PLANNING, INC.",
+        "unique_catalog_item_id": "Associate",
+        "title": "Consultant",
+        "description": "Audiovisual Consulting Services",
+        "sin": "541990AV",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "71.25",
+        "minimum_education": "High_School",
+        "minimum_years_of_education": "3.0",
+        "security_clearance_required": "No",
+        "minimum_security_clearance_level": "T1",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Audiovisual Consulting Services",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "level_of_expertise": "Junior",
+        "metropolitan_statistical_area": "47900.0"
+      },
+      "education_level": "High_School",
+      "security_clearance": "No",
+      "contractor_id": 10044,
+      "price_list_id": 1575
+    },
+    {
+      "contract_number": "47QSMA23D08Q3",
+      "labor_category": "Consultant",
+      "hourly_rate": 118.75,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "PRESENTATION PLANNING, INC.",
+        "unique_catalog_item_id": "Senior",
+        "title": "Consultant",
+        "description": "Audiovisual Consulting Services",
+        "sin": "541990AV",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "118.75",
+        "minimum_education": "Masters",
+        "minimum_years_of_education": "4.0",
+        "security_clearance_required": "No",
+        "minimum_security_clearance_level": "T1",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Audiovisual Consulting Services",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "level_of_expertise": "Senior",
+        "metropolitan_statistical_area": "47900.0"
+      },
+      "education_level": "Masters",
+      "security_clearance": "No",
+      "contractor_id": 10044,
+      "price_list_id": 1575
+    }
+  ],
+  "parsed_at": "2025-11-06T11:49:12.844600"
+}

@@ -1,0 +1,89 @@
+{
+  "contract_number": "GS-35F-408AA",
+  "contractor_id": 4818,
+  "price_list_id": 27,
+  "labor_categories": [
+    {
+      "contract_number": "GS-35F-408AA",
+      "labor_category": "Project Manager II",
+      "hourly_rate": 160.81,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "E-BUILDER, INC.",
+        "unique_catalog_item_id": "EB 101",
+        "title": "Project Manager II",
+        "description": "Coordinate day-to-day activities of a project implementation team of business analysts. Manages scope, schedule, and financials for each project. Responsible for measuring and reporting key implementation related KPIs to internal and customer stakeholders",
+        "sin": "54151S",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "160.81",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "6.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Coordinate,project,implementation,business,scope",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 4818,
+      "price_list_id": 27
+    },
+    {
+      "contract_number": "GS-35F-408AA",
+      "labor_category": "Business Analyst",
+      "hourly_rate": 145.49,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "E-BUILDER, INC.",
+        "unique_catalog_item_id": "EB 102",
+        "title": "Business Analyst",
+        "description": "Responsible for requirements gathering, documentation, and configuration of e-Builder Enterprise. Works with stakeholders to develop and execute UAT strategies. Creates and distributes meeting minutes, status reports, and required documentation to project stakeholders.",
+        "sin": "54151S",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "145.49",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "2.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Documentation,configuration,execute,strategies,reports",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 4818,
+      "price_list_id": 27
+    },
+    {
+      "contract_number": "GS-35F-408AA",
+      "labor_category": "Software Engineer",
+      "hourly_rate": 168.46,
+      "source_sheet_name": "Price List",
+      "source_row_number": 5,
+      "raw_data": {
+        "vendor_name": "E-BUILDER, INC.",
+        "unique_catalog_item_id": "EB 103",
+        "title": "Software Engineer",
+        "description": "Participates in all aspects of product and client specific custom software development from requirements analysis through product release. Assists with testing strategies and evaluation of expected results. Communicates status, risks, and other issues on software development projects.",
+        "sin": "54151S",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "168.46",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "2.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Software,development,requirements,analysis,testing",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 4818,
+      "price_list_id": 27
+    }
+  ],
+  "parsed_at": "2025-11-06T11:52:55.033081"
+}

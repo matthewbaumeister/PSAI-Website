@@ -1,0 +1,192 @@
+{
+  "contract_number": "47QTCA20D0034",
+  "contractor_id": 13716,
+  "price_list_id": 348,
+  "labor_categories": [
+    {
+      "contract_number": "47QTCA20D0034",
+      "labor_category": "USP 795 (0-24 beds) Maintenance included in subscription",
+      "hourly_rate": 283.58,
+      "source_sheet_name": "Price List",
+      "source_row_number": 160,
+      "raw_data": {
+        "vendor_name": "PHARMACY ONESOURCE, INC.",
+        "unique_catalog_item_id": "USP7951",
+        "title": "USP 795 (0-24 beds) Maintenance included in subscription",
+        "description": "USP 795 is an add module to Simplifi 797 that supports non sterile drug compounding. USP 795 simplifies and automates ongoing compliance with USP Chapter 795 requirements\u2014including comprehensive policies, procedures, staff training, and competency evaluations necessary for anefficient compounding environment.",
+        "sin": "511210.0",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "283.58",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Product",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "manufacturer_name": "Pharmacy OneSource, Inc."
+      },
+      "security_clearance": "No",
+      "contractor_id": 13716,
+      "price_list_id": 348
+    },
+    {
+      "contract_number": "47QTCA20D0034",
+      "labor_category": "USP 795 (25-49 beds) Maintenance included in subscription",
+      "hourly_rate": 387.71,
+      "source_sheet_name": "Price List",
+      "source_row_number": 171,
+      "raw_data": {
+        "vendor_name": "PHARMACY ONESOURCE, INC.",
+        "unique_catalog_item_id": "USP7952",
+        "title": "USP 795 (25-49 beds) Maintenance included in subscription",
+        "description": "USP 795 is an add module to Simplifi 797 that supports non sterile drug compounding. USP 795 simplifies and automates ongoing compliance with USP Chapter 795 requirements\u2014including comprehensive policies, procedures, staff training, and competency evaluations necessary for anefficient compounding environment.",
+        "sin": "511210.0",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "387.71",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Product",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "manufacturer_name": "Pharmacy OneSource, Inc."
+      },
+      "security_clearance": "No",
+      "contractor_id": 13716,
+      "price_list_id": 348
+    },
+    {
+      "contract_number": "47QTCA20D0034",
+      "labor_category": "USP 795 (Alternate Site/Home Infusion) Maintenance included in subscription",
+      "hourly_rate": 336.94,
+      "source_sheet_name": "Price List",
+      "source_row_number": 181,
+      "raw_data": {
+        "vendor_name": "PHARMACY ONESOURCE, INC.",
+        "unique_catalog_item_id": "USP795AS1",
+        "title": "USP 795 (Alternate Site/Home Infusion) Maintenance included in subscription",
+        "description": "USP 795 is an add module to Simplifi 797 that supports non sterile drug compounding. USP 795 simplifies and automates ongoing compliance with USP Chapter 795 requirements\u2014including comprehensive policies, procedures, staff training, and competency evaluations necessary for anefficient compounding environment.",
+        "sin": "511210.0",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "336.94",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Product",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "manufacturer_name": "Pharmacy OneSource, Inc."
+      },
+      "security_clearance": "No",
+      "contractor_id": 13716,
+      "price_list_id": 348
+    },
+    {
+      "contract_number": "47QTCA20D0034",
+      "labor_category": "USP 795 (Compounding Pharmacy) Maintenance included in subscription",
+      "hourly_rate": 404.4,
+      "source_sheet_name": "Price List",
+      "source_row_number": 182,
+      "raw_data": {
+        "vendor_name": "PHARMACY ONESOURCE, INC.",
+        "unique_catalog_item_id": "USP795CP1",
+        "title": "USP 795 (Compounding Pharmacy) Maintenance included in subscription",
+        "description": "USP 795 is an add module to Simplifi 797 that supports non sterile drug compounding. USP 795 simplifies and automates ongoing compliance with USP Chapter 795 requirements\u2014including comprehensive policies, procedures, staff training, and competency evaluations necessary for anefficient compounding environment.",
+        "sin": "511210.0",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "404.4",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Product",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "manufacturer_name": "Pharmacy OneSource, Inc."
+      },
+      "security_clearance": "No",
+      "contractor_id": 13716,
+      "price_list_id": 348
+    },
+    {
+      "contract_number": "47QTCA20D0034",
+      "labor_category": "USP 800 (0-24 beds) Maintenance included in subscription",
+      "hourly_rate": 283.58,
+      "source_sheet_name": "Price List",
+      "source_row_number": 183,
+      "raw_data": {
+        "vendor_name": "PHARMACY ONESOURCE, INC.",
+        "unique_catalog_item_id": "USP8001",
+        "title": "USP 800 (0-24 beds) Maintenance included in subscription",
+        "description": "USP 800 is an add module to Simplifi 797 that support Hazard Drug compounding. USP 800 simplifies and  automates ongoing compliance with USP Chapter 800  requirementsfor safety and risk mitigation\u2014including  comprehensive policies, procedures, staff training,  competency evaluations, risk management, quality assurance practices necessary for a safe and efficient sterile compounding environment",
+        "sin": "511210.0",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "283.58",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Product",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "manufacturer_name": "Pharmacy OneSource, Inc."
+      },
+      "security_clearance": "No",
+      "contractor_id": 13716,
+      "price_list_id": 348
+    },
+    {
+      "contract_number": "47QTCA20D0034",
+      "labor_category": "USP 800 (25-49 beds) Maintenance included in subscription",
+      "hourly_rate": 387.71,
+      "source_sheet_name": "Price List",
+      "source_row_number": 194,
+      "raw_data": {
+        "vendor_name": "PHARMACY ONESOURCE, INC.",
+        "unique_catalog_item_id": "USP8002",
+        "title": "USP 800 (25-49 beds) Maintenance included in subscription",
+        "description": "USP 800 is an add module to Simplifi 797 that support Hazard Drug compounding. USP 800 simplifies and  automates ongoing compliance with USP Chapter 800  requirementsfor safety and risk mitigation\u2014including  comprehensive policies, procedures, staff training,  competency evaluations, risk management, quality assurance practices necessary for a safe and efficient sterile compounding environment",
+        "sin": "511210.0",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "387.71",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Product",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "manufacturer_name": "Pharmacy OneSource, Inc."
+      },
+      "security_clearance": "No",
+      "contractor_id": 13716,
+      "price_list_id": 348
+    },
+    {
+      "contract_number": "47QTCA20D0034",
+      "labor_category": "USP 800 (Alternate Site/Home Infusion) Maintenance included in subscription",
+      "hourly_rate": 336.94,
+      "source_sheet_name": "Price List",
+      "source_row_number": 204,
+      "raw_data": {
+        "vendor_name": "PHARMACY ONESOURCE, INC.",
+        "unique_catalog_item_id": "USP800AS1",
+        "title": "USP 800 (Alternate Site/Home Infusion) Maintenance included in subscription",
+        "description": "USP 800 is an add module to Simplifi 797 that support Hazard Drug compounding. USP 800 simplifies and  automates ongoing compliance with USP Chapter 800  requirementsfor safety and risk mitigation\u2014including  comprehensive policies, procedures, staff training,  competency evaluations, risk management, quality assurance practices necessary for a safe and efficient sterile compounding environment",
+        "sin": "511210.0",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "336.94",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Product",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "manufacturer_name": "Pharmacy OneSource, Inc."
+      },
+      "security_clearance": "No",
+      "contractor_id": 13716,
+      "price_list_id": 348
+    },
+    {
+      "contract_number": "47QTCA20D0034",
+      "labor_category": "USP 800 (Compounding Pharmacy) Maintenance included in subscription",
+      "hourly_rate": 404.4,
+      "source_sheet_name": "Price List",
+      "source_row_number": 205,
+      "raw_data": {
+        "vendor_name": "PHARMACY ONESOURCE, INC.",
+        "unique_catalog_item_id": "USP800CP1",
+        "title": "USP 800 (Compounding Pharmacy) Maintenance included in subscription",
+        "description": "USP 800 is an add module to Simplifi 797 that support Hazard Drug compounding. USP 800 simplifies and  automates ongoing compliance with USP Chapter 800  requirementsfor safety and risk mitigation\u2014including  comprehensive policies, procedures, staff training,  competency evaluations, risk management, quality assurance practices necessary for a safe and efficient sterile compounding environment",
+        "sin": "511210.0",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "404.4",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Product",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "manufacturer_name": "Pharmacy OneSource, Inc."
+      },
+      "security_clearance": "No",
+      "contractor_id": 13716,
+      "price_list_id": 348
+    }
+  ],
+  "parsed_at": "2025-11-06T11:53:45.129790"
+}

@@ -1,0 +1,93 @@
+{
+  "contract_number": "GS-28F-0026X",
+  "contractor_id": 304,
+  "price_list_id": 1060,
+  "labor_categories": [
+    {
+      "contract_number": "GS-28F-0026X",
+      "labor_category": "Installation Services",
+      "hourly_rate": 45.0,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "ALFRED WILLIAMS & CO",
+        "unique_catalog_item_id": "AF-100",
+        "title": "Installation Services",
+        "description": "Installation will be performed by personnel experienced in the performance of workstations, private offices, conference tables, training tables, task seating, height adjustable tables, monitor arms and all additional items considered contract office furniture.",
+        "sin": "33721P",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "45.0",
+        "minimum_years_of_education": "1.0",
+        "education_and_experience_substitution": "none",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Installation,Delivery",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "years_experience": "none",
+      "security_clearance": "No",
+      "contractor_id": 304,
+      "price_list_id": 1060
+    },
+    {
+      "contract_number": "GS-28F-0026X",
+      "labor_category": "Project Management Services",
+      "hourly_rate": 65.0,
+      "source_sheet_name": "Price List",
+      "source_row_number": 5,
+      "raw_data": {
+        "vendor_name": "ALFRED WILLIAMS & CO",
+        "unique_catalog_item_id": "AF-103",
+        "title": "Project Management Services",
+        "description": "Project Management Services will be performed by personnel highly experienced in the management of complex furniture installation projects.",
+        "sin": "33721P",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "65.0",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "1.0",
+        "education_and_experience_substitution": "none",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Project,Management,Packaged,Furniture",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "years_experience": "none",
+      "security_clearance": "No",
+      "contractor_id": 304,
+      "price_list_id": 1060
+    },
+    {
+      "contract_number": "GS-28F-0026X",
+      "labor_category": "Design/Layout Services",
+      "hourly_rate": 65.0,
+      "source_sheet_name": "Price List",
+      "source_row_number": 6,
+      "raw_data": {
+        "vendor_name": "ALFRED WILLIAMS & CO",
+        "unique_catalog_item_id": "AF-104",
+        "title": "Design/Layout Services",
+        "description": "Design / Layout Services will be performed by Commercial Interior Designers who hold a degree in Interior Design and / or hold an NCIDQ certification, all of whom perform under the direction of a highly experienced Design professional.",
+        "sin": "33721P",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "65.0",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "1.0",
+        "education_and_experience_substitution": "none",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Design,Layout,Furniture",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "years_experience": "none",
+      "security_clearance": "No",
+      "contractor_id": 304,
+      "price_list_id": 1060
+    }
+  ],
+  "parsed_at": "2025-11-06T11:53:35.321641"
+}

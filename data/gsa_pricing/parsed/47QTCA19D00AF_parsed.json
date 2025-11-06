@@ -1,0 +1,62 @@
+{
+  "contract_number": "47QTCA19D00AF",
+  "contractor_id": 2182,
+  "price_list_id": 357,
+  "labor_categories": [
+    {
+      "contract_number": "47QTCA19D00AF",
+      "labor_category": "CPPS/CPPA Coordinator",
+      "hourly_rate": 72.0,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "ASSETWORKS USA INC",
+        "unique_catalog_item_id": "CPPS_CPPA_Coordinator",
+        "title": "CPPS/CPPA Coordinator",
+        "description": "Manages the collection of asset inventory data collection, develops asset data capture plan and schedule, provides advice on best practices of asset tracking, asset management, and asset data capture.",
+        "sin": "54151S",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "72.0",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "2.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Asset data,inventory collection,management",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 2182,
+      "price_list_id": 357
+    },
+    {
+      "contract_number": "47QTCA19D00AF",
+      "labor_category": "RF Engineer",
+      "hourly_rate": 95.0,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "ASSETWORKS USA INC",
+        "unique_catalog_item_id": "RF_Engineer",
+        "title": "RF Engineer",
+        "description": "Conducts Radio Frequency (RF) Site Survey for the purposes of determining the proper types of readers, antennas and tags to meet the requirements of implementing an asset management system within the environment present at the customer location(s).",
+        "sin": "54151S",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "95.0",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Radio Frequency,implement management systems",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "security_clearance": "No",
+      "contractor_id": 2182,
+      "price_list_id": 357
+    }
+  ],
+  "parsed_at": "2025-11-06T11:48:17.752151"
+}

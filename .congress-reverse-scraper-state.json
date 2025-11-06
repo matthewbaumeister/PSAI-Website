@@ -2,8 +2,8 @@
   "direction": "ascending",
   "currentCongress": 82,
   "currentOffset": 0,
-  "totalBillsProcessed": 35620,
-  "successCount": 35616,
+  "totalBillsProcessed": 35749,
+  "successCount": 35745,
   "failureCount": 4,
   "congresses": {
     "1": {
@@ -413,7 +413,7 @@
     },
     "82": {
       "totalBills": 1617,
-      "processedBills": 1319,
+      "processedBills": 1448,
       "lastOffset": 1250
     }
   },
@@ -439,5 +439,5 @@
       "error": "timeout of 30000ms exceeded"
     }
   ],
-  "lastUpdated": "2025-11-06T16:44:03.717Z"
+  "lastUpdated": "2025-11-06T16:52:09.283Z"
 }

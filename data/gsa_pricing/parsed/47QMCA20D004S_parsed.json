@@ -1,0 +1,66 @@
+{
+  "contract_number": "47QMCA20D004S",
+  "contractor_id": 3310,
+  "price_list_id": 1903,
+  "labor_categories": [
+    {
+      "contract_number": "47QMCA20D004S",
+      "labor_category": "Technician - Off-Site",
+      "hourly_rate": 93.8,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "CAPITAL TRACTOR INC",
+        "unique_catalog_item_id": "001-Off-Site Service",
+        "title": "Technician - Off-Site",
+        "description": "Diagnose, repair, and maintain equipment at one of our service locations (Montgomery or Brundidge, AL).  This is \"in shop\" service work.  We employ a staff of specifically trained service personnel to  perform the maintenance/repairs that are needed on equipment.  Our specialty is Kubota equipment repair.  We are a \"full service\" dealer meaning any repair needed on a Kubota machine, we are capable of completing the task.  Specific tasks include: new equipment setup, routine PM service, trouble code scans, electrical repairs, hydraulic system repairs, engine rebuilds, transmission rebuilds, clutch replacements, air conditioner repairs, tire replacement, track replacement, undercarriage repairs, welding etc.",
+        "sin": "ANCILLARY",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "93.8",
+        "minimum_education": "High_School",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Diagnose,Repair,Maintain",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "level_of_expertise": "Senior",
+        "metropolitan_statistical_area": "33860.0"
+      },
+      "education_level": "High_School",
+      "security_clearance": "No",
+      "contractor_id": 3310,
+      "price_list_id": 1903
+    },
+    {
+      "contract_number": "47QMCA20D004S",
+      "labor_category": "Technician - On-Site",
+      "hourly_rate": 113.55,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "CAPITAL TRACTOR INC",
+        "unique_catalog_item_id": "002-On-Site Service",
+        "title": "Technician - On-Site",
+        "description": "Diagnose, repair, and maintain equipment away from our service locations (Montgomery or Brundidge, AL).  This is \"in field\" service work.  We employ a staff of specifically trained service personnel to  perform the maintenance/repairs that are needed on equipment.  Our specialty is Kubota equipment repair.  We are a \"full service\" dealer meaning any repair needed on a Kubota machine, we are capable of completing the task.  Specific tasks include: routine PM service, trouble code scans, electrical repairs, hydraulic system repairs, air conditioner repairs, tire replacement, track replacement, undercarriage repairs, welding etc.",
+        "sin": "ANCILLARY",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "113.55",
+        "minimum_education": "High_School",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Diagnose,Repair,Maintain",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "level_of_expertise": "Senior",
+        "metropolitan_statistical_area": "33860.0"
+      },
+      "education_level": "High_School",
+      "security_clearance": "No",
+      "contractor_id": 3310,
+      "price_list_id": 1903
+    }
+  ],
+  "parsed_at": "2025-11-06T11:47:39.787209"
+}

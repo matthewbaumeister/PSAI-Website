@@ -1,0 +1,33 @@
+{
+  "contract_number": "47QRAA23D0089",
+  "contractor_id": 3734,
+  "price_list_id": 333,
+  "labor_categories": [
+    {
+      "contract_number": "47QRAA23D0089",
+      "labor_category": "Student Loan Administrative Resolutions",
+      "hourly_rate": 150.0,
+      "source_sheet_name": "Price List",
+      "source_row_number": 7,
+      "raw_data": {
+        "vendor_name": "COAST PROFESSIONAL, INC.",
+        "unique_catalog_item_id": "CPI-0005",
+        "title": "Student Loan Administrative Resolutions",
+        "description": "Coast Professional, Inc. (Coast) provides private collection agency services to lenders of educational loans for defaulted Title IV student loan debts. This includes loans from the Federal Family Education Loan Program (FFELP), the William D. Ford Direct Loan Program (DL), Perkins Loans, along with various other loan types. Coast makes proactive outreach efforts to defaulted borrowers to help them establish repayment plans that satisfy the debt while respecting their individual situation. Additional services include processing incoming borrower correspondence, fielding inbound borrower communications, and sending mailed correspondence to borrowers. Administrative resolution is a key element of resolving accounts for clients who place these types of debt and requires very specialized and targeted skip tracing and document retrieval efforts. Administrative resolutions include identifying borrowers who cannot pay due to being deceased, incarcerated, permanently disabled or bankrupt. Accounts that qualify for administrative resolution range in age from less than one (1) to 50+ years past due.",
+        "sin": "561440.0",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "EA",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "150.0",
+        "security_clearance_required": "Yes",
+        "minimum_security_clearance_level": "T1",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "Debt,collection,default,student loan",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas"
+      },
+      "security_clearance": "Yes",
+      "contractor_id": 3734,
+      "price_list_id": 333
+    }
+  ],
+  "parsed_at": "2025-11-06T11:50:46.576067"
+}

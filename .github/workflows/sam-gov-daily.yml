@@ -34,6 +34,7 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
           SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
           SAM_GOV_API_KEY_2: ${{ secrets.SAM_GOV_API_KEY_2 }}
+          SAM_GOV_ENRICHMENT_API_KEY: ${{ secrets.SAM_GOV_ENRICHMENT_API_KEY }}
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
           SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}

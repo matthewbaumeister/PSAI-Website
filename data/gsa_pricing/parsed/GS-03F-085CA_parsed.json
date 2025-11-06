@@ -1,0 +1,72 @@
+{
+  "contract_number": "GS-03F-085CA",
+  "contractor_id": 7708,
+  "price_list_id": 34,
+  "labor_categories": [
+    {
+      "contract_number": "GS-03F-085CA",
+      "labor_category": "Medical Transcription",
+      "hourly_rate": 28.63,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "LIGHTHOUSE FOR THE BLIND OF HOUSTON",
+        "unique_catalog_item_id": "001-LOHMT",
+        "title": "Medical Transcription",
+        "description": "Verbatim transcription",
+        "sin": "518210DC",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "28.63",
+        "gsa_price_with_iff__a_": "28.63",
+        "gsa_price_with_iff__b_": "29.49",
+        "gsa_price_with_iff__c_": "30.37",
+        "gsa_price_with_iff__d_": "31.28",
+        "gsa_price_with_iff__e_": "32.22",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "minimum_security_clearance_level": "T1",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "transcription,medical transcription",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "state": "TX"
+      },
+      "security_clearance": "No",
+      "contractor_id": 7708,
+      "price_list_id": 34
+    },
+    {
+      "contract_number": "GS-03F-085CA",
+      "labor_category": "Medical Transcription",
+      "hourly_rate": 32.54,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "LIGHTHOUSE FOR THE BLIND OF HOUSTON",
+        "unique_catalog_item_id": "002-LOHMT",
+        "title": "Medical Transcription",
+        "description": "Verbatim transcription",
+        "sin": "518210DC",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "32.54",
+        "gsa_price_with_iff__a_": "32.54",
+        "gsa_price_with_iff__b_": "33.52",
+        "gsa_price_with_iff__c_": "34.53",
+        "gsa_price_with_iff__d_": "35.57",
+        "gsa_price_with_iff__e_": "36.64",
+        "minimum_years_of_education": "0.0",
+        "security_clearance_required": "No",
+        "minimum_security_clearance_level": "T1",
+        "catalog_item_type": "Fixed_Price_Service_or_Solution",
+        "key_words": "transcription,medical transcription",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "state": "TX"
+      },
+      "security_clearance": "No",
+      "contractor_id": 7708,
+      "price_list_id": 34
+    }
+  ],
+  "parsed_at": "2025-11-06T11:48:52.589489"
+}

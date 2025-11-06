@@ -1,0 +1,36 @@
+{
+  "contract_number": "GS-28F-004CA",
+  "contractor_id": 584,
+  "price_list_id": 1900,
+  "labor_categories": [
+    {
+      "contract_number": "GS-28F-004CA",
+      "labor_category": "Installation Technician",
+      "hourly_rate": 75.0,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "SYSTEMCENTER INC",
+        "unique_catalog_item_id": "Installation",
+        "title": "Installation Technician",
+        "description": "Performs routine assignments associated with the implementation of the project SOW",
+        "sin": "33721P",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "75.0",
+        "minimum_education": "High_School",
+        "minimum_years_of_education": "1.0",
+        "security_clearance_required": "Yes",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "bureau_of_labor_statistics_standard_occupational_code": "11-3131",
+        "level_of_expertise": "Junior"
+      },
+      "education_level": "High_School",
+      "security_clearance": "Yes",
+      "contractor_id": 584,
+      "price_list_id": 1900
+    }
+  ],
+  "parsed_at": "2025-11-06T11:53:44.254794"
+}

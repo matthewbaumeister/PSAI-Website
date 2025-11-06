@@ -1,0 +1,68 @@
+{
+  "contract_number": "GS-07F-078DA",
+  "contractor_id": 1923,
+  "price_list_id": 842,
+  "labor_categories": [
+    {
+      "contract_number": "GS-07F-078DA",
+      "labor_category": "IGS-LABOR-DEV",
+      "hourly_rate": 384.1713,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "IDENTIV, INC.",
+        "unique_catalog_item_id": "IGS-LABOR-DEV",
+        "title": "IGS-LABOR-DEV",
+        "description": "Global Services Labor for Developer. Straight Time (8hr/Day, 40/Hr/Week) Rate - Hourly, Subject to availability. Excludes Travel & Living Expense.",
+        "sin": "334512, 541330L, 541330SEC",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "384.1713",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "5.0",
+        "education_and_experience_substitution": "BS/BA or 5 years experience",
+        "required_certifications_or_licenses": "Identiv Certified",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Developer Labor",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "years_experience": "BS/BA or 5 years experience",
+      "security_clearance": "No",
+      "contractor_id": 1923,
+      "price_list_id": 842
+    },
+    {
+      "contract_number": "GS-07F-078DA",
+      "labor_category": "IGS-LABOR-SYSENGR",
+      "hourly_rate": 384.1713,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "IDENTIV, INC.",
+        "unique_catalog_item_id": "IGS-LABOR-SYSENGR",
+        "title": "IGS-LABOR-SYSENGR",
+        "description": "Global Services Labor for Systems Engineer. Straight Time (8hr/Day, 40/Hr/Week) Rate - Hourly, Subject to availability. Excludes Travel & Living Expense.",
+        "sin": "334512, 541330L, 541330SEC",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "384.1713",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "5.0",
+        "education_and_experience_substitution": "BS/BA or 5 years experience",
+        "required_certifications_or_licenses": "Identiv Certified",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "System Engineer Labor",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic"
+      },
+      "education_level": "Bachelors",
+      "years_experience": "BS/BA or 5 years experience",
+      "security_clearance": "No",
+      "contractor_id": 1923,
+      "price_list_id": 842
+    }
+  ],
+  "parsed_at": "2025-11-06T11:51:28.552830"
+}

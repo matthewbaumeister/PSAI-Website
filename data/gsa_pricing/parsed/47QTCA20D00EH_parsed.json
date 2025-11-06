@@ -1,0 +1,37 @@
+{
+  "contract_number": "47QTCA20D00EH",
+  "contractor_id": 12157,
+  "price_list_id": 214,
+  "labor_categories": [
+    {
+      "contract_number": "47QTCA20D00EH",
+      "labor_category": "General Courses Ing Fredericton (CTC-130)",
+      "hourly_rate": 293.02,
+      "source_sheet_name": "Price List",
+      "source_row_number": 8,
+      "raw_data": {
+        "vendor_name": "TELEDYNE DIGITAL IMAGING INC",
+        "unique_catalog_item_id": "CTC-130-GSA",
+        "title": "General Courses Ing Fredericton (CTC-130)",
+        "description": "General Instructor led training in Fredericton on CARIS software products",
+        "sin": "611420",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "UN",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "293.02",
+        "security_clearance_required": "No",
+        "minimum_security_clearance_level": "T1",
+        "catalog_item_type": "Courses_and_Training",
+        "key_words": "Consulting,hydrography,CARIS",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic_and_Overseas",
+        "duration": "1.0",
+        "lower_bound_or_source": "English",
+        "upper_bound_or_target": "English",
+        "country": "CA"
+      },
+      "security_clearance": "No",
+      "contractor_id": 12157,
+      "price_list_id": 214
+    }
+  ],
+  "parsed_at": "2025-11-06T11:48:03.415802"
+}

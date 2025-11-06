@@ -2,8 +2,8 @@ name: Company Intelligence Daily Update
 
 on:
   schedule:
-    # Runs daily at 2:30 AM UTC (after all contract scrapers complete)
-    - cron: '30 2 * * *'
+    # Runs daily at 1:30 PM UTC (after SAM.gov scraper completes at 12:30 PM)
+    - cron: '30 13 * * *'
 
   # Allow manual trigger
   workflow_dispatch:
@@ -36,10 +36,13 @@ jobs:
           SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
           CRON_NOTIFICATION_EMAIL: ${{ secrets.CRON_NOTIFICATION_EMAIL }}
           SENDGRID_FROM_EMAIL: ${{ secrets.SENDGRID_FROM_EMAIL }}
+          SAM_GOV_API_KEY: ${{ secrets.SAM_GOV_API_KEY }}
+          SAM_GOV_API_KEY_2: ${{ secrets.SAM_GOV_API_KEY_2 }}
           SAM_GOV_ENRICHMENT_API_KEY: ${{ secrets.SAM_GOV_ENRICHMENT_API_KEY }}
         run: |
           echo "Starting Company Intelligence daily update..."
-          echo "This runs AFTER all contract scrapers complete"
+          echo "This runs AFTER SAM.gov scraper (1:30 PM UTC)"
+          echo "Uses REMAINING API balance from all 3 SAM.gov keys"
           echo "- Step 1: Rebuild company stats from contracts"
           echo "- Step 2: Enrich new companies (SAM.gov + SEC)"
           echo "- Step 3: Refresh stale public companies (Mondays)"

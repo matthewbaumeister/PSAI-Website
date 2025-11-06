@@ -1,0 +1,72 @@
+{
+  "contract_number": "47QRAA18D000M",
+  "contractor_id": 3020,
+  "price_list_id": 134,
+  "labor_categories": [
+    {
+      "contract_number": "47QRAA18D000M",
+      "labor_category": "Director Actuarial",
+      "hourly_rate": 348.28,
+      "source_sheet_name": "Price List",
+      "source_row_number": 3,
+      "raw_data": {
+        "vendor_name": "BOLTON HEALTH ACTUARIAL, INC.",
+        "unique_catalog_item_id": "Director Actuarial",
+        "title": "Director Actuarial",
+        "description": "Manage and coordinate actuarial consulting engagements. Serves as the primary point of contact for clients. Actuary with extensive technical and conceptual experience. Perform modeling and analytics, provide recommendations or action plans, provide written documentation and provide actuarial certifications and/or opinions where required. Is proficient with Microsoft Excel, Access, Word and a minimum of one programming language. Is client-facing.",
+        "sin": "541611.0",
+        "predominant_work_site": "Customer_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "348.28",
+        "gsa_price_with_iff__d_": "348.28",
+        "gsa_price_with_iff__e_": "355.25",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "10.0",
+        "education_and_experience_substitution": "Bachelor's Degree and Associate of the Society of Actuaries Credential",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Actuarial,consulting,Actuary",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "country": "US"
+      },
+      "education_level": "Bachelors",
+      "years_experience": "Bachelor's Degree and Associate of the Society of Actuaries Credential",
+      "security_clearance": "No",
+      "contractor_id": 3020,
+      "price_list_id": 134
+    },
+    {
+      "contract_number": "47QRAA18D000M",
+      "labor_category": "Managing Director Actuarial",
+      "hourly_rate": 354.16,
+      "source_sheet_name": "Price List",
+      "source_row_number": 4,
+      "raw_data": {
+        "vendor_name": "BOLTON HEALTH ACTUARIAL, INC.",
+        "unique_catalog_item_id": "Managing Director Actuarial",
+        "title": "Managing Director Actuarial",
+        "description": "Manage and coordinate actuarial consulting engagements. Serves as the primary point of contact for clients. Actuary with extensive experience who serves as an expert in relevant topics including, but not limited to Healthcare, rate setting, and health plan liability estimation. Perform analytics, provide recommendations or action plans, provide written documentation and provide actuarial certifications and/or opinions where required. Provides insight through speaking engagements, participation in industry committees, or publishes relevant information. Is proficient with Microsoft Excel and Word. Is client-facing.",
+        "sin": "541611.0",
+        "predominant_work_site": "Contractor_Facility",
+        "unit_of_measure": "HR",
+        "gsa_price_with_iff____as_of_price_list_generation_date": "354.16",
+        "gsa_price_with_iff__d_": "354.16",
+        "gsa_price_with_iff__e_": "361.24",
+        "minimum_education": "Bachelors",
+        "minimum_years_of_education": "15.0",
+        "education_and_experience_substitution": "Bachelor's Degree and Associate of the Society of Actuaries Credential Or Equivalent",
+        "security_clearance_required": "No",
+        "catalog_item_type": "Commercial_Labor_Category",
+        "key_words": "Actuarial,consulting,Actuary",
+        "domestic__overseas_or_domestic_and_overseas": "Domestic",
+        "country": "US"
+      },
+      "education_level": "Bachelors",
+      "years_experience": "Bachelor's Degree and Associate of the Society of Actuaries Credential Or Equivalent",
+      "security_clearance": "No",
+      "contractor_id": 3020,
+      "price_list_id": 134
+    }
+  ],
+  "parsed_at": "2025-11-06T11:53:01.669990"
+}

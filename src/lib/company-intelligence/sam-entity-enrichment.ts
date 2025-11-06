@@ -3,6 +3,7 @@
  * Enriches company data with SAM.gov entity registration details
  * 
  * FREE - No cost, already have API access
+ * Uses all 3 SAM.gov API keys with rotation
  */
 
 import 'dotenv/config';
@@ -12,6 +13,47 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
+
+// API Key Rotation for ALL 3 keys
+let SAM_GOV_ENRICHMENT_KEYS: string[] = [];
+let currentEnrichmentKeyIndex = 0;
+
+function initializeEnrichmentApiKeys() {
+  if (SAM_GOV_ENRICHMENT_KEYS.length === 0) {
+    // Use ALL 3 SAM.gov API keys (priority given to SAM.gov scraper, but all available)
+    const key1 = process.env.SAM_GOV_API_KEY;
+    const key2 = process.env.SAM_GOV_API_KEY_2;
+    const key3 = process.env.SAM_GOV_ENRICHMENT_API_KEY || process.env.SAM_GOV_THIRD_API_KEY;
+    
+    if (key1) SAM_GOV_ENRICHMENT_KEYS.push(key1);
+    if (key2) SAM_GOV_ENRICHMENT_KEYS.push(key2);
+    if (key3) SAM_GOV_ENRICHMENT_KEYS.push(key3);
+    
+    if (SAM_GOV_ENRICHMENT_KEYS.length === 0) {
+      throw new Error('Missing SAM.gov API keys for enrichment');
+    }
+    
+    console.log(`[SAM Enrichment] Initialized with ${SAM_GOV_ENRICHMENT_KEYS.length} API key(s)`);
+  }
+}
+
+function getEnrichmentApiKey(): string {
+  initializeEnrichmentApiKeys();
+  return SAM_GOV_ENRICHMENT_KEYS[currentEnrichmentKeyIndex];
+}
+
+function rotateEnrichmentApiKey(): boolean {
+  initializeEnrichmentApiKeys();
+  
+  if (SAM_GOV_ENRICHMENT_KEYS.length <= 1) {
+    console.log('[SAM Enrichment] No additional API keys available for rotation');
+    return false;
+  }
+  
+  currentEnrichmentKeyIndex = (currentEnrichmentKeyIndex + 1) % SAM_GOV_ENRICHMENT_KEYS.length;
+  console.log(`[SAM Enrichment] Rotated to API key ${currentEnrichmentKeyIndex + 1}/${SAM_GOV_ENRICHMENT_KEYS.length}`);
+  return true;
+}
 
 interface SAMEntityResponse {
   entityData: Array<{
@@ -161,12 +203,13 @@ export async function enrichWithSAMEntity(uei: string): Promise<any> {
   console.log(`Enriching company with UEI: ${uei}`);
 
   try {
-    // Call SAM.gov Entity Management API
+    // Call SAM.gov Entity Management API (uses rotated key from all 3)
+    const apiKey = getEnrichmentApiKey();
     const response = await fetch(
       `https://api.sam.gov/entity-information/v3/entities?ueiSAM=${uei}&includeSections=entityRegistration,coreData,pointsOfContact,repsAndCerts`,
       {
         headers: {
-          'X-Api-Key': process.env.SAM_GOV_THIRD_API_KEY || process.env.SAM_GOV_ENRICHMENT_API_KEY || process.env.SAM_GOV_API_KEY!,
+          'X-Api-Key': apiKey,
           'Accept': 'application/json',
         },
       }
@@ -341,6 +384,23 @@ export async function batchEnrichFromFPDS(limit: number = 100): Promise<void> {
         continue;
       }
 
+      // Override SAM.gov small business flags with contract data (more accurate)
+      // Keep SAM.gov data in separate fields for reference
+      const contractBasedFlags = {
+        is_small_business: company.small_business || enrichmentData.is_small_business,
+        is_woman_owned: company.woman_owned || enrichmentData.is_woman_owned,
+        is_veteran_owned: company.veteran_owned || enrichmentData.is_veteran_owned,
+        is_service_disabled_veteran_owned: company.service_disabled_veteran || enrichmentData.is_service_disabled_veteran_owned,
+        is_hubzone: company.hubzone || enrichmentData.is_hubzone,
+        is_8a_program: company.eight_a || enrichmentData.is_8a_program,
+      };
+      
+      // Common sense check: If company has >$100M in contracts, probably not small business
+      // (unless it's a small business set-aside specialist)
+      if (company.total_value > 100000000 && !company.small_business) {
+        contractBasedFlags.is_small_business = false;
+      }
+      
       // Insert into company_intelligence
       const { data: newCompany, error: insertError } = await supabase
         .from('company_intelligence')
@@ -348,6 +408,7 @@ export async function batchEnrichFromFPDS(limit: number = 100): Promise<void> {
           company_name: company.company_name,
           vendor_duns: company.vendor_duns,
           ...enrichmentData,
+          ...contractBasedFlags, // Override with contract-based flags
         })
         .select()
         .single();
