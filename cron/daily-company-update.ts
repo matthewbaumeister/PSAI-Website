@@ -42,7 +42,7 @@ async function dailyCompanyUpdate() {
     console.log('Step 1: Rebuild Company Stats');
     console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
     
-    const { data: statsBefore } = await supabase
+    const { count: statsBefore } = await supabase
       .from('fpds_company_stats')
       .select('id', { count: 'exact', head: true });
     
@@ -53,7 +53,7 @@ async function dailyCompanyUpdate() {
     console.log('  Rebuilding company stats from contracts...');
     await rebuildCompanyStats();
     
-    const { data: statsAfter } = await supabase
+    const { count: statsAfter } = await supabase
       .from('fpds_company_stats')
       .select('id', { count: 'exact', head: true });
     
