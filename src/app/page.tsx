@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation'
 import { useTheme } from '@/contexts/ThemeContext'
 import { Footer } from '@/components/Footer'
 
+// Force dynamic rendering (skip static prerendering)
+export const dynamic = 'force-dynamic'
+
 export default function HomePage() {
   const router = useRouter()
   const { theme } = useTheme()
