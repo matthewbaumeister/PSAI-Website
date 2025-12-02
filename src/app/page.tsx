@@ -29,16 +29,30 @@ export default function HomePage() {
         width: '100%',
         textAlign: 'center'
       }}>
-        {/* Logo/Wordmark */}
-        <h1 style={{
-          fontSize: '3.5rem',
-          fontWeight: '700',
-          marginBottom: '1rem',
-          letterSpacing: '-0.02em',
-          color: '#ffffff'
+        {/* Logo */}
+        <div style={{
+          marginBottom: '2rem',
+          display: 'flex',
+          justifyContent: 'center'
         }}>
-          propshop.ai
-        </h1>
+          <img 
+            src="/logo.svg" 
+            alt="PropShop.ai" 
+            style={{
+              height: '60px',
+              filter: 'brightness(0) invert(1)'
+            }}
+          />
+        </div>
+        
+        <h2 style={{
+          fontSize: '1.5rem',
+          fontWeight: '400',
+          marginBottom: '1rem',
+          color: 'rgba(255, 255, 255, 0.9)'
+        }}>
+          prop-shop.ai
+        </h2>
 
         {/* Subtext */}
         <p style={{

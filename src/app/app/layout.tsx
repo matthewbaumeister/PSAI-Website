@@ -37,14 +37,19 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <Link 
               href="/"
               style={{
-                fontSize: '1.25rem',
-                fontWeight: '700',
-                color: '#ffffff',
-                textDecoration: 'none',
-                letterSpacing: '-0.01em'
+                display: 'flex',
+                alignItems: 'center',
+                textDecoration: 'none'
               }}
             >
-              propshop.ai
+              <img 
+                src="/logo.svg" 
+                alt="PropShop.ai" 
+                style={{
+                  height: '32px',
+                  filter: 'brightness(0) invert(1)'
+                }}
+              />
             </Link>
 
             <div style={{ display: 'flex', gap: '0.5rem' }}>
