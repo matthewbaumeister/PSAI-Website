@@ -44,10 +44,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               }}
             >
               <img 
-                src="/logo.svg" 
+                src="/logo.png" 
                 alt="PropShop.ai" 
                 style={{
-                  height: '36px'
+                  height: '40px'
                 }}
               />
               <span style={{

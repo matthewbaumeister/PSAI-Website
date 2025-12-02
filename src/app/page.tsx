@@ -39,10 +39,10 @@ export default function HomePage() {
           gap: '1.5rem'
         }}>
           <img 
-            src="/logo.svg" 
+            src="/logo.png" 
             alt="PropShop.ai" 
             style={{
-              height: '80px'
+              height: '100px'
             }}
           />
           <div style={{
