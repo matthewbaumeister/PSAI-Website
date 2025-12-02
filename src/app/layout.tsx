@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { CrmProvider } from '@/contexts/CrmContext'
 import { ThemeProvider } from '@/contexts/ThemeContext'
+import { AuthProvider } from '@/contexts/AuthContext'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -27,11 +28,13 @@ export default function RootLayout({
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
         minHeight: '100vh'
       }}>
-        <ThemeProvider>
-          <CrmProvider>
-            {children}
-          </CrmProvider>
-        </ThemeProvider>
+        <AuthProvider>
+          <ThemeProvider>
+            <CrmProvider>
+              {children}
+            </CrmProvider>
+          </ThemeProvider>
+        </AuthProvider>
       </body>
     </html>
   )
