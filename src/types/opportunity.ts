@@ -58,6 +58,9 @@ export interface SearchFilters {
   agencies: string[]
   contractVehicles: string[]
   statuses: string[]
+  naicsCodes?: string[]
+  minValue?: number
+  maxValue?: number
   dateRange: {
     start: string | null
     end: string | null
