@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Opportunity, ChatMessage, SearchFilters } from '@/types/opportunity'
 import { searchOpportunities, chatWithOpportunities, getAllAgencies, getAllContractVehicles, getAllStatuses } from '@/mock/api'
 import { OpportunityDetailPanel } from '@/components/OpportunityDetailPanel'
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams()
   const initialQuery = searchParams?.get('q') || ''
 
@@ -442,3 +442,20 @@ function FilterSection({ label, options, selectedOptions, onChange }: FilterSect
   )
 }
 
+export default function SearchPage() {
+  return (
+    <Suspense fallback={
+      <div style={{
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        color: '#ffffff'
+      }}>
+        Loading...
+      </div>
+    }>
+      <SearchPageContent />
+    </Suspense>
+  )
+}
