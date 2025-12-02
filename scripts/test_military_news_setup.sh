@@ -55,11 +55,20 @@ echo ""
 echo -e "${YELLOW}Step 3: Checking required packages...${NC}"
 MISSING_PACKAGES=()
 
-for package in requests beautifulsoup4 supabase; do
-    if ! python3 -c "import ${package//-/_}" 2>/dev/null; then
-        MISSING_PACKAGES+=($package)
-    fi
-done
+# Check requests
+if ! python3 -c "import requests" 2>/dev/null; then
+    MISSING_PACKAGES+=(requests)
+fi
+
+# Check beautifulsoup4 (imports as bs4)
+if ! python3 -c "import bs4" 2>/dev/null; then
+    MISSING_PACKAGES+=(beautifulsoup4)
+fi
+
+# Check supabase
+if ! python3 -c "import supabase" 2>/dev/null; then
+    MISSING_PACKAGES+=(supabase)
+fi
 
 if [ ${#MISSING_PACKAGES[@]} -gt 0 ]; then
     echo -e "${RED}Missing packages: ${MISSING_PACKAGES[*]}${NC}"
@@ -120,9 +129,10 @@ echo "Testing with DVIDS API (1 day of data)..."
 echo ""
 
 TODAY=$(date +%Y-%m-%d)
+YESTERDAY=$(date -v-1d +%Y-%m-%d 2>/dev/null || date -d "yesterday" +%Y-%m-%d)
 python3 scripts/military_news_historical_scraper.py \
     --source dvids \
-    --start-date $TODAY \
+    --start-date $YESTERDAY \
     --end-date $TODAY \
     --delay 1.0
 

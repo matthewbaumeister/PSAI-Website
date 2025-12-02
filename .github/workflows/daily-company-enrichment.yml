@@ -1,0 +1,66 @@
+name: Daily Company Enrichment Scraper
+
+on:
+  schedule:
+    # Run every day at 2 AM UTC (9 PM EST / 6 PM PST)
+    - cron: '0 2 * * *'
+  
+  workflow_dispatch:  # Allow manual trigger
+    inputs:
+      max_companies:
+        description: 'Maximum companies to scrape'
+        required: false
+        default: '100'
+        type: string
+
+jobs:
+  scrape-companies:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # 6 hours max
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements-scraper.txt
+          playwright install chromium
+          playwright install-deps chromium
+      
+      - name: Create logs directory
+        run: mkdir -p logs
+      
+      - name: Run daily scraper
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          PROXY_URL: ${{ secrets.PROXY_URL }}  # Optional
+          USE_PROXY: ${{ secrets.USE_PROXY }}  # Optional
+          LOG_LEVEL: INFO
+        run: |
+          cd scrapers
+          python daily_scraper.py
+      
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scraper-logs-${{ github.run_number }}
+          path: logs/
+          retention-days: 30
+      
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "Daily scraper failed! Check logs for details."
+          # TODO: Add Slack/Discord notification here
+
+

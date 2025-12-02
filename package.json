@@ -25,7 +25,9 @@
     "check:test-article": "tsx check-test-article.ts",
     "trigger:mantech": "tsx trigger-mantech-cron.ts",
     "enrich-companies": "tsx enrich-companies.ts",
-    "update-companies:daily": "tsx cron/daily-company-update.ts"
+    "update-companies:daily": "tsx cron/daily-company-update.ts",
+    "backup:supabase": "tsx scripts/backup-supabase.ts",
+    "db:backup": "tsx scripts/backup-supabase.ts"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.81",

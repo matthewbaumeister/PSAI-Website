@@ -99,13 +99,28 @@ echo "Check your Supabase database for pricing data:"
 echo "  - gsa_price_lists: Track of all price list files"
 echo "  - gsa_labor_categories: Individual labor categories with rates"
 echo ""
-echo "To verify the data, run this SQL query in Supabase:"
+echo "To verify the data, run this SQL file in Supabase:"
+echo "  VERIFY_GSA_PRICING_QUICK.sql"
 echo ""
-echo "SELECT COUNT(*) as total_labor_categories,"
-echo "       COUNT(DISTINCT contractor_id) as contractors_with_pricing,"
-echo "       MIN(hourly_rate) as min_rate,"
-echo "       MAX(hourly_rate) as max_rate,"
-echo "       AVG(hourly_rate)::numeric(10,2) as avg_rate"
-echo "FROM gsa_labor_categories;"
+echo ""
+echo "============================================================"
+echo "CLEANUP LOCAL FILES?"
+echo "============================================================"
+echo ""
+echo "Data is now safely stored in Supabase."
+echo "Delete local Excel and JSON files to free up disk space?"
+echo ""
+
+read -p "Run cleanup? (y/n): " CLEANUP
+
+if [ "$CLEANUP" = "y" ] || [ "$CLEANUP" = "Y" ]; then
+    echo ""
+    ./scripts/cleanup-gsa-pricing-files.sh
+else
+    echo ""
+    echo "Cleanup skipped. Files retained in data/gsa_pricing/"
+    echo "To cleanup later, run: ./scripts/cleanup-gsa-pricing-files.sh"
+fi
+
 echo ""
 

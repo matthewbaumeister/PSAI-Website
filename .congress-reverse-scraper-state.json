@@ -1,10 +1,10 @@
 {
   "direction": "ascending",
-  "currentCongress": 82,
+  "currentCongress": 119,
   "currentOffset": 0,
-  "totalBillsProcessed": 35749,
-  "successCount": 35745,
-  "failureCount": 4,
+  "totalBillsProcessed": 422443,
+  "successCount": 422229,
+  "failureCount": 214,
   "congresses": {
     "1": {
       "totalBills": 0,
@@ -413,8 +413,193 @@
     },
     "82": {
       "totalBills": 1617,
-      "processedBills": 1448,
+      "processedBills": 1617,
+      "lastOffset": 1500
+    },
+    "83": {
+      "totalBills": 1783,
+      "processedBills": 1783,
+      "lastOffset": 1750
+    },
+    "84": {
+      "totalBills": 1921,
+      "processedBills": 1921,
+      "lastOffset": 1750
+    },
+    "85": {
+      "totalBills": 1717,
+      "processedBills": 1716,
+      "lastOffset": 1500
+    },
+    "86": {
+      "totalBills": 1292,
+      "processedBills": 1292,
       "lastOffset": 1250
+    },
+    "87": {
+      "totalBills": 1567,
+      "processedBills": 1567,
+      "lastOffset": 1500
+    },
+    "88": {
+      "totalBills": 1024,
+      "processedBills": 1024,
+      "lastOffset": 1000
+    },
+    "89": {
+      "totalBills": 1279,
+      "processedBills": 1278,
+      "lastOffset": 1250
+    },
+    "90": {
+      "totalBills": 994,
+      "processedBills": 993,
+      "lastOffset": 750
+    },
+    "91": {
+      "totalBills": 938,
+      "processedBills": 937,
+      "lastOffset": 750
+    },
+    "92": {
+      "totalBills": 767,
+      "processedBills": 767,
+      "lastOffset": 750
+    },
+    "93": {
+      "totalBills": 26222,
+      "processedBills": 26222,
+      "lastOffset": 26000
+    },
+    "94": {
+      "totalBills": 24285,
+      "processedBills": 24285,
+      "lastOffset": 24250
+    },
+    "95": {
+      "totalBills": 22313,
+      "processedBills": 22313,
+      "lastOffset": 22250
+    },
+    "96": {
+      "totalBills": 14590,
+      "processedBills": 14590,
+      "lastOffset": 14500
+    },
+    "97": {
+      "totalBills": 13236,
+      "processedBills": 13236,
+      "lastOffset": 13000
+    },
+    "98": {
+      "totalBills": 12202,
+      "processedBills": 12202,
+      "lastOffset": 12000
+    },
+    "99": {
+      "totalBills": 11602,
+      "processedBills": 11602,
+      "lastOffset": 11500
+    },
+    "100": {
+      "totalBills": 11278,
+      "processedBills": 11278,
+      "lastOffset": 11250
+    },
+    "101": {
+      "totalBills": 11787,
+      "processedBills": 11787,
+      "lastOffset": 11750
+    },
+    "102": {
+      "totalBills": 12016,
+      "processedBills": 12016,
+      "lastOffset": 12000
+    },
+    "103": {
+      "totalBills": 9822,
+      "processedBills": 9822,
+      "lastOffset": 9750
+    },
+    "104": {
+      "totalBills": 7991,
+      "processedBills": 7991,
+      "lastOffset": 7750
+    },
+    "105": {
+      "totalBills": 9141,
+      "processedBills": 9141,
+      "lastOffset": 9000
+    },
+    "106": {
+      "totalBills": 10840,
+      "processedBills": 10840,
+      "lastOffset": 10750
+    },
+    "107": {
+      "totalBills": 10791,
+      "processedBills": 10791,
+      "lastOffset": 10750
+    },
+    "108": {
+      "totalBills": 10669,
+      "processedBills": 10669,
+      "lastOffset": 10500
+    },
+    "109": {
+      "totalBills": 13072,
+      "processedBills": 13072,
+      "lastOffset": 13000
+    },
+    "110": {
+      "totalBills": 14042,
+      "processedBills": 14042,
+      "lastOffset": 14000
+    },
+    "111": {
+      "totalBills": 13683,
+      "processedBills": 13683,
+      "lastOffset": 13500
+    },
+    "112": {
+      "totalBills": 12305,
+      "processedBills": 12305,
+      "lastOffset": 12250
+    },
+    "113": {
+      "totalBills": 10645,
+      "processedBills": 10645,
+      "lastOffset": 10500
+    },
+    "114": {
+      "totalBills": 12073,
+      "processedBills": 12073,
+      "lastOffset": 12000
+    },
+    "115": {
+      "totalBills": 13563,
+      "processedBills": 13563,
+      "lastOffset": 13500
+    },
+    "116": {
+      "totalBills": 16606,
+      "processedBills": 16606,
+      "lastOffset": 16500
+    },
+    "117": {
+      "totalBills": 17828,
+      "processedBills": 17828,
+      "lastOffset": 17750
+    },
+    "118": {
+      "totalBills": 19315,
+      "processedBills": 19315,
+      "lastOffset": 19250
+    },
+    "119": {
+      "totalBills": 11341,
+      "processedBills": 11330,
+      "lastOffset": 11250
     }
   },
   "errors": [
@@ -437,7 +622,1057 @@
       "congress": 32,
       "bill": "HR 188",
       "error": "timeout of 30000ms exceeded"
+    },
+    {
+      "congress": 94,
+      "bill": "HR 9949",
+      "error": "timeout of 30000ms exceeded"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2744",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2739",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2734",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2728",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HJRES 59",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2301",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2287",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2213",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2281",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2226",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2212",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2201",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2211",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2209",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2324",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2295",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2239",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2237",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2222",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2178",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2283",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2317",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2279",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2277",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 435",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2128",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HCONRES 132",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2156",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2097",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2062",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2056",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2290",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2266",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2210",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2208",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2207",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1652",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HRES 223",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2285",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "SCONRES 39",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HRES 221",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2365",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2364",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1286",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1285",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 856",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1279",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1278",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2177",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1277",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1276",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1280",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HRES 216",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2215",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2199",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2198",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2197",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2196",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2194",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2193",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2191",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2186",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2176",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2174",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2169",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2168",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2167",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2165",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2154",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HCONRES 135",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2153",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2221",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2152",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2151",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2129",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2123",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2108",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2102",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2055",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2150",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2053",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HRES 201",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2092",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2070",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2069",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2068",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2063",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2052",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2146",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2033",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2032",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2012",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2010",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2008",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2007",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1948",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1920",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2074",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1274",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "SRES 127",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2359",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2347",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2349",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2202",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 719",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1270",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1271",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "SRES 126",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "SRES 113",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1269",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1599",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HRES 217",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1267",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HRES 197",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 848",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2160",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2147",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1999",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1996",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1984",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1976",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1968",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1966",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1965",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1936",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HRES 218",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2334",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2331",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2318",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2002",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1998",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1992",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1938",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1930",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1911",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 1876",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2235",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 104",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 890",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 889",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 794",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 975",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 106,
+      "bill": "S 1265",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 107,
+      "bill": "S 1529",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 107,
+      "bill": "HR 1706",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 107,
+      "bill": "SRES 82",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 107,
+      "bill": "S 833",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 107,
+      "bill": "S 832",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 107,
+      "bill": "HR 1657",
+      "error": "timeout of 30000ms exceeded"
+    },
+    {
+      "congress": 107,
+      "bill": "HCONRES 98",
+      "error": "timeout of 30000ms exceeded"
+    },
+    {
+      "congress": 107,
+      "bill": "S 789",
+      "error": "timeout of 30000ms exceeded"
+    },
+    {
+      "congress": 108,
+      "bill": "HRES 772",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 108,
+      "bill": "HRES 789",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 108,
+      "bill": "HRES 786",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 108,
+      "bill": "HRES 787",
+      "error": "getaddrinfo ENOTFOUND api.congress.gov"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2911",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2904",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HRES 322",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2924",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2734",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2644",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2572",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2237",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1248",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "SRES 161",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1246",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1247",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1243",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1242",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1245",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1241",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1236",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2856",
+      "error": "timeout of 30000ms exceeded"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2855",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2854",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2852",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2851",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2850",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 1162",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "S 188",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HRES 288",
+      "error": "Request failed with status code 520"
+    },
+    {
+      "congress": 109,
+      "bill": "HRES 263",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HRES 259",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HJRES 51",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HJRES 50",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HJRES 49",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HJRES 48",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2689",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2562",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2553",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2518",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2516",
+      "error": "Request failed with status code 520"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2510",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2500",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2487",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2474",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2417",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2400",
+      "error": "Request failed with status code 520"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2399",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2391",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2109",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2653",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2643",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2636",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2570",
+      "error": "Request failed with status code 520"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2457",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2387",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2317",
+      "error": "Request failed with status code 503"
+    },
+    {
+      "congress": 109,
+      "bill": "HR 2478",
+      "error": "timeout of 30000ms exceeded"
     }
   ],
-  "lastUpdated": "2025-11-06T16:52:09.283Z"
+  "lastUpdated": "2025-11-30T08:38:26.379Z"
 }

@@ -1,0 +1,21 @@
+[
+  {
+    "id": "a25c9b9c-0911-443f-aef5-982a9cef0b96",
+    "email": "matt@make-ready-consulting.com",
+    "email_verified_at": "2025-08-29T18:01:36.352+00:00",
+    "password_hash": "$2b$12$bIT6NH6Bn5d1HcCUSkbqmOHubNAglJ/psZNq8IqBKn5jxtE0Ir.W6",
+    "first_name": "Matt",
+    "last_name": "Baumeister",
+    "company_name": "Make Ready Consulting",
+    "company_size": "1-10",
+    "phone": null,
+    "created_at": "2025-08-29T18:00:46.545765+00:00",
+    "updated_at": "2025-08-29T18:11:23.302+00:00",
+    "last_login_at": "2025-11-06T12:04:07.303+00:00",
+    "is_active": true,
+    "is_admin": true,
+    "two_factor_enabled": false,
+    "two_factor_secret": null,
+    "session_timeout_minutes": 30
+  }
+]

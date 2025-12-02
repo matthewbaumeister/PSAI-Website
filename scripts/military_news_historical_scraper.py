@@ -102,7 +102,7 @@ class MilitaryNewsHistoricalScraper:
         print(f"Date range: {start_date.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
         print(f"{'='*70}\n")
         
-        base_url = "https://www.dvidshub.net/api/v2"
+        base_url = "https://www.dvidshub.net"
         
         # DVIDS API pagination
         page = 1
@@ -110,15 +110,19 @@ class MilitaryNewsHistoricalScraper:
         
         while True:
             # Build API request
+            # DVIDS API uses 'resources' endpoint for news/images/video
             params = {
-                'prettyprint': 'false',
                 'page': page,
                 'max': max_results,
-                'datestart': start_date.strftime('%Y%m%d'),
-                'dateend': end_date.strftime('%Y%m%d'),
             }
             
-            api_url = f"{base_url}/{source_type}"
+            # DVIDS API endpoint format
+            if source_type == 'news':
+                api_url = f"{base_url}/search"
+                params['filter[type]'] = 'news'
+            else:
+                api_url = f"{base_url}/search"
+                params['filter[type]'] = source_type
             
             try:
                 print(f"Fetching page {page}...")
@@ -484,8 +488,8 @@ class MilitaryNewsHistoricalScraper:
                 'scraper_name': scraper_name,
                 'scrape_type': scrape_type,
                 'source': source,
-                'date_from': date_from.date() if date_from else None,
-                'date_to': date_to.date() if date_to else None,
+                'date_from': date_from.date().isoformat() if date_from else None,
+                'date_to': date_to.date().isoformat() if date_to else None,
                 'articles_found': self.stats['articles_found'],
                 'articles_new': self.stats['articles_new'],
                 'articles_updated': self.stats['articles_updated'],

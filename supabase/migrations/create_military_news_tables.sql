@@ -502,8 +502,10 @@ CREATE TABLE military_ranks (
   -- NATO rank code
   nato_code TEXT,
   
-  UNIQUE(service_branch, rank_name),
-  UNIQUE(service_branch, pay_grade)
+  UNIQUE(service_branch, rank_name)
+  -- Note: Cannot have UNIQUE constraint on (service_branch, pay_grade) 
+  -- because some services have multiple ranks at same pay grade
+  -- e.g., Army E-4 = Specialist OR Corporal, E-8 = MSG OR 1SG
 );
 
 -- ============================================

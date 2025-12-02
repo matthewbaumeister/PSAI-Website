@@ -96,3 +96,4 @@ To add Senate trades, start a new Cursor conversation with the prompt in:
 - `PDF_PARSER_SUCCESS.md` - Implementation details
 - `SENATE_SCRAPER_PROMPT.md` - Prompt for new conversation to build Senate scraper
 
+

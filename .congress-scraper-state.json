@@ -1,14 +1,31 @@
 {
-  "currentCongress": 117,
-  "currentOffset": 5820,
-  "totalBillsProcessed": 35744,
-  "successCount": 35743,
-  "failureCount": 1,
+  "currentCongress": 100,
+  "currentOffset": 6250,
+  "totalBillsProcessed": 243048,
+  "successCount": 243023,
+  "failureCount": 25,
   "startTime": "2025-11-04T15:04:04.339Z",
-  "lastSaveTime": "2025-11-06T16:40:53.857Z",
+  "lastSaveTime": "2025-11-18T23:51:42.401Z",
   "completedCongresses": [
     119,
-    118
+    118,
+    117,
+    116,
+    115,
+    114,
+    113,
+    112,
+    111,
+    110,
+    109,
+    108,
+    107,
+    106,
+    105,
+    104,
+    103,
+    102,
+    101
   ],
   "errors": [
     {
@@ -16,6 +33,150 @@
       "bill": "HR 5775",
       "error": "Failed to save to database",
       "timestamp": "2025-11-04T15:20:47.205Z"
+    },
+    {
+      "congress": 115,
+      "bill": "HR 1925",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-08T13:36:03.333Z"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2188",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-15T05:43:58.314Z"
+    },
+    {
+      "congress": 106,
+      "bill": "HR 2444",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-15T05:44:15.354Z"
+    },
+    {
+      "congress": 105,
+      "bill": "HR 4743",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-15T11:49:00.976Z"
+    },
+    {
+      "congress": 103,
+      "bill": "HR 3739",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-16T17:20:17.779Z"
+    },
+    {
+      "congress": 102,
+      "bill": "HR 3320",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-17T07:30:52.024Z"
+    },
+    {
+      "congress": 102,
+      "bill": "HR 1400",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-17T10:55:50.304Z"
+    },
+    {
+      "congress": 101,
+      "bill": "S 2489",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-17T23:49:43.819Z"
+    },
+    {
+      "congress": 101,
+      "bill": "S 1722",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-18T03:47:00.443Z"
+    },
+    {
+      "congress": 101,
+      "bill": "HR 1456",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-18T07:51:19.187Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HR 2483",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-18T13:30:02.363Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HR 1179",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-18T14:47:23.964Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HR 1049",
+      "error": "Fetching HR 1049 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T19:16:04.247Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HJRES 422",
+      "error": "Fetching HJRES 422 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T20:15:58.868Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HR 3701",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-18T21:20:59.389Z"
+    },
+    {
+      "congress": 100,
+      "bill": "S 1665",
+      "error": "Failed to save to database",
+      "timestamp": "2025-11-18T21:30:17.759Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HR 3196",
+      "error": "Fetching HR 3196 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T23:43:51.957Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HR 2521",
+      "error": "Fetching HR 2521 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T23:44:59.064Z"
+    },
+    {
+      "congress": 100,
+      "bill": "SCONRES 77",
+      "error": "Fetching SCONRES 77 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T23:46:06.164Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HR 3335",
+      "error": "Fetching HR 3335 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T23:47:13.265Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HRES 275",
+      "error": "Fetching HRES 275 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T23:48:20.368Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HJRES 340",
+      "error": "Fetching HJRES 340 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T23:49:27.475Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HR 3342",
+      "error": "Fetching HR 3342 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T23:50:34.571Z"
+    },
+    {
+      "congress": 100,
+      "bill": "HJRES 228",
+      "error": "Fetching HJRES 228 failed after 5 retries: getaddrinfo ENOTFOUND api.congress.gov",
+      "timestamp": "2025-11-18T23:51:41.676Z"
     }
   ]
 }

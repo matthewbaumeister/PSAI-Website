@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { AuthProvider } from '@/contexts/AuthContext'
+import { CrmProvider } from '@/contexts/CrmContext'
 import { CookieConsent } from '@/components/CookieConsent'
 import './globals.css'
 
@@ -47,16 +48,18 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <AuthProvider>
-          {/* Clean, Subtle Background Animations */}
-          <div className="animated-bg"></div>
-          <div className="bg-grid-overlay"></div>
-          <div className="bg-dots"></div>
-          <div className="floating-elements"></div>
-          
-          <Header />
-          {children}
-          <Footer />
-          <CookieConsent />
+          <CrmProvider>
+            {/* Clean, Subtle Background Animations */}
+            <div className="animated-bg"></div>
+            <div className="bg-grid-overlay"></div>
+            <div className="bg-dots"></div>
+            <div className="floating-elements"></div>
+            
+            <Header />
+            {children}
+            <Footer />
+            <CookieConsent />
+          </CrmProvider>
         </AuthProvider>
       </body>
     </html>
