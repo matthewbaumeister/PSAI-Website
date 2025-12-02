@@ -79,29 +79,19 @@ export default function HomePage() {
           width: '100%',
           textAlign: 'center'
         }}>
-          {/* Logo + Domain */}
+          {/* Logo */}
           <div style={{
             marginBottom: '2rem',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '1.5rem'
+            justifyContent: 'center'
           }}>
             <img 
               src="/logo.png" 
               alt="PropShop.ai" 
               style={{
-                height: '100px'
+                height: '120px'
               }}
             />
-            <div style={{
-              fontSize: '2.5rem',
-              fontWeight: '700',
-              color: isDark ? '#F9FAFB' : '#1F2937',
-              letterSpacing: '-0.02em'
-            }}>
-              prop-shop.ai
-            </div>
           </div>
 
           {/* Subtext */}
