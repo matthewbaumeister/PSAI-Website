@@ -1,32 +1,30 @@
-# Test files
-test-*.ts
-check-*.ts
-debug-*.ts
-trigger-*.ts
+# Test files (only in root)
+/test-*.ts
+/check-*.ts
+/debug-*.ts
+/trigger-*.ts
+/apply-*.ts
 
-# Scripts and utilities
-scripts/
-cron/
-*.sh
-
-# Data files
+# Non-source data files
 *.csv
 *.sql
 *.log
 *.html
 
-# Documentation
+# Documentation (except README)
 *.md
 !README.md
 
 # Backup data
-backups/
-data/
+/backups/
 
 # Python virtual environment
-venv/
+/venv/
 __pycache__/
 *.py
+
+# Shell scripts
+*.sh
 
 # Misc
 .DS_Store
