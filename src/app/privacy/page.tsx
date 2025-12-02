@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { useTheme } from '@/contexts/ThemeContext'
 
+export const dynamic = 'force-dynamic'
+
 export default function PrivacyPage() {
   const { theme } = useTheme()
   const isDark = theme === 'dark'
