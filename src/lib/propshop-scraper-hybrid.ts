@@ -27,27 +27,6 @@ if (!supabaseUrl || !supabaseKey) {
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Import extraction functions from the original scraper
-import {
-  extractVendorInfo,
-  extractFinancialData,
-  extractContractTypes,
-  extractModificationInfo,
-  extractCompetitionInfo,
-  extractSetAsideInfo,
-  extractSBIRInfo,
-  extractFMSInfo,
-  extractPerformanceLocations,
-  extractFundingDetails,
-  extractTimeline,
-  extractClassification,
-  extractTeamingInfo,
-  extractWeaponSystemsAndPrograms,
-  categorizeAndTag,
-  calculateParsingConfidence,
-  calculateQualityScore
-} from './propshop-gov-contract-scraper';
-
 const SOURCE_NAME = 'defense_gov';
 
 /**
@@ -496,42 +475,80 @@ export async function testScraper(daysBack: number = 1) {
   }
 }
 
-// Make extractComprehensiveContractData available
+// Simple extraction function for testing
 async function extractComprehensiveContractData(text: string, serviceBranch: string, awardDate: Date) {
-  // This would use all the extraction functions from propshop-gov-contract-scraper.ts
-  // For now, returning a simplified version
+  // Extract vendor name (first line before comma)
+  const vendorMatch = text.match(/^([^,(*\n]+)/);
+  const vendorName = vendorMatch ? vendorMatch[1].trim() : 'Unknown Vendor';
   
-  const vendor = extractVendorInfo(text);
-  const financial = extractFinancialData(text);
-  const contractTypes = extractContractTypes(text);
-  const setAside = extractSetAsideInfo(text);
-  const classification = extractClassification(text);
-  const tags = categorizeAndTag(text, vendor.vendorName);
+  // Extract location
+  const locationMatch = text.match(/,\s*([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*),\s+([A-Z][a-z]+)/);
+  const vendorCity = locationMatch ? locationMatch[1] : undefined;
+  const vendorState = locationMatch ? locationMatch[2] : undefined;
+  const vendorLocation = (vendorCity && vendorState) ? `${vendorCity}, ${vendorState}` : undefined;
+  
+  // Extract award amount
+  let awardAmount: number | undefined;
+  let awardAmountText: string | undefined;
+  const amountMatch = text.match(/\$(\d+(?:\.\d+)?)\s*(billion|million)/i);
+  if (amountMatch) {
+    awardAmountText = amountMatch[0];
+    const multiplier = amountMatch[2].toLowerCase() === 'billion' ? 1_000_000_000 : 1_000_000;
+    awardAmount = parseFloat(amountMatch[1]) * multiplier;
+  }
+  
+  // Detect IDIQ
+  const isIDIQ = /IDIQ|indefinite-delivery/i.test(text);
+  
+  // Detect small business
+  const isSmallBusiness = /small business/i.test(text);
+  const setAsideType = /8\(a\)/i.test(text) ? '8(a)' : 
+                       /HUBZone/i.test(text) ? 'HUBZone' :
+                       /SDVOSB/i.test(text) ? 'SDVOSB' : undefined;
+  
+  // Extract NAICS
+  const naicsMatch = text.match(/NAICS\s+(\d{6})/i);
+  const naicsCodes = naicsMatch ? [naicsMatch[1]] : [];
+  
+  // Simple categorization
+  const industryTags: string[] = [];
+  if (/aerospace|aircraft|aviation/i.test(text)) industryTags.push('Aerospace & Defense');
+  if (/cyber|security/i.test(text)) industryTags.push('Cybersecurity');
+  if (/IT|software|cloud/i.test(text)) industryTags.push('IT Services');
+  
+  const technologyTags: string[] = [];
+  if (/AI|artificial intelligence/i.test(text)) technologyTags.push('Artificial Intelligence');
+  if (/cloud/i.test(text)) technologyTags.push('Cloud Computing');
+  
+  const contractTypes: string[] = [];
+  if (/firm-fixed-price/i.test(text)) contractTypes.push('firm-fixed-price');
+  if (/cost-plus/i.test(text)) contractTypes.push('cost-plus-fixed-fee');
+  if (isIDIQ) contractTypes.push('IDIQ');
   
   return {
-    vendorName: vendor.vendorName,
-    vendorCity: vendor.vendorCity,
-    vendorState: vendor.vendorState,
-    vendorLocation: vendor.vendorLocation,
-    awardAmount: financial.awardAmount,
-    awardAmountText: financial.awardAmountText,
-    contractTypes: contractTypes.types,
-    isIDIQ: contractTypes.isIDIQ,
-    isSmallBusiness: setAside.isSmallBusiness,
-    setAsideType: setAside.setAsideType,
-    naicsCodes: classification.naicsCodes,
-    industryTags: tags.industryTags,
-    technologyTags: tags.technologyTags,
-    serviceTags: tags.serviceTags,
-    domainCategory: tags.domainCategory,
-    keywords: tags.keywords,
-    serviceBranch: serviceBranch,
-    awardDate: awardDate,
+    vendorName,
+    vendorCity,
+    vendorState,
+    vendorLocation,
+    awardAmount,
+    awardAmountText,
+    contractTypes,
+    isIDIQ,
+    isSmallBusiness,
+    setAsideType,
+    naicsCodes,
+    industryTags,
+    technologyTags,
+    serviceTags: [],
+    domainCategory: industryTags[0],
+    keywords: [],
+    serviceBranch,
+    awardDate,
     workDescription: text,
     rawParagraph: text,
     dataQualityScore: 85,
     parsingConfidence: 0.85,
-    extractionMethod: 'comprehensive_regex_nlp'
+    extractionMethod: 'simplified_test'
   };
 }
 
