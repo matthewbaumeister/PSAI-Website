@@ -2,10 +2,14 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useTheme } from '@/contexts/ThemeContext'
+import { Footer } from '@/components/Footer'
 
 export default function HomePage() {
   const router = useRouter()
+  const { theme } = useTheme()
   const [query, setQuery] = useState('')
+  const isDark = theme === 'dark'
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -17,13 +21,18 @@ export default function HomePage() {
   }
 
   return (
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      background: isDark ? '#111827' : '#F9FAFB'
+    }}>
     <main style={{
-      minHeight: '80vh',
+      flex: 1,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '2rem',
-      background: '#F9FAFB'
+      padding: '2rem'
     }}>
       <div style={{
         maxWidth: '700px',
@@ -48,7 +57,7 @@ export default function HomePage() {
           <div style={{
             fontSize: '2.5rem',
             fontWeight: '700',
-            color: '#1F2937',
+            color: isDark ? '#F9FAFB' : '#1F2937',
             letterSpacing: '-0.02em'
           }}>
             prop-shop.ai
@@ -58,7 +67,7 @@ export default function HomePage() {
         {/* Subtext */}
         <p style={{
           fontSize: '1rem',
-          color: '#6B7280',
+          color: isDark ? '#9CA3AF' : '#6B7280',
           marginBottom: '3rem',
           fontWeight: '400'
         }}>
@@ -77,20 +86,20 @@ export default function HomePage() {
               padding: '1rem 1.5rem',
               fontSize: '1rem',
               borderRadius: '12px',
-              border: '2px solid #D1D5DB',
-              background: '#FFFFFF',
-              color: '#1F2937',
+              border: `2px solid ${isDark ? '#374151' : '#D1D5DB'}`,
+              background: isDark ? '#1F2937' : '#FFFFFF',
+              color: isDark ? '#F9FAFB' : '#1F2937',
               outline: 'none',
               transition: 'all 0.2s ease',
-              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+              boxShadow: isDark ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
             onFocus={(e) => {
               e.target.style.border = '2px solid #A855F7'
               e.target.style.boxShadow = '0 0 0 3px rgba(168, 85, 247, 0.1)'
             }}
             onBlur={(e) => {
-              e.target.style.border = '2px solid #D1D5DB'
-              e.target.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)'
+              e.target.style.border = `2px solid ${isDark ? '#374151' : '#D1D5DB'}`
+              e.target.style.boxShadow = isDark ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
           />
         </form>
@@ -135,22 +144,22 @@ export default function HomePage() {
               fontSize: '1rem',
               fontWeight: '600',
               borderRadius: '10px',
-              border: '2px solid #D1D5DB',
-              background: '#FFFFFF',
-              color: '#1F2937',
+              border: `2px solid ${isDark ? '#374151' : '#D1D5DB'}`,
+              background: isDark ? '#1F2937' : '#FFFFFF',
+              color: isDark ? '#F9FAFB' : '#1F2937',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
-              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+              boxShadow: isDark ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#F9FAFB'
+              e.currentTarget.style.background = isDark ? '#374151' : '#F9FAFB'
               e.currentTarget.style.transform = 'translateY(-2px)'
               e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#FFFFFF'
+              e.currentTarget.style.background = isDark ? '#1F2937' : '#FFFFFF'
               e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)'
+              e.currentTarget.style.boxShadow = isDark ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
           >
             Open CRM pipeline
@@ -158,5 +167,7 @@ export default function HomePage() {
         </div>
       </div>
     </main>
+    <Footer />
+    </div>
   )
 }

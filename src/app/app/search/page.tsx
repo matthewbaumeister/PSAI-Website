@@ -5,10 +5,14 @@ import { useSearchParams } from 'next/navigation'
 import { Opportunity, ChatMessage, SearchFilters } from '@/types/opportunity'
 import { searchOpportunities, chatWithOpportunities, getAllAgencies, getAllContractVehicles, getAllStatuses } from '@/mock/api'
 import { OpportunityDetailPanel } from '@/components/OpportunityDetailPanel'
+import { HistorySidebar } from '@/components/HistorySidebar'
+import { useTheme } from '@/contexts/ThemeContext'
 
 function SearchPageContent() {
   const searchParams = useSearchParams()
   const initialQuery = searchParams?.get('q') || ''
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
 
   const [filters, setFilters] = useState<SearchFilters>({
     query: initialQuery,
@@ -22,22 +26,17 @@ function SearchPageContent() {
   const [selectedOpportunity, setSelectedOpportunity] = useState<Opportunity | null>(null)
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
   const [chatInput, setChatInput] = useState('')
-  const [isSearching, setIsSearching] = useState(false)
 
   const agencies = getAllAgencies()
   const contractVehicles = getAllContractVehicles()
   const statuses = getAllStatuses()
 
-  // Perform search when filters change
   useEffect(() => {
-    setIsSearching(true)
     const results = searchOpportunities(filters)
     setSearchResults(results)
-    setIsSearching(false)
 
-    // If we have a query and no chat messages yet, send initial chat
     if (filters.query && chatMessages.length === 0) {
-      const { message, relatedOpportunities } = chatWithOpportunities(filters.query)
+      const { message } = chatWithOpportunities(filters.query)
       setChatMessages([
         {
           id: `msg-user-${Date.now()}`,
@@ -66,40 +65,38 @@ function SearchPageContent() {
     setChatInput('')
   }
 
-  const handleOpportunityClick = (opp: Opportunity) => {
-    setSelectedOpportunity(opp)
-  }
-
   return (
     <div style={{
-      height: 'calc(100vh - 73px)', // Subtract navbar height
+      height: 'calc(100vh - 73px)',
       display: 'grid',
-      gridTemplateColumns: '280px 1fr 400px',
+      gridTemplateColumns: '280px 280px 1fr 400px',
       overflow: 'hidden'
     }}>
-      {/* Left Sidebar - Filters */}
+      {/* Left Sidebar - History/Nav */}
+      <HistorySidebar />
+
+      {/* Filters Panel */}
       <div style={{
-        borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-        background: 'rgba(11, 18, 32, 0.6)',
+        borderRight: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
+        background: isDark ? '#1F2937' : '#FFFFFF',
         overflow: 'auto',
         padding: '1.5rem'
       }}>
         <h3 style={{
           fontSize: '1rem',
           fontWeight: '600',
-          color: '#ffffff',
+          color: isDark ? '#F9FAFB' : '#1F2937',
           marginBottom: '1.5rem'
         }}>
           Filters
         </h3>
 
-        {/* Query Input */}
         <div style={{ marginBottom: '1.5rem' }}>
           <label style={{
             display: 'block',
             fontSize: '0.875rem',
             fontWeight: '500',
-            color: 'rgba(255, 255, 255, 0.8)',
+            color: isDark ? '#D1D5DB' : '#374151',
             marginBottom: '0.5rem'
           }}>
             Search Query
@@ -113,40 +110,39 @@ function SearchPageContent() {
               width: '100%',
               padding: '0.5rem',
               borderRadius: '6px',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              background: 'rgba(255, 255, 255, 0.05)',
-              color: '#ffffff',
+              border: `1px solid ${isDark ? '#374151' : '#D1D5DB'}`,
+              background: isDark ? '#111827' : '#F9FAFB',
+              color: isDark ? '#F9FAFB' : '#1F2937',
               fontSize: '0.875rem',
               outline: 'none'
             }}
           />
         </div>
 
-        {/* Agency Filter */}
         <FilterSection
           label="Agency"
           options={agencies}
           selectedOptions={filters.agencies}
           onChange={(selected) => setFilters({ ...filters, agencies: selected })}
+          isDark={isDark}
         />
 
-        {/* Contract Vehicle Filter */}
         <FilterSection
           label="Contract Vehicle"
           options={contractVehicles}
           selectedOptions={filters.contractVehicles}
           onChange={(selected) => setFilters({ ...filters, contractVehicles: selected })}
+          isDark={isDark}
         />
 
-        {/* Status Filter */}
         <FilterSection
           label="Status"
           options={statuses}
           selectedOptions={filters.statuses}
           onChange={(selected) => setFilters({ ...filters, statuses: selected })}
+          isDark={isDark}
         />
 
-        {/* Clear Filters */}
         {(filters.agencies.length > 0 || filters.contractVehicles.length > 0 || filters.statuses.length > 0) && (
           <button
             onClick={() => setFilters({
@@ -160,9 +156,9 @@ function SearchPageContent() {
               marginTop: '1rem',
               padding: '0.5rem',
               borderRadius: '6px',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
+              border: `1px solid ${isDark ? '#374151' : '#D1D5DB'}`,
               background: 'transparent',
-              color: 'rgba(255, 255, 255, 0.8)',
+              color: isDark ? '#9CA3AF' : '#6B7280',
               fontSize: '0.875rem',
               cursor: 'pointer'
             }}
@@ -172,192 +168,200 @@ function SearchPageContent() {
         )}
       </div>
 
-      {/* Center - Chat and Results */}
+      {/* Center - Chat */}
       <div style={{
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        background: '#0B1220'
+        background: isDark ? '#111827' : '#F9FAFB'
       }}>
-        {/* Search Results Strip */}
+        {/* Search Results Count */}
         <div style={{
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          borderBottom: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
           padding: '1rem 1.5rem',
-          background: 'rgba(11, 18, 32, 0.4)'
+          background: isDark ? '#1F2937' : '#FFFFFF',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
         }}>
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginBottom: '0.75rem'
+          <h3 style={{
+            fontSize: '0.875rem',
+            fontWeight: '600',
+            color: isDark ? '#F9FAFB' : '#1F2937',
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em'
           }}>
-            <h3 style={{
-              fontSize: '0.875rem',
-              fontWeight: '600',
-              color: 'rgba(255, 255, 255, 0.9)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.05em'
-            }}>
-              Search Results
-            </h3>
-            <span style={{
-              fontSize: '0.875rem',
-              color: 'rgba(255, 255, 255, 0.6)'
-            }}>
-              {searchResults.length} opportunities
-            </span>
-          </div>
-
-          {/* Horizontal scrollable results */}
-          <div style={{
-            display: 'flex',
-            gap: '1rem',
-            overflowX: 'auto',
-            paddingBottom: '0.5rem'
+            Chat
+          </h3>
+          <span style={{
+            fontSize: '0.875rem',
+            color: isDark ? '#9CA3AF' : '#6B7280'
           }}>
-            {searchResults.slice(0, 10).map(opp => (
-              <div
-                key={opp.id}
-                onClick={() => handleOpportunityClick(opp)}
-                style={{
-                  minWidth: '280px',
-                  padding: '1rem',
-                  borderRadius: '8px',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  background: selectedOpportunity?.id === opp.id ? 'rgba(45, 91, 255, 0.15)' : 'rgba(255, 255, 255, 0.05)',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <div style={{
-                  fontSize: '0.875rem',
-                  fontWeight: '600',
-                  color: '#ffffff',
-                  marginBottom: '0.5rem',
-                  display: '-webkit-box',
-                  WebkitLineClamp: 2,
-                  WebkitBoxOrient: 'vertical',
-                  overflow: 'hidden'
-                }}>
-                  {opp.title}
-                </div>
-                <div style={{
-                  fontSize: '0.75rem',
-                  color: 'rgba(255, 255, 255, 0.6)',
-                  marginBottom: '0.25rem'
-                }}>
-                  {opp.agency}
-                </div>
-                <div style={{
-                  fontSize: '0.75rem',
-                  color: 'rgba(255, 255, 255, 0.6)'
-                }}>
-                  Due: {new Date(opp.dueDate).toLocaleDateString()}
-                </div>
-              </div>
-            ))}
-          </div>
+            {searchResults.length} results
+          </span>
         </div>
 
-        {/* Chat Area */}
+        {/* Messages */}
         <div style={{
           flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          overflow: 'hidden'
+          overflow: 'auto',
+          padding: '1.5rem'
         }}>
-          {/* Messages */}
-          <div style={{
-            flex: 1,
-            overflow: 'auto',
-            padding: '1.5rem'
-          }}>
-            {chatMessages.length === 0 ? (
-              <div style={{
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'rgba(255, 255, 255, 0.4)',
-                fontSize: '0.95rem',
-                textAlign: 'center'
-              }}>
-                <div>
-                  <div style={{ marginBottom: '0.5rem' }}>Start a conversation</div>
-                  <div style={{ fontSize: '0.875rem' }}>Ask about opportunities, agencies, or technologies</div>
+          {chatMessages.length === 0 ? (
+            <div style={{
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center'
+            }}>
+              <div>
+                <div style={{ 
+                  fontSize: '1rem',
+                  color: isDark ? '#9CA3AF' : '#6B7280',
+                  marginBottom: '0.5rem'
+                }}>
+                  Start a conversation
+                </div>
+                <div style={{ fontSize: '0.875rem', color: isDark ? '#6B7280' : '#9CA3AF' }}>
+                  Ask about opportunities, agencies, or technologies
                 </div>
               </div>
-            ) : (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                {chatMessages.map(msg => (
-                  <div
-                    key={msg.id}
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: msg.role === 'user' ? 'flex-end' : 'flex-start'
-                    }}
-                  >
-                    <div style={{
-                      maxWidth: '80%',
-                      padding: '1rem',
-                      borderRadius: '12px',
-                      background: msg.role === 'user' ? 'rgba(45, 91, 255, 0.2)' : 'rgba(255, 255, 255, 0.05)',
-                      border: `1px solid ${msg.role === 'user' ? 'rgba(45, 91, 255, 0.3)' : 'rgba(255, 255, 255, 0.1)'}`,
-                      color: '#ffffff',
-                      fontSize: '0.95rem',
-                      lineHeight: '1.6'
-                    }}>
-                      {msg.content}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Chat Input */}
-          <div style={{
-            borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-            padding: '1.5rem',
-            background: 'rgba(11, 18, 32, 0.6)'
-          }}>
-            <div style={{ display: 'flex', gap: '0.75rem' }}>
-              <input
-                type="text"
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-                placeholder="Ask about opportunities..."
-                style={{
-                  flex: 1,
-                  padding: '0.75rem 1rem',
-                  borderRadius: '8px',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  background: 'rgba(255, 255, 255, 0.05)',
-                  color: '#ffffff',
-                  fontSize: '0.95rem',
-                  outline: 'none'
-                }}
-              />
-              <button
-                onClick={handleSendMessage}
-                disabled={!chatInput.trim()}
-                style={{
-                  padding: '0.75rem 1.5rem',
-                  borderRadius: '8px',
-                  border: 'none',
-                  background: chatInput.trim() ? 'rgba(45, 91, 255, 1)' : 'rgba(255, 255, 255, 0.1)',
-                  color: '#ffffff',
-                  fontSize: '0.95rem',
-                  fontWeight: '600',
-                  cursor: chatInput.trim() ? 'pointer' : 'not-allowed',
-                  opacity: chatInput.trim() ? 1 : 0.5
-                }}
-              >
-                Send
-              </button>
             </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {chatMessages.map(msg => (
+                <div
+                  key={msg.id}
+                  style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: msg.role === 'user' ? 'flex-end' : 'flex-start'
+                  }}
+                >
+                  <div style={{
+                    maxWidth: '80%',
+                    padding: '1rem',
+                    borderRadius: '12px',
+                    background: msg.role === 'user' 
+                      ? 'linear-gradient(135deg, #A855F7 0%, #7C3AED 100%)'
+                      : isDark ? '#374151' : '#FFFFFF',
+                    border: msg.role === 'user' 
+                      ? 'none'
+                      : `1px solid ${isDark ? '#4B5563' : '#E5E7EB'}`,
+                    color: msg.role === 'user' ? '#ffffff' : isDark ? '#F9FAFB' : '#1F2937',
+                    fontSize: '0.95rem',
+                    lineHeight: '1.6',
+                    boxShadow: msg.role === 'assistant' 
+                      ? isDark ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'
+                      : 'none'
+                  }}>
+                    {msg.content}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Search Results Strip Above Input */}
+        {searchResults.length > 0 && (
+          <div style={{
+            borderTop: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
+            borderBottom: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
+            padding: '1rem 1.5rem',
+            background: isDark ? '#1F2937' : '#FFFFFF',
+            overflowX: 'auto'
+          }}>
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              paddingBottom: '0.5rem'
+            }}>
+              {searchResults.slice(0, 10).map(opp => (
+                <div
+                  key={opp.id}
+                  onClick={() => setSelectedOpportunity(opp)}
+                  style={{
+                    minWidth: '220px',
+                    padding: '0.75rem',
+                    borderRadius: '8px',
+                    border: selectedOpportunity?.id === opp.id 
+                      ? '2px solid #A855F7'
+                      : `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
+                    background: selectedOpportunity?.id === opp.id 
+                      ? isDark ? 'rgba(168, 85, 247, 0.15)' : 'rgba(168, 85, 247, 0.05)'
+                      : isDark ? '#111827' : '#F9FAFB',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <div style={{
+                    fontSize: '0.8125rem',
+                    fontWeight: '600',
+                    color: isDark ? '#F9FAFB' : '#1F2937',
+                    marginBottom: '0.25rem',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap'
+                  }}>
+                    {opp.title}
+                  </div>
+                  <div style={{
+                    fontSize: '0.75rem',
+                    color: isDark ? '#9CA3AF' : '#6B7280'
+                  }}>
+                    {opp.agency}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Chat Input */}
+        <div style={{
+          borderTop: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
+          padding: '1.5rem',
+          background: isDark ? '#1F2937' : '#FFFFFF'
+        }}>
+          <div style={{ display: 'flex', gap: '0.75rem' }}>
+            <input
+              type="text"
+              value={chatInput}
+              onChange={(e) => setChatInput(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+              placeholder="Ask about opportunities..."
+              style={{
+                flex: 1,
+                padding: '0.75rem 1rem',
+                borderRadius: '8px',
+                border: `1px solid ${isDark ? '#374151' : '#D1D5DB'}`,
+                background: isDark ? '#111827' : '#F9FAFB',
+                color: isDark ? '#F9FAFB' : '#1F2937',
+                fontSize: '0.95rem',
+                outline: 'none'
+              }}
+            />
+            <button
+              onClick={handleSendMessage}
+              disabled={!chatInput.trim()}
+              style={{
+                padding: '0.75rem 1.5rem',
+                borderRadius: '8px',
+                border: 'none',
+                background: chatInput.trim() 
+                  ? 'linear-gradient(135deg, #A855F7 0%, #7C3AED 100%)'
+                  : isDark ? '#374151' : '#E5E7EB',
+                color: '#ffffff',
+                fontSize: '0.95rem',
+                fontWeight: '600',
+                cursor: chatInput.trim() ? 'pointer' : 'not-allowed',
+                opacity: chatInput.trim() ? 1 : 0.5
+              }}
+            >
+              Send
+            </button>
           </div>
         </div>
       </div>
@@ -373,9 +377,10 @@ interface FilterSectionProps {
   options: string[]
   selectedOptions: string[]
   onChange: (selected: string[]) => void
+  isDark: boolean
 }
 
-function FilterSection({ label, options, selectedOptions, onChange }: FilterSectionProps) {
+function FilterSection({ label, options, selectedOptions, onChange, isDark }: FilterSectionProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   const toggleOption = (option: string) => {
@@ -394,7 +399,7 @@ function FilterSection({ label, options, selectedOptions, onChange }: FilterSect
         display: 'block',
         fontSize: '0.875rem',
         fontWeight: '500',
-        color: 'rgba(255, 255, 255, 0.8)',
+        color: isDark ? '#D1D5DB' : '#374151',
         marginBottom: '0.5rem'
       }}>
         {label}
@@ -409,7 +414,7 @@ function FilterSection({ label, options, selectedOptions, onChange }: FilterSect
               gap: '0.5rem',
               cursor: 'pointer',
               fontSize: '0.875rem',
-              color: 'rgba(255, 255, 255, 0.8)'
+              color: isDark ? '#D1D5DB' : '#374151'
             }}
           >
             <input
@@ -428,7 +433,7 @@ function FilterSection({ label, options, selectedOptions, onChange }: FilterSect
               textAlign: 'left',
               background: 'none',
               border: 'none',
-              color: 'rgba(45, 91, 255, 1)',
+              color: '#A855F7',
               fontSize: '0.875rem',
               cursor: 'pointer',
               padding: '0.25rem 0'
@@ -450,7 +455,7 @@ export default function SearchPage() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: '#ffffff'
+        color: '#6B7280'
       }}>
         Loading...
       </div>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Opportunity } from '@/types/opportunity'
 import { useCrm } from '@/contexts/CrmContext'
+import { useTheme } from '@/contexts/ThemeContext'
 
 interface OpportunityDetailPanelProps {
   opportunity: Opportunity | null
@@ -11,6 +12,8 @@ interface OpportunityDetailPanelProps {
 
 export function OpportunityDetailPanel({ opportunity, onClose }: OpportunityDetailPanelProps) {
   const { addOpportunity, updateOpportunityNotes, getOpportunityById } = useCrm()
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
   const [notes, setNotes] = useState(opportunity?.internalNotes || '')
   const [showSuccessMessage, setShowSuccessMessage] = useState(false)
 
@@ -21,8 +24,10 @@ export function OpportunityDetailPanel({ opportunity, onClose }: OpportunityDeta
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: 'rgba(255, 255, 255, 0.4)',
-        fontSize: '0.95rem'
+        color: isDark ? '#6B7280' : '#9CA3AF',
+        fontSize: '0.95rem',
+        background: isDark ? '#1F2937' : '#FFFFFF',
+        borderLeft: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`
       }}>
         Select an opportunity to view details
       </div>
@@ -67,8 +72,8 @@ export function OpportunityDetailPanel({ opportunity, onClose }: OpportunityDeta
       height: '100%',
       overflow: 'auto',
       padding: '1.5rem',
-      background: 'rgba(11, 18, 32, 0.6)',
-      borderLeft: '1px solid rgba(255, 255, 255, 0.1)'
+      background: isDark ? '#1F2937' : '#FFFFFF',
+      borderLeft: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`
     }}>
       {/* Header with close button */}
       {onClose && (
@@ -76,12 +81,12 @@ export function OpportunityDetailPanel({ opportunity, onClose }: OpportunityDeta
           <button
             onClick={onClose}
             style={{
-              background: 'none',
-              border: 'none',
-              color: 'rgba(255, 255, 255, 0.6)',
-              fontSize: '1.5rem',
-              cursor: 'pointer',
-              padding: '0.25rem'
+            background: 'none',
+            border: 'none',
+            color: isDark ? '#9CA3AF' : '#6B7280',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            padding: '0.25rem'
             }}
           >
             ×
@@ -93,7 +98,7 @@ export function OpportunityDetailPanel({ opportunity, onClose }: OpportunityDeta
       <h2 style={{
         fontSize: '1.25rem',
         fontWeight: '600',
-        color: '#ffffff',
+        color: isDark ? '#F9FAFB' : '#1F2937',
         marginBottom: '1rem',
         lineHeight: '1.4'
       }}>

@@ -2,9 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTheme } from '@/contexts/ThemeContext'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
 
   const isActive = (path: string) => pathname?.startsWith(path)
 
@@ -13,13 +16,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      background: '#F9FAFB'
+      background: isDark ? '#111827' : '#F9FAFB'
     }}>
       {/* Top Navigation Bar */}
       <nav style={{
-        borderBottom: '1px solid #E5E7EB',
-        background: '#FFFFFF',
-        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+        borderBottom: `1px solid ${isDark ? '#374151' : '#E5E7EB'}`,
+        background: isDark ? '#1F2937' : '#FFFFFF',
+        boxShadow: isDark ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)',
         position: 'sticky',
         top: 0,
         zIndex: 100
@@ -53,7 +56,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               <span style={{
                 fontSize: '1.25rem',
                 fontWeight: '700',
-                color: '#1F2937',
+                color: isDark ? '#F9FAFB' : '#1F2937',
                 letterSpacing: '-0.01em'
               }}>
                 prop-shop.ai
@@ -68,15 +71,21 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   borderRadius: '8px',
                   fontSize: '0.95rem',
                   fontWeight: '500',
-                  color: isActive('/app/search') ? '#ffffff' : 'rgba(255, 255, 255, 0.7)',
-                  background: isActive('/app/search') ? 'rgba(45, 91, 255, 0.2)' : 'transparent',
-                  border: isActive('/app/search') ? '1px solid rgba(45, 91, 255, 0.4)' : '1px solid transparent',
+                  color: isActive('/app/search') 
+                    ? '#A855F7' 
+                    : isDark ? '#9CA3AF' : '#6B7280',
+                  background: isActive('/app/search') 
+                    ? isDark ? 'rgba(168, 85, 247, 0.15)' : 'rgba(168, 85, 247, 0.1)' 
+                    : 'transparent',
+                  border: isActive('/app/search') 
+                    ? '1px solid rgba(168, 85, 247, 0.3)' 
+                    : '1px solid transparent',
                   textDecoration: 'none',
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive('/app/search')) {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
+                    e.currentTarget.style.background = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -95,15 +104,21 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                   borderRadius: '8px',
                   fontSize: '0.95rem',
                   fontWeight: '500',
-                  color: isActive('/app/crm') ? '#ffffff' : 'rgba(255, 255, 255, 0.7)',
-                  background: isActive('/app/crm') ? 'rgba(45, 91, 255, 0.2)' : 'transparent',
-                  border: isActive('/app/crm') ? '1px solid rgba(45, 91, 255, 0.4)' : '1px solid transparent',
+                  color: isActive('/app/crm') 
+                    ? '#A855F7' 
+                    : isDark ? '#9CA3AF' : '#6B7280',
+                  background: isActive('/app/crm') 
+                    ? isDark ? 'rgba(168, 85, 247, 0.15)' : 'rgba(168, 85, 247, 0.1)' 
+                    : 'transparent',
+                  border: isActive('/app/crm') 
+                    ? '1px solid rgba(168, 85, 247, 0.3)' 
+                    : '1px solid transparent',
                   textDecoration: 'none',
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive('/app/crm')) {
-                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
+                    e.currentTarget.style.background = isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'
                   }
                 }}
                 onMouseLeave={(e) => {
@@ -122,8 +137,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             width: '36px',
             height: '36px',
             borderRadius: '50%',
-            background: 'rgba(45, 91, 255, 0.3)',
-            border: '1px solid rgba(45, 91, 255, 0.5)',
+            background: 'linear-gradient(135deg, #A855F7 0%, #7C3AED 100%)',
+            border: '1px solid rgba(168, 85, 247, 0.5)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
