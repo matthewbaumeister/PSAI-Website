@@ -39,6 +39,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               style={{
                 display: 'flex',
                 alignItems: 'center',
+                gap: '0.75rem',
                 textDecoration: 'none'
               }}
             >
@@ -46,9 +47,17 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 src="/logo.svg" 
                 alt="PropShop.ai" 
                 style={{
-                  height: '40px'
+                  height: '36px'
                 }}
               />
+              <span style={{
+                fontSize: '1.25rem',
+                fontWeight: '700',
+                color: '#1F2937',
+                letterSpacing: '-0.01em'
+              }}>
+                prop-shop.ai
+              </span>
             </Link>
 
             <div style={{ display: 'flex', gap: '0.5rem' }}>

@@ -30,11 +30,13 @@ export default function HomePage() {
         width: '100%',
         textAlign: 'center'
       }}>
-        {/* Logo */}
+        {/* Logo + Domain */}
         <div style={{
           marginBottom: '2rem',
           display: 'flex',
-          justifyContent: 'center'
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '1.5rem'
         }}>
           <img 
             src="/logo.svg" 
@@ -43,6 +45,14 @@ export default function HomePage() {
               height: '80px'
             }}
           />
+          <div style={{
+            fontSize: '2.5rem',
+            fontWeight: '700',
+            color: '#1F2937',
+            letterSpacing: '-0.02em'
+          }}>
+            prop-shop.ai
+          </div>
         </div>
 
         {/* Subtext */}
