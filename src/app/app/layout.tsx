@@ -2,11 +2,9 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { useAuth } from '@/contexts/AuthContext'
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const { user } = useAuth()
 
   const isActive = (path: string) => pathname?.startsWith(path)
 
@@ -121,7 +119,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             color: '#ffffff',
             cursor: 'pointer'
           }}>
-            {user?.firstName?.charAt(0) || 'U'}
+            U
           </div>
         </div>
       </nav>
