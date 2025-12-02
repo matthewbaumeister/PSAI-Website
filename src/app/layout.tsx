@@ -24,8 +24,8 @@ export default function RootLayout({
         margin: 0,
         padding: 0,
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-        background: '#0B1220',
-        color: '#ffffff',
+        background: '#E5E7EB',
+        color: '#1F2937',
         minHeight: '100vh'
       }}>
         <CrmProvider>

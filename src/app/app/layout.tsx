@@ -13,13 +13,13 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      background: '#0B1220'
+      background: '#F9FAFB'
     }}>
       {/* Top Navigation Bar */}
       <nav style={{
-        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-        background: 'rgba(11, 18, 32, 0.8)',
-        backdropFilter: 'blur(10px)',
+        borderBottom: '1px solid #E5E7EB',
+        background: '#FFFFFF',
+        boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
         position: 'sticky',
         top: 0,
         zIndex: 100
@@ -46,8 +46,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 src="/logo.svg" 
                 alt="PropShop.ai" 
                 style={{
-                  height: '32px',
-                  filter: 'brightness(0) invert(1)'
+                  height: '40px'
                 }}
               />
             </Link>

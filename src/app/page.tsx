@@ -22,7 +22,8 @@ export default function HomePage() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '2rem'
+      padding: '2rem',
+      background: '#F9FAFB'
     }}>
       <div style={{
         maxWidth: '700px',
@@ -39,25 +40,15 @@ export default function HomePage() {
             src="/logo.svg" 
             alt="PropShop.ai" 
             style={{
-              height: '60px',
-              filter: 'brightness(0) invert(1)'
+              height: '80px'
             }}
           />
         </div>
-        
-        <h2 style={{
-          fontSize: '1.5rem',
-          fontWeight: '400',
-          marginBottom: '1rem',
-          color: 'rgba(255, 255, 255, 0.9)'
-        }}>
-          prop-shop.ai
-        </h2>
 
         {/* Subtext */}
         <p style={{
           fontSize: '1rem',
-          color: 'rgba(255, 255, 255, 0.6)',
+          color: '#6B7280',
           marginBottom: '3rem',
           fontWeight: '400'
         }}>
@@ -76,20 +67,20 @@ export default function HomePage() {
               padding: '1rem 1.5rem',
               fontSize: '1rem',
               borderRadius: '12px',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              background: 'rgba(255, 255, 255, 0.05)',
-              color: '#ffffff',
+              border: '2px solid #D1D5DB',
+              background: '#FFFFFF',
+              color: '#1F2937',
               outline: 'none',
               transition: 'all 0.2s ease',
-              backdropFilter: 'blur(10px)'
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
             onFocus={(e) => {
-              e.target.style.border = '1px solid rgba(45, 91, 255, 0.5)'
-              e.target.style.background = 'rgba(255, 255, 255, 0.08)'
+              e.target.style.border = '2px solid #A855F7'
+              e.target.style.boxShadow = '0 0 0 3px rgba(168, 85, 247, 0.1)'
             }}
             onBlur={(e) => {
-              e.target.style.border = '1px solid rgba(255, 255, 255, 0.15)'
-              e.target.style.background = 'rgba(255, 255, 255, 0.05)'
+              e.target.style.border = '2px solid #D1D5DB'
+              e.target.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
           />
         </form>
@@ -109,21 +100,19 @@ export default function HomePage() {
               fontWeight: '600',
               borderRadius: '10px',
               border: 'none',
-              background: 'rgba(45, 91, 255, 1)',
+              background: 'linear-gradient(135deg, #A855F7 0%, #7C3AED 100%)',
               color: '#ffffff',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
-              boxShadow: '0 4px 15px rgba(45, 91, 255, 0.3)'
+              boxShadow: '0 4px 15px rgba(168, 85, 247, 0.3)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(45, 91, 255, 0.9)'
               e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.boxShadow = '0 6px 20px rgba(45, 91, 255, 0.4)'
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(168, 85, 247, 0.4)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(45, 91, 255, 1)'
               e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.boxShadow = '0 4px 15px rgba(45, 91, 255, 0.3)'
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(168, 85, 247, 0.3)'
             }}
           >
             Search opportunities
@@ -136,22 +125,22 @@ export default function HomePage() {
               fontSize: '1rem',
               fontWeight: '600',
               borderRadius: '10px',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              background: 'rgba(255, 255, 255, 0.05)',
-              color: '#ffffff',
+              border: '2px solid #D1D5DB',
+              background: '#FFFFFF',
+              color: '#1F2937',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
-              backdropFilter: 'blur(10px)'
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
+              e.currentTarget.style.background = '#F9FAFB'
               e.currentTarget.style.transform = 'translateY(-2px)'
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)'
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)'
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
+              e.currentTarget.style.background = '#FFFFFF'
               e.currentTarget.style.transform = 'translateY(0)'
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)'
+              e.currentTarget.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)'
             }}
           >
             Open CRM pipeline
