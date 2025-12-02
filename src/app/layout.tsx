@@ -3,13 +3,13 @@ import { CrmProvider } from '@/contexts/CrmContext'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'propshop.ai - Government Contracting Intelligence',
+  title: 'prop-shop.ai - Government Contracting Intelligence',
   description: 'Search, analyze, and track government contracting opportunities.',
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.png', type: 'image/png' },
     ],
-    apple: '/favicon.svg',
+    apple: '/favicon.png',
   },
 }
 
