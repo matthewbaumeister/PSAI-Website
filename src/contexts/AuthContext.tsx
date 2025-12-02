@@ -72,8 +72,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await supabase
       .from('user_profiles')
       .update({ 
-        last_login_at: new Date().toISOString(),
-        login_count: profile?.login_count ? profile.login_count + 1 : 1
+        last_login_at: new Date().toISOString()
       })
       .eq('id', userId)
   }
