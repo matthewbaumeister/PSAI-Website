@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "vercel --prod",
+    "deploy": "vercel --prod --yes",
     "push": "./auto-push.sh",
     "auto-push": "git add . && git commit -m \"Auto-commit: $(date)\" && git push",
     "scrape:army-innovation:historical": "tsx src/lib/army-xtech-scraper.ts historical",

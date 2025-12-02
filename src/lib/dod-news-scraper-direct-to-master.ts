@@ -188,7 +188,7 @@ export async function saveContractToOpportunityMaster(
         primary_contract_number: contract.contractNumber,
         primary_notice_id: contract.solicitationNumber,
         primary_award_id: `DOD-${articleId}`,
-        parent_contract_number: contract.baseContractNumber || contract.parentContract,
+        parent_contract_number: contract.baseContractNumber || null,
         external_ids: externalIds,
         
         // Descriptive
