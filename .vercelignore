@@ -1,0 +1,33 @@
+# Test files
+test-*.ts
+check-*.ts
+debug-*.ts
+trigger-*.ts
+
+# Scripts and utilities
+scripts/
+cron/
+*.sh
+
+# Data files
+*.csv
+*.sql
+*.log
+*.html
+
+# Documentation
+*.md
+!README.md
+
+# Backup data
+backups/
+data/
+
+# Python virtual environment
+venv/
+__pycache__/
+*.py
+
+# Misc
+.DS_Store
+
