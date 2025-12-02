@@ -27,7 +27,10 @@
     "enrich-companies": "tsx enrich-companies.ts",
     "update-companies:daily": "tsx cron/daily-company-update.ts",
     "backup:supabase": "tsx scripts/backup-supabase.ts",
-    "db:backup": "tsx scripts/backup-supabase.ts"
+    "db:backup": "tsx scripts/backup-supabase.ts",
+    "scrape:propshop": "tsx scripts/run-propshop-scraper.ts",
+    "scrape:propshop:daily": "tsx scripts/run-propshop-scraper.ts 1",
+    "scrape:propshop:weekly": "tsx scripts/run-propshop-scraper.ts 7"
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.81",
