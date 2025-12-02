@@ -10,6 +10,7 @@ export interface Opportunity {
   releaseDate: string
   dueDate: string
   estimatedValue: number | null
+  value?: number | null // Alias for estimatedValue (for compatibility)
   status: 'Active' | 'Archived' | 'Draft' | 'Upcoming'
   summary: string
   tags: string[]
