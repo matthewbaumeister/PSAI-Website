@@ -371,14 +371,19 @@ export async function testScraper(daysBack: number = 1) {
       return;
     }
 
+    // TypeScript narrowing - reassign to non-null variables
+    const foundUrl: string = articleUrl;
+    const foundTitle: string = articleTitle;
+    const foundDate: Date = articleDate;
+
     console.log('📰 Found Article:');
-    console.log(`   Title: ${articleTitle}`);
-    console.log(`   Date: ${articleDate.toISOString().split('T')[0]}`);
-    console.log(`   URL: ${articleUrl}\n`);
+    console.log(`   Title: ${foundTitle}`);
+    console.log(`   Date: ${foundDate.toISOString().split('T')[0]}`);
+    console.log(`   URL: ${foundUrl}\n`);
 
     // Fetch article
     console.log('📄 Fetching article HTML...\n');
-    await page.goto(articleUrl, { waitUntil: 'networkidle2', timeout: 30000 });
+    await page.goto(foundUrl, { waitUntil: 'networkidle2', timeout: 30000 });
     const articleHtml = await page.content();
     
     // Parse contracts
@@ -427,7 +432,7 @@ export async function testScraper(daysBack: number = 1) {
       console.log(`Text preview: ${text.substring(0, 100)}...\n`);
 
       // Extract comprehensive data (using function from main scraper)
-      const contract = await extractComprehensiveContractData(text, serviceBranch, articleDate);
+      const contract = await extractComprehensiveContractData(text, serviceBranch, foundDate);
       
       if (contract) {
         processed++;
@@ -448,7 +453,7 @@ export async function testScraper(daysBack: number = 1) {
         console.log(`   Confidence: ${(contract.parsingConfidence * 100).toFixed(1)}%\n`);
 
         // Save to database
-        const success = await saveOrUpdateOpportunity(contract, articleTitle, articleUrl, articleDate);
+        const success = await saveOrUpdateOpportunity(contract, foundTitle, foundUrl, foundDate);
         if (success) saved++;
         
         console.log('─'.repeat(70) + '\n');
